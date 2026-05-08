@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bytedance-1776853199754.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; }
+    #loading { display:flex; align-items:center; justify-content:center; 
+               height:100vh; font-size:16px; color:#888; }
+  </style>
+</head>
+<body>
+  <div id="root"><div id="loading">Loading preview...</div></div>
+  <script type="text/babel">
+    import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#ff6b00';
+  const heroImage = '/output/generated-assets/ds_1776852945375_2668737b/01-f7e8992ab4.jpeg';
+  const productImages = [
+    '/output/generated-assets/ds_1776852945375_2668737b/01-f7e8992ab4.jpeg',
+    '/output/generated-assets/ds_1776852945375_2668737b/02-7f64cfae87.jpeg',
+    '/output/generated-assets/ds_1776852945375_2668737b/09-44be0cccb4.png',
+    '/output/generated-assets/ds_1776852945375_2668737b/08-84289b855f.png',
+    '/output/generated-assets/ds_1776852945375_2668737b/03-3965757185.jpeg',
+    '/output/generated-assets/ds_1776852945375_2668737b/01-f7e8992ab4.jpeg',
+    '/output/generated-assets/ds_1776852945375_2668737b/02-7f64cfae87.jpeg',
+    '/output/generated-assets/ds_1776852945375_2668737b/09-44be0cccb4.png'
+  ];
+  const featureImages = [
+    '/output/generated-assets/ds_1776852945375_2668737b/05-86a0e42439.jpeg',
+    '/output/generated-assets/ds_1776852945375_2668737b/04-fa9caa1249.png',
+    '/output/generated-assets/ds_1776852945375_2668737b/06-1d34b82b19.png',
+    '/output/generated-assets/ds_1776852945375_2668737b/07-65027719ed.png',
+    '/output/generated-assets/ds_1776852945375_2668737b/09-44be0cccb4.png',
+    '/output/generated-assets/ds_1776852945375_2668737b/08-84289b855f.png'
+  ];
+
+  const seedreamFeatures = [
+    {
+      title: 'Advanced Text–Image Alignment',
+      description: 'Accurately translates prompts into visuals with improved semantic understanding.',
+      image: featureImages[0]
+    },
+    {
+      title: 'High-Resolution Output',
+      description: 'Generate native images up to 1K–4K resolution with strong visual fidelity.',
+      image: featureImages[1]
+    },
+    {
+      title: 'Superior Typographic Rendering',
+      description: 'Optimized for posters, ads, and text-heavy visual designs.',
+      image: featureImages[2]
+    },
+    {
+      title: 'Multi-Image Composition with Identity Preservation',
+      description: 'Combines multiple inputs while accurately maintaining subject consistency.',
+      image: featureImages[3]
+    },
+    {
+      title: 'Strong Structural Fidelity',
+      description: 'Maintains composition, layout, and scene structure with high precision.',
+      image: featureImages[4]
+    }
+  ];
+
+  const seedanceFeatures = [
+    {
+      title: 'Key Capabilities of Seedance 1.5 Pro',
+      description: 'Seedance enables professional-grade AI video production with narrative coherence and realistic motion.',
+      image: featureImages[5]
+    },
+    {
+      title: 'Text-to-Video Generation',
+      description: 'Create videos directly from text prompts.',
+      image: productImages[1]
+    },
+    {
+      title: 'Audio-Visual Synchronization',
+      description: 'Generate video and audio simultaneously with strong multimodal alignment.',
+      image: productImages[2]
+    },
+    {
+      title: 'Multilingual Lip-Sync',
+      description: 'Supports multilingual and dialect-level lip synchronization.',
+      image: productImages[3]
+    },
+    {
+      title: 'Cinematic Camera Control',
+      description: 'Generate videos with dynamic camera movement and cinematic storytelling.',
+      image: productImages[4]
+    },
+    {
+      title: '10× Faster Inference',
+      description: 'Optimized inference pipeline significantly improves generation speed.',
+      image: productImages[6]
+    }
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        'Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.',
+      author: 'Vaishali Saxena',
+      designation: 'Creative Director'
+    },
+    {
+      quote:
+        'Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.',
+      author: 'Vihaan Pandey',
+      designation: 'Video Producer'
+    },
+    {
+      quote:
+        'The multimodal editing capabilities in Seedream make it easy to refine images with precision.',
+      author: 'Anurag Malhotra',
+      designation: 'Art Director'
+    },
+    {
+      quote:
+        'Techjockey made it easy to evaluate the right generative AI capabilities for our visual production workflow.',
+      author: 'Ritika Mehra',
+      designation: 'Marketing Operations Lead'
+    }
+  ];
+
+  const [activeTab, setActiveTab] = useState(0);
+  const [activeAccordion, setActiveAccordion] = useState(0);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const revealRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    revealRef.current.forEach(el => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTestimonialIndex(prev => (prev + 1) % testimonials.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  const scrollToPricing = () => {
+    const el = document.getElementById('pricing');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToProducts = () => {
+    const el = document.getElementById('products');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const nextTestimonial = () => {
+    setTestimonialIndex(prev => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setTestimonialIndex(prev => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const IconSpark = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2z" fill={accent} />
+      <circle cx="18.5" cy="17.5" r="2.5" fill="#ff9d57" />
+      <circle cx="6" cy="18" r="1.5" fill="#ffd0ae" />
+    </svg>
+  );
+
+  const IconFrame = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <rect x="3" y="4" width="18" height="16" rx="3" stroke={accent} strokeWidth="2" />
+      <path d="M7 15l3-3 2 2 4-5 2 3" stroke="#ffb37d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="9" cy="9" r="1.5" fill={accent} />
+    </svg>
+  );
+
+  const IconType = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <path d="M5 6h14M12 6v12M9 18h6" stroke={accent} strokeWidth="2" strokeLinecap="round" />
+      <rect x="4" y="4" width="16" height="16" rx="3" stroke="#ffb37d" strokeWidth="1.5" opacity="0.7" />
+    </svg>
+  );
+
+  const IconLayers = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <path d="M12 4l8 4-8 4-8-4 8-4z" fill={accent} />
+      <path d="M4 12l8 4 8-4" stroke="#ffb37d" strokeWidth="2" strokeLinecap="round" />
+      <path d="M4 16l8 4 8-4" stroke="#ffd0ae" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+
+  const IconVideo = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <rect x="3" y="5" width="13" height="14" rx="3" stroke={accent} strokeWidth="2" />
+      <path d="M16 10l5-3v10l-5-3v-4z" fill="#ffb37d" />
+    </svg>
+  );
+
+  const IconAudio = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <path d="M5 14h3l4 4V6L8 10H5v4z" fill={accent} />
+      <path d="M16 9a4 4 0 010 6M18.5 6.5a7.5 7.5 0 010 11" stroke="#ffb37d" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+
+  const IconGlobe = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <circle cx="12" cy="12" r="9" stroke={accent} strokeWidth="2" />
+      <path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" stroke="#ffb37d" strokeWidth="1.8" />
+    </svg>
+  );
+
+  const IconCamera = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <rect x="3" y="7" width="18" height="12" rx="3" stroke={accent} strokeWidth="2" />
+      <circle cx="12" cy="13" r="3.5" stroke="#ffb37d" strokeWidth="2" />
+      <path d="M8 7l1.5-2h5L16 7" stroke="#ffd0ae" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+
+  const IconSpeed = () => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <path d="M5 16a7 7 0 1114 0" stroke={accent} strokeWidth="2" strokeLinecap="round" />
+      <path d="M12 12l4-3" stroke="#ffb37d" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="12" cy="16" r="1.6" fill="#ffd0ae" />
+    </svg>
+  );
+
+  const tabIcons = [<IconSpark key="1" />, <IconFrame key="2" />, <IconType key="3" />, <IconLayers key="4" />, <IconFrame key="5" />];
+  const accIcons = [<IconVideo key="1" />, <IconVideo key="2" />, <IconAudio key="3" />, <IconGlobe key="4" />, <IconCamera key="5" />, <IconSpeed key="6" />];
+
+  const css = `
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:#1a1a1a;color:#fff;font-family:'Inter',sans-serif;scroll-behavior:smooth}
+    body{background:#1a1a1a}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .landing-page{background:#1a1a1a;color:#fff;overflow:hidden}
+    .container{width:min(1200px,calc(100% - 32px));margin:0 auto}
+    .section{padding:90px 0;position:relative}
+    .section-dark{background:#1a1a1a}
+    .section-deep{background:#111}
+    .section-soft{background:#0f0f0f}
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.revealed{opacity:1;transform:translateY(0)}
+    .sticky-nav{position:sticky;top:0;z-index:1000;background:rgba(14,14,14,.8);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-inner{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:20px;padding:16px 0}
+    .brand-lockup{display:flex;align-items:center;gap:12px}
+    .brand-badge{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg, ${accent}, #ff9d57);display:flex;align-items:center;justify-content:center;font-weight:800;color:#111;box-shadow:0 10px 30px rgba(255,107,0,.25)}
+    .brand-text strong{display:block;font-size:15px}
+    .brand-text span{display:block;font-size:12px;color:#b8b8b8}
+    .techjockey-logo{height:28px;filter:brightness(0) invert(1);opacity:.92}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:700;border:none;cursor:pointer;transition:all .25s ease}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(0,0,0,.28)}
+    .btn-primary{background:${accent};color:#fff}
+    .btn-secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.12)}
+    .btn-full{width:100%}
+    .hero{padding:70px 0 36px;background:
+      radial-gradient(circle at 20% 20%, rgba(255,107,0,.18), transparent 28%),
+      radial-gradient(circle at 80% 20%, rgba(255,107,0,.12), transparent 22%),
+      linear-gradient(180deg,#1a1a1a 0%,#111 100%)}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:36px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.04);color:#ffd7be;font-size:13px;font-weight:600;margin-bottom:18px}
+    h1{font-size:56px;line-height:1.04;letter-spacing:-1.4px;margin:0 0 18px;font-weight:800}
+    h2{font-size:36px;line-height:1.12;letter-spacing:-.8px;margin:0 0 16px;font-weight:800}
+    h3{font-size:22px;line-height:1.2;margin:0 0 12px;font-weight:700}
+    .lead{font-size:18px;line-height:1.75;color:#d2d2d2;max-width:720px}
+    .supporting-line{margin:20px 0 0;color:#ffcfad;font-weight:600}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .chip{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:13px;color:#ddd}
+    .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:520px}
+    .mesh-orb,.mesh-orb-2,.mesh-orb-3{position:absolute;border-radius:50%;filter:blur(22px);opacity:.9;animation:floaty 8s ease-in-out infinite}
+    .mesh-orb{width:220px;height:220px;background:rgba(255,107,0,.18);top:0;right:20px}
+    .mesh-orb-2{width:180px;height:180px;background:rgba(255,140,66,.14);left:10px;bottom:20px;animation-delay:1s}
+    .mesh-orb-3{width:130px;height:130px;background:rgba(255,214,184,.08);right:120px;bottom:90px;animation-delay:2s}
+    .command-shell{position:relative;width:100%;padding:18px;border-radius:26px;background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 70px rgba(0,0,0,.35);overflow:hidden}
+    .shell-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .shell-dots{display:flex;gap:8px}
+    .shell-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+    .shell-status{font-size:12px;color:#c9c9c9}
+    .hero-main-image{width:100%;max-height:480px;object-fit:contain;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+    .floating-card{position:absolute;padding:14px 16px;border-radius:18px;background:rgba(10,10,10,.78);border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 40px rgba(0,0,0,.25)}
+    .floating-card h4{margin:0 0 6px;font-size:14px}
+    .floating-card p{margin:0;color:#aaa;font-size:12px}
+    .float-a{top:36px;left:-10px;animation:floaty 7s ease-in-out infinite}
+    .float-b{right:-8px;bottom:90px;animation:floaty 8.5s ease-in-out infinite 1s}
+    .float-c{left:24px;bottom:10px;animation:floaty 9s ease-in-out infinite 1.4s}
+    .typing{display:inline-block;white-space:nowrap;overflow:hidden;border-right:2px solid ${accent};width:19ch;animation:typing 4s steps(19) infinite alternate, blink .8s step-end infinite}
+    .metrics-strip{padding:18px 0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#111}
+    .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .metric-card{padding:18px 20px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+    .metric-card strong{display:block;font-size:28px;color:#fff}
+    .metric-card span{display:block;font-size:13px;color:#a9a9a9;margin-top:6px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px}
+    .section-head p{max-width:700px;color:#bfbfbf;line-height:1.75;margin:0}
+    .split-block{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    .spotlight-panel{padding:24px;border-radius:24px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden}
+    .spotlight-panel:before{content:'';position:absolute;inset:auto -10% -30% auto;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle, rgba(255,107,0,.22), transparent 70%);filter:blur(10px)}
+    .browser-shell{padding:14px;border-radius:20px;background:#121212;border:1px solid rgba(255,255,255,.08)}
+    .browser-top{display:flex;gap:8px;margin-bottom:12px}
+    .browser-top span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.16)}
+    .media-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+    .thumb{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#0d0d0d;min-height:130px}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .tabs-wrap{display:grid;grid-template-columns:320px 1fr;gap:24px}
+    .tab-list{display:flex;flex-direction:column;gap:14px}
+    .tab-btn{padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);text-align:left;color:#fff;cursor:pointer;transition:all .25s ease;display:flex;gap:12px;align-items:flex-start}
+    .tab-btn.active,.tab-btn:hover{border-color:rgba(255,107,0,.45);background:rgba(255,107,0,.1);transform:translateY(-2px)}
+    .tab-btn span{display:block;color:#bfbfbf;font-size:13px;margin-top:5px}
+    .tab-panel{padding:22px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
+    .tab-panel-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
+    .feature-media-card{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#101010;min-height:320px}
+    .feature-media-card img{width:100%;height:100%;object-fit:cover}
+    .mini-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .mini-stat{padding:16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .mini-stat strong{font-size:22px;display:block}
+    .mini-stat span{font-size:12px;color:#afafaf}
+    .accordion-shell{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+    .accordion-list{display:flex;flex-direction:column;gap:14px}
+    .accordion-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:18px;overflow:hidden}
+    .accordion-head{padding:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer}
+    .accordion-title{display:flex;align-items:flex-start;gap:12px}
+    .accordion-title strong{display:block;font-size:16px}
+    .accordion-title span{display:block;color:#b9b9b9;font-size:13px;margin-top:5px}
+    .accordion-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 18px}
+    .accordion-item.open .accordion-body{max-height:200px;padding:0 18px 18px}
+    .accordion-item.open{border-color:rgba(255,107,0,.4);background:rgba(255,107,0,.08)}
+    .visual-stack{position:relative;min-height:560px}
+    .visual-main,.visual-secondary,.visual-third{position:absolute;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.09);background:#0f0f0f;box-shadow:0 24px 50px rgba(0,0,0,.28)}
+    .visual-main{inset:0 0 90px 20px}
+    .visual-secondary{width:46%;right:0;top:24px;height:180px}
+    .visual-third{width:42%;left:0;bottom:0;height:170px}
+    .visual-main img,.visual-secondary img,.visual-third img{width:100%;height:100%;object-fit:cover}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .why-card{padding:24px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
+    .why-card p{color:#bdbdbd;line-height:1.7}
+    .pricing-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .pricing-card{position:relative;padding:28px;border-radius:24px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column}
+    .pricing-card.featured{border-color:rgba(255,107,0,.45);box-shadow:0 24px 60px rgba(255,107,0,.12);transform:scale(1.01)}
+    .price-badge{position:absolute;top:18px;right:18px;background:#16331d;color:#7DFFA0;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid rgba(125,255,160,.22)}
+    .price-line{display:flex;align-items:end;gap:10px;margin:16px 0 12px}
+    .price-current{font-size:38px;font-weight:800}
+    .price-old{text-decoration:line-through;color:#8b8b8b}
+    .pricing-card ul{list-style:none;padding:0;margin:20px 0 24px;display:flex;flex-direction:column;gap:12px}
+    .pricing-card li{display:flex;align-items:flex-start;gap:10px;color:#d9d9d9}
+    .check{width:20px;height:20px;border-radius:50%;background:rgba(255,107,0,.15);color:${accent};display:flex;align-items:center;justify-content:center;font-size:12px;flex:0 0 20px;margin-top:2px}
+    .testimonials-wrap{position:relative}
+    .testimonial-card{padding:34px;border-radius:26px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);min-height:280px}
+    .quote-mark{font-size:72px;line-height:1;color:${accent};opacity:.9}
+    .stars{color:#ffbf3f;letter-spacing:2px;margin-bottom:18px}
+    .testimonial-text{font-size:20px;line-height:1.8;color:#ececec;max-width:880px}
+    .author-row{margin-top:24px}
+    .author-row strong{display:block;font-size:18px}
+    .author-row span{color:#9e9e9e}
+    .testimonial-controls{display:flex;gap:12px;justify-content:flex-end;margin-top:20px}
+    .arrow-btn{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#fff;cursor:pointer;transition:all .25s ease}
+    .arrow-btn:hover{transform:translateY(-2px);background:rgba(255,107,0,.12);border-color:rgba(255,107,0,.4)}
+    .testimonial-track{display:flex;transition:transform .5s ease}
+    .testimonial-slide{min-width:100%}
+    .gallery-band{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+    .gallery-band .thumb{min-height:140px}
+    .footer{padding:56px 0;background:#0b0b0b;border-top:1px solid rgba(255,255,255,.08)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}
+    .footer p,.footer li,.footer a{color:#a7a7a7;font-size:14px;line-height:1.8}
+    .footer h4{margin:0 0 12px;font-size:16px}
+    .footer ul{list-style:none;padding:0;margin:0}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:28px;padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes typing{from{width:0}to{width:19ch}}
+    @keyframes blink{50%{border-color:transparent}}
+    @media (max-width: 1024px){
+      .hero-grid,.split-block,.tabs-wrap,.accordion-shell,.footer-grid,.pricing-wrap{grid-template-columns:1fr}
+      .hero-visual{min-height:auto}
+      .metrics-grid,.why-grid,.gallery-band{grid-template-columns:repeat(2,1fr)}
+      .tab-panel-grid{grid-template-columns:1fr}
+      .visual-stack{min-height:460px}
+    }
+    @media (max-width: 640px){
+      h1{font-size:48px}
+      h2{font-size:32px}
+      .nav-inner{grid-template-columns:1fr;justify-items:start}
+      .metrics-grid,.why-grid,.gallery-band{grid-template-columns:1fr}
+      .section{padding:72px 0}
+      .hero{padding-top:42px}
+      .floating-card{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin-top:12px}
+      .visual-main,.visual-secondary,.visual-third{position:relative;inset:auto;width:100%;height:auto}
+      .visual-stack{display:grid;gap:14px;min-height:auto}
+      .testimonial-text{font-size:18px}
+    }
+  `;
+
+  return (
+    <div className="landing-page">
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+
+      <nav className="sticky-nav">
+        <div className="container nav-inner">
+          <div className="brand-lockup">
+            <div className="brand-badge">S</div>
+            <div className="brand-text">
+              <strong>Seedream 4.5 & Seedance 1.5 Pro</strong>
+              <span>AI Image & Video Generation</span>
+            </div>
+          </div>
+          <img
+            className="techjockey-logo"
+            src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg"
+            alt="Techjockey"
+          />
+          <button className="btn btn-primary" onClick={scrollToPricing}>
+            Generate with AI
+          </button>
+        </div>
+      </nav>
+
+      <section
+        className="hero"
+        ref={el => (revealRef.current[0] = el)}
+      >
+        <div className="container hero-grid">
+          <div className="reveal">
+            <div className="eyebrow">
+              <span>●</span>
+              ByteDance Generative Models for creative and production teams
+            </div>
+            <h1>
+              Create High-Quality AI Images & Videos with{' '}
+              <span style={{ color: accent }}>Seedream 4.5 and Seedance 1.5 Pro</span>
+            </h1>
+            <p className="lead">
+              Unlock the power of next-generation generative AI with Seedream 4.5
+              (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced
+              foundation models developed by ByteDance for high-quality visual content
+              creation. From text prompts, images, or scripts, generate professional
+              visuals and videos with powerful multimodal AI systems.
+            </p>
+            <div className="supporting-line">
+              <span className="typing">Transform ideas into visuals instantly.</span>
+            </div>
+            <div className="hero-chips">
+              <div className="chip">AI Image Generation</div>
+              <div className="chip">AI Video Generation with Audio</div>
+              <div className="chip">Multimodal Content Creation</div>
+              <div className="chip">Enterprise-ready AI Infrastructure</div>
+            </div>
+            <div className="hero-actions">
+              <button className="btn btn-primary" onClick={scrollToPricing}>
+                Generate with AI
+              </button>
+              <button className="btn btn-secondary" onClick={scrollToProducts}>
+                Explore Capabilities
+              </button>
+            </div>
+          </div>
+
+          <div className="hero-visual reveal">
+            <div className="mesh-orb" />
+            <div className="mesh-orb-2" />
+            <div className="mesh-orb-3" />
+            <div className="command-shell">
+              <div className="shell-top">
+                <div className="shell-dots">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <div className="shell-status">Operational dashboard · multimodal generation</div>
+              </div>
+              <img className="hero-main-image" src={heroImage} alt="Seedream and Seedance visual dashboard" />
+            </div>
+
+            <div className="floating-card float-a">
+              <h4>Seedream 4.5</h4>
+              <p>1K–4K image generation with typographic precision</p>
+            </div>
+            <div className="floating-card float-b">
+              <h4>Seedance 1.5 Pro</h4>
+              <p>Native audio + video generation with sync control</p>
+            </div>
+            <div className="floating-card float-c">
+              <h4>Faster creation loop</h4>
+              <p>Prompt → visual → refine → publish</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="metrics-strip">
+        <div className="container metrics-grid">
+          <div className="metric-card reveal" ref={el => (revealRef.current[1] = el)}>
+            <strong>2</strong>
+            <span>ByteDance generative models in one workflow</span>
+          </div>
+          <div className="metric-card reveal" ref={el => (revealRef.current[2] = el)}>
+            <strong>4K</strong>
+            <span>High-resolution image generation capability</span>
+          </div>
+          <div className="metric-card reveal" ref={el => (revealRef.current[3] = el)}>
+            <strong>10×</strong>
+            <span>Faster inference for video production</span>
+          </div>
+          <div className="metric-card reveal" ref={el => (revealRef.current[4] = el)}>
+            <strong>1000+</strong>
+            <span>Starting monthly price point for Seedance 1.5 Pro</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" className="section section-dark">
+        <div className="container">
+          <div className="section-head reveal" ref={el => (revealRef.current[5] = el)}>
+            <div>
+              <div className="eyebrow">Product capabilities</div>
+              <h2>Two specialized generative systems for image and video creation</h2>
+            </div>
+            <p>
+              Seedream 4.5 anchors high-fidelity image generation, while Seedance 1.5 Pro
+              extends creation into synchronized audio-visual storytelling. Each block below
+              uses a distinct layout to keep scanning fast and comparison intuitive.
+            </p>
+          </div>
+
+          <div className="split-block reveal" ref={el => (revealRef.current[6] = el)} style={{ marginBottom: '34px' }}>
+            <div className="spotlight-panel">
+              <div className="eyebrow">Seedream 4.5</div>
+              <h2>AI Image Generation with Seedream 4.5</h2>
+              <p className="lead" style={{ fontSize: '17px' }}>
+                Seedream 4.5 is a high-performance multimodal image generation system designed
+                to produce high-resolution, high-fidelity images from text prompts and visual
+                inputs. The model unifies text-to-image synthesis, image editing, and
+                multi-image composition within a single framework.
+              </p>
+              <div className="browser-shell" style={{ marginTop: '18px' }}>
+                <div className="browser-top">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <img src={productImages[0]} alt="Seedream product preview" />
+              </div>
+              <div className="media-grid-2">
+                <div className="thumb"><img src={productImages[5]} alt="Seedream showcase 1" /></div>
+                <div className="thumb"><img src={productImages[7]} alt="Seedream showcase 2" /></div>
+              </div>
+            </div>
+
+            <div className="tabs-wrap">
+              <div className="tab-list">
+                {seedreamFeatures.map((feature, index) => (
+                  <button
+                    key={feature.title}
+                    className={`tab-btn ${activeTab === index ? 'active' : ''}`}
+                    onClick={() => setActiveTab(index)}
+                  >
+                    {tabIcons[index]}
+                    <div>
+                      <strong>{feature.title}</strong>
+                      <span>{feature.description}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              <div className="tab-panel">
+                <div className="tab-panel-grid">
+                  <div>
+                    <div className="eyebrow">Selected capability</div>
+                    <h3>{seedreamFeatures[activeTab].title}</h3>
+                    <p className="lead" style={{ fontSize: '16px' }}>
+                      {seedreamFeatures[activeTab].description}
+                    </p>
+                    <div className="mini-stats">
+                      <div className="mini-stat">
+                        <strong>1K–4K</strong>
+                        <span>Native high-resolution generation</span>
+                      </div>
+                      <div className="mini-stat">
+                        <strong>Multi-input</strong>
+                        <span>Text prompts plus visual references</span>
+                      </div>
+                      <div className="mini-stat">
+                        <strong>Text-ready</strong>
+                        <span>Poster and ad design rendering support</span>
+                      </div>
+                      <div className="mini-stat">
+                        <strong>Structured</strong>
+                        <span>Composition and layout consistency</span>
+                      </div>
+                    </div>
+                    <div style={{ marginTop: '22px' }}>
+                      <button className="btn btn-primary" onClick={scrollToPricing}>Request Demo</button>
+                    </div>
+                  </div>
+                  <div className="feature-media-card">
+                    <img src={seedreamFeatures[activeTab].image} alt={seedreamFeatures[activeTab].title} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="split-block reveal" ref={el => (revealRef.current[7] = el)}>
+            <div className="accordion-shell">
+              <div className="accordion-list">
+                <div className="eyebrow">Seedance 1.5 Pro</div>
+                <h2>AI Video Generation with Seedance 1.5 Pro by Bytedance</h2>
+                <p className="lead" style={{ fontSize: '17px' }}>
+                  Seedance 1.5 Pro is a next-generation generative model designed for native
+                  audio-visual generation, enabling synchronized creation of video and sound
+                  together. Built on a dual-branch diffusion transformer architecture, the
+                  model integrates cross-modal learning to produce coherent visual and audio outputs.
+                </p>
+
+                {seedanceFeatures.map((feature, index) => (
+                  <div
+                    key={feature.title}
+                    className={`accordion-item ${activeAccordion === index ? 'open' : ''}`}
+                  >
+                    <div
+                      className="accordion-head"
+                      onClick={() => setActiveAccordion(activeAccordion === index ? -1 : index)}
+                    >
+                      <div className="accordion-title">
+                        {accIcons[index]}
+                        <div>
+                          <strong>{feature.title}</strong>
+                          <span>{feature.description}</span>
+                        </div>
+                      </div>
+                      <div style={{ color: accent, fontSize: '24px', lineHeight: 1 }}>
+                        {activeAccordion === index ? '−' : '+'}
+                      </div>
+                    </div>
+                    <div className="accordion-body">
+                      <p style={{ color: '#d6d6d6', lineHeight: 1.8, margin: 0 }}>
+                        {feature.description} This capability is built to support production
+                        teams seeking more consistent narrative output, faster iteration cycles,
+                        and stronger control across multimodal creative workflows.
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="visual-stack">
+                <div className="visual-main">
+                  <img src={seedanceFeatures[activeAccordion >= 0 ? activeAccordion : 0].image} alt="Seedance main visual" />
+                </div>
+                <div className="visual-secondary">
+                  <img src={productImages[2]} alt="Seedance visual secondary" />
+                </div>
+                <div className="visual-third">
+                  <img src={productImages[3]} alt="Seedance visual third" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-soft">
+        <div className="container">
+          <div className="section-head reveal" ref={el => (revealRef.current[8] = el)}>
+            <div>
+              <div className="eyebrow">Operational value</div>
+              <h2>Built for creative, marketing, design, and production teams</h2>
+            </div>
+            <p>
+              These models support real-world visual pipelines—from rapid concepting and ad
+              creative generation to synchronized video storytelling and multilingual content production.
+            </p>
+          </div>
+
+          <div className="why-grid">
+            <div className="why-card reveal" ref={el => (revealRef.current[9] = el)}>
+              <IconSpark />
+              <h3 style={{ marginTop: '16px' }}>High-fidelity output</h3>
+              <p>
+                Create polished assets suitable for campaigns, branded content, design systems,
+                and production deliverables with stronger semantic accuracy and visual consistency.
+              </p>
+            </div>
+            <div className="why-card reveal" ref={el => (revealRef.current[10] = el)}>
+              <IconAudio />
+              <h3 style={{ marginTop: '16px' }}>Multimodal creation</h3>
+              <p>
+                Move beyond static generation by combining text, images, structure, sound,
+                motion, and multilingual lip-sync inside an AI-assisted production workflow.
+              </p>
+            </div>
+            <div className="why-card reveal" ref={el => (revealRef.current[11] = el)}>
+              <IconSpeed />
+              <h3 style={{ marginTop: '16px' }}>Faster iteration</h3>
+              <p>
+                Reduce turnaround time for concept art, campaign visuals, motion drafts, and
+                narrative prototypes with accelerated generation and refinement loops.
+              </p>
+            </div>
+          </div>
+
+          <div className="gallery-band reveal" ref={el => (revealRef.current[12] = el)}>
+            <div className="thumb"><img src={featureImages[0]} alt="Creative generation gallery 1" /></div>
+            <div className="thumb"><img src={featureImages[1]} alt="Creative generation gallery 2" /></div>
+            <div className="thumb"><img src={featureImages[2]} alt="Creative generation gallery 3" /></div>
+            <div className="thumb"><img src={featureImages[3]} alt="Creative generation gallery 4" /></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="section section-dark">
+        <div className="container">
+          <div className="section-head reveal" ref={el => (revealRef.current[13] = el)}>
+            <div>
+              <div className="eyebrow">Pricing</div>
+              <h2>Choose the model that matches your content workflow</h2>
+            </div>
+            <p>
+              Pricing is presented as focused solution cards for teams evaluating image or
+              video generation use cases. Where list pricing is not provided, request a custom quote.
+            </p>
+          </div>
+
+          <div className="pricing-wrap">
+            <div className="pricing-card reveal" ref={el => (revealRef.current[14] = el)}>
+              <div className="price-badge">Custom quote</div>
+              <h3>Seedream 4.5 (AI Image Generation)</h3>
+              <p style={{ color: '#b9b9b9', lineHeight: 1.7 }}>
+                High-resolution image generation and multimodal image editing for advanced creative workflows.
+              </p>
+              <div className="price-line">
+                <div className="price-old">$—</div>
+                <div className="price-current">Get Quote</div>
+              </div>
+              <ul>
+                <li><span className="check">✓</span><span>High-resolution image generation (up to 4K quality)</span></li>
+                <li><span className="check">✓</span><span>Text-to-image & multimodal image editing</span></li>
+                <li><span className="check">✓</span><span>Multi-image composition for complex visuals</span></li>
+                <li><span className="check">✓</span><span>Enhanced typographic rendering for posters, ads & text-heavy designs</span></li>
+              </ul>
+              <button className="btn btn-primary btn-full">Get Quote</button>
+            </div>
+
+            <div className="pricing-card featured reveal" ref={el => (revealRef.current[15] = el)}>
+              <div className="price-badge">Starting plan</div>
+              <h3>Seedance 1.5 Pro (AI Video Generation)</h3>
+              <p style={{ color: '#b9b9b9', lineHeight: 1.7 }}>
+                Native audio-visual generation for teams producing synchronized video content at speed.
+              </p>
+              <div className="price-line">
+                <div className="price-old">$—</div>
+                <div className="price-current">Starting at $1,000/month/</div>
+              </div>
+              <ul>
+                <li><span className="check">✓</span><span>Text-to-video generation with cinematic output</span></li>
+                <li><span className="check">✓</span><span>Native audio + video generation (synchronized)</span></li>
+                <li><span className="check">✓</span><span>Multilingual lip-sync capabilities</span></li>
+                <li><span className="check">✓</span><span>Fast inference for quicker video production</span></li>
+              </ul>
+              <button className="btn btn-primary btn-full">Get Quote</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-deep">
+        <div className="container testimonials-wrap">
+          <div className="section-head reveal" ref={el => (revealRef.current[16] = el)}>
+            <div>
+              <div className="eyebrow">Testimonials</div>
+              <h2>What teams say about AI-powered visual creation</h2>
+            </div>
+            <p>
+              Feedback from creative and production-focused professionals using advanced generative
+              workflows for design, storytelling, and content acceleration.
+            </p>
+          </div>
+
+          <div className="testimonial-card reveal" ref={el => (revealRef.current[17] = el)}>
+            <div
+              className="testimonial-track"
+              style={{ transform: `translateX(-${testimonialIndex * 100}%)` }}
+            >
+              {testimonials.map((item, index) => (
+                <div className="testimonial-slide" key={`${item.author}-${index}`}>
+                  <div className="quote-mark">❝</div>
+                  <div className="stars">★★★★★</div>
+                  <div className="testimonial-text">{item.quote}</div>
+                  <div className="author-row">
+                    <strong>{item.author}</strong>
+                    <span>{item.designation}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="testimonial-controls">
+            <button className="arrow-btn" onClick={prevTestimonial}>←</button>
+            <button className="arrow-btn" onClick={nextTestimonial}>→</button>
+          </div>
+
+          <div className="gallery-band reveal" ref={el => (revealRef.current[18] = el)}>
+            <div className="thumb"><img src={productImages[1]} alt="Product visual 1" /></div>
+            <div className="thumb"><img src={productImages[2]} alt="Product visual 2" /></div>
+            <div className="thumb"><img src={productImages[3]} alt="Product visual 3" /></div>
+            <div className="thumb"><img src={productImages[4]} alt="Product visual 4" /></div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-grid">
+            <div>
+              <div className="brand-lockup" style={{ marginBottom: '14px' }}>
+                <div className="brand-badge">T</div>
+                <div className="brand-text">
+                  <strong>Techjockey</strong>
+                  <span>Software discovery and buying assistance</span>
+                </div>
+              </div>
+              <p>
+                Techjockey helps businesses discover, evaluate, and buy the right software
+                solutions for their operational needs. Explore AI image and video generation
+                solutions with confidence through guided product evaluation.
+              </p>
+            </div>
+
+            <div>
+              <h4>Solutions</h4>
+              <ul>
+                <li><a href="#products">Product Overview</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#pricing">Get Quote</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4>Contact</h4>
+              <ul>
+                <li>Techjockey</li>
+                <li>Software buying assistance for businesses</li>
+                <li><a href="https://www.techjockey.com/" target="_blank" rel="noreferrer">www.techjockey.com</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <p>© 2026 Techjockey. All rights reserved.</p>
+            <p>Seedream 4.5 and Seedance 1.5 Pro | AI Image & Video Generation</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<LandingPage />);
+  </script>
+</body>
+</html>

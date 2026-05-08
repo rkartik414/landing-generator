@@ -1,0 +1,231 @@
+{
+  "_readme": "This file is the design brain of the Techjockey landing page generator. Update it whenever your designers make a new decision you want the AI to learn. The AI reads this before every generation.",
+  "brandIdentity": {
+    "name": "Techjockey",
+    "positioning": "India's most trusted B2B software marketplace",
+    "voice": "Expert, warm, results-focused. Never corporate-stiff. Never startup-casual.",
+    "trustSignals": [
+      "1,00,000+ businesses",
+      "Genuine licenses",
+      "Free implementation support",
+      "Best price guaranteed"
+    ]
+  },
+  "fontRules": {
+    "_note": "These are the fonts your designer reaches for based on product personality. Add new ones as your designer makes decisions.",
+    "byProductType": {
+      "security": {
+        "heading": "Rajdhani",
+        "body": "Inter",
+        "reason": "Rajdhani feels technical and authoritative — used for firewall, antivirus, endpoint security products. IT admins trust structured, precise typography."
+      },
+      "hr": {
+        "heading": "Nunito",
+        "body": "DM Sans",
+        "reason": "Rounded, approachable fonts for HR and people tools. HR managers respond to warmth, not cold precision."
+      },
+      "crm": {
+        "heading": "Plus Jakarta Sans",
+        "body": "DM Sans",
+        "reason": "Modern and energetic for sales-focused tools. CRM buyers are salespeople — they want confidence and growth."
+      },
+      "finance": {
+        "heading": "IBM Plex Sans",
+        "body": "Source Sans 3",
+        "reason": "Precise and institutional for accounting, billing, ERP. Finance directors trust clean, no-nonsense typography."
+      },
+      "lms": {
+        "heading": "Sora",
+        "body": "Lato",
+        "reason": "Friendly and modern for learning tools. Educators and L&D managers want approachable, not intimidating."
+      },
+      "marketing": {
+        "heading": "Sora",
+        "body": "Inter",
+        "reason": "Modern and bold for marketing automation. Marketing teams want excitement and possibility."
+      },
+      "networking": {
+        "heading": "Space Grotesk",
+        "body": "Inter",
+        "reason": "Technical and sharp for networking, cloud, and infrastructure products."
+      },
+      "default": {
+        "heading": "Plus Jakarta Sans",
+        "body": "Inter",
+        "reason": "Safe, professional default for unknown categories."
+      }
+    }
+  },
+  "heroFontSizeRules": {
+    "_note": "Your designer adjusts headline size based on word count. More words = smaller size so it doesn't break the layout.",
+    "wordCount": {
+      "1-4": {
+        "fontSize": "72px",
+        "fontWeight": 800,
+        "example": "Close More Deals"
+      },
+      "5-7": {
+        "fontSize": "60px",
+        "fontWeight": 700,
+        "example": "India's #1 CRM for Sales Teams"
+      },
+      "8-11": {
+        "fontSize": "52px",
+        "fontWeight": 700,
+        "example": "Unified Endpoint Management for Modern IT Teams"
+      },
+      "12-15": {
+        "fontSize": "44px",
+        "fontWeight": 700,
+        "example": "The Complete HR and Payroll Platform Built for Indian Businesses"
+      },
+      "16+": {
+        "fontSize": "36px",
+        "fontWeight": 600,
+        "example": "Very long headlines need smaller size to avoid line breaks"
+      }
+    }
+  },
+  "colourRules": {
+    "_note": "Colours are chosen by product personality, not randomly. Your designer always has a reason.",
+    "byEmotion": {
+      "trust-authority": {
+        "primary": "#1a1f36",
+        "accent": "#4F46E5",
+        "heroStyle": "dark header with white text",
+        "usedFor": "security, compliance, government software"
+      },
+      "energy-growth": {
+        "primary": "#ff6b00",
+        "accent": "#ff6b00",
+        "heroStyle": "white or light bg with bold orange accents",
+        "usedFor": "CRM, sales tools, marketing automation"
+      },
+      "warmth-people": {
+        "primary": "#5c4ef5",
+        "accent": "#f97316",
+        "heroStyle": "medium purple header with warm orange CTA",
+        "usedFor": "HR, payroll, collaboration tools"
+      },
+      "precision-finance": {
+        "primary": "#0f4c81",
+        "accent": "#00a86b",
+        "heroStyle": "deep blue with green success accents",
+        "usedFor": "accounting, billing, ERP, finance software"
+      },
+      "learning-friendly": {
+        "primary": "#7c3aed",
+        "accent": "#f59e0b",
+        "heroStyle": "purple with warm yellow accents",
+        "usedFor": "LMS, e-learning, training platforms"
+      }
+    }
+  },
+  "sectionRules": {
+    "hero": {
+      "alwaysHas": [
+        "headline",
+        "subheadline",
+        "supportingLine",
+        "primaryCTA",
+        "secondaryCTA"
+      ],
+      "layoutDecision": "If product has a UI screenshot → split layout (text left, image right). If no image → centered with strong bg colour.",
+      "ctaRule": "Primary CTA is accent colour solid button. Secondary CTA is ghost/outline button. Side by side with 16px gap.",
+      "bgRule": "Hero always has the primary colour as background with white or light text. Never white hero background — it lacks impact."
+    },
+    "awards": {
+      "alwaysHas": [
+        "award badges",
+        "customer count stat"
+      ],
+      "layout": "Horizontal flex row, centered, with dividers between items",
+      "bgRule": "Always #f8f9fa (light grey) — provides visual separation from hero",
+      "badgeStyle": "Pill shape with brand colour border, small logo/icon, short text"
+    },
+    "features": {
+      "columnDecision": {
+        "2-4 features": "2-column grid",
+        "5-6 features": "3-column grid",
+        "7+ features": "3-column grid with 2 rows, or split into two sections"
+      },
+      "cardStyle": "White card, 1px border (#e5e7eb), 12px border-radius, 24px padding. Hover: translateY(-4px) + box-shadow 0 8px 24px rgba(0,0,0,0.1)",
+      "iconStyle": "48px icon area at top of card. Use image if available, else use coloured SVG icon (never placeholder circles)",
+      "bgRule": "White background — features need clean contrast after the grey awards bar"
+    },
+    "whyTechjockey": {
+      "include": "Only when content explicitly mentions Techjockey advantages",
+      "layout": "4-item horizontal row with icons",
+      "bgRule": "Light brand-tinted background (primary colour at 5% opacity)",
+      "items": [
+        "Genuine software licenses guaranteed",
+        "Best price — no hidden charges",
+        "Free implementation support",
+        "Trusted by 1,00,000+ businesses"
+      ]
+    },
+    "cart": {
+      "layout": "Centered card, max-width 480px, elevated with shadow",
+      "mustShow": [
+        "original price strikethrough",
+        "discounted price large",
+        "discount percentage badge",
+        "EMI text",
+        "includes checklist",
+        "primary CTA full-width",
+        "trust line"
+      ],
+      "priceStyle": "Original: line-through grey 18px. Discounted: accent colour 42px bold. Discount badge: green pill.",
+      "trustLine": "🔒 Secure Payment | ✓ Genuine License | 📞 Free Support",
+      "bgRule": "Light grey section bg with white card elevated"
+    },
+    "testimonials": {
+      "alwaysHas": [
+        "star rating ★★★★★ in gold",
+        "quote in italics",
+        "author name bold",
+        "designation and company in grey"
+      ],
+      "layout": "3-column card grid on desktop, 1 column on mobile",
+      "cardStyle": "White card with left border in accent colour (4px solid)",
+      "bgRule": "Very light grey or primary-tinted bg to separate from features"
+    },
+    "news": {
+      "layout": "Horizontal row, each item: publication name + headline",
+      "style": "Publication bold dark, headline grey, separated by thin vertical dividers",
+      "bgRule": "White background",
+      "titleRule": "Section title: 'Techjockey in News' with subtitle 'The only destination for all your software needs'"
+    }
+  },
+  "cssPatterns": {
+    "_note": "These are the actual CSS patterns your developers use. AI must replicate these exactly.",
+    "ctaButton": ".btn-primary { background: var(--accent); color: #fff; padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 16px; border: none; cursor: pointer; transition: all 0.2s ease; } .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }",
+    "featureCard": ".feature-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; transition: all 0.2s ease; } .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }",
+    "sectionPadding": "padding: 80px 0 on desktop, 48px 0 on mobile",
+    "container": "max-width: 1200px; margin: 0 auto; padding: 0 24px;",
+    "testimonialCard": ".testimonial-card { background: #fff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }"
+  },
+  "mobileRules": {
+    "heroLayout": "On mobile: always stack — image above text, or text only if image not critical",
+    "featureGrid": "On mobile: always single column",
+    "testimonialGrid": "On mobile: single column, scrollable",
+    "cartCard": "On mobile: full width, remove shadow",
+    "ctaButtons": "On mobile: full width stacked, primary first"
+  },
+  "correctionLog": {
+    "_note": "Every time your designer corrects an AI output, log it here. This is how the AI learns over time.",
+    "entries": [
+      {
+        "date": "add date here",
+        "productType": "security",
+        "whatAIGenerated": "Inter font",
+        "whatDesignerChanged": "Rajdhani font",
+        "reason": "Security products need structured, technical typography. Inter is too neutral."
+      }
+    ]
+  }
+}
+
+
+
+

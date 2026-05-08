@@ -1,0 +1,44 @@
+{
+  "sessionId": "ds_1777015767463_ce75b8d6",
+  "createdAt": "2026-04-24T07:29:27.463Z",
+  "updatedAt": "2026-04-24T07:29:27.468Z",
+  "status": "created",
+  "productName": "seedreamtest",
+  "pageType": "category",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://dev.techjockey.com/c/byteplus/",
+    "parsedSectionCount": 8
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": null,
+    "heroStrategy": null,
+    "blueprint": null,
+    "mediaPlan": null
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": null,
+    "fileUrl": null,
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": null
+  },
+  "logs": [
+    {
+      "at": "2026-04-24T07:29:27.468Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    }
+  ]
+}

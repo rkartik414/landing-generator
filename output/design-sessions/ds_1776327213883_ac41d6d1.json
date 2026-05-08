@@ -1,0 +1,44 @@
+{
+  "sessionId": "ds_1776327213883_ac41d6d1",
+  "createdAt": "2026-04-16T08:13:33.883Z",
+  "updatedAt": "2026-04-16T08:13:33.895Z",
+  "status": "created",
+  "productName": "Zoho-workplace",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "",
+    "parsedSectionCount": 19
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": null,
+    "heroStrategy": null,
+    "blueprint": null,
+    "mediaPlan": null
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": null,
+    "fileUrl": null,
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": null
+  },
+  "logs": [
+    {
+      "at": "2026-04-16T08:13:33.895Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    }
+  ]
+}

@@ -1,0 +1,552 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#1a1a1a';
+  const primary = '#ff6b00';
+  const bodyBg = '#ffffff';
+
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [navScrolled, setNavScrolled] = useState(false);
+  const sliderRef = useRef(null);
+
+  const css = `
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:${bodyBg};color:${accent};font-family:'Inter',sans-serif}
+    a{text-decoration:none;color:inherit} img{max-width:100%;display:block} button{font-family:inherit}
+    .lp{background:${bodyBg};overflow:hidden}
+    .container{width:min(1200px,calc(100% - 32px));margin:0 auto}
+    .section{position:relative;padding:88px 0}
+    .section-light{background:#f5f5f5}
+    .section-white{background:${bodyBg}}
+    .section-dark{background:${accent};color:#fff}
+    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+    .grid-2.reverse > :first-child{order:2}
+    .grid-2.reverse > :last-child{order:1}
+    .nav{position:sticky;top:0;z-index:50;transition:.3s;padding:14px 0;background:rgba(26,26,26,.9);backdrop-filter:blur(20px)}
+    .nav.scrolled{box-shadow:0 10px 30px rgba(0,0,0,.15)}
+    .nav-inner{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center}
+    .brand{font-weight:800;font-size:20px;line-height:1.2;color:${bodyBg}}
+    .tj-logo{height:28px;opacity:.95}
+    h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em;margin:0 0 16px}
+    h1{font-size:clamp(48px,7vw,68px);line-height:1.02}
+    h2{font-size:clamp(32px,4vw,42px);line-height:1.08}
+    h3{font-size:22px}
+    p{margin:0 0 14px;color:#5f6368;font-size:16px;line-height:1.75}
+    .section-dark p{color:rgba(255,255,255,.78)}
+    .gradient-text{background:linear-gradient(135deg, ${accent} 0%, ${primary} 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    @keyframes borderRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .animated-cta{position:relative;padding:12px 26px;border-radius:8px;overflow:hidden;background:transparent;color:#fff;font-weight:700;cursor:pointer;z-index:1;border:none;display:inline-flex;align-items:center;justify-content:center;transition:transform .25s ease, box-shadow .25s ease}
+    .animated-cta::before{content:'';position:absolute;inset:-2px;background:conic-gradient(from 0deg, ${accent}, ${primary}, ${accent});border-radius:inherit;animation:borderRotate 3s linear infinite;z-index:-2}
+    .animated-cta::after{content:'';position:absolute;inset:1px;background:${primary};border-radius:6px;z-index:-1}
+    .animated-cta:hover,.ghost-btn:hover,.card:hover,.logo-box:hover,.pricing-card:hover,.testimonial-card:hover,.mini-card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+    .ghost-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border:1px solid rgba(255,255,255,.3);border-radius:8px;color:#fff;font-weight:700;transition:.25s}
+    .hero{background:${primary};padding:86px 0 72px;overflow:hidden}
+    .hero:before,.hero:after,.orb-a,.orb-b{content:'';position:absolute;border-radius:50%;pointer-events:none}
+    .hero:before{width:420px;height:420px;right:-120px;top:-80px;background:radial-gradient(circle, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 70%)}
+    .hero:after{width:340px;height:340px;left:-80px;bottom:-80px;background:radial-gradient(circle, rgba(26,26,26,.18) 0%, rgba(26,26,26,0) 70%)}
+    .hero-copy,.hero-visual{position:relative;z-index:1}
+    .hero h1,.hero p,.hero .eyebrow{color:#fff}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.1);font-size:13px;font-weight:700;margin-bottom:18px}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 30px}
+    .chip{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;border:1px solid rgba(26,26,26,.2);background:rgba(26,26,26,.12);color:#fff;font-size:13px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:14px}
+    .hero-panel{position:relative;padding:18px;border-radius:24px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18)}
+    .hero-media{border-radius:18px;overflow:hidden;background:${accent}}
+    .hero-media img{width:100%;max-height:480px;object-fit:contain}
+    .floating-shell{position:absolute;background:rgba(255,255,255,.92);border-radius:16px;padding:12px 14px;box-shadow:0 18px 50px rgba(0,0,0,.18);font-size:13px;color:${accent}}
+    .shell-1{top:18px;left:-10px}
+    .shell-2{right:-12px;bottom:28px}
+    .shell-title{font-weight:800;margin-bottom:6px}
+    .thumb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .thumb{height:52px;border-radius:10px;background:linear-gradient(135deg, rgba(255,107,0,.75), rgba(255,255,255,.92))}
+    .marquee-wrapper{overflow:hidden;background:#f5f5f5;padding:18px 0;border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7}
+    @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .marquee-track{display:flex;width:max-content;animation:marqueeScroll 20s linear infinite}
+    .marquee-item{font:800 28px 'Plus Jakarta Sans',sans-serif;margin-right:48px;white-space:nowrap;color:${accent}}
+    .trust-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+    .logo-box{border:1px solid rgba(26,26,26,.08);border-radius:12px;padding:16px;min-height:72px;display:flex;align-items:center;justify-content:center;background:#fff;transition:.3s}
+    .logo-box img{max-height:36px;object-fit:contain;filter:grayscale(1);transition:.3s}
+    .logo-box:hover img{filter:grayscale(0)}
+    .section-head{max-width:760px;margin:0 auto 28px;text-align:center}
+    .spotlight{border-radius:24px;padding:28px;background:#f5f5f5;border:1px solid #e7e7e7}
+    .section-dark .spotlight{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
+    .browser-frame{background:#fff;border-radius:18px;padding:14px;box-shadow:0 30px 70px rgba(0,0,0,.12);border:1px solid #e7e7e7}
+    .browser-top{display:flex;gap:8px;padding-bottom:12px}
+    .browser-top span{width:10px;height:10px;border-radius:50%;background:#d9d9d9}
+    .browser-top span:nth-child(1){background:#ff605c}.browser-top span:nth-child(2){background:#ffbd44}.browser-top span:nth-child(3){background:#00ca4e}
+    .browser-frame img,.visual-img{border-radius:12px;width:100%}
+    .desc-bar{border-left:3px solid ${primary};padding-left:18px;margin:18px 0 24px}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .mini-card{padding:16px;border-radius:16px;background:#fff;border:1px solid #e7e7e7;transition:.25s}
+    .section-dark .mini-card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.09)}
+    .mini-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,107,0,.12);margin-bottom:12px;color:${primary}}
+    .mini-card h4{font:700 16px 'Plus Jakarta Sans',sans-serif;margin:0 0 6px;color:${accent}}
+    .section-dark .mini-card h4{color:#fff}
+    .mini-card p{font-size:14px;line-height:1.6;margin:0}
+    .pricing-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .pricing-card{position:relative;padding:26px;border-radius:22px;background:#fff;border:1px solid #e7e7e7;transition:.25s}
+    .pricing-card.highlight{border:1px solid transparent;background:
+      linear-gradient(#fff,#fff) padding-box,
+      linear-gradient(135deg, ${accent}, ${primary}) border-box}
+    .plan-name{font:700 22px 'Plus Jakarta Sans',sans-serif;margin-bottom:10px}
+    .price-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 18px}
+    .old-price{text-decoration:line-through;color:#8b8f94}
+    .new-price{font:800 28px 'Plus Jakarta Sans',sans-serif;color:${accent}}
+    .badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:#e8f7ec;color:#118a35;font-size:12px;font-weight:800}
+    .list{display:grid;gap:12px;margin:18px 0 22px}
+    .list-item{display:flex;gap:10px;align-items:flex-start;color:#5f6368;font-size:15px;line-height:1.6}
+    .check{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(255,107,0,.12);color:${primary};flex:0 0 20px;margin-top:2px}
+    .full-btn{width:100%}
+    .testimonials-shell{position:relative;overflow:hidden}
+    .testimonial-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+    .testimonial-card{min-width:100%;padding:34px;border-radius:24px;background:#fff;border:1px solid #e7e7e7}
+    .quote-mark{font-size:54px;line-height:1;color:${primary};font-family:'Plus Jakarta Sans',sans-serif;font-weight:800}
+    .stars{color:#d4a017;letter-spacing:2px;font-size:18px;margin:8px 0 14px}
+    .author{display:flex;align-items:center;gap:14px;margin-top:20px}
+    .avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:${accent};color:#fff;font-weight:800}
+    .author strong{display:block;font-size:16px}
+    .author span{color:#8b8f94;font-size:14px}
+    .slider-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px}
+    .arrow-row{display:flex;gap:10px}
+    .arrow-btn,.dot{border:none;cursor:pointer}
+    .arrow-btn{width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #e7e7e7;color:${accent}}
+    .dots{display:flex;gap:8px}
+    .dot{width:10px;height:10px;border-radius:999px;background:#d2d5d9;transition:.25s}
+    .dot.active{width:28px;background:${accent}}
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+    .footer{background:${accent};color:#fff;padding:34px 0}
+    .footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1)}
+    .footer-links,.socials{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+    .social{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
+    .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:18px;font-size:14px;color:rgba(255,255,255,.74)}
+    @media (max-width:991px){
+      .grid-2,.grid-2.reverse,.pricing-wrap{grid-template-columns:1fr}
+      .grid-2.reverse > *{order:unset!important}
+      .trust-grid{grid-template-columns:repeat(3,1fr)}
+      .nav-inner{grid-template-columns:1fr auto}
+      .nav-inner .animated-cta{grid-column:1/-1;justify-self:start}
+    }
+    @media (max-width:640px){
+      .section,.hero{padding:68px 0}
+      .trust-grid{grid-template-columns:repeat(2,1fr)}
+      .feature-grid{grid-template-columns:1fr}
+      .marquee-item{font-size:22px}
+      .testimonial-card{padding:24px}
+    }
+  `;
+
+  const logos = [
+    "/output/generated-assets/ds_1777379824479_02b81113/04-f640e1efbc.svg",
+    "/output/generated-assets/ds_1777379824479_02b81113/05-99a9a4a2f0.svg",
+    "/output/generated-assets/ds_1777379824479_02b81113/03-c0af4a3166.svg",
+    "/output/generated-assets/ds_1777379824479_02b81113/02-292df74865.svg",
+    "/output/generated-assets/ds_1777379824479_02b81113/07-05a7583ce2.svg",
+    "/output/generated-assets/ds_1777379824479_02b81113/09-c64ed70e95.svg",
+    "/output/generated-assets/ds_1777379824479_02b81113/08-a34667473c.svg",
+    "/output/generated-assets/ds_1777379824479_02b81113/06-ef1798e116.svg"
+  ];
+
+  const products = [
+    {
+      name: "Seedream 4.5",
+      headline: "AI Image Generation with Seedream 4.5",
+      description:
+        "Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.",
+      image: "/output/generated-assets/ds_1777379824479_02b81113/27-31a36e9353.jpg",
+      dark: false,
+      browser: true,
+      features: [
+        ["Advanced Text–Image Alignment", "Accurately translates prompts into visuals with improved semantic understanding."],
+        ["High-Resolution Output", "Generate native images up to 1K–4K resolution with strong visual fidelity."],
+        ["Superior Typographic Rendering", "Optimized for posters, ads, and text-heavy visual designs."],
+        ["Multi-Image Composition with Identity Preservation", "Combines multiple inputs while accurately maintaining subject consistency."],
+        ["Strong Structural Fidelity", "Maintains composition, layout, and scene structure with high precision."]
+      ]
+    },
+    {
+      name: "Seedance 1.5 Pro",
+      headline: "AI Video Generation with Seedance 1.5 Pro by Bytedance",
+      description:
+        "Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.",
+      image: "/output/generated-assets/ds_1777379824479_02b81113/12-d9933fe8ef.png",
+      dark: true,
+      browser: false,
+      features: [
+        ["Text-to-Video Generation", "Create videos directly from text prompts."],
+        ["Audio-Visual Synchronization", "Generate video and audio simultaneously with strong multimodal alignment."],
+        ["Multilingual Lip-Sync", "Supports multilingual and dialect-level lip synchronization."],
+        ["Cinematic Camera Control", "Generate videos with dynamic camera movement and cinematic storytelling."],
+        ["10× Faster Inference", "Optimized inference pipeline significantly improves generation speed."]
+      ]
+    }
+  ];
+
+  const pricing = [
+    {
+      name: "Seedream 4.5 (AI Image Generation)",
+      price: "",
+      originalPrice: "",
+      discount: "",
+      includes: [
+        "High-resolution image generation (up to 4K quality)",
+        "Text-to-image & multimodal image editing",
+        "Multi-image composition for complex visuals",
+        "Enhanced typographic rendering for posters, ads & text-heavy designs"
+      ]
+    },
+    {
+      name: "Seedance 1.5 Pro (AI Video Generation)",
+      price: "Starting at $1,000/month/",
+      originalPrice: "",
+      discount: "",
+      includes: [
+        "Text-to-video generation with cinematic output",
+        "Native audio + video generation (synchronized)",
+        "Multilingual lip-sync capabilities",
+        "Fast inference for quicker video production"
+      ]
+    }
+  ];
+
+  const testimonials = [
+    {
+      quote: "Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.",
+      name: "Vaishali Saxena",
+      role: "Creative Director"
+    },
+    {
+      quote: "Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.",
+      name: "Vihaan Pandey",
+      role: "Video Producer"
+    },
+    {
+      quote: "The multimodal editing capabilities in Seedream make it easy to refine images with precision.",
+      name: "Anurag Malhotra",
+      role: "Art Director"
+    },
+    {
+      quote: "Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.",
+      name: "Ashutosh Singh",
+      role: "Marketing Manager"
+    },
+    {
+      quote: "From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.",
+      name: "Shrimmi Saxena",
+      role: "Creative Lead"
+    }
+  ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setNavScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+
+  const Icon = ({ type }) => {
+    const common = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: primary, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" };
+    if (type === 0) return <svg {...common}><path d="M4 7h16M7 4v16M17 4v16"/></svg>;
+    if (type === 1) return <svg {...common}><path d="M4 19l5-5 4 4 7-10"/></svg>;
+    if (type === 2) return <svg {...common}><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg>;
+    if (type === 3) return <svg {...common}><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg>;
+    return <svg {...common}><path d="M12 2v20M2 12h20"/></svg>;
+  };
+
+  const initials = (name) => name.split(' ').map(n => n[0]).slice(0, 2).join('');
+
+  return (
+    <div className="lp">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+
+      <nav className={`nav ${navScrolled ? 'scrolled' : ''}`}>
+        <div className="container nav-inner">
+          <div className="brand">Seedream 4.5 and Seedance 1.5 Pro by ByteDance</div>
+          <img
+            src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg"
+            height="28px"
+            alt="Techjockey"
+            className="tj-logo"
+          />
+          <button className="animated-cta">Generate with AI</button>
+        </div>
+      </nav>
+
+      <section className="hero section">
+        <div className="container grid-2">
+          <div className="hero-copy">
+            <div className="eyebrow reveal">AI Image Generation and AI Video Generation</div>
+            <h1 className="reveal reveal-delay-1">
+              Create High-Quality <span className="gradient-text">AI Images & Videos</span> with ByteDance Generative Models
+            </h1>
+            <p className="reveal reveal-delay-2">
+              Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.
+            </p>
+            <p className="reveal reveal-delay-2">
+              From text prompts, images, or scripts, generate professional visuals and videos with powerful multimodal AI systems.
+            </p>
+
+            <div className="hero-chips reveal reveal-delay-3">
+              {["AI Image Generation", "AI Video Generation", "High-Resolution Output", "Audio-Visual Synchronization", "Cinematic Camera Control"].map((chip, i) => (
+                <div className="chip" key={chip}>
+                  <Icon type={i} />
+                  <span>{chip}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="cta-row reveal reveal-delay-3">
+              <button className="animated-cta">Generate with AI</button>
+            </div>
+          </div>
+
+          <div className="hero-visual reveal reveal-delay-2">
+            <div className="hero-panel">
+              <div className="floating-shell shell-1">
+                <div className="shell-title">Seedream 4.5</div>
+                <div className="thumb-grid">
+                  <div className="thumb"></div><div className="thumb"></div><div className="thumb"></div>
+                </div>
+              </div>
+              <div className="floating-shell shell-2">
+                <div className="shell-title">Seedance 1.5 Pro</div>
+                <div>Text-to-Video Generation</div>
+              </div>
+              <div className="hero-media">
+                <img src="/output/generated-assets/ds_1777379824479_02b81113/13-cf094a8d0d.png" alt="Seedream 4.5 and Seedance 1.5 Pro by ByteDance" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="marquee-wrapper">
+        <div className="marquee-track">
+          {[...Array(2)].flatMap(() => [
+            "Seedream 4.5 and Seedance 1.5 Pro by ByteDance",
+            "AI Image Generation and AI Video Generation",
+            "Generate with AI"
+          ]).map((item, i) => (
+            <span className="marquee-item" key={i}>{item} <span className="gradient-text">★</span></span>
+          ))}
+        </div>
+      </div>
+
+      <section className="section section-light">
+        <div className="container">
+          <div className="section-head">
+            <h2 className="reveal">Trusted visual proof <span className="gradient-text">at a glance</span></h2>
+          </div>
+          <div className="trust-grid">
+            {logos.slice(0, 6).map((src, i) => (
+              <div className="logo-box reveal" key={i}>
+                <img src={src} alt={`Trust logo ${i + 1}`} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-white">
+        <div className="container grid-2">
+          <div className="reveal">
+            <div className="browser-frame">
+              <div className="browser-top"><span></span><span></span><span></span></div>
+              <img src={products[0].image} alt={products[0].name} />
+            </div>
+          </div>
+          <div>
+            <div className="eyebrow" style={{ color: accent, borderColor: '#e7e7e7', background: '#fff' }}>{products[0].name}</div>
+            <h2 className="reveal">{products[0].headline}</h2>
+            <div className="desc-bar reveal reveal-delay-1">
+              <p>{products[0].description}</p>
+            </div>
+            <div className="feature-grid">
+              {products[0].features.map((f, i) => (
+                <div className="mini-card reveal" key={i}>
+                  <div className="mini-icon"><Icon type={i} /></div>
+                  <h4>{f[0]}</h4>
+                  <p>{f[1]}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 24 }}>
+              <button className="animated-cta">Generate with AI</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="marquee-wrapper">
+        <div className="marquee-track">
+          {[...Array(2)].flatMap(() => [
+            "Seedream 4.5",
+            "Seedance 1.5 Pro",
+            "High-quality visual content creation"
+          ]).map((item, i) => (
+            <span className="marquee-item" key={i}>{item} <span className="gradient-text">★</span></span>
+          ))}
+        </div>
+      </div>
+
+      <section className="section section-dark">
+        <div className="container grid-2 reverse">
+          <div>
+            <div className="eyebrow">{products[1].name}</div>
+            <h2 className="reveal">{products[1].headline}</h2>
+            <div className="desc-bar reveal reveal-delay-1" style={{ borderLeftColor: primary }}>
+              <p>{products[1].description}</p>
+            </div>
+            <div className="feature-grid">
+              {products[1].features.map((f, i) => (
+                <div className="mini-card reveal" key={i}>
+                  <div className="mini-icon"><Icon type={i} /></div>
+                  <h4>{f[0]}</h4>
+                  <p>{f[1]}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 24 }}>
+              <button className="animated-cta">Generate with AI</button>
+            </div>
+          </div>
+          <div className="reveal">
+            <div className="spotlight">
+              <img className="visual-img" src={products[1].image} alt={products[1].name} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-white">
+        <div className="container">
+          <div className="section-head">
+            <h2 className="reveal">Pricing</h2>
+          </div>
+          <div className="pricing-wrap">
+            {pricing.map((plan, i) => (
+              <div className={`pricing-card reveal ${i === 1 ? 'highlight' : ''}`} key={plan.name}>
+                <div className="plan-name">{plan.name}</div>
+                <div className="price-row">
+                  {plan.originalPrice ? <span className="old-price">{plan.originalPrice}</span> : null}
+                  <span className="new-price">{plan.price || " "}</span>
+                  <span className="badge">Available</span>
+                </div>
+                <div className="list">
+                  {plan.includes.map((item, idx) => (
+                    <div className="list-item" key={idx}>
+                      <span className="check">✓</span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <button className="animated-cta full-btn">Generate with AI</button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-light">
+        <div className="container">
+          <div className="section-head">
+            <h2 className="reveal">Testimonials</h2>
+          </div>
+          <div className="testimonials-shell">
+            <div
+              className="testimonial-track"
+              ref={sliderRef}
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {testimonials.map((t, i) => (
+                <div className="testimonial-card" key={i}>
+                  <div className="quote-mark">❝</div>
+                  <div className="stars">★★★★★</div>
+                  <p style={{ fontSize: 20, lineHeight: 1.8, color: accent }}>{t.quote}</p>
+                  <div className="author">
+                    <div className="avatar">{initials(t.name)}</div>
+                    <div>
+                      <strong>{t.name}</strong>
+                      <span>{t.role}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="slider-nav">
+              <div className="arrow-row">
+                <button className="arrow-btn" onClick={() => setActiveSlide((activeSlide - 1 + testimonials.length) % testimonials.length)}>←</button>
+                <button className="arrow-btn" onClick={() => setActiveSlide((activeSlide + 1) % testimonials.length)}>→</button>
+              </div>
+              <div className="dots">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`dot ${i === activeSlide ? 'active' : ''}`}
+                    onClick={() => setActiveSlide(i)}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-top">
+            <img
+              src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg"
+              height="28px"
+              alt="Techjockey"
+            />
+            <div className="footer-links">
+              <a href="mailto:support@techjockey.com">support@techjockey.com</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms</a>
+            </div>
+            <div className="socials">
+              <a className="social" href="#" aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>
+              </a>
+              <a className="social" href="#" aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+              </a>
+              <a className="social" href="#" aria-label="Twitter">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.8-2.6 1-1.5-1.6-4.2-1.1-5.1.9-.4.8-.4 1.7-.1 2.5-3.3-.2-6.3-1.8-8.3-4.4-1.1 1.8-.5 4.2 1.3 5.3-.6 0-1.2-.2-1.7-.5 0 2 1.4 3.8 3.4 4.2-.6.2-1.2.2-1.8.1.5 1.7 2.1 2.9 3.9 2.9A8.5 8.5 0 0 1 2 18.6 12 12 0 0 0 8.5 20c7.8 0 12.3-6.6 12-12.5.8-.5 1.5-1.1 2-1.7z"/></svg>
+              </a>
+              <a className="social" href="#" aria-label="LinkedIn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A2.01 2.01 0 0 0 3.25 5c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2zM20.44 12.4c0-2.8-1.5-4.1-3.6-4.1-1.7 0-2.4.9-2.8 1.5V8.5h-3.38V20h3.38v-6.4c0-1.7.3-3.3 2.3-3.3s2 1.9 2 3.4V20H22v-7.6z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <div>© 2024 Techjockey Infotech Pvt. Ltd.</div>
+            <div>Seedream 4.5 and Seedance 1.5 Pro by ByteDance</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;

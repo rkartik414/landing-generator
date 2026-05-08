@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bodyBg, #06080c); color: var(--textDark, #fff); font-family: Inter, sans-serif; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img, video { max-width: 100%; display: block; }
+    .container { width: min(1200px, calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 96px 0; position: relative; }
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(6,8,12,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border, rgba(255,255,255,0.08)); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+    .nav-brand { font: 800 18px 'Plus Jakarta Sans', sans-serif; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; border: none; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
+    .btn-ghost { background: transparent; color: #fff; border: 1px solid var(--border); }
+    /* Footer */
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); background: #04060a; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: var(--textMid); }
+    /* Reveal animations (fallback if GSAP not loaded) */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-brand" style="color: var(--accent)">{{product_name}}</div>
+    <div class="nav-right">
+      <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey">
+      <a href="#lead-form" class="btn btn-primary">{{hero_cta}}</a>
+    </div>
+  </div>
+</nav>
+
+<!-- SECTIONS -->
+{{sections}}
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey">
+      <div class="footer-copy" style="margin-top:8px">support@techjockey.com</div>
+      <div class="footer-copy">© 2024 Techjockey Infotech Pvt. Ltd.</div>
+    </div>
+    <div style="display:flex;gap:12px">
+      <a href="/" class="footer-copy">Privacy Policy</a>
+      <a href="/" class="footer-copy">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fallback reveal for non-GSAP
+  const obs = new IntersectionObserver(entries => 
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

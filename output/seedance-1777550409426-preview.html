@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seedance-1777550409426.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const audioRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const tryUnmute = () => {
+      audio.muted = false;
+      audio.play().then(() => setIsMuted(false)).catch(() => {
+        audio.muted = true;
+        setIsMuted(true);
+      });
+    };
+    const enableOnClick = () => {
+      audio.muted = false;
+      audio.play().then(() => setIsMuted(false)).catch(() => {});
+    };
+    window.addEventListener('scroll', tryUnmute, {
+      once: true
+    });
+    ['click', 'touchstart', 'keydown'].forEach(event => {
+      document.addEventListener(event, enableOnClick, {
+        once: true
+      });
+    });
+    return () => {
+      window.removeEventListener('scroll', tryUnmute);
+      ['click', 'touchstart', 'keydown'].forEach(event => {
+        document.removeEventListener(event, enableOnClick);
+      });
+    };
+  }, []);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "bg-black min-vh-100",
+    style: {
+      backgroundColor: '#000'
+    }
+  }, /*#__PURE__*/React.createElement("audio", {
+    ref: audioRef,
+    autoPlay: true,
+    loop: true,
+    muted: isMuted,
+    playsInline: true
+  }, /*#__PURE__*/React.createElement("source", {
+    src: "https://www.techjockey.com/c/byteplus/assets/video/s_5.mp3",
+    type: "audio/mpeg"
+  })), /*#__PURE__*/React.createElement("nav", {
+    className: "d-flex align-items-center justify-content-between px-4 py-3",
+    style: {
+      backgroundColor: '#111827',
+      borderBottom: '1px solid rgba(255,255,255,0.08)',
+      position: 'sticky',
+      top: 0,
+      zIndex: 50
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "d-flex align-items-center gap-3"
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: '#fff',
+      fontSize: '1.1rem',
+      fontWeight: 700,
+      letterSpacing: '0.02em'
+    }
+  }, "Seedream 4.5 and Seedance 1.5 Pro by ByteDance")), /*#__PURE__*/React.createElement("div", {
+    className: "d-flex align-items-center"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg",
+    height: "28px",
+    alt: "Techjockey"
+  }))), /*#__PURE__*/React.createElement("main", {
+    style: {
+      minHeight: '60vh'
+    }
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "container py-5"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "rounded-4 p-4 p-md-5",
+    style: {
+      background: 'linear-gradient(180deg, rgba(17,24,39,0.95) 0%, rgba(0,0,0,0.95) 100%)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      color: '#fff'
+    }
+  }, /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontSize: '2.2rem',
+      lineHeight: 1.2,
+      marginBottom: '1rem',
+      fontWeight: 800
+    }
+  }, "Seedream 4.5 and Seedance 1.5 Pro by ByteDance"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: 'rgba(255,255,255,0.8)',
+      marginBottom: 0,
+      maxWidth: 800
+    }
+  }, "Get best price for Seedream in US along with all features. Read all Seedream reviews and compare with all AI Image Generators on Techjockey.")))), /*#__PURE__*/React.createElement("footer", {
+    style: {
+      backgroundColor: '#111827',
+      borderTop: '1px solid rgba(255,255,255,0.08)',
+      color: '#fff'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container py-5"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "row gy-4 align-items-start"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-md-4"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg",
+    alt: "Techjockey",
+    style: {
+      height: 32,
+      marginBottom: 16
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'rgba(255,255,255,0.8)'
+    }
+  }, "support@techjockey.com")), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 600,
+      marginBottom: 12
+    }
+  }, "Follow Us"), /*#__PURE__*/React.createElement("div", {
+    className: "d-flex gap-3"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#",
+    "aria-label": "Facebook",
+    style: {
+      color: '#fff',
+      textDecoration: 'none'
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fab fa-facebook-f"
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      marginLeft: 6
+    }
+  }, "Facebook")), /*#__PURE__*/React.createElement("a", {
+    href: "#",
+    "aria-label": "Twitter",
+    style: {
+      color: '#fff',
+      textDecoration: 'none'
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fab fa-twitter"
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      marginLeft: 6
+    }
+  }, "Twitter")), /*#__PURE__*/React.createElement("a", {
+    href: "#",
+    "aria-label": "LinkedIn",
+    style: {
+      color: '#fff',
+      textDecoration: 'none'
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fab fa-linkedin-in"
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      marginLeft: 6
+    }
+  }, "LinkedIn")))), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "d-flex flex-column gap-2"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#",
+    style: {
+      color: 'rgba(255,255,255,0.85)',
+      textDecoration: 'none'
+    }
+  }, "Privacy Policy"), /*#__PURE__*/React.createElement("a", {
+    href: "#",
+    style: {
+      color: 'rgba(255,255,255,0.85)',
+      textDecoration: 'none'
+    }
+  }, "Terms")))), /*#__PURE__*/React.createElement("div", {
+    className: "mt-4 pt-4",
+    style: {
+      borderTop: '1px solid rgba(255,255,255,0.08)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'rgba(255,255,255,0.7)'
+    }
+  }, "\xA9 2024 Techjockey Infotech Pvt. Ltd."))))));
+};
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

@@ -1,0 +1,1085 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#f26430';
+  const primary = '#f26430';
+  const bodyBg = '#ffffff';
+
+  const [activeTab1, setActiveTab1] = useState(0);
+  const [activeTab2, setActiveTab2] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const pageRef = useRef(null);
+
+  const ctas = [
+    {
+      text: 'Talk to Expert',
+      href: 'https://www.manageengine.com/products/desktop-central/endpoint-central-endpoint-security.html',
+    },
+    {
+      text: 'Talk to Expert',
+      href: 'https://www.manageengine.com/products/desktop-central/endpoint-central-endpoint-security.html',
+    },
+    {
+      text: 'Talk to Expert',
+      href: 'https://www.manageengine.com/products/desktop-central/endpoint-central-endpoint-security.html',
+    },
+    {
+      text: 'Talk to Expert',
+      href: 'https://www.manageengine.com/products/desktop-central/endpoint-central-endpoint-security.html',
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        'Endpoint Central helps us stay on top of patch management. The remote support features are fantastic and help us manage systems efficiently.',
+      author: 'Rahul Verma',
+      designation: 'ICT & Service Desk Administrator',
+    },
+    {
+      quote:
+        'Endpoint Central has helped our business enhance employee experience and support users in a timely and efficient manner.',
+      author: 'Shweta Singh',
+      designation: 'IT Infrastructure Manager',
+    },
+    {
+      quote:
+        'Endpoint Central has simplified patch management and software deployment for our IT team. Managing hundreds of devices from one console has significantly improved our operational efficiency.',
+      author: 'Sachin Gupta',
+      designation: 'IT Operations Manager',
+    },
+    {
+      quote:
+        'We purchased Endpoint Central through Techjockey and the experience was seamless. Their team guided us through the evaluation, purchase process, and even helped us with the post-purchase demo and onboarding.',
+      author: 'Rounak Sharma',
+      designation: 'Head of IT Infrastructure',
+    },
+    {
+      quote:
+        'Techjockey made our Endpoint Central purchase extremely smooth. From product consultation to after-purchase support and demo sessions, their team ensured we could deploy the solution quickly.',
+      author: 'Ayushi Jain',
+      designation: 'Senior System Administrator',
+    },
+  ];
+
+  const sectionOneFeatures = [
+    {
+      title: 'Patch & Update Management',
+      description:
+        'Secure and stabilize your operating systems, applications, and mobile apps with automated patches and updates.',
+    },
+    {
+      title: 'Browser Security',
+      description:
+        'Protect and manage multiple browsers, track usage patterns, and maintain compliance with standards like STIG.',
+    },
+    {
+      title: 'Data Security',
+      description:
+        'Identify and encrypt sensitive data, enforce policies for authorized usage, and ensure secure transmission.',
+    },
+    {
+      title: 'Vulnerability Remediation',
+      description:
+        'Leverage continuous threat intelligence, thorough assessments, and swift remediation to mitigate risks.',
+    },
+  ];
+
+  const sectionTwoFeatures = [
+    {
+      title: 'Strengthen Endpoint Security',
+      description:
+        'Built-in security controls for malware protection, such as next-gen antivirus and anti-ransomware.',
+    },
+    {
+      title: 'Manage IT Assets Effectively',
+      description:
+        'Live notifications and ready-made reports to discover, track, and manage your hardware, software, and digital assets.',
+    },
+    {
+      title: 'Enhance Application Control & Privileges',
+      description:
+        'Define install permissions, track privileges, and enforce zero-trust security with role-based and time-bound access.',
+    },
+    {
+      title: 'Facilitate Remote Access & Troubleshooting',
+      description:
+        'Remotely perform system operations with multi-user collaboration to efficiently troubleshoot devices.',
+    },
+    {
+      title: 'Ensure Compliance',
+      description: 'Adhere to regulatory compliance and generate comprehensive audit-ready reports.',
+    },
+  ];
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        }),
+      { threshold: 0.15 }
+    );
+
+    const nodes = document.querySelectorAll('.reveal');
+    nodes.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [accent, primary]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [accent, primary, testimonials.length]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const loadScript = (src) =>
+      new Promise((resolve) => {
+        const existing = document.querySelector(`script[src="${src}"]`);
+        if (existing) {
+          resolve();
+          return;
+        }
+        const s = document.createElement('script');
+        s.src = src;
+        s.async = true;
+        s.onload = resolve;
+        s.onerror = resolve;
+        document.body.appendChild(s);
+      });
+
+    const initGSAP = () => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const gsap = window.gsap;
+          const ScrollTrigger = window.ScrollTrigger;
+          gsap.registerPlugin(ScrollTrigger);
+
+          gsap.utils.toArray('.zoom-reveal').forEach((el) => {
+            const img = el.querySelector('img,video');
+            if (img) {
+              gsap.to(img, {
+                scale: 1,
+                duration: 1.2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 85%',
+                  toggleActions: 'play none none reverse',
+                },
+              });
+            }
+          });
+
+          gsap.utils.toArray('[data-depth]').forEach((el) => {
+            gsap.to(el, {
+              y: () => -(window.innerHeight * (parseFloat(el.dataset.depth) || 0.2) * 0.5),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el.closest('section') || el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+              },
+            });
+          });
+
+          gsap.utils.toArray('.stagger-parent').forEach((p) => {
+            gsap.to(p.children, {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: 'power3.out',
+              scrollTrigger: { trigger: p, start: 'top 80%' },
+            });
+          });
+
+          const splitTextEl = document.querySelector('.split-text');
+          if (splitTextEl && !splitTextEl.dataset.ready) {
+            const text = splitTextEl.textContent || '';
+            splitTextEl.dataset.ready = 'true';
+            splitTextEl.innerHTML = text
+              .split('')
+              .map((char) => `<span class="char">${char === ' ' ? '&nbsp;' : char}</span>`)
+              .join('');
+            gsap.fromTo(
+              splitTextEl.querySelectorAll('.char'),
+              { opacity: 0, y: 24 },
+              { opacity: 1, y: 0, duration: 0.5, stagger: 0.02, ease: 'power3.out' }
+            );
+          }
+        });
+      });
+    };
+
+    Promise.all([
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js'),
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js'),
+    ]).then(() => {
+      initGSAP();
+    });
+  }, [accent, primary]);
+
+  const css = `
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:'Inter',sans-serif;background:${bodyBg};color:#111827;scroll-behavior:smooth}
+    body{overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .lp-root{background:${bodyBg}}
+    .container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .section{padding:72px 0;position:relative}
+    .section-light{background:#ffffff}
+    .section-soft{background:#f8fafc}
+    .gradient-text{
+      background:linear-gradient(135deg, ${accent} 0%, ${primary} 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(20px);
+      background:rgba(255,255,255,.92);
+      border-bottom:1px solid #e5e7eb;
+    }
+    .nav-inner{
+      display:grid;
+      grid-template-columns:1fr auto auto;
+      align-items:center;
+      gap:16px;
+      min-height:78px;
+    }
+    .brand-left{display:flex;align-items:center;gap:12px}
+    .brand-mark{
+      width:40px;height:40px;border-radius:12px;
+      background:linear-gradient(135deg, ${accent}, ${primary});
+      color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 10px 24px rgba(242,100,48,.22);
+    }
+    .brand-name{font-weight:800;font-size:18px;line-height:1.2}
+    .brand-sub{font-size:12px;color:#6b7280}
+    .nav-right{display:flex;align-items:center;gap:18px}
+    .animated-cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 22px;border-radius:12px;border:1px solid ${accent};
+      background:${accent};color:#fff;font-weight:700;font-size:14px;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+      white-space:nowrap;
+    }
+    .animated-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(242,100,48,.24);background:${primary}}
+    .ghost-btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 22px;border-radius:12px;border:1px solid #d1d5db;
+      background:#fff;color:#111827;font-weight:700;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .ghost-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.08);border-color:${accent}}
+    .hero{
+      padding:36px 0 68px;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(242,100,48,.10) 0%, rgba(242,100,48,0) 28%),
+        radial-gradient(circle at 88% 16%, rgba(242,100,48,.08) 0%, rgba(242,100,48,0) 24%),
+        linear-gradient(180deg, #ffffff 0%, #fff9f5 100%);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-shell{
+      position:relative;
+      min-height:640px;
+      display:flex;
+      align-items:center;
+    }
+    .hero-grid{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      justify-content:space-between;
+      width:100%;
+      min-height:620px;
+      position:relative;
+      z-index:2;
+    }
+    .hero-copy{
+      position:relative;
+      z-index:5;
+      flex:1 1 58%;
+      max-width:700px;
+      padding-right:18px;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 14px;border-radius:999px;background:rgba(242,100,48,.10);
+      color:${accent};border:1px solid rgba(242,100,48,.18);font-size:13px;font-weight:700;
+      margin-bottom:18px;
+      position:relative;
+      z-index:6;
+    }
+    .hero h1{
+      font-size:62px;line-height:.98;letter-spacing:-.04em;
+      margin:0 0 18px;font-weight:800;color:#111827;
+      max-width:11ch;
+      position:relative;
+      z-index:7;
+    }
+    .hero-overlap-title{
+      width:auto;
+      margin-right:0;
+    }
+    .hero p.sub{
+      font-size:18px;line-height:1.65;color:#4b5563;margin:0 0 10px;max-width:560px;
+      position:relative;z-index:6;
+    }
+    .hero p.support{
+      font-size:16px;line-height:1.7;color:#4b5563;margin:0 0 24px;max-width:560px;
+      position:relative;z-index:6;
+    }
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px;position:relative;z-index:6}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:999px;background:#fff;border:1px solid #e5e7eb;
+      color:#374151;font-size:13px;font-weight:600;
+      box-shadow:0 8px 24px rgba(0,0,0,.04);
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:6}
+    .hero-visual{
+      position:relative;
+      min-height:520px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      flex:0 1 470px;
+      z-index:2;
+    }
+    .hero-visual-panel{
+      position:relative;
+      width:100%;
+      max-width:440px;
+      min-height:520px;
+      border-radius:30px;
+      background:linear-gradient(180deg, #fff4ee 0%, #ffffff 100%);
+      border:1px solid #f2dfd6;
+      box-shadow:0 24px 60px rgba(17,24,39,.08);
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+    }
+    .hero-cinematic-bg{
+      position:absolute;inset:0;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(242,100,48,.20) 0%, rgba(242,100,48,.04) 26%, rgba(242,100,48,0) 50%),
+        linear-gradient(180deg, rgba(242,100,48,.08), rgba(255,255,255,.98));
+      border:none;
+      box-shadow:none;
+    }
+    .hero-orb,.hero-orb2{
+      position:absolute;border-radius:50%;filter:blur(8px);pointer-events:none;
+    }
+    .hero-orb{
+      width:220px;height:220px;right:-20px;top:-10px;
+      background:radial-gradient(circle, rgba(242,100,48,.18) 0%, rgba(242,100,48,0) 70%);
+    }
+    .hero-orb2{
+      width:180px;height:180px;left:-20px;bottom:12px;
+      background:radial-gradient(circle, rgba(242,100,48,.12) 0%, rgba(242,100,48,0) 72%);
+    }
+    .visual-card{
+      position:absolute;
+      left:28px;
+      right:28px;
+      bottom:22px;
+      z-index:2;
+      border-radius:24px;background:#fff;border:1px solid #e5e7eb;
+      box-shadow:0 20px 40px rgba(17,24,39,.08);overflow:hidden;
+    }
+    .browser-frame{
+      display:flex;flex-direction:column;overflow:hidden;background:#ffffff;border-radius:24px;
+    }
+    .browser-top{
+      display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid #eef2f7;background:#f8fafc;
+    }
+    .dot{width:10px;height:10px;border-radius:50%;background:#d1d5db}
+    .browser-frame img{
+      flex:1;min-height:0;height:170px;width:100%;object-fit:contain;object-position:center;
+      display:block;background:#ffffff;padding:14px;
+    }
+    .float-card{
+      position:absolute;z-index:3;background:#fff;border:1px solid #e5e7eb;border-radius:18px;
+      padding:14px 16px;box-shadow:0 18px 40px rgba(17,24,39,.10);max-width:220px;
+    }
+    .float-card.small{right:-6px;top:76px}
+    .float-card.bottom{left:-10px;bottom:110px}
+    .float-title{font-size:12px;color:#6b7280;margin-bottom:6px}
+    .float-value{font-size:18px;font-weight:800;color:#111827}
+    .float-line{height:8px;border-radius:999px;background:linear-gradient(90deg, ${accent}, rgba(242,100,48,.15));margin-top:10px}
+    .human-png{
+      position:relative;
+      right:auto;
+      bottom:auto;
+      width:100%;
+      max-width:350px;
+      z-index:4;
+      pointer-events:none;
+      object-fit:contain;
+      object-position:bottom center;
+      filter:drop-shadow(0 18px 30px rgba(0,0,0,.12));
+      margin:42px auto 0;
+      display:block;
+    }
+
+    .trust-grid{
+      display:grid;grid-template-columns:1.1fr 1.3fr;gap:28px;align-items:center;
+    }
+    .trust-copy h2,.section-head h2{
+      font-size:clamp(32px,4vw,42px);line-height:1.08;margin:0 0 12px;font-weight:800;
+    }
+    .trust-copy p,.section-head p{font-size:16px;line-height:1.75;color:#4b5563;margin:0}
+    .logo-grid{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+    }
+    .logo-item{
+      height:72px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;padding:12px;
+      transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+      filter:grayscale(1);
+    }
+    .logo-item:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(0,0,0,.08);filter:grayscale(0)}
+    .logo-item img{max-height:32px;max-width:100%;object-fit:contain}
+    .proof-pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #e5e7eb;
+      font-size:13px;font-weight:700;color:#111827;margin-bottom:12px;
+    }
+
+    .split-section{
+      display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+    }
+    .media-panel{
+      position:relative;border-radius:24px;overflow:hidden;border:1px solid #e5e7eb;
+      background:#ffffff;box-shadow:0 24px 60px rgba(17,24,39,.10);
+    }
+    .media-panel.light{background:#f8f8f8}
+    .media-panel img{width:100%;height:460px;object-fit:cover;display:block}
+    .section-tag{
+      display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(242,100,48,.18);background:rgba(242,100,48,.08);color:${accent};
+      font-size:13px;font-weight:700;margin-bottom:16px;
+    }
+    .desc-rail{
+      border-left:3px solid rgba(242,100,48,.28);padding-left:18px;margin:16px 0 24px;
+      color:#4b5563;font-size:16px;line-height:1.8;
+    }
+
+    .features-section-wrap{display:flex;flex-direction:column;gap:24px}
+    .feature-list{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      margin-top:24px;
+    }
+    .feature-row{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      padding:22px 22px;
+      border:1px solid #e5e7eb;
+      border-radius:20px;
+      background:#fff;
+      box-shadow:0 10px 30px rgba(17,24,39,.05);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .feature-row:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 36px rgba(17,24,39,.08);
+      border-color:rgba(242,100,48,.25);
+    }
+    .feature-icon{
+      width:52px;
+      height:52px;
+      min-width:52px;
+      border-radius:16px;
+      background:rgba(242,100,48,.12);
+      color:${accent};
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .feature-content{
+      flex:1;
+      min-width:0;
+    }
+    .feature-content h3{
+      margin:0 0 8px;
+      font-size:20px;
+      line-height:1.25;
+      color:#111827;
+    }
+    .feature-content p{
+      margin:0;
+      color:#4b5563;
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .pricing-wrap{
+      display:grid;grid-template-columns:minmax(0,1fr);gap:20px;max-width:760px;margin:0 auto;
+    }
+    .pricing-card{
+      background:#fff;border:1px solid #e5e7eb;border-radius:24px;padding:28px;
+      box-shadow:0 20px 50px rgba(17,24,39,.06);text-align:left;
+    }
+    .pricing-badge{
+      display:inline-flex;padding:8px 12px;border-radius:999px;background:#ecfdf5;color:#047857;
+      font-size:13px;font-weight:800;border:1px solid #a7f3d0;margin-bottom:16px;
+    }
+    .pricing-card h3{margin:0 0 10px;font-size:28px}
+    .pricing-card p{margin:0;color:#4b5563;line-height:1.8}
+    .pricing-empty{
+      margin-top:20px;padding:18px;border-radius:16px;background:#f8fafc;border:1px dashed #d1d5db;
+      color:#6b7280;font-size:15px;
+    }
+
+    .testimonial-stage{
+      position:relative;overflow:hidden;
+      background:#fff;border:1px solid #e5e7eb;border-radius:28px;box-shadow:0 20px 50px rgba(17,24,39,.06);
+    }
+    .testimonial-track{
+      display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);
+    }
+    .testimonial-slide{min-width:100%;padding:36px}
+    .quote-mark{font-size:56px;line-height:1;color:${accent};font-weight:800}
+    .stars{color:#f59e0b;letter-spacing:2px;font-size:18px;margin:8px 0 16px}
+    .testimonial-quote{font-size:22px;line-height:1.7;color:#111827;margin:0 0 24px;font-weight:500}
+    .author-row{display:flex;align-items:center;gap:14px}
+    .avatar{
+      width:54px;height:54px;border-radius:50%;background:${accent};color:#fff;
+      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;
+    }
+    .author-meta strong{display:block;font-size:16px}
+    .author-meta span{display:block;color:#6b7280;font-size:14px;margin-top:4px}
+    .slider-controls{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 8px 8px;
+      margin-top:18px;
+    }
+    .arrow-btn{
+      width:44px;height:44px;border-radius:50%;border:1px solid #e5e7eb;background:#fff;cursor:pointer;
+      font-size:18px;transition:.25s ease;
+    }
+    .arrow-btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.08);border-color:${accent}}
+    .dots{display:flex;justify-content:center;gap:8px;flex:1}
+    .dot-btn{
+      width:8px;height:8px;border-radius:999px;border:none;background:#d1d5db;cursor:pointer;transition:.3s ease;
+    }
+    .dot-btn.active{width:26px;background:${accent}}
+
+    .footer{
+      background:#111827;color:#fff;padding:34px 0 26px;
+    }
+    .footer-top{
+      display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.12)
+    }
+    .footer-brand{display:flex;align-items:center;gap:12px}
+    .footer-brand .brand-mark{box-shadow:none}
+    .footer-links{display:flex;flex-wrap:wrap;gap:18px;color:rgba(255,255,255,.85);font-size:14px}
+    .footer-bottom{
+      display:flex;justify-content:space-between;gap:20px;align-items:center;padding-top:18px;flex-wrap:wrap;
+      color:rgba(255,255,255,.7);font-size:14px
+    }
+    .socials{display:flex;gap:12px;align-items:center}
+    .socials a{
+      width:36px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+      display:flex;align-items:center;justify-content:center;color:#fff;
+      transition:transform .25s ease,background .25s ease,border-color .25s ease;
+    }
+    .socials a:hover{transform:translateY(-2px);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28)}
+
+    @media (max-width: 1024px){
+      .hero h1{font-size:52px}
+      .hero-grid,.trust-grid,.split-section{grid-template-columns:1fr;display:grid}
+      .hero-grid{gap:30px}
+      .hero-copy{max-width:none;padding-right:0}
+      .hero-visual{flex:1 1 auto}
+      .nav-inner{grid-template-columns:1fr auto}
+      .nav-right{display:none}
+      .logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width: 767px){
+      .section{padding:56px 0}
+      .container{width:min(100% - 24px,1180px)}
+      .hero{padding:26px 0 48px}
+      .hero-shell,.hero-grid{min-height:auto}
+      .hero h1{font-size:40px;max-width:none}
+      .hero p.sub{font-size:16px}
+      .hero-visual-panel{min-height:440px}
+      .browser-frame img{height:150px}
+      .float-card.small{right:10px;top:18px}
+      .float-card.bottom{left:10px;bottom:90px}
+      .feature-row{padding:18px}
+      .feature-content h3{font-size:18px}
+      .testimonial-slide{padding:24px}
+      .testimonial-quote{font-size:18px}
+      .footer-top{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column;align-items:flex-start}
+    }
+  `;
+
+  return (
+    <div className="lp-root" ref={pageRef}>
+      <style>{css}</style>
+
+      <nav className="nav">
+        <div className="container nav-inner">
+          <div className="brand-left">
+            <div className="brand-mark">TJ</div>
+            <div>
+              <div className="brand-name">Techjockey</div>
+              <div className="brand-sub">Authorized Software Buying Assistance</div>
+            </div>
+          </div>
+
+          <div className="nav-right">
+            <a href="#features">Features</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#testimonials">Testimonials</a>
+          </div>
+
+          <a className="animated-cta" href={ctas[0].href} target="_blank" rel="noreferrer">
+            {ctas[0].text}
+          </a>
+        </div>
+      </nav>
+
+      <section className="hero">
+        <div className="container hero-shell">
+          <div className="hero-grid">
+            <div className="hero-copy reveal">
+              <div className="eyebrow">Unified Endpoint Management & Security</div>
+              <h1 className="hero-overlap-title split-text">ManageEngine Endpoint Central</h1>
+              <p className="sub">
+                Secure, monitor, and manage all your enterprise endpoints from a single console.
+              </p>
+              <p className="support">
+                Automate patching, software deployment, remote troubleshooting, and compliance tasks
+                while strengthening endpoint security across your organization.
+              </p>
+
+              <div className="chips">
+                <div className="chip">Patch Management</div>
+                <div className="chip">Remote Support</div>
+                <div className="chip">Asset Management</div>
+                <div className="chip">Compliance Control</div>
+              </div>
+
+              <div className="hero-actions">
+                <a className="animated-cta" href={ctas[1].href} target="_blank" rel="noreferrer">
+                  {ctas[1].text}
+                </a>
+                <a className="ghost-btn" href="#features">
+                  Explore Features
+                </a>
+              </div>
+            </div>
+
+            <div className="hero-visual reveal zoom-reveal">
+              <div className="hero-visual-panel">
+                <div className="hero-cinematic-bg" />
+                <div className="hero-orb" data-depth="0.2" />
+                <div className="hero-orb2" data-depth="0.12" />
+
+                <div className="float-card small">
+                  <div className="float-title">Compliance Visibility</div>
+                  <div className="float-value">Audit Ready</div>
+                  <div className="float-line" />
+                </div>
+
+                <div className="float-card bottom">
+                  <div className="float-title">Endpoint Coverage</div>
+                  <div className="float-value">Unified Control</div>
+                  <div className="float-line" />
+                </div>
+
+                <div className="visual-card">
+                  <div className="browser-frame">
+                    <div className="browser-top">
+                      <span className="dot" />
+                      <span className="dot" />
+                      <span className="dot" />
+                    </div>
+                    <img
+                      src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80"
+                      alt="Endpoint management dashboard"
+                    />
+                  </div>
+                </div>
+
+                <img
+                  className="human-png"
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80"
+                  alt="IT professional using endpoint management software"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-light">
+        <div className="container trust-grid reveal">
+          <div className="trust-copy">
+            <div className="proof-pill">Trusted buying support from Techjockey</div>
+            <h2>
+              Get the right endpoint management solution with <span className="gradient-text">expert guidance</span>
+            </h2>
+            <p>
+              Evaluate licensing, compare deployment needs, and make a confident buying decision for
+              ManageEngine Endpoint Central with Techjockey’s product specialists.
+            </p>
+          </div>
+
+          <div className="logo-grid">
+            <div className="logo-item">Windows</div>
+            <div className="logo-item">macOS</div>
+            <div className="logo-item">Linux</div>
+            <div className="logo-item">Mobile</div>
+            <div className="logo-item">Patch Mgmt</div>
+            <div className="logo-item">Remote Tools</div>
+            <div className="logo-item">Asset Tracking</div>
+            <div className="logo-item">Compliance</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" className="section section-soft">
+        <div className="container">
+          <div className="split-section">
+            <div className="media-panel light reveal zoom-reveal">
+              <img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+                alt="Cybersecurity and endpoint management overview"
+              />
+            </div>
+
+            <div className="reveal">
+              <div className="section-tag">Core Features</div>
+              <div className="section-head">
+                <h2>
+                  Centralize endpoint security with <span className="gradient-text">clear, practical controls</span>
+                </h2>
+                <p>
+                  ManageEngine Endpoint Central helps IT teams secure endpoints, reduce operational effort,
+                  and stay proactive against vulnerabilities with a single unified platform.
+                </p>
+              </div>
+
+              <div className="desc-rail">
+                Explore the main capabilities designed to simplify endpoint administration while improving
+                visibility, security posture, and policy enforcement across devices.
+              </div>
+
+              <div className="features-section-wrap">
+                <div className="feature-list stagger-parent">
+                  {sectionOneFeatures.map((item, idx) => (
+                    <div className="feature-row reveal" key={item.title}>
+                      <div className="feature-icon" aria-hidden="true">
+                        {idx === 0 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 3l7 3v5c0 5.25-3.44 8.79-7 10-3.56-1.21-7-4.75-7-10V6l7-3z" stroke="currentColor" strokeWidth="1.8" />
+                            <path d="M9.5 12l1.8 1.8L15 10.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                        {idx === 1 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="4" y="5" width="16" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+                            <path d="M8 19h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                            <path d="M10 9h4M8 12h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                          </svg>
+                        )}
+                        {idx === 2 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="currentColor" strokeWidth="1.8" />
+                            <rect x="5" y="11" width="14" height="10" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+                            <circle cx="12" cy="16" r="1.2" fill="currentColor" />
+                          </svg>
+                        )}
+                        {idx === 3 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 4l7 4v4c0 4.2-2.8 7-7 8-4.2-1-7-3.8-7-8V8l7-4z" stroke="currentColor" strokeWidth="1.8" />
+                            <path d="M12 9v4l2.5 2.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </div>
+                      <div className="feature-content">
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ marginTop: '8px' }}>
+                  <a className="animated-cta" href={ctas[2].href} target="_blank" rel="noreferrer">
+                    {ctas[2].text}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="benefits" className="section section-light">
+        <div className="container">
+          <div className="split-section">
+            <div className="reveal">
+              <div className="section-tag">Business Benefits</div>
+              <div className="section-head">
+                <h2>
+                  Improve IT operations with <span className="gradient-text">stronger endpoint governance</span>
+                </h2>
+                <p>
+                  Beyond endpoint security, Endpoint Central enables IT teams to streamline support,
+                  track assets, enforce privileges, and maintain compliance from one console.
+                </p>
+              </div>
+
+              <div className="desc-rail">
+                Consolidate the tools your team needs to reduce risk, speed up support, and maintain
+                better control over applications, users, and devices.
+              </div>
+
+              <div className="features-section-wrap">
+                <div className="feature-list stagger-parent">
+                  {sectionTwoFeatures.map((item, idx) => (
+                    <div className="feature-row reveal" key={item.title}>
+                      <div className="feature-icon" aria-hidden="true">
+                        {idx === 0 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 3l7 3v5c0 5.25-3.44 8.79-7 10-3.56-1.21-7-4.75-7-10V6l7-3z" stroke="currentColor" strokeWidth="1.8" />
+                            <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                        {idx === 1 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="4" y="6" width="16" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+                            <path d="M8 10h8M8 14h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                          </svg>
+                        )}
+                        {idx === 2 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="8" r="3" stroke="currentColor" strokeWidth="1.8" />
+                            <path d="M5 20c1.5-3 4-4.5 7-4.5s5.5 1.5 7 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                          </svg>
+                        )}
+                        {idx === 3 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="5" width="18" height="11" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+                            <path d="M8 20h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                            <path d="M10 16v4M14 16v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                          </svg>
+                        )}
+                        {idx === 4 && (
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 3l7 3v5c0 5.25-3.44 8.79-7 10-3.56-1.21-7-4.75-7-10V6l7-3z" stroke="currentColor" strokeWidth="1.8" />
+                            <path d="M9.5 12l1.8 1.8L15 10.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </div>
+                      <div className="feature-content">
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ marginTop: '8px' }}>
+                  <a className="animated-cta" href={ctas[3].href} target="_blank" rel="noreferrer">
+                    {ctas[3].text}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="media-panel reveal zoom-reveal">
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                alt="IT team collaborating on endpoint security operations"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="section section-soft">
+        <div className="container">
+          <div className="section-head reveal" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 28px' }}>
+            <div className="section-tag">Pricing Support</div>
+            <h2>
+              Get the right plan with <span className="gradient-text">guided consultation</span>
+            </h2>
+            <p>
+              Pricing may vary based on the number of endpoints, deployment model, and required modules.
+              Connect with Techjockey experts to understand the best-fit option for your business.
+            </p>
+          </div>
+
+          <div className="pricing-wrap reveal">
+            <div className="pricing-card hover-lift">
+              <div className="pricing-badge">Personalized Assistance</div>
+              <h3>Talk to an expert for pricing details</h3>
+              <p>
+                Whether you are evaluating Endpoint Central for patching, remote support, asset tracking,
+                or endpoint security, our team can help you compare options and understand licensing.
+              </p>
+              <div className="pricing-empty">
+                Final pricing depends on your business requirements and deployment scope.
+              </div>
+              <div style={{ marginTop: 20 }}>
+                <a className="animated-cta" href={ctas[0].href} target="_blank" rel="noreferrer">
+                  {ctas[0].text}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="section section-light">
+        <div className="container">
+          <div className="section-head reveal" style={{ maxWidth: 760, marginBottom: 26 }}>
+            <div className="section-tag">Customer Feedback</div>
+            <h2>
+              What users say about <span className="gradient-text">Endpoint Central</span>
+            </h2>
+            <p>
+              Real-world feedback from IT leaders and administrators using Endpoint Central for endpoint
+              management, patching, security, and support operations.
+            </p>
+          </div>
+
+          <div className="testimonial-stage reveal">
+            <div
+              className="testimonial-track"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {testimonials.map((item) => (
+                <div className="testimonial-slide" key={`${item.author}-${item.designation}`}>
+                  <div className="quote-mark">“</div>
+                  <div className="stars">★★★★★</div>
+                  <p className="testimonial-quote">{item.quote}</p>
+                  <div className="author-row">
+                    <div className="avatar">{item.author.charAt(0)}</div>
+                    <div className="author-meta">
+                      <strong>{item.author}</strong>
+                      <span>{item.designation}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="slider-controls reveal">
+            <button
+              className="arrow-btn"
+              onClick={() => setActiveSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              aria-label="Previous testimonial"
+            >
+              ←
+            </button>
+
+            <div className="dots">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  className={`dot-btn ${activeSlide === index ? 'active' : ''}`}
+                  onClick={() => setActiveSlide(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              className="arrow-btn"
+              onClick={() => setActiveSlide((prev) => (prev + 1) % testimonials.length)}
+              aria-label="Next testimonial"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <div className="brand-mark">TJ</div>
+              <div>
+                <div className="brand-name">Techjockey</div>
+                <div className="brand-sub" style={{ color: 'rgba(255,255,255,.72)' }}>
+                  Software buying guidance for businesses
+                </div>
+              </div>
+            </div>
+
+            <div className="footer-links">
+              <a href="#features">Features</a>
+              <a href="#benefits">Benefits</a>
+              <a href="#pricing">Pricing</a>
+              <a href="#testimonials">Testimonials</a>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <div>© 2026 Techjockey. All rights reserved.</div>
+
+            <div className="socials">
+              <a href="https://www.facebook.com/Techjockey/" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6h1.7V4.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V11H8v3h2.1v8h3.4z" />
+                </svg>
+              </a>
+              <a href="https://x.com/TechjockeyInfo" target="_blank" rel="noreferrer" aria-label="X">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.9 3H21l-6.5 7.4L22 21h-5.9l-4.6-6-5.3 6H4.1l7-8L2 3h6l4.1 5.4L18.9 3zm-1 16h1.6L7.1 4.9H5.4L17.9 19z" />
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/techjockey-infotech-pvt-ltd/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 12.53c0-3.13-1.67-4.58-3.9-4.58-1.8 0-2.61.99-3.06 1.69V8.5h-3.38V20h3.38v-6.42c0-.34.02-.68.12-.92.27-.68.88-1.38 1.9-1.38 1.34 0 1.88 1.04 1.88 2.56V20H21v-7.47z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/techjockey/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm4.75-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;

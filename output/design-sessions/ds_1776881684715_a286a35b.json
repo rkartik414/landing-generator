@@ -1,0 +1,1250 @@
+{
+  "sessionId": "ds_1776881684715_a286a35b",
+  "createdAt": "2026-04-22T18:14:44.715Z",
+  "updatedAt": "2026-04-22T18:22:32.456Z",
+  "status": "html-generated",
+  "productName": "Zoho workplace",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software",
+    "parsedSectionCount": 19
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": {
+      "fileName": "zoho-workplace-landing-page-build-plan",
+      "pageType": "single-product",
+      "designSystemMode": "design-system-first",
+      "tokenProfileHint": "Use default Techjockey corporate B2B tokens: Plus Jakarta Sans for headings, Inter for body, trust-authority color direction with dark navy hero and accent blue CTA treatment; apply enterprise-professional spacing and card system.",
+      "pages": [
+        {
+          "name": "Desktop",
+          "frame": {
+            "name": "Zoho Workplace Landing Page - Desktop",
+            "width": 1440,
+            "heightHint": 5200,
+            "grid": "12-col",
+            "sectionSpacing": 96
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Above the Fold",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Dark trust-authority hero with left-aligned text block and compact value bullets; no visible secondary CTA in provided content; include logo cluster at top-left if brand lockup assets exist.",
+              "contentSource": "contentMap.hero + contentMap.trust + extras",
+              "priority": "high",
+              "notes": "Use a full-width hero band with strong dark background, enterprise tone, and high-contrast text. Headline is 18 words, so apply the smallest hero headline tier from the memory rules. Keep CTA as a single primary button only. Supporting line may remain empty if no additional copy is provided. Add trust badge treatment only if it can be represented as a compact badge row under the subheadline.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "trust",
+              "type": "trust-bar",
+              "frameName": "Trust Strip",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Centered horizontal trust row with divider-separated items and one stat badge; light grey background.",
+              "contentSource": "contentMap.trust",
+              "priority": "high",
+              "notes": "Place immediately below hero as a conversion reassurance band. Use a compact, corporate layout with the badge text and business count statement. Keep styling minimal and structured, not decorative.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-why-choose",
+              "type": "features",
+              "frameName": "Why Choose Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column feature card grid; 4 items; white cards with borders and modest elevation on hover.",
+              "contentSource": "contentMap.productSections[0]",
+              "priority": "high",
+              "notes": "This is the first feature block and should feel like a product capability overview. Use 4 cards in a 3-column grid with one card wrapping to the second row. Keep cards plain and enterprise-clean. No icons are supplied, so create a consistent text-led card pattern with optional small icon slots reserved in the component structure.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-business-growth",
+              "type": "features",
+              "frameName": "Unlock Your Business Growth with Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column feature card grid; 4 items; use the same card system with section-specific heading and description.",
+              "contentSource": "contentMap.productSections[1]",
+              "priority": "high",
+              "notes": "Maintain the same card system as the previous feature section to reduce design drift. This section should feel like a continuation, not a new visual language. Keep the copy dense and readable for enterprise decision-makers.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-integrations",
+              "type": "feature-list",
+              "frameName": "Integrate with Popular Apps",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "5-item integration matrix using compact tiles or tag-like cards; visually lighter than the main feature cards.",
+              "contentSource": "contentMap.productSections[2]",
+              "priority": "medium",
+              "notes": "Use a 5-item grid that can flex into 3-column plus 2-column second row. Since no icons are provided, use consistent integration tiles with category names and short app lists. Treat this as a compatibility section rather than a benefit section.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-insight",
+              "type": "metrics",
+              "frameName": "Performance Beyond Limits with Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "4-card stat/insight grid with short title and percentage-led body copy; use stronger typographic hierarchy for percentage values.",
+              "contentSource": "contentMap.productSections[3]",
+              "priority": "medium",
+              "notes": "Translate each insight into a measurable value card. Keep the structure factual and executive-friendly. Emphasize the percentage first in each card to support scanability.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "pricing",
+              "type": "pricing",
+              "frameName": "Zoho Workplace Price Plan Includes",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single centered pricing card with checklist includes; use the Techjockey cart pattern even though only one plan is present.",
+              "contentSource": "contentMap.pricing",
+              "priority": "high",
+              "notes": "Even though the price value is empty, preserve the pricing module structure for Figma execution and leave a placeholder slot for pricing entry. Include the checklist, CTA button, and trust line exactly as a standard purchase module. Treat this as a lead-to-purchase conversion block.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": true,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "testimonials",
+              "type": "testimonials",
+              "frameName": "Customer Testimonials",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column testimonial grid, 5 total cards; display first 3 in row 1 and 2 in row 2, or use a masonry-like balanced grid.",
+              "contentSource": "contentMap.testimonials",
+              "priority": "medium",
+              "notes": "Use the standard testimonial card pattern with star row, italic quote, author, designation, and company line. Because there are 5 testimonials, structure a 3+2 arrangement on desktop for clean balance. Keep the cards corporate and consistent.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": true,
+                "form": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile",
+          "frame": {
+            "name": "Zoho Workplace Landing Page - Mobile",
+            "width": 390,
+            "heightHint": 7000,
+            "grid": "4-col",
+            "sectionSpacing": 64
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Above the Fold",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Single-column stacked hero; keep logo cluster minimal, headline first, then supporting copy, then primary CTA full width.",
+              "contentSource": "contentMap.hero + contentMap.trust + extras",
+              "priority": "high",
+              "notes": "On mobile, stack everything vertically. Keep the hero tight and conversion-focused. Since no media is supplied, use text-only hero composition with strong spacing and full-width CTA. Preserve trust signal beneath the CTA if space allows.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "trust",
+              "type": "trust-bar",
+              "frameName": "Trust Strip",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Compact stacked trust row or segmented chips with business count emphasis.",
+              "contentSource": "contentMap.trust",
+              "priority": "high",
+              "notes": "Collapse the trust row into stacked or wrapped chips to fit mobile without reducing legibility. Maintain the same trust message and avoid making it decorative.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-why-choose",
+              "type": "features",
+              "frameName": "Why Choose Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single-column card stack with 4 feature cards.",
+              "contentSource": "contentMap.productSections[0]",
+              "priority": "high",
+              "notes": "Convert the desktop grid into a single-column scrollable stack. Keep each card visually separated and maintain consistent padding and card radius. This section should remain scan-friendly on a small screen.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-business-growth",
+              "type": "features",
+              "frameName": "Unlock Your Business Growth with Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single-column card stack with 4 feature cards.",
+              "contentSource": "contentMap.productSections[1]",
+              "priority": "high",
+              "notes": "Keep the same single-column card format as the previous section for consistency. Mobile should prioritize readability over density.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-integrations",
+              "type": "feature-list",
+              "frameName": "Integrate with Popular Apps",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Stacked compact tiles with one integration category per row.",
+              "contentSource": "contentMap.productSections[2]",
+              "priority": "medium",
+              "notes": "Use a vertical list of compact integration tiles to prevent crowding. Keep titles short and place app names on secondary lines for clarity.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-insight",
+              "type": "metrics",
+              "frameName": "Performance Beyond Limits with Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single-column stat cards stacked vertically.",
+              "contentSource": "contentMap.productSections[3]",
+              "priority": "medium",
+              "notes": "Display each insight as a stacked card with the percentage prominent. This is better than compressing a metric grid on mobile. Preserve the same hierarchy and content order.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "pricing",
+              "type": "pricing",
+              "frameName": "Zoho Workplace Price Plan Includes",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Full-width pricing card with checklist and full-width CTA.",
+              "contentSource": "contentMap.pricing",
+              "priority": "high",
+              "notes": "On mobile, use the full-width card treatment with reduced shadow emphasis. Keep checklist items stacked and allow the CTA to span the full width. Maintain trust line below the CTA.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": true,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "testimonials",
+              "type": "testimonials",
+              "frameName": "Customer Testimonials",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single-column testimonial cards, vertically stacked; can support swipe behavior in Figma prototype if needed.",
+              "contentSource": "contentMap.testimonials",
+              "priority": "medium",
+              "notes": "Render the five testimonials as a vertical stack. Preserve the star rating, italic quote, author, and designation hierarchy. Avoid multi-column layouts on mobile.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": true,
+                "form": false
+              }
+            }
+          ]
+        }
+      ],
+      "buildSummary": {
+        "desktopSectionCount": 8,
+        "mobileSectionCount": 8,
+        "sharedComponentFamilies": [
+          "compose-from-design-system"
+        ],
+        "figmaExecutionNotes": [
+          "Use a single enterprise visual system across all sections to keep the page cohesive and implementation-friendly.",
+          "Keep hero dark and authoritative, with a single primary CTA only, as no secondary CTA is provided.",
+          "Maintain consistent card tokens across feature, integration, metric, pricing, and testimonial modules.",
+          "Use desktop 12-column and mobile 4-column layouts with responsive stack behavior rather than reimagining content.",
+          "Respect the provided fold order: hero, trust, features, pricing, testimonials; do not add unsupported sections.",
+          "Apply Plus Jakarta Sans for headings and Inter for body copy to match the default Techjockey professional system."
+        ]
+      }
+    },
+    "heroStrategy": {
+      "layout": "text-left-media-right",
+      "primaryVisual": "https://cdn.techjockey.com/hero/zoho-workplace/ui-main-workspace.png",
+      "secondaryVisual": "https://cdn.techjockey.com/hero/zoho-workplace/ui-floating-panels.png",
+      "accentVisuals": [
+        "https://cdn.techjockey.com/hero/zoho-workplace/chip-trusted-100k.svg",
+        "https://cdn.techjockey.com/hero/zoho-workplace/chip-24x7-support.svg",
+        "https://cdn.techjockey.com/hero/zoho-workplace/chip-free-trial.svg"
+      ],
+      "backgroundImage": null,
+      "backgroundVideo": null,
+      "backgroundTreatment": "solid",
+      "overlayStyle": "none",
+      "headline": "Elevate Your Team’s Productivity with Zoho Workplace",
+      "subheadline": "A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.",
+      "ctaText": "Get Started",
+      "secondaryCtaText": "",
+      "floatingChips": [
+        "Trusted by 100,000+ Businesses Globally",
+        "24x7 Support",
+        "Free Trial",
+        "Made for Enterprises"
+      ],
+      "animationStyle": "stagger",
+      "designNote": "Use a warm brand-orange hero with a split enterprise dashboard composition. Keep the text block left-aligned for fast CIO scanning, and show a layered product mockup on the right with email, chat, documents, meetings, and storage tiles. The visual should feel software-realistic and operational, not promotional or playful. Add subtle proof chips around the mockup, soft-shadow cards, and restrained motion for credibility."
+    },
+    "blueprint": {
+      "rhythmPlan": {
+        "opening": "loud",
+        "middle": "proof-led",
+        "ending": "conversion"
+      },
+      "repetitionBreakers": [
+        "Start with a split, product-first hero on an orange brand field to establish immediate enterprise clarity.",
+        "Use a marquee trust strip next to the hero instead of a static badge row to create motion and compress credibility.",
+        "Alternate the product section backgrounds and switch from spotlight-plus-grid to a dense comparison-style block so adjacent sections feel distinct.",
+        "Shift into a dark insight band for quantified proof to break the white/grey cadence and elevate statistics.",
+        "Use a highlighted pricing card followed by a testimonial carousel so the lower funnel rhythm changes from evaluation to reassurance."
+      ],
+      "pageTitle": "Zoho Workplace for Enterprise Collaboration",
+      "metaDescription": "Explore Zoho Workplace, the unified email and collaboration suite for enterprises. Improve productivity, communication, and secure teamwork with Zoho Workplace.",
+      "styles": {
+        "accentColor": "#ff6b00",
+        "bodyBg": "#f5f5f5",
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Inter",
+        "themeFamily": "operational-dashboard",
+        "surfaceStyle": "soft-shadow",
+        "visualMotif": "dashboard-panels",
+        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "layout": "split-left",
+          "bgColor": "#ff6b00",
+          "surfaceStyle": "soft-shadow",
+          "backgroundTreatment": "solid-brand-field with subtle radial glow and floating proof chips",
+          "heroComposition": {
+            "mode": "text-left-media-right"
+          },
+          "renderMode": "layered",
+          "animationMode": "stagger",
+          "designNote": "Make the hero content-first but visually dynamic: large enterprise headline on the left, compact value bullets, and a right-side layered workspace mockup showing mail, chat, documents, meetings, and storage. Keep the primary CTA visible and strong, with proof chips floating around the UI to reinforce trust without adding a form."
+        },
+        {
+          "id": "trust",
+          "type": "trust-bar",
+          "layout": "marquee-strip",
+          "bgColor": "#ffffff",
+          "renderMode": "marquee",
+          "designNote": "Immediately follow the hero with a motion-led trust strip featuring 'Trusted by 100,000+ Businesses Globally' and enterprise-grade reassurance. Keep it compressed and prominent so trust is established early for CIO and CXO buyers."
+        },
+        {
+          "id": "products",
+          "type": "product-sections",
+          "layout": "alternating",
+          "bgColor": "#f5f5f5",
+          "renderMode": "spotlight-plus-grid",
+          "featurePresentation": {
+            "mode": "spotlight-plus-grid",
+            "primaryFeatureTitle": "All-in-One Unified Workspace",
+            "visualPriority": "high",
+            "useIcons": true,
+            "usePreviewPanel": true
+          },
+          "designNote": "Combine the first two product blocks into one dense, decision-friendly section: lead with a spotlight panel for the unified workspace story, then use a supporting grid for collaboration, remote access, and AI productivity. The next block should flip to a more compact split-panel layout for integrations and customization so the section rhythm changes and feels more operational than editorial."
+        },
+        {
+          "id": "why-techjockey",
+          "type": "why-techjockey",
+          "layout": "grid",
+          "bgColor": "#ffffff",
+          "renderMode": "card-grid",
+          "designNote": "Skip this section entirely if there is no content. Since include=false, keep the page structure clean and do not force an extra promotional block."
+        },
+        {
+          "id": "insight",
+          "type": "insight",
+          "layout": "full-bleed",
+          "bgColor": "#1a1a1a",
+          "renderMode": "counters",
+          "designNote": "Create one of the most visually expressive sections here: a dark performance band with bold percentage counters, short supporting labels, and orange highlight accents. This should feel like an executive summary of outcomes rather than a feature explanation."
+        },
+        {
+          "id": "pricing",
+          "type": "pricing-cart",
+          "layout": "card-center",
+          "bgColor": "#f5f5f5",
+          "renderMode": "highlighted-card",
+          "designNote": "Use a centered premium pricing card with a strong plan title and clear included-value list. Keep it simple and authoritative, with the CTA treated as a conversion anchor rather than a repeated sales push."
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "layout": "carousel-static",
+          "bgColor": "#ffffff",
+          "renderMode": "slider",
+          "designNote": "Because there are 5 testimonials, use a carousel to reduce vertical length and keep the section dynamic. Mix IT, operations, and admin voices to reinforce both adoption and purchase confidence."
+        },
+        {
+          "id": "form",
+          "type": "lead-form",
+          "layout": "centered-card",
+          "bgColor": "#f5f5f5",
+          "renderMode": "floating-card",
+          "designNote": "Use a compact centered lead-capture card only if a form is required by the template. Keep it lightweight and non-invasive; do not overbuild it since ctaAggression should remain moderate rather than aggressive."
+        },
+        {
+          "id": "news",
+          "type": "media-logos",
+          "layout": "horizontal-logos",
+          "bgColor": "#ffffff",
+          "renderMode": "logo-strip",
+          "designNote": "Do not invent a heavy news area. If logos or media references are unavailable, keep this as a minimal closing strip or omit visual emphasis to preserve the conversion-led ending."
+        }
+      ],
+      "designPersonality": "Enterprise-organized, efficient, and trustworthy with a warm orange brand core. The page should feel like a high-performing workplace platform designed for leadership teams that care about adoption, security, and operational simplicity.",
+      "imageryDirection": "Use a layered product composition on the hero right side: a desktop workspace shell, floating email and chat panes, small calendar/document tiles, and a slim analytics strip. Keep visuals corporate and software-realistic, not playful. Add subtle floating proof chips like '24x7 Support', 'Made in India', and 'Free Trial' around the UI mockup. For support imagery, use PNG product visuals and SVG icons only.",
+      "typography": {
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Inter",
+        "headingWeight": 700,
+        "heroFontSize": "48px",
+        "heroFontSizeReason": "The headline is long and enterprise-oriented, so 48px keeps it authoritative without breaking the split-layout balance.",
+        "letterSpacing": "normal",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#ff6b00",
+        "accent": "#ff6b00",
+        "accentHover": "#e85f00",
+        "bodyBg": "#f5f5f5",
+        "cardBg": "#ffffff",
+        "textDark": "#1a1a1a",
+        "textMid": "#5b6472",
+        "textLight": "#ffffff",
+        "border": "#e5e7eb",
+        "colourReason": "Brand primary orange is used as the hero background and primary CTA color exactly as required. White, charcoal, and soft grey create a premium enterprise canvas while preserving strong contrast and a distinct Zoho identity."
+      },
+      "themeFamily": "operational-dashboard",
+      "surfaceStyle": "soft-shadow",
+      "visualMotif": "dashboard-panels",
+      "backgroundSystem": {
+        "bodyBase": "#f5f5f5",
+        "hero": "#ff6b00",
+        "section1": "#ffffff",
+        "section2": "#f5f5f5",
+        "section3": "#ffffff"
+      },
+      "motionStrategy": {
+        "allowAnimations": true,
+        "style": "premium",
+        "heroEntrance": "stagger",
+        "cardHover": "lift",
+        "sectionReveal": "fade-up"
+      },
+      "referenceMap": {
+        "heroPattern": "Full-width split-hero composition with brand logo cluster at top-left, large headline, short supporting paragraph, and a compact bullet-value list beneath. Content is left-aligned and designed for immediate product positioning rather than storytelling. No primary CTA is visible in the hero area shown.",
+        "sectionRhythm": "Top hero band followed by a lead-capture form module immediately below, then modular content sections stacked vertically. Rhythm favors dense conversion blocks over long editorial storytelling, with clear fold-based progression and strong section separation.",
+        "cardStyle": "Primarily plain content containers with minimal decoration. Form content is grouped in a card-like panel; product feature content is expected to use simple list or grid blocks rather than visually heavy cards. Little evidence of shadows, glassmorphism, or elaborate surfaces.",
+        "ctaPattern": "Conversion-first pattern centered on a lead form rather than repeated page CTAs. Primary action is embedded in the form experience; supporting actions, if any, are secondary and not emphasized in the visible hero structure.",
+        "pricingPattern": "No pricing module is visible in the reference. The page pattern suggests inquiry/lead generation flow instead of self-serve pricing comparison.",
+        "footerMode": "Not visible in the provided reference HTML, so no footer pattern can be reliably extracted.",
+        "spacingScale": [
+          "tight inner spacing within content blocks",
+          "moderate vertical separation between hero and form",
+          "consistent section padding for stacked modules",
+          "compact bullet spacing in hero lists",
+          "standard grid gutters for multi-column layout"
+        ],
+        "mediaPattern": "Brand logo usage in the hero area; no prominent product imagery, screenshots, or video panels are shown. Visual communication relies on typography and bullets more than media-led storytelling.",
+        "productSectionPattern": "Feature sections are likely organized as sequential fold-based modules with headline, short description, and a small set of feature items. Pattern supports grouped feature lists and app/integration blocks, emphasizing modular discovery over deep nested content.",
+        "formPattern": "Dedicated lead-capture form section placed immediately after the hero. Uses a boxed panel with a section headline and multiple hidden tracking fields, indicating a structured sales funnel and qualification workflow. Form is positioned as a primary conversion component, not an afterthought.",
+        "interactionPatterns": {
+          "usesCarousel": false,
+          "usesTabs": false,
+          "usesAccordion": false,
+          "usesStickyCta": false,
+          "usesRevealAnimations": false,
+          "usesHoverCards": false,
+          "usesCounters": false,
+          "usesMarqueeLogos": false
+        },
+        "surfacePatterns": {
+          "alternatesBackgrounds": false,
+          "usesDarkBandSections": true,
+          "usesTintedSections": false,
+          "usesGlassPanels": false,
+          "usesEditorialWhitespace": false
+        },
+        "animationStyle": "Static, conversion-oriented presentation with no visible animation-driven hierarchy in the extracted reference.",
+        "componentPatterns": [
+          "brand logo block",
+          "hero headline + supporting paragraph",
+          "benefit bullet list with icons",
+          "lead generation form card",
+          "stacked fold-based content sections",
+          "feature list modules",
+          "integration/app list module"
+        ],
+        "designNotes": [
+          "Layout prioritizes lead capture and enterprise credibility over immersive storytelling.",
+          "Hierarchy is driven by large typography, short benefit bullets, and immediate form access.",
+          "The visual system appears utilitarian and B2B-focused, with minimal ornamental treatment.",
+          "Best reusable pattern: hero plus immediate qualification form, followed by compact modular feature folds.",
+          "If adapting this pattern, keep sections concise, scannable, and conversion-led."
+        ]
+      },
+      "assetRules": {
+        "lockReferenceStructure": false,
+        "replaceImages": true,
+        "replaceVideos": true,
+        "preserveMode": "structure-styling",
+        "strictLayoutMatch": false,
+        "userSuppliedImagesOnly": false
+      },
+      "brandLogoUrl": null,
+      "brandSiteName": "Zoho Workplace",
+      "hasSvgLogo": false,
+      "pageGoal": "single-product",
+      "trustLogos": [],
+      "includeForm": false,
+      "includePricing": true,
+      "includeTestimonials": true,
+      "includeTrust": true,
+      "additionalInstructions": "make it for corporate professional as our target audience are CIO, CTOM, CXO",
+      "designStrategy": {
+        "primaryGoal": "lead-gen",
+        "buyerStage": "warm",
+        "conversionPriority": "high",
+        "narrativeMode": "product-led",
+        "trustStrategy": "stats-first",
+        "emotionalTone": "confident",
+        "visualDominance": "hero-message",
+        "ctaAggression": "strong",
+        "sectionDensity": "dense",
+        "recommendedHeroStyle": "split",
+        "mustHaveMoments": [
+          "Immediate enterprise positioning with CIO/CTO/CXO-ready messaging",
+          "Trust proof near the top using the 100,000+ businesses claim",
+          "Clear value stack showing unified email, collaboration, and productivity",
+          "Strong CTA repeated through the page, especially in hero and pricing block",
+          "Feature-to-benefit progression with security, remote access, and collaboration outcomes",
+          "Testimonial proof from operational and IT decision-makers",
+          "Pricing/inclusion section that reduces purchase friction and clarifies what is included"
+        ],
+        "avoidPatterns": [
+          "Overly playful or startup-style visuals",
+          "Long editorial storytelling before value proof",
+          "Heavy form-first layout that interrupts executive scanning",
+          "Generic consumer-style language or casual tone",
+          "Too many decorative elements that dilute enterprise credibility",
+          "Feature dumps without business outcome framing"
+        ],
+        "reasoning": "This page should behave like an enterprise conversion asset for senior decision-makers, so the strategy must prioritize clarity, proof, and fast comprehension. The audience is CIO/CTO/CXO-led, which means the design should feel secure, efficient, and professionally credible rather than flashy. A split hero is the best choice because it lets the page communicate product value immediately while preserving room for trust cues and CTA visibility. Since the content already includes strong social proof and multiple feature blocks, the narrative should stay product-led and stats-first, moving from unified workspace value to operational benefits, then to testimonials and inclusions that support purchase confidence. The density should be balanced toward dense because the page is content-rich and aimed at evaluative buyers who want substance, not minimalism."
+      },
+      "designReview": {
+        "score": 85,
+        "verdict": "planned",
+        "issues": [],
+        "strengths": [
+          "Design planned from strategy and intent layers"
+        ]
+      },
+      "trustLogosCount": 8
+    },
+    "mediaPlan": {
+      "hero": {
+        "primaryVisual": "/output/generated-assets/ds_1776881684715_a286a35b/17-473c14de05.jpg",
+        "secondaryVisual": "/output/generated-assets/ds_1776881684715_a286a35b/16-8ee9780f0b.jpg",
+        "backgroundImage": null,
+        "backgroundVideo": null,
+        "accentVisuals": [
+          "/output/generated-assets/ds_1776881684715_a286a35b/10-27e04915d6.png",
+          "/output/generated-assets/ds_1776881684715_a286a35b/12-113610f4ed.png",
+          "/output/generated-assets/ds_1776881684715_a286a35b/01-256e5d95aa.png"
+        ]
+      },
+      "trust": {
+        "logos": [
+          "/output/generated-assets/ds_1776881684715_a286a35b/04-84d4bfdd99.svg",
+          "/output/generated-assets/ds_1776881684715_a286a35b/03-8da7f26504.svg",
+          "/output/generated-assets/ds_1776881684715_a286a35b/05-ae76f0c421.svg",
+          "/output/generated-assets/ds_1776881684715_a286a35b/02-975eb13e3f.svg",
+          "/output/generated-assets/ds_1776881684715_a286a35b/07-401f045b7d.svg",
+          "/output/generated-assets/ds_1776881684715_a286a35b/06-d38fc0a4cb.svg",
+          "/output/generated-assets/ds_1776881684715_a286a35b/09-3c4d2f8415.svg",
+          "/output/generated-assets/ds_1776881684715_a286a35b/08-428c7ca4a9.svg"
+        ],
+        "badges": []
+      },
+      "productSections": [
+        {
+          "sectionId": "1",
+          "primaryPreview": "/output/generated-assets/ds_1776881684715_a286a35b/17-473c14de05.jpg",
+          "secondaryPreview": "/output/generated-assets/ds_1776881684715_a286a35b/16-8ee9780f0b.jpg",
+          "icons": [
+            "/output/generated-assets/ds_1776881684715_a286a35b/11-4e22c31148.png",
+            "/output/generated-assets/ds_1776881684715_a286a35b/21-61e528786b.png"
+          ]
+        },
+        {
+          "sectionId": "2",
+          "primaryPreview": "/output/generated-assets/ds_1776881684715_a286a35b/16-8ee9780f0b.jpg",
+          "secondaryPreview": null,
+          "icons": [
+            "/output/generated-assets/ds_1776881684715_a286a35b/11-4e22c31148.png",
+            "/output/generated-assets/ds_1776881684715_a286a35b/21-61e528786b.png"
+          ]
+        }
+      ],
+      "testimonials": {
+        "avatars": [
+          "/output/generated-assets/ds_1776881684715_a286a35b/13-a1af876bc5.png",
+          "/output/generated-assets/ds_1776881684715_a286a35b/15-01fc6c95c0.jpg",
+          "/output/generated-assets/ds_1776881684715_a286a35b/22-e3c4bcd1a9.png",
+          "/output/generated-assets/ds_1776881684715_a286a35b/23-00ee58a5d0.jpg"
+        ]
+      },
+      "demos": {
+        "heroDemo": null,
+        "sectionDemos": []
+      },
+      "product": [
+        "/output/generated-assets/ds_1776881684715_a286a35b/04-84d4bfdd99.svg",
+        "/output/generated-assets/ds_1776881684715_a286a35b/03-8da7f26504.svg",
+        "/output/generated-assets/ds_1776881684715_a286a35b/05-ae76f0c421.svg",
+        "/output/generated-assets/ds_1776881684715_a286a35b/01-256e5d95aa.png",
+        "/output/generated-assets/ds_1776881684715_a286a35b/02-975eb13e3f.svg",
+        "/output/generated-assets/ds_1776881684715_a286a35b/07-401f045b7d.svg",
+        "/output/generated-assets/ds_1776881684715_a286a35b/06-d38fc0a4cb.svg",
+        "/output/generated-assets/ds_1776881684715_a286a35b/09-3c4d2f8415.svg"
+      ],
+      "features": [
+        "/output/generated-assets/ds_1776881684715_a286a35b/10-27e04915d6.png",
+        "/output/generated-assets/ds_1776881684715_a286a35b/12-113610f4ed.png",
+        "/output/generated-assets/ds_1776881684715_a286a35b/01-256e5d95aa.png"
+      ],
+      "logos": [
+        "/output/generated-assets/ds_1776881684715_a286a35b/11-4e22c31148.png",
+        "/output/generated-assets/ds_1776881684715_a286a35b/21-61e528786b.png"
+      ],
+      "fallbackStrategy": {
+        "heroMode": "split-visual",
+        "productMode": "preview-panel"
+      },
+      "form": null,
+      "additionalInstructions": "make it for corporate professional as our target audience are CIO, CTOM, CXO",
+      "imageContext": [
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/01-256e5d95aa.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "The image is an illustration promoting password security for businesses.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/10-27e04915d6.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 90,
+          "description": "Illustration of various app icons emerging from a yellow box.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/14-9f8efaf073.png",
+          "role": "generic-stock",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 85,
+          "description": "A simple speech bubble icon containing five yellow stars.",
+          "placementHints": [
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/11-4e22c31148.png",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "The image features a collection of company logos.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/12-113610f4ed.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "An illustration promoting Zoho Workroom with icons related to communication and collaboration.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/13-a1af876bc5.png",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 90,
+          "description": "A person wearing a headset and smiling, pointing to the side.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/15-01fc6c95c0.jpg",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A virtual meeting with participants on a video call.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/17-473c14de05.jpg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A screenshot of a software interface showing a discussion thread.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/16-8ee9780f0b.jpg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "Screenshot of a document editing interface with user comments and analytics.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/21-61e528786b.png",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "The image is a logo for Zoho Workplace featuring a red outlined cube and text.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/22-e3c4bcd1a9.png",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A portrait of a person posing outside a building with a sign.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776881684715_a286a35b/23-00ee58a5d0.jpg",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A portrait of a person with a mannequin in a clothing store background.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        }
+      ],
+      "teamPhotos": [
+        "/output/generated-assets/ds_1776881684715_a286a35b/22-e3c4bcd1a9.png",
+        "/output/generated-assets/ds_1776881684715_a286a35b/23-00ee58a5d0.jpg"
+      ]
+    }
+  },
+  "figma": {
+    "fileId": "figma_file_ds_1776881684715_a286a35b",
+    "fileName": "zoho-workplace-landing-page-build-plan",
+    "fileUrl": "https://www.figma.com/file/figma_file_ds_1776881684715_a286a35b",
+    "pages": [
+      {
+        "pageId": "page_1",
+        "name": "Desktop",
+        "frameName": "Zoho Workplace Landing Page - Desktop",
+        "width": 1440,
+        "heightHint": 5200,
+        "grid": "12-col",
+        "sectionCount": 8
+      },
+      {
+        "pageId": "page_2",
+        "name": "Mobile",
+        "frameName": "Zoho Workplace Landing Page - Mobile",
+        "width": 390,
+        "heightHint": 7000,
+        "grid": "4-col",
+        "sectionCount": 8
+      }
+    ],
+    "frames": [
+      {
+        "pageName": "Desktop",
+        "frameName": "Zoho Workplace Landing Page - Desktop",
+        "width": 1440,
+        "builtSectionCount": 8
+      },
+      {
+        "pageName": "Mobile",
+        "frameName": "Zoho Workplace Landing Page - Mobile",
+        "width": 390,
+        "builtSectionCount": 8
+      }
+    ],
+    "nodes": {
+      "Desktop": [
+        {
+          "nodeId": "node_desktop_1",
+          "id": "hero",
+          "type": "hero",
+          "frameName": "Hero / Above the Fold",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "Dark trust-authority hero with left-aligned text block and compact value bullets; no visible secondary CTA in provided content; include logo cluster at top-left if brand lockup assets exist.",
+          "priority": "high",
+          "contentSource": "contentMap.hero + contentMap.trust + extras",
+          "notes": "Use a full-width hero band with strong dark background, enterprise tone, and high-contrast text. Headline is 18 words, so apply the smallest hero headline tier from the memory rules. Keep CTA as a single primary button only. Supporting line may remain empty if no additional copy is provided. Add trust badge treatment only if it can be represented as a compact badge row under the subheadline."
+        },
+        {
+          "nodeId": "node_desktop_2",
+          "id": "trust",
+          "type": "trust-bar",
+          "frameName": "Trust Strip",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "Centered horizontal trust row with divider-separated items and one stat badge; light grey background.",
+          "priority": "high",
+          "contentSource": "contentMap.trust",
+          "notes": "Place immediately below hero as a conversion reassurance band. Use a compact, corporate layout with the badge text and business count statement. Keep styling minimal and structured, not decorative."
+        },
+        {
+          "nodeId": "node_desktop_3",
+          "id": "features-why-choose",
+          "type": "features",
+          "frameName": "Why Choose Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "3-column feature card grid; 4 items; white cards with borders and modest elevation on hover.",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[0]",
+          "notes": "This is the first feature block and should feel like a product capability overview. Use 4 cards in a 3-column grid with one card wrapping to the second row. Keep cards plain and enterprise-clean. No icons are supplied, so create a consistent text-led card pattern with optional small icon slots reserved in the component structure."
+        },
+        {
+          "nodeId": "node_desktop_4",
+          "id": "features-business-growth",
+          "type": "features",
+          "frameName": "Unlock Your Business Growth with Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "3-column feature card grid; 4 items; use the same card system with section-specific heading and description.",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[1]",
+          "notes": "Maintain the same card system as the previous feature section to reduce design drift. This section should feel like a continuation, not a new visual language. Keep the copy dense and readable for enterprise decision-makers."
+        },
+        {
+          "nodeId": "node_desktop_5",
+          "id": "features-integrations",
+          "type": "feature-list",
+          "frameName": "Integrate with Popular Apps",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "5-item integration matrix using compact tiles or tag-like cards; visually lighter than the main feature cards.",
+          "priority": "medium",
+          "contentSource": "contentMap.productSections[2]",
+          "notes": "Use a 5-item grid that can flex into 3-column plus 2-column second row. Since no icons are provided, use consistent integration tiles with category names and short app lists. Treat this as a compatibility section rather than a benefit section."
+        },
+        {
+          "nodeId": "node_desktop_6",
+          "id": "features-insight",
+          "type": "metrics",
+          "frameName": "Performance Beyond Limits with Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "4-card stat/insight grid with short title and percentage-led body copy; use stronger typographic hierarchy for percentage values.",
+          "priority": "medium",
+          "contentSource": "contentMap.productSections[3]",
+          "notes": "Translate each insight into a measurable value card. Keep the structure factual and executive-friendly. Emphasize the percentage first in each card to support scanability."
+        },
+        {
+          "nodeId": "node_desktop_7",
+          "id": "pricing",
+          "type": "pricing",
+          "frameName": "Zoho Workplace Price Plan Includes",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Single centered pricing card with checklist includes; use the Techjockey cart pattern even though only one plan is present.",
+          "priority": "high",
+          "contentSource": "contentMap.pricing",
+          "notes": "Even though the price value is empty, preserve the pricing module structure for Figma execution and leave a placeholder slot for pricing entry. Include the checklist, CTA button, and trust line exactly as a standard purchase module. Treat this as a lead-to-purchase conversion block."
+        },
+        {
+          "nodeId": "node_desktop_8",
+          "id": "testimonials",
+          "type": "testimonials",
+          "frameName": "Customer Testimonials",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "3-column testimonial grid, 5 total cards; display first 3 in row 1 and 2 in row 2, or use a masonry-like balanced grid.",
+          "priority": "medium",
+          "contentSource": "contentMap.testimonials",
+          "notes": "Use the standard testimonial card pattern with star row, italic quote, author, designation, and company line. Because there are 5 testimonials, structure a 3+2 arrangement on desktop for clean balance. Keep the cards corporate and consistent."
+        }
+      ],
+      "Mobile": [
+        {
+          "nodeId": "node_mobile_1",
+          "id": "hero",
+          "type": "hero",
+          "frameName": "Hero / Above the Fold",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Single-column stacked hero; keep logo cluster minimal, headline first, then supporting copy, then primary CTA full width.",
+          "priority": "high",
+          "contentSource": "contentMap.hero + contentMap.trust + extras",
+          "notes": "On mobile, stack everything vertically. Keep the hero tight and conversion-focused. Since no media is supplied, use text-only hero composition with strong spacing and full-width CTA. Preserve trust signal beneath the CTA if space allows."
+        },
+        {
+          "nodeId": "node_mobile_2",
+          "id": "trust",
+          "type": "trust-bar",
+          "frameName": "Trust Strip",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Compact stacked trust row or segmented chips with business count emphasis.",
+          "priority": "high",
+          "contentSource": "contentMap.trust",
+          "notes": "Collapse the trust row into stacked or wrapped chips to fit mobile without reducing legibility. Maintain the same trust message and avoid making it decorative."
+        },
+        {
+          "nodeId": "node_mobile_3",
+          "id": "features-why-choose",
+          "type": "features",
+          "frameName": "Why Choose Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Single-column card stack with 4 feature cards.",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[0]",
+          "notes": "Convert the desktop grid into a single-column scrollable stack. Keep each card visually separated and maintain consistent padding and card radius. This section should remain scan-friendly on a small screen."
+        },
+        {
+          "nodeId": "node_mobile_4",
+          "id": "features-business-growth",
+          "type": "features",
+          "frameName": "Unlock Your Business Growth with Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Single-column card stack with 4 feature cards.",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[1]",
+          "notes": "Keep the same single-column card format as the previous section for consistency. Mobile should prioritize readability over density."
+        },
+        {
+          "nodeId": "node_mobile_5",
+          "id": "features-integrations",
+          "type": "feature-list",
+          "frameName": "Integrate with Popular Apps",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Stacked compact tiles with one integration category per row.",
+          "priority": "medium",
+          "contentSource": "contentMap.productSections[2]",
+          "notes": "Use a vertical list of compact integration tiles to prevent crowding. Keep titles short and place app names on secondary lines for clarity."
+        },
+        {
+          "nodeId": "node_mobile_6",
+          "id": "features-insight",
+          "type": "metrics",
+          "frameName": "Performance Beyond Limits with Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Single-column stat cards stacked vertically.",
+          "priority": "medium",
+          "contentSource": "contentMap.productSections[3]",
+          "notes": "Display each insight as a stacked card with the percentage prominent. This is better than compressing a metric grid on mobile. Preserve the same hierarchy and content order."
+        },
+        {
+          "nodeId": "node_mobile_7",
+          "id": "pricing",
+          "type": "pricing",
+          "frameName": "Zoho Workplace Price Plan Includes",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Full-width pricing card with checklist and full-width CTA.",
+          "priority": "high",
+          "contentSource": "contentMap.pricing",
+          "notes": "On mobile, use the full-width card treatment with reduced shadow emphasis. Keep checklist items stacked and allow the CTA to span the full width. Maintain trust line below the CTA."
+        },
+        {
+          "nodeId": "node_mobile_8",
+          "id": "testimonials",
+          "type": "testimonials",
+          "frameName": "Customer Testimonials",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Single-column testimonial cards, vertically stacked; can support swipe behavior in Figma prototype if needed.",
+          "priority": "medium",
+          "contentSource": "contentMap.testimonials",
+          "notes": "Render the five testimonials as a vertical stack. Preserve the star rating, italic quote, author, and designation hierarchy. Avoid multi-column layouts on mobile."
+        }
+      ]
+    },
+    "syncStatus": "sections-planned",
+    "lastSyncAt": "2026-04-22T18:22:32.454Z"
+  },
+  "outputs": {
+    "htmlFilename": "zoho-workplace-1776882031721-preview.html",
+    "localizedAssetsBase": "/output/generated-assets/ds_1776881684715_a286a35b"
+  },
+  "logs": [
+    {
+      "at": "2026-04-22T18:14:44.719Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-04-22T18:22:32.442Z",
+      "type": "workflow",
+      "step": "html-generated",
+      "message": "HTML output generated: zoho-workplace-1776882031721-preview.html"
+    },
+    {
+      "at": "2026-04-22T18:22:32.450Z",
+      "type": "mcp",
+      "step": "create-landing-file",
+      "message": "Created adapter-backed placeholder Figma file figma_file_ds_1776881684715_a286a35b"
+    },
+    {
+      "at": "2026-04-22T18:22:32.452Z",
+      "type": "mcp",
+      "step": "build-sections-from-plan",
+      "message": "Prepared 8 sections for Desktop"
+    },
+    {
+      "at": "2026-04-22T18:22:32.454Z",
+      "type": "mcp",
+      "step": "build-sections-from-plan",
+      "message": "Prepared 8 sections for Mobile"
+    },
+    {
+      "at": "2026-04-22T18:22:32.456Z",
+      "type": "workflow",
+      "step": "mcp-auto-run",
+      "message": "MCP execution layer completed successfully"
+    }
+  ]
+}

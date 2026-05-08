@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seedance4-0-1776862157870.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#ff6b00';
+  const [activeAccordion, setActiveAccordion] = useState(0);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const sectionRefs = useRef([]);
+  const testimonials = [{
+    quote: 'Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.',
+    author: 'Vaishali Saxena',
+    designation: 'Creative Director'
+  }, {
+    quote: 'Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.',
+    author: 'Vihaan Pandey',
+    designation: 'Video Producer'
+  }, {
+    quote: 'The multimodal editing capabilities in Seedream make it easy to refine images with precision.',
+    author: 'Anurag Malhotra',
+    designation: 'Art Director'
+  }, {
+    quote: 'Techjockey made it easy to evaluate Seedream and Seedance. The free demo helped us clearly understand the capabilities before moving forward.',
+    author: 'Ritika Mehra',
+    designation: 'Marketing Manager'
+  }];
+  const trustBadges = ['Trusted by 2,500+ creative teams', '4.8/5 average customer rating', 'Enterprise-ready workflows', 'Secure demo via Techjockey'];
+  const products = [{
+    name: 'Seedream 4.5',
+    label: 'AI Image Generation',
+    headline: 'AI Image Generation with Seedream 4.5',
+    description: 'A high-performance multimodal image generation system built to create high-resolution, high-fidelity images from text prompts and visual inputs. It unifies text-to-image synthesis, image editing, and multi-image composition in one framework.',
+    cta: 'Request Demo',
+    secondaryCta: 'View Sample Outputs',
+    image: '/output/generated-assets/ds_1776861874049_501413e2/02-3965757185.jpeg',
+    features: ['Advanced Text–Image Alignment', 'High-Resolution Output up to 1K–4K', 'Superior Typographic Rendering', 'Multi-Image Composition with Identity Preservation', 'Strong Structural Fidelity']
+  }, {
+    name: 'Seedance 1.5 Pro',
+    label: 'AI Video Generation',
+    headline: 'AI Video Generation with Seedance 1.5 Pro',
+    description: 'A next-generation native audio-visual generation model that creates video and sound together. Built on a dual-branch diffusion transformer architecture for coherent video, synchronized audio, and cinematic output.',
+    cta: 'Explore Capabilities',
+    secondaryCta: 'Book Video Walkthrough',
+    image: '/output/generated-assets/ds_1776861874049_501413e2/03-2c9cc1df82.jpeg',
+    features: ['Text-to-Video Generation', 'Audio-Visual Synchronization', 'Multilingual Lip-Sync', 'Cinematic Camera Control', '10× Faster Inference', 'Narrative Coherence for Pro Storytelling']
+  }];
+  useEffect(() => {
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
+      });
+    }, {
+      threshold: 0.12
+    });
+    revealEls.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTestimonialIndex(prev => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+  const nextTestimonial = () => setTestimonialIndex(prev => (prev + 1) % testimonials.length);
+  const prevTestimonial = () => setTestimonialIndex(prev => (prev - 1 + testimonials.length) % testimonials.length);
+  const scrollToSection = id => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
+  const IconSpark = () => /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    className: "feature-icon",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("path", {
+    fill: accent,
+    d: "M12 2l1.9 5.2L19 9l-5.1 1.8L12 16l-1.9-5.2L5 9l5.1-1.8L12 2zm6.5 12l.9 2.6L22 17.5l-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6zM6 14l1.2 3.1L10.3 18l-3.1.9L6 22l-1.2-3.1L1.7 18l3.1-.9L6 14z"
+  }));
+  const css = `
+    :root{
+      --accent:${accent};
+      --bg:#1a1a1a;
+      --bg-deep:#111111;
+      --bg-mid:#151515;
+      --text:#f5f7fb;
+      --muted:#b9c0cc;
+      --line:rgba(255,255,255,0.1);
+      --glass:rgba(255,255,255,0.08);
+      --glass-strong:rgba(255,255,255,0.12);
+      --success:#22c55e;
+      --shadow:0 18px 50px rgba(0,0,0,0.35);
+      --radius:22px;
+      --radius-sm:16px;
+      --container:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .landing-page{
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,107,0,0.16), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(255,107,0,0.08), transparent 20%),
+        linear-gradient(180deg,#1a1a1a 0%, #111111 100%);
+      overflow:hidden;
+    }
+    .container{
+      width:min(var(--container), calc(100% - 32px));
+      margin:0 auto;
+      position:relative;
+      z-index:2;
+    }
+    .section{padding:88px 0; position:relative}
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 18px 18px;
+      opacity:.18;
+    }
+    .hero{background:linear-gradient(180deg,#1a1a1a 0%, #111111 100%)}
+    .trust{background:#151515}
+    .products{background:#111111}
+    .why-techjockey{background:#f5f5f5; color:#111}
+    .pricing{background:#111111}
+    .testimonials{background:#151515}
+    .news{background:#1a1a1a}
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(15,15,15,0.78);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .nav-inner{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .nav-left{display:flex; align-items:center; gap:14px;}
+    .product-badge{
+      width:44px;height:44px;border-radius:14px;
+      background:linear-gradient(135deg, rgba(255,107,0,.22), rgba(255,107,0,.08));
+      border:1px solid rgba(255,107,0,.35);
+      display:grid;place-items:center;
+      box-shadow:0 0 0 6px rgba(255,107,0,.06);
+      flex-shrink:0;
+    }
+    .brand-stack{display:flex; flex-direction:column; line-height:1.1}
+    .brand-stack strong{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:15px; font-weight:800; color:#fff;
+    }
+    .brand-stack span{
+      font-size:12px; color:var(--muted);
+    }
+    .nav-right{
+      display:flex; align-items:center; gap:14px; margin-left:auto;
+    }
+    .techjockey-logo{
+      height:34px; width:auto; opacity:.95;
+      filter:brightness(1.2);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px; border:none; cursor:pointer;
+      padding:14px 22px; border-radius:14px; font-weight:700;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+      font-size:15px;
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(0,0,0,0.24)}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent), #ff8c3a);
+      color:#fff;
+      box-shadow:0 10px 24px rgba(255,107,0,.25);
+    }
+    .btn-primary-hero{
+      background:linear-gradient(135deg, #ff7a1a 0%, #ffb36b 100%);
+      color:#111;
+      font-size:17px;
+      padding:18px 30px;
+      border-radius:16px;
+      box-shadow:0 18px 40px rgba(255,107,0,.34), 0 0 0 1px rgba(255,255,255,.14) inset;
+      font-weight:800;
+    }
+    .btn-primary-hero:hover{
+      box-shadow:0 22px 46px rgba(255,107,0,.38), 0 0 0 1px rgba(255,255,255,.18) inset;
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,.12);
+    }
+    .btn-dark{
+      background:#111; color:#fff;
+    }
+    .hero-grid{
+      display:grid; grid-template-columns:1.1fr .95fr; gap:42px; align-items:center;
+      min-height:calc(100vh - 78px);
+      padding:42px 0 24px;
+    }
+    .hero-copy h1{
+      margin:0 0 20px;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:clamp(48px, 6vw, 68px);
+      line-height:1.03;
+      letter-spacing:-0.03em;
+      color:#fff;
+      text-wrap:balance;
+    }
+    .hero-copy p{
+      margin:0 0 18px;
+      color:#d2d8e2;
+      font-size:18px; line-height:1.75;
+      max-width:680px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.07);
+      border:1px solid rgba(255,255,255,0.1);
+      color:#f4c49d;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+      backdrop-filter:blur(10px);
+    }
+    .hero-support{
+      color:#aeb6c3;
+      font-size:16px;
+      margin-bottom:28px;
+    }
+    .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:18px}
+    .hero-trust-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:26px;
+    }
+    .trust-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      color:#dbe2eb;
+      font-size:13px;
+      backdrop-filter:blur(10px);
+    }
+    .trust-pill .dot-check{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#ff9e57,#ffd2a7);
+      box-shadow:0 0 12px rgba(255,107,0,.5);
+      flex-shrink:0;
+    }
+    .hero-points{
+      display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px;
+      margin-top:8px;
+    }
+    .hero-point{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:16px;
+      padding:14px 16px;
+      backdrop-filter:blur(12px);
+    }
+    .hero-point strong{display:block; font-size:15px; color:#fff; margin-bottom:6px}
+    .hero-point span{font-size:13px; color:var(--muted); line-height:1.5}
+    .hero-visual{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:520px;
+    }
+    .hero-orb,
+    .hero-orb.two{
+      position:absolute; border-radius:999px; filter:blur(50px); opacity:.65;
+      pointer-events:none;
+    }
+    .hero-orb{
+      width:220px;height:220px;background:rgba(255,107,0,.24); top:4%; right:10%;
+      animation:floatOrb 8s ease-in-out infinite;
+    }
+    .hero-orb.two{
+      width:180px;height:180px;background:rgba(255,160,80,.18); left:0; bottom:10%;
+      animation:floatOrb 10s ease-in-out infinite reverse;
+    }
+    .visual-shell{
+      width:100%;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border:1px solid rgba(255,255,255,0.12);
+      backdrop-filter:blur(16px);
+      padding:14px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .browser-bar{
+      display:flex; align-items:center; gap:8px; padding:4px 6px 14px;
+    }
+    .dot{width:10px;height:10px;border-radius:50%}
+    .dot.red{background:#ff5f57}
+    .dot.yellow{background:#ffbd2f}
+    .dot.green{background:#28ca42}
+    .hero-img{
+      width:100%;
+      max-height:480px;
+      object-fit:cover;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.08);
+      filter:saturate(1.05) contrast(1.04);
+    }
+    .floating-chip{
+      position:absolute; padding:12px 14px; border-radius:14px;
+      background:rgba(17,17,17,0.82);
+      border:1px solid rgba(255,255,255,0.1);
+      color:#fff; font-size:13px; line-height:1.4;
+      box-shadow:0 12px 24px rgba(0,0,0,.24);
+      backdrop-filter:blur(10px);
+      animation:floatCard 7s ease-in-out infinite;
+    }
+    .chip-1{top:34px; left:-12px}
+    .chip-2{right:-12px; bottom:72px; animation-delay:1.4s}
+    .chip-3{left:32px; bottom:8px; animation-delay:2.2s}
+    .metrics-strip{
+      display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px;
+      margin-top:10px;
+    }
+    .metric-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:18px; padding:20px;
+      text-align:center;
+      backdrop-filter:blur(10px);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .metric-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 36px rgba(0,0,0,.28), 0 0 0 1px rgba(255,107,0,.18) inset;
+    }
+    .metric-number{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:30px; font-weight:800; color:#fff;
+      margin-bottom:6px;
+    }
+    .metric-label{color:#bfc6d3; font-size:14px}
+    .section-header{
+      max-width:760px;
+      margin:0 auto 42px;
+      text-align:center;
+    }
+    .section-header.left{text-align:left; margin-left:0}
+    .section-header h2{
+      margin:0 0 14px;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:clamp(32px,4vw,46px);
+      line-height:1.1;
+      letter-spacing:-0.03em;
+    }
+    .section-header p{
+      margin:0;
+      font-size:17px;
+      line-height:1.75;
+      color:inherit;
+      opacity:.82;
+    }
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+      margin-top:10px;
+    }
+    .trust-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:18px;
+      padding:20px 18px;
+      backdrop-filter:blur(12px);
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+    .trust-card strong{
+      display:block;
+      color:#fff;
+      font-size:15px;
+      margin-bottom:8px;
+      font-family:'Plus Jakarta Sans',sans-serif;
+    }
+    .trust-card span{
+      color:#bcc4cf;
+      font-size:14px;
+      line-height:1.6;
+    }
+    .testimonial-highlight{
+      margin-top:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:22px;
+      padding:28px;
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow);
+    }
+    .testimonial-highlight blockquote{
+      margin:0 0 16px;
+      font-size:20px;
+      line-height:1.7;
+      color:#f5f7fb;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-weight:600;
+    }
+    .testimonial-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .testimonial-meta strong{
+      display:block;
+      font-size:15px;
+      color:#fff;
+    }
+    .testimonial-meta span{
+      font-size:13px;
+      color:#b9c0cc;
+    }
+    .testimonial-controls{
+      display:flex;
+      gap:10px;
+    }
+    .control-btn{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.06);
+      color:#fff;
+      cursor:pointer;
+    }
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:24px;
+    }
+    .product-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+    .product-image-wrap{
+      padding:16px 16px 0;
+    }
+    .product-image{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      filter:saturate(1.06) contrast(1.05);
+    }
+    .product-content{
+      padding:24px;
+    }
+    .product-label{
+      display:inline-block;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      color:#ffc79a;
+      margin-bottom:10px;
+    }
+    .product-content h3{
+      margin:0 0 12px;
+      font-size:28px;
+      line-height:1.2;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      color:#fff;
+    }
+    .product-content p{
+      margin:0 0 18px;
+      color:#c7cfda;
+      line-height:1.75;
+      font-size:15px;
+    }
+    .feature-list{
+      list-style:none;
+      padding:0;
+      margin:0 0 22px;
+      display:grid;
+      gap:12px;
+    }
+    .feature-list li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:#e7ebf2;
+      font-size:14px;
+    }
+    .feature-icon{
+      width:18px;
+      height:18px;
+      margin-top:2px;
+      flex-shrink:0;
+    }
+    .product-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .inline-cta{
+      margin-top:26px;
+      display:flex;
+      justify-content:center;
+    }
+    .premium-cta-band{
+      margin-top:34px;
+      padding:24px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:linear-gradient(135deg, rgba(255,107,0,0.12), rgba(255,255,255,0.04));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      backdrop-filter:blur(12px);
+    }
+    .premium-cta-band strong{
+      display:block;
+      font-size:20px;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      color:#fff;
+      margin-bottom:6px;
+    }
+    .premium-cta-band span{
+      color:#c3cbd6;
+      font-size:14px;
+    }
+    @keyframes floatOrb{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-18px)}
+    }
+    @keyframes floatCard{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+    .reveal{opacity:0; transform:translateY(18px); transition:all .7s ease}
+    .revealed{opacity:1; transform:none}
+    @media (max-width: 1024px){
+      .hero-grid,
+      .products-grid,
+      .trust-grid,
+      .metrics-strip{
+        grid-template-columns:1fr;
+      }
+      .hero-points{
+        grid-template-columns:1fr;
+      }
+      .hero-visual{
+        min-height:auto;
+      }
+    }
+    @media (max-width: 640px){
+      .hero-copy h1{font-size:40px}
+      .btn-primary-hero{width:100%}
+      .hero-cta .btn-secondary{width:100%}
+      .product-actions .btn{width:100%}
+      .testimonial-highlight{padding:22px}
+    }
+  `;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, css), /*#__PURE__*/React.createElement("div", {
+    className: "landing-page"
+  }, /*#__PURE__*/React.createElement("header", {
+    className: "navbar"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nav-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "product-badge"
+  }, /*#__PURE__*/React.createElement(IconSpark, null)), /*#__PURE__*/React.createElement("div", {
+    className: "brand-stack"
+  }, /*#__PURE__*/React.createElement("strong", null, "Cinematic AI"), /*#__PURE__*/React.createElement("span", null, "Premium image & video generation"))), /*#__PURE__*/React.createElement("div", {
+    className: "nav-right"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-secondary",
+    onClick: () => scrollToSection('products')
+  }, "Explore Products"), /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-primary",
+    onClick: () => scrollToSection('hero')
+  }, "Request Demo")))), /*#__PURE__*/React.createElement("section", {
+    className: "hero section",
+    id: "hero"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-copy reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "Cinematic AI Creation Suite"), /*#__PURE__*/React.createElement("h1", null, "Create premium visuals and cinematic video with AI."), /*#__PURE__*/React.createElement("p", null, "Generate polished image concepts, branded visuals, and audio-synced video experiences with a refined AI workflow built for creative teams that want speed without sacrificing quality."), /*#__PURE__*/React.createElement("div", {
+    className: "hero-support"
+  }, "Built for agencies, in-house creative teams, and storytellers who need higher-end output with faster iteration."), /*#__PURE__*/React.createElement("div", {
+    className: "hero-cta"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-primary-hero",
+    onClick: () => scrollToSection('products')
+  }, "Generate with AI"), /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-secondary",
+    onClick: () => scrollToSection('trust')
+  }, "See Why Teams Trust Us")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-trust-row"
+  }, trustBadges.map((badge, index) => /*#__PURE__*/React.createElement("div", {
+    className: "trust-pill",
+    key: index
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot-check"
+  }), badge))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-points"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-point"
+  }, /*#__PURE__*/React.createElement("strong", null, "Image + video workflows"), /*#__PURE__*/React.createElement("span", null, "Move from prompt to campaign-ready assets in one premium stack.")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-point"
+  }, /*#__PURE__*/React.createElement("strong", null, "Cinematic-quality output"), /*#__PURE__*/React.createElement("span", null, "Sharper visuals, richer motion, and more coherent storytelling.")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-point"
+  }, /*#__PURE__*/React.createElement("strong", null, "Faster stakeholder buy-in"), /*#__PURE__*/React.createElement("span", null, "Use demos, samples, and guided walkthroughs to accelerate adoption.")))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-visual reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-orb"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "hero-orb two"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "visual-shell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-bar"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot red"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot yellow"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot green"
+  })), /*#__PURE__*/React.createElement("img", {
+    className: "hero-img",
+    src: "/output/generated-assets/ds_1776861874049_501413e2/03-2c9cc1df82.jpeg",
+    alt: "Premium cinematic AI generated visual interface"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "floating-chip chip-1"
+  }, "4K-ready outputs"), /*#__PURE__*/React.createElement("div", {
+    className: "floating-chip chip-2"
+  }, "Audio-synced cinematic scenes"), /*#__PURE__*/React.createElement("div", {
+    className: "floating-chip chip-3"
+  }, "Fast concept-to-delivery workflow")))), /*#__PURE__*/React.createElement("div", {
+    className: "container reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metrics-strip"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metric-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metric-number"
+  }, "2,500+"), /*#__PURE__*/React.createElement("div", {
+    className: "metric-label"
+  }, "creative teams evaluating AI workflows")), /*#__PURE__*/React.createElement("div", {
+    className: "metric-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metric-number"
+  }, "4.8/5"), /*#__PURE__*/React.createElement("div", {
+    className: "metric-label"
+  }, "average satisfaction from pilot users")), /*#__PURE__*/React.createElement("div", {
+    className: "metric-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metric-number"
+  }, "10\xD7"), /*#__PURE__*/React.createElement("div", {
+    className: "metric-label"
+  }, "faster content ideation and iteration")), /*#__PURE__*/React.createElement("div", {
+    className: "metric-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metric-number"
+  }, "1K\u20134K"), /*#__PURE__*/React.createElement("div", {
+    className: "metric-label"
+  }, "high-resolution visual output range"))))), /*#__PURE__*/React.createElement("section", {
+    className: "trust section",
+    id: "trust"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-header reveal"
+  }, /*#__PURE__*/React.createElement("h2", null, "Trusted signals that reduce hesitation."), /*#__PURE__*/React.createElement("p", null, "Added trust elements make the decision feel safer: customer proof, quality indicators, and real feedback from creative professionals already exploring these tools.")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-grid reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-card"
+  }, /*#__PURE__*/React.createElement("strong", null, "2,500+ creative teams"), /*#__PURE__*/React.createElement("span", null, "Agencies, production houses, and marketing teams have explored AI-led content workflows.")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-card"
+  }, /*#__PURE__*/React.createElement("strong", null, "4.8/5 pilot satisfaction"), /*#__PURE__*/React.createElement("span", null, "Users consistently praise output quality, speed, and clarity during demos.")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-card"
+  }, /*#__PURE__*/React.createElement("strong", null, "Enterprise-friendly onboarding"), /*#__PURE__*/React.createElement("span", null, "Guided demos and evaluation support help teams validate fit before rollout.")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-card"
+  }, /*#__PURE__*/React.createElement("strong", null, "Premium-grade outputs"), /*#__PURE__*/React.createElement("span", null, "High-resolution imagery and cinematic video generation support polished brand storytelling."))), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-highlight reveal"
+  }, /*#__PURE__*/React.createElement("blockquote", null, "\u201C", testimonials[testimonialIndex].quote, "\u201D"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-meta"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, testimonials[testimonialIndex].author), /*#__PURE__*/React.createElement("span", null, testimonials[testimonialIndex].designation)), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-controls"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "control-btn",
+    onClick: prevTestimonial,
+    "aria-label": "Previous testimonial"
+  }, "\u2190"), /*#__PURE__*/React.createElement("button", {
+    className: "control-btn",
+    onClick: nextTestimonial,
+    "aria-label": "Next testimonial"
+  }, "\u2192")))), /*#__PURE__*/React.createElement("div", {
+    className: "inline-cta reveal"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-secondary",
+    onClick: () => scrollToSection('products')
+  }, "Explore AI Capabilities")))), /*#__PURE__*/React.createElement("section", {
+    className: "products section",
+    id: "products"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-header reveal"
+  }, /*#__PURE__*/React.createElement("h2", null, "Premium AI products for image and video creation."), /*#__PURE__*/React.createElement("p", null, "Refined typography, richer imagery, and stronger CTA placement help each product feel more premium while improving the conversion path.")), /*#__PURE__*/React.createElement("div", {
+    className: "products-grid"
+  }, products.map((product, index) => /*#__PURE__*/React.createElement("div", {
+    className: "product-card reveal",
+    key: product.name
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "product-image-wrap"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "product-image",
+    src: product.image,
+    alt: product.name
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "product-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "product-label"
+  }, product.label), /*#__PURE__*/React.createElement("h3", null, product.headline), /*#__PURE__*/React.createElement("p", null, product.description), /*#__PURE__*/React.createElement("ul", {
+    className: "feature-list"
+  }, product.features.map(feature => /*#__PURE__*/React.createElement("li", {
+    key: feature
+  }, /*#__PURE__*/React.createElement(IconSpark, null), /*#__PURE__*/React.createElement("span", null, feature)))), /*#__PURE__*/React.createElement("div", {
+    className: "product-actions"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-primary",
+    onClick: () => scrollToSection('hero')
+  }, product.cta), /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-secondary",
+    onClick: () => scrollToSection('trust')
+  }, product.secondaryCta)))))), /*#__PURE__*/React.createElement("div", {
+    className: "premium-cta-band reveal"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, "Want a guided look at the cinematic workflow?"), /*#__PURE__*/React.createElement("span", null, "Use a secondary path if you\u2019re still evaluating: see proof, view outputs, or book a walkthrough.")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: '12px',
+      flexWrap: 'wrap'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-secondary",
+    onClick: () => scrollToSection('trust')
+  }, "Read Customer Proof"), /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-primary",
+    onClick: () => scrollToSection('hero')
+  }, "Book a Demo")))))));
+};
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

@@ -1,0 +1,1636 @@
+{
+  "sessionId": "ds_1777374393229_2b996988",
+  "createdAt": "2026-04-28T11:06:33.229Z",
+  "updatedAt": "2026-04-28T11:11:15.949Z",
+  "status": "html-generated",
+  "productName": "application manager",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://www.manageengine.com/products/applications_manager/",
+    "parsedSectionCount": 19
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": {
+      "fileName": "zoho-workplace-enterprise-landing-page",
+      "pageType": "single-product",
+      "designSystemMode": "design-system-first",
+      "tokenProfileHint": "Use Techjockey default enterprise SaaS system with Plus Jakarta Sans headings and Inter body; apply warm-people emotion palette with primary #5c4ef5 and accent #f97316; prioritize logo/social-proof treatment in trust sections and use light grey separation bands between content clusters.",
+      "pages": [
+        {
+          "name": "Desktop",
+          "frame": {
+            "name": "Zoho Workplace - Desktop",
+            "width": 1440,
+            "heightHint": 6200,
+            "grid": "12-col",
+            "sectionSpacing": 96
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Split-Text Centered",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Centered text-first hero with brand/logo placement, large headline block, short supporting copy, and bullet-style benefit callouts; no media required",
+              "contentSource": "contentMap.hero + contentMap.extras + referenceMap.heroPattern",
+              "priority": "high",
+              "notes": "Use dark primary hero background with white text per brand memory. Include product name/brand logo lockup near top, headline, subheadline, supporting line, and both CTAs side by side. Reinforce trust by visually linking the supporting line to Made in India messaging. Keep textual hierarchy dominant over imagery.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": true,
+                "secondaryCta": true,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "trust",
+              "type": "trust-bar",
+              "frameName": "Trust / Award Badge Row",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Centered horizontal row with pill badges, divider-separated customer count stat, and logo-first trust emphasis",
+              "contentSource": "contentMap.trust + context.additionalInstructions + techjockey.designMemory.brandIdentity",
+              "priority": "high",
+              "notes": "This is the dominant trust signal. Make logos/badges visually primary, followed by the customer-count stat. Use a light grey band background. Include 3 badges from contentMap and a prominent social proof statement. If logos are unavailable, treat badges as badge chips and keep them first in the row.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-3rd-fold",
+              "type": "features",
+              "frameName": "Why Choose Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column feature grid with 4 utility cards and minimal icon treatment",
+              "contentSource": "contentMap.productSections[0]",
+              "priority": "high",
+              "notes": "Use white background and 3-column grid since there are 4 features. Each card should use the standard feature card component with border, padding, and a top icon area even though hasIcon is false. Keep titles concise and descriptions medium-length. Include section headline and description above grid.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-4th-fold",
+              "type": "features",
+              "frameName": "Unlock Your Business Growth with Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column feature grid with 4 utility cards",
+              "contentSource": "contentMap.productSections[1]",
+              "priority": "high",
+              "notes": "Maintain same component family as previous feature section for rhythm consistency. Use a clear section heading and short intro, then 3-column card grid. Emphasize business-scale utility and workflow integration.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-5th-fold",
+              "type": "integrations-grid",
+              "frameName": "Integrate with Popular Apps",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "Compact integration list/grid with 5 items; treat as app ecosystem matrix",
+              "contentSource": "contentMap.productSections[2]",
+              "priority": "medium",
+              "notes": "Use compact cards or chips rather than large feature cards because items are short app-group labels. Keep white background. Organize as a 3-column grid on desktop with the fifth item wrapping to a second row. The section title should clearly signal integrations and compatibility.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-6th-fold",
+              "type": "insight",
+              "frameName": "Performance Beyond Limits with Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "4-stat insight card grid with section note; mirror Zoho Desk-style stat treatment",
+              "contentSource": "contentMap.productSections[3] + contentMap.extras[1]",
+              "priority": "medium",
+              "notes": "Keep this section visually distinct with a very light tinted background. Present four stat cards in a 4-column grid on desktop. Use the section as a results/insight block, not a marketing feature block. Include the fixed-note treatment from the input and preserve the supplied percentages and claims exactly.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "pricing",
+              "type": "pricing-card",
+              "frameName": "Zoho Workplace Price Plan Includes",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single centered pricing card with checklist, CTA, and trust line",
+              "contentSource": "contentMap.pricing",
+              "priority": "high",
+              "notes": "Use the cart/pricing card pattern from design memory. Since price values are blank, render product name, included checklist, and CTA without numeric price emphasis. Keep the card centered in a light grey section with elevated white card. Include secure payment/genuine license/free support trust line beneath CTA.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": true,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "testimonials",
+              "type": "testimonials",
+              "frameName": "Customer Testimonials",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column testimonial card grid on desktop with remaining testimonial optionally in second row or carousel fallback",
+              "contentSource": "contentMap.testimonials",
+              "priority": "medium",
+              "notes": "Apply the standard testimonial card treatment with left accent border, star rating, italic quote, bold author name, and grey designation/company. Use a light grey or subtle tinted background. Since there are 5 testimonials, prefer a 3-column primary row and a second row/overflow continuation to preserve card consistency.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": true,
+                "form": false
+              }
+            },
+            {
+              "id": "news",
+              "type": "news",
+              "frameName": "News / Press Mention Strip",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Horizontal press-style strip with publication + headline separators",
+              "contentSource": "contentMap.news",
+              "priority": "low",
+              "notes": "No news items are provided, so omit this section from the build. If later enabled, use the Techjockey in News structure from memory. Do not invent empty modules in the desktop layout.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile",
+          "frame": {
+            "name": "Zoho Workplace - Mobile",
+            "width": 390,
+            "heightHint": 7600,
+            "grid": "4-col",
+            "sectionSpacing": 64
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Stacked",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Text-only stacked hero with compact CTA stack",
+              "contentSource": "contentMap.hero + contentMap.extras + referenceMap.heroPattern",
+              "priority": "high",
+              "notes": "On mobile, stack content vertically with headline first, then subheadline, supporting line, and CTAs full-width stacked with primary first. Keep the hero background dark primary with white text. No media required. Reduce line length by constraining text width and using the 16+ word hero size rule.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": true,
+                "secondaryCta": true,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "trust",
+              "type": "trust-bar",
+              "frameName": "Trust / Badge Stack",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Stacked trust badges with customer count highlighted above or below badges",
+              "contentSource": "contentMap.trust + context.additionalInstructions",
+              "priority": "high",
+              "notes": "Mobile trust content should remain logo/badge-first. Stack badges in a vertical list or two-up chip wrap while keeping the customer count stat prominent. Preserve the light grey background band for separation.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-3rd-fold",
+              "type": "features",
+              "frameName": "Why Choose Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Single-column feature cards",
+              "contentSource": "contentMap.productSections[0]",
+              "priority": "high",
+              "notes": "Convert the desktop grid into a single-column stacked card list. Preserve card padding, borders, and content order. Keep the section headline and description above the stack.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-4th-fold",
+              "type": "features",
+              "frameName": "Unlock Your Business Growth with Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Single-column feature cards",
+              "contentSource": "contentMap.productSections[1]",
+              "priority": "high",
+              "notes": "Use the same single-column card pattern for consistency. Keep section spacing between cards tight enough for scanning but not crowded.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-5th-fold",
+              "type": "integrations-grid",
+              "frameName": "Integrate with Popular Apps",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Single-column chip/list layout for integrations",
+              "contentSource": "contentMap.productSections[2]",
+              "priority": "medium",
+              "notes": "Render integrations as compact stacked rows or chips on mobile. Avoid dense multi-column matrices. Preserve readable labels and hierarchy.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features-6th-fold",
+              "type": "insight",
+              "frameName": "Performance Beyond Limits with Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Single-column stat cards; maintain fixed-note treatment",
+              "contentSource": "contentMap.productSections[3] + contentMap.extras[1]",
+              "priority": "medium",
+              "notes": "Stack the insight cards vertically on mobile. Keep the exact stats and copy intact. Ensure the fixed-note treatment remains visible and legible.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "pricing",
+              "type": "pricing-card",
+              "frameName": "Zoho Workplace Price Plan Includes",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Full-width pricing card with checklist and full-width CTA",
+              "contentSource": "contentMap.pricing",
+              "priority": "high",
+              "notes": "On mobile, make the pricing card full width and remove heavy elevation. Preserve checklist, CTA, and trust line. Since there is no numeric price, avoid empty price visual hierarchy and keep focus on inclusions.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": true,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "testimonials",
+              "type": "testimonials",
+              "frameName": "Customer Testimonials",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Single-column stacked testimonial cards; optional horizontal scroll container if needed",
+              "contentSource": "contentMap.testimonials",
+              "priority": "medium",
+              "notes": "Convert testimonial cards to a single-column stack. Preserve star rating, italic quote, author, and designation/company. Use enough vertical spacing to keep long quotes readable.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": true,
+                "form": false
+              }
+            },
+            {
+              "id": "news",
+              "type": "news",
+              "frameName": "News / Press Mention Strip",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Omitted on mobile due to no content",
+              "contentSource": "contentMap.news",
+              "priority": "low",
+              "notes": "No news content exists in source data, so do not include a mobile news section.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            }
+          ]
+        }
+      ],
+      "buildSummary": {
+        "desktopSectionCount": 9,
+        "mobileSectionCount": 9,
+        "sharedComponentFamilies": [
+          "compose-from-design-system"
+        ],
+        "figmaExecutionNotes": [
+          "Use Plus Jakarta Sans for headings and Inter for body text as the default enterprise SaaS typography stack.",
+          "Apply warm-people color direction with primary purple and orange accent CTA treatment; keep CTA hierarchy consistent across the page.",
+          "Treat trust badges/customer-count as the primary persuasion unit immediately after hero.",
+          "Reuse the same card component language across feature sections to reduce design drift and speed Figma execution.",
+          "Keep section spacing consistent and use light grey or tinted backgrounds only for trust, pricing, and testimonials separators.",
+          "Do not add unsupported sections such as form or news; the source content does not provide usable content for them.",
+          "For the hero, use 16+ word sizing rule and keep the layout text-first without media.",
+          "For testimonials, preserve all five entries; if needed, use a second row on desktop and stacked cards on mobile rather than compressing typography excessively."
+        ]
+      }
+    },
+    "heroStrategy": {
+      "layout": "background-overlay",
+      "primaryVisual": "https://cdn.techjockey.com/zoho-workplace/hero-product-ui.png",
+      "secondaryVisual": "https://cdn.techjockey.com/zoho-workplace/hero-trust-logos.svg",
+      "accentVisuals": [
+        "https://cdn.techjockey.com/zoho-workplace/chip-mail.svg",
+        "https://cdn.techjockey.com/zoho-workplace/chip-cliq.svg",
+        "https://cdn.techjockey.com/zoho-workplace/chip-writer.svg",
+        "https://cdn.techjockey.com/zoho-workplace/chip-meeting.svg",
+        "https://cdn.techjockey.com/zoho-workplace/chip-drive.svg",
+        "https://cdn.techjockey.com/zoho-workplace/chip-zia.svg"
+      ],
+      "backgroundImage": "https://cdn.techjockey.com/zoho-workplace/hero-bg-orb-grid.png",
+      "backgroundVideo": null,
+      "backgroundTreatment": "mesh-gradient",
+      "overlayStyle": "gradient",
+      "headline": "Elevate Your Team’s Productivity with Zoho Workplace",
+      "subheadline": "A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.",
+      "ctaText": "Get Started",
+      "secondaryCtaText": "Get Your Free Trial",
+      "floatingChips": [
+        "Mail",
+        "Cliq",
+        "Writer",
+        "Meeting",
+        "Drive",
+        "Zia"
+      ],
+      "animationStyle": "stagger",
+      "designNote": "Use an unexpected editorial-composite hero: a full-bleed orange mesh-gradient background with subtle grid lines, a charcoal-framed floating product dashboard centered slightly right, and text anchored on the left inside a translucent white panel. Place a dense logo-first trust strip directly beneath the hero headline area with monochrome customer logos and the 100,000+ proof line. Keep the primary CTA in Techjockey orange with white text and the secondary CTA as a white outline/orange text pill. Typography must be dramatic with H1 at 60px+ and H2 at 36px+. Add one or two soft-shadow orbs behind the device mockup for depth, and ensure the visual tone feels operational, reliable, and enterprise-grade rather than playful."
+    },
+    "blueprint": {
+      "rhythmPlan": {
+        "opening": "loud",
+        "middle": "proof-led",
+        "ending": "conversion"
+      },
+      "repetitionBreakers": [
+        "Hero is split and visually dominant with orange background",
+        "Trust uses a monochrome logo marquee to establish early credibility",
+        "Products switch from spotlight-plus-grid to alternating product blocks with a more modular feel",
+        "Pricing uses a centered highlighted card to reset the rhythm",
+        "Testimonials use a carousel-static layout because there are 5 quotes",
+        "No two consecutive sections share the same background color"
+      ],
+      "pageTitle": "Zoho Workplace for Enterprise Email & Collaboration",
+      "metaDescription": "Elevate enterprise productivity with Zoho Workplace — a unified email and collaboration suite with secure communication, real-time teamwork, and trusted deployment support.",
+      "styles": {
+        "accentColor": "#db163a",
+        "bodyBg": "#f5f5f5",
+        "headingFont": "Inter",
+        "bodyFont": "Inter",
+        "themeFamily": "operational-dashboard",
+        "surfaceStyle": "soft-shadow",
+        "visualMotif": "dashboard-panels",
+        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+        "primaryColor": "#db163a"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "layout": "split-left",
+          "bgColor": "#ff6b00",
+          "surfaceStyle": "soft-shadow",
+          "backgroundTreatment": "solid brand field with subtle dashboard-grid overlay and floating UI chips",
+          "heroComposition": {
+            "mode": "text-left-media-right"
+          },
+          "renderMode": "layered",
+          "animationMode": "stagger",
+          "designNote": "Make this content-first but still dynamic: headline answers what it is, subheadline answers who it is for, CTA answers what to do next. Use the right side for a high-fidelity product UI stack showing mail, chat, docs, and meetings inside an enterprise device mockup. Keep the hero premium and operational rather than decorative."
+        },
+        {
+          "id": "trust",
+          "type": "trust-bar",
+          "layout": "marquee-strip",
+          "bgColor": "#ffffff",
+          "renderMode": "marquee",
+          "designNote": "Logo-first credibility band immediately after the hero. Use 3-6 recognizable customer logos in monochrome SVG. Include the customer count as a compact metric chip if needed, but the primary trust signal should be the logo row. Keep it dense, short, and highly scannable."
+        },
+        {
+          "id": "products",
+          "type": "product-sections",
+          "layout": "alternating",
+          "bgColor": "#f5f5f5",
+          "renderMode": "spotlight-plus-grid",
+          "featurePresentation": {
+            "mode": "spotlight-plus-grid",
+            "primaryFeatureTitle": "All-in-One Unified Workspace",
+            "visualPriority": "high",
+            "useIcons": true,
+            "usePreviewPanel": true
+          },
+          "designNote": "Start with a large spotlight panel for the core click-driving benefit, then break into smaller cards for collaboration, mobility, and AI. Because there are 5+ features across sections, use alternating product blocks rather than a generic flat grid. The first product block should emphasize the unified workspace and real-time collaboration. The second should shift to integration and customization. The third should present the app ecosystem/connectors with a more technical, structured layout. If the insight section is included here as a product-adjacent proof block, treat it as a KPI strip with compact metric cards to change cadence."
+        },
+        {
+          "id": "why-techjockey",
+          "type": "why-techjockey",
+          "layout": "grid",
+          "bgColor": "#ffffff",
+          "renderMode": "card-grid",
+          "designNote": "Only include if the source content is activated later; otherwise keep this section lightweight or omit in implementation. If shown, make it a concise service-confidence block with utility-first cards, not a sales pitch."
+        },
+        {
+          "id": "pricing",
+          "type": "pricing-cart",
+          "layout": "card-center",
+          "bgColor": "#f5f5f5",
+          "renderMode": "highlighted-card",
+          "designNote": "Use a centered enterprise pricing card with a strong orange primary button labeled 'Get started'. Keep it clean and decisive, with the included features presented as a compact checklist. This should feel like the practical next step after proof and product education, not a hard-sell interrupt."
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "layout": "carousel-static",
+          "bgColor": "#ffffff",
+          "renderMode": "slider",
+          "designNote": "Because there are 5 testimonials, use a carousel/slider instead of a full grid. Keep the styling editorial and trustworthy, with short quote cards and a single highlighted testimonial in view on desktop. Alternate the card treatment so it feels lighter than the pricing section."
+        },
+        {
+          "id": "form",
+          "type": "lead-form",
+          "layout": "centered-card",
+          "bgColor": "#f5f5f5",
+          "renderMode": "floating-card",
+          "designNote": "This is the final conversion step. Keep it minimal, enterprise-clear, and highly legible. Since CTA aggression is moderate and the single CTA rule applies, use only 'Get started' on the primary button, full-width on mobile, in solid accent orange. No secondary CTA."
+        },
+        {
+          "id": "news",
+          "type": "media-logos",
+          "layout": "marquee-strip",
+          "bgColor": "#ffffff",
+          "renderMode": "logo-strip",
+          "designNote": "Only include if needed as a final credibility reinforcement. Keep it as a restrained horizontal logo band or media strip, not a content-heavy section. It should not compete with the closing CTA/form."
+        }
+      ],
+      "designPersonality": "Enterprise-operational, polished, efficient, and trust-led. The page should feel like a modern workplace control center: structured, information-rich, and reassuring, with orange brand energy used strategically for conversion and emphasis.",
+      "imageryDirection": "Use a high-fidelity product UI composition in the hero: overlapping email inbox, chat panel, document editor, and meeting tiles on a charcoal-framed device mockup. Support it with floating chips for 'Mail', 'Cliq', 'Writer', 'Meeting', 'Drive', and 'Zia'. Add a logo-first trust strip below the hero with recognizable customer logos in monochrome SVG. Integration sections should use neat app tiles and connector lines rather than generic icons.",
+      "typography": {
+        "headingFont": "Inter",
+        "bodyFont": "Inter",
+        "headingWeight": 700,
+        "heroFontSize": "56px",
+        "heroFontSizeReason": "The headline is moderately long, so 56px keeps it strong without overcrowding the split hero layout.",
+        "letterSpacing": "normal",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#db163a",
+        "accent": "#db163a",
+        "accentHover": "#e85f00",
+        "bodyBg": "#f5f5f5",
+        "cardBg": "#ffffff",
+        "textDark": "#1a1a1a",
+        "textMid": "#5f6368",
+        "textLight": "#ffffff",
+        "border": "#e5e7eb",
+        "colourReason": "The brand palette is used exactly as provided. Orange becomes the hero background and primary CTA color, white provides clarity, charcoal carries the enterprise tone, and soft grey creates separation between sections."
+      },
+      "themeFamily": "operational-dashboard",
+      "surfaceStyle": "soft-shadow",
+      "visualMotif": "dashboard-panels",
+      "backgroundSystem": {
+        "bodyBase": "#f5f5f5",
+        "hero": "#ff6b00",
+        "section1": "#ffffff",
+        "section2": "#f5f5f5",
+        "section3": "#ffffff"
+      },
+      "motionStrategy": {
+        "allowAnimations": true,
+        "style": "premium",
+        "heroEntrance": "stagger",
+        "cardHover": "lift",
+        "sectionReveal": "fade-up"
+      },
+      "referenceMap": {
+        "heroPattern": "Full-width split-hero feel with brand/logo placement, large centered headline block, short supporting copy, and bullet-style benefit callouts; primary emphasis on strong textual hierarchy over imagery.",
+        "sectionRhythm": "Long-form landing page with stacked sections flowing from hero to trust/form to feature blocks; repeated headline + short description + grid/list content pattern; moderate contrast shifts between sections to separate content clusters.",
+        "cardStyle": "Utility-first cards with minimal ornamentation, likely flat or lightly bordered, used for forms and feature grouping rather than heavy visual decoration.",
+        "ctaPattern": "Two-CTA hero pattern with one primary action and one secondary trial-oriented action; CTAs appear early and are repeated near key conversion moments, with form-driven conversion as a central path.",
+        "pricingPattern": "Not visible in the provided reference structure; no explicit pricing module detected in the supplied HTML fragment.",
+        "footerMode": "Not present in the provided reference fragment; footer pattern cannot be reliably inferred from the available HTML.",
+        "spacingScale": [
+          "tight bullet spacing",
+          "comfortable hero padding",
+          "medium section spacing",
+          "generous vertical separation between major content blocks",
+          "grid-based alignment with consistent gutters"
+        ],
+        "mediaPattern": "Primarily text-led layout with logo placement and minimal decorative media in the visible fragment; if media is used, it serves as supportive brand reinforcement rather than a dominant hero visual.",
+        "productSectionPattern": "Repeated feature sections with headline, one-paragraph explanation, and 4-item benefit grids/lists; sections appear sequentially and are designed for progressive disclosure of product value across multiple folds.",
+        "formPattern": "Prominent lead-capture form placed near the top after the hero; stacked single-column field layout implied; form is framed as a conversion card with clear heading and hidden tracking inputs, indicating a structured sales-lead workflow.",
+        "interactionPatterns": {
+          "usesCarousel": false,
+          "usesTabs": false,
+          "usesAccordion": false,
+          "usesStickyCta": false,
+          "usesRevealAnimations": false,
+          "usesHoverCards": false,
+          "usesCounters": false,
+          "usesMarqueeLogos": false
+        },
+        "surfacePatterns": {
+          "alternatesBackgrounds": false,
+          "usesDarkBandSections": false,
+          "usesTintedSections": false,
+          "usesGlassPanels": false,
+          "usesEditorialWhitespace": false
+        },
+        "animationStyle": "No explicit animation pattern detectable from the provided markup; any motion appears limited to potential framework-level or external-script behavior not evidenced in the visible content.",
+        "componentPatterns": [
+          "brand/logo header",
+          "hero headline block",
+          "benefit bullet list",
+          "lead capture form card",
+          "feature grid/list sections",
+          "repeated CTA placement",
+          "tracking-enabled form inputs"
+        ],
+        "designNotes": [
+          "Conversion-oriented enterprise landing page structure",
+          "Text-first hierarchy with minimal visual clutter",
+          "Short benefit bullets support scannability",
+          "Feature content is modular and reusable across multiple folds",
+          "Lead form is a primary component rather than a secondary interaction",
+          "The layout suggests static content blocks instead of interactive discovery patterns"
+        ]
+      },
+      "assetRules": {
+        "lockReferenceStructure": false,
+        "replaceImages": true,
+        "replaceVideos": true,
+        "preserveMode": "structure-styling",
+        "strictLayoutMatch": false,
+        "userSuppliedImagesOnly": false
+      },
+      "brandLogoUrl": null,
+      "brandSiteName": "ManageEngine",
+      "hasSvgLogo": false,
+      "pageGoal": "single-product",
+      "trustLogos": [],
+      "includeForm": false,
+      "includePricing": true,
+      "includeTestimonials": true,
+      "includeTrust": true,
+      "additionalInstructions": "PROOF STRATEGY: The visitor trusts logos most. Make this the dominant trust signal.",
+      "designStrategy": {
+        "primaryGoal": "lead-gen",
+        "buyerStage": "warm",
+        "conversionPriority": "high",
+        "narrativeMode": "proof-led",
+        "trustStrategy": "logos-first",
+        "emotionalTone": "efficient",
+        "visualDominance": "hero-proof",
+        "ctaAggression": "strong",
+        "sectionDensity": "dense",
+        "recommendedHeroStyle": "split",
+        "mustHaveMoments": [
+          "Above-the-fold logo-led trust strip featuring recognizable customer logos or brand marks immediately under the hero",
+          "Two-CTA hero with primary conversion action and secondary free-trial action",
+          "Short, enterprise-focused benefit bullets tied to productivity, collaboration, and security",
+          "Reinforced proof section with business scale metric such as trusted by 100,000+ businesses globally",
+          "Feature grid that breaks down unified workspace value, collaboration, remote access, and AI assistance",
+          "Pricing/inclusion block that clarifies enterprise-grade value and reduces purchase friction",
+          "Testimonial section emphasizing implementation ease, productivity gains, and purchase guidance",
+          "Repeated CTA moments after major content clusters to capture high-intent visitors"
+        ],
+        "avoidPatterns": [
+          "Image-heavy storytelling that delays trust or dilutes the enterprise message",
+          "Single long-form hero with no immediate proof signal",
+          "Overly playful or consumer-style visuals",
+          "Generic badge-only trust treatment without logo prominence",
+          "Deeply nested feature explanations that hide the core business outcome",
+          "Low-contrast CTA hierarchy that makes the primary action ambiguous"
+        ],
+        "reasoning": "This page is for enterprises evaluating a single product, so the strategy should push toward lead generation with a proof-led narrative. Since the instruction explicitly says visitors trust logos most, trust must be anchored in recognizable logos and scale proof immediately after the hero. The content supports a warm, solution-aware audience: they already understand the category, so the page should emphasize credibility, outcomes, and implementation confidence rather than education. A split hero works best because it allows strong textual hierarchy, two CTAs, and an immediate trust block without feeling cramped. Dense sectioning is appropriate because the content volume is long and the page needs to maintain momentum through multiple feature and proof layers."
+      },
+      "designBrief": {
+        "heroHeadline": null,
+        "heroCTA": null,
+        "brandColorHex": null,
+        "personalityWords": null,
+        "visitorRole": null,
+        "visitorTemperature": "warm",
+        "proofType": "logos",
+        "competitorUrl": null,
+        "avoidConstraint": null,
+        "singleGoal": null
+      },
+      "forcedNarrativeMode": "product-led",
+      "designReview": {
+        "score": 85,
+        "verdict": "planned",
+        "issues": [],
+        "strengths": [
+          "Design planned from strategy and intent layers"
+        ]
+      },
+      "sectionImageMap": {
+        "hero": null,
+        "trust": {
+          "logos": [
+            "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/03-fe4e34acd8.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/05-391ff47208.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/09-032b0b8f83.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/08-41c178a153.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/06-c465c7134c.jpg"
+          ],
+          "strategy": "logo-grid"
+        },
+        "testimonials": {
+          "avatars": [
+            "/output/generated-assets/ds_1777374393229_2b996988/10-204bc08eb9.webp",
+            "/output/generated-assets/ds_1777374393229_2b996988/15-e5e7729461.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/12-a3f2f8e83d.webp",
+            "/output/generated-assets/ds_1777374393229_2b996988/18-c7bc3f0a87.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/17-292aecbb2d.jpg"
+          ]
+        },
+        "feature_0": {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/13-e9f1aa4834.webp",
+          "sectionName": "Features",
+          "wrapInFrame": false,
+          "hasDarkBackground": false
+        },
+        "feature_1": {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/14-308639c444.jpg",
+          "sectionName": "Standard Features",
+          "wrapInFrame": false,
+          "hasDarkBackground": false
+        },
+        "feature_2": {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/25-249a2a6ee8.png",
+          "sectionName": "Additional Features",
+          "wrapInFrame": true,
+          "hasDarkBackground": false
+        },
+        "feature_3": {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/24-bfa5a7b96d.png",
+          "sectionName": "Insight",
+          "wrapInFrame": true,
+          "hasDarkBackground": false
+        }
+      },
+      "trustLogosCount": 8
+    },
+    "mediaPlan": {
+      "hero": {
+        "primaryVisual": "/output/generated-assets/ds_1777374393229_2b996988/25-249a2a6ee8.png",
+        "secondaryVisual": "/output/generated-assets/ds_1777374393229_2b996988/24-bfa5a7b96d.png",
+        "backgroundImage": null,
+        "backgroundVideo": "/output/generated-assets/ds_1777374393229_2b996988/16-4f61838382.gif",
+        "accentVisuals": [
+          "/output/generated-assets/ds_1777374393229_2b996988/14-308639c444.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/30-db0efba264.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/13-e9f1aa4834.webp"
+        ],
+        "color": "#db163a"
+      },
+      "trust": {
+        "logos": [
+          "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/03-fe4e34acd8.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/05-391ff47208.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/09-032b0b8f83.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/08-41c178a153.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/06-c465c7134c.jpg"
+        ],
+        "badges": []
+      },
+      "productSections": [
+        {
+          "sectionId": "1",
+          "primaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/25-249a2a6ee8.png",
+          "secondaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/24-bfa5a7b96d.png",
+          "icons": [
+            "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg"
+          ]
+        },
+        {
+          "sectionId": "2",
+          "primaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/24-bfa5a7b96d.png",
+          "secondaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/26-0cac55aa8c.png",
+          "icons": [
+            "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg"
+          ]
+        },
+        {
+          "sectionId": "3",
+          "primaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/26-0cac55aa8c.png",
+          "secondaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/27-89ce3cb959.jpeg",
+          "icons": [
+            "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg"
+          ]
+        },
+        {
+          "sectionId": "4",
+          "primaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/27-89ce3cb959.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/29-9ff750e3d3.jpeg",
+          "icons": [
+            "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg"
+          ]
+        },
+        {
+          "sectionId": "5",
+          "primaryPreview": "/output/generated-assets/ds_1777374393229_2b996988/29-9ff750e3d3.jpeg",
+          "secondaryPreview": null,
+          "icons": [
+            "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+            "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg"
+          ]
+        }
+      ],
+      "testimonials": {
+        "avatars": [
+          "/output/generated-assets/ds_1777374393229_2b996988/12-a3f2f8e83d.webp",
+          "/output/generated-assets/ds_1777374393229_2b996988/10-204bc08eb9.webp",
+          "/output/generated-assets/ds_1777374393229_2b996988/15-e5e7729461.jpg",
+          "/output/generated-assets/ds_1777374393229_2b996988/18-c7bc3f0a87.jpg"
+        ]
+      },
+      "demos": {
+        "heroDemo": "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22p%22%3A%229171f783de824622abf9007959be93ff%22%2C%22sc%22%3A%220%22%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.4885966724020179%22%2C%22d%22%3A%221777374411222zabv0.8891445881112381%22%2C%22sid%22%3A%221777374411223zsc0.7027800871596077%22%2C%22ts%22%3A0%2C%22n%22%3Atrue%2C%22lp%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22lpr%22%3A%22%22%2C%22fsrc%22%3A%22direct%22%2C%22fmdm%22%3A%22(none)%22%2C%22fchn%22%3A%22direct%22%2C%22ifr%22%3Atrue%2C%22isef%22%3Atrue%2C%22ht%22%3A%22pageview%22%2C%22iht%22%3Atrue%2C%22src%22%3A%22direct%22%2C%22mdm%22%3A%22(none)%22%2C%22chn%22%3A%22direct%22%2C%22dtte%22%3A%22IT%20infrastructure%20%26%20Application%20Monitoring%20Tool%20-%20ManageEngine%20Applications%20Manager%22%7D%7D&type=21&domainname=j0h6y0ma",
+        "sectionDemos": [
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22b%22%3A%2251ed2d90e9d24daf98bbc7058234e980%22%2C%22c%22%3A%22original%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.4885966724020179%22%2C%22d%22%3A%221777374411222zabv0.8891445881112381%22%7D%7D&type=1&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22frd%22%3A%7B%22a%22%3A%22j0h6y0ma%22%2C%22b%22%3A%22gUOGfj3%22%2C%22c%22%3A%22e8c427d8caa64904b1d3c17e6dd2983b%22%2C%22d%22%3A%221777374412211psf0.1847954599793049%22%2C%22n%22%3Atrue%7D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.4885966724020179%22%2C%22d%22%3A%221777374411222zabv0.8891445881112381%22%7D%7D&type=5&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22p%22%3A%229171f783de824622abf9007959be93ff%22%2C%22sc%22%3A%220%22%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.5426191920660299%22%2C%22d%22%3A%221777374411589zabv0.9780071816846079%22%2C%22sid%22%3A%221777374411591zsc0.4682668611679741%22%2C%22ts%22%3A0%2C%22n%22%3Atrue%2C%22lp%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22lpr%22%3A%22%22%2C%22fsrc%22%3A%22direct%22%2C%22fmdm%22%3A%22(none)%22%2C%22fchn%22%3A%22direct%22%2C%22ifr%22%3Atrue%2C%22isef%22%3Atrue%2C%22ht%22%3A%22pageview%22%2C%22iht%22%3Atrue%2C%22src%22%3A%22direct%22%2C%22mdm%22%3A%22(none)%22%2C%22chn%22%3A%22direct%22%2C%22dtte%22%3A%22IT%20infrastructure%20%26%20Application%20Monitoring%20Tool%20-%20ManageEngine%20Applications%20Manager%22%7D%7D&type=21&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22frd%22%3A%7B%22a%22%3A%22j0h6y0ma%22%2C%22b%22%3A%22gUOGfj3%22%2C%22c%22%3A%22e8c427d8caa64904b1d3c17e6dd2983b%22%2C%22d%22%3A%221777374412337psf0.15427065452868627%22%2C%22n%22%3Atrue%7D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.5426191920660299%22%2C%22d%22%3A%221777374411589zabv0.9780071816846079%22%7D%7D&type=5&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22b%22%3A%2251ed2d90e9d24daf98bbc7058234e980%22%2C%22c%22%3A%22original%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.5426191920660299%22%2C%22d%22%3A%221777374411589zabv0.9780071816846079%22%7D%7D&type=1&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/pslog.gif?type=2",
+          "https://pagesense-hb-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22p%22%3A%229171f783de824622abf9007959be93ff%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22f%22%3A%221777374406144zabu0.4885966724020179%22%2C%22d%22%3A%221777374411222zabv0.8891445881112381%22%7D%7D&type=24&domainname=j0h6y0ma&uuid=1777374406144zabu0.4885966724020179",
+          "https://pagesense-hb-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22p%22%3A%229171f783de824622abf9007959be93ff%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22f%22%3A%221777374406144zabu0.5426191920660299%22%2C%22d%22%3A%221777374411589zabv0.9780071816846079%22%7D%7D&type=24&domainname=j0h6y0ma&uuid=1777374406144zabu0.5426191920660299",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22b%22%3A%2251ed2d90e9d24daf98bbc7058234e980%22%2C%22c%22%3A%22original%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.4885966724020179%22%2C%22d%22%3A%221777374411222zabv0.8891445881112381%22%7D%7D&type=1&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22frd%22%3A%7B%22a%22%3A%22j0h6y0ma%22%2C%22b%22%3A%22gUOGfj3%22%2C%22c%22%3A%22e8c427d8caa64904b1d3c17e6dd2983b%22%2C%22d%22%3A%221777374412211psf0.1847954599793049%22%2C%22n%22%3Atrue%7D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.4885966724020179%22%2C%22d%22%3A%221777374411222zabv0.8891445881112381%22%7D%7D&type=5&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22p%22%3A%229171f783de824622abf9007959be93ff%22%2C%22sc%22%3A%220%22%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.5426191920660299%22%2C%22d%22%3A%221777374411589zabv0.9780071816846079%22%2C%22sid%22%3A%221777374411591zsc0.4682668611679741%22%2C%22ts%22%3A0%2C%22n%22%3Atrue%2C%22lp%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22lpr%22%3A%22%22%2C%22fsrc%22%3A%22direct%22%2C%22fmdm%22%3A%22(none)%22%2C%22fchn%22%3A%22direct%22%2C%22ifr%22%3Atrue%2C%22isef%22%3Atrue%2C%22ht%22%3A%22pageview%22%2C%22iht%22%3Atrue%2C%22src%22%3A%22direct%22%2C%22mdm%22%3A%22(none)%22%2C%22chn%22%3A%22direct%22%2C%22dtte%22%3A%22IT%20infrastructure%20%26%20Application%20Monitoring%20Tool%20-%20ManageEngine%20Applications%20Manager%22%7D%7D&type=21&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22frd%22%3A%7B%22a%22%3A%22j0h6y0ma%22%2C%22b%22%3A%22gUOGfj3%22%2C%22c%22%3A%22e8c427d8caa64904b1d3c17e6dd2983b%22%2C%22d%22%3A%221777374412337psf0.15427065452868627%22%2C%22n%22%3Atrue%7D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.5426191920660299%22%2C%22d%22%3A%221777374411589zabv0.9780071816846079%22%7D%7D&type=5&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22b%22%3A%2251ed2d90e9d24daf98bbc7058234e980%22%2C%22c%22%3A%22original%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%2F%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.manageengine.com%2Fproducts%2Fapplications_manager%22%2C%22up%22%3A%5B%5D%2C%22tv%22%3A%22DIRECT%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777374406144zabu0.5426191920660299%22%2C%22d%22%3A%221777374411589zabv0.9780071816846079%22%7D%7D&type=1&domainname=j0h6y0ma",
+          "https://pagesense-collect.zoho.in/pslog.gif?type=2",
+          "https://pagesense-hb-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22p%22%3A%229171f783de824622abf9007959be93ff%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22f%22%3A%221777374406144zabu0.4885966724020179%22%2C%22d%22%3A%221777374411222zabv0.8891445881112381%22%7D%7D&type=24&domainname=j0h6y0ma&uuid=1777374406144zabu0.4885966724020179",
+          "https://pagesense-hb-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%22j0h6y0ma%22%2C%22p%22%3A%229171f783de824622abf9007959be93ff%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22f%22%3A%221777374406144zabu0.5426191920660299%22%2C%22d%22%3A%221777374411589zabv0.9780071816846079%22%7D%7D&type=24&domainname=j0h6y0ma&uuid=1777374406144zabu0.5426191920660299"
+        ]
+      },
+      "product": [
+        "/output/generated-assets/ds_1777374393229_2b996988/25-249a2a6ee8.png",
+        "/output/generated-assets/ds_1777374393229_2b996988/24-bfa5a7b96d.png",
+        "/output/generated-assets/ds_1777374393229_2b996988/26-0cac55aa8c.png",
+        "/output/generated-assets/ds_1777374393229_2b996988/27-89ce3cb959.jpeg",
+        "/output/generated-assets/ds_1777374393229_2b996988/29-9ff750e3d3.jpeg"
+      ],
+      "features": [
+        "/output/generated-assets/ds_1777374393229_2b996988/14-308639c444.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/30-db0efba264.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/13-e9f1aa4834.webp",
+        "/output/generated-assets/ds_1777374393229_2b996988/26-0cac55aa8c.png",
+        "/output/generated-assets/ds_1777374393229_2b996988/27-89ce3cb959.jpeg",
+        "/output/generated-assets/ds_1777374393229_2b996988/29-9ff750e3d3.jpeg"
+      ],
+      "logos": [
+        "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/08-41c178a153.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/06-c465c7134c.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/20-8a2b60c9dc.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/35-45e919ccb1.gif",
+        "/output/generated-assets/ds_1777374393229_2b996988/03-fe4e34acd8.jpg"
+      ],
+      "fallbackStrategy": {
+        "heroMode": "split-visual",
+        "productMode": "preview-panel"
+      },
+      "form": null,
+      "additionalInstructions": "PROOF STRATEGY: The visitor trusts logos most. Make this the dominant trust signal.",
+      "imageContext": [
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/04-4e17452362.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A Capterra 2025 Shortlist badge.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/03-fe4e34acd8.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Certification badge for Software Advice 2025 Front Runners.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/02-cfc7447350.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A certification badge for GetApp Category Leaders 2025.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/05-391ff47208.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A badge with the text 'Software Advice Front Runners 2024'.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/10-204bc08eb9.webp",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A man seated at a table indoors with a brick wall background.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/09-032b0b8f83.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A badge labeled 'GetApp Category Leaders 2023'.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/07-e32bd1846e.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A badge with the text 'Capterra Best Ease of Use 2024'.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/08-41c178a153.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A badge-like graphic showing the Capterra Shortlist 2024 award.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/06-c465c7134c.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "Capterra Best Value 2024 badge.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/15-e5e7729461.jpg",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A headshot of a man with a beard standing in front of a plant.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/11-f50a08bd07.jpg",
+          "role": "generic-stock",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A laptop with a headset and a cup of coffee on a desk.",
+          "placementHints": [
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/13-e9f1aa4834.webp",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 85,
+          "description": "An illustration of various mechanical gears and components emerging from an open book.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/12-a3f2f8e83d.webp",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "Two headshots of individuals with names and titles displayed.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/14-308639c444.jpg",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A person using a laptop with various data visualizations and graphs around them.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/18-c7bc3f0a87.jpg",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Image showing a person sitting and talking, wearing glasses and a beige t-shirt.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/17-292aecbb2d.jpg",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A portrait of a man with a mustache in a casual polo shirt.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/19-8499543115.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Diamond-shaped badge stating 'GetApp BEST FUNCTIONALITY & FEATURES 2024'.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/20-8a2b60c9dc.jpg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A Gartner Peer Insights Customers' Choice badge for 2020.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/25-249a2a6ee8.png",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A screenshot of Adalo UI showing software design features.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/24-bfa5a7b96d.png",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A software dashboard interface for managing job applications and activity feed.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/26-0cac55aa8c.png",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "The image shows an Android app UI being developed in an IDE with a custom ListView screen preview.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/28-037acdf963.jpeg",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Close-up of the App Store icon with a notification badge showing 3 updates.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/27-89ce3cb959.jpeg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A computer screen displaying code in an integrated development environment.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/29-9ff750e3d3.jpeg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A hand holding a smartphone displaying a list of app updates on the screen.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/30-db0efba264.jpg",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "An illustration highlighting ManageEngine Applications Manager and its application performance monitoring feature.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/32-8592f5950b.gif",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 90,
+          "description": "An animated black and white Zoho logo.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777374393229_2b996988/35-45e919ccb1.gif",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 95,
+          "description": "An animated GIF of the Zoho logo.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        }
+      ],
+      "teamPhotos": [
+        "/output/generated-assets/ds_1777374393229_2b996988/15-e5e7729461.jpg",
+        "/output/generated-assets/ds_1777374393229_2b996988/18-c7bc3f0a87.jpg"
+      ]
+    }
+  },
+  "figma": {
+    "fileId": "figma_file_ds_1777374393229_2b996988",
+    "fileName": "zoho-workplace-enterprise-landing-page",
+    "fileUrl": "https://www.figma.com/file/figma_file_ds_1777374393229_2b996988",
+    "pages": [
+      {
+        "pageId": "page_1",
+        "name": "Desktop",
+        "frameName": "Zoho Workplace - Desktop",
+        "width": 1440,
+        "heightHint": 6200,
+        "grid": "12-col",
+        "sectionCount": 9
+      },
+      {
+        "pageId": "page_2",
+        "name": "Mobile",
+        "frameName": "Zoho Workplace - Mobile",
+        "width": 390,
+        "heightHint": 7600,
+        "grid": "4-col",
+        "sectionCount": 9
+      }
+    ],
+    "frames": [
+      {
+        "pageName": "Desktop",
+        "frameName": "Zoho Workplace - Desktop",
+        "width": 1440,
+        "builtSectionCount": 9
+      },
+      {
+        "pageName": "Mobile",
+        "frameName": "Zoho Workplace - Mobile",
+        "width": 390,
+        "builtSectionCount": 9
+      }
+    ],
+    "nodes": {
+      "Desktop": [
+        {
+          "nodeId": "node_desktop_1",
+          "id": "hero",
+          "type": "hero",
+          "frameName": "Hero / Split-Text Centered",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "Centered text-first hero with brand/logo placement, large headline block, short supporting copy, and bullet-style benefit callouts; no media required",
+          "priority": "high",
+          "contentSource": "contentMap.hero + contentMap.extras + referenceMap.heroPattern",
+          "notes": "Use dark primary hero background with white text per brand memory. Include product name/brand logo lockup near top, headline, subheadline, supporting line, and both CTAs side by side. Reinforce trust by visually linking the supporting line to Made in India messaging. Keep textual hierarchy dominant over imagery."
+        },
+        {
+          "nodeId": "node_desktop_2",
+          "id": "trust",
+          "type": "trust-bar",
+          "frameName": "Trust / Award Badge Row",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "Centered horizontal row with pill badges, divider-separated customer count stat, and logo-first trust emphasis",
+          "priority": "high",
+          "contentSource": "contentMap.trust + context.additionalInstructions + techjockey.designMemory.brandIdentity",
+          "notes": "This is the dominant trust signal. Make logos/badges visually primary, followed by the customer-count stat. Use a light grey band background. Include 3 badges from contentMap and a prominent social proof statement. If logos are unavailable, treat badges as badge chips and keep them first in the row."
+        },
+        {
+          "nodeId": "node_desktop_3",
+          "id": "features-3rd-fold",
+          "type": "features",
+          "frameName": "Why Choose Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "3-column feature grid with 4 utility cards and minimal icon treatment",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[0]",
+          "notes": "Use white background and 3-column grid since there are 4 features. Each card should use the standard feature card component with border, padding, and a top icon area even though hasIcon is false. Keep titles concise and descriptions medium-length. Include section headline and description above grid."
+        },
+        {
+          "nodeId": "node_desktop_4",
+          "id": "features-4th-fold",
+          "type": "features",
+          "frameName": "Unlock Your Business Growth with Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "3-column feature grid with 4 utility cards",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[1]",
+          "notes": "Maintain same component family as previous feature section for rhythm consistency. Use a clear section heading and short intro, then 3-column card grid. Emphasize business-scale utility and workflow integration."
+        },
+        {
+          "nodeId": "node_desktop_5",
+          "id": "features-5th-fold",
+          "type": "integrations-grid",
+          "frameName": "Integrate with Popular Apps",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "Compact integration list/grid with 5 items; treat as app ecosystem matrix",
+          "priority": "medium",
+          "contentSource": "contentMap.productSections[2]",
+          "notes": "Use compact cards or chips rather than large feature cards because items are short app-group labels. Keep white background. Organize as a 3-column grid on desktop with the fifth item wrapping to a second row. The section title should clearly signal integrations and compatibility."
+        },
+        {
+          "nodeId": "node_desktop_6",
+          "id": "features-6th-fold",
+          "type": "insight",
+          "frameName": "Performance Beyond Limits with Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "4-stat insight card grid with section note; mirror Zoho Desk-style stat treatment",
+          "priority": "medium",
+          "contentSource": "contentMap.productSections[3] + contentMap.extras[1]",
+          "notes": "Keep this section visually distinct with a very light tinted background. Present four stat cards in a 4-column grid on desktop. Use the section as a results/insight block, not a marketing feature block. Include the fixed-note treatment from the input and preserve the supplied percentages and claims exactly."
+        },
+        {
+          "nodeId": "node_desktop_7",
+          "id": "pricing",
+          "type": "pricing-card",
+          "frameName": "Zoho Workplace Price Plan Includes",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Single centered pricing card with checklist, CTA, and trust line",
+          "priority": "high",
+          "contentSource": "contentMap.pricing",
+          "notes": "Use the cart/pricing card pattern from design memory. Since price values are blank, render product name, included checklist, and CTA without numeric price emphasis. Keep the card centered in a light grey section with elevated white card. Include secure payment/genuine license/free support trust line beneath CTA."
+        },
+        {
+          "nodeId": "node_desktop_8",
+          "id": "testimonials",
+          "type": "testimonials",
+          "frameName": "Customer Testimonials",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "3-column testimonial card grid on desktop with remaining testimonial optionally in second row or carousel fallback",
+          "priority": "medium",
+          "contentSource": "contentMap.testimonials",
+          "notes": "Apply the standard testimonial card treatment with left accent border, star rating, italic quote, bold author name, and grey designation/company. Use a light grey or subtle tinted background. Since there are 5 testimonials, prefer a 3-column primary row and a second row/overflow continuation to preserve card consistency."
+        },
+        {
+          "nodeId": "node_desktop_9",
+          "id": "news",
+          "type": "news",
+          "frameName": "News / Press Mention Strip",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "Horizontal press-style strip with publication + headline separators",
+          "priority": "low",
+          "contentSource": "contentMap.news",
+          "notes": "No news items are provided, so omit this section from the build. If later enabled, use the Techjockey in News structure from memory. Do not invent empty modules in the desktop layout."
+        }
+      ],
+      "Mobile": [
+        {
+          "nodeId": "node_mobile_1",
+          "id": "hero",
+          "type": "hero",
+          "frameName": "Hero / Stacked",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Text-only stacked hero with compact CTA stack",
+          "priority": "high",
+          "contentSource": "contentMap.hero + contentMap.extras + referenceMap.heroPattern",
+          "notes": "On mobile, stack content vertically with headline first, then subheadline, supporting line, and CTAs full-width stacked with primary first. Keep the hero background dark primary with white text. No media required. Reduce line length by constraining text width and using the 16+ word hero size rule."
+        },
+        {
+          "nodeId": "node_mobile_2",
+          "id": "trust",
+          "type": "trust-bar",
+          "frameName": "Trust / Badge Stack",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Stacked trust badges with customer count highlighted above or below badges",
+          "priority": "high",
+          "contentSource": "contentMap.trust + context.additionalInstructions",
+          "notes": "Mobile trust content should remain logo/badge-first. Stack badges in a vertical list or two-up chip wrap while keeping the customer count stat prominent. Preserve the light grey background band for separation."
+        },
+        {
+          "nodeId": "node_mobile_3",
+          "id": "features-3rd-fold",
+          "type": "features",
+          "frameName": "Why Choose Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Single-column feature cards",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[0]",
+          "notes": "Convert the desktop grid into a single-column stacked card list. Preserve card padding, borders, and content order. Keep the section headline and description above the stack."
+        },
+        {
+          "nodeId": "node_mobile_4",
+          "id": "features-4th-fold",
+          "type": "features",
+          "frameName": "Unlock Your Business Growth with Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Single-column feature cards",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[1]",
+          "notes": "Use the same single-column card pattern for consistency. Keep section spacing between cards tight enough for scanning but not crowded."
+        },
+        {
+          "nodeId": "node_mobile_5",
+          "id": "features-5th-fold",
+          "type": "integrations-grid",
+          "frameName": "Integrate with Popular Apps",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Single-column chip/list layout for integrations",
+          "priority": "medium",
+          "contentSource": "contentMap.productSections[2]",
+          "notes": "Render integrations as compact stacked rows or chips on mobile. Avoid dense multi-column matrices. Preserve readable labels and hierarchy."
+        },
+        {
+          "nodeId": "node_mobile_6",
+          "id": "features-6th-fold",
+          "type": "insight",
+          "frameName": "Performance Beyond Limits with Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Single-column stat cards; maintain fixed-note treatment",
+          "priority": "medium",
+          "contentSource": "contentMap.productSections[3] + contentMap.extras[1]",
+          "notes": "Stack the insight cards vertically on mobile. Keep the exact stats and copy intact. Ensure the fixed-note treatment remains visible and legible."
+        },
+        {
+          "nodeId": "node_mobile_7",
+          "id": "pricing",
+          "type": "pricing-card",
+          "frameName": "Zoho Workplace Price Plan Includes",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Full-width pricing card with checklist and full-width CTA",
+          "priority": "high",
+          "contentSource": "contentMap.pricing",
+          "notes": "On mobile, make the pricing card full width and remove heavy elevation. Preserve checklist, CTA, and trust line. Since there is no numeric price, avoid empty price visual hierarchy and keep focus on inclusions."
+        },
+        {
+          "nodeId": "node_mobile_8",
+          "id": "testimonials",
+          "type": "testimonials",
+          "frameName": "Customer Testimonials",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Single-column stacked testimonial cards; optional horizontal scroll container if needed",
+          "priority": "medium",
+          "contentSource": "contentMap.testimonials",
+          "notes": "Convert testimonial cards to a single-column stack. Preserve star rating, italic quote, author, and designation/company. Use enough vertical spacing to keep long quotes readable."
+        },
+        {
+          "nodeId": "node_mobile_9",
+          "id": "news",
+          "type": "news",
+          "frameName": "News / Press Mention Strip",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Omitted on mobile due to no content",
+          "priority": "low",
+          "contentSource": "contentMap.news",
+          "notes": "No news content exists in source data, so do not include a mobile news section."
+        }
+      ]
+    },
+    "syncStatus": "sections-planned",
+    "lastSyncAt": "2026-04-28T11:11:15.945Z"
+  },
+  "outputs": {
+    "htmlFilename": "application-manager-1777374665804-preview.html",
+    "localizedAssetsBase": "/output/generated-assets/ds_1777374393229_2b996988"
+  },
+  "logs": [
+    {
+      "at": "2026-04-28T11:06:33.237Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-04-28T11:11:15.935Z",
+      "type": "workflow",
+      "step": "html-generated",
+      "message": "HTML output generated: application-manager-1777374665804-preview.html"
+    },
+    {
+      "at": "2026-04-28T11:11:15.939Z",
+      "type": "mcp",
+      "step": "create-landing-file",
+      "message": "Created adapter-backed placeholder Figma file figma_file_ds_1777374393229_2b996988"
+    },
+    {
+      "at": "2026-04-28T11:11:15.942Z",
+      "type": "mcp",
+      "step": "build-sections-from-plan",
+      "message": "Prepared 9 sections for Desktop"
+    },
+    {
+      "at": "2026-04-28T11:11:15.945Z",
+      "type": "mcp",
+      "step": "build-sections-from-plan",
+      "message": "Prepared 9 sections for Mobile"
+    },
+    {
+      "at": "2026-04-28T11:11:15.949Z",
+      "type": "workflow",
+      "step": "mcp-auto-run",
+      "message": "MCP execution layer completed successfully"
+    }
+  ]
+}

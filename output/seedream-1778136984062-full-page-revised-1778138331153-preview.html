@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seedream-1778136984062-full-page-revised-1778138331153.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    import React, { useEffect, useState } from 'react';
+
+const LandingPage = () => {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % 3);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const testimonials = [
+    {
+      text:
+        'Seedream 4.5 helped our design team iterate campaign visuals faster, while Seedance 1.5 Pro reduced the time needed to create motion-first product explainers.',
+      name: 'Riya Sharma',
+      role: 'Creative Director, D2C Brand',
+      initials: 'RS',
+    },
+    {
+      text:
+        'We used the workflow to convert concept boards into polished stills and short-form video assets without bouncing between too many tools.',
+      name: 'Aman Verma',
+      role: 'Marketing Lead, Growth Studio',
+      initials: 'AV',
+    },
+    {
+      text:
+        'The biggest gain was consistency. Our team could align image generation and video storytelling inside one practical review process.',
+      name: 'Neha Kapoor',
+      role: 'Brand Strategist, Media Agency',
+      initials: 'NK',
+    },
+  ];
+
+  const css = `
+    :root {
+      --accent: #b3713f;
+      --primary: #b3713f;
+      --accent-rgb: 179,113,63;
+      --bodyBg: #ffffff;
+      --dark: #111827;
+      --muted: #6b7280;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { width: 100%; min-height: 100%; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', ui-sans-serif, sans-serif; background: var(--bodyBg); color: #111827; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img, video { max-width: 100%; display: block; }
+    button, input, textarea, select { font-family: inherit; }
+    .page { width: 100%; overflow-x: hidden; background: #fff; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes scaleIn { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:scale(1); } }
+    .anim { opacity:0; animation:fadeUp 0.85s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .anim-scale { opacity:0; animation:scaleIn 1s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .d0{animation-delay:0.05s}.d1{animation-delay:0.2s}.d2{animation-delay:0.35s}.d3{animation-delay:0.5s}.d4{animation-delay:0.65s}.d5{animation-delay:0.8s}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .section{padding:88px 0;position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;background:rgba(var(--accent-rgb),0.1);border:1px solid rgba(var(--accent-rgb),0.25);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase}
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    .top-strip {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(17,24,39,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .top-strip-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .top-strip-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.2;
+      flex: 1;
+      min-width: 0;
+    }
+    .top-strip-logo {
+      height: 28px;
+      width: auto;
+      flex-shrink: 0;
+      opacity: 0.95;
+    }
+    .top-strip-cta {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 18px;
+      border-radius: 12px;
+      transition: transform .2s ease, opacity .2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+    .top-strip-cta:hover { transform: translateY(-1px); opacity: .95; }
+
+    .hvf {
+      position: relative;
+      min-height: calc(100vh - 64px);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(179,113,63,0.12), transparent 35%),
+        linear-gradient(180deg, #fff 0%, #f8f5f1 100%);
+    }
+    .hvf-video {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(179,113,63,0.12), transparent 24%),
+        radial-gradient(circle at 80% 30%, rgba(17,24,39,0.08), transparent 28%),
+        linear-gradient(135deg, #fff 0%, #f7f3ee 55%, #efe8df 100%);
+    }
+    .hvf-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.78) 58%, rgba(255,255,255,1) 100%);
+      z-index: 1;
+    }
+    .hvf-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      padding: 86px 24px 72px;
+    }
+    .hvf-inner {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+      gap: 44px;
+      align-items: center;
+    }
+    .hvf-copy { display:flex; flex-direction:column; gap:22px; }
+    .hvf-h1 {
+      font-size: clamp(42px, 6vw, 78px);
+      font-weight: 500;
+      letter-spacing: -0.05em;
+      line-height: 0.98;
+      color: #0a0a0f;
+      max-width: 860px;
+    }
+    .hvf-accent {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.06em;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+    }
+    .hvf-desc {
+      font-size: 18px;
+      line-height: 1.75;
+      color: #373a46;
+      opacity: 0.92;
+      max-width: 640px;
+    }
+    .hvf-chips { display:flex; flex-wrap:wrap; gap:10px; }
+    .hvf-chip {
+      display:flex; align-items:center; gap:7px;
+      padding:8px 14px; border-radius:100px;
+      background:rgba(var(--accent-rgb),0.08);
+      border:1px solid rgba(var(--accent-rgb),0.22);
+      color:#374151; font-size:13px; font-weight:600;
+    }
+    .hvf-pill {
+      display:flex; align-items:center; max-width:560px;
+      background:#fff; border-radius:40px;
+      border:1px solid rgba(0,0,0,0.08);
+      box-shadow:0 16px 40px rgba(17,24,39,0.08);
+      padding:6px 6px 6px 22px; gap:10px;
+    }
+    .hvf-input {
+      flex:1; min-width:0; border:none; outline:none;
+      background:transparent; font-size:15px;
+      color:#0f0f0f; letter-spacing:-0.01em;
+    }
+    .hvf-input::placeholder { color:#9ca3af; }
+    .hvf-btn {
+      border-radius:100px; color:#fff; border:none; flex-shrink:0;
+      background:linear-gradient(180deg,#323232,#1d1d1d,#111);
+      box-shadow:inset -4px -6px 25px 0 rgba(201,201,201,0.08), inset 4px 4px 10px 0 rgba(29,29,29,0.24);
+      padding:13px 22px; font-size:14px; font-weight:600;
+      cursor:pointer; white-space:nowrap;
+    }
+    .hvf-proof {
+      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+      padding-left:2px;
+    }
+    .hvf-avatars { display:flex; }
+    .hvf-av {
+      width:30px; height:30px; border-radius:50%;
+      border:1.5px solid #fff; display:flex;
+      align-items:center; justify-content:center;
+      font-size:9px; font-weight:700; margin-left:-7px; color:#fff;
+    }
+    .hvf-av:first-child { margin-left:0; }
+    .hvf-stars { display:flex; gap:2px; }
+    .hvf-rcount { font-size:13px; font-weight:600; color:#373a46; opacity:0.82; }
+
+    .hero-card {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 22px 70px rgba(15,23,42,0.16);
+      min-height: 540px;
+    }
+    .hero-card-top {
+      padding: 22px 22px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+    .hero-dot:nth-child(1){ background:#ef4444; }
+    .hero-dot:nth-child(2){ background:#f59e0b; }
+    .hero-dot:nth-child(3){ background:#10b981; }
+    .hero-card-body {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .hero-panel {
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-panel-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 10px;
+    }
+    .hero-preview {
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(179,113,63,0.36), rgba(255,255,255,0.08));
+      min-height: 210px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 8px;
+    }
+    .hero-preview-box {
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06)),
+        radial-gradient(circle at top, rgba(179,113,63,0.4), transparent 50%);
+      border: 1px solid rgba(255,255,255,0.09);
+      min-height: 184px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-preview-box.face::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 52% 30%, rgba(255,224,189,0.98) 0 14%, transparent 14.5%),
+        radial-gradient(circle at 48% 28%, #111827 0 1.1%, transparent 1.2%),
+        radial-gradient(circle at 56% 28%, #111827 0 1.1%, transparent 1.2%),
+        radial-gradient(circle at 52% 38%, rgba(120,72,40,0.9) 0 2%, transparent 2.2%),
+        radial-gradient(ellipse at 52% 53%, rgba(241,201,160,0.95) 0 18%, transparent 18.5%),
+        radial-gradient(circle at 52% 66%, rgba(255,255,255,0.9) 0 10%, transparent 10.5%),
+        linear-gradient(180deg, rgba(46,30,24,0.95) 0 18%, transparent 18.2%),
+        linear-gradient(180deg, transparent 0 58%, rgba(179,113,63,0.4) 58% 100%);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+    }
+    .hero-stat {
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-stat strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+    .hero-stat span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.5;
+    }
+
+    .tms {
+      padding: 26px 0 42px;
+      background: #fff;
+    }
+    .tms-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:2px; max-width:1200px; margin:0 auto; padding:0 24px;
+    }
+    .tms-cell {
+      text-align:center; padding:28px 24px; position:relative;
+      background: #fff;
+    }
+    .tms-cell:not(:last-child)::after {
+      content:''; position:absolute; right:0; top:20%;
+      height:60%; width:1px; background:rgba(0,0,0,0.08);
+    }
+    .tms-val {
+      font-size:48px; font-weight:800; letter-spacing:-0.04em;
+      color:var(--accent); line-height:1;
+    }
+    .tms-label { font-size:15px; font-weight:700; color:#111827; margin:8px 0 6px; }
+    .tms-note { font-size:13px; color:#6b7280; line-height:1.5; }
+
+    .falt { padding:88px 0; }
+    .falt-head { text-align:center; max-width:720px; margin:0 auto 60px; }
+    .falt-head h2 { font-size:44px; font-weight:700; letter-spacing:-0.04em; line-height:1.08; margin:14px 0; }
+    .falt-block {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:56px; align-items:center; padding:0 24px;
+      max-width:1200px; margin:0 auto 72px;
+    }
+    .falt-block:last-child { margin-bottom:0; }
+    .falt-block.flip { direction:rtl; }
+    .falt-block.flip > * { direction:ltr; }
+    .falt-num {
+      font-size:13px; font-weight:700; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--accent); margin-bottom:16px;
+    }
+    .falt-copy h3 { font-size:36px; font-weight:700; letter-spacing:-0.03em; line-height:1.1; margin:0 0 18px; }
+    .falt-copy p { font-size:17px; color:#4b5563; line-height:1.8; margin:0 0 24px; }
+    .falt-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+    .falt-chip {
+      padding:7px 14px; border-radius:100px; font-size:13px;
+      font-weight:600; background:rgba(var(--accent-rgb),0.08);
+      border:1px solid rgba(var(--accent-rgb),0.2); color:#374151;
+    }
+    .falt-visual {
+      border-radius:24px; overflow:hidden;
+      box-shadow:0 24px 60px rgba(15,23,42,0.08);
+      border:1px solid #e5e7eb;
+      background: #fff;
+    }
+    .falt-visual-dark {
+      background:#111827; min-height:380px;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+
+    .fig { padding:88px 0; background:#fcfcfc; }
+    .fig.dark { background:#111827; color:#fff; }
+    .fig-head { text-align:center; max-width:720px; margin:0 auto 52px; }
+    .fig-head h2 { font-size:44px; font-weight:700; letter-spacing:-0.04em; line-height:1.08; margin:14px 0 16px; }
+    .fig-head p { opacity:0.72; font-size:17px; line-height:1.75; }
+    .fig-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:20px; max-width:1200px; margin:0 auto; padding:0 24px;
+    }
+    .fig-card {
+      padding:28px; border-radius:20px;
+      border:1px solid rgba(0,0,0,0.07);
+      background:#fff;
+      transition:transform 0.25s, box-shadow 0.25s;
+    }
+    .fig.dark .fig-card { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.09); }
+    .fig-card:hover { transform:translateY(-4px); box-shadow:0 20px 48px rgba(15,23,42,0.08); }
+    .fig-icon {
+      width:48px; height:48px; border-radius:14px;
+      background:rgba(var(--accent-rgb),0.1);
+      display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+    }
+    .fig-card h4 { font-size:17px; font-weight:700; letter-spacing:-0.025em; margin:0 0 10px; }
+    .fig-card p { font-size:14px; line-height:1.7; margin:0; color:#6b7280; }
+    .fig.dark .fig-card p { color:rgba(255,255,255,0.6); }
+
+    .gvw { padding:88px 0; background:#fff; }
+    .gvw-head { text-align:center; max-width:680px; margin:0 auto 48px; }
+    .gvw-head h2 { font-size:44px; font-weight:700; letter-spacing:-0.04em; line-height:1.08; margin:14px 0 16px; }
+    .gvw-head p { font-size:17px; line-height:1.75; opacity:0.72; }
+    .gvw-grid {
+      display:grid; grid-template-columns:repeat(2,1fr);
+      gap:20px; max-width:1200px; margin:0 auto; padding:0 24px;
+    }
+    .gvw-card {
+      border-radius:20px; overflow:hidden;
+      background:#fff; border:1px solid #e5e7eb;
+      box-shadow:0 16px 40px rgba(15,23,42,0.06);
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .gvw-card:hover { transform:translateY(-4px); box-shadow:0 24px 54px rgba(15,23,42,0.1); }
+    .gvw-video { position:relative; aspect-ratio:16/9; overflow:hidden; background:linear-gradient(135deg,#ddd6ce,#f4efe8); }
+    .gvw-caption { padding:16px 18px; font-size:14px; font-weight:600; color:#111827; letter-spacing:-0.01em; }
+
+    .wtj { padding:80px 0; background:#111827; color:#fff; }
+    .wtj-inner { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .wtj-top { display:flex; align-items:center; gap:20px; margin-bottom:40px; flex-wrap:wrap; }
+    .wtj-logo { height:36px; opacity:0.9; }
+    .wtj-divider { width:1px; height:36px; background:rgba(255,255,255,0.15); }
+    .wtj-tagline { font-size:18px; font-weight:500; color:rgba(255,255,255,0.8); }
+    .wtj-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .wtj-card {
+      padding:24px; border-radius:18px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.09);
+      transition:background 0.25s, border-color 0.25s;
+    }
+    .wtj-card:hover { background:rgba(255,255,255,0.08); border-color:rgba(var(--accent-rgb),0.35); }
+    .wtj-icon {
+      width:44px; height:44px; border-radius:12px;
+      background:rgba(var(--accent-rgb),0.15);
+      display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+    }
+    .wtj-card h4 { font-size:16px; font-weight:700; margin:0 0 10px; letter-spacing:-0.02em; }
+    .wtj-card p { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.65; margin:0; }
+
+    .pdc {
+      padding:88px 0; background:#0f172a;
+      color:#fff;
+    }
+    .pdc-head { text-align:center; max-width:680px; margin:0 auto 52px; }
+    .pdc-head h2 { font-size:44px; font-weight:700; letter-spacing:-0.04em; margin:14px 0; }
+    .pdc-head p { color:rgba(255,255,255,0.68); font-size:17px; line-height:1.75; }
+    .pdc-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:20px; max-width:1200px; margin:0 auto; padding:0 24px;
+    }
+    .pdc-card {
+      padding:32px; border-radius:24px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.09);
+      position:relative;
+    }
+    .pdc-card.featured {
+      background:rgba(var(--accent-rgb),0.08);
+      border-color:rgba(var(--accent-rgb),0.4);
+      box-shadow:0 0 60px rgba(var(--accent-rgb),0.08);
+    }
+    .pdc-badge {
+      display:inline-block; padding:5px 12px; border-radius:100px;
+      background:#15803d; color:#fff; font-size:12px;
+      font-weight:700; margin-bottom:16px;
+    }
+    .pdc-plan { font-size:20px; font-weight:700; letter-spacing:-0.02em; margin:0 0 16px; }
+    .pdc-price { margin:12px 0 20px; }
+    .pdc-amount { font-size:44px; font-weight:800; letter-spacing:-0.04em; color:var(--accent); }
+    .pdc-old { font-size:18px; color:rgba(255,255,255,0.4); text-decoration:line-through; margin-left:8px; }
+    .pdc-period { font-size:14px; color:rgba(255,255,255,0.5); display:block; margin-top:4px; }
+    .pdc-desc { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.7; margin-bottom:24px; }
+    .pdc-list { list-style:none; padding:0; margin:0 0 28px; display:grid; gap:12px; }
+    .pdc-list li { display:flex; gap:10px; align-items:start; font-size:14px; color:rgba(255,255,255,0.8); line-height:1.55; }
+    .pdc-check { width:18px; height:18px; color:var(--accent); flex-shrink:0; margin-top:1px; }
+    .pdc-btn {
+      width:100%; padding:14px; border-radius:12px;
+      font-size:15px; font-weight:700; cursor:pointer;
+      border:none; background:var(--accent); color:#fff;
+      transition:opacity .2s, transform .2s;
+    }
+    .pdc-btn:hover { opacity:0.92; transform:translateY(-1px); }
+
+    .tcar { padding:88px 0; background:#f8fafc; }
+    .tcar-head { text-align:center; max-width:720px; margin:0 auto 52px; }
+    .tcar-head h2 { font-size:44px; font-weight:700; letter-spacing:-0.04em; margin:14px 0 16px; }
+    .tcar-head p { font-size:17px; color:#4b5563; line-height:1.75; opacity:0.8; }
+    .tcar-layout {
+      display:grid; grid-template-columns:280px 1fr;
+      gap:24px; max-width:1200px; margin:0 auto;
+      padding:0 24px; align-items:start;
+    }
+    .tcar-rail { display:grid; gap:14px; }
+    .tcar-mini {
+      padding:18px; border-radius:18px; background:#fff;
+      border:1px solid #e5e7eb; font-size:14px;
+      color:#374151; line-height:1.65;
+    }
+    .tcar-mini-stars { color:#f59e0b; font-size:13px; margin-bottom:8px; }
+    .tcar-stage {
+      border-radius:28px; background:#fff;
+      border:1px solid #e5e7eb;
+      box-shadow:0 20px 60px rgba(15,23,42,0.06);
+      overflow:hidden;
+    }
+    .tcar-track { display:flex; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .tcar-slide { min-width:100%; padding:44px; }
+    .tcar-quote {
+      font-size:64px; line-height:1;
+      color:var(--accent); font-family:Georgia,serif;
+      margin-bottom:8px;
+    }
+    .tcar-stars { color:#f59e0b; font-size:18px; letter-spacing:2px; margin-bottom:16px; }
+    .tcar-text { font-size:20px; line-height:1.75; color:#111827; margin:0 0 28px; }
+    .tcar-author { display:flex; align-items:center; gap:14px; }
+    .tcar-avatar {
+      width:52px; height:52px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px; font-weight:700; color:#fff;
+      background:var(--accent); flex-shrink:0;
+    }
+    .tcar-name { font-size:16px; font-weight:700; }
+    .tcar-role { font-size:14px; color:#6b7280; margin-top:2px; }
+    .tcar-dots { display:flex; gap:8px; justify-content:center; padding:20px 0 4px; }
+    .tcar-dot {
+      border:none; cursor:pointer; border-radius:100px;
+      height:8px; background:#d1d5db;
+      transition:all 0.3s ease;
+    }
+    .tcar-dot.active { width:28px; background:var(--accent); }
+    .tcar-dot:not(.active) { width:8px; }
+
+    .lead {
+      padding: 88px 0;
+      background: #fff;
+    }
+    .lead-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .lead-copy, .lead-form {
+      border-radius: 28px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      box-shadow: 0 18px 50px rgba(15,23,42,0.06);
+    }
+    .lead-copy {
+      padding: 36px;
+      background:
+        radial-gradient(circle at top right, rgba(179,113,63,0.10), transparent 28%),
+        #fff;
+    }
+    .lead-copy h2 {
+      font-size: 42px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin: 14px 0 16px;
+    }
+    .lead-copy p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 22px;
+    }
+    .lead-points {
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+    .lead-point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: #374151;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .lead-form {
+      padding: 34px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #111827;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: rgba(var(--accent-rgb),0.8);
+      box-shadow: 0 0 0 4px rgba(var(--accent-rgb),0.12);
+    }
+    .submit-btn {
+      width: 100%;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .submit-btn:hover { transform: translateY(-1px); opacity: .94; }
+
+    .ctavb {
+      position:relative;
+      padding:90px 24px;
+      text-align:center;
+      color:#fff;
+      overflow:hidden;
+      min-height:360px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        linear-gradient(rgba(17,24,39,0.72), rgba(17,24,39,0.72)),
+        radial-gradient(circle at top, rgba(179,113,63,0.45), transparent 35%),
+        linear-gradient(135deg, #111827 0%, #0f172a 100%);
+    }
+    .ctavb-inner {
+      position:relative;
+      z-index:2;
+      max-width:860px;
+      width:100%;
+    }
+    .ctavb h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height:1.02;
+      letter-spacing:-0.05em;
+      margin:14px 0 18px;
+    }
+    .ctavb p {
+      font-size:17px;
+      line-height:1.8;
+      color:rgba(255,255,255,0.78);
+      max-width:700px;
+      margin:0 auto 26px;
+    }
+    .cta-actions {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .cta-primary, .cta-secondary {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 20px;
+      border-radius:14px;
+      font-size:15px;
+      font-weight:800;
+      transition:transform .2s ease, opacity .2s ease, background .2s ease;
+    }
+    .cta-primary {
+      background:var(--accent);
+      color:#fff;
+    }
+    .cta-secondary {
+      border:1px solid rgba(255,255,255,0.18);
+      color:#fff;
+      background:rgba(255,255,255,0.06);
+    }
+    .cta-primary:hover, .cta-secondary:hover { transform:translateY(-1px); opacity:.95; }
+
+    .footer {
+      background:#0b1220;
+      color:#fff;
+      padding:56px 0 26px;
+    }
+    .footer-inner {
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 24px;
+    }
+    .footer-top {
+      display:grid;
+      grid-template-columns:1.3fr .8fr .8fr .9fr;
+      gap:28px;
+      padding-bottom:28px;
+      border-bottom:1px solid rgba(255,255,255,0.09);
+    }
+    .footer-brand img {
+      height:34px;
+      width:auto;
+      margin-bottom:16px;
+    }
+    .footer-brand p {
+      color:rgba(255,255,255,0.65);
+      font-size:14px;
+      line-height:1.8;
+      max-width:420px;
+    }
+    .footer-col h4 {
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:#fff;
+      margin-bottom:14px;
+    }
+    .footer-links {
+      display:grid;
+      gap:10px;
+    }
+    .footer-links a, .footer-contact a, .footer-contact div {
+      color:rgba(255,255,255,0.7);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .footer-links a:hover, .footer-contact a:hover { color:#fff; }
+    .footer-contact {
+      display:grid;
+      gap:10px;
+    }
+    .footer-social {
+      display:flex;
+      gap:12px;
+      margin-top:16px;
+    }
+    .footer-social a {
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,0.06);
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:transform .2s ease, background .2s ease;
+    }
+    .footer-social a:hover {
+      transform:translateY(-1px);
+      background:rgba(var(--accent-rgb),0.2);
+    }
+    .footer-bottom {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding-top:22px;
+      flex-wrap:wrap;
+    }
+    .footer-bottom p, .footer-bottom a {
+      color:rgba(255,255,255,0.58);
+      font-size:13px;
+    }
+    .footer-bottom-links {
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 1080px) {
+      .hvf-inner,
+      .falt-block,
+      .lead-wrap,
+      .tcar-layout,
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+      .wtj-grid { grid-template-columns: repeat(2,1fr); }
+      .pdc-grid { grid-template-columns: 1fr; }
+      .fig-grid { grid-template-columns: repeat(2,1fr); }
+      .gvw-grid { grid-template-columns: 1fr; }
+      .tcar-rail { order:2; }
+      .tcar-stage { order:1; }
+    }
+
+    @media (max-width: 820px) {
+      .top-strip-inner { flex-wrap:wrap; }
+      .top-strip-title { font-size:16px; }
+      .hvf-content { padding: 68px 20px 56px; }
+      .hero-stats,
+      .fig-grid,
+      .wtj-grid,
+      .tms-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-preview { grid-template-columns: 1fr 1fr; }
+      .tms-cell:not(:last-child)::after { display:none; }
+      .lead-copy h2,
+      .falt-head h2,
+      .fig-head h2,
+      .gvw-head h2,
+      .pdc-head h2,
+      .tcar-head h2 {
+        font-size:34px;
+      }
+      .tcar-slide { padding:28px; }
+      .tcar-text { font-size:18px; }
+    }
+
+    @media (max-width: 560px) {
+      .container { padding: 0 18px; }
+      .section,
+      .falt,
+      .fig,
+      .gvw,
+      .pdc,
+      .tcar,
+      .lead {
+        padding: 72px 0;
+      }
+      .hvf-h1 { font-size: clamp(34px, 11vw, 54px); }
+      .hvf-pill {
+        flex-direction:column;
+        align-items:stretch;
+        border-radius:22px;
+        padding:14px;
+      }
+      .hvf-btn { width:100%; }
+      .hero-card { min-height: auto; }
+      .hero-preview { grid-template-columns: 1fr; }
+      .lead-copy, .lead-form { padding: 24px; }
+      .ctavb { padding:72px 18px; min-height:300px; }
+      .footer { padding-top:44px; }
+    }
+  `;
+
+  return (
+    <div className="page">
+      <style>{css}</style>
+
+      <div className="top-strip">
+        <div className="top-strip-inner">
+          <div className="top-strip-title">Seedream 4.5 + Seedance 1.5 Pro workflow consultation</div>
+          <img
+            className="top-strip-logo"
+            src="https://static.techjockey.com/web-assets/images/techjockey-logo-light.svg"
+            alt="Techjockey"
+          />
+          <a href="#lead-form" className="top-strip-cta">
+            Book Free Consultation
+          </a>
+        </div>
+      </div>
+
+      <section className="hvf">
+        <div className="hvf-video" />
+        <div className="hvf-overlay" />
+        <div className="hvf-content">
+          <div className="hvf-inner">
+            <div className="hvf-copy">
+              <span className="eyebrow anim d0">Creative AI workflow advisory</span>
+              <h1 className="hvf-h1 anim d1">
+                Bring <span className="hvf-accent">Seedream 4.5</span> and <span className="hvf-accent">Seedance 1.5 Pro</span> into one practical production flow
+              </h1>
+              <p className="hvf-desc anim d2">
+                Explore how image generation and motion creation can work together for campaign design, product storytelling, rapid concepting, and content operations with expert guidance from Techjockey.
+              </p>
+
+              <div className="hvf-chips anim d3">
+                <div className="hvf-chip">Still-to-motion workflow</div>
+                <div className="hvf-chip">Creative team alignment</div>
+                <div className="hvf-chip">Faster campaign output</div>
+              </div>
+
+              <form className="hvf-pill anim d4" onSubmit={(e) => e.preventDefault()}>
+                <input className="hvf-input" type="email" placeholder="Enter your work email" />
+                <button className="hvf-btn" type="submit">
+                  Request a callback
+                </button>
+              </form>
+
+              <div className="hvf-proof anim d5">
+                <div className="hvf-avatars">
+                  <div className="hvf-av" style={{ background: '#111827' }}>TJ</div>
+                  <div className="hvf-av" style={{ background: '#b3713f' }}>AI</div>
+                  <div className="hvf-av" style={{ background: '#374151' }}>CX</div>
+                </div>
+                <div className="hvf-stars" aria-hidden="true">
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                  <span>⭐</span>
+                </div>
+                <div className="hvf-rcount">Trusted consultation support for modern creative software buying decisions</div>
+              </div>
+            </div>
+
+            <div className="hero-card anim-scale d2">
+              <div className="hero-card-top">
+                <span className="hero-dot" />
+                <span className="hero-dot" />
+                <span className="hero-dot" />
+              </div>
+              <div className="hero-card-body">
+                <div className="hero-panel">
+                  <div className="hero-panel-label">Visual review</div>
+                  <div className="hero-preview">
+                    <div className="hero-preview-box face" />
+                    <div className="hero-preview-box" />
+                  </div>
+                </div>
+                <div className="hero-stats">
+                  <div className="hero-stat">
+                    <strong>2-in-1</strong>
+                    <span>Image and motion planning in one discovery call</span>
+                  </div>
+                  <div className="hero-stat">
+                    <strong>Faster</strong>
+                    <span>Shorten visual ideation and approval cycles</span>
+                  </div>
+                  <div className="hero-stat">
+                    <strong>Clearer</strong>
+                    <span>Map use cases, teams, and rollout expectations</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="tms reveal">
+        <div className="tms-grid">
+          <div className="tms-cell">
+            <div className="tms-val">4.5</div>
+            <div className="tms-label">Seedream image workflow</div>
+            <div className="tms-note">Build idea boards, product scenes, and campaign-ready concepts faster.</div>
+          </div>
+          <div className="tms-cell">
+            <div className="tms-val">1.5</div>
+            <div className="tms-label">Seedance Pro motion flow</div>
+            <div className="tms-note">Turn approved creative direction into motion-first assets with more control.</div>
+          </div>
+          <div className="tms-cell">
+            <div className="tms-val">1</div>
+            <div className="tms-label">Unified consultation</div>
+            <div className="tms-note">Understand fit, adoption, and workflow impact before you decide.</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="falt">
+        <div className="falt-head reveal">
+          <span className="eyebrow">Workflow fit</span>
+          <h2>Where these tools support real creative teams</h2>
+        </div>
+
+        <div className="falt-block reveal">
+          <div className="falt-copy">
+            <div className="falt-num">Use case 01</div>
+            <h3>Concept faster before production starts</h3>
+            <p>
+              Use Seedream 4.5 to explore styles, directions, frames, and campaign concepts quickly. Then validate what should move into motion with Seedance 1.5 Pro once the visual language is approved.
+            </p>
+            <div className="falt-chips">
+              <span className="falt-chip">Moodboards</span>
+              <span className="falt-chip">Creative direction</span>
+              <span className="falt-chip">Pre-production</span>
+            </div>
+          </div>
+          <div className="falt-visual">
+            <div className="falt-visual-dark">
+              <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="g1" x1="0" x2="1">
+                    <stop offset="0%" stopColor="#b3713f" stopOpacity="0.65" />
+                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.08" />
+                  </linearGradient>
+                </defs>
+                <rect x="24" y="28" width="552" height="324" rx="26" fill="url(#g1)" opacity="0.25" />
+                <rect x="52" y="60" width="154" height="112" rx="18" fill="#fff" fillOpacity="0.08" />
+                <rect x="224" y="60" width="154" height="112" rx="18" fill="#fff" fillOpacity="0.08" />
+                <rect x="396" y="60" width="154" height="112" rx="18" fill="#fff" fillOpacity="0.08" />
+                <rect x="52" y="196" width="498" height="108" rx="20" fill="#fff" fillOpacity="0.06" />
+                <circle cx="129" cy="116" r="28" fill="#b3713f" fillOpacity="0.55" />
+                <circle cx="301" cy="116" r="28" fill="#b3713f" fillOpacity="0.35" />
+                <circle cx="473" cy="116" r="28" fill="#b3713f" fillOpacity="0.45" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="falt-block flip reveal">
+          <div className="falt-copy">
+            <div className="falt-num">Use case 02</div>
+            <h3>Connect static approvals to motion deliverables</h3>
+            <p>
+              Once stakeholders approve imagery, the next challenge is speed and consistency in video output. This workflow helps reduce friction between still concepting and motion execution.
+            </p>
+            <div className="falt-chips">
+              <span className="falt-chip">Explainers</span>
+              <span className="falt-chip">Social video</span>
+              <span className="falt-chip">Brand storytelling</span>
+            </div>
+          </div>
+          <div className="falt-visual">
+            <div className="falt-visual-dark">
+              <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="none">
+                <rect x="38" y="44" width="524" height="292" rx="24" fill="#fff" fillOpacity="0.06" />
+                <rect x="66" y="72" width="210" height="236" rx="18" fill="#b3713f" fillOpacity="0.24" />
+                <rect x="296" y="72" width="236" height="110" rx="18" fill="#fff" fillOpacity="0.08" />
+                <rect x="296" y="198" width="236" height="110" rx="18" fill="#fff" fillOpacity="0.08" />
+                <polygon points="160,190 160,128 215,159" fill="#fff" fillOpacity="0.75" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="fig dark">
+        <div className="fig-head reveal">
+          <span className="eyebrow">What you can evaluate</span>
+          <h2>Key workflow questions to answer before adoption</h2>
+          <p>
+            The consultation is designed to help you evaluate where these tools fit, what teams benefit most, and how to avoid fragmented creative operations.
+          </p>
+        </div>
+
+        <div className="fig-grid">
+          <div className="fig-card reveal">
+            <div className="fig-icon">⚙️</div>
+            <h4>Process compatibility</h4>
+            <p>Understand how image and motion creation can fit your current approval, review, and publishing process.</p>
+          </div>
+          <div className="fig-card reveal">
+            <div className="fig-icon">👥</div>
+            <h4>Team ownership</h4>
+            <p>Clarify whether design, performance marketing, brand, or content teams should lead day-to-day usage.</p>
+          </div>
+          <div className="fig-card reveal">
+            <div className="fig-icon">📈</div>
+            <h4>Output expectations</h4>
+            <p>Identify the right workflows for campaign assets, product visuals, short-form video, and ongoing content velocity.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="gvw">
+        <div className="gvw-head reveal">
+          <span className="eyebrow">Output examples</span>
+          <h2>Think in sequences, not isolated assets</h2>
+          <p>
+            A strong evaluation considers how visuals move from concept frames to narrative clips across campaigns, launches, and always-on content.
+          </p>
+        </div>
+
+        <div className="gvw-grid">
+          <div className="gvw-card reveal">
+            <div className="gvw-video">
+              <svg width="100%" height="100%" viewBox="0 0 800 450" preserveAspectRatio="none">
+                <rect width="800" height="450" fill="#e8dfd6" />
+                <rect x="36" y="34" width="728" height="382" rx="28" fill="#fff" fillOpacity="0.6" />
+                <rect x="70" y="70" width="280" height="310" rx="22" fill="#b3713f" fillOpacity="0.28" />
+                <rect x="380" y="70" width="350" height="145" rx="22" fill="#111827" fillOpacity="0.88" />
+                <rect x="380" y="235" width="350" height="145" rx="22" fill="#fff" fillOpacity="0.78" />
+              </svg>
+            </div>
+            <div className="gvw-caption">Creative direction to polished campaign boards</div>
+          </div>
+
+          <div className="gvw-card reveal">
+            <div className="gvw-video">
+              <svg width="100%" height="100%" viewBox="0 0 800 450" preserveAspectRatio="none">
+                <rect width="800" height="450" fill="#f0ebe5" />
+                <rect x="56" y="50" width="688" height="350" rx="26" fill="#111827" fillOpacity="0.92" />
+                <rect x="96" y="92" width="255" height="266" rx="20" fill="#fff" fillOpacity="0.08" />
+                <rect x="380" y="92" width="268" height="118" rx="20" fill="#b3713f" fillOpacity="0.33" />
+                <rect x="380" y="240" width="268" height="118" rx="20" fill="#fff" fillOpacity="0.08" />
+                <polygon points="222,224 222,160 282,192" fill="#fff" fillOpacity="0.82" />
+              </svg>
+            </div>
+            <div className="gvw-caption">Approved stills extended into motion-first assets</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="wtj">
+        <div className="wtj-inner">
+          <div className="wtj-top reveal">
+            <img
+              className="wtj-logo"
+              src="https://static.techjockey.com/web-assets/images/techjockey-logo-light.svg"
+              alt="Techjockey"
+            />
+            <div className="wtj-divider" />
+            <div className="wtj-tagline">Guidance to shortlist the right AI creative workflow for your business</div>
+          </div>
+
+          <div className="wtj-grid">
+            <div className="wtj-card reveal">
+              <div className="wtj-icon">🧭</div>
+              <h4>Consultative discovery</h4>
+              <p>Discuss team size, output needs, and operational fit instead of relying only on feature lists.</p>
+            </div>
+            <div className="wtj-card reveal">
+              <div className="wtj-icon">🔍</div>
+              <h4>Use-case mapping</h4>
+              <p>Match product capabilities with your campaign, brand, ecommerce, and content production needs.</p>
+            </div>
+            <div className="wtj-card reveal">
+              <div className="wtj-icon">🤝</div>
+              <h4>Buying support</h4>
+              <p>Get help comparing workflow options and moving toward the right software decision confidently.</p>
+            </div>
+            <div className="wtj-card reveal">
+              <div className="wtj-icon">⚡</div>
+              <h4>Faster evaluation</h4>
+              <p>Reduce internal confusion and get clarity on adoption priorities without wasting review cycles.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pdc">
+        <div className="pdc-head reveal">
+          <span className="eyebrow">Who benefits most</span>
+          <h2>Best fit for teams building visual volume with speed</h2>
+          <p>
+            If your team creates frequent visual content and needs better continuity between concept generation and motion output, this consultation can help define the right path.
+          </p>
+        </div>
+
+        <div className="pdc-grid">
+          <div className="pdc-card reveal">
+            <h3 className="pdc-plan">Brand & creative teams</h3>
+            <p className="pdc-desc">For teams shaping campaign identity, product stories, and style consistency across still and video outputs.</p>
+            <ul className="pdc-list">
+              <li><span className="pdc-check">✓</span><span>Campaign concepting</span></li>
+              <li><span className="pdc-check">✓</span><span>Visual style exploration</span></li>
+              <li><span className="pdc-check">✓</span><span>Stakeholder approvals</span></li>
+            </ul>
+            <a href="#lead-form"><button className="pdc-btn">Talk to an expert</button></a>
+          </div>
+
+          <div className="pdc-card featured reveal">
+            <div className="pdc-badge">Recommended</div>
+            <h3 className="pdc-plan">Marketing & growth teams</h3>
+            <p className="pdc-desc">For teams that need fast creative iteration, landing page visuals, ads, launches, and motion assets at scale.</p>
+            <ul className="pdc-list">
+              <li><span className="pdc-check">✓</span><span>Performance creatives</span></li>
+              <li><span className="pdc-check">✓</span><span>Launch campaigns</span></li>
+              <li><span className="pdc-check">✓</span><span>Short-form content</span></li>
+            </ul>
+            <a href="#lead-form"><button className="pdc-btn">Book a consultation</button></a>
+          </div>
+
+          <div className="pdc-card reveal">
+            <h3 className="pdc-plan">Agencies & studios</h3>
+            <p className="pdc-desc">For service teams managing multiple brands, faster turnaround requirements, and repeatable creative workflows.</p>
+            <ul className="pdc-list">
+              <li><span className="pdc-check">✓</span><span>Multi-client delivery</span></li>
+              <li><span className="pdc-check">✓</span><span>Process standardization</span></li>
+              <li><span className="pdc-check">✓</span><span>Scalable creative ops</span></li>
+            </ul>
+            <a href="#lead-form"><button className="pdc-btn">Request callback</button></a>
+          </div>
+        </div>
+      </section>
+
+      <section className="tcar">
+        <div className="tcar-head reveal">
+          <span className="eyebrow">What teams say</span>
+          <h2>Confidence comes from workflow clarity</h2>
+          <p>
+            Real buying decisions happen when teams understand how software fits daily execution, approvals, and measurable output.
+          </p>
+        </div>
+
+        <div className="tcar-layout">
+          <div className="tcar-rail reveal">
+            <div className="tcar-mini">
+              <div className="tcar-mini-stars">★★★★★</div>
+              Clearer understanding of where image generation should stop and motion production should begin.
+            </div>
+            <div className="tcar-mini">
+              <div className="tcar-mini-stars">★★★★★</div>
+              Helpful for aligning marketing, design, and brand stakeholders before investing time internally.
+            </div>
+          </div>
+
+          <div className="tcar-stage reveal">
+            <div
+              className="tcar-track"
+              style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
+            >
+              {testimonials.map((item, idx) => (
+                <div className="tcar-slide" key={idx}>
+                  <div className="tcar-quote">“</div>
+                  <div className="tcar-stars">★★★★★</div>
+                  <p className="tcar-text">{item.text}</p>
+                  <div className="tcar-author">
+                    <div className="tcar-avatar">{item.initials}</div>
+                    <div>
+                      <div className="tcar-name">{item.name}</div>
+                      <div className="tcar-role">{item.role}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="tcar-dots">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`tcar-dot ${idx === activeTestimonial ? 'active' : ''}`}
+                  onClick={() => setActiveTestimonial(idx)}
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lead-form" className="lead
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<LandingPage />);
+  </script>
+</body>
+</html>

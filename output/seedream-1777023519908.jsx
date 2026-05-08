@@ -1,0 +1,192 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#ff6b00';
+  const primary = '#ff6b00';
+  const bodyBg = '#ffffff';
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const refs = useRef([]);
+
+  const testimonials = [
+    { quote: "Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.", author: "Vaishali Saxena", role: "Creative Director" },
+    { quote: "Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.", author: "Vihaan Pandey", role: "Video Producer" },
+    { quote: "The multimodal editing capabilities in Seedream make it easy to refine images with precision.", author: "Anurag Malhotra", role: "Art Director" },
+    { quote: "Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.", author: "Ashutosh Singh", role: "Marketing Manager" },
+    { quote: "From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.", author: "Shrimmi Saxena", role: "Creative Lead" },
+    { quote: "What's interesting is how Seedance 2.0 lets you attach any type of media to your prompt. It's like a video generation and edit model in one with image, audio and video support. Absolutely amazing and a real breakthrough.", author: "Levelsio", role: "AI Expert" },
+    { quote: "This Changes AI Video Creation Forever… Seedance 2.0 just dropped… and it’s INSANE. No camera. No actors. No editing headache. Just type… and watch AI create magic. This is not the future anymore — this is NOW.", author: "Akshit Kumawat", role: "CEO" },
+    { quote: "Short film made with Seedance 2.0 is absolutely insane. The realism looks like a real movie - no one can tell it's AI.", author: "Navraj Panwar", role: "Senior Graphic Designer" },
+    { quote: "Seedance 2.0 is ByteDance's most advanced video model and arguably the most controllable AI video model ever released. If you've been waiting for AI video that behaves like a production pipeline instead of a slot machine -> this is it.", author: "Dhruv Dewan", role: "GTM" },
+    { quote: "Holy moly... Seedance 2.0 just generated a 1-minute cinematic video in 5 minutes. 4 shots. 15 seconds each... Insane…", author: "Min Choi", role: "Entrepreneur" }
+  ];
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => { window.removeEventListener('scroll', onScroll); observer.disconnect(); };
+  }, []);
+
+  useEffect(() => {
+    const t = setInterval(() => setActiveSlide(p => (p + 1) % testimonials.length), 4000);
+    return () => clearInterval(t);
+  }, [testimonials.length]);
+
+  const css = `
+  *{box-sizing:border-box} body{margin:0;font-family:Inter,sans-serif;background:${bodyBg};color:#1a1a1a}
+  a{text-decoration:none} img,video{max-width:100%;display:block}
+  .container{width:min(1180px,92%);margin:0 auto}
+  .topnav{position:sticky;top:0;z-index:50;background:rgba(17,17,17,.82);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .navin{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+  .navleft{font-weight:800;font-size:20px;color:${accent};white-space:nowrap}
+  .navright{display:flex;align-items:center;gap:18px}
+  .animated-cta{position:relative;padding:12px 24px;border-radius:8px;overflow:hidden;background:transparent;color:#fff;font-weight:700;cursor:pointer;z-index:1;border:none}
+  .animated-cta::before{content:'';position:absolute;inset:-2px;background:conic-gradient(from 0deg, ${accent}, ${accent}, ${accent});border-radius:inherit;animation:borderRotate 3s linear infinite;z-index:-2}
+  .animated-cta::after{content:'';position:absolute;inset:1px;background:${accent};border-radius:6px;z-index:-1}
+  @keyframes borderRotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .hero{background:${accent};color:#fff;position:relative;overflow:hidden;padding:88px 0}
+  .hero:before,.hero:after{content:'';position:absolute;border-radius:50%;filter:blur(20px);pointer-events:none}
+  .hero:before{width:420px;height:420px;right:-120px;top:-100px;background:radial-gradient(circle, rgba(255,255,255,.18), transparent 70%)}
+  .hero:after{width:300px;height:300px;left:-80px;bottom:-80px;background:radial-gradient(circle, rgba(0,0,0,.12), transparent 70%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center;position:relative;z-index:1}
+  h1{font-size:clamp(48px,5vw,72px);line-height:1.02;margin:0 0 18px;font-weight:800}
+  h2{font-size:clamp(32px,3vw,44px);line-height:1.1;margin:0 0 16px;font-weight:800}
+  p{line-height:1.7;color:inherit}
+  .gradient-text{background:linear-gradient(135deg, ${accent} 0%, ${accent} 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .chip{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);font-size:13px;color:#fff}
+  .btnrow{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .ghost{padding:12px 24px;border-radius:8px;border:1px solid rgba(255,255,255,.35);color:#fff;background:transparent;font-weight:700}
+  .visual{position:relative;display:flex;align-items:center;justify-content:center}
+  .visual .panel{border-radius:18px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.24);background:#111}
+  .marquee-wrapper{overflow:hidden;background:#111;padding:16px 0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+  .marquee-track{display:flex;width:max-content;animation:marqueeScroll 20s linear infinite}
+  @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .marq{white-space:nowrap;margin-right:48px;font-size:22px;font-weight:800;color:#fff}
+  .sec{padding:86px 0}
+  .sec:nth-of-type(odd){background:#f5f5f5}
+  .sec.dark{background:#111;color:#fff}
+  .section-tag{display:inline-flex;padding:8px 12px;border-radius:999px;background:${accent}14;color:${accent};font-size:12px;font-weight:700;margin-bottom:18px}
+  .prodgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .cardframe{border-radius:16px;overflow:hidden;border:1px solid #e5e5e5;box-shadow:0 18px 50px rgba(0,0,0,.08);background:#fff}
+  .featurelist{display:grid;gap:12px;margin-top:18px}
+  .featurebox{background:#fff;border:1px solid #e5e5e5;border-radius:14px;padding:16px}
+  .featurebox p{margin:0}
+  .featuretitle{font-weight:700;color:#1a1a1a}
+  .featuredesc{font-size:14px;color:#5f5f5f;margin-top:6px}
+  .pricing{background:#111;color:#fff}
+  .pricegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .pricecard{background:#181818;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  .pricecard.pop{border:1px solid ${accent};box-shadow:0 0 0 1px ${accent}33,0 20px 60px rgba(0,0,0,.3)}
+  .badge{display:inline-block;background:#1f7a3f;color:#fff;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:14px}
+  .strike{opacity:.7;text-decoration:line-through;margin-right:8px}
+  .bigprice{font-size:28px;font-weight:800}
+  .ul{padding-left:18px;color:#d6d6d6}
+  .ul li{margin:10px 0}
+  .fullbtn{display:block;text-align:center;margin-top:18px;background:${accent};color:#fff;padding:12px 16px;border-radius:8px;font-weight:700}
+  .testimonials{background:#111;color:#fff}
+  .slider{overflow:hidden;position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:#181818}
+  .track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+  .slide{min-width:100%;padding:34px}
+  .quote{font-size:18px;line-height:1.8;margin:0 0 18px}
+  .stars{color:#f5c518;font-size:18px;letter-spacing:2px}
+  .author{font-weight:800;margin-top:12px}
+  .role{color:#bfbfbf;font-size:14px}
+  .dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+  .dot{width:8px;height:8px;border-radius:999px;border:none;background:rgba(255,255,255,.3);cursor:pointer}
+  .dot.active{width:24px;background:${accent}}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .footer{background:#111;color:#fff;padding:34px 0;border-top:1px solid rgba(255,255,255,.08)}
+  .foot{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+  .social{display:flex;gap:12px;flex-wrap:wrap}
+  .social a{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#1f1f1f;color:#fff}
+  .mobile-hide{display:inline}
+  @media(max-width:900px){.hero-grid,.prodgrid,.pricegrid{grid-template-columns:1fr}.navin{gap:10px}.mobile-hide{display:none}}
+  `;
+
+  const chips = ['AI Image Generation', 'AI Video Generation', 'Multimodal Content Creation', 'Enterprise-ready AI infrastructure'];
+
+  const featureIcon = (i) => (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <rect x="2" y="2" width="14" height="14" rx="4" stroke={accent} strokeWidth="1.6" />
+      <path d="M5 9h8M9 5v8" stroke={accent} strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+
+  const ProductSection = ({ reverse, data, image, video, label }) => (
+    <section className="sec">
+      <div className="container prodgrid" style={{ direction: reverse ? 'rtl' : 'ltr' }}>
+        <div style={{ direction: 'ltr' }}>
+          <div className="cardframe">
+            {video ? (
+              <div style={{borderRadius:'12px',overflow:'hidden'}}><video autoPlay muted loop playsInline preload="auto" style={{width:'100%'}}><source src={video} type="video/mp4" /></video></div>
+            ) : (
+              <img src={image} alt={data.headline} />
+            )}
+          </div>
+        </div>
+        <div style={{ direction: 'ltr' }}>
+          <span className="section-tag">{label}</span>
+          <h2 className="reveal">{data.headline.split('with')[0]}<span className="gradient-text"> with</span>{data.headline.includes('by') ? '' : ''}</h2>
+          <p style={{color:'#5f5f5f'}}>{data.description}</p>
+          <div className="featurelist">
+            {data.features.map((f, i) => (
+              <div key={i} className="featurebox reveal" style={{transitionDelay:`${i * .08}s`}}>
+                <div style={{display:'flex',alignItems:'center',gap:'10px'}}>{featureIcon(i)}<p className="featuretitle">{f.title}</p></div>
+                <p className="featuredesc">{f.description}</p>
+              </div>
+            ))}
+          </div>
+          <a className="animated-cta" href="#">{data.primaryCTA || 'Request Demo'}</a>
+        </div>
+      </div>
+    </section>
+  );
+
+  return (
+    <>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <nav className="topnav">
+        <div className="container navin">
+          <div className="navleft">Seedream 4.5 and Seedance 1.5 Pro</div>
+          <div className="navright">
+            <img src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" height="28px" alt="Techjockey" />
+            <button className="animated-cta">Generate with AI</button>
+          </div>
+        </div>
+      </nav>
+
+      <section className="hero">
+        <div className="container hero-grid">
+          <div>
+            <h1 className="reveal">{'Create High-Quality AI Images & Videos with '.split(' ').map((w, i) => i < 4 ? w + ' ' : w + ' ').join('')}<span className="gradient-text">ByteDance Generative Models</span></h1>
+            <p className="reveal reveal-delay-1" style={{fontSize:'18px',maxWidth:'680px'}}>{'Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.'}</p>
+            <p className="reveal reveal-delay-2" style={{opacity:.95}}>{'From text prompts, images, or scripts, generate professional visuals and videos with powerful multimodal AI systems.'}</p>
+            <div className="chips">
+              {chips.map((c, i) => <div className="chip" key={i}>{featureIcon(i)}<span>{c}</span></div>)}
+            </div>
+            <div className="btnrow">
+              <button className="animated-cta">Generate with AI</button>
+              <a className="ghost" href="#">Generate with AI</a>
+            </div>
+          </div>
+          <div className="visual">
+            <div className="panel"><img src="/output/generated-assets/ds_1777023371535_5fd79d2a/17-b76aa1e8eb.png" alt="Hero visual" /></div>
+          </div>
+        </div>
+      </section>
+
+      <div className="marquee-wrapper">
+        <div className="marquee-track">
+          {[...Array(8)].map((_, i) => <span key={i} className="marq">Seedream 4.5 and Seedance 1.5 Pro <span className="gradient-text">★</span> AI Image Generation and AI Video Generation</span>)}
+        </div>
+      </div>
+
+      <ProductSection
+        data={{headline:'AI Image Generation with Seedream 4.5',description:'Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.',features:[{title:'Advanced Text–Image Alignment',description:'Accurately translates prompts into visuals with improved semantic understanding.'},{title:'High-Resolution Output',description:'Generate native
+export default LandingPage;

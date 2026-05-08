@@ -1,0 +1,559 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#ff0000';
+  const primary = '#ff0000';
+  const bodyBg = '#ffffff';
+
+  const [activeTab, setActiveTab] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const heroRef = useRef(null);
+
+  const content = {
+    productName: 'Zoho Workplace',
+    productCategory: 'Email & Collaboration Suite',
+    targetAudience: 'Enterprises',
+    hero: {
+      headline: 'Elevate Your Team’s Productivity with Zoho Workplace',
+      subheadline: 'A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.',
+      primaryCTA: 'Get Started'
+    },
+    trust: {
+      customerCount: '100,000+',
+      socialProof: 'Trusted by 100,000+ Businesses Globally'
+    },
+    productSections: [
+      {
+        label: 'FEATURES',
+        headline: 'Why Choose Zoho Workplace?',
+        description: 'Zoho Workplace brings everything your team needs to collaborate, communicate, and stay productive through a single unified platform.',
+        image: '/output/generated-assets/ds_1777794157026_f762b2c7/01-3921942fc4.jpeg',
+        features: [
+          { title: 'All-in-One Unified Workspace', description: 'Access email, chat, documents, meetings, and storage in a single integrated platform. Reduce app switching and boost productivity.' },
+          { title: 'Seamless Collaboration in Real Time', description: 'Work together on documents, spreadsheets, and presentations with live editing, comments, and built-in communication tools.' },
+          { title: 'Work from Anywhere, Anytime', description: 'Stay productive on the go. Reply to emails, access presentations, or host a video conference from anywhere effortlessly.' },
+          { title: 'AI-Powered Productivity (Zia)', description: 'Leverage built-in AI for writing assistance in terms of grammar, readability and writing style while you work on Writer or Sheet.' }
+        ]
+      },
+      {
+        label: 'STANDARD FEATURES',
+        headline: 'Unlock Your Business Growth with Zoho Workplace',
+        description: 'Zoho Workplace unifies email, collaboration, and productivity tools to streamline your business operations. Enable smarter teamwork and drive growth with a single platform.',
+        image: '/output/generated-assets/ds_1777794157026_f762b2c7/10-b32757542d.jpeg',
+        features: [
+          { title: 'Ideal For Your Business Size', description: 'Designed for any organization, Zoho Workplace enhances efficiency and teamwork at every scale.' },
+          { title: 'Communicate Effectively', description: 'Go beyond email and chat, and connect teams with a social intranet using channels, feeds, and groups.' },
+          { title: 'Integrated Business Apps', description: 'Connect with Zoho and third-party apps to unify workflows, eliminate silos, and streamline processes across your business.' },
+          { title: 'Customizable Workspace', description: 'Customize settings, layouts, workflows to fit your needs. Also, get a professional, ad-free email service & advanced controls.' }
+        ]
+      },
+      {
+        label: 'ADDITIONAL FEATURES',
+        headline: 'Integrate with Popular Apps',
+        description: 'Connect your Zoho Workplace with other business apps to ensure higher productivity and growth - all within a unified workspace.',
+        image: '/output/generated-assets/ds_1777794157026_f762b2c7/11-26fc6b7064.jpeg',
+        features: [
+          { title: 'Zoho Apps', description: 'Zoho Meeting, Zoho Connect, Zoho Mail, Zoho Cliq, Zoho Writer, etc.' },
+          { title: 'Analytics', description: 'Zoho Analytics, Google Analytics' },
+          { title: 'Accounting & Finance', description: 'Zoho Invoice & Zoho Books' },
+          { title: 'Automation', description: 'Zoho Flow, Zapier, viaSocket' },
+          { title: 'Business Suites', description: 'Zoho One, Zoho Workspace' }
+        ]
+      }
+    ],
+    pricing: {
+      headline: 'Zoho Workplace Price Plan Includes:',
+      plans: [
+        {
+          name: 'Zoho Workplace',
+          price: '',
+          originalPrice: '',
+          discount: '',
+          includes: [
+            'Enterprise-Grade Custom Email',
+            'Migration Assistance',
+            'Collaborative Office Suite',
+            '30-GB Mail Storage Per User',
+            'File Storage Starts at 100 GB Per Team',
+            'File Sharing & Permissions',
+            'Team Chat',
+            'Document Management',
+            'Supported Device: Android, iOS, Windows, Mac'
+          ]
+        }
+      ]
+    },
+    testimonials: [
+      { quote: 'Zoho Workplace has streamlined our communication and collaboration by bringing email, documents, and team tools into one unified platform.', author: 'Amit Kapoor', role: 'IT Manager', avatar: '/output/generated-assets/ds_1777794157026_f762b2c7/19-d3fa4aaa9a.png' },
+      { quote: 'The platform is easy to use and has significantly improved team productivity by reducing dependency on multiple tools.', author: 'Saurav Singh', role: 'Head of Operations', avatar: '/output/generated-assets/ds_1777794157026_f762b2c7/20-9fe5eca3c5.png' },
+      { quote: 'Techjockey helped us identify the right Zoho Workplace plan based on our requirements. Their guidance made the entire purchase process quick and hassle-free.', author: 'Shrimi Manchanda', role: 'Operations Manager', avatar: '/output/generated-assets/ds_1777794157026_f762b2c7/21-f5d96727f0.png' },
+      { quote: 'The seamless integration between email, file management, and collaboration tools has made our daily workflows much more efficient.', author: 'Shweta Thakur', role: 'Senior System Administrator', avatar: '/output/generated-assets/ds_1777794157026_f762b2c7/23-00ea9a7f29.png' },
+      { quote: 'Zoho Workplace helped us collaborate seamlessly, ensuring a more productive and efficient workflow across teams.', author: 'Narinder Sahni', role: 'IT Head', avatar: '/output/generated-assets/ds_1777794157026_f762b2c7/22-8513332821.png' }
+    ],
+    logos: [
+      '/output/generated-assets/ds_1777794157026_f762b2c7/03-6cf9a23a38.png',
+      '/output/generated-assets/ds_1777794157026_f762b2c7/02-6af3bb76f3.png',
+      '/output/generated-assets/ds_1777794157026_f762b2c7/05-c7efd74e99.png',
+      '/output/generated-assets/ds_1777794157026_f762b2c7/04-451985d3e0.png',
+      '/output/generated-assets/ds_1777794157026_f762b2c7/06-102c3a07a8.png',
+      '/output/generated-assets/ds_1777794157026_f762b2c7/07-3432503a01.png',
+      '/output/generated-assets/ds_1777794157026_f762b2c7/08-6fbcdb82b6.png'
+    ]
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -80px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger-parent').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % content.testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [content.testimonials.length]);
+
+  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleSubmit = e => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 2500);
+  };
+
+  const css = `
+    :root{--accent:${accent};--primary:${primary};--bodyBg:${bodyBg};--text:#1a1a1a;--muted:#5b5b5b;--line:#e8e8e8;--soft:#f5f5f5}
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bodyBg);color:var(--text);font-family:Inter,sans-serif;scroll-behavior:smooth}
+    h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;margin:0 0 14px}
+    p{margin:0 0 14px;line-height:1.7;color:var(--muted)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1180px,92%);margin:auto}
+    .section{padding:78px 0;position:relative}
+    .section-soft{background:#f5f5f5}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav-inner{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:14px 0}
+    .nav-right{display:flex;align-items:center;gap:16px}
+    .btn,.ghost-btn,.animated-cta{display:inline-flex;align-items:center;justify-content:center;padding:14px 24px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
+    .animated-cta,.btn{background:var(--accent);color:#fff;transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+    .animated-cta:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.18)}
+    .animated-cta::before,.animated-cta::after{display:none!important;content:none!important}
+    .ghost-btn{background:transparent;border:1px solid rgba(255,255,255,.22);color:#fff}
+    .hero{background:linear-gradient(180deg,#ffffff 0%,#f5f5f5 100%);overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:center;min-height:720px}
+    .hero-copy{padding:36px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;background:rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.18);color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.08em}
+    .hero h1{font-size:clamp(48px,6vw,68px);line-height:1.05;letter-spacing:-.03em;max-width:760px}
+    .hero p.lead{font-size:18px;max-width:640px;color:#4b4b4b}
+    .chips{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 28px}
+    .chip{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:#fff;border:1px solid rgba(255,0,0,.14);font-size:13px;color:#353535;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+    .ghost-dark{border:1px solid rgba(0,0,0,.12);color:#1a1a1a;background:#fff}
+    .hero-right{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}
+    .hero-visual{position:relative;min-height:500px;border-radius:24px;overflow:hidden;background:#101010;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 80px rgba(0,0,0,.18)}
+    .hero-visual img{width:100%;height:100%;object-fit:cover}
+    .grid-overlay{position:absolute;inset:0;background:
+      linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size:32px 32px;pointer-events:none}
+    .float-card{position:absolute;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:14px 16px;box-shadow:0 16px 40px rgba(0,0,0,.18)}
+    .fc1{top:20px;left:20px}.fc2{right:20px;top:26px}.fc3{left:24px;bottom:24px}
+    .mini-title{font-size:12px;font-weight:700;color:#666;margin-bottom:6px}
+    .mini-bar{height:8px;border-radius:999px;background:#efefef;overflow:hidden;margin:8px 0}
+    .mini-fill{height:100%;width:78%;background:var(--accent)}
+    .hero-form{background:#fff;border:2px solid rgba(255,0,0,.28);border-radius:24px;padding:22px;box-shadow:0 24px 60px rgba(255,0,0,.08);align-self:stretch}
+    .hero-form h3{font-size:24px}
+    .field{margin-bottom:14px}
+    .field label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}
+    .field input{width:100%;padding:14px 14px;border-radius:12px;border:1px solid #ddd;background:#fff;font-size:15px}
+    .input-focus-glow:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,107,0,.12)}
+    .full{width:100%}
+    .success-note{margin-top:12px;color:#15803d;font-weight:600}
+    .trust-wrap{padding:22px 0}
+    .trust-head{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+    .trust-stat{font-family:'Plus Jakarta Sans',sans-serif;font-size:34px;font-weight:800;color:var(--text)}
+    .logo-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px}
+    .logo-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;align-items:center;justify-content:center;min-height:78px;filter:grayscale(1);transition:.25s ease;box-shadow:0 8px 22px rgba(0,0,0,.04)}
+    .logo-card:hover{filter:grayscale(0);transform:translateY(-2px)}
+    .marquee-wrapper{overflow:hidden;background:#f5f5f5;padding:18px 0;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8}
+    .marquee-track{display:flex;width:max-content;animation:marqueeScroll 20s linear infinite}
+    .marquee-item{font:800 26px 'Plus Jakarta Sans',sans-serif;white-space:nowrap;margin-right:42px;color:#1a1a1a}
+    .tabs-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}
+    .tabs-col{display:flex;flex-direction:column;gap:14px}
+    .tab-btn{padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff;text-align:left;cursor:pointer;transition:.22s ease;box-shadow:0 8px 22px rgba(0,0,0,.04)}
+    .tab-btn.active{border-color:rgba(255,0,0,.3);box-shadow:0 14px 34px rgba(255,0,0,.09)}
+    .tab-btn small{display:block;color:var(--accent);font-weight:700;letter-spacing:.08em;margin-bottom:8px}
+    .preview-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 14px 40px rgba(0,0,0,.06)}
+    .preview-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:22px;align-items:center}
+    .browser-frame{background:#fff;border:1px solid #ddd;border-radius:18px;overflow:hidden;box-shadow:0 22px 48px rgba(0,0,0,.08)}
+    .browser-top{display:flex;gap:7px;align-items:center;padding:12px 14px;background:#f7f7f7;border-bottom:1px solid #ececec}
+    .dot{width:10px;height:10px;border-radius:50%;background:#ddd}.dot.r{background:#ff5f57}.dot.y{background:#ffbd2e}.dot.g{background:#28c840}
+    .browser-frame img{width:100%;height:340px;object-fit:cover}
+    .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+    .feature-item{padding:16px;border:1px solid var(--line);border-radius:16px;background:#fafafa}
+    .fi-head{display:flex;gap:12px;align-items:flex-start}
+    .icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,0,0,.1);color:var(--accent);flex:0 0 auto}
+    .feature-item h4{font-size:17px;margin:0 0 8px}
+    .dark-section{background:#111;color:#fff}
+    .dark-section p,.dark-section li,.dark-section .price-muted{color:#d1d5db}
+    .pricing-card{max-width:760px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 24px 64px rgba(0,0,0,.12)}
+    .price-top{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+    .badge-green{padding:8px 12px;border-radius:999px;background:#e8fff1;color:#15803d;font-weight:700;font-size:12px}
+    .price-main{font:800 42px 'Plus Jakarta Sans',sans-serif;color:#111}
+    .checklist{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+    .check{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid #ececec;border-radius:14px;background:#fafafa}
+    .testi-shell{max-width:920px;margin:auto}
+    .testi-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:0 14px 40px rgba(0,0,0,.06)}
+    .quote-mark{font-size:58px;line-height:1;color:var(--accent);font-family:'Plus Jakarta Sans',sans-serif}
+    .testi-quote{font-size:22px;line-height:1.7;color:#222;margin:10px 0 24px}
+    .author{display:flex;gap:14px;align-items:center}
+    .author img{width:60px;height:60px;border-radius:50%;object-fit:cover}
+    .stars{color:#f59e0b;letter-spacing:2px;font-size:18px}
+    .slider-nav{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+    .arrows{display:flex;gap:10px}
+    .arrow-btn,.slider-dot{border:none;cursor:pointer}
+    .arrow-btn{width:42px;height:42px;border-radius:50%;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+    .dots{display:flex;gap:8px}
+    .slider-dot{width:10px;height:10px;border-radius:999px;background:#d1d5db}
+    .slider-dot.active{transform:scale(1.25);background:var(--accent)}
+    .sticky-cta{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:999;animation:stickyEnter .45s cubic-bezier(.16,1,.3,1) both}
+    .footer{background:#111;color:#fff;padding:42px 0}
+    .footer-grid{display:grid;grid-template-columns:1.2fr 1fr auto;gap:20px;align-items:start}
+    .footer p,.footer a{color:#d1d5db}
+    .socials{display:flex;gap:10px;flex-wrap:wrap}
+    .soc{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)}
+    .foot-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+    .gradient-text{background:linear-gradient(135deg,var(--accent),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes zoomIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+    @keyframes popIn{0%{opacity:0;transform:scale(.85)}70%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+    .hero-fade-up{animation:fadeInUp .8s cubic-bezier(.16,1,.3,1) both}.hero-fade-left{animation:fadeInLeft .8s cubic-bezier(.16,1,.3,1) both}.hero-fade-right{animation:fadeInRight .8s cubic-bezier(.16,1,.3,1) both}.hero-zoom{animation:zoomIn .75s cubic-bezier(.16,1,.3,1) both}.pop-in{animation:popIn .55s cubic-bezier(.16,1,.3,1) both}
+    .reveal{opacity:0;transform:translateY(42px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .stagger-parent>*{opacity:0;transform:translateY(28px);transition:.65s cubic-bezier(.16,1,.3,1)}
+    .stagger-parent.visible>*{opacity:1;transform:translateY(0)}
+    .stagger-parent.visible>*:nth-child(2){transition-delay:.08s}.stagger-parent.visible>*:nth-child(3){transition-delay:.16s}.stagger-parent.visible>*:nth-child(4){transition-delay:.24s}
+    @keyframes stickyEnter{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
+    @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @media (max-width:1024px){
+      .hero-grid,.hero-right,.tabs-layout,.preview-grid,.footer-grid{grid-template-columns:1fr}
+      .logo-grid{grid-template-columns:repeat(4,1fr)}
+      .feature-list,.checklist{grid-template-columns:1fr}
+      .hero-visual{min-height:360px}
+    }
+    @media (max-width:640px){
+      .nav-inner{grid-template-columns:1fr;justify-items:start}
+      .nav-right{width:100%;justify-content:space-between}
+      .logo-grid{grid-template-columns:repeat(2,1fr)}
+      .section{padding:56px 0}
+      .hero h1{font-size:48px}
+      .testi-quote{font-size:18px}
+      .sticky-cta{width:calc(100% - 24px)}
+    }
+  `;
+
+  const iconSvg = (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" stroke="currentColor" strokeWidth="1.8"/>
+      <path d="M8.5 12l2.2 2.2 4.8-4.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+
+  const marqueeItems = [content.productName, content.productCategory, content.targetAudience, content.trust.socialProof];
+  const activeSection = content.productSections[activeTab];
+
+  return (
+    <>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+
+      <nav className="nav">
+        <div className="container nav-inner">
+          <div>
+            <img src="https://www.techjockey.com/c/zoho_workplace/assets/images/logo/logo_1.png" alt="Zoho Workplace" style={{ height: '36px', objectFit: 'contain', maxWidth: '160px' }} />
+          </div>
+          <div className="nav-right">
+            <img src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" height="28px" alt="Techjockey" />
+            <a href="#lead-form" className="animated-cta">{content.hero.primaryCTA}</a>
+          </div>
+        </div>
+      </nav>
+
+      <section className="hero section" ref={heroRef}>
+        <div className="container hero-grid">
+          <div className="hero-copy stagger-parent visible">
+            <div className="eyebrow hero-fade-up">{content.productCategory}</div>
+            <h1 className="hero-fade-left">
+              Elevate Your Team’s Productivity with <span className="gradient-text">Zoho Workplace</span>
+            </h1>
+            <p className="lead hero-fade-up">{content.hero.subheadline}</p>
+
+            <div className="chips hero-fade-up">
+              {['All-in-One Unified Workspace', 'Seamless Collaboration in Real Time', 'Work from Anywhere, Anytime', 'AI-Powered Productivity (Zia)'].map((chip, i) => (
+                <div className="chip" key={i}>
+                  <span style={{ color: accent }}>{iconSvg}</span>
+                  <span>{chip}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="hero-ctas hero-fade-up">
+              <a href="#lead-form" className="animated-cta">{content.hero.primaryCTA}</a>
+              <a href="#products" className="btn ghost-dark">Get Started</a>
+            </div>
+          </div>
+
+          <div className="hero-right">
+            <div className="hero-visual hero-zoom">
+              <img src="/output/generated-assets/ds_1777794157026_f762b2c7/17-7ff7c45c2d.png" alt="Zoho Workplace interface" />
+              <div className="grid-overlay" />
+              <div className="float-card fc1 float-1">
+                <div className="mini-title">Zoho Workplace</div>
+                <div style={{ fontWeight: 700, color: '#111' }}>Email & Collaboration Suite</div>
+              </div>
+              <div className="float-card fc2 float-2">
+                <div className="mini-title">Trusted by</div>
+                <div style={{ fontWeight: 800, color: '#111', fontSize: '22px' }}>100,000+</div>
+                <div style={{ fontSize: '13px', color: '#666' }}>Businesses Globally</div>
+              </div>
+              <div className="float-card fc3 float-3" style={{ minWidth: '220px' }}>
+                <div className="mini-title">Unified productivity</div>
+                <div className="mini-bar"><div className="mini-fill progress-fill" /></div>
+                <div style={{ fontSize: '13px', color: '#666' }}>Communication & collaboration in one platform</div>
+              </div>
+            </div>
+
+            <form id="lead-form" className="hero-form hero-fade-right" onSubmit={handleSubmit}>
+              <h3>Get Started</h3>
+              <p>A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.</p>
+              <div className="field">
+                <label htmlFor="name">Name</label>
+                <input id="name" name="name" className="input-focus-glow" value={formData.name} onChange={handleChange} required />
+              </div>
+              <div className="field">
+                <label htmlFor="email">Email</label>
+                <input id="email" type="email" name="email" className="input-focus-glow" value={formData.email} onChange={handleChange} required />
+              </div>
+              <div className="field">
+                <label htmlFor="phone">Phone</label>
+                <input id="phone" name="phone" className="input-focus-glow" value={formData.phone} onChange={handleChange} required />
+              </div>
+              <div className="field">
+                <label htmlFor="company">Company</label>
+                <input id="company" name="company" className="input-focus-glow" value={formData.company} onChange={handleChange} required />
+              </div>
+              <button type="submit" className="animated-cta full">{content.hero.primaryCTA}</button>
+              {submitted && <div className="success-note success-check">Get Started</div>}
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-soft">
+        <div className="container trust-wrap reveal">
+          <div className="trust-head">
+            <div>
+              <div className="trust-stat">{content.trust.customerCount}</div>
+              <p>{content.trust.socialProof}</p>
+            </div>
+          </div>
+          <div className="logo-grid">
+            {content.logos.map((logo, i) => (
+              <div className="logo-card" key={i}>
+                <img src={logo} alt={`Trust logo ${i + 1}`} style={{ maxHeight: '34px', objectFit: 'contain' }} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="marquee-wrapper">
+        <div className="marquee-track">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <div className="marquee-item" key={i}>{item} <span className="gradient-text">★</span></div>
+          ))}
+        </div>
+      </div>
+
+      <section id="products" className="section">
+        <div className="container">
+          <div className="tabs-layout">
+            <div className="tabs-col reveal">
+              {content.productSections.map((section, i) => (
+                <button key={i} className={`tab-btn ${activeTab === i ? 'active' : ''}`} onClick={() => setActiveTab(i)}>
+                  <small>{section.label}</small>
+                  <h3 style={{ marginBottom: 8 }}>{section.headline}</h3>
+                  <p style={{ margin: 0 }}>{section.description}</p>
+                </button>
+              ))}
+            </div>
+
+            <div className="preview-panel reveal">
+              <div className="preview-grid">
+                <div className="browser-frame">
+                  <div className="browser-top">
+                    <span className="dot r" /><span className="dot y" /><span className="dot g" />
+                  </div>
+                  <img src={activeSection.image} alt={activeSection.headline} />
+                </div>
+
+                <div>
+                  <div className="eyebrow" style={{ marginBottom: 12 }}>{activeSection.label}</div>
+                  <h2 style={{ fontSize: 'clamp(32px,4vw,42px)' }}>
+                    {activeSection.headline.split('Zoho Workplace').map((part, index, arr) => (
+                      <React.Fragment key={index}>
+                        {part}
+                        {index < arr.length - 1 && <span className="gradient-text">Zoho Workplace</span>}
+                      </React.Fragment>
+                    ))}
+                  </h2>
+                  <p>{activeSection.description}</p>
+
+                  <div className="feature-list">
+                    {activeSection.features.map((feature, i) => (
+                      <div className="feature-item" key={i}>
+                        <div className="fi-head">
+                          <div className="icon">{iconSvg}</div>
+                          <div>
+                            <h4>{feature.title}</h4>
+                            <p>{feature.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div style={{ marginTop: 20 }}>
+                    <a href="#lead-form" className="animated-cta">{content.hero.primaryCTA}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="marquee-wrapper">
+        <div className="marquee-track">
+          {[...['Why Choose Zoho Workplace?', 'Unlock Your Business Growth with Zoho Workplace', 'Integrate with Popular Apps'], ...['Why Choose Zoho Workplace?', 'Unlock Your Business Growth with Zoho Workplace', 'Integrate with Popular Apps']].map((item, i) => (
+            <div className="marquee-item" key={i}>{item} <span className="gradient-text">★</span></div>
+          ))}
+        </div>
+      </div>
+
+      <section className="section dark-section">
+        <div className="container reveal">
+          <div style={{ textAlign: 'center', marginBottom: 28 }}>
+            <div className="eyebrow" style={{ background: 'rgba(255,255,255,.08)', borderColor: 'rgba(255,255,255,.14)', color: '#fff' }}>PRICING</div>
+            <h2 style={{ fontSize: 'clamp(32px,4vw,42px)', marginTop: 14 }}>{content.pricing.headline}</h2>
+          </div>
+
+          <div className="pricing-card">
+            <div className="price-top">
+              <div>
+                <h3 style={{ fontSize: 28, color: '#111' }}>{content.pricing.plans[0].name}</h3>
+                <div className="price-main">Zoho Workplace</div>
+              </div>
+              <div className="badge-green">Included</div>
+            </div>
+
+            <div className="checklist">
+              {content.pricing.plans[0].includes.map((item, i) => (
+                <div className="check" key={i}>
+                  <span style={{ color: accent, marginTop: 2 }}>{iconSvg}</span>
+                  <span style={{ color: '#222', lineHeight: 1.5 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <a href="#lead-form" className="animated-cta full">{content.hero.primaryCTA}</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-soft">
+        <div className="container testi-shell reveal">
+          <div style={{ textAlign: 'center', marginBottom: 26 }}>
+            <div className="eyebrow">TESTIMONIALS</div>
+            <h2 style={{ fontSize: 'clamp(32px,4vw,42px)', marginTop: 14 }}>
+              What Teams Say About <span className="gradient-text">Zoho Workplace</span>
+            </h2>
+          </div>
+
+          <div className="testi-card">
+            <div className="quote-mark">❝</div>
+            <div className="testi-quote">{content.testimonials[activeSlide].quote}</div>
+            <div className="author">
+              <img src={content.testimonials[activeSlide].avatar} alt={content.testimonials[activeSlide].author} />
+              <div>
+                <div className="stars">★★★★★</div>
+                <div style={{ fontWeight: 800, color: '#111' }}>{content.testimonials[activeSlide].author}</div>
+                <div style={{ color: '#6b7280' }}>{content.testimonials[activeSlide].role}</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="slider-nav">
+            <div className="arrows">
+              <button className="arrow-btn" onClick={() => setActiveSlide((activeSlide - 1 + content.testimonials.length) % content.testimonials.length)}>‹</button>
+              <button className="arrow-btn" onClick={() => setActiveSlide((activeSlide + 1) % content.testimonials.length)}>›</button>
+            </div>
+            <div className="dots">
+              {content.testimonials.map((_, i) => (
+                <button key={i} className={`slider-dot ${i === activeSlide ? 'active' : ''}`} onClick={() => setActiveSlide(i)} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <a href="#lead-form" className="animated-cta sticky-cta">{content.hero.primaryCTA}</a>
+
+      <footer className="footer">
+        <div className="container footer-grid">
+          <div>
+            <img src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" height="28px" alt="Techjockey" />
+            <p style={{ marginTop: 16 }}>support@techjockey.com</p>
+            <p>© 2024 Techjockey Infotech Pvt. Ltd.</p>
+            <div className="foot-links">
+              <a href="#privacy">Privacy Policy</a>
+              <a href="#terms">Terms</a>
+            </div>
+          </div>
+
+          <div>
+            <p>{content.productName}</p>
+            <p>{content.productCategory}</p>
+            <p>{content.trust.socialProof}</p>
+          </div>
+
+          <div className="socials">
+            <a className="soc" href="#facebook" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H17V4.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V11H7.5v3h2.8v8h3.2z"/></svg>
+            </a>
+            <a className="soc" href="#instagram" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5A5.5 5.5 0 1112 18.5 5.5 5.5 0 0112 7.5zm0 2A3.5 3.5 0 1015.5 13 3.5 3.5 0 0012 9.5zM18 6.3a1.2 1.2 0 11-1.2 1.2A1.2 1.2 0 0118 6.3z"/></svg>
+            </a>
+            <a className="soc" href="#twitter" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8c-.7.3-1.5.5-2.3.6a4 4 0 001.8-2.2 8 8 0 01-2.5 1A4 4 0 0012 7.4a11.3 11.3 0 01-8.2-4.1A4 4 0 005 8.7a4 4 0 01-1.8-.5v.1A4 4 0 006.4 12a4 4 0 01-1.8.1A4 4 0 008.3 15a8.1 8.1 0 01-5 1.7A8.7 8.7 0 012 16.6 11.4 11.4 0 008.2 18c7.5 0 11.7-6.3 11.7-11.7v-.5A8.5 8.5 0 0022 5.8z"/></svg>
+            </a>
+            <a className="soc" href="#linkedin" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H3.7V20h3.2V8.5zM5.3 7.1a1.9 1.9 0 100-3.8 1.9 1.9 0 000 3.8zM20.3 20h-3.2v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V20H10V8.5h3.1V10h.1a3.4 3.4 0 013.1-1.7c3.3 0 3.9 2.2 3.9 5V20z"/></svg>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+};
+
+export default LandingPage;

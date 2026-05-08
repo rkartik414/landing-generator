@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, shrink-to-fit=no" />
+  <title>Seedream and Seedance AI Image and Video Generation</title>
+  <meta name="description"
+    content="Create high-quality AI images and videos with ByteDance generative models Seedream 4.5 and Seedance 1.5 Pro. Professional AI-powered visual content creation for enterprises." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&family=Inter&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #1a1f36;
+      background-color: #ffffff;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      margin: 0;
+      background: #ffffff;
+    }
+    a {
+      color: #4F46E5;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #373b8a;
+      outline: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 700;
+    }
+    button:focus-visible {
+      outline: 2px solid #4F46E5;
+      outline-offset: 2px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      margin: 0 0 0.5em 0;
+      color: #1a1f36;
+      letter-spacing: normal;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 44px;
+      line-height: 1.3;
+    }
+    h2 {
+      font-size: 28px;
+      line-height: 1.25;
+    }
+    h3 {
+      font-size: 20px;
+      line-height: 1.3;
+    }
+    p {
+      margin: 0 0 1.25em 0;
+      color: #4b4f61;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    small {
+      font-size: 0.875rem;
+      color: #7a7f9a;
+    }
+    ul {
+      margin: 0;
+      padding-left: 1.25em;
+      color: #4b4f61;
+    }
+    li {
+      margin-bottom: 0.75em;
+    }
+
+    /* Utility containers and grid */
+    .container {
+      max-width: 1200px;
+      padding-left: 32px;
+      padding-right: 32px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -16px;
+      margin-right: -16px;
+    }
+    .col {
+      padding-left: 16px;
+      padding-right: 16px;
+      box-sizing: border-box;
+    }
+    .col-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .col-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    @media (max-width: 768px) {
+      .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Scrollbar for carousel */
+    .carousel-container::-webkit-scrollbar {
+      height: 8px;
+    }
+    .carousel-container::-webkit-scrollbar-thumb {
+      background-color: #4F46E5;
+      border-radius: 4px;
+    }
+    .carousel-container::-webkit-scrollbar-track {
+      background-color: #f0f0f0;
+    }
+
+    /* Sticky Top Nav Bar [A] */
+    header#top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #18191B;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      border-bottom: 1px solid #2b2c2d;
+      user-select: none;
+    }
+    header #brand {
+      color: #00ACEE;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      user-select: text;
+    }
+    header #brand span {
+      color: #ffffff;
+      font-weight: 400;
+      margin-left: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+    header #top-nav button.cta-primary {
+      background-color: #00ACEE;
+      border: none;
+      color: white;
+      padding: 0.6rem 1.4rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    header #top-nav button.cta-primary:hover,
+    header #top-nav button.cta-primary:focus {
+      background-color: #008bbf;
+      outline: none;
+    }
+
+    /* Hero component [B] */
+    section#hero {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, #18191B 0%, #1a1f36 100%);
+      color: #ffffff;
+      padding: 64px 32px 96px 32px;
+      overflow: hidden;
+      user-select: none;
+    }
+    /* Abstract mesh gradient shapes */
+    section#hero::before,
+    section#hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.12;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    section#hero::before {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle at 40% 40%, #00ACEE, transparent 70%);
+      top: -120px;
+      left: -120px;
+    }
+    section#hero::after {
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(circle at 60% 60%, #4F46E5, transparent 70%);
+      bottom: -160px;
+      right: -160px;
+    }
+    #hero .container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 48px;
+      max-width: 1160px;
+    }
+    #hero .left-col,
+    #hero .right-col {
+      flex: 1 1 50%;
+      min-width: 280px;
+    }
+    /* Left side: logo and product name */
+    #hero .left-col #hero-brand {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 2.25rem;
+      color: #00ACEE;
+      user-select: text;
+      margin-bottom: 0;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    /* Right side text block */
+    #hero h1 {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      user-select: text;
+    }
+    #hero h2 {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: #d0d5dd;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      max-width: 480px;
+      user-select: text;
+    }
+    #hero p.supporting-line {
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 480px;
+      color: #a0a6b8;
+      margin-bottom: 2.75rem;
+      user-select: text;
+    }
+    #hero button.cta-primary {
+      background-color: #00ACEE;
+      border: none;
+      color: white;
+      padding: 0.85rem 2.25rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 8px 15px rgba(0, 172, 238, 0.3);
+    }
+    #hero button.cta-primary:hover,
+    #hero button.cta-primary:focus {
+      background-color: #008bbf;
+      outline: none;
+      box-shadow: 0 10px 20px rgba(0, 139, 191, 0.5);
+    }
+    @media (max-width: 768px) {
+      #hero {
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+      #hero .container {
+        flex-direction: column;
+        gap: 32px;
+      }
+      #hero h1 {
+        font-size: 34px;
+        max-width: 100%;
+      }
+      #hero h2,
+      #hero p.supporting-line {
+        max-width: 100%;
+      }
+      #hero button.cta-primary {
+        width: 100%;
+        padding: 1rem 0;
+      }
+    }
+
+    /* Trust bar - omitted because no badges or social proof */
+
+    /* Product Sections Container [D] */
+    section#products {
+      background-color: #ffffff;
+      padding: 48px 0 64px 0;
+      user-select: none;
+    }
+    section#products .container {
+      max-width: 1160px;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    /* Each product block */
+    .product-block {
+      margin-bottom: 64px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: flex-start;
+      user-select: text;
+    }
+    /* Alternate layout: first product left spotlight, second reversed */
+    .product-block:nth-child(odd) .spotlight {
+      order: 0;
+    }
+    .product-block:nth-child(odd) .feature-grid {
+      order: 1;
+    }
+    .product-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .product-block:nth-child(even) .spotlight {
+      order: 0;
+    }
+    .product-block:nth-child(even) .feature-grid {
+      order: 1;
+    }
+    /* Spotlight area */
+    .spotlight {
+      flex: 1 1 48%;
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 32px 32px 40px 32px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      user-select: text;
+    }
+    .spotlight .label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #4b4f61;
+      margin-bottom: 0.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      user-select: text;
+    }
+    .spotlight h2 {
+      font-size: 28px;
+      margin-bottom: 1rem;
+      user-select: text;
+      color: #1a1f36;
+    }
+    .spotlight p.description {
+      font-size: 1rem;
+      color: #4b4f61;
+      margin-bottom: 2rem;
+      user-select: text;
+      line-height: 1.5;
+    }
+    .spotlight button.cta-primary {
+      background-color: #4F46E5;
+      border: none;
+      color: white;
+      padding: 0.75rem 1.75rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      align-self: start;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 10px rgba(79, 70, 229, 0.25);
+    }
+    .spotlight button.cta-primary:hover,
+    .spotlight button.cta-primary:focus {
+      background-color: #373b8a;
+      outline: none;
+      box-shadow: 0 8px 18px rgba(55, 59, 138, 0.4);
+    }
+    /* Features grid */
+    .feature-grid {
+      flex: 1 1 48%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      user-select: text;
+    }
+    @media (min-width: 600px) {
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .feature-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.03);
+      transition: box-shadow 0.25s ease;
+    }
+    .feature-item:hover,
+    .feature-item:focus-within {
+      box-shadow: 0 6px 14px rgb(0 0 0 / 0.1);
+      border-color: #4F46E5;
+      outline: none;
+    }
+    .feature-item h3 {
+      font-size: 18px;
+      color: #1a1f36;
+      margin-bottom: 0.5em;
+      user-select: text;
+    }
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #4b4f61;
+      margin: 0;
+      user-select: text;
+      line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .product-block {
+        flex-direction: column;
+      }
+      .spotlight,
+      .feature-grid {
+        flex: 1 1 100%;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Pricing component [G] */
+    section#pricing {
+      background-color: #f8f9fa;
+      padding: 48px 32px 64px 32px;
+      user-select: text;
+    }
+    section#pricing .container {
+      max-width: 1160px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .pricing-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+      padding: 32px 32px 40px 32px;
+      display: flex;
+      flex-direction: column;
+      user-select: text;
+    }
+    .pricing-card h3 {
+      font-size: 20px;
+      color: #1a1f36;
+      margin-bottom: 0.75rem;
+      user-select: text;
+    }
+    .pricing-card .price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #4F46E5;
+      margin-bottom: 1rem;
+      user-select: text;
+    }
+    .pricing-card ul {
+      list-style: disc inside;
+      margin-bottom: 2rem;
+      color: #4b4f61;
+      user-select: text;
+    }
+    .pricing-card li {
+      margin-bottom: 0.75em;
+      line-height: 1.4;
+    }
+    .pricing-card button.cta-primary {
+      background-color: #4F46E5;
+      border: none;
+      color: white;
+      padding: 0.75rem 1.75rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      align-self: start;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 10px rgba(79, 70, 229, 0.25);
+    }
+    .pricing-card button.cta-primary:hover,
+    .pricing-card button.cta-primary:focus {
+      background-color: #373b8a;
+      outline: none;
+      box-shadow: 0 8px 18px rgba(55, 59, 138, 0.4);
+    }
+    @media (max-width: 480px) {
+      section#pricing .container {
+        grid-template-columns: 1fr;
+      }
+      .pricing-card button.cta-primary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Testimonials component [H] */
+    section#testimonials {
+      background: linear-gradient(135deg, #f8f9fa, #e9ebf2);
+      padding: 48px 32px 64px 32px;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+    section#testimonials .container {
+      max-width: 1160px;
+      position: relative;
+    }
+    section#testimonials h2 {
+      font-size: 28px;
+      margin-bottom: 32px;
+      text-align: center;
+      color: #1a1f36;
+      user-select: text;
+    }
+    /* Carousel container */
+    .carousel-container {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      user-select: none;
+    }
+    /* Hide scrollbar for Firefox */
+    .carousel-container {
+      scrollbar-width: thin;
+      scrollbar-color: #4F46E5 transparent;
+    }
+    /* Individual testimonial card */
+    .testimonial-card {
+      flex: 0 0 320px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgb(0 0 0 / 0.1);
+      padding: 24px 24px 32px 24px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      user-select: text;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .testimonial-card:focus-within,
+    .testimonial-card:hover {
+      outline: 2px solid #4F46E5;
+      outline-offset: 2px;
+      transform: translateY(-4px);
+    }
+    .testimonial-quote {
+      font-style: italic;
+      font-size: 1rem;
+      color: #4b4f61;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+      user-select: text;
+      flex-grow: 1;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1a1f36;
+      user-select: text;
+      margin-bottom: 0.125rem;
+    }
+    .testimonial-role {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #7a7f9a;
+      user-select: text;
+    }
+    /* Avatar circle placeholder (no images provided) */
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #4F46E5;
+      color: white;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      user-select: none;
+      flex-shrink: 0;
+      user-select: none;
+      text-transform: uppercase;
+      box-shadow: 0 2px 6px rgb(79 70 229 / 0.3);
+      user-select: none;
+    }
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 0.5rem;
+      user-select: text;
+    }
+    /* Carousel navigation arrows */
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #4F46E5;
+      color: white;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgb(79 70 229 / 0.3);
+      transition: background-color 0.3s ease;
+      z-index: 10;
+    }
+    .carousel-nav:hover,
+    .carousel-nav:focus {
+      background-color: #373b8a;
+      outline: none;
+    }
+    .carousel-nav[disabled] {
+      opacity: 0.3;
+      cursor: default;
+    }
+    .carousel-nav.left {
+      left: 8px;
+    }
+    .carousel-nav.right {
+      right: 8px;
+    }
+    /* Arrow SVG styling */
+    .carousel-nav svg {
+      width: 16px;
+      height: 16px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+    @media (max-width: 600px) {
+      .testimonial-card {
+        flex: 0 0 80vw;
+      }
+      .carousel-nav {
+        display: none;
+      }
+    }
+
+    /* Lead form or CTA card [I] - no form fields, so show strong CTA card */
+    section#lead-cta {
+      background-color: #f8f9fa;
+      padding: 48px 32px 64px 32px;
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #lead-cta .glass-card {
+      background: rgba(255 255 255 / 0.85);
+      backdrop-filter: saturate(180%) blur(16px);
+      border-radius: 16px;
+      max-width: 600px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+      text-align: center;
+      user-select: text;
+    }
+    #lead-cta h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+      color: #18191B;
+      user-select: text;
+    }
+    #lead-cta button.cta-primary {
+      background-color: #00ACEE;
+      border: none;
+      color: white;
+      padding: 0.85rem 2.25rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      border-radius: 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 8px 15px rgba(0, 172, 238, 0.3);
+    }
+    #lead-cta button.cta-primary:hover,
+    #lead-cta button.cta-primary:focus {
+      background-color: #008bbf;
+      outline: none;
+      box-shadow: 0 10px 20px rgba(0, 139, 191, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- [A] Sticky Top Nav Bar -->
+  <header id="top-nav" role="banner" aria-label="Primary navigation">
+    <div id="brand" aria-label="Techjockey and product">
+      Techjockey<span>Seedream and Seedance</span>
+    </div>
+    <button type="button" class="cta-primary" aria-label="Generate with AI">
+      Generate with AI
+    </button>
+  </header>
+
+  <!-- [B] Hero Section -->
+  <section id="hero" role="region" aria-labelledby="hero-headline" tabindex="-1">
+    <div class="container">
+      <div class="left-col" aria-hidden="true">
+        <div id="hero-brand" aria-label="Seedream and Seedance brand name">Seedream and Seedance</div>
+      </div>
+      <div class="right-col">
+        <h1 id="hero-headline">
+          Create High-Quality AI Images &amp; Videos with ByteDance Generative Models
+        </h1>
+        <h2>
+          From text prompts, images, or scripts, generate professional visuals and videos with powerful multimodal AI systems.
+        </h2>
+        <p class="supporting-line">
+          Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation)
+          - advanced foundation models developed by ByteDance for high-quality visual content creation.
+        </p>
+        <button type="button" class="cta-primary" aria-label="Generate with AI">
+          Generate with AI
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- No trust bar because no content provided -->
+
+  <!-- [D] Product Sections -->
+  <section id="products" aria-label="Product features overview">
+    <div class="container">
+      <!-- Seedream 4.5 Product Block -->
+      <article class="product-block" aria-labelledby="seedream-label seedream-headline">
+        <section class="spotlight">
+          <div class="label" id="seedream-label">AI Image Generation</div>
+          <h2 id="seedream-headline">Advanced Capabilities of Seedream 4.5 by ByteDance</h2>
+          <p class="description">
+            From accurate text rendering to consistent image editing and multi-image composition, Seedream 4.5 powers high-quality,
+            professional visual creation with superior precision and control.
+          </p>
+          <button type="button" class="cta-primary" aria-label="Request Demo for Seedream 4.5">
+            Request Demo
+          </button>
+        </section>
+        <section class="feature-grid" aria-describedby="seedream-features-desc" tabindex="0" role="list">
+          <h3 id="seedream-features-desc" class="sr-only">Features of Seedream 4.5</h3>
+          <div class="feature-item" role="listitem">
+            <h3>Advanced Text–Image Alignment</h3>
+            <p>Accurately translates prompts into visuals with improved semantic understanding.</p>
+          </div>
+          <div class="feature-item" role="listitem">
+            <h3>High-Resolution Output</h3>
+            <p>Generate native images up to 1K–4K resolution with strong visual fidelity.</p>
+          </div>
+          <div class="feature-item" role="listitem">
+            <h3>Superior Typographic Rendering</h3>
+            <p>Optimized for posters, ads, and text-heavy visual designs.</p>
+          </div>
+          <div class="feature-item" role="listitem">
+            <h3>Multi-Image Composition with Identity Preservation</h3>
+            <p>Combines multiple inputs while accurately maintaining subject consistency.</p>
+          </div>
+          <div class="feature-item" role="listitem">
+            <h3>Strong Structural Fidelity</h3>
+            <p>Maintains composition, layout, and scene structure with high precision.</p>
+          </div>
+        </section>
+      </article>
+
+      <!-- Seedance 1.5 Pro Product Block -->
+      <article class="product-block" aria-labelledby="seedance-label seedance-headline">
+        <section class="spotlight">
+          <div class="label" id="seedance-label">AI Video Generation</div>
+          <h2 id="seedance-headline">AI Video Generation with Seedance 1.5 Pro by Bytedance</h2>
+          <p class="description">
+            Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized
+            creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates
+            cross-modal learning to produce coherent visual and audio outputs.
+          </p>
+        </section>
+        <section class="feature-grid" aria-describedby="seedance-features-desc" tabindex="0" role="list">
+          <h3 id="seedance-features-desc" class="sr-only">Features of Seedance 1.5 Pro</h3>
+          <div class="feature-item" role="listitem">
+            <h3>Text-to-Video Generation</h3>
+            <p>Create videos directly from text prompts.</p>
+          </div>
+          <div class="feature-item" role="listitem">
+            <h3>Audio-Visual Synchronization</h3>
+            <p>Generate video and audio simultaneously with strong multimodal alignment.</p>
+          </div>
+          <div class="feature-item" role="listitem">
+            <h3>Multilingual Lip-Sync</h3>
+            <p>Supports multilingual and dialect-level lip synchronization.</p>
+          </div>
+          <div class="feature-item" role="listitem">
+            <h3>Cinematic Camera Control</h3>
+            <p>Generate videos with dynamic camera movement and cinematic storytelling.</p>
+          </div>
+          <div class="feature-item" role="listitem">
+            <h3>10× Faster Inference</h3>
+            <p>Optimized inference pipeline significantly improves generation speed.</p>
+          </div>
+        </section>
+      </article>
+    </div>
+  </section>
+
+  <!-- [G] Pricing Section -->
+  <section id="pricing" aria-label="Pricing plans">
+    <div class="container">
+      <article class="pricing-card" aria-labelledby="price-seedream-name">
+        <h3 id="price-seedream-name">Seedream 4.5 (AI Image Generation)</h3>
+        <ul>
+          <li>High-resolution image generation (up to 4K quality)</li>
+          <li>Text-to-image &amp; multimodal image editing</li>
+          <li>Multi-image composition for complex visuals</li>
+          <li>Enhanced typographic rendering for posters, ads &amp; text-heavy designs</li>
+        </ul>
+        <button type="button" class="cta-primary" aria-label="Get Quote for Seedream 4.5">
+          Get Quote
+        </button>
+      </article>
+      <article class="pricing-card" aria-labelledby="price-seedance-name">
+        <h3 id="price-seedance-name">Seedance 1.5 Pro (AI Video Generation)</h3>
+        <p class="price">Starting at $1,000/month</p>
+        <ul>
+          <li>Text-to-video generation with cinematic output</li>
+          <li>Native audio + video generation (synchronized)</li>
+          <li>Multilingual lip-sync capabilities</li>
+          <li>Fast inference for quicker video production</li>
+        </ul>
+        <button type="button" class="cta-primary" aria-label="Get Quote for Seedance 1.5 Pro">
+          Get Quote
+        </button>
+      </article>
+    </div>
+  </section>
+
+  <!-- [H] Testimonials Section -->
+  <section id="testimonials" aria-label="Customer testimonials" tabindex="-1">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div class="carousel-container" role="list" aria-live="polite" aria-relevant="additions removals">
+        <article class="testimonial-card" role="listitem" tabindex="0" aria-label="Testimonial by Vaishali Saxena, Creative Director">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar" aria-hidden="true" title="Vaishali Saxena">VS</div>
+            <div>
+              <p class="testimonial-author">Vaishali Saxena</p>
+              <p class="testimonial-role">Creative Director</p>
+            </div>
+          </div>
+          <blockquote class="testimonial-quote">
+            Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.
+          </blockquote>
+        </article>
+
+        <article class="testimonial-card" role="listitem" tabindex="0" aria-label="Testimonial by Vihaan Pandey, Video Producer">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar" aria-hidden="true" title="Vihaan Pandey">VP</div>
+            <div>
+              <p class="testimonial-author">Vihaan Pandey</p>
+              <p class="testimonial-role">Video Producer</p>
+            </div>
+          </div>
+          <blockquote class="testimonial-quote">
+            Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.
+          </blockquote>
+        </article>
+
+        <article class="testimonial-card" role="listitem" tabindex="0" aria-label="Testimonial by Anurag Malhotra, Art Director">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar" aria-hidden="true" title="Anurag Malhotra">AM</div>
+            <div>
+              <p class="testimonial-author">Anurag Malhotra</p>
+              <p class="testimonial-role">Art Director</p>
+            </div>
+          </div>
+          <blockquote class="testimonial-quote">
+            The multimodal editing capabilities in Seedream make it easy to refine images with precision.
+          </blockquote>
+        </article>
+
+        <article class="testimonial-card" role="listitem" tabindex="0" aria-label="Testimonial by Ashutosh Singh, Marketing Manager">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar" aria-hidden="true" title="Ashutosh Singh">AS</div>
+            <div>
+              <p class="testimonial-author">Ashutosh Singh</p>
+              <p class="testimonial-role">Marketing Manager</p>
+            </div>
+          </div>
+          <blockquote class="testimonial-quote">
+            Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.
+          </blockquote>
+        </article>
+
+        <article class="testimonial-card" role="listitem" tabindex="0" aria-label="Testimonial by Shrimmi Saxena, Creative Lead">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar" aria-hidden="true" title="Shrimmi Saxena">SS</div>
+            <div>
+              <p class="testimonial-author">Shrimmi Saxena</p>
+              <p class="testimonial-role">Creative Lead</p>
+            </div>
+          </div>
+          <blockquote class="testimonial-quote">
+            From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.
+          </blockquote>
+        </article>
+      </div>
+      <button class="carousel-nav left" aria-label="Previous testimonial" type="button" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="carousel-nav right" aria-label="Next testimonial" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- [I] Lead CTA Card (No form fields) -->
+  <section id="lead-cta" aria-label="Call to action">
+    <div class="glass-card" role="region" aria-labelledby="lead-cta-headline" tabindex="0">
+      <h2 id="lead-cta-headline">Ready to Elevate Your Visual Content Creation?</h2>
+      <button type="button" class="cta-primary" aria-label="Request a demo for Seedream and Seedance">
+        Request a Demo
+      </button>
+    </div>
+  </section>
+
+  <script>
+    // Testimonials carousel logic
+    (() => {
+      const container = document.querySelector('.carousel-container');
+      const btnPrev = document.querySelector('.carousel-nav.left');
+      const btnNext = document.querySelector('.carousel-nav.right');
+      if (!container || !btnPrev || !btnNext) return;
+
+      const scrollAmount = container.querySelector('.testimonial-card').offsetWidth + 24; // card width + gap
+
+      function updateButtons() {
+        btnPrev.disabled = container.scrollLeft <= 0;
+        btnNext.disabled = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
+      }
+
+      btnPrev.addEventListener('click', () => {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      btnNext.addEventListener('click', () => {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+      container.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateButtons);
+      });
+
+      // Initialize buttons state
+      updateButtons();
+    })();
+  </script>
+
+<!-- TECHJOCKEY FOOTER -->
+    
+</body>
+
+</html>

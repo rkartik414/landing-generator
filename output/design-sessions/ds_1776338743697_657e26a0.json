@@ -1,0 +1,507 @@
+{
+  "sessionId": "ds_1776338743697_657e26a0",
+  "createdAt": "2026-04-16T11:25:43.697Z",
+  "updatedAt": "2026-04-16T11:34:35.717Z",
+  "status": "html-generated",
+  "productName": "ZW",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://www.techjockey.com/ae/c/zoho_book/",
+    "parsedSectionCount": 1
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": null,
+    "heroStrategy": {
+      "layout": "text-left-media-right",
+      "primaryVisual": null,
+      "secondaryVisual": null,
+      "accentVisuals": [
+        "layered-dashboard-panels",
+        "mail-cliq-writer-meetings-ui-cards",
+        "connection-lines",
+        "floating-trust-chips"
+      ],
+      "backgroundImage": null,
+      "backgroundVideo": null,
+      "backgroundTreatment": "solid",
+      "overlayStyle": "none",
+      "headline": "Elevate Your Team’s Productivity with Zoho Workplace",
+      "subheadline": "A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.",
+      "ctaText": "Get Started",
+      "secondaryCtaText": "Get Your Free Trial",
+      "floatingChips": [
+        "Easy Setup & Quick Onboarding",
+        "Made in India",
+        "24x7 Support",
+        "Trusted by 100,000+ Businesses Globally"
+      ],
+      "animationStyle": "stagger",
+      "designNote": "Use a split hero with an orange brand block on the left and a layered operational-dashboard illustration on the right. The visual should feel like a unified workplace command center: stacked interface panels for Mail, Cliq, Writer, and Meetings, with subtle connection lines and soft shadows. Keep the right side as a polished CSS-rich composite or product UI cutout treatment rather than a lifestyle photo, to reinforce enterprise trust and product clarity. Primary CTA should be a large solid pill in charcoal/white contrast; secondary CTA should be an outlined pill. Avoid centered-only composition."
+    },
+    "blueprint": {
+      "rhythmPlan": {
+        "opening": "loud",
+        "middle": "modular",
+        "ending": "conversion"
+      },
+      "repetitionBreakers": [
+        "Start with a dynamic split hero that is visual-first but still keeps the value proposition legible above the fold.",
+        "Insert trust immediately after hero as a compact marquee strip, then switch to an immersive spotlight-plus-grid product story.",
+        "Alternate product sections between spotlight-heavy, split-panel, and standard-grid treatments so consecutive sections never feel visually repetitive.",
+        "Use one dark integration band and one dark proof band to interrupt the otherwise light enterprise flow.",
+        "Make testimonials a carousel because there are 5 quotes, then close with a centered high-intent form card for conversion."
+      ],
+      "pageTitle": "Zoho Workplace for Enterprises | Unified Email & Collaboration Suite",
+      "metaDescription": "Explore Zoho Workplace for enterprises: secure email, collaboration, AI-powered productivity, app integrations, and unified communication with a free trial.",
+      "styles": {
+        "accentColor": "#1a1a1a",
+        "bodyBg": "#f5f5f5",
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Inter",
+        "themeFamily": "operational-dashboard",
+        "surfaceStyle": "soft-shadow",
+        "visualMotif": "dashboard-panels",
+        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "layout": "split-left",
+          "bgColor": "#ff6b00",
+          "surfaceStyle": "soft-shadow",
+          "backgroundTreatment": "bold-orange-slab-with-subtle-dashboard-grid-overlay",
+          "heroComposition": {
+            "mode": "text-left-media-right"
+          },
+          "renderMode": "split-visual",
+          "animationMode": "stagger",
+          "designNote": "Hero must be dynamic and enterprise-clear: large left-aligned headline, short subheadline, compact benefit chips from the supporting line, and a right-side layered workspace visual showing Mail, Cliq, Writer, and Meetings. Keep this content-first visually but with strong product energy; primary CTA is orange and dominant, secondary CTA stays quieter."
+        },
+        {
+          "id": "trust",
+          "type": "trust-bar",
+          "layout": "marquee-strip",
+          "bgColor": "#ffffff",
+          "renderMode": "marquee",
+          "designNote": "Place trust early to satisfy enterprise evaluation behavior. Use a compact horizontal trust strip with the badge repeated as a marquee-like system accent, paired with a restrained credibility line. Keep it lightweight so it does not compete with the hero."
+        },
+        {
+          "id": "products",
+          "type": "product-sections",
+          "layout": "alternating",
+          "bgColor": "#f5f5f5",
+          "renderMode": "spotlight-plus-grid",
+          "featurePresentation": {
+            "mode": "spotlight-plus-grid",
+            "primaryFeatureTitle": "All-in-One Unified Workspace",
+            "visualPriority": "high",
+            "useIcons": true,
+            "usePreviewPanel": true
+          },
+          "designNote": "Use the first product block as an immersive spotlight section for 'Why Choose Zoho Workplace?' with a large primary feature panel and a supporting feature grid. Since there are 4+ features, the spotlight-plus-grid format is the hard decision layer. Then alternate the next product blocks into split-panel-list or accordion-with-visual to avoid same-layout fatigue. Keep the narrative moving from unified workspace to business growth, then integrations, then security."
+        },
+        {
+          "id": "why-techjockey",
+          "type": "why-techjockey",
+          "layout": "grid",
+          "bgColor": "#ffffff",
+          "renderMode": "card-grid",
+          "designNote": "This section is not provided in the source, so keep it absent or reserve the slot for a subtle credibility utility block only if needed. If surfaced, use a minimal icon-list rather than a promotional band to preserve the enterprise tone."
+        },
+        {
+          "id": "pricing",
+          "type": "pricing-cart",
+          "layout": "card-center",
+          "bgColor": "#1a1a1a",
+          "renderMode": "highlighted-card",
+          "designNote": "Move pricing into a dark contrast band to create a strong conversion pivot. Use a centered highlighted card with the included plan items as scannable bullets, and keep the CTA more prominent because this is a strong enterprise consideration point."
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "layout": "carousel-static",
+          "bgColor": "#ffffff",
+          "renderMode": "slider",
+          "designNote": "Use a testimonial carousel because there are 5 testimonials. Keep it proof-led and rhythmically calmer after pricing. Surface only one quote at a time with subtle author/company metadata to maintain enterprise credibility without crowding the page."
+        },
+        {
+          "id": "form",
+          "type": "lead-form",
+          "layout": "centered-card",
+          "bgColor": "#f5f5f5",
+          "renderMode": "floating-card",
+          "designNote": "End with a concise, high-intent centered lead form card. Since CTA aggression should be strong, this final section should be visually assertive but not noisy: one primary action, minimal friction, and clear trial language."
+        },
+        {
+          "id": "news",
+          "type": "media-logos",
+          "layout": "marquee-strip",
+          "bgColor": "#ffffff",
+          "renderMode": "logo-strip",
+          "designNote": "No media/news content is provided. Do not fabricate a logo wall. If a filler slot is needed, keep this as a slim, low-visual-weight strip or omit in implementation."
+        }
+      ],
+      "designPersonality": "Enterprise command-center energy: structured, efficient, and modern with strong orange branding, layered product proof, and a clear sense of control across communication, collaboration, and productivity.",
+      "imageryDirection": "Use a polished dashboard-style visual on the hero right side: layered UI shells for Mail, Cliq, Writer, and Meetings, floating chips for '24x7 Support', 'Made in India', and 'Quick Onboarding', plus subtle connection lines showing unified communication. Support sections with SVG icons and clean PNG interface cutouts. If product screenshots are unavailable, build a CSS-rich abstract workspace composition with panels, metrics, and overlapping windows.",
+      "typography": {
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Inter",
+        "headingWeight": 700,
+        "heroFontSize": "48px",
+        "heroFontSizeReason": "The headline is long enough to need a controlled, confident size that still feels premium on desktop and mobile.",
+        "letterSpacing": "normal",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#ff6b00",
+        "accent": "#1a1a1a",
+        "accentHover": "#cc5600",
+        "bodyBg": "#f5f5f5",
+        "cardBg": "#ffffff",
+        "textDark": "#1a1a1a",
+        "textMid": "#5f5f5f",
+        "textLight": "#ffffff",
+        "border": "#e8e8e8",
+        "colourReason": "The palette is taken exclusively from Techjockey’s brand colors. Orange drives the hero and primary CTA for energy and conversion, while charcoal and white provide enterprise contrast. The light grey supports section separation and keeps the page polished."
+      },
+      "themeFamily": "operational-dashboard",
+      "surfaceStyle": "soft-shadow",
+      "visualMotif": "dashboard-panels",
+      "backgroundSystem": {
+        "bodyBase": "#f5f5f5",
+        "hero": "#ff6b00",
+        "section1": "#ffffff",
+        "section2": "#f5f5f5",
+        "section3": "#ffffff"
+      },
+      "motionStrategy": {
+        "allowAnimations": true,
+        "style": "premium",
+        "heroEntrance": "stagger",
+        "cardHover": "lift",
+        "sectionReveal": "fade-up"
+      },
+      "referenceMap": {
+        "heroPattern": "Full-width split-leaning top banner with left-aligned brand/logo area, large H1, short supporting paragraph, and a compact benefit list using check icons; strong enterprise landing-page framing with immediate trust and product clarity.",
+        "sectionRhythm": "Hero first, then a lead-capture form card, followed by stacked informational product sections in a long-scroll narrative. Each section uses a headline, short intro, and a feature grid/list. Rhythm is linear and conversion-led rather than exploratory.",
+        "cardStyle": "Simple rectangular content cards/panels with minimal decoration, light borders or subtle separation, generous internal padding, and icon+text utility treatment. No glassmorphism; emphasis is clarity and form utility.",
+        "ctaPattern": "Primary conversion CTA is top-of-page and form-led. Secondary CTA appears alongside the primary in the hero style. Down-page sections rely more on informational scaffolding than repeated button density, with CTA emphasis concentrated near the hero/form.",
+        "pricingPattern": "No visible pricing module in the reference structure.",
+        "footerMode": "Footer not shown; inferred footer mode is standard informational/legal footer without strong promotional emphasis.",
+        "spacingScale": [
+          "24px",
+          "32px",
+          "48px",
+          "64px",
+          "96px"
+        ],
+        "mediaPattern": "Minimal hero imagery in the provided markup; product storytelling is primarily text-based. Visual treatment, when used, is likely logo-led and icon-supported rather than media-heavy. No obvious gallery, video, or media panel system in the extracted structure.",
+        "productSectionPattern": "Stacked long-form sections with section labels/fold indicators, a bold headline, short description, and a multi-item feature list or grid. Designed for progressive disclosure across multiple folds, with each section reinforcing a distinct value theme.",
+        "formPattern": "Dedicated lead form placed immediately below the hero in a boxed card. Form appears as a conversion anchor rather than inline/embedded throughout the page. Uses hidden tracking fields and a structured, multi-field submission model typical of enterprise lead gen.",
+        "interactionPatterns": {
+          "usesCarousel": false,
+          "usesTabs": false,
+          "usesAccordion": false,
+          "usesStickyCta": false,
+          "usesRevealAnimations": false,
+          "usesHoverCards": false,
+          "usesCounters": false,
+          "usesMarqueeLogos": false
+        },
+        "surfacePatterns": {
+          "alternatesBackgrounds": false,
+          "usesDarkBandSections": true,
+          "usesTintedSections": false,
+          "usesGlassPanels": false,
+          "usesEditorialWhitespace": true
+        },
+        "animationStyle": "Static, non-animated presentation with conversion-focused layout; any motion is not evident in the provided structure.",
+        "componentPatterns": [
+          "Logo lockup",
+          "Hero headline + subcopy block",
+          "Icon bullet list",
+          "Lead capture form card",
+          "Section headline + description block",
+          "Feature list/grid",
+          "Fold label metadata",
+          "Hidden analytics fields"
+        ],
+        "designNotes": [
+          "Enterprise B2B landing page pattern optimized for lead capture and trust-building.",
+          "Content hierarchy is dense but organized: hero -> form -> feature validation -> use-case/benefit expansion -> integrations.",
+          "Visual language should stay corporate, clean, and structured; avoid playful or highly decorative treatments.",
+          "Feature presentation favors utility copy and scannable lists over storytelling panels.",
+          "If extended to a reusable system, keep section modules modular and repeatable with strong headline-first composition."
+        ]
+      },
+      "assetRules": {
+        "lockReferenceStructure": false,
+        "replaceImages": true,
+        "replaceVideos": true,
+        "preserveMode": "structure-styling",
+        "strictLayoutMatch": true,
+        "userSuppliedImagesOnly": false
+      },
+      "pageGoal": "single-product",
+      "trustLogos": [],
+      "includeForm": false,
+      "includePricing": true,
+      "includeTestimonials": true,
+      "includeTrust": true,
+      "additionalInstructions": "",
+      "designStrategy": {
+        "primaryGoal": "lead-gen",
+        "buyerStage": "solution-aware",
+        "conversionPriority": "high",
+        "narrativeMode": "product-led",
+        "trustStrategy": "stats-first",
+        "emotionalTone": "efficient",
+        "visualDominance": "hero-message",
+        "ctaAggression": "strong",
+        "sectionDensity": "dense",
+        "recommendedHeroStyle": "split",
+        "mustHaveMoments": [
+          "Strong enterprise-oriented hero with clear value proposition, immediate CTA, and compact supporting benefits",
+          "Visible trust proof near the top using the 100,000+ businesses globally message",
+          "Early lead-capture form after the hero to convert high-intent enterprise visitors quickly",
+          "Feature-led product sections that explain unified workspace, collaboration, AI productivity, integrations, and security",
+          "Pricing/inclusions block that reduces purchase friction and clarifies what the plan includes",
+          "Testimonial section with a mix of product outcomes and Techjockey-assisted purchase confidence",
+          "Final conversion form or CTA close to the footer for users who scroll through the long narrative"
+        ],
+        "avoidPatterns": [
+          "Overly playful or consumer-style visuals that weaken enterprise credibility",
+          "Long speculative storytelling without concrete product benefits",
+          "Hero carousels or multiple competing messages that dilute the primary CTA",
+          "Trust elements buried too low on the page",
+          "Too much whitespace that reduces information density for a long-form enterprise page",
+          "Generic collaboration messaging without specific Zoho Workplace capabilities"
+        ],
+        "reasoning": "This is a single-product enterprise landing page with long content and clear intent to capture leads for Zoho Workplace. The audience is likely solution-aware, so the page should quickly validate fit, establish enterprise credibility, and move users toward trial or inquiry. A split hero works best because it can balance message clarity with immediate conversion. Stats-led trust is the strongest approach because the content already includes broad adoption proof and enterprise reassurance. The overall page should feel efficient, secure, and product-led, with dense sectioning to support a long-scroll decision journey while keeping CTAs strong and repeated."
+      },
+      "designReview": {
+        "score": 68,
+        "verdict": "weak",
+        "issues": [
+          {
+            "area": "Layout Quality",
+            "problem": "The layout is visually monotonous, with repetitive section design that leads to reader fatigue.",
+            "severity": "high",
+            "fix": "Introduce varied layouts for different sections such as accordion for some features and split panels for others."
+          },
+          {
+            "area": "Conversion Flow",
+            "problem": "Lack of CTAs in product sections reduces the opportunity for conversion.",
+            "severity": "high",
+            "fix": "Add CTAs within product sections to guide users more effectively towards conversion actions."
+          },
+          {
+            "area": "Visual Monotony",
+            "problem": "Lack of icons in feature lists makes the page content-heavy and hard to digest.",
+            "severity": "medium",
+            "fix": "Incorporate icons next to feature titles to break visual monotony and improve information scannability."
+          },
+          {
+            "area": "Proof Placement",
+            "problem": "Trust elements are not prominent enough; placed early but not emphasized.",
+            "severity": "medium",
+            "fix": "Enhance the trust bar with distinct visuals or integrate it within the hero for greater impact."
+          },
+          {
+            "area": "Hierarchy",
+            "problem": "Primary and secondary CTAs in the hero section lack visual differentiation.",
+            "severity": "medium",
+            "fix": "Use different styles or colors for primary and secondary CTAs to create clear action hierarchy."
+          }
+        ],
+        "repairPrompt": "Revise the layout for better visual interest by alternating section designs and incorporating icons. Introduce compelling CTAs within key sections to bolster conversion flow. Enhance trust elements with better visibility and place them strategically within or near the hero section.",
+        "strengths": [
+          {
+            "area": "CTA Quality",
+            "strength": "The primary CTA 'Get Started' is clear and action-oriented, encouraging user engagement."
+          },
+          {
+            "area": "Premium Feel",
+            "strength": "The color scheme and typography convey a modern and high-trust enterprise appearance, suitable for the target audience."
+          },
+          {
+            "area": "Hero Section",
+            "strength": "The hero is dynamic and effectively communicates the value proposition with a split layout and strong visual energy."
+          }
+        ]
+      },
+      "trustLogosCount": 8
+    },
+    "mediaPlan": {
+      "hero": {
+        "primaryVisual": "/output/generated-assets/ds_1776338743697_657e26a0/33-ade7eb646a.png",
+        "secondaryVisual": "/output/generated-assets/ds_1776338743697_657e26a0/01-e278a21231.png",
+        "backgroundImage": null,
+        "backgroundVideo": null,
+        "accentVisuals": [
+          "/output/generated-assets/ds_1776338743697_657e26a0/31-4a3504ffa0.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/10-bf58d4fc47.png"
+        ],
+        "color": "#1a1a2e"
+      },
+      "trust": {
+        "logos": [
+          "/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/05-c7070f6651.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/06-0dc4149d75.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/07-3371ec06e6.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/08-e658fdd139.png"
+        ],
+        "badges": []
+      },
+      "productSections": [
+        {
+          "sectionId": "1",
+          "primaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/33-ade7eb646a.png",
+          "secondaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/01-e278a21231.png",
+          "icons": [
+            "/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png"
+          ]
+        },
+        {
+          "sectionId": "2",
+          "primaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/01-e278a21231.png",
+          "secondaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png",
+          "icons": [
+            "/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png"
+          ]
+        },
+        {
+          "sectionId": "3",
+          "primaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png",
+          "secondaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/10-bf58d4fc47.png",
+          "icons": [
+            "/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png"
+          ]
+        },
+        {
+          "sectionId": "4",
+          "primaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/10-bf58d4fc47.png",
+          "secondaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/13-f91cb31461.jpeg",
+          "icons": [
+            "/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png"
+          ]
+        },
+        {
+          "sectionId": "5",
+          "primaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/13-f91cb31461.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/11-411a076608.png",
+          "icons": [
+            "/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png"
+          ]
+        },
+        {
+          "sectionId": "6",
+          "primaryPreview": "/output/generated-assets/ds_1776338743697_657e26a0/11-411a076608.png",
+          "secondaryPreview": null,
+          "icons": [
+            "/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png",
+            "/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png"
+          ]
+        }
+      ],
+      "testimonials": {
+        "avatars": [
+          "/output/generated-assets/ds_1776338743697_657e26a0/20-16294edce5.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/18-46be027ae7.png",
+          "/output/generated-assets/ds_1776338743697_657e26a0/19-601ba8abef.png"
+        ]
+      },
+      "demos": {
+        "heroDemo": null,
+        "sectionDemos": []
+      },
+      "product": [
+        "/output/generated-assets/ds_1776338743697_657e26a0/33-ade7eb646a.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/01-e278a21231.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/10-bf58d4fc47.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/13-f91cb31461.jpeg",
+        "/output/generated-assets/ds_1776338743697_657e26a0/11-411a076608.png"
+      ],
+      "features": [
+        "/output/generated-assets/ds_1776338743697_657e26a0/31-4a3504ffa0.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/10-bf58d4fc47.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/13-f91cb31461.jpeg",
+        "/output/generated-assets/ds_1776338743697_657e26a0/11-411a076608.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/12-3965757185.jpeg"
+      ],
+      "logos": [
+        "/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/05-c7070f6651.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/06-0dc4149d75.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/07-3371ec06e6.png",
+        "/output/generated-assets/ds_1776338743697_657e26a0/08-e658fdd139.png"
+      ],
+      "fallbackStrategy": {
+        "heroMode": "split-visual",
+        "productMode": "preview-panel"
+      },
+      "form": null,
+      "additionalInstructions": null
+    }
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": null,
+    "fileUrl": null,
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": "zw-1776339275676.html",
+    "localizedAssetsBase": "/output/generated-assets/ds_1776338743697_657e26a0"
+  },
+  "logs": [
+    {
+      "at": "2026-04-16T11:25:43.700Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-04-16T11:34:35.708Z",
+      "type": "workflow",
+      "step": "html-generated",
+      "message": "HTML output generated: zw-1776339275676.html"
+    },
+    {
+      "at": "2026-04-16T11:34:35.717Z",
+      "type": "workflow",
+      "step": "mcp-auto-run-failed",
+      "message": "MCP execution failed: No figmaBuildPlan found in session: ds_1776338743697_657e26a0"
+    }
+  ]
+}

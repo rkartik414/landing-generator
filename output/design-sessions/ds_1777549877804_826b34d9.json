@@ -1,0 +1,502 @@
+{
+  "sessionId": "ds_1777549877804_826b34d9",
+  "createdAt": "2026-04-30T11:51:17.804Z",
+  "updatedAt": "2026-04-30T11:52:05.213Z",
+  "status": "html-generated",
+  "productName": "seedance",
+  "pageType": "category",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://www.imagine.art/video",
+    "parsedSectionCount": 8
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": {
+      "pages": [],
+      "buildSummary": {
+        "desktopSectionCount": 0,
+        "mobileSectionCount": 0,
+        "sharedComponentFamilies": [],
+        "figmaExecutionNotes": []
+      },
+      "fileName": "landing-page-design",
+      "pageType": "single-product",
+      "designSystemMode": "design-system-first",
+      "tokenProfileHint": ""
+    },
+    "heroStrategy": {
+      "layout": "reference-preserved"
+    },
+    "blueprint": {
+      "source": "reference-adapted",
+      "preserveMode": "structure-styling",
+      "strictLayoutMatch": true,
+      "sectionOrder": [
+        "generic",
+        "hero",
+        "footer"
+      ],
+      "sections": [
+        {
+          "id": "generic-1",
+          "type": "generic",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "hero-2",
+          "type": "hero",
+          "layout": "reference-preserved-hero",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "footer-3",
+          "type": "footer",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        }
+      ],
+      "strategy": {
+        "primaryGoal": "replicate",
+        "narrativeMode": "reference-preserved",
+        "visualDominance": "reference-preserved",
+        "trustStrategy": "stats-first",
+        "ctaAggression": "medium",
+        "recommendedHeroStyle": "split"
+      },
+      "intent": {
+        "pageGoal": "single-product",
+        "pageType": "category",
+        "sectionOrder": [
+          "generic",
+          "hero",
+          "footer"
+        ]
+      },
+      "contentMap": {
+        "productName": "Seedream 4.5 and Seedance 1.5 Pro",
+        "productCategory": "AI Image Generation and AI Video Generation",
+        "targetAudience": "Professionals and businesses creating high-quality visual content, including creatives, designers, video producers, art directors, marketing managers, and creative leads",
+        "contentVolume": "long",
+        "hero": {
+          "headline": "Create High-Quality AI Images & Videos with ByteDance Generative Models",
+          "subheadline": "Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.",
+          "supportingLine": "From text prompts, images, or scripts, generate professional visuals and videos with powerful multimodal AI systems.",
+          "primaryCTA": "Generate with AI",
+          "secondaryCTA": "",
+          "wordCount": 36
+        },
+        "trust": {
+          "badges": [],
+          "socialProof": "",
+          "customerCount": ""
+        },
+        "productSections": [
+          {
+            "name": "Seedream 4.5",
+            "label": "AI Image Generation",
+            "headline": "AI Image Generation with Seedream 4.5",
+            "description": "Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.",
+            "primaryCTA": "Request Demo",
+            "features": [
+              {
+                "title": "Advanced Text–Image Alignment",
+                "description": "Accurately translates prompts into visuals with improved semantic understanding.",
+                "hasIcon": false
+              },
+              {
+                "title": "High-Resolution Output",
+                "description": "Generate native images up to 1K–4K resolution with strong visual fidelity.",
+                "hasIcon": false
+              },
+              {
+                "title": "Superior Typographic Rendering",
+                "description": "Optimized for posters, ads, and text-heavy visual designs.",
+                "hasIcon": false
+              },
+              {
+                "title": "Multi-Image Composition with Identity Preservation",
+                "description": "Combines multiple inputs while accurately maintaining subject consistency.",
+                "hasIcon": false
+              },
+              {
+                "title": "Strong Structural Fidelity",
+                "description": "Maintains composition, layout, and scene structure with high precision.",
+                "hasIcon": false
+              }
+            ]
+          },
+          {
+            "name": "Seedance 1.5 Pro",
+            "label": "AI Video Generation",
+            "headline": "AI Video Generation with Seedance 1.5 Pro by Bytedance",
+            "description": "Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.",
+            "primaryCTA": "",
+            "features": [
+              {
+                "title": "Text-to-Video Generation",
+                "description": "Create videos directly from text prompts.",
+                "hasIcon": false
+              },
+              {
+                "title": "Audio-Visual Synchronization",
+                "description": "Generate video and audio simultaneously with strong multimodal alignment.",
+                "hasIcon": false
+              },
+              {
+                "title": "Multilingual Lip-Sync",
+                "description": "Supports multilingual and dialect-level lip synchronization.",
+                "hasIcon": false
+              },
+              {
+                "title": "Cinematic Camera Control",
+                "description": "Generate videos with dynamic camera movement and cinematic storytelling.",
+                "hasIcon": false
+              },
+              {
+                "title": "10× Faster Inference",
+                "description": "Optimized inference pipeline significantly improves generation speed.",
+                "hasIcon": false
+              }
+            ]
+          }
+        ],
+        "whyTechjockey": {
+          "include": false,
+          "headline": "",
+          "points": []
+        },
+        "pricing": {
+          "headline": "",
+          "plans": [
+            {
+              "name": "Seedream 4.5 (AI Image Generation)",
+              "price": "",
+              "originalPrice": "",
+              "discount": "",
+              "includes": [
+                "High-resolution image generation (up to 4K quality)",
+                "Text-to-image & multimodal image editing",
+                "Multi-image composition for complex visuals",
+                "Enhanced typographic rendering for posters, ads & text-heavy designs"
+              ],
+              "cta": "Get Quote"
+            },
+            {
+              "name": "Seedance 1.5 Pro (AI Video Generation)",
+              "price": "Starting at $1,000/month/",
+              "originalPrice": "",
+              "discount": "",
+              "includes": [
+                "Text-to-video generation with cinematic output",
+                "Native audio + video generation (synchronized)",
+                "Multilingual lip-sync capabilities",
+                "Fast inference for quicker video production"
+              ],
+              "cta": "Get Quote"
+            }
+          ],
+          "emiText": ""
+        },
+        "testimonials": [
+          {
+            "quote": "Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.",
+            "author": "Vaishali Saxena",
+            "designation": "Creative Director",
+            "company": ""
+          },
+          {
+            "quote": "Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.",
+            "author": "Vihaan Pandey",
+            "designation": "Video Producer",
+            "company": ""
+          },
+          {
+            "quote": "The multimodal editing capabilities in Seedream make it easy to refine images with precision.",
+            "author": "Anurag Malhotra",
+            "designation": "Art Director",
+            "company": ""
+          },
+          {
+            "quote": "Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.",
+            "author": "Ashutosh Singh",
+            "designation": "Marketing Manager",
+            "company": ""
+          },
+          {
+            "quote": "From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.",
+            "author": "Shrimmi Saxena",
+            "designation": "Creative Lead",
+            "company": ""
+          }
+        ],
+        "form": {
+          "headline": "",
+          "fields": [],
+          "primaryCTA": ""
+        },
+        "news": [],
+        "extras": [
+          "[HERO]",
+          "[HEADLINE]",
+          "[SUBHEADLINE]",
+          "[SUBHEADLINE]",
+          "[BANNER FEATURES]",
+          "✔ AI Image Generation",
+          "✔ AI Video Generation with Audio",
+          "✔ Multimodal Content Creation",
+          "✔ Enterprise-ready AI infrastructure",
+          "Transform ideas into visuals instantly.",
+          "CTA: Generate with AI",
+          "Features: ----",
+          "Feature 1",
+          "Additional Feature:-",
+          "[CART]",
+          "[PRICING]",
+          "Plan 1 :",
+          "Plan 2:",
+          "[TESTIMONIAL]",
+          "Headline: What Professionals Say About Seedream and Seedance?",
+          "Footer"
+        ],
+        "generationMode": "replicate-reference",
+        "referenceLandingUrl": "https://www.techjockey.com/c/byteplus/"
+      },
+      "includeForm": true,
+      "includePricing": true,
+      "includeTestimonials": true,
+      "includeTrust": true,
+      "typography": {
+        "headingFont": "Inter",
+        "bodyFont": "Inter",
+        "headingWeight": 700,
+        "heroFontSize": "56px",
+        "letterSpacing": "normal",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#111827",
+        "accent": "#111827",
+        "accentHover": "#111827",
+        "bodyBg": "#ffffff",
+        "cardBg": "#ffffff",
+        "textDark": "#111827",
+        "textMid": "#4b5563",
+        "textLight": "#ffffff",
+        "border": "#e5e7eb",
+        "colourReason": "Taken from reference/brand colors for replicate mode"
+      },
+      "themeFamily": "reference-preserved",
+      "surfaceStyle": "reference-preserved",
+      "visualMotif": "reference-preserved",
+      "backgroundSystem": {
+        "bodyBase": "#ffffff",
+        "hero": "#111827",
+        "section1": "#ffffff",
+        "section2": "#f8fafc",
+        "section3": "#ffffff"
+      },
+      "motionStrategy": {
+        "allowAnimations": false,
+        "style": "subtle",
+        "heroEntrance": "none",
+        "cardHover": "none",
+        "sectionReveal": "none"
+      },
+      "styles": {
+        "primaryColor": "#111827",
+        "accentColor": "#111827"
+      },
+      "referenceMap": {
+        "source": "reference-layout-map",
+        "sectionOrder": [
+          "generic",
+          "hero",
+          "footer"
+        ],
+        "sections": [
+          {
+            "index": 0,
+            "id": "",
+            "className": "header header--1 header--fixed",
+            "type": "generic",
+            "headings": 0,
+            "images": 0,
+            "videos": 0,
+            "buttons": 2,
+            "forms": 0,
+            "textSample": "Generate with AI"
+          },
+          {
+            "index": 1,
+            "id": "",
+            "className": "hero-1",
+            "type": "hero",
+            "headings": 1,
+            "images": 2,
+            "videos": 0,
+            "buttons": 7,
+            "forms": 1,
+            "textSample": "Create High-Quality AI Images & Videos with BytePlus Your One-Stop Unlock the power of next-generation generative AI wit"
+          },
+          {
+            "index": 2,
+            "id": "",
+            "className": "footer-1 position-relative overflow-hidden",
+            "type": "footer",
+            "headings": 0,
+            "images": 2,
+            "videos": 0,
+            "buttons": 5,
+            "forms": 0,
+            "textSample": "support@techjockey.com Follow us:"
+          }
+        ],
+        "heroType": {
+          "hasImages": true,
+          "hasVideos": false,
+          "hasButtons": true
+        },
+        "hasTrustBand": false,
+        "hasFormSection": false
+      },
+      "assetRules": {
+        "lockReferenceStructure": true,
+        "replaceImages": true,
+        "replaceVideos": true,
+        "preserveMode": "structure-styling",
+        "strictLayoutMatch": true,
+        "userSuppliedImagesOnly": false
+      },
+      "brandLogoUrl": null,
+      "brandSiteName": "Seedream 4.5 and Seedance 1.5 Pro",
+      "hasSvgLogo": false,
+      "pageGoal": "single-product",
+      "trustLogos": [],
+      "additionalInstructions": "PROOF STRATEGY: The visitor trusts logos most. Make this the dominant trust signal.\n\nUse dark Theme, add a gallery section in second fold which will contains videos",
+      "designStrategy": {
+        "primaryGoal": "replicate",
+        "narrativeMode": "reference-preserved",
+        "visualDominance": "reference-preserved",
+        "trustStrategy": "stats-first",
+        "ctaAggression": "medium",
+        "recommendedHeroStyle": "split"
+      },
+      "designBrief": {
+        "heroHeadline": null,
+        "heroCTA": null,
+        "brandColorHex": null,
+        "personalityWords": null,
+        "visitorRole": null,
+        "visitorTemperature": "warm",
+        "proofType": "logos",
+        "competitorUrl": null,
+        "avoidConstraint": null,
+        "singleGoal": null
+      },
+      "forcedNarrativeMode": "product-led",
+      "designReview": {
+        "score": 100,
+        "verdict": "reference-preserved",
+        "issues": [],
+        "strengths": [
+          "Reference structure preserved by design"
+        ]
+      },
+      "sectionImageMap": {
+        "hero": null,
+        "trust": {
+          "logos": [],
+          "strategy": "metrics-strip"
+        },
+        "testimonials": {
+          "avatars": []
+        }
+      },
+      "trustLogosCount": 0
+    },
+    "mediaPlan": {
+      "hero": {
+        "primaryVisual": null,
+        "secondaryVisual": null,
+        "backgroundImage": null,
+        "backgroundVideo": null,
+        "accentVisuals": []
+      },
+      "trust": {
+        "logos": [],
+        "badges": []
+      },
+      "productSections": [],
+      "testimonials": {
+        "avatars": []
+      },
+      "demos": {
+        "heroDemo": null,
+        "sectionDemos": []
+      },
+      "product": [],
+      "features": [],
+      "logos": [],
+      "fallbackStrategy": {
+        "heroMode": "css-generated",
+        "productMode": "css-shell"
+      },
+      "form": {
+        "fields": [
+          "name",
+          "email",
+          "phone",
+          "company"
+        ],
+        "cta": "Request Trial"
+      },
+      "additionalInstructions": "PROOF STRATEGY: The visitor trusts logos most. Make this the dominant trust signal.\n\nUse dark Theme, add a gallery section in second fold which will contains videos",
+      "imageContext": []
+    }
+  },
+  "figma": {
+    "fileId": "figma_file_ds_1777549877804_826b34d9",
+    "fileName": "landing-page-design",
+    "fileUrl": "https://www.figma.com/file/figma_file_ds_1777549877804_826b34d9",
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "file-created",
+    "lastSyncAt": "2026-04-30T11:52:05.210Z"
+  },
+  "outputs": {
+    "htmlFilename": "seedance-1777549903874-preview.html",
+    "localizedAssetsBase": "/output/generated-assets/ds_1777549877804_826b34d9"
+  },
+  "logs": [
+    {
+      "at": "2026-04-30T11:51:17.807Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-04-30T11:52:05.209Z",
+      "type": "workflow",
+      "step": "html-generated",
+      "message": "HTML output generated: seedance-1777549903874-preview.html"
+    },
+    {
+      "at": "2026-04-30T11:52:05.210Z",
+      "type": "mcp",
+      "step": "create-landing-file",
+      "message": "Created adapter-backed placeholder Figma file figma_file_ds_1777549877804_826b34d9"
+    },
+    {
+      "at": "2026-04-30T11:52:05.213Z",
+      "type": "workflow",
+      "step": "mcp-auto-run-failed",
+      "message": "MCP execution failed: No page available in figmaBuildPlan for session: ds_1777549877804_826b34d9"
+    }
+  ]
+}

@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoho Workplace for Enterprises | Unified Email & Collaboration Suite</title>
+  <meta name="description" content="Explore Zoho Workplace for enterprises: secure email, collaboration, AI-powered productivity, app integrations, and unified communication with a free trial." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#ff6b00;
+      --accent:#1a1a1a;
+      --bg:#f5f5f5;
+      --text:#232323;
+      --muted:#666;
+      --white:#fff;
+      --light:#f8f9fa;
+      --dark:#101114;
+      --dark-2:#181a20;
+      --border:#e8e8e8;
+      --green:#14a44d;
+      --gold:#f5b301;
+      --shadow:0 12px 40px rgba(0,0,0,.10);
+      --shadow-lg:0 20px 60px rgba(0,0,0,.18);
+      --radius:22px;
+      --radius-md:16px;
+      --radius-sm:12px;
+      --container:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--container),calc(100% - 32px));margin:auto}
+    h1,h2,h3,h4{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      margin:0 0 14px;
+      color:var(--accent);
+      line-height:1.15;
+    }
+    h1{font-size:clamp(48px,6vw,68px);font-weight:800;letter-spacing:-.03em}
+    h2{font-size:clamp(32px,4vw,46px);font-weight:800;letter-spacing:-.02em}
+    h3{font-size:24px;font-weight:700}
+    p{margin:0 0 16px;color:var(--muted);font-size:16px}
+    .section{padding:88px 0;position:relative;overflow:hidden}
+    .section-white{background:#fff}
+    .section-light{background:#f8f9fa}
+    .section-dark{background:linear-gradient(180deg,#101114 0%,#181a20 100%)}
+    .section-dark h2,.section-dark h3,.section-dark p,.section-dark .eyebrow,.section-dark li,.section-dark .metric-value,.section-dark .metric-label{color:#fff}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+      color:var(--primary);margin-bottom:16px
+    }
+    .eyebrow::before{
+      content:"";width:28px;height:2px;background:var(--primary);display:inline-block;border-radius:99px
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:52px;padding:0 22px;border-radius:14px;font-weight:700;
+      transition:.25s ease;cursor:pointer;border:1px solid transparent;font-size:15px
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.16)}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-secondary{background:#fff;color:var(--accent);border-color:rgba(0,0,0,.08)}
+    .btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.25)}
+    .btn-full{width:100%}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.14);
+      backdrop-filter:blur(8px);font-size:13px;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.14)
+    }
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* NAV */
+    .tj-nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.88);backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(0,0,0,.06)
+    }
+    .tj-nav-inner{
+      display:grid;grid-template-columns:auto 1fr auto auto;gap:18px;
+      align-items:center;min-height:76px
+    }
+    .brand-lockup{display:flex;align-items:center;gap:14px}
+    .product-logo{
+      width:44px;height:44px;border-radius:12px;background:var(--accent);color:#fff;
+      display:grid;place-items:center;box-shadow:var(--shadow);font-weight:800;font-family:'Plus Jakarta Sans',sans-serif
+    }
+    .brand-text strong{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px}
+    .brand-text span{font-size:13px;color:var(--muted)}
+    .nav-links{display:flex;align-items:center;justify-content:center;gap:26px;font-size:14px;color:#444}
+    .techjockey-logo{height:28px;width:auto}
+    .nav-right{display:flex;align-items:center;gap:14px}
+    @media(max-width:980px){
+      .nav-links{display:none}
+      .tj-nav-inner{grid-template-columns:auto 1fr auto}
+      .techjockey-logo{display:none}
+    }
+
+    /* HERO */
+    .hero{
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.18), transparent 32%),
+        radial-gradient(circle at 84% 28%, rgba(255,255,255,.12), transparent 24%),
+        linear-gradient(135deg,#ff6b00 0%, #ff7f1e 45%, #ff5a00 100%);
+      color:#fff;
+      padding:84px 0 70px;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.8), transparent 90%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative;z-index:1
+    }
+    .hero h1,.hero p{color:#fff}
+    .hero h1 span{color:var(--accent)}
+    .hero-sub{font-size:18px;max-width:640px;color:rgba(255,255,255,.92)}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 30px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+    .hero-visual{
+      position:relative;display:flex;align-items:center;justify-content:center;
+      min-height:520px;
+    }
+    .hero-frame{
+      width:100%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);
+      border-radius:26px;padding:18px;box-shadow:var(--shadow-lg);backdrop-filter:blur(14px);
+      position:relative;
+    }
+    .hero-main-shot{
+      width:100%;max-height:480px;object-fit:contain;border-radius:12px;background:#fff;
+      box-shadow:0 18px 48px rgba(0,0,0,.18)
+    }
+    .floating-card{
+      position:absolute;background:#fff;border-radius:18px;box-shadow:var(--shadow);
+      padding:14px 16px;min-width:180px;color:var(--accent);animation:floatY 4s ease-in-out infinite
+    }
+    .floating-card small{display:block;color:#777;font-size:12px}
+    .floating-card strong{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px}
+    .float-1{top:14%;left:-4%;animation-delay:0s}
+    .float-2{right:-3%;top:10%;animation-delay:.8s}
+    .float-3{bottom:7%;left:4%;animation-delay:1.4s}
+    .float-4{right:6%;bottom:4%;animation-delay:2s}
+    @keyframes floatY{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+    .typing-line{
+      display:flex;align-items:center;gap:8px;margin-top:18px;font-weight:600;color:#fff
+    }
+    .typing{
+      position:relative;white-space:nowrap;overflow:hidden;border-right:2px solid rgba(255,255,255,.85);
+      width:0;animation:typing 4s steps(26,end) infinite, blink .8s step-end infinite
+    }
+    @keyframes typing{
+      0%{width:0}
+      45%{width:230px}
+      70%{width:230px}
+      100%{width:0}
+    }
+    @keyframes blink{50%{border-color:transparent}}
+    @media(max-width:980px){
+      .hero-grid{grid-template-columns:1fr;gap:28px}
+      .hero-visual{min-height:auto}
+      .float-1,.float-2,.float-3,.float-4{display:none}
+    }
+
+    /* TRUST */
+    .trust-strip{padding:26px 0;background:#fff;border-bottom:1px solid var(--border);border-top:1px solid var(--border)}
+    .trust-row{
+      display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:center
+    }
+    .trust-copy h3{font-size:20px;margin-bottom:6px}
+    .trust-copy p{font-size:14px;margin:0}
+    .logo-marquee{
+      overflow:hidden;position:relative;mask-image:linear-gradient(to right, transparent, #000 12%, #000 88%, transparent)
+    }
+    .logo-track{
+      display:flex;gap:44px;align-items:center;width:max-content;animation:marquee 24s linear infinite
+    }
+    .logo-item{
+      width:120px;height:48px;display:flex;align-items:center;justify-content:center;
+      padding:8px;filter:grayscale(1);opacity:.72;transition:.25s ease
+    }
+    .logo-item:hover{filter:grayscale(0);opacity:1;transform:translateY(-2px)}
+    .logo-item img{max-height:34px;max-width:100%;object-fit:contain}
+    @keyframes marquee{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+    @media(max-width:860px){
+      .trust-row{grid-template-columns:1fr}
+    }
+
+    /* SPOTLIGHT FEATURES */
+    .spotlight-grid{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch
+    }
+    .spotlight-card,.preview-card,.image-shell,.metric-card,.pricing-card,.testimonial-card,.integration-panel,.security-panel,.gallery-card{
+      border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06)
+    }
+    .spotlight-card{
+      background:#fff;padding:34px;display:flex;flex-direction:column;justify-content:space-between
+    }
+    .spotlight-points{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+    .point{
+      background:#fafafa;border:1px solid var(--border);padding:16px;border-radius:16px
+    }
+    .point-icon{
+      width:44px;height:44px;border-radius:14px;background:rgba(255,107,0,.10);
+      display:grid;place-items:center;margin-bottom:12px
+    }
+    .point h4{margin:0 0 8px;font-size:17px;font-family:'Plus Jakarta Sans',sans-serif}
+    .point p{margin:0;font-size:14px}
+    .preview-card{
+      overflow:hidden;background:linear-gradient(180deg,#fff 0%,#f6f7f9 100%);display:flex;flex-direction:column
+    }
+    .preview-top{
+      display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--border)
+    }
+    .preview-dot{width:10px;height:10px;border-radius:50%}
+    .preview-body{padding:16px;display:grid;gap:14px}
+    .preview-shot{
+      border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.08)
+    }
+    .mini-stack{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .mini-card{
+      background:#fff;border:1px solid var(--border);border-radius:16px;padding:12px
+    }
+    .mini-card img{border-radius:12px;height:118px;width:100%;object-fit:cover}
+    .tabs-layout{
+      display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:start
+    }
+    .tabs-nav{
+      background:#fff;padding:14px;border-radius:22px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06);position:sticky;top:94px
+    }
+    .tab-btn{
+      width:100%;text-align:left;background:#fff;border:1px solid var(--border);
+      padding:16px;border-radius:16px;margin-bottom:10px;cursor:pointer;transition:.25s ease
+    }
+    .tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .tab-btn:last-child{margin-bottom:0}
+    .tab-btn strong{display:block;font-family:'Plus Jakarta Sans',sans-serif}
+    .tab-panel{
+      display:none;background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:28px
+    }
+    .tab-panel.active{display:block}
+    .tab-panel-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center
+    }
+    .feature-bullets{display:grid;gap:12px}
+    .feature-bullet{
+      display:flex;gap:12px;align-items:flex-start;background:#fafafa;border:1px solid var(--border);padding:14px;border-radius:16px
+    }
+    .svg-ico{
+      width:22px;height:22px;flex:0 0 22px
+    }
+    .accordion{
+      display:grid;gap:14px
+    }
+    .acc-item{
+      background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)
+    }
+    .acc-head{
+      width:100%;border:0;background:#fff;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+      font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;color:var(--accent)
+    }
+    .acc-body{
+      max-height:0;overflow:hidden;transition:max-height .35s ease;
+      background:#fafafa
+    }
+    .acc-inner{
+      display:grid;grid-template-columns:1fr 280px;gap:20px;padding:0 22px 22px
+    }
+    .acc-item.active .acc-body{max-height:520px}
+    .acc-media img{border-radius:16px;height:100%;width:100%;object-fit:cover}
+    .dark-band{
+      background:linear-gradient(135deg,#0f1115 0%,#191c24 100%);
+      color:#fff;border-radius:28px;padding:34px;box-shadow:var(--shadow-lg);
+      border:1px solid rgba(255,255,255,.06)
+    }
+    .dark-band h3,.dark-band p,.dark-band li{color:#fff}
+    .integration-grid{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start
+    }
+    .integration-panel{
+      background:#fff;padding:26px
+    }
+    .integration-list{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px
+    }
+    .integration-item{
+      background:#fafafa;border:1px solid var(--border);border-radius:16px;padding:16px
+    }
+    .gallery-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px
+    }
+    .gallery-card{
+      overflow:hidden;background:#fff
+    }
+    .gallery-card img{height:180px;width:100%;object-fit:cover}
+    .gallery-card .cap{padding:12px 14px;font-size:14px;font-weight:600}
+    .metrics-row{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px
+    }
+    .metric-card{
+      background:rgba(255,255,255,.06);padding:20px;border:1px solid rgba(255,255,255,.1)
+    }
+    .metric-value{
+      font-size:28px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:4px
+    }
+    .metric-label{font-size:14px;color:rgba(255,255,255,.78)}
+    @media(max-width:980px){
+      .spotlight-grid,.tabs-layout,.tab-panel-grid,.integration-grid,.acc-inner{grid-template-columns:1fr}
+      .spotlight-points,.integration-list,.metrics-row{grid-template-columns:1fr}
+      .mini-stack,.gallery-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:640px){
+      .spotlight-points,.mini-stack,.gallery-grid{grid-template-columns:1fr}
+    }
+
+    /* PRICING */
+    .pricing-wrap{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start
+    }
+    .pricing-note{
+      background:#fff;padding:30px;border-radius:24px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06)
+    }
+    .pricing-card{
+      background:linear-gradient(180deg,#fff 0%,#fff6ef 100%);
+      padding:34px;position:relative;overflow:hidden
+    }
+    .pricing-card::after{
+      content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;
+      background:radial-gradient(circle, rgba(255,107,0,.18), transparent 68%)
+    }
+    .price-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px}
+    .green-badge{
+      display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(20,164,77,.12);color:var(--green);font-weight:700;font-size:13px
+    }
+    .price-line{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+    .original-price{text-decoration:line-through;color:#8c8c8c;font-weight:600}
+    .discounted-price{font-size:38px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;color:var(--accent)}
+    .price-na{font-size:28px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif}
+    .checklist{display:grid;gap:12px;margin:24px 0}
+    .check-item{
+      display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(0,0,0,.08)
+    }
+    .check{
+      width:24px;height:24px;border-radius:50%;background:rgba(20,164,77,.12);display:grid;place-items:center;flex:0 0 24px
+    }
+    @media(max-width:980px){.pricing-wrap{grid-template-columns:1fr}}
+
+    /* TESTIMONIALS */
+    .testimonials-wrap{position:relative}
+    .testimonial-slider{overflow:hidden}
+    .testimonial-track{
+      display:flex;transition:transform .45s ease
+    }
+    .testimonial-slide{
+      min-width:100%;padding:4px
+    }
+    .testimonial-card{
+      background:#fff;padding:30px;display:grid;grid-template-columns:88px 1fr;gap:22px;align-items:start
+    }
+    .testimonial-avatar{
+      width:88px;height:88px;border-radius:50%;overflow:hidden;border:4px solid rgba(255,107,0,.16)
+    }
+    .testimonial-avatar img{width:100%;height:100%;object-fit:cover}
+    .quote-mark{
+      font-size:56px;line-height:1;color:var(--primary);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800
+    }
+    .stars{color:var(--gold);letter-spacing:2px;font-size:18px;margin-bottom:10px}
+    .author{font-weight:800;color:var(--accent);font-family:'Plus Jakarta Sans',sans-serif}
+    .designation{color:#888;font-size:14px}
+    .slider-controls{
+      display:flex;gap:10px;justify-content:flex-end;margin-top:18px
+    }
+    .arrow{
+      width:48px;height:48px;border-radius:50%;border:1px solid var(--border);background:#fff;cursor:pointer;
+      display:grid;place-items:center;transition:.25s ease;box-shadow:var(--shadow)
+    }
+    .arrow:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.12)}
+    @media(max-width:760px){
+      .testimonial-card{grid-template-columns:1fr}
+      .testimonial-avatar{width:72px;height:72px}
+    }
+
+    /* FOOTER CTA */
+    .footer-cta{
+      text-align:center;background:#fff;border-radius:26px;padding:38px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.06)
+    }
+    .footer-cta .btn-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+
+    /* utility */
+    .muted{color:var(--muted)}
+    .mb-0{margin-bottom:0}
+    .mt-24{margin-top:24px}
+    .section-head{max-width:760px;margin-bottom:34px}
+    .list-clean{list-style:none;padding:0;margin:0}
+    .list-clean li{margin-bottom:10px}
+  </style>
+</head>
+<body>
+
+  <nav class="tj-nav">
+    <div class="container tj-nav-inner">
+      <div class="brand-lockup">
+        <div class="product-logo">ZW</div>
+        <div class="brand-text">
+          <strong>Zoho Workplace</strong>
+          <span>Email & Collaboration Suite</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#growth">Growth</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Reviews</a>
+      </div>
+      <img class="techjockey-logo" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" alt="Techjockey" />
+      <div class="nav-right">
+        <a href="#pricing" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero section">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="eyebrow" style="color:#fff">Unified Enterprise Workspace</div>
+        <h1>Elevate Your Team’s Productivity with <span>Zoho Workplace</span></h1>
+        <p class="hero-sub">A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.</p>
+
+        <div class="hero-chips">
+          <span class="badge">Easy Setup & Quick Onboarding</span>
+          <span class="badge">Made in India Solution</span>
+          <span class="badge">24x7 Support</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#pricing" class="btn btn-primary" style="background:#1a1a1a">Get Started</a>
+          <a href="#pricing" class="btn btn-secondary">Get Your Free Trial</a>
+        </div>
+
+        <div class="typing-line">
+          <span>Built for:</span>
+          <span class="typing">Mail • Cliq • Writer • Meetings</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-frame">
+          <img class="hero-main-shot" src="/output/generated-assets/ds_1776338743697_657e26a0/33-ade7eb646a.png" alt="Zoho Workplace dashboard" />
+        </div>
+
+        <div class="floating-card float-1">
+          <small>Zoho Mail</small>
+          <strong>Enterprise-grade inbox</strong>
+        </div>
+        <div class="floating-card float-2">
+          <small>Cliq + Meetings</small>
+          <strong>Fast team coordination</strong>
+        </div>
+        <div class="floating-card float-3">
+          <small>Writer</small>
+          <strong>Live collaboration enabled</strong>
+        </div>
+        <div class="floating-card float-4">
+          <small>Zia AI</small>
+          <strong>Smarter writing assistance</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip" id="trust">
+    <div class="container trust-row">
+      <div class="trust-copy reveal">
+        <h3>Trusted by 100,000+ Businesses Globally</h3>
+        <p>Enterprise teams choose Zoho Workplace for secure email, collaboration, and scalable communication.</p>
+      </div>
+      <div class="logo-marquee reveal">
+        <div class="logo-track">
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png" alt="Trust logo 1"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png" alt="Trust logo 2"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png" alt="Trust logo 3"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/05-c7070f6651.png" alt="Trust logo 4"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png" alt="Trust logo 5"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/06-0dc4149d75.png" alt="Trust logo 6"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/07-3371ec06e6.png" alt="Trust logo 7"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/08-e658fdd139.png" alt="Trust logo 8"></div>
+
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/03-553a4f4044.png" alt="Trust logo 1 repeat"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/04-2d0033146c.png" alt="Trust logo 2 repeat"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/02-ff24ef45d9.png" alt="Trust logo 3 repeat"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/05-c7070f6651.png" alt="Trust logo 4 repeat"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png" alt="Trust logo 5 repeat"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/06-0dc4149d75.png" alt="Trust logo 6 repeat"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/07-3371ec06e6.png" alt="Trust logo 7 repeat"></div>
+          <div class="logo-item"><img src="/output/generated-assets/ds_1776338743697_657e26a0/08-e658fdd139.png" alt="Trust logo 8 repeat"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light" id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Why Choose Zoho Workplace?</div>
+        <h2>All-in-One Unified Workspace for modern enterprise teams</h2>
+        <p>Zoho Workplace brings everything your team needs to collaborate, communicate, and stay productive through a single unified platform.</p>
+      </div>
+
+      <div class="spotlight-grid">
+        <div class="spotlight-card reveal">
+          <div>
+            <h3>One connected ecosystem for email, chat, documents, meetings, and storage</h3>
+            <p>Instead of managing disconnected tools, enterprise teams get a streamlined workspace where communication and productivity stay in sync.</p>
+
+            <div class="spotlight-points">
+              <div class="point">
+                <div class="point-icon">
+                  <svg class="svg-ico" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="5" width="18" height="14" rx="3" stroke="#ff6b00" stroke-width="2"/>
+                    <path d="M4.5 7l7.5 6 7.5-6" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h4>Unified Workspace</h4>
+                <p>Access email, chat, docs, meetings, and storage in one integrated platform.</p>
+              </div>
+              <div class="point">
+                <div class="point-icon">
+                  <svg class="svg-ico" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 12h8M12 8v8" stroke="#00a3ff" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="#00a3ff" stroke-width="2"/>
+                  </svg>
+                </div>
+                <h4>Real-Time Collaboration</h4>
+                <p>Live editing, comments, and built-in communication keep teams aligned instantly.</p>
+              </div>
+              <div class="point">
+                <div class="point-icon">
+                  <svg class="svg-ico" viewBox="0 0 24 24" fill="none">
+                    <rect x="7" y="2" width="10" height="20" rx="2" stroke="#14a44d" stroke-width="2"/>
+                    <circle cx="12" cy="18" r="1" fill="#14a44d"/>
+                  </svg>
+                </div>
+                <h4>Work Anywhere</h4>
+                <p>Reply to emails, access presentations, or host video conferences from any device.</p>
+              </div>
+              <div class="point">
+                <div class="point-icon">
+                  <svg class="svg-ico" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3l7 4v5c0 4.2-2.6 8-7 9-4.4-1-7-4.8-7-9V7l7-4z" stroke="#7b61ff" stroke-width="2"/>
+                    <path d="M9.5 12l1.7 1.7L15 10" stroke="#7b61ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h4>Zia AI Productivity</h4>
+                <p>Built-in AI assists with grammar, readability, and writing style as teams work.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-card reveal">
+          <div class="preview-top">
+            <span class="preview-dot" style="background:#ff5f57"></span>
+            <span class="preview-dot" style="background:#ffbd2e"></span>
+            <span class="preview-dot" style="background:#28c840"></span>
+            <span class="muted" style="font-size:13px;margin-left:8px">Workspace preview</span>
+          </div>
+          <div class="preview-body">
+            <div class="preview-shot">
+              <img src="/output/generated-assets/ds_1776338743697_657e26a0/01-e278a21231.png" alt="Zoho Workplace product screenshot">
+            </div>
+            <div class="mini-stack">
+              <div class="mini-card">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/31-4a3504ffa0.png" alt="Feature preview 1">
+              </div>
+              <div class="mini-card">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png" alt="Feature preview 2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white" id="growth">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Business Growth</div>
+        <h2>Unlock your business growth with modular capabilities</h2>
+        <p>Zoho Workplace unifies email, collaboration, and productivity tools to streamline operations and drive smarter teamwork.</p>
+      </div>
+
+      <div class="tabs-layout">
+        <div class="tabs-nav reveal">
+          <button class="tab-btn active" data-tab="tab1">
+            <strong>Ideal For Your Business Size</strong>
+            <span>Designed to improve teamwork at every scale</span>
+          </button>
+          <button class="tab-btn" data-tab="tab2">
+            <strong>Communicate Effectively</strong>
+            <span>Move beyond basic email and chat</span>
+          </button>
+          <button class="tab-btn" data-tab="tab3">
+            <strong>Integrated Business Apps</strong>
+            <span>Connect Zoho and third-party workflows</span>
+          </button>
+          <button class="tab-btn" data-tab="tab4">
+            <strong>Customizable Workspace</strong>
+            <span>Tailor settings, layouts, and controls</span>
+          </button>
+        </div>
+
+        <div class="reveal">
+          <div class="tab-panel active" id="tab1">
+            <div class="tab-panel-grid">
+              <div>
+                <h3>Built to support organizations of every size</h3>
+                <p>Whether you’re scaling teams or standardizing collaboration across departments, Zoho Workplace helps improve efficiency without adding complexity.</p>
+                <div class="feature-bullets">
+                  <div class="feature-bullet">
+                    <svg class="svg-ico" viewBox="0 0 24 24" fill="none"><path d="M4 19h16M7 16V9m5 7V5m5 11v-4" stroke="#ff6b00" stroke-width="2" stroke-linecap="round"/></svg>
+                    <div><strong>Scalable team productivity</strong><br><span class="muted">Enhances efficiency and teamwork at every organizational stage.</span></div>
+                  </div>
+                  <div class="feature-bullet">
+                    <svg class="svg-ico" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#00a3ff" stroke-width="2" stroke-linecap="round"/></svg>
+                    <div><strong>Simple rollout</strong><br><span class="muted">Easy setup and quick onboarding reduce time-to-value.</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="image-shell">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png" alt="Business size feature visual" style="border-radius:18px;width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="tab2">
+            <div class="tab-panel-grid">
+              <div>
+                <h3>Bring communication into one enterprise flow</h3>
+                <p>Go beyond email and chat, and connect teams with a social intranet using channels, feeds, and groups that improve internal alignment.</p>
+                <div class="feature-bullets">
+                  <div class="feature-bullet">
+                    <svg class="svg-ico" viewBox="0 0 24 24" fill="none"><path d="M7 10h10M7 14h6" stroke="#14a44d" stroke-width="2" stroke-linecap="round"/><rect x="3" y="5" width="18" height="14" rx="3" stroke="#14a44d" stroke-width="2"/></svg>
+                    <div><strong>Contextual conversations</strong><br><span class="muted">Keep updates, discussions, and decisions connected to work.</span></div>
+                  </div>
+                  <div class="feature-bullet">
+                    <svg class="svg-ico" viewBox="0 0 24 24" fill="none"><path d="M8 8h8v8H8z" stroke="#7b61ff" stroke-width="2"/><path d="M4 4h4M16 4h4M4 20h4M16 20h4" stroke="#7b61ff" stroke-width="2" stroke-linecap="round"/></svg>
+                    <div><strong>Unified channels</strong><br><span class="muted">Improve visibility with groups, feeds, and team spaces.</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="image-shell">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/10-bf58d4fc47.png" alt="Communication feature visual" style="border-radius:18px;width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="tab3">
+            <div class="tab-panel-grid">
+              <div>
+                <h3>Integrate business apps to eliminate workflow silos</h3>
+                <p>Connect with Zoho and third-party apps to unify workflows, simplify cross-functional operations, and increase business visibility.</p>
+                <div class="feature-bullets">
+                  <div class="feature-bullet">
+                    <svg class="svg-ico" viewBox="0 0 24 24" fill="none"><path d="M7 7h4v4H7zM13 13h4v4h-4zM13 7h4v4h-4zM7 13h4v4H7z" stroke="#ff6b00" stroke-width="2"/></svg>
+                    <div><strong>Connected processes</strong><br><span class="muted">Bring communication, analytics, finance, and automation together.</span></div>
+                  </div>
+                  <div class="feature-bullet">
+                    <svg class="svg-ico" viewBox="0 0 24 24" fill="none"><path d="M6 12h12M12 6l6 6-6 6" stroke="#00a3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <div><strong>Cross-platform flexibility</strong><br><span class="muted">Works with Zoho and leading third-party services.</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="image-shell">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/13-f91cb31461.jpeg" alt="Integrations feature visual" style="border-radius:18px;width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="tab4">
+            <div class="tab-panel-grid">
+              <div>
+                <h3>Customize the workspace around your operating style</h3>
+                <p>Adapt settings, layouts, and workflows to your business needs while maintaining a professional ad-free email environment with stronger admin controls.</p>
+                <div class="feature-bullets">
+                  <div class="feature-bullet">
+                    <svg class="svg-ico" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 7.2l5-.7L12 2z" stroke="#14a44d" stroke-width="2" stroke-linejoin="round"/></svg>
+                    <div><strong>Professional email service</strong><br><span class="muted">Ad-free email with advanced controls for enterprise use.</span></div>
+                  </div>
+                  <div class="feature-bullet">
+                    <svg class="svg-ico" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 1 16 0" stroke="#7b61ff" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="#7b61ff"/></svg>
+                    <div><strong>Flexible administration</strong><br><span class="muted">Configure layouts, preferences, and workflows with confidence.</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="image-shell">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/11-411a076608.png" alt="Customizable workspace visual" style="border-radius:18px;width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="integrations">
+    <div class="container">
+      <div class="dark-band reveal">
+        <div class="section-head" style="margin-bottom:28px">
+          <div class="eyebrow" style="color:#ff9d57">Popular App Integrations</div>
+          <h2>Connect Zoho Workplace to the tools your teams already use</h2>
+          <p>Connect your Zoho Workplace with business apps to ensure higher productivity and growth within a unified workspace.</p>
+        </div>
+
+        <div class="integration-grid">
+          <div class="integration-panel">
+            <h3>Integration categories</h3>
+            <div class="integration-list">
+              <div class="integration-item">
+                <strong>Zoho Apps</strong>
+                <p class="mb-0">Zoho Meeting, Zoho Connect, Zoho Mail, Zoho Cliq, Zoho Writer, and more.</p>
+              </div>
+              <div class="integration-item">
+                <strong>Analytics</strong>
+                <p class="mb-0">Zoho Analytics, Google Analytics.</p>
+              </div>
+              <div class="integration-item">
+                <strong>Accounting & Finance</strong>
+                <p class="mb-0">Zoho Invoice and Zoho Books.</p>
+              </div>
+              <div class="integration-item">
+                <strong>Automation</strong>
+                <p class="mb-0">Zoho Flow, Zapier, viaSocket.</p>
+              </div>
+              <div class="integration-item" style="grid-column:1/-1">
+                <strong>Business Suites</strong>
+                <p class="mb-0">Zoho One and Zoho Workspace.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-grid">
+            <div class="gallery-card">
+              <img src="/output/generated-assets/ds_1776338743697_657e26a0/12-3965757185.jpeg" alt="Integration gallery 1">
+              <div class="cap">Workflow automation previews</div>
+            </div>
+            <div class="gallery-card">
+              <img src="/output/generated-assets/ds_1776338743697_657e26a0/33-ade7eb646a.png" alt="Integration gallery 2">
+              <div class="cap">Unified collaboration shell</div>
+            </div>
+            <div class="gallery-card">
+              <img src="/output/generated-assets/ds_1776338743697_657e26a0/01-e278a21231.png" alt="Integration gallery 3">
+              <div class="cap">Enterprise workspace dashboard</div>
+            </div>
+            <div class="gallery-card">
+              <img src="/output/generated-assets/ds_1776338743697_657e26a0/10-bf58d4fc47.png" alt="Integration gallery 4">
+              <div class="cap">Connected app view</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white" id="security">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Secure Digital Workspace</div>
+        <h2>Enterprise-grade protection with privacy-first cloud capabilities</h2>
+        <p>Enjoy strong spam protection, SSO, Directory, MFA, and secure password management in a digital workplace built for operational control.</p>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-item active reveal">
+          <button class="acc-head">Secure <span>+</span></button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <div>
+                <p>82.9% of users reported a secure email experience, ensuring strong data protection and reliable communication across teams.</p>
+                <ul class="list-clean">
+                  <li>• Enterprise-grade email protection</li>
+                  <li>• Privacy-first cloud architecture</li>
+                  <li>• Strong spam and identity controls</li>
+                </ul>
+              </div>
+              <div class="acc-media">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/13-f91cb31461.jpeg" alt="Secure workspace visual">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item reveal">
+          <button class="acc-head">Anywhere Access <span>+</span></button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <div>
+                <p>42.9% found it easier to work remotely with Zoho Workplace apps, enabling seamless access from any device, anywhere.</p>
+                <ul class="list-clean">
+                  <li>• Device-flexible access</li>
+                  <li>• Remote-ready productivity</li>
+                  <li>• Consistent communication on the go</li>
+                </ul>
+              </div>
+              <div class="acc-media">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/11-411a076608.png" alt="Anywhere access visual">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item reveal">
+          <button class="acc-head">Intuitive <span>+</span></button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <div>
+                <p>28.6% found Zoho Workplace easy to use, helping reduce the learning curve so teams adapt faster and work efficiently.</p>
+                <ul class="list-clean">
+                  <li>• Faster adoption for teams</li>
+                  <li>• Lower training friction</li>
+                  <li>• Cleaner productivity experience</li>
+                </ul>
+              </div>
+              <div class="acc-media">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/09-bd169ef90c.png" alt="Intuitive workspace visual">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item reveal">
+          <button class="acc-head">Collaborative <span>+</span></button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <div>
+                <p>14.3% saw improved collaboration, engagement, and productivity, helping teams stay aligned and get more done faster.</p>
+                <ul class="list-clean">
+                  <li>• Better team alignment</li>
+                  <li>• Improved engagement across functions</li>
+                  <li>• Faster execution with shared tools</li>
+                </ul>
+              </div>
+              <div class="acc-media">
+                <img src="/output/generated-assets/ds_1776338743697_657e26a0/31-4a3504ffa0.png" alt="Collaborative workspace visual">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-row mt-24 reveal" style="grid-template-columns:repeat(4,1fr);">
+        <div class="metric-card" style="background:#fff;border:1px solid var(--border)">
+          <div class="metric-value" style="color:var(--accent)">82.9%</div>
+          <div class="metric-label" style="color:#666">reported secure email experience</div>
+        </div>
+        <div class="metric-card" style="background:#fff;border:1px solid var(--border)">
+          <div class="metric-value" style="color:var(--accent)">42.9%</div>
+          <div class="metric-label" style="color:#666">found remote work easier</div>
+        </div>
+        <div class="metric-card" style="background:#fff;border:1px solid var(--border)">
+          <div class="metric-value" style="color:var(--accent)">28.6%</div>
+          <div class="metric-label" style="color:#666">found it easy to use</div>
+        </div>
+        <div class="metric-card" style="background:#fff;border:1px solid var(--border)">
+          <div class="metric-value" style="color:var(--accent)">14.3%</div>
+          <div class="metric-label" style="color:#666">saw improved collaboration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light" id="pricing">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Pricing</div>
+        <h2>Zoho Workplace price plan includes</h2>
+        <p>Everything your enterprise needs to launch secure, collaborative communication from one connected workspace.</p>
+      </div>
+
+      <div class="pricing-wrap">
+        <div class="pricing-note reveal">
+          <h3>What’s included in the plan</h3>
+          <p>Zoho Workplace bundles enterprise communication and collaboration into one structured offering, helping teams move faster without tool fragmentation.</p>
+          <div class="preview-shot">
+            <img src="/output/generated-assets/ds_1776338743697_657e26a0/33-ade7eb646a.png" alt="Pricing visual preview">
+          </div>
+        </div>
+
+        <div class="pricing-card reveal">
+          <div class="price-top">
+            <div>
+              <h3>Zoho Workplace</h3>
+              <p class="mb-0">Unified email and collaboration suite for enterprise teams.</p>
+            </div>
+            <span class="green-badge">Plan Includes</span>
+          </div>
+
+          <div class="price-line">
+            <span class="original-price">Original price not provided</span>
+            <span class="discounted-price">Contact for pricing</span>
+          </div>
+
+          <div class="checklist">
+            <div class="check-item"><span class="check">✓</span><span>Enterprise-Grade Custom Email</span></div>
+            <div class="check-item"><span class="check">✓</span><span>Migration Assistance</span></div>
+            <div class="check-item"><span class="check">✓</span><span>Collaborative Office Suite</span></div>
+            <div class="check-item"><span class="check">✓</span><span>30-GB Mail Storage Per User</span></div>
+            <div class="check-item"><span class="check">✓</span><span>File Storage Starts at 100 GB Per Team</span></div>
+            <div class="check-item"><span class="check">✓</span><span>File Sharing & Permissions</span></div>
+            <div class="check-item"><span class="check">✓</span><span>Team Chat</span></div>
+          </div>
+
+          <a href="#" class="btn btn-primary btn-full">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="testimonials">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" style="color:#ff9d57">Customer Reviews</div>
+        <h2>What teams appreciate about Zoho Workplace</h2>
+        <p>Enterprise buyers evaluate proof carefully, so here’s a structured snapshot of the benefits reflected across the product experience.</p>
+      </div>
+
+      <div class="testimonials-wrap reveal">
+        <div class="testimonial-slider">
+          <div class="testimonial-track" id="testimonialTrack">
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img src="/output/generated-assets/ds_1776338743697_657e26a0/20-16294edce5.png" alt="Customer reviewer 1">
+                </div>
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Zoho Workplace brings email, collaboration, and productivity into one environment, which helps teams reduce app switching and stay organized.</p>
+                  <div class="author">Enterprise User</div>
+                  <div class="designation">Unified Workspace Experience</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img src="/output/generated-assets/ds_1776338743697_657e26a0/18-46be027ae7.png" alt="Customer reviewer 2">
+                </div>
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Real-time collaboration across documents, spreadsheets, and presentations helps distributed teams move faster with fewer communication gaps.</p>
+                  <div class="author">Operations Team</div>
+                  <div class="designation">Collaboration & Productivity</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img src="/output/generated-assets/ds_1776338743697_657e26a0/19-601ba8abef.png" alt="Customer reviewer 3">
+                </div>
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Anywhere access and mobile-ready tools make it easier for teams to stay productive whether they are in office, remote, or on the move.</p>
+                  <div class="author">Business Team</div>
+                  <div class="designation">Remote Work Enablement</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img src="/output/generated-assets/ds_1776338743697_657e26a0/20-16294edce5.png" alt="Customer reviewer 4">
+                </div>
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Zia-powered writing assistance adds meaningful value by improving readability and writing quality directly within daily workflows.</p>
+                  <div class="author">Content & Admin Team</div>
+                  <div class="designation">AI-Assisted Productivity</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img src="/output/generated-assets/ds_1776338743697_657e26a0/18-46be027ae7.png" alt="Customer reviewer 5">
+                </div>
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Security controls like spam protection, SSO, Directory, MFA, and privacy-first cloud capabilities make Zoho Workplace suitable for enterprise environments.</p>
+                  <div class="author">IT Leadership</div>
+                  <div class="designation">Security & Governance</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-controls">
+          <button class="arrow" id="prevTestimonial" aria-label="Previous testimonial">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="arrow" id="nextTestimonial" aria-label="Next testimonial">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <div class="footer-cta reveal">
+        <div class="eyebrow">Ready to Explore?</div>
+        <h2>Bring your email and collaboration stack into one workspace</h2>
+        <p>Evaluate Zoho Workplace for secure communication, teamwork, integrations, and scalable productivity.</p>
+        <div class="btn-group">
+          <a href="#pricing" class="btn btn-primary">Get Started</a>
+          <a href="#trust" class="btn btn-secondary">See Trusted Brands</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // reveal
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    },{threshold:.14});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    tabButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        tabButtons.forEach(b=>b.classList.remove('active'));
+        tabPanels.forEach(p=>p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // accordion
+    document.querySelectorAll('.acc-item').forEach(item=>{
+      const head = item.querySelector('.acc-head');
+      head.addEventListener('click', ()=>{
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('active'));
+        if(!isActive){ item.classList.add('active'); }
+      });
+    });
+
+    // testimonials carousel
+    const track = document.getElementById('testimonialTrack');
+    const slides = Array.from(track.children);
+    let index = 0;
+
+    function updateSlider(){
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    document.getElementById('nextTestimonial').addEventListener('click', ()=>{
+      index = (index + 1) % slides.length;
+      updateSlider();
+    });
+
+    document.getElementById('prevTestimonial').addEventListener('click', ()=>{
+      index = (index - 1 + slides.length) % slides.length;
+      updateSlider();
+    });
+
+    setInterval(()=>{
+      index = (index + 1) % slides.length;
+      updateSlider();
+    }, 5000);
+  </script>
+
+<!-- TECHJOCKEY FOOTER -->
+ </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer-wrap">
+        <div class="container">
+            <div class="footer_upper">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer_logo">
+                            <a href="#">
+                                <img alt="logo" src="images/footer-logo.svg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="follow-links">
+                            <div class="footer_email">
+                                <a href="mailto:support@techjockey.com">
+                                    <img alt="mail" src="images/mail.svg">
+                                    support@techjockey.com
+                                </a>
+                            </div>
+                            <div class="social_link">
+                                <ul>
+                                    <li class="follow_us">Follow us:
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://www.facebook.com/Techjockey/">
+                                            <img alt="facebook" src="images/facebook.svg">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank"
+                                            href="https://www.instagram.com/techjockey_?igsh=MWFqaGQ5NW5rZHEzeg==">
+                                            <img alt="instagram" src="images/instagram.svg">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://twitter.com/TechJockeys">
+                                            <img alt="twitter" src="images/twitter.svg">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://www.linkedin.com/company/techjockey/">
+                                            <img alt="linkedin" src="images/linkedin.svg">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="fixedcta">
+        <a href="#reach" class="getdemo" id="fcta"><span class="getfree">Book Free Demo</span></a>
+        <!-- <a href="" class="callexpert"><span class="callex">Call Expert</span></a> -->
+    </div>
+</body>
+<div id="popup1" class="overlay">
+    <div class="popup">
+
+        <a class="close" href="#form">×</a>
+        <div class="content">
+            <div class="col-md-12 ptb-20 form1pop" id="software">
+                <div class="hero-form float-center float-md-right t-center t-md-left">
+                    <div class="hero-form-header">
+                        <h4 class="t-uppercase mb-10">
+                            Book Demo from our<br>
+                            Software Experts
+
+
+
+                        </h4>
+                    </div>
+                    <div class="hero-form-wrapper">
+                        <form method="post" id="billing_category_main_form" name="billing_category_main_form"
+                            class="lead_form">
+                            <input type="text" name="software_category" value="" class="visibility-hidden">
+                            <input type="text" name="test_category" value=" " class="visibility-hidden">
+                            <input type="text" name="brand_id" id="brand_id" value="" class="visibility-hidden">
+                            <input type="text" name="brand_name" id="brand_name" value="" class="visibility-hidden">
+                            <input type="text" name="product_id" id="product_id2" value="" class="visibility-hidden">
+                            <input type="text" name="category_id" id="category_id" value="541"
+                                class="visibility-hidden">
+                            <input type="text" name="user_intent" value="Demo" class="visibility-hidden">
+
+
+                            <div class="mb-15">
+                                <div class="field">
+
+                                    <input type="text" class="form-control input-lg" id="name" name="name"
+                                        placeholder="Name*">
+                                    <span class="error" id="error_name"></span>
+                                </div>
+                            </div>
+
+                            <div class="mb-15">
+                                <div class="field">
+
+                                    <input type="text" class="number form-control input-lg" id="phone" name="phone"
+                                        placeholder="Mobile No.*" minlength="10" maxlength="10">
+                                    <span class="error" id="error_phone"></span>
+                                </div>
+                            </div>
+                            <div class="mb-15">
+                                <div class="field">
+
+                                    <input type="email" class="form-control input-lg" id="email" name="email"
+                                        placeholder="Email Id*">
+                                    <span class="error" id="error_email"></span>
+
+                                </div>
+                            </div>
+                            <div class="mb-15">
+                                <div class="field">
+                                    <input type="text" class="form-control input-lg" id="organization_name"
+                                        name="organization_name" placeholder="Company Name*">
+                                    <span class="error" id="error_company"></span>
+                                </div>
+                            </div>
+
+                            <div class="mb-15">
+                                <div class="field">
+                                    <input type="text" class="form-control input-lg" id="other" name="other"
+                                        placeholder="Tell us more details of your requiement">
+                                    <span class="error" id="error_other"></span>
+                                </div>
+                            </div>
+                            <div class="customer_agreement">
+                                <p>By clicking Book Demo you agree to our <span><a target="_blank"
+                                            href="https://www.techjockey.com/company/privacy-policy">Privacy
+                                            Policy</a></span> and <span><a target="_blank"
+                                            href="https://www.techjockey.com/company/terms-condition">Terms and
+                                            Conditions</a></span></p>
+
+                            </div>
+                            <input type="text" name="campaign_name" value="Billing_category_LP"
+                                style="visibility: hidden;height:2px ;float: left;" class="value-hidden">
+                            <div class="mb-15 sumn1">
+                                <input type="hidden" name="submit_button_name" value="Book Demo">
+                                <button type="submit"
+                                    class="btn-lg btn-blue btn-block btn btn-default frm_btn frm-btn gaEvent"
+                                    value="submit_btn" data-category="Lead submitted" data-action="BOOK DEMO"
+                                    data-formid="billing_category_main_form" data-label="ACD form"
+                                    data-pagetype="category">BOOK DEMO</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

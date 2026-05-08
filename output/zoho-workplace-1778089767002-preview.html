@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zoho-workplace-1778089767002.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#e4292b';
+  const primary = '#e4292b';
+  const bodyBg = '#ffffff';
+  const [activeTab1, setActiveTab1] = useState(0);
+  const [activeTab2, setActiveTab2] = useState(0);
+  const [activeTab3, setActiveTab3] = useState(0);
+  const [activeTab4, setActiveTab4] = useState(0);
+  const [activeTab5, setActiveTab5] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const pageRef = useRef(null);
+  const heroChips = ['Easy Setup & Quick Onboarding', 'A Made in India solution', '24x7 Support', 'Unified Communication'];
+  const trustLogos = ['/output/generated-assets/ds_1778089223494_5a7ebced/10-4e22c31148.png', '/output/generated-assets/ds_1778089223494_5a7ebced/09-75f766eeed.png', '/output/generated-assets/ds_1778089223494_5a7ebced/08-61e528786b.png', '/output/generated-assets/ds_1778089223494_5a7ebced/17-d22596911f.png', '/output/generated-assets/ds_1778089223494_5a7ebced/18-b3d4199ca5.png'];
+  const sections = [{
+    id: 'why',
+    label: 'Features',
+    headline: 'Why Choose Zoho Workplace?',
+    description: 'Zoho Workplace brings everything your team needs to collaborate, communicate, and stay productive through a single unified platform.',
+    image: '/output/generated-assets/ds_1778089223494_5a7ebced/14-8ee9780f0b.jpg',
+    features: [{
+      title: 'All-in-One Unified Workspace',
+      description: 'Access email, chat, documents, meetings, and storage in a single integrated platform. Reduce app switching and boost productivity.'
+    }, {
+      title: 'Seamless Collaboration in Real Time',
+      description: 'Work together on documents, spreadsheets, and presentations with live editing, comments, and built-in communication tools.'
+    }, {
+      title: 'Work from Anywhere, Anytime',
+      description: 'Stay productive on the go. Reply to emails, access presentations, or host a video conference from anywhere effortlessly.'
+    }, {
+      title: 'AI-Powered Productivity (Zia)',
+      description: 'Leverage built-in AI for writing assistance in terms of grammar, readability and writing style while you work on Writer or Sheet.'
+    }]
+  }, {
+    id: 'growth',
+    label: 'Standard Features',
+    headline: 'Unlock Your Business Growth with Zoho Workplace',
+    description: 'Zoho Workplace unifies email, collaboration, and productivity tools to streamline your business operations. Enable smarter teamwork and drive growth with a single platform.',
+    image: '/output/generated-assets/ds_1778089223494_5a7ebced/15-473c14de05.jpg',
+    features: [{
+      title: 'Ideal For Your Business Size',
+      description: 'Designed for any organization, Zoho Workplace enhances efficiency and teamwork at every scale.'
+    }, {
+      title: 'Communicate Effectively',
+      description: 'Go beyond email and chat, and connect teams with a social intranet using channels, feeds, and groups.'
+    }, {
+      title: 'Integrated Business Apps',
+      description: 'Connect with Zoho and third-party apps to unify workflows, eliminate silos, and streamline processes across your business.'
+    }, {
+      title: 'Customizable Workspace',
+      description: 'Customize settings, layouts, workflows to fit your needs. Also, get a professional, ad-free email service & advanced controls.'
+    }]
+  }, {
+    id: 'apps',
+    label: 'Additional Features',
+    headline: 'Integrate with Popular Apps',
+    description: 'Connect your Zoho Workplace with other business apps to ensure higher productivity and growth - all within a unified workspace.',
+    image: '/output/generated-assets/ds_1778089223494_5a7ebced/25-3921942fc4.jpeg',
+    features: [{
+      title: 'Zoho Apps',
+      description: 'Zoho Meeting, Zoho Connect, Zoho Mail, Zoho Cliq, Zoho Writer, etc.'
+    }, {
+      title: 'Analytics',
+      description: 'Zoho Analytics, Google Analytics'
+    }, {
+      title: 'Accounting & Finance',
+      description: 'Zoho Invoice & Zoho Books'
+    }, {
+      title: 'Automation',
+      description: 'Zoho Flow, Zapier, viaSocket'
+    }, {
+      title: 'Business Suites',
+      description: 'Zoho One, Zoho Workspace'
+    }]
+  }, {
+    id: 'performance',
+    label: 'Insight',
+    headline: 'Performance Beyond Limits with Zoho Workplace',
+    description: '',
+    image: '/output/generated-assets/ds_1778089223494_5a7ebced/26-b32757542d.jpeg',
+    features: [{
+      title: 'Secure',
+      description: '82.9% of users reported a secure email experience, ensuring strong data protection, and safe and reliable communication.'
+    }, {
+      title: 'Anywhere Access',
+      description: '42.9% of them found it easier to work remotely with Zoho Workplace apps, enabling seamless access from any device, anywhere.'
+    }, {
+      title: 'Intuitive',
+      description: '28.6% found Zoho Workplace easy to use, reducing the learning curve. Teams can quickly adapt and work efficiently.'
+    }, {
+      title: 'Collaborative',
+      description: '14.3% of them saw improved collaboration, engagement and productivity, helping teams stay aligned and get more done faster.'
+    }]
+  }, {
+    id: 'secure',
+    label: 'Price Plan Includes',
+    headline: 'Create a Secure Digital Workspace',
+    description: 'Enjoy privacy-first, enterprise-grade cloud capabilities with strong spam protection, SSO, Directory, MFA, and a secure password manager.',
+    image: '/output/generated-assets/ds_1778089223494_5a7ebced/27-26fc6b7064.jpeg',
+    features: [{
+      title: 'Zoho Workplace Price Plan Includes',
+      description: 'Enterprise-Grade Custom Email; Migration Assistance; Collaborative Office Suite; 30-GB Mail Storage Per User; File Storage Starts at 100 GB Per Team; File Sharing & Permissions; Team Chat; Document Management; Supported Device: Android, iOS, Windows, Mac'
+    }]
+  }];
+  const testimonials = [{
+    quote: 'Zoho Workplace has streamlined our communication and collaboration by bringing email, documents, and team tools into one unified platform.',
+    author: 'Amit Kapoor',
+    role: 'IT Manager',
+    avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/11-a1af876bc5.png'
+  }, {
+    quote: 'The platform is easy to use and has significantly improved team productivity by reducing dependency on multiple tools.',
+    author: 'Saurav Singh',
+    role: 'Head of Operations',
+    avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/13-01fc6c95c0.jpg'
+  }, {
+    quote: 'Techjockey helped us identify the right Zoho Workplace plan based on our requirements. Their guidance made the entire purchase process quick and hassle-free.',
+    author: 'Shrimi Manchanda',
+    role: 'Operations Manager',
+    avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/11-a1af876bc5.png'
+  }, {
+    quote: 'The seamless integration between email, file management, and collaboration tools has made our daily workflows much more efficient.',
+    author: 'Shweta Thakur',
+    role: 'Senior System Administrator',
+    avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/13-01fc6c95c0.jpg'
+  }, {
+    quote: 'Zoho Workplace helped us collaborate seamlessly, ensuring a more productive and efficient workflow across teams.',
+    author: 'Narinder Sahni',
+    role: 'IT Head',
+    avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/11-a1af876bc5.png'
+  }];
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    document.documentElement.style.setProperty('--accent-glow', 'rgba(228,41,43,0.14)');
+    const observer = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), {
+      threshold: 0.15
+    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, [accent, primary]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+  const statCards = sections.find(section => section.id === 'performance')?.features.map(item => ({
+    value: item.description.match(/^\d+(\.\d+)?%/)?.[0] || '',
+    label: item.title,
+    detail: item.description.replace(/^\d+(\.\d+)?%\s*of\s*(users\s*)?/, '')
+  })) || [];
+  return /*#__PURE__*/React.createElement("div", {
+    ref: pageRef,
+    style: {
+      background: bodyBg,
+      color: '#111827',
+      fontFamily: 'Inter, Arial, sans-serif'
+    }
+  }, /*#__PURE__*/React.createElement("style", null, `
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; background: ${bodyBg}; color: #111827; }
+        a { text-decoration: none; color: inherit; }
+
+        .page-shell {
+          overflow-x: hidden;
+        }
+
+        .container {
+          width: min(1180px, calc(100% - 32px));
+          margin: 0 auto;
+        }
+
+        .section {
+          padding: 84px 0;
+        }
+
+        .reveal {
+          opacity: 0;
+          transform: translateY(24px);
+          transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: ${primary};
+          margin-bottom: 16px;
+        }
+
+        .hero {
+          padding: 88px 0 40px;
+          position: relative;
+        }
+
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 40px;
+          align-items: center;
+        }
+
+        .hero h1 {
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
+          line-height: 0.98;
+          margin: 0 0 20px;
+          letter-spacing: -0.04em;
+          font-weight: 800;
+        }
+
+        .hero p {
+          font-size: 1.05rem;
+          line-height: 1.7;
+          color: #4b5563;
+          margin: 0 0 28px;
+          max-width: 640px;
+        }
+
+        .chip-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin: 0 0 28px;
+        }
+
+        .chip {
+          padding: 10px 14px;
+          border-radius: 999px;
+          background: #fff5f5;
+          color: #7f1d1d;
+          border: 1px solid rgba(228, 41, 43, 0.12);
+          font-size: 0.92rem;
+          font-weight: 600;
+          box-shadow: 0 8px 24px rgba(17,24,39,0.05);
+        }
+
+        .hero-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 14px;
+          align-items: center;
+        }
+
+        .btn-primary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 52px;
+          padding: 0 22px;
+          border-radius: 14px;
+          background: ${primary};
+          color: white;
+          font-weight: 700;
+          border: none;
+          box-shadow: 0 18px 40px rgba(228,41,43,0.22);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          cursor: pointer;
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 22px 48px rgba(228,41,43,0.28);
+        }
+
+        .hero-media {
+          position: relative;
+          border-radius: 28px;
+          overflow: hidden;
+          background: #f9fafb;
+          box-shadow: 0 28px 80px rgba(17,24,39,0.12);
+          min-height: 460px;
+        }
+
+        .hero-media img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .trust-strip {
+          padding: 18px 0 30px;
+        }
+
+        .trust-card {
+          background: #ffffff;
+          border: 1px solid rgba(17,24,39,0.08);
+          border-radius: 24px;
+          padding: 24px;
+          box-shadow: 0 16px 48px rgba(17,24,39,0.08);
+        }
+
+        .trust-header {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 16px;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+
+        .trust-header h3 {
+          margin: 0;
+          font-size: 1.1rem;
+          color: #111827;
+        }
+
+        .trust-badges {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .trust-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 14px;
+          border-radius: 999px;
+          background: #f9fafb;
+          border: 1px solid rgba(17,24,39,0.08);
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: #374151;
+        }
+
+        .logo-row {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 16px;
+          align-items: center;
+        }
+
+        .logo-tile {
+          height: 74px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 18px;
+          background: #fcfcfd;
+          border: 1px solid rgba(17,24,39,0.07);
+          padding: 14px;
+        }
+
+        .logo-tile img {
+          max-width: 100%;
+          max-height: 36px;
+          object-fit: contain;
+          filter: grayscale(1);
+          opacity: 0.88;
+        }
+
+        .dark-stats {
+          background: #111111;
+          color: #ffffff;
+          padding: 84px 0;
+        }
+
+        .dark-stats-head {
+          max-width: 760px;
+          margin-bottom: 34px;
+        }
+
+        .dark-stats-head h2 {
+          margin: 0 0 12px;
+          font-size: clamp(2rem, 4vw, 3rem);
+          line-height: 1.05;
+          letter-spacing: -0.03em;
+        }
+
+        .dark-stats-head p {
+          margin: 0;
+          color: rgba(255,255,255,0.74);
+          line-height: 1.7;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 18px;
+        }
+
+        .stat-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 22px;
+          padding: 24px;
+          box-shadow: 0 18px 48px rgba(0,0,0,0.22);
+        }
+
+        .stat-value {
+          font-size: clamp(2rem, 4vw, 3rem);
+          line-height: 1;
+          font-weight: 800;
+          color: #ffffff;
+          margin-bottom: 10px;
+        }
+
+        .stat-label {
+          font-size: 1rem;
+          font-weight: 700;
+          margin-bottom: 8px;
+        }
+
+        .stat-detail {
+          color: rgba(255,255,255,0.72);
+          line-height: 1.6;
+          font-size: 0.95rem;
+        }
+
+        .feature-section {
+          display: grid;
+          grid-template-columns: 0.95fr 1.05fr;
+          gap: 40px;
+          align-items: center;
+        }
+
+        .feature-media {
+          overflow: hidden;
+          border-radius: 24px;
+          box-shadow: 0 24px 64px rgba(17,24,39,0.12);
+          background: #f3f4f6;
+        }
+
+        .feature-media img {
+          width: 100%;
+          height: 100%;
+          min-height: 420px;
+          object-fit: cover;
+          display: block;
+        }
+
+        .feature-copy h2 {
+          margin: 0 0 14px;
+          font-size: clamp(2rem, 4vw, 3rem);
+          line-height: 1.06;
+          letter-spacing: -0.03em;
+        }
+
+        .feature-copy p {
+          color: #4b5563;
+          line-height: 1.7;
+          margin: 0 0 22px;
+        }
+
+        .feature-list {
+          display: grid;
+          gap: 14px;
+        }
+
+        .feature-item {
+          background: #ffffff;
+          border: 1px solid rgba(17,24,39,0.08);
+          border-radius: 18px;
+          padding: 18px;
+          box-shadow: 0 14px 34px rgba(17,24,39,0.06);
+        }
+
+        .feature-item h4 {
+          margin: 0 0 8px;
+          font-size: 1rem;
+        }
+
+        .feature-item p {
+          margin: 0;
+          color: #4b5563;
+          font-size: 0.95rem;
+          line-height: 1.65;
+        }
+
+        .testimonial-wrap {
+          background: #fafafa;
+          border-top: 1px solid rgba(17,24,39,0.06);
+          border-bottom: 1px solid rgba(17,24,39,0.06);
+        }
+
+        .testimonial-card {
+          background: #ffffff;
+          border: 1px solid rgba(17,24,39,0.08);
+          border-radius: 24px;
+          padding: 28px;
+          box-shadow: 0 18px 48px rgba(17,24,39,0.08);
+          max-width: 860px;
+        }
+
+        .testimonial-quote {
+          font-size: 1.1rem;
+          line-height: 1.8;
+          color: #111827;
+          margin: 0 0 22px;
+        }
+
+        .testimonial-person {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .testimonial-person img {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .testimonial-person strong {
+          display: block;
+          font-size: 0.98rem;
+        }
+
+        .testimonial-person span {
+          color: #6b7280;
+          font-size: 0.92rem;
+        }
+
+        @media (max-width: 980px) {
+          .hero-grid,
+          .feature-section,
+          .stats-grid,
+          .logo-row {
+            grid-template-columns: 1fr;
+          }
+
+          .hero {
+            padding-top: 64px;
+          }
+
+          .hero-media {
+            min-height: 320px;
+          }
+
+          .feature-media img {
+            min-height: 280px;
+          }
+        }
+      `), /*#__PURE__*/React.createElement("div", {
+    className: "page-shell"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "hero"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal visible"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "Editorial B2B Workspace Suite"), /*#__PURE__*/React.createElement("h1", null, "Bring your email, documents, chat, meetings, and team collaboration into one unified digital workplace"), /*#__PURE__*/React.createElement("p", null, "Zoho Workplace helps teams simplify communication, improve collaboration, and stay productive with a secure, integrated platform built for modern businesses."), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, heroChips.map(chip => /*#__PURE__*/React.createElement("span", {
+    key: chip,
+    className: "chip"
+  }, chip))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#why",
+    className: "btn-primary"
+  }, "Get Started"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-media reveal visible"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/ds_1778089223494_5a7ebced/14-8ee9780f0b.jpg",
+    alt: "Zoho Workplace collaboration interface"
+  }))))), trustLogos.length > 0 && /*#__PURE__*/React.createElement("section", {
+    className: "trust-strip"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-card reveal visible"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-header"
+  }, /*#__PURE__*/React.createElement("h3", null, "Trusted by teams evaluating modern workplace collaboration tools"), /*#__PURE__*/React.createElement("div", {
+    className: "trust-badges"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "trust-badge"
+  }, "\u2714 Unified workspace"), /*#__PURE__*/React.createElement("span", {
+    className: "trust-badge"
+  }, "\u2714 Secure collaboration"), /*#__PURE__*/React.createElement("span", {
+    className: "trust-badge"
+  }, "\u2714 Guided onboarding support"))), /*#__PURE__*/React.createElement("div", {
+    className: "logo-row"
+  }, trustLogos.map((logo, index) => /*#__PURE__*/React.createElement("div", {
+    className: "logo-tile",
+    key: logo + index
+  }, /*#__PURE__*/React.createElement("img", {
+    src: logo,
+    alt: `Trust logo ${index + 1}`
+  }))))))), statCards.length > 0 && /*#__PURE__*/React.createElement("section", {
+    className: "dark-stats"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dark-stats-head reveal visible"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow",
+    style: {
+      color: '#f87171'
+    }
+  }, "Key Stats"), /*#__PURE__*/React.createElement("h2", null, "Performance insights that stand out at a glance"), /*#__PURE__*/React.createElement("p", null, "A quick snapshot of the outcomes highlighted in the Zoho Workplace performance section, presented in a darker visual break for stronger emphasis and easier scanning.")), /*#__PURE__*/React.createElement("div", {
+    className: "stats-grid"
+  }, statCards.map(stat => /*#__PURE__*/React.createElement("div", {
+    className: "stat-card reveal visible",
+    key: stat.label
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-value"
+  }, stat.value), /*#__PURE__*/React.createElement("div", {
+    className: "stat-label"
+  }, stat.label), /*#__PURE__*/React.createElement("div", {
+    className: "stat-detail"
+  }, stat.detail)))))), sections.map((section, index) => /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: section.id,
+    key: section.id
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-media reveal visible",
+    style: {
+      order: index % 2 === 0 ? 0 : 1
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: section.image,
+    alt: section.headline
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "feature-copy reveal visible",
+    style: {
+      order: index % 2 === 0 ? 1 : 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, section.label), /*#__PURE__*/React.createElement("h2", null, section.headline), section.description ? /*#__PURE__*/React.createElement("p", null, section.description) : null, /*#__PURE__*/React.createElement("div", {
+    className: "feature-list"
+  }, section.features.map(feature => /*#__PURE__*/React.createElement("div", {
+    className: "feature-item",
+    key: feature.title
+  }, /*#__PURE__*/React.createElement("h4", null, feature.title), /*#__PURE__*/React.createElement("p", null, feature.description))))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section testimonial-wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow reveal visible"
+  }, "Customer Feedback"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card reveal visible"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "testimonial-quote"
+  }, "\u201C", testimonials[activeSlide].quote, "\u201D"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-person"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: testimonials[activeSlide].avatar,
+    alt: testimonials[activeSlide].author
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, testimonials[activeSlide].author), /*#__PURE__*/React.createElement("span", null, testimonials[activeSlide].role))))))));
+};
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

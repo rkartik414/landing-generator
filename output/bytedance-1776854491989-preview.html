@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bytedance-1776854491989.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const [activeProduct, setActiveProduct] = useState(0);
+  const [activeVideoFeature, setActiveVideoFeature] = useState(0);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const revealRef = useRef([]);
+  const accent = '#ff6b00';
+  const content = {
+    productName: 'Seedream 4.5 and Seedance 1.5 Pro',
+    hero: {
+      headline: 'Create High-Quality AI Images & Videos with ByteDance Generative Models',
+      subheadline: 'Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.',
+      supportingLine: 'From text prompts, images, or scripts, generate professional visuals and videos with powerful multimodal AI systems.',
+      primaryCTA: 'Generate with AI'
+    },
+    metrics: [{
+      value: '4K',
+      label: 'Image quality support'
+    }, {
+      value: '10×',
+      label: 'Faster inference'
+    }, {
+      value: '2',
+      label: 'Creative AI engines'
+    }, {
+      value: '24/7',
+      label: 'Evaluation support'
+    }],
+    products: [{
+      name: 'Seedream 4.5',
+      headline: 'AI Image Generation with Seedream 4.5',
+      description: 'Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.',
+      cta: 'Request Demo',
+      image: '/output/generated-assets/ds_1776854144558_aaeb87b2/02-7f64cfae87.jpeg',
+      preview: '/output/generated-assets/ds_1776854144558_aaeb87b2/01-f7e8992ab4.jpeg',
+      features: [{
+        title: 'Advanced Text–Image Alignment',
+        description: 'Accurately translates prompts into visuals with improved semantic understanding.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/05-86a0e42439.jpeg'
+      }, {
+        title: 'High-Resolution Output',
+        description: 'Generate native images up to 1K–4K resolution with strong visual fidelity.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/07-65027719ed.png'
+      }, {
+        title: 'Superior Typographic Rendering',
+        description: 'Optimized for posters, ads, and text-heavy visual designs.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/04-fa9caa1249.png'
+      }, {
+        title: 'Multi-Image Composition with Identity Preservation',
+        description: 'Combines multiple inputs while accurately maintaining subject consistency.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/06-1d34b82b19.png'
+      }, {
+        title: 'Strong Structural Fidelity',
+        description: 'Maintains composition, layout, and scene structure with high precision.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/03-3965757185.jpeg'
+      }]
+    }, {
+      name: 'Seedance 1.5 Pro',
+      headline: 'AI Video Generation with Seedance 1.5 Pro by Bytedance',
+      description: 'Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.',
+      image: '/output/generated-assets/ds_1776854144558_aaeb87b2/03-3965757185.jpeg',
+      preview: '/output/generated-assets/ds_1776854144558_aaeb87b2/08-84289b855f.png',
+      features: [{
+        title: 'Text-to-Video Generation',
+        description: 'Create videos directly from text prompts.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/08-84289b855f.png'
+      }, {
+        title: 'Audio-Visual Synchronization',
+        description: 'Generate video and audio simultaneously with strong multimodal alignment.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/09-44be0cccb4.png'
+      }, {
+        title: 'Multilingual Lip-Sync',
+        description: 'Supports multilingual and dialect-level lip synchronization.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/01-f7e8992ab4.jpeg'
+      }, {
+        title: 'Cinematic Camera Control',
+        description: 'Generate videos with dynamic camera movement and cinematic storytelling.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/02-7f64cfae87.jpeg'
+      }, {
+        title: '10× Faster Inference',
+        description: 'Optimized inference pipeline significantly improves generation speed.',
+        image: '/output/generated-assets/ds_1776854144558_aaeb87b2/03-3965757185.jpeg'
+      }]
+    }],
+    why: [{
+      title: 'Enterprise-Ready Evaluation',
+      text: 'Assess advanced image and video generation capabilities with practical product walkthroughs tailored to professional content teams.'
+    }, {
+      title: 'Faster Demo Access',
+      text: 'Techjockey helps streamline product discovery and demo coordination so teams can move from interest to evaluation quickly.'
+    }, {
+      title: 'Simplified Procurement',
+      text: 'Compare capabilities, align with team requirements, and make confident buying decisions with guided assistance.'
+    }, {
+      title: 'Creative Workflow Fit',
+      text: 'Ideal for creative directors, video producers, marketing leaders, and teams building premium branded content at scale.'
+    }],
+    pricing: [{
+      name: 'Seedream 4.5 (AI Image Generation)',
+      originalPrice: 'Custom',
+      price: 'On Request',
+      discount: 'Business Quote',
+      includes: ['High-resolution image generation (up to 4K quality)', 'Text-to-image & multimodal image editing', 'Multi-image composition for complex visuals', 'Enhanced typographic rendering for posters, ads & text-heavy designs'],
+      cta: 'Get Quote',
+      highlight: false
+    }, {
+      name: 'Seedance 1.5 Pro (AI Video Generation)',
+      originalPrice: '$1,200/month',
+      price: 'Starting at $1,000/month/',
+      discount: 'Save with annual plans',
+      includes: ['Text-to-video generation with cinematic output', 'Native audio + video generation (synchronized)', 'Multilingual lip-sync capabilities', 'Fast inference for quicker video production'],
+      cta: 'Get Quote',
+      highlight: true
+    }],
+    testimonials: [{
+      quote: 'Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.',
+      author: 'Vaishali Saxena',
+      designation: 'Creative Director'
+    }, {
+      quote: 'Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.',
+      author: 'Vihaan Pandey',
+      designation: 'Video Producer'
+    }, {
+      quote: 'The multimodal editing capabilities in Seedream make it easy to refine images with precision.',
+      author: 'Anurag Malhotra',
+      designation: 'Art Director'
+    }, {
+      quote: 'Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.',
+      author: 'Ashutosh Singh',
+      designation: 'Marketing Manager'
+    }, {
+      quote: 'From understanding our needs to arranging a free demo of Seedream and Seedance, the experience was smooth and consultative.',
+      author: 'Sakshi Verma',
+      designation: 'Creative Lead'
+    }],
+    heroImage: '/output/generated-assets/ds_1776854144558_aaeb87b2/01-f7e8992ab4.jpeg',
+    gallery: ['/output/generated-assets/ds_1776854144558_aaeb87b2/01-f7e8992ab4.jpeg', '/output/generated-assets/ds_1776854144558_aaeb87b2/02-7f64cfae87.jpeg', '/output/generated-assets/ds_1776854144558_aaeb87b2/03-3965757185.jpeg', '/output/generated-assets/ds_1776854144558_aaeb87b2/08-84289b855f.png', '/output/generated-assets/ds_1776854144558_aaeb87b2/09-44be0cccb4.png', '/output/generated-assets/ds_1776854144558_aaeb87b2/01-f7e8992ab4.jpeg', '/output/generated-assets/ds_1776854144558_aaeb87b2/02-7f64cfae87.jpeg', '/output/generated-assets/ds_1776854144558_aaeb87b2/03-3965757185.jpeg']
+  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
+      });
+    }, {
+      threshold: 0.15
+    });
+    const currentRefs = revealRef.current;
+    currentRefs.forEach(el => el && observer.observe(el));
+    return () => {
+      currentRefs.forEach(el => el && observer.unobserve(el));
+    };
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTestimonial(prev => (prev + 1) % content.testimonials.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [content.testimonials.length]);
+  const addRevealRef = el => {
+    if (el && !revealRef.current.includes(el)) revealRef.current.push(el);
+  };
+  const nextTestimonial = () => {
+    setActiveTestimonial(prev => (prev + 1) % content.testimonials.length);
+  };
+  const prevTestimonial = () => {
+    setActiveTestimonial(prev => (prev - 1 + content.testimonials.length) % content.testimonials.length);
+  };
+  const featureIcon = type => {
+    const icons = {
+      spark: /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 24 24",
+        fill: "none"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z",
+        stroke: accent,
+        strokeWidth: "1.8",
+        fill: "rgba(255,107,0,0.12)"
+      })),
+      frame: /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 24 24",
+        fill: "none"
+      }, /*#__PURE__*/React.createElement("rect", {
+        x: "4",
+        y: "4",
+        width: "16",
+        height: "16",
+        rx: "3",
+        stroke: accent,
+        strokeWidth: "1.8"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M8 15L11 12L13.5 14.5L16 10L19 15",
+        stroke: accent,
+        strokeWidth: "1.8",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      })),
+      type: /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 24 24",
+        fill: "none"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M6 7H18",
+        stroke: accent,
+        strokeWidth: "1.8",
+        strokeLinecap: "round"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M12 7V18",
+        stroke: accent,
+        strokeWidth: "1.8",
+        strokeLinecap: "round"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M9 18H15",
+        stroke: accent,
+        strokeWidth: "1.8",
+        strokeLinecap: "round"
+      })),
+      layers: /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 24 24",
+        fill: "none"
+      }, /*#__PURE__*/React.createElement("path", {
+        d: "M12 4L20 8L12 12L4 8L12 4Z",
+        stroke: accent,
+        strokeWidth: "1.8",
+        fill: "rgba(255,107,0,0.12)"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M4 12L12 16L20 12",
+        stroke: accent,
+        strokeWidth: "1.8",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M4 16L12 20L20 16",
+        stroke: accent,
+        strokeWidth: "1.8",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      })),
+      video: /*#__PURE__*/React.createElement("svg", {
+        viewBox: "0 0 24 24",
+        fill: "none"
+      }, /*#__PURE__*/React.createElement("rect", {
+        x: "3",
+        y: "6",
+        width: "13",
+        height: "12",
+        rx: "2",
+        stroke: accent,
+        strokeWidth: "1.8"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M16 10L21 7V17L16 14V10Z",
+        stroke: accent,
+        strokeWidth: "1.8",
+        strokeLinejoin: "round",
+        fill: "rgba(255,107,0,0.12)"
+      }))
+    };
+    return icons[type] || icons.spark;
+  };
+  const css = `
+    :root{
+      --accent:${accent};
+      --bg:#1a1a1a;
+      --bg-soft:#151515;
+      --bg-deep:#0f0f0f;
+      --bg-card:#131313;
+      --text:#ffffff;
+      --muted:#b8b8b8;
+      --muted-2:#8d8d8d;
+      --line:rgba(255,255,255,0.08);
+      --line-strong:rgba(255,255,255,0.14);
+      --green:#20c863;
+      --gold:#f6c85f;
+      --shadow:0 20px 60px rgba(0,0,0,0.45);
+      --hard-shadow:8px 8px 0 rgba(255,107,0,0.14);
+      --radius:18px;
+      --radius-lg:24px;
+      --container:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button{font-family:inherit}
+    .landing-page{
+      background:var(--bg);
+      color:var(--text);
+      overflow:hidden;
+    }
+    .container{
+      width:min(var(--container), calc(100% - 40px));
+      margin:0 auto;
+    }
+    .section{
+      position:relative;
+      padding:96px 0;
+    }
+    .section-dark{background:#111111}
+    .section-mid{background:#151515}
+    .section-deep{background:#0f0f0f}
+    .section-cardy{background:#171717}
+    .section-title{
+      font-size:clamp(32px, 4vw, 46px);
+      line-height:1.1;
+      margin:0 0 16px;
+      font-weight:800;
+      letter-spacing:-0.03em;
+    }
+    .section-text{
+      font-size:18px;
+      line-height:1.75;
+      color:var(--muted);
+      margin:0;
+    }
+    .section-head{
+      max-width:760px;
+      margin-bottom:42px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border:1px solid var(--line-strong);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:#ffd6ba;
+      background:rgba(255,107,0,0.08);
+      margin-bottom:18px;
+    }
+
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(14px);
+      background:rgba(10,10,10,0.84);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+    .product-logo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:linear-gradient(135deg, rgba(255,107,0,0.18), rgba(255,107,0,0.04));
+      border:1px solid rgba(255,107,0,0.3);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:var(--hard-shadow);
+      flex-shrink:0;
+    }
+    .product-logo svg{width:24px;height:24px}
+    .product-name{
+      font-size:16px;
+      font-weight:800;
+      line-height:1.2;
+      letter-spacing:-0.02em;
+    }
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-left:auto;
+    }
+    .techjockey-logo{
+      width:126px;
+      opacity:0.95;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:52px;
+      padding:0 24px;
+      border-radius:14px;
+      border:none;
+      cursor:pointer;
+      font-size:15px;
+      font-weight:800;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 35px rgba(0,0,0,0.35);
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 14px 34px rgba(255,107,0,0.28);
+    }
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid var(--line-strong);
+    }
+    .btn-full{width:100%}
+
+    .hero{
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,107,0,0.22), transparent 30%),
+        radial-gradient(circle at 85% 30%, rgba(255,107,0,0.12), transparent 24%),
+        linear-gradient(180deg, #1a1a1a 0%, #111111 100%);
+      padding:90px 0 72px;
+      position:relative;
+      isolation:isolate;
+    }
+    .hero::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size:42px 42px;
+      mask-image:radial-gradient(circle at center, black 45%, transparent 95%);
+      z-index:-1;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:40px;
+      align-items:center;
+    }
+    .hero-copy{
+      position:relative;
+      z-index:2;
+    }
+    .hero h1{
+      font-size:clamp(48px, 6vw, 72px);
+      line-height:1.02;
+      margin:0 0 18px;
+      letter-spacing:-0.05em;
+      font-weight:800;
+      max-width:900px;
+    }
+    .hero-sub{
+      font-size:19px;
+      line-height:1.8;
+      color:#d4d4d4;
+      margin:0 0 12px;
+      max-width:760px;
+    }
+    .hero-support{
+      font-size:16px;
+      line-height:1.7;
+      color:var(--muted);
+      margin:0 0 24px;
+    }
+    .hero-bullets{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin:0 0 28px;
+      padding:0;
+      list-style:none;
+    }
+    .hero-bullets li{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line-strong);
+      background:rgba(255,255,255,0.03);
+      color:#f2f2f2;
+      font-size:14px;
+      font-weight:600;
+    }
+    .hero-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+    .hero-visual{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:520px;
+    }
+    .glow-orb,
+    .glow-orb.two,
+    .glow-orb.three{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(40px);
+      opacity:0.55;
+      pointer-events:none;
+    }
+    .glow-orb{
+      width:180px;
+      height:180px;
+      background:rgba(255,107,0,0.28);
+      top:10%;
+      right:6%;
+      animation:floatY 6s ease-in-out infinite;
+    }
+    .glow-orb.two{
+      width:140px;
+      height:140px;
+      background:rgba(255,140,70,0.18);
+      left:2%;
+      bottom:14%;
+      animation:floatY 7s ease-in-out infinite reverse;
+    }
+    .glow-orb.three{
+      width:100px;
+      height:100px;
+      background:rgba(255,107,0,0.22);
+      right:22%;
+      bottom:10%;
+      animation:floatY 5.4s ease-in-out infinite;
+    }
+    .hero-stack{
+      position:relative;
+      width:100%;
+      max-width:560px;
+    }
+    .browser-shell{
+      position:relative;
+      border:1px solid rgba(255,255,255,0.1);
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow), var(--hard-shadow);
+    }
+    .browser-top{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:14px 16px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      background:rgba(0,0,0,0.22);
+    }
+    .browser-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#ff8f5a;
+    }
+    .browser-dot:nth-child(2){background:#ffd166}
+    .browser-dot:nth-child(3){background:#75d977}
+    .browser-content{
+      padding:14px;
+    }
+    .hero-image{
+      width:100%;
+      max-height:480px;
+      object-fit:contain;
+      border-radius:12px;
+    }
+    .floating-card{
+      position:absolute;
+      background:rgba(15,15,15,0.92);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:16px;
+      padding:14px 16px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+    .floating-card.card-1{
+      top:-16px;
+      left:-18px;
+      animation:floatY 5.5s ease-in-out infinite;
+    }
+    .floating-card.card-2{
+      right:-12px;
+      bottom:34px;
+      animation:floatY 6.2s ease-in-out infinite reverse;
+    }
+    .floating-card.card-3{
+      left:10px;
+      bottom:-12px;
+      animation:floatY 5s ease-in-out infinite;
+    }
+    .mini-label{
+      display:block;
+      font-size:12px;
+      color:var(--muted-2);
+      margin-bottom:4px;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      font-weight:700;
+    }
+    .mini-value{
+      font-size:20px;
+      font-weight:800;
+      color:#fff;
+      letter-spacing:-0.03em;
+    }
+    .thumb-grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+    }
+    .thumb-grid img{
+      width:100%;
+      height:72px;
+      object-fit:cover;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:transform .35s ease, opacity .35s ease;
+    }
+    .thumb-grid img:hover{transform:translateY(-4px) scale(1.02)}
+    .typing-row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:14px;
+      color:#fff;
+      font-weight:600;
+      font-size:14px;
+    }
+    .cursor{
+      width:10px;
+      height:20px;
+      background:var(--accent);
+      animation:blink 1s steps(1) infinite;
+      border-radius:2px;
+    }
+
+    .metrics-strip{
+      background:#111111;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding:24px 0;
+    }
+    .metrics-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    .metric-card{
+      padding:18px 20px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,0.02);
+      text-align:center;
+    }
+    .metric-value{
+      font-size:34px;
+      font-weight:800;
+      letter-spacing:-0.04em;
+      color:#fff;
+      margin-bottom:6px;
+    }
+    .metric-label{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .products-wrap{
+      display:grid;
+      gap:28px;
+    }
+    .product-tabs{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:22px;
+    }
+    .product-tab{
+      padding:14px 18px;
+      border-radius:14px;
+      border:1px solid var(--line-strong);
+      background:#111111;
+      color:#ddd;
+      font-weight:700;
+      cursor:pointer;
+      transition:all .25s ease;
+    }
+    .product-tab.active{
+      background:rgba(255,107,0,0.12);
+      border-color:rgba(255,107,0,0.45);
+      color:#fff;
+      box-shadow:var(--hard-shadow);
+    }
+
+    .product-panel{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:start;
+    }
+    .spotlight-panel,
+    .feature-panel,
+    .video-visual,
+    .pricing-card,
+    .testimonial-card,
+    .why-card,
+    .gallery-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border:1px solid var(--line);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+    }
+    .spotlight-panel{
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+    }
+    .spotlight-panel::after{
+      content:'';
+      position:absolute;
+      inset:auto -20% -30% auto;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,107,0,0.22), transparent 70%);
+      pointer-events:none;
+    }
+    .spotlight-image{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.08);
+      margin-bottom:18px;
+    }
+    .spotlight-image img{
+      width:100%;
+      height:340px;
+      object-fit:cover;
+    }
+    .spotlight-text h3{
+      font-size:34px;
+      margin:0 0 12px;
+      line-height:1.1;
+      font-weight:800;
+      letter-spacing:-0.03em;
+    }
+    .spotlight-text p{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      margin:0 0 20px;
+    }
+    .feature-panel{
+      padding:18px;
+    }
+    .feature-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    .feature-card{
+      display:grid;
+      grid-template-columns:64px 1fr 96px;
+      gap:16px;
+      align-items:center;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02);
+      transition:transform .3s ease, border-color .3s ease, background .3s ease;
+    }
+    .feature-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,107,0,0.3);
+      background:rgba(255,107,0,0.04);
+    }
+    .feature-icon{
+      width:52px;
+      height:52px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,107,0,0.08);
+      border:1px solid rgba(255,107,0,0.24);
+    }
+    .feature-icon svg{width:28px;height:28px}
+    .feature-copy h4{
+      margin:0 0 6px;
+      font-size:18px;
+      line-height:1.35;
+      font-weight:800;
+    }
+    .feature-copy p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+    }
+    .feature-thumb{
+      width:100%;
+      height:74px;
+      object-fit:cover;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .accordion-layout{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:30px;
+      align-items:start;
+    }
+    .accordion-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .accordion-item{
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.02);
+      transition:border-color .25s ease, background .25s ease;
+    }
+    .accordion-item.active{
+      border-color:rgba(255,107,0,0.34);
+      background:rgba(255,107,0,0.05);
+    }
+    .accordion-head{
+      width:100%;
+      background:none;
+      border:none;
+      color:#fff;
+      text-align:left;
+      padding:18px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      font-weight:800;
+      font-size:17px;
+    }
+    .accordion-head span:last-child{
+      color:var(--accent);
+      font-size:24px;
+      line-height:1;
+    }
+    .accordion-body{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .35s ease;
+    }
+    .accordion-item.active .accordion-body{
+      max-height:220px;
+    }
+    .accordion-inner{
+      padding:0 20px 18px;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:15px;
+    }
+    .video-visual{
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+      min-height:100%;
+    }
+    .video-preview{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.08);
+      margin-bottom:16px;
+    }
+    .video-preview img{
+      width:100%;
+      height:360px;
+      object-fit:cover;
+    }
+    .video-meta{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    .video-meta .meta-box{
+      padding:14px;
+      border-radius:16px;
+      background:#111111;
+      border:1px solid var(--line);
+    }
+    .meta-box strong{
+      display:block;
+      font-size:18px;
+      margin-bottom:4px;
+    }
+    .meta-box span{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .why-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    .why-card{
+      padding:24px;
+      box-shadow:var(--hard-shadow), var(--shadow);
+    }
+    .why-icon{
+      width:56px;
+      height:56px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,107,0,0.08);
+      border:1px solid rgba(255,107,0,0.24);
+      margin-bottom:18px;
+    }
+    .why-card h3{
+      margin:0 0 10px;
+      font-size:20px;
+      font-weight:800;
+    }
+    .why-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.75;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+    .gallery-card{
+      overflow:hidden;
+      position:relative;
+    }
+    .gallery-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      transition:transform .45s ease, filter .45s ease;
+    }
+    .gallery-card:hover img{
+      transform:scale(1.06);
+      filter:saturate(1.1);
+    }
+    .gallery-overlay{
+      position:absolute;
+      inset:auto 14px 14px 14px;
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(10,10,10,0.72);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.08);
+      font-size:13px;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+      align-items:stretch;
+    }
+    .pricing-card{
+      padding:28px;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      box-shadow:var(--shadow);
+    }
+    .pricing-card.highlight{
+      border-color:rgba(255,107,0,0.4);
+      box-shadow:var(--hard-shadow), var(--shadow);
+      transform:translateY(-4px);
+    }
+    .pricing-badge{
+      position:absolute;
+      top:18px;
+      right:18px;
+      background:rgba(32,200,99,0.14);
+      color:#7ff0ad;
+      border:1px solid rgba(32,200,99,0.3);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+    }
+    .pricing-name{
+      font-size:24px;
+      font-weight:800;
+      line-height:1.3;
+      margin:0 0 18px;
+      max-width:88%;
+    }
+    .price-row{
+      display:flex;
+      align-items:flex-end;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .old-price{
+      color:#8b8b8b;
+      text-decoration:line-through;
+      font-size:18px;
+      font-weight:600;
+    }
+    .new-price{
+      color:#fff;
+      font-size:34px;
+      font-weight:800;
+      letter-spacing:-0.04em;
+    }
+    .pricing-sub{
+      color:#9be7b8;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+    .checklist{
+      list-style:none;
+      padding:0;
+      margin:0 0 26px;
+      display:grid;
+      gap:12px;
+    }
+    .checklist li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:15px;
+    }
+    .check{
+      width:20px;
+      height:20px;
+      flex-shrink:0;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(32,200,99,0.14);
+      color:#6ee59f;
+      font-size:12px;
+      margin-top:2px;
+    }
+    .pricing-card .btn{margin-top:auto}
+
+    .testimonials-wrap{
+      position:relative;
+    }
+    .testimonial-carousel{
+      overflow:hidden;
+      position:relative;
+    }
+    .testimonial-track{
+      display:flex;
+      transition:transform .5s ease;
+    }
+    .testimonial-slide{
+      min-width:100%;
+      padding:4px;
+    }
+    .testimonial-card{
+      padding:32px;
+      min-height:280px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      box-shadow:var(--hard-shadow), var(--shadow);
+    }
+    .quote-mark{
+      font-size:54px;
+      line-height:1;
+      color:var(--accent);
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    .stars{
+      color:var(--gold);
+      font-size:18px;
+      letter-spacing:2px;
+      margin-bottom:14px;
+    }
+    .testimonial-text{
+      font-size:20px;
+      line-height:1.8;
+      color:#e8e8e8;
+      margin:0 0 22px;
+    }
+    .testimonial-author{
+      font-weight:800;
+      font-size:18px;
+      margin-bottom:4px;
+    }
+    .testimonial-role{
+      color:var(--muted-2);
+      font-size:14px;
+      font-weight:600;
+    }
+    .testimonial-controls{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:22px;
+      gap:16px;
+    }
+    .arrow-group{
+      display:flex;
+      gap:12px;
+    }
+    .arrow-btn{
+      width:50px;
+      height:50px;
+      border-radius:14px;
+      border:1px solid var(--line-strong);
+      background:#111111;
+      color:#fff;
+      cursor:pointer;
+      font-size:20px;
+      transition:all .25s ease;
+    }
+    .arrow-btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,107,0,0.4);
+      color:var(--accent);
+      box-shadow:var(--shadow);
+    }
+    .dots{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.16);
+      cursor:pointer;
+      transition:all .25s ease;
+    }
+    .dot.active{
+      width:28px;
+      border-radius:999px;
+      background:var(--accent);
+    }
+
+    .footer-techjockey{
+      background:#0b0b0b;
+      border-top:1px solid var(--line);
+      padding:56px 0 28px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:28px;
+      margin-bottom:28px;
+    }
+    .footer-brand img{
+      width:150px;
+      margin-bottom:18px;
+      filter:brightness(1.05);
+    }
+    .footer-brand p,
+    .footer-links a,
+    .footer-contact p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:15px;
+      margin:0;
+    }
+    .footer-title{
+      font-size:16px;
+      font-weight:800;
+      margin:0 0 14px;
+    }
+    .footer-links{
+      display:grid;
+      gap:10px;
+    }
+    .footer-links a:hover{color:#fff}
+    .footer-bottom{
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      color:var(--muted-2);
+      font-size:14px;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.revealed{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @keyframes blink{
+      0%, 50%{opacity:1}
+      51%, 100%{opacity:0}
+    }
+    @keyframes floatY{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-12px)}
+    }
+
+    @media (max-width: 1100px){
+      .hero-grid,
+      .product-panel,
+      .accordion-layout,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+      .why-grid{grid-template-columns:repeat(2,1fr)}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .pricing-grid{grid-template-columns:1fr}
+      .hero-visual{min-height:auto}
+    }
+
+    @media (max-width: 768px){
+      .container{width:min(100% - 28px, var(--container))}
+      .section{padding:72px 0}
+      .nav-inner{min-height:72px}
+      .techjockey-logo{width:108px}
+      .product-name{display:none}
+      .hero{padding-top:70px}
+      .hero-bullets{gap:10px}
+      .metrics-grid,
+      .why-grid,
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+      .feature-card{
+        grid-template-columns:54px 1fr;
+      }
+      .feature-thumb{
+        grid-column:1 / -1;
+        height:150px;
+      }
+      .thumb-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+      .floating-card.card-1,
+      .floating-card.card-2,
+      .floating-card.card-3{
+        position:relative;
+        inset:auto;
+        margin-top:12px;
+      }
+      .footer-bottom{
+        flex-direction:column;
+      }
+      .hero-cta{flex-direction:column;align-items:stretch}
+      .btn{width:100%}
+      .nav-right .btn{width:auto}
+    }
+  `;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "landing-page"
+  }, /*#__PURE__*/React.createElement("link", {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  }), /*#__PURE__*/React.createElement("style", {
+    dangerouslySetInnerHTML: {
+      __html: css
+    }
+  }), /*#__PURE__*/React.createElement("nav", {
+    className: "navbar"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nav-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "product-logo",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M12 2L14.5 8.5L21 11L14.5 13.5L12 20L9.5 13.5L3 11L9.5 8.5L12 2Z",
+    stroke: accent,
+    strokeWidth: "1.8",
+    fill: "rgba(255,107,0,0.12)"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "product-name"
+  }, content.productName)), /*#__PURE__*/React.createElement("div", {
+    className: "nav-right"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "techjockey-logo",
+    src: "https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg",
+    alt: "Techjockey"
+  }), /*#__PURE__*/React.createElement("a", {
+    href: "#pricing",
+    className: "btn btn-primary"
+  }, "Get Quote")))), /*#__PURE__*/React.createElement("section", {
+    className: "hero"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-copy reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "ByteDance Generative Models"), /*#__PURE__*/React.createElement("h1", null, "Create High-Quality AI Images & Videos with", ' ', /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: accent
+    }
+  }, content.productName)), /*#__PURE__*/React.createElement("p", {
+    className: "hero-sub"
+  }, content.hero.subheadline), /*#__PURE__*/React.createElement("p", {
+    className: "hero-support"
+  }, content.hero.supportingLine), /*#__PURE__*/React.createElement("ul", {
+    className: "hero-bullets"
+  }, /*#__PURE__*/React.createElement("li", null, "Text-to-image generation"), /*#__PURE__*/React.createElement("li", null, "Native audio-video sync"), /*#__PURE__*/React.createElement("li", null, "4K-ready visual quality"), /*#__PURE__*/React.createElement("li", null, "Multimodal editing workflows")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-cta"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#products",
+    className: "btn btn-primary"
+  }, content.hero.primaryCTA), /*#__PURE__*/React.createElement("a", {
+    href: "#pricing",
+    className: "btn btn-secondary"
+  }, "Explore Pricing"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-visual reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "glow-orb"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "glow-orb two"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "glow-orb three"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "hero-stack"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-shell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-top"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "browser-dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "browser-dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "browser-dot"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "browser-content"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "hero-image",
+    src: content.heroImage,
+    alt: content.productName
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "typing-row"
+  }, "Prompt: cinematic product launch scene with premium lighting", /*#__PURE__*/React.createElement("span", {
+    className: "cursor"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "thumb-grid"
+  }, content.gallery.slice(0, 4).map((img, idx) => /*#__PURE__*/React.createElement("img", {
+    key: idx,
+    src: img,
+    alt: `AI visual preview ${idx + 1}`
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: "floating-card card-1"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mini-label"
+  }, "Resolution"), /*#__PURE__*/React.createElement("span", {
+    className: "mini-value"
+  }, "Up to 4K")), /*#__PURE__*/React.createElement("div", {
+    className: "floating-card card-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mini-label"
+  }, "Inference"), /*#__PURE__*/React.createElement("span", {
+    className: "mini-value"
+  }, "10\xD7 Faster")), /*#__PURE__*/React.createElement("div", {
+    className: "floating-card card-3"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mini-label"
+  }, "Modalities"), /*#__PURE__*/React.createElement("span", {
+    className: "mini-value"
+  }, "Image + Video")))))), /*#__PURE__*/React.createElement("section", {
+    className: "metrics-strip"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metrics-grid"
+  }, content.metrics.map((item, index) => /*#__PURE__*/React.createElement("div", {
+    className: "metric-card reveal",
+    ref: addRevealRef,
+    key: index
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metric-value"
+  }, item.value), /*#__PURE__*/React.createElement("div", {
+    className: "metric-label"
+  }, item.label)))))), /*#__PURE__*/React.createElement("section", {
+    id: "products",
+    className: "section section-mid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "Product Capabilities"), /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "Professional AI generation for image and video teams"), /*#__PURE__*/React.createElement("p", {
+    className: "section-text"
+  }, "Explore two specialized creative engines: one optimized for high-fidelity image generation and editing, and another built for synchronized cinematic video creation with native audio intelligence.")), /*#__PURE__*/React.createElement("div", {
+    className: "products-wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "product-tabs reveal",
+    ref: addRevealRef
+  }, content.products.map((product, index) => /*#__PURE__*/React.createElement("button", {
+    key: index,
+    className: `product-tab ${activeProduct === index ? 'active' : ''}`,
+    onClick: () => setActiveProduct(index)
+  }, product.name))), activeProduct === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "product-panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "spotlight-panel reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "spotlight-image"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: content.products[0].preview,
+    alt: content.products[0].name
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "spotlight-text"
+  }, /*#__PURE__*/React.createElement("h3", null, content.products[0].headline), /*#__PURE__*/React.createElement("p", null, content.products[0].description), /*#__PURE__*/React.createElement("a", {
+    href: "#pricing",
+    className: "btn btn-primary"
+  }, content.products[0].cta))), /*#__PURE__*/React.createElement("div", {
+    className: "feature-panel reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-grid"
+  }, content.products[0].features.map((feature, idx) => {
+    const iconTypes = ['spark', 'frame', 'type', 'layers', 'spark'];
+    return /*#__PURE__*/React.createElement("div", {
+      className: "feature-card",
+      key: idx
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "feature-icon"
+    }, featureIcon(iconTypes[idx])), /*#__PURE__*/React.createElement("div", {
+      className: "feature-copy"
+    }, /*#__PURE__*/React.createElement("h4", null, feature.title), /*#__PURE__*/React.createElement("p", null, feature.description)), /*#__PURE__*/React.createElement("img", {
+      className: "feature-thumb",
+      src: feature.image,
+      alt: feature.title
+    }));
+  })))), activeProduct === 1 && /*#__PURE__*/React.createElement("div", {
+    className: "accordion-layout"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "accordion-list reveal",
+    ref: addRevealRef
+  }, content.products[1].features.map((feature, idx) => /*#__PURE__*/React.createElement("div", {
+    className: `accordion-item ${activeVideoFeature === idx ? 'active' : ''}`,
+    key: idx
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "accordion-head",
+    onClick: () => setActiveVideoFeature(idx)
+  }, /*#__PURE__*/React.createElement("span", null, feature.title), /*#__PURE__*/React.createElement("span", null, activeVideoFeature === idx ? '−' : '+')), /*#__PURE__*/React.createElement("div", {
+    className: "accordion-body"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "accordion-inner"
+  }, feature.description))))), /*#__PURE__*/React.createElement("div", {
+    className: "video-visual reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "video-preview"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: content.products[1].features[activeVideoFeature].image,
+    alt: content.products[1].features[activeVideoFeature].title
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "spotlight-text",
+    style: {
+      marginBottom: 16
+    }
+  }, /*#__PURE__*/React.createElement("h3", null, content.products[1].headline), /*#__PURE__*/React.createElement("p", null, content.products[1].description)), /*#__PURE__*/React.createElement("div", {
+    className: "video-meta"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "meta-box"
+  }, /*#__PURE__*/React.createElement("strong", null, "Native Sync"), /*#__PURE__*/React.createElement("span", null, "Generate sound and visuals together for stronger multimodal coherence.")), /*#__PURE__*/React.createElement("div", {
+    className: "meta-box"
+  }, /*#__PURE__*/React.createElement("strong", null, "Creative Control"), /*#__PURE__*/React.createElement("span", null, "Support dynamic camera motion, storytelling rhythm, and multilingual delivery.")))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section section-deep"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "Why Techjockey"), /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "A faster route from exploration to enterprise-ready evaluation"), /*#__PURE__*/React.createElement("p", {
+    className: "section-text"
+  }, "When teams need clarity on advanced AI image and video generation, Techjockey helps simplify discovery, comparison, and procurement.")), /*#__PURE__*/React.createElement("div", {
+    className: "why-grid"
+  }, content.why.map((item, idx) => {
+    const icons = ['spark', 'video', 'layers', 'frame'];
+    return /*#__PURE__*/React.createElement("div", {
+      className: "why-card reveal",
+      ref: addRevealRef,
+      key: idx
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "why-icon"
+    }, featureIcon(icons[idx])), /*#__PURE__*/React.createElement("h3", null, item.title), /*#__PURE__*/React.createElement("p", null, item.text));
+  })))), /*#__PURE__*/React.createElement("section", {
+    className: "section section-cardy"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "Creative Showcase"), /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "See the visual language these models can power"), /*#__PURE__*/React.createElement("p", {
+    className: "section-text"
+  }, "A curated showcase built from the available product imagery to represent image generation, motion design, multimodal editing, and premium creative output.")), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-grid"
+  }, content.gallery.map((img, idx) => /*#__PURE__*/React.createElement("div", {
+    className: "gallery-card reveal",
+    ref: addRevealRef,
+    key: idx
+  }, /*#__PURE__*/React.createElement("img", {
+    src: img,
+    alt: `Creative preview ${idx + 1}`
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-overlay"
+  }, idx % 2 === 0 ? 'AI image workflow preview' : 'AI video generation preview')))))), /*#__PURE__*/React.createElement("section", {
+    id: "pricing",
+    className: "section section-dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "Pricing"), /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "Choose the right generative AI capability for your production needs"), /*#__PURE__*/React.createElement("p", {
+    className: "section-text"
+  }, "Evaluate image and video generation offerings with clear plan positioning, practical inclusions, and a direct path to business pricing.")), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-grid"
+  }, content.pricing.map((plan, idx) => /*#__PURE__*/React.createElement("div", {
+    className: `pricing-card ${plan.highlight ? 'highlight' : ''} reveal`,
+    ref: addRevealRef,
+    key: idx
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pricing-badge"
+  }, plan.discount), /*#__PURE__*/React.createElement("h3", {
+    className: "pricing-name"
+  }, plan.name), /*#__PURE__*/React.createElement("div", {
+    className: "price-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "old-price"
+  }, plan.originalPrice), /*#__PURE__*/React.createElement("span", {
+    className: "new-price"
+  }, plan.price)), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-sub"
+  }, "Ideal for professional creative workflows"), /*#__PURE__*/React.createElement("ul", {
+    className: "checklist"
+  }, plan.includes.map((item, i) => /*#__PURE__*/React.createElement("li", {
+    key: i
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "check"
+  }, "\u2713"), /*#__PURE__*/React.createElement("span", null, item)))), /*#__PURE__*/React.createElement("a", {
+    href: "#footer",
+    className: "btn btn-primary btn-full"
+  }, plan.cta)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section section-mid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "Testimonials"), /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "What creative professionals are saying"), /*#__PURE__*/React.createElement("p", {
+    className: "section-text"
+  }, "Feedback from creative and marketing leaders evaluating high-quality AI image and video generation for modern production workflows.")), /*#__PURE__*/React.createElement("div", {
+    className: "testimonials-wrap reveal",
+    ref: addRevealRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-carousel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-track",
+    style: {
+      transform: `translateX(-${activeTestimonial * 100}%)`
+    }
+  }, content.testimonials.map((item, idx) => /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-slide",
+    key: idx
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "quote-mark"
+  }, "\u275D"), /*#__PURE__*/React.createElement("div", {
+    className: "stars"
+  }, "\u2605\u2605\u2605\u2605\u2605"), /*#__PURE__*/React.createElement("p", {
+    className: "testimonial-text"
+  }, item.quote)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-author"
+  }, item.author), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-role"
+  }, item.designation))))))), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-controls"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dots"
+  }, content.testimonials.map((_, idx) => /*#__PURE__*/React.createElement("button", {
+    key: idx,
+    className: `dot ${activeTestimonial === idx ? 'active' : ''}`,
+    onClick: () => setActiveTestimonial(idx),
+    "aria-label": `Go to testimonial ${idx + 1}`
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "arrow-group"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "arrow-btn",
+    onClick: prevTestimonial,
+    "aria-label": "Previous testimonial"
+  }, "\u2190"), /*#__PURE__*/React.createElement("button", {
+    className: "arrow-btn",
+    onClick: nextTestimonial,
+    "aria-label": "Next testimonial"
+  }, "\u2192")))))), /*#__PURE__*/React.createElement("footer", {
+    id: "footer",
+    className: "footer-techjockey"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "footer-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "footer-brand"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg",
+    alt: "Techjockey"
+  }), /*#__PURE__*/React.createElement("p", null, "Techjockey helps businesses discover, evaluate, and procure the right software solutions with expert assistance, demos, and guided buying support.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h4", {
+    className: "footer-title"
+  }, "Explore"), /*#__PURE__*/React.createElement("div", {
+    className: "footer-links"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#products"
+  }, "Products"), /*#__PURE__*/React.createElement("a", {
+    href: "#pricing"
+  }, "Pricing"), /*#__PURE__*/React.createElement("a", {
+    href: "#"
+  }, "Software Categories"), /*#__PURE__*/React.createElement("a", {
+    href: "#"
+  }, "Business Solutions"))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-contact"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "footer-title"
+  }, "Contact"), /*#__PURE__*/React.createElement("p", null, "Email: sales@techjockey.com"), /*#__PURE__*/React.createElement("p", null, "Phone: +91 92057 56651"), /*#__PURE__*/React.createElement("p", null, "Support for demos, evaluations, and purchase assistance."))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-bottom"
+  }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 Techjockey Infotech Pvt. Ltd. All rights reserved."), /*#__PURE__*/React.createElement("span", null, "Seedream 4.5 & Seedance 1.5 Pro landing experience for AI image and video generation.")))));
+};
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

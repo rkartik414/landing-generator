@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  />
+  <title>ManageEngine Firewall Analyzer | Firewall Log Monitoring and Network Security Management</title>
+  <meta
+    name="description"
+    content="Monitor firewall logs, traffic, compliance, and configuration changes with ManageEngine Firewall Analyzer. Gain real-time visibility, reporting, and control for IT teams and MSSPs."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root{
+      --accent:#ff6b00;
+      --accent-dark:#db5d05;
+      --primary:#1a1a1a;
+      --secondary:#f5f5f5;
+      --text:#202124;
+      --muted:#6b7280;
+      --white:#ffffff;
+      --line:#e5e7eb;
+      --success:#16a34a;
+      --gold:#f4b400;
+      --shadow:0 18px 50px rgba(0,0,0,.12);
+      --radius:18px;
+      --radius-sm:12px;
+      --container:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:#f5f5f5;
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{font-family:inherit}
+    .container{
+      width:min(100% - 32px, var(--container));
+      margin:0 auto;
+    }
+
+    h1,h2,h3,h4{
+      font-family:'Rajdhani',sans-serif;
+      margin:0 0 12px;
+      line-height:1.02;
+      letter-spacing:.2px;
+    }
+    h1{font-size:clamp(48px,6vw,72px)}
+    h2{font-size:clamp(32px,4vw,46px)}
+    h3{font-size:clamp(22px,2.5vw,30px)}
+    p{margin:0 0 16px;color:#4b5563}
+    .section-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,107,0,.1);
+      color:var(--accent);
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:52px;
+      padding:0 24px;
+      border-radius:12px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 24px rgba(0,0,0,.15);
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 10px 24px rgba(255,107,0,.28);
+    }
+    .btn-primary:hover{background:var(--accent-dark)}
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.22);
+    }
+    .btn-dark{
+      background:var(--primary);
+      color:#fff;
+    }
+    .btn-full{width:100%}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.active{
+      opacity:1;
+      transform:none;
+    }
+
+    /* Nav */
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(12px);
+      background:rgba(26,26,26,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      min-height:74px;
+      display:grid;
+      grid-template-columns:auto 1fr auto auto;
+      align-items:center;
+      gap:18px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#fff;
+      font-weight:700;
+    }
+    .product-logo-badge{
+      width:44px;height:44px;border-radius:12px;
+      background:linear-gradient(135deg, rgba(255,107,0,.22), rgba(255,255,255,.08));
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .logo-text strong{
+      display:block;
+      font-size:18px;
+      line-height:1;
+      font-family:'Rajdhani',sans-serif;
+      letter-spacing:.2px;
+    }
+    .logo-text span{
+      display:block;
+      color:#c7c9d1;
+      font-size:12px;
+      margin-top:4px;
+    }
+    .nav-links{
+      display:flex;
+      justify-content:center;
+      gap:24px;
+      color:#e7e7e7;
+      font-size:14px;
+      flex-wrap:wrap;
+    }
+    .nav-links a:hover{color:var(--accent)}
+    .tj-logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .tj-logo img{
+      width:120px;
+      filter:brightness(0) invert(1);
+      opacity:.95;
+    }
+
+    /* Hero */
+    .cisco_firewall_banners{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255,107,0,.22), transparent 28%),
+        radial-gradient(circle at 84% 24%, rgba(255,107,0,.12), transparent 20%),
+        linear-gradient(135deg, #151515 0%, #1d1d1d 48%, #101010 100%);
+      color:#fff;
+    }
+    .cisco_firewall_banners:before{
+      content:"";
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:36px 36px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), transparent 85%);
+      pointer-events:none;
+    }
+    .hero-wrap{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:46px;
+      align-items:center;
+      padding:72px 0 54px;
+      min-height:calc(100vh - 74px);
+    }
+    .hero-copy p{
+      font-size:18px;
+      color:#d1d5db;
+      max-width:620px;
+    }
+    .hero-copy .support-note{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      margin:24px 0 30px;
+      color:#e5e7eb;
+      font-size:14px;
+    }
+    .support-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .support-dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(255,107,0,.12);
+    }
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .hero-visual{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .hero-panel{
+      position:relative;
+      width:100%;
+      border-radius:22px;
+      padding:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 28px 80px rgba(0,0,0,.35);
+      backdrop-filter:blur(12px);
+    }
+    .hero-panel img{
+      width:100%;
+      max-height:480px;
+      object-fit:contain;
+      border-radius:12px;
+      background:#fff;
+      padding:8px;
+    }
+    .floating-chip{
+      position:absolute;
+      min-width:150px;
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(20,20,20,.88);
+      border:1px solid rgba(255,255,255,.1);
+      color:#fff;
+      box-shadow:0 18px 40px rgba(0,0,0,.28);
+    }
+    .floating-chip small{
+      display:block;
+      color:#c4c7ce;
+      font-size:12px;
+      margin-bottom:4px;
+    }
+    .floating-chip strong{
+      font-size:18px;
+      color:#fff;
+    }
+    .chip-1{top:18px;left:-22px}
+    .chip-2{bottom:40px;left:-8px}
+    .chip-3{top:42px;right:-20px}
+    .chip-accent{
+      color:var(--accent)!important;
+    }
+
+    /* Generic sections */
+    section{
+      padding:88px 0;
+      position:relative;
+    }
+    .section-head{
+      max-width:760px;
+      margin:0 auto 40px;
+      text-align:center;
+    }
+
+    /* Trust skipped if no logos */
+
+    /* Products */
+    .products-section{
+      background:#f8f9fa;
+    }
+    .spotlight-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:34px;
+      align-items:center;
+      margin-bottom:34px;
+    }
+    .spotlight-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+    .compatibility-list{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:24px;
+    }
+    .compat-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 16px;
+      border-radius:14px;
+      background:#fff7f0;
+      border:1px solid rgba(255,107,0,.16);
+      font-weight:600;
+      color:#2a2a2a;
+    }
+    .preview-shell{
+      background:linear-gradient(180deg,#202020,#111);
+      border-radius:24px;
+      padding:22px;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 24px 70px rgba(0,0,0,.22);
+    }
+    .preview-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .preview-dots{
+      display:flex;gap:8px;
+    }
+    .preview-dots span{
+      width:10px;height:10px;border-radius:50%;
+      background:#5b5b5b;
+    }
+    .preview-dots span:nth-child(1){background:#ff5f57}
+    .preview-dots span:nth-child(2){background:#febc2e}
+    .preview-dots span:nth-child(3){background:#28c840}
+    .preview-metrics{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+    .metric-box{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:18px;
+    }
+    .metric-box strong{
+      font-size:28px;
+      display:block;
+      color:#fff;
+      margin-top:6px;
+    }
+    .metric-box small{color:#c8ccd3}
+    .log-stream{
+      margin-top:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:14px;
+    }
+    .log-row{
+      display:grid;
+      grid-template-columns:82px 1fr auto;
+      gap:10px;
+      padding:10px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      font-size:13px;
+      align-items:center;
+      color:#d6d8de;
+    }
+    .log-row:last-child{border-bottom:none}
+    .severity{
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .severity.high{background:rgba(239,68,68,.14);color:#fca5a5}
+    .severity.medium{background:rgba(245,158,11,.14);color:#fcd34d}
+    .severity.low{background:rgba(34,197,94,.14);color:#86efac}
+
+    .tab-detail-section{
+      margin-top:36px;
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+    .tablinks-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      position:sticky;
+      top:100px;
+    }
+    .tablinks{
+      width:100%;
+      text-align:left;
+      border:none;
+      cursor:pointer;
+      padding:18px 18px;
+      border-radius:16px;
+      background:#fff;
+      border:1px solid var(--line);
+      font-weight:700;
+      color:#262626;
+      font-family:'Rajdhani',sans-serif;
+      font-size:22px;
+      transition:.25s ease;
+      box-shadow:0 8px 24px rgba(0,0,0,.05);
+    }
+    .tablinks span{
+      display:block;
+      font-family:'Inter',sans-serif;
+      font-size:13px;
+      font-weight:500;
+      color:#6b7280;
+      margin-top:6px;
+    }
+    .tablinks.active{
+      background:var(--primary);
+      color:#fff;
+      border-color:var(--primary);
+    }
+    .tablinks.active span{color:#d1d5db}
+    .tabcontent{
+      display:none;
+      background:#fff;
+      border-radius:24px;
+      border:1px solid var(--line);
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+    .tabcontent.active{display:block}
+    .feature-list{
+      display:grid;
+      gap:14px;
+      margin-top:24px;
+    }
+    .feature-item{
+      display:grid;
+      grid-template-columns:56px 1fr;
+      gap:16px;
+      align-items:start;
+      padding:18px;
+      border-radius:18px;
+      background:#fafafa;
+      border:1px solid #ececec;
+    }
+    .icon-wrap{
+      width:56px;height:56px;border-radius:14px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(255,107,0,.14), rgba(255,107,0,.06));
+      border:1px solid rgba(255,107,0,.18);
+      flex-shrink:0;
+    }
+    .feature-item h4{
+      margin:0 0 6px;
+      font-size:24px;
+    }
+
+    /* Pricing */
+    .pricing-section{
+      background:linear-gradient(180deg,#161616 0%, #1b1b1b 100%);
+      color:#fff;
+      overflow:hidden;
+    }
+    .pricing-section p{color:#d4d4d8}
+    .pricing-wrap{
+      display:flex;
+      justify-content:center;
+      margin-top:34px;
+    }
+    .pricing-card{
+      width:min(100%, 520px);
+      border-radius:24px;
+      padding:34px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 30px 80px rgba(0,0,0,.28);
+      position:relative;
+    }
+    .green-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(22,163,74,.15);
+      color:#86efac;
+      border:1px solid rgba(34,197,94,.28);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+    .price-row{
+      display:flex;
+      align-items:flex-end;
+      gap:14px;
+      flex-wrap:wrap;
+      margin:16px 0 20px;
+    }
+    .old-price{
+      color:#a1a1aa;
+      text-decoration:line-through;
+      font-size:22px;
+      font-weight:600;
+    }
+    .new-price{
+      font-size:42px;
+      font-weight:800;
+      color:#fff;
+      line-height:1;
+      font-family:'Rajdhani',sans-serif;
+    }
+    .price-note{
+      color:#c7cad1;
+      font-size:14px;
+      margin-top:4px;
+    }
+    .price-list{
+      list-style:none;
+      padding:0;
+      margin:24px 0 28px;
+      display:grid;
+      gap:12px;
+    }
+    .price-list li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:#ececec;
+      padding:12px 0;
+      border-bottom:1px dashed rgba(255,255,255,.12);
+    }
+    .price-list li:last-child{border-bottom:none}
+    .check{
+      width:22px;height:22px;border-radius:50%;
+      display:grid;place-items:center;
+      background:rgba(22,163,74,.18);
+      color:#86efac;
+      flex-shrink:0;
+      font-size:13px;
+      margin-top:2px;
+    }
+    .pricing-disclaimer{
+      font-size:13px;
+      color:#a1a1aa;
+      margin-top:14px;
+    }
+
+    /* Testimonials */
+    .happy_customer_review{
+      background:#fff;
+    }
+    .testimonial-shell{
+      position:relative;
+      max-width:980px;
+      margin:0 auto;
+    }
+    .testimonial-track-wrap{
+      overflow:hidden;
+    }
+    .testimonial-track{
+      display:flex;
+      transition:transform .45s ease;
+    }
+    .user-card{
+      min-width:100%;
+      padding:6px;
+    }
+    .user-card-inner{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:34px;
+      background:#fff;
+      box-shadow:0 18px 45px rgba(0,0,0,.07);
+      position:relative;
+    }
+    .quote-mark{
+      font-size:62px;
+      line-height:1;
+      color:var(--accent);
+      font-family:'Rajdhani',sans-serif;
+      margin-bottom:8px;
+    }
+    .rating{
+      color:var(--gold);
+      letter-spacing:2px;
+      font-size:22px;
+      margin-bottom:12px;
+    }
+    .testimonial-meta{
+      margin-top:22px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+    }
+    .testimonial-meta strong{
+      display:block;
+      font-size:18px;
+      color:#111827;
+    }
+    .testimonial-meta span{
+      color:#6b7280;
+      font-size:14px;
+    }
+    .testimonial-arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:48px;height:48px;border:none;border-radius:50%;
+      background:#fff;
+      box-shadow:0 12px 24px rgba(0,0,0,.12);
+      cursor:pointer;
+      display:grid;place-items:center;
+      transition:.25s ease;
+      z-index:2;
+    }
+    .testimonial-arrow:hover{
+      transform:translateY(-52%);
+      box-shadow:0 14px 28px rgba(0,0,0,.16);
+    }
+    .testimonial-arrow.prev{left:-22px}
+    .testimonial-arrow.next{right:-22px}
+    .testimonial-dots{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-top:22px;
+    }
+    .testimonial-dots button{
+      width:10px;height:10px;border-radius:50%;
+      border:none;
+      background:#d1d5db;
+      cursor:pointer;
+      padding:0;
+    }
+    .testimonial-dots button.active{background:var(--accent)}
+
+    /* Footer CTA */
+    .footer-cta{
+      background:#f8f9fa;
+      padding:34px 0 70px;
+    }
+    .footer-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      box-shadow:0 14px 34px rgba(0,0,0,.05);
+    }
+
+    @media (max-width: 991px){
+      .nav-inner{
+        grid-template-columns:1fr auto auto;
+      }
+      .nav-links{display:none}
+      .hero-wrap,
+      .spotlight-grid,
+      .tab-detail-section{
+        grid-template-columns:1fr;
+      }
+      .tablinks-wrap{
+        position:static;
+        flex-direction:row;
+        overflow:auto;
+        padding-bottom:6px;
+      }
+      .tablinks{
+        min-width:250px;
+      }
+      .chip-1,.chip-2,.chip-3{
+        position:static;
+        margin-top:12px;
+      }
+      .hero-visual{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .testimonial-arrow.prev{left:8px}
+      .testimonial-arrow.next{right:8px}
+      .footer-box{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width: 640px){
+      section{padding:72px 0}
+      .hero-wrap{padding:54px 0 40px}
+      .compatibility-list,
+      .preview-metrics{
+        grid-template-columns:1fr;
+      }
+      .pricing-card,
+      .spotlight-card,
+      .tabcontent,
+      .user-card-inner{
+        padding:22px;
+      }
+      .feature-item{
+        grid-template-columns:1fr;
+      }
+      .tj-logo img{width:94px}
+      .nav-inner{
+        gap:10px;
+      }
+      .logo-text span{display:none}
+      .hero-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="logo">
+        <div class="product-logo-badge" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L19 5V11C19 15.5 16.2 19.4 12 21C7.8 19.4 5 15.5 5 11V5L12 2Z" stroke="#ff6b00" stroke-width="1.8" fill="rgba(255,107,0,.12)"/>
+            <path d="M9.5 11.8L11.2 13.5L14.9 9.7" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <strong>ManageEngine Firewall Analyzer</strong>
+          <span>Firewall log monitoring & network security management</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#products">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Testimonials</a>
+      </div>
+
+      <a class="tj-logo" href="https://www.techjockey.com/" target="_blank" rel="noopener">
+        <img src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" alt="Techjockey logo" />
+      </a>
+
+      <a href="#pricing" class="btn btn-primary">Book Free Trial</a>
+    </div>
+  </nav>
+
+  <section class="cisco_firewall_banners" id="hero">
+    <div class="container hero-wrap">
+      <div class="hero-copy reveal">
+        <div class="section-tag">Firewall Visibility • Compliance • Control</div>
+        <h1>
+          Simplified firewall log monitoring with
+          <span style="color:#ff6b00">ManageEngine Firewall Analyzer</span>
+        </h1>
+        <p>
+          Now, it’s easy to automate firewall management and secure your network within no time.
+        </p>
+
+        <div class="support-note">
+          <div class="support-item"><span class="support-dot"></span> Real-time firewall monitoring</div>
+          <div class="support-item"><span class="support-dot"></span> Compliance and audit reporting</div>
+          <div class="support-item"><span class="support-dot"></span> Centralized traffic visibility</div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#pricing" class="btn btn-primary">Book Free Trial</a>
+          <a href="#products" class="btn btn-secondary">Explore Features</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-panel">
+          <img
+            src="http://localhost:3000/output/generated-assets/ds_1776076849663_0ddb8c80/01-efb70407f4.png"
+            alt="ManageEngine Firewall Analyzer dashboard"
+          />
+        </div>
+
+        <div class="floating-chip chip-1">
+          <small>Threat Alerts</small>
+          <strong class="chip-accent">Real-Time</strong>
+        </div>
+        <div class="floating-chip chip-2">
+          <small>Bandwidth Insight</small>
+          <strong>Network Visibility</strong>
+        </div>
+        <div class="floating-chip chip-3">
+          <small>Compliance Reports</small>
+          <strong>Audit Ready</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-tag">Product Features</div>
+        <h2>Firewall analytics, reporting, and policy visibility in one controlled workspace</h2>
+        <p>
+          Built for administrators, IT teams, and MSSPs managing firewall logs, network traffic, compliance, and security operations at scale.
+        </p>
+      </div>
+
+      <div class="spotlight-grid reveal">
+        <div class="spotlight-card">
+          <div class="section-tag">Compatibility Spotlight</div>
+          <h2>Compatible With All Major Firewalls</h2>
+          <p>
+            Supports leading firewalls like Check Point, Cisco, Juniper, Fortinet, Huawei, SonicWall, pfSense, and Palo Alto.
+          </p>
+
+          <div class="compatibility-list">
+            <div class="compat-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3L19 6V12C19 16.2 16.4 19.9 12 21C7.6 19.9 5 16.2 5 12V6L12 3Z" fill="#ff6b00" opacity=".18"/>
+                <path d="M9.5 12.2L11.1 13.8L14.7 10.1" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Check Point
+            </div>
+            <div class="compat-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="5" width="16" height="14" rx="3" fill="#ff6b00" opacity=".16"/>
+                <path d="M8 9H16M8 13H13" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              Cisco
+            </div>
+            <div class="compat-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" fill="#ff6b00" opacity=".15"/>
+                <path d="M8 12H16M12 8V16" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              Juniper
+            </div>
+            <div class="compat-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M4 8L12 4L20 8L12 12L4 8Z" fill="#ff6b00" opacity=".18"/>
+                <path d="M4 12L12 16L20 12M4 16L12 20L20 16" stroke="#ff6b00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Fortinet
+            </div>
+            <div class="compat-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <rect x="5" y="5" width="14" height="14" rx="4" fill="#ff6b00" opacity=".14"/>
+                <path d="M9 12H15" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              SonicWall
+            </div>
+            <div class="compat-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M6 7H18V17H6V7Z" fill="#ff6b00" opacity=".16"/>
+                <path d="M9 10H15M9 14H13" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              Palo Alto & more
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-shell">
+          <div class="preview-top">
+            <strong>Security Operations Preview</strong>
+            <div class="preview-dots"><span></span><span></span><span></span></div>
+          </div>
+
+          <div class="preview-metrics">
+            <div class="metric-box">
+              <small>Firewall Events</small>
+              <strong>24/7</strong>
+            </div>
+            <div class="metric-box">
+              <small>Traffic Analysis</small>
+              <strong>Live</strong>
+            </div>
+            <div class="metric-box">
+              <small>Policy Audits</small>
+              <strong>Automated</strong>
+            </div>
+            <div class="metric-box">
+              <small>Compliance View</small>
+              <strong>Centralized</strong>
+            </div>
+          </div>
+
+          <div class="log-stream">
+            <div class="log-row">
+              <span>10:14:08</span>
+              <span>Unauthorized config change detected on perimeter firewall</span>
+              <span class="severity high">High</span>
+            </div>
+            <div class="log-row">
+              <span>10:16:43</span>
+              <span>Bandwidth spike identified for business-critical application</span>
+              <span class="severity medium">Medium</span>
+            </div>
+            <div class="log-row">
+              <span>10:21:17</span>
+              <span>Scheduled compliance report generated successfully</span>
+              <span class="severity low">Low</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-detail-section reveal">
+        <div class="tablinks-wrap">
+          <button class="tablinks active" data-tab="tab-1">
+            Features
+            <span>Monitoring, analytics, traffic and rule visibility</span>
+          </button>
+          <button class="tablinks" data-tab="tab-2">
+            Standard Feature
+            <span>Compliance, audits, dashboarding and reporting</span>
+          </button>
+          <button class="tablinks" data-tab="tab-3">
+            Additional Features
+            <span>Deployment value, ROI and productivity advantages</span>
+          </button>
+        </div>
+
+        <div class="tab-panels">
+          <div class="tabcontent active" id="tab-1">
+            <div class="section-tag">Core Capabilities</div>
+            <h2>Why teams choose Firewall Analyzer for day-to-day operational visibility</h2>
+            <p>
+              From agentless log analysis to real-time monitoring, each capability is designed to reduce manual effort while improving incident readiness and performance control.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 6H20V18H4V6Z" fill="#ff6b00" opacity=".15"/>
+                    <path d="M7 10H17M7 14H13" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Agentless Log Analytics and Configuration Management</h4>
+                  <p>Gaining network activity insights and keeping abreast about firewall log is easier now. Firewall Analyzer helps administrators understand network bandwidth usage.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="8" fill="#ff6b00" opacity=".14"/>
+                    <path d="M12 8V12L15 14" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Real-Time Firewall Monitoring</h4>
+                  <p>Continuously monitor firewall activity and detect threats instantly with live insights.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 16L9 12L12 15L18 9" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 19H19" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Bandwidth Monitoring &amp; Traffic Analysis</h4>
+                  <p>Analyze bandwidth usage, identify high-consumption apps/users, and optimize network performance.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="6" stroke="#ff6b00" stroke-width="1.8"/>
+                    <path d="M16 16L20 20" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Log Analysis &amp; Forensic Investigation</h4>
+                  <p>Drill down into detailed logs to investigate incidents and identify root causes.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 7H18V10H6V7ZM6 14H18V17H6V14Z" fill="#ff6b00" opacity=".18"/>
+                    <path d="M9 7V17" stroke="#ff6b00" stroke-width="1.8"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Firewall Rule &amp; Policy Management</h4>
+                  <p>Analyze, optimize, and manage firewall rules to improve security and performance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabcontent" id="tab-2">
+            <div class="section-tag">Monitoring + Compliance</div>
+            <h2>Why Choose ManageEngine Firewall Analyzer?</h2>
+            <p>
+              Gain complete visibility, control, and compliance across your network with advanced monitoring, auditing, and reporting capabilities.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3L19 6V12C19 16.2 16.4 19.9 12 21C7.6 19.9 5 16.2 5 12V6L12 3Z" fill="#ff6b00" opacity=".16"/>
+                    <path d="M12 8V12L15 13.5" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Configuration Change Management</h4>
+                  <p>Track and audit configuration changes with alerts to prevent unauthorized modifications.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect x="5" y="4" width="14" height="16" rx="2" fill="#ff6b00" opacity=".15"/>
+                    <path d="M9 9H15M9 13H15M9 17H13" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Compliance &amp; Security Audits</h4>
+                  <p>Automate compliance reporting and ensure adherence to industry standards and regulations.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="5" width="16" height="14" rx="3" fill="#ff6b00" opacity=".15"/>
+                    <path d="M8 9H16M8 12H12M8 15H10" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Centralized Dashboard &amp; Reporting</h4>
+                  <p>Get a single-pane view with customizable dashboards, scheduled reports, and actionable insights.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 18H17M8 15V10M12 15V7M16 15V12" stroke="#ff6b00" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Comprehensive Reporting &amp; Compliance</h4>
+                  <p>Gain actionable insights with reports for threat monitoring, change management, and regulatory compliance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabcontent" id="tab-3">
+            <div class="section-tag">Operational Advantage</div>
+            <h2>All-In-One Solution to Comprehensive Network Security Device Management</h2>
+            <p>
+              Streamline security operations with cost-effective deployment, faster productivity, real-time insights, and complete visibility across your network.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="8" fill="#ff6b00" opacity=".14"/>
+                    <path d="M12 8V12L15 12.8" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Low Total Cost of Ownership</h4>
+                  <p>No additional hardware required, minimal entry cost, and a maintenance-inclusive model ensure low total cost of ownership.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 16L10 12L13 14L18 8" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18 8V12H14" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Faster IT Productivity</h4>
+                  <p>Go from deployment to report generation in minutes, improving efficiency for IT teams and MSSPs.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 18H19" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                    <rect x="7" y="10" width="3" height="5" rx="1" fill="#ff6b00"/>
+                    <rect x="11" y="7" width="3" height="8" rx="1" fill="#ff6b00" opacity=".75"/>
+                    <rect x="15" y="12" width="3" height="3" rx="1" fill="#ff6b00" opacity=".45"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Actionable Insights &amp; Flexible Reporting</h4>
+                  <p>Transform security logs into actionable insights with easy-to-use reports in formats like PDF and CSV.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 5L19 12L12 19L5 12L12 5Z" fill="#ff6b00" opacity=".16"/>
+                    <path d="M12 9V15M9 12H15" stroke="#ff6b00" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Rapid ROI &amp; Quick Deployment</h4>
+                  <p>Competitively priced with fast deployment, instant results, and reduced IT overhead for quicker returns.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="icon-wrap">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="6" width="16" height="5" rx="2" fill="#ff6b00" opacity=".18"/>
+                    <rect x="4" y="13" width="16" height="5" rx="2" fill="#ff6b00" opacity=".08"/>
+                    <circle cx="8" cy="8.5" r="1" fill="#ff6b00"/>
+                    <circle cx="8" cy="15.5" r="1" fill="#ff6b00"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Maximized Value of Security Devices</h4>
+                  <p>Supports logs from firewalls, VPNs, IDS/IPS, and proxy servers for complete visibility.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-tag">Pricing</div>
+        <h2>Get started with a guided product evaluation</h2>
+        <p>
+          Pricing is available on request. Connect with Techjockey to understand the right plan, deployment scope, and licensing path for your environment.
+        </p>
+      </div>
+
+      <div class="pricing-wrap reveal">
+        <div class="pricing-card">
+          <div class="green-badge">● Limited-time assisted evaluation</div>
+          <h3>Custom Quote Plan</h3>
+          <p>For IT teams, administrators, and MSSPs evaluating firewall log monitoring, compliance reporting, and centralized visibility.</p>
+
+          <div class="price-row">
+            <div class="old-price">Contact for MRP</div>
+            <div>
+              <div class="new-price">Book Free Trial</div>
+              <div class="price-note">Discounted evaluation assistance via Techjockey</div>
+            </div>
+          </div>
+
+          <ul class="price-list">
+            <li><span class="check">✓</span><span>Guidance for product evaluation and deployment readiness</span></li>
+            <li><span class="check">✓</span><span>Firewall compatibility review for supported environments</span></li>
+            <li><span class="check">✓</span><span>Use-case alignment for monitoring, audits, and reporting</span></li>
+            <li><span class="check">✓</span><span>Licensing and plan assistance based on business needs</span></li>
+          </ul>
+
+          <a href="#hero" class="btn btn-primary btn-full">Book Free Trial</a>
+          <div class="pricing-disclaimer">
+            Final pricing depends on deployment scope, requirements, and licensing. No public price was provided in the source content.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="happy_customer_review" id="testimonials">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-tag">Testimonials</div>
+        <h2>What users say about ManageEngine Firewall Analyzer</h2>
+        <p>
+          Real customer feedback focused on visibility, reporting, and better control across growing security environments.
+        </p>
+      </div>
+
+      <div class="testimonial-shell reveal">
+        <button class="testimonial-arrow prev" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M15 6L9 12L15 18" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="testimonial-track-wrap">
+          <div class="testimonial-track" id="testimonialTrack">
+            <div class="user-card">
+              <div class="user-card-inner">
+                <div class="quote-mark">❝</div>
+                <div class="rating">★★★★★</div>
+                <p>ManageEngine Firewall Analyzer gives us clear visibility into network traffic and helps us respond to threats faster. A dependable solution for growing operations.</p>
+                <div class="testimonial-meta">
+                  <strong>Amit Verma</strong>
+                  <span>IT Manager, Manufacturing Industry</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="user-card">
+              <div class="user-card-inner">
+                <div class="quote-mark">❝</div>
+                <div class="rating">★★★★★</div>
+                <p>Custom reports and easy compliance tracking make ManageEngine Firewall Analyzer a perfect fit for our scaling infrastructure. It adds real control to our security stack.</p>
+                <div class="testimonial-meta">
+                  <strong>Neha Kapoor</strong>
+                  <span>Head of IT, E-commerce Industry</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="testimonial-arrow next" aria-label="Next testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6L15 12L9 18" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="testimonial-dots" id="testimonialDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <div class="container">
+      <div class="footer-box reveal">
+        <div>
+          <div class="section-tag">Ready to evaluate?</div>
+          <h3>Take control of firewall logs, traffic visibility, and compliance workflows</h3>
+          <p>Explore ManageEngine Firewall Analyzer with Techjockey-assisted guidance.</p>
+        </div>
+        <a href="#pricing" class="btn btn-dark">Book Free Trial</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Tabs
+    const tabButtons = document.querySelectorAll('.tablinks');
+    const tabContents = document.querySelectorAll('.tabcontent');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    // Testimonials slider
+    const track = document.getElementById('testimonialTrack');
+    const slides = document.querySelectorAll('.user-card');
+    const prevBtn = document.querySelector('.testimonial-arrow.prev');
+    const nextBtn = document.querySelector('.testimonial-arrow.next');
+    const dotsWrap = document.getElementById('testimonialDots');
+    let currentIndex = 0;
+
+    function buildDots(){
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        if(i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function updateDots(){
+      const dots = dotsWrap.querySelectorAll('button');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function goToSlide(index){
+      currentIndex = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+    }
+
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    buildDots();
+  </script>
+
+<!-- TECHJOCKEY FOOTER -->
+    <footer class="footer-lsit-dv1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer_dv1">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="footer_logo">
+                                    <a href="#"><img alt="logo" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="footer_email">
+                                    <a href="#" mailto="support@techjockey.com"><img alt="mail"
+                                            src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/mail.svg">
+                                        support@techjockey.com</a>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="footer_link">
+                                <ul>
+                                    <li class="flo_1">Follow us:</li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/facebook_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/instagram_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/twitter_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/linkedin_icon_footer.svg"></a></li>
+
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</body>
+</html>

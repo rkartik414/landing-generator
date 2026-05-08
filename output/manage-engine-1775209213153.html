@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manage Engine Endpoint Central - Unified Endpoint Management &amp; Security</title>
+  <meta name="description"
+    content="Manage Engine Endpoint Central offers unified endpoint management and security for IT teams. Manage, secure, and automate your endpoint ecosystem from a single console." />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      color: #1a1f36;
+      font-weight: 400;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      color: #1a1f36;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+      letter-spacing: normal;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #4b5268;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    button,
+    input[type="submit"] {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      padding: 12px 24px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    button:focus,
+    input[type="submit"]:focus,
+    a:focus {
+      outline: 3px solid #4F46E5;
+      outline-offset: 2px;
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Utility spacing */
+    .section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    /* Hero Section */
+    #hero {
+      background: linear-gradient(135deg, #1a1f36 0%, #12162a 100%);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      align-items: center;
+    }
+
+    #hero .hero-text {
+      padding-right: 24px;
+    }
+
+    #hero h1 {
+      font-size: 52px;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    #hero p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #e0e4f7;
+      margin-bottom: 0;
+    }
+
+    #hero .hero-image {
+      text-align: right;
+    }
+
+    /* Trust Bar */
+    #trust {
+      background: #ffffff;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #trust .trust-container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      gap: 32px;
+      padding-left: 16px;
+      padding-right: 16px;
+      /* Reserved for future badges or logos */
+      min-height: 48px;
+    }
+
+    /* Product Section Banner2 */
+    #product-section-Banner2 {
+      background: #f9fafb;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    #product-section-Banner2 .container {
+      display: flex;
+      flex-direction: column;
+      max-width: 900px;
+    }
+
+    #product-section-Banner2 h2 {
+      font-weight: 700;
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: #1a1f36;
+    }
+
+    #product-section-Banner2 p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4b5268;
+      margin-bottom: 32px;
+    }
+
+    #product-section-Banner2 .btn-primary {
+      background-color: #4F46E5;
+      color: #fff;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-weight: 600;
+      font-size: 16px;
+      width: fit-content;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #product-section-Banner2 .btn-primary:hover,
+    #product-section-Banner2 .btn-primary:focus {
+      background-color: #3b3fc1;
+      outline: none;
+    }
+
+    /* Product Section All-in-One */
+    #product-section-All-in-One {
+      background: #ffffff;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      font-family: 'Rajdhani', sans-serif;
+      color: #1a1f36;
+    }
+
+    #product-section-All-in-One .container {
+      max-width: 1200px;
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    #product-section-All-in-One .text-content {
+      flex: 1 1 460px;
+      max-width: 600px;
+    }
+
+    #product-section-All-in-One h2 {
+      font-weight: 700;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    #product-section-All-in-One p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4b5268;
+      margin-bottom: 40px;
+    }
+
+    #product-section-All-in-One .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+      gap: 32px;
+      margin-bottom: 0;
+    }
+
+    #product-section-All-in-One .feature-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #product-section-All-in-One .feature-icon {
+      width: 32px;
+      height: 32px;
+      fill: #4F46E5;
+      flex-shrink: 0;
+      margin-bottom: 8px;
+    }
+
+    #product-section-All-in-One .feature-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: #1a1f36;
+      margin: 0;
+    }
+
+    #product-section-All-in-One .feature-desc {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      color: #4b5268;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    #product-section-All-in-One .image-content {
+      flex: 1 1 380px;
+      max-width: 480px;
+      text-align: right;
+    }
+
+    /* Product Section Standard Features */
+    #product-section-Standard-Features {
+      background: #f9fafb;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      font-family: 'Rajdhani', sans-serif;
+      color: #1a1f36;
+    }
+
+    #product-section-Standard-Features .container {
+      max-width: 1200px;
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    #product-section-Standard-Features .text-content {
+      flex: 1 1 460px;
+      max-width: 600px;
+    }
+
+    #product-section-Standard-Features h2 {
+      font-weight: 700;
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+
+    #product-section-Standard-Features .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+      gap: 32px;
+    }
+
+    #product-section-Standard-Features .feature-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      padding-left: 32px;
+    }
+
+    #product-section-Standard-Features .feature-bullet {
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      background-color: #4F46E5;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    #product-section-Standard-Features .feature-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: #1a1f36;
+      margin: 0;
+    }
+
+    #product-section-Standard-Features .feature-desc {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      color: #4b5268;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    #product-section-Standard-Features .image-content {
+      flex: 1 1 380px;
+      max-width: 480px;
+      text-align: right;
+    }
+
+    /* Testimonials */
+    #testimonials {
+      background: #ffffff;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      font-family: 'Inter', sans-serif;
+      color: #1a1f36;
+    }
+
+    #testimonials .container {
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    #testimonials .testimonial-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(26 31 54 / 0.12);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      border-left: 4px solid #1a1f36;
+    }
+
+    #testimonials .testimonial-quote {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      color: #4b5268;
+      line-height: 1.5;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    #testimonials .testimonial-author {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #1a1f36;
+      margin: 0;
+    }
+
+    #testimonials .testimonial-designation {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    #testimonials .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      background-color: #e5e7eb;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4F46E5;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 24px;
+      user-select: none;
+    }
+
+    /* Lead Form */
+    #lead-form {
+      background: #f9fafb;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+    }
+
+    #lead-form .form-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(26 31 54 / 0.12);
+      padding: 32px 40px;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    /* Minimal form content as no fields or headline provided */
+    #lead-form .form-placeholder-text {
+      font-size: 16px;
+      color: #4b5268;
+      margin: 0;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      #hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 40px 24px 60px;
+      }
+
+      #hero .hero-text {
+        padding-right: 0;
+      }
+
+      #hero .hero-image {
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      #product-section-All-in-One .container,
+      #product-section-Standard-Features .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #product-section-All-in-One .text-content,
+      #product-section-Standard-Features .text-content,
+      #product-section-All-in-One .image-content,
+      #product-section-Standard-Features .image-content {
+        max-width: 100%;
+        flex-basis: auto;
+        text-align: center;
+      }
+
+      #product-section-All-in-One .image-content img,
+      #product-section-Standard-Features .image-content img {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #product-section-All-in-One .features-grid,
+      #product-section-Standard-Features .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <section id="hero" aria-label="Hero section with product headline and image">
+    <div class="container hero-text">
+      <h1>Unified Endpoint Management &amp; Security with Manage Engine Endpoint Central</h1>
+      <p>Manage, secure, and automate your entire endpoint ecosystem from a single console.</p>
+    </div>
+    <div class="container hero-image">
+      <img src="https://static.hexnode.com/v2/assets/images/open-graph/hexnode.jpg" alt="Manage Engine Endpoint Central product screenshot" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section id="trust" aria-label="Trust badges and social proof">
+    <div class="trust-container" aria-live="polite" aria-atomic="true">
+      <!-- Reserved for future trust badges or logos -->
+    </div>
+  </section>
+
+  <!-- Product Section: Banner2 -->
+  <section id="product-section-Banner2" aria-labelledby="ps-banner2-title" role="region">
+    <div class="container">
+      <h2 id="ps-banner2-title">Centralized Endpoint Management for Modern IT Teams</h2>
+      <p>Automate endpoint management while improving security and operational efficiency with Manage Engine Endpoint Central. It’s a unified endpoint management and security solution that helps IT teams manage desktops, laptops, servers, and mobile devices from a single console.</p>
+      <button type="button" class="btn-primary" aria-label="Request Demo of Manage Engine Endpoint Central">Request Demo</button>
+    </div>
+  </section>
+
+  <!-- Product Section: All-in-One Endpoint Security & Management Platform -->
+  <section id="product-section-All-in-One" aria-labelledby="ps-allinone-title" role="region">
+    <div class="container">
+      <div class="text-content">
+        <h2 id="ps-allinone-title">All-in-One Endpoint Security &amp; Management Platform</h2>
+        <p>Bring devices, apps, data, and people together in one place with Endpoint Central to securely manage your digital workplace and global workforce.</p>
+        <div class="features-grid" role="list">
+          <article class="feature-card" role="listitem">
+            <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.172l-3.95-3.95 1.414-1.414L9 13.343l7.536-7.536 1.414 1.414z" />
+            </svg>
+            <h3 class="feature-title">Patch &amp; Update Management</h3>
+            <p class="feature-desc">Secure and stabilize your operating systems, applications, and mobile apps with automated patches and updates.</p>
+          </article>
+          <article class="feature-card" role="listitem">
+            <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.172l-3.95-3.95 1.414-1.414L9 13.343l7.536-7.536 1.414 1.414z" />
+            </svg>
+            <h3 class="feature-title">Browser Security</h3>
+            <p class="feature-desc">Protect and manage multiple browsers, track usage patterns, and maintain compliance with standards like STIG.</p>
+          </article>
+          <article class="feature-card" role="listitem">
+            <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.172l-3.95-3.95 1.414-1.414L9 13.343l7.536-7.536 1.414 1.414z" />
+            </svg>
+            <h3 class="feature-title">Data Security</h3>
+            <p class="feature-desc">Identify and encrypt sensitive data, enforce policies for authorized usage, and ensure secure transmission.</p>
+          </article>
+          <article class="feature-card" role="listitem">
+            <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.172l-3.95-3.95 1.414-1.414L9 13.343l7.536-7.536 1.414 1.414z" />
+            </svg>
+            <h3 class="feature-title">Vulnerability Remediation</h3>
+            <p class="feature-desc">Leverage continuous threat intelligence, thorough assessments, and swift remediation to mitigate risks.</p>
+          </article>
+        </div>
+      </div>
+      <div class="image-content" aria-hidden="true">
+        <img src="https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimages%2Fuem%2Fprogress-tab%2F2x%2Fuem-windows.png&w=1920&q=80" alt="Windows device surrounded by features such as BitLocker management, location tracking, and cloud login" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Section: Standard Features -->
+  <section id="product-section-Standard-Features" aria-labelledby="ps-standard-title" role="region">
+    <div class="container">
+      <div class="text-content">
+        <h2 id="ps-standard-title">Monitor Continuously. Respond Instantly</h2>
+        <div class="features-grid" role="list">
+          <article class="feature-card" role="listitem">
+            <span class="feature-bullet" aria-hidden="true"></span>
+            <h3 class="feature-title">Strengthen Endpoint Security</h3>
+            <p class="feature-desc">Built-in security controls for malware protection, such as next-gen antivirus and anti-ransomware.</p>
+          </article>
+          <article class="feature-card" role="listitem">
+            <span class="feature-bullet" aria-hidden="true"></span>
+            <h3 class="feature-title">Manage IT Assets Effectively</h3>
+            <p class="feature-desc">Live notifications and ready-made reports to discover, track, and manage your hardware, software, and digital assets.</p>
+          </article>
+          <article class="feature-card" role="listitem">
+            <span class="feature-bullet" aria-hidden="true"></span>
+            <h3 class="feature-title">Enhance Application Control &amp; Privileges</h3>
+            <p class="feature-desc">Define install permissions, track privileges, and enforce zero-trust security with role-based and time-bound access.</p>
+          </article>
+          <article class="feature-card" role="listitem">
+            <span class="feature-bullet" aria-hidden="true"></span>
+            <h3 class="feature-title">Facilitate Remote Access &amp; Troubleshooting</h3>
+            <p class="feature-desc">Remotely perform system operations with multi-user collaboration to efficiently troubleshoot devices.</p>
+          </article>
+          <article class="feature-card" role="listitem">
+            <span class="feature-bullet" aria-hidden="true"></span>
+            <h3 class="feature-title">Ensure Compliance</h3>
+            <p class="feature-desc">Adhere to regulatory compliance and generate comprehensive audit-ready reports.</p>
+          </article>
+        </div>
+      </div>
+      <div class="image-content" aria-hidden="true">
+        <img src="https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimages%2Fuem%2Fbanner%2Fuem-video.jpg&w=1920&q=75" alt="Split-screen image of a woman focused on her laptop on the left working remotely with a man on his laptop on the right." loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" aria-label="Customer testimonials">
+    <div class="container">
+      <article class="testimonial-card" role="article" aria-label="Testimonial from Rahul Verma">
+        <div class="testimonial-avatar" aria-hidden="true" title="Avatar placeholder">R</div>
+        <p class="testimonial-quote">Endpoint Central helps us stay on top of patch management. The remote support features are fantastic and help us manage systems efficiently.</p>
+        <p class="testimonial-author">Rahul Verma</p>
+        <p class="testimonial-designation">ICT &amp; Service Desk Administrator</p>
+      </article>
+      <article class="testimonial-card" role="article" aria-label="Testimonial from Shweta Singh">
+        <div class="testimonial-avatar" aria-hidden="true" title="Avatar placeholder">S</div>
+        <p class="testimonial-quote">Endpoint Central has helped our business enhance employee experience and support users in a timely and efficient manner.</p>
+        <p class="testimonial-author">Shweta Singh</p>
+        <p class="testimonial-designation">IT Infrastructure Manager</p>
+      </article>
+      <article class="testimonial-card" role="article" aria-label="Testimonial from Sachin Gupta">
+        <div class="testimonial-avatar" aria-hidden="true" title="Avatar placeholder">S</div>
+        <p class="testimonial-quote">Endpoint Central has simplified patch management and software deployment for our IT team. Managing hundreds of devices from one console has significantly improved our operational efficiency.</p>
+        <p class="testimonial-author">Sachin Gupta</p>
+        <p class="testimonial-designation">IT Operations Manager</p>
+      </article>
+      <article class="testimonial-card" role="article" aria-label="Testimonial from Rounak Sharma">
+        <div class="testimonial-avatar" aria-hidden="true" title="Avatar placeholder">R</div>
+        <p class="testimonial-quote">We purchased Endpoint Central through Techjockey and the experience was seamless. Their team guided us through the evaluation, purchase process, and even helped us with the post-purchase demo and onboarding.</p>
+        <p class="testimonial-author">Rounak Sharma</p>
+        <p class="testimonial-designation">Head of IT Infrastructure</p>
+      </article>
+      <article class="testimonial-card" role="article" aria-label="Testimonial from Ayushi Jain">
+        <div class="testimonial-avatar" aria-hidden="true" title="Avatar placeholder">A</div>
+        <p class="testimonial-quote">Techjockey made our Endpoint Central purchase extremely smooth. From product consultation to after-purchase support and demo sessions, their team ensured we could deploy the solution quickly.</p>
+        <p class="testimonial-author">Ayushi Jain</p>
+        <p class="testimonial-designation">Senior System Administrator</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Lead Form -->
+  <section id="lead-form" aria-label="Lead capture form">
+    <div class="form-card" role="form" aria-live="polite" aria-atomic="true" aria-describedby="form-desc">
+      <p class="form-placeholder-text" id="form-desc">Contact us to learn more about Manage Engine Endpoint Central.</p>
+    </div>
+  </section>
+
+<!-- TECHJOCKEY FOOTER -->
+    <footer class="footer-lsit-dv1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer_dv1">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="footer_logo">
+                                    <a href="#"><img alt="logo" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="footer_email">
+                                    <a href="#" mailto="support@techjockey.com"><img alt="mail"
+                                            src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/mail.svg">
+                                        support@techjockey.com</a>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="footer_link">
+                                <ul>
+                                    <li class="flo_1">Follow us:</li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/facebook_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/instagram_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/twitter_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/linkedin_icon_footer.svg"></a></li>
+
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</body>
+
+</html>

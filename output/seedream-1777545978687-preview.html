@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seedream-1777545978687.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#ff6b00';
+  const primary = '#ff6b00';
+  const bodyBg = '#1a1a1a';
+  const testimonials = [{
+    quote: 'Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.',
+    author: 'Vaishali Saxena',
+    role: 'Creative Director'
+  }, {
+    quote: 'Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.',
+    author: 'Vihaan Pandey',
+    role: 'Video Producer'
+  }, {
+    quote: 'The multimodal editing capabilities in Seedream make it easy to refine images with precision.',
+    author: 'Anurag Malhotra',
+    role: 'Art Director'
+  }, {
+    quote: 'Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.',
+    author: 'Ashutosh Singh',
+    role: 'Marketing Manager'
+  }, {
+    quote: 'From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.',
+    author: 'Shrimmi Saxena',
+    role: 'Creative Lead'
+  }];
+  const productSections = [{
+    headline: 'AI Image Generation with Seedream 4.5',
+    description: 'Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.',
+    image: '/output/generated-assets/ds_1777545712554_babee663/14-41ea7f7485.png',
+    features: [{
+      title: 'Advanced Text–Image Alignment',
+      description: 'Accurately translates prompts into visuals with improved semantic understanding.'
+    }, {
+      title: 'High-Resolution Output',
+      description: 'Generate native images up to 1K–4K resolution with strong visual fidelity.'
+    }, {
+      title: 'Superior Typographic Rendering',
+      description: 'Optimized for posters, ads, and text-heavy visual designs.'
+    }, {
+      title: 'Multi-Image Composition with Identity Preservation',
+      description: 'Combines multiple inputs while accurately maintaining subject consistency.'
+    }, {
+      title: 'Strong Structural Fidelity',
+      description: 'Maintains composition, layout, and scene structure with high precision.'
+    }]
+  }, {
+    headline: 'AI Video Generation with Seedance 1.5 Pro by Bytedance',
+    description: 'Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.',
+    image: '/output/generated-assets/ds_1777545712554_babee663/13-e1b1bc05a8.jpeg',
+    features: [{
+      title: 'Key Capabilities of Seedance 1.5 Pro',
+      description: 'Seedance enables professional-grade AI video production with narrative coherence and realistic motion.'
+    }, {
+      title: 'Text-to-Video Generation',
+      description: 'Create videos directly from text prompts.'
+    }, {
+      title: 'Audio-Visual Synchronization',
+      description: 'Generate video and audio simultaneously with strong multimodal alignment.'
+    }, {
+      title: 'Multilingual Lip-Sync',
+      description: 'Supports multilingual and dialect-level lip synchronization.'
+    }, {
+      title: 'Cinematic Camera Control',
+      description: 'Generate videos with dynamic camera movement and cinematic storytelling.'
+    }, {
+      title: '10× Faster Inference',
+      description: 'Optimized inference pipeline significantly improves generation speed.'
+    }]
+  }];
+  const mediaGallery = ['/output/generated-assets/ds_1777545712554_babee663/01-8108d24ee9.png', '/output/generated-assets/ds_1777545712554_babee663/10-83844cc166.png', '/output/generated-assets/ds_1777545712554_babee663/12-52eb36665e.png', '/output/generated-assets/ds_1777545712554_babee663/14-41ea7f7485.png', '/output/generated-assets/ds_1777545712554_babee663/13-e1b1bc05a8.jpeg', '/output/generated-assets/ds_1777545712554_babee663/15-fa9caa1249.png'];
+  const pricingPlans = [{
+    name: 'Seedream 4.5 (AI Image Generation)',
+    price: '',
+    originalPrice: '',
+    discount: '',
+    includes: ['High-resolution image generation (up to 4K quality)', 'Text-to-image & multimodal image editing', 'Multi-image composition for complex visuals', 'Enhanced typographic rendering for posters, ads & text-heavy designs'],
+    cta: 'Generate with AI'
+  }, {
+    name: 'Seedance 1.5 Pro (AI Video Generation)',
+    price: 'Starting at $1,000/month/',
+    originalPrice: '',
+    discount: '',
+    includes: ['Text-to-video generation with cinematic output', 'Native audio + video generation (synchronized)', 'Multilingual lip-sync capabilities', 'Fast inference for quicker video production'],
+    cta: 'Generate with AI'
+  }];
+  const stats = [{
+    value: '1K–4K',
+    label: 'native image output resolution'
+  }, {
+    value: '10×',
+    label: 'faster inference pipeline'
+  }, {
+    value: '2-in-1',
+    label: 'audio and video generation workflow'
+  }, {
+    value: 'Multi-image',
+    label: 'composition with identity preservation'
+  }];
+  const [activeSlide, setActiveSlide] = useState(0);
+  const testimonialTimer = useRef(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, {
+      threshold: 0.14,
+      rootMargin: '0px 0px -80px 0px'
+    });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger-parent').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    testimonialTimer.current = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(testimonialTimer.current);
+  }, [testimonials.length]);
+  const nextSlide = () => setActiveSlide(prev => (prev + 1) % testimonials.length);
+  const prevSlide = () => setActiveSlide(prev => (prev - 1 + testimonials.length) % testimonials.length);
+  const getInitials = name => name.split(' ').map(n => n[0]).slice(0, 2).join('');
+  const Icon = ({
+    type = 'spark'
+  }) => {
+    const common = {
+      width: 18,
+      height: 18,
+      viewBox: '0 0 24 24',
+      fill: 'none',
+      stroke: accent,
+      strokeWidth: 1.8,
+      strokeLinecap: 'round',
+      strokeLinejoin: 'round'
+    };
+    if (type === 'video') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+      x: "3",
+      y: "6",
+      width: "13",
+      height: "12",
+      rx: "2"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M16 10l5-3v10l-5-3z"
+    }));
+    if (type === 'audio') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+      d: "M11 5L6 9H3v6h3l5 4V5z"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M15.5 8.5a5 5 0 010 7"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M18 6a8 8 0 010 12"
+    }));
+    if (type === 'grid') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+      x: "3",
+      y: "3",
+      width: "7",
+      height: "7",
+      rx: "1.5"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "14",
+      y: "3",
+      width: "7",
+      height: "7",
+      rx: "1.5"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "3",
+      y: "14",
+      width: "7",
+      height: "7",
+      rx: "1.5"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "14",
+      y: "14",
+      width: "7",
+      height: "7",
+      rx: "1.5"
+    }));
+    return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+      d: "M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"
+    }));
+  };
+  const css = `
+    :root{
+      --accent:${accent};
+      --primary:${primary};
+      --bodyBg:${bodyBg};
+      --text:#f5f5f5;
+      --muted:#b8b8b8;
+      --line:rgba(255,255,255,.1);
+      --card:rgba(255,255,255,.05);
+      --white:#fff;
+    }
+    *{box-sizing:border-box}
+    html,body,#root{margin:0;padding:0;background:var(--bodyBg);font-family:'Inter',sans-serif;color:var(--text);scroll-behavior:smooth}
+    a{text-decoration:none;color:inherit}
+    button{font-family:inherit}
+    img{max-width:100%;display:block}
+    .lp{background:var(--bodyBg);overflow:hidden}
+    .container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .section{position:relative;padding:88px 0}
+    .section-light{background:#f5f5f5;color:#1a1a1a}
+    .section-white{background:#fff;color:#1a1a1a}
+    .section-dark{background:#111}
+    .muted{color:var(--muted)}
+    .section-light .muted,.section-white .muted{color:#6b7280}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(255,107,0,.35);background:rgba(255,107,0,.08);border-radius:999px;font-size:13px;font-weight:600}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(26,26,26,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-inner{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:14px 0}
+    .brand{font-weight:800;font-size:20px;line-height:1.2;color:#fff}
+    .brand .gradient-text{display:inline}
+    .tj-logo{display:flex;align-items:center;justify-content:center}
+    .animated-cta,.ghost-btn,.nav-btn{
+      border:none;border-radius:12px;padding:13px 20px;font-weight:700;cursor:pointer;font-size:15px;white-space:nowrap
+    }
+    .animated-cta, .btn-magnetic {
+      position: relative;
+      overflow: hidden;
+      background: var(--accent);
+      color: #fff;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+    .animated-cta:hover, .btn-magnetic:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0,0,0,.18);
+    }
+    .animated-cta::before,.animated-cta::after {display:none !important;content:none !important;}
+    .ghost-btn{background:transparent;border:1px solid rgba(255,255,255,.16);color:#fff;transition:.22s ease}
+    .ghost-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.18);border-color:rgba(255,255,255,.3)}
+    .hero{background:#1a1a1a;min-height:100vh;padding:44px 0 72px;position:relative}
+    .precision-lines:before,.precision-lines:after{content:"";position:absolute;inset:0;pointer-events:none}
+    .precision-lines:before{
+      background:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:48px 48px;
+      mask-image:radial-gradient(circle at center, #000 45%, transparent 95%);
+      opacity:.35
+    }
+    .precision-lines:after{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,107,0,.22), transparent 28%),
+        radial-gradient(circle at 82% 28%, rgba(255,107,0,.12), transparent 20%),
+        radial-gradient(circle at 70% 80%, rgba(255,107,0,.12), transparent 22%);
+      filter:blur(16px)
+    }
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+    .hero h1{font-size:clamp(48px,6vw,68px);line-height:1.04;letter-spacing:-.03em;margin:18px 0 16px}
+    .hero p{font-size:18px;line-height:1.75;max-width:720px}
+    .chip-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,107,0,.3);background:rgba(255,107,0,.09);color:#ddd;font-size:13px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+    .hero-visual{
+      min-height:520px;border-radius:28px;padding:24px;position:relative;border:1px solid rgba(255,255,255,.1);
+      background:
+      radial-gradient(circle at 30% 30%, rgba(255,107,0,.18), transparent 28%),
+      radial-gradient(circle at 80% 20%, rgba(255,107,0,.12), transparent 24%),
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow:0 18px 50px rgba(0,0,0,.28)
+    }
+    .glass-card{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.22)
+    }
+    .hero-stack{display:grid;gap:16px;height:100%}
+    .hero-panel{padding:18px}
+    .hero-media-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .hero-thumb{aspect-ratio:1/1;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#222}
+    .hero-thumb img{width:100%;height:100%;object-fit:cover}
+    .section-head{display:grid;gap:14px;margin-bottom:34px}
+    .section-head h2{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-.03em;margin:0}
+    .section-head p{margin:0;max-width:760px;line-height:1.75}
+    .product-grid{display:grid;gap:28px}
+    .product-card{
+      display:grid;grid-template-columns:1.02fr .98fr;gap:26px;padding:28px;
+      border:1px solid var(--line);border-radius:24px;background:var(--card)
+    }
+    .product-card.reverse .product-copy{order:2}
+    .product-card.reverse .product-media{order:1}
+    .product-media img{width:100%;height:100%;max-height:420px;object-fit:cover;border-radius:20px}
+    .feature-list{display:grid;gap:14px;margin-top:18px}
+    .feature-item{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+    .feature-item h4,.pricing-card h3,.testimonial-card h4{margin:0}
+    .feature-item p,.pricing-card p,.testimonial-card p{margin:0}
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:18px;
+      margin-top:28px
+    }
+    .stat-card{
+      padding:24px;
+      border-radius:20px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 12px 30px rgba(0,0,0,.22)
+    }
+    .stat-value{
+      font-size:clamp(28px,4vw,42px);
+      line-height:1;
+      font-weight:800;
+      color:#fff;
+      margin-bottom:10px
+    }
+    .stat-label{
+      color:#cfcfcf;
+      line-height:1.6;
+      font-size:15px
+    }
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .gallery-item{
+      overflow:hidden;border-radius:20px;border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);aspect-ratio:1.12/1
+    }
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+    .gallery-item:hover img{transform:scale(1.04)}
+    .testimonials-wrap{display:grid;gap:22px}
+    .testimonial-card{
+      padding:28px;border-radius:24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)
+    }
+    .testimonial-author{display:flex;align-items:center;gap:14px;margin-top:18px}
+    .avatar{
+      width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(255,107,0,.14);border:1px solid rgba(255,107,0,.25);font-weight:800;color:#fff
+    }
+    .testimonial-nav{display:flex;gap:10px}
+    .icon-btn{
+      width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);color:#fff;cursor:pointer
+    }
+    .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .pricing-card{
+      padding:28px;border-radius:24px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05)
+    }
+    .pricing-list{display:grid;gap:12px;margin:20px 0 24px;padding:0;list-style:none}
+    .pricing-list li{display:flex;gap:10px;align-items:flex-start}
+    .footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.08);color:#bdbdbd}
+    .reveal,.reveal-left,.reveal-right,.stagger-parent > *{
+      opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease
+    }
+    .reveal-left{transform:translateX(-24px)}
+    .reveal-right{transform:translateX(24px)}
+    .visible,.stagger-parent.visible > *{opacity:1;transform:none}
+    @media (max-width: 980px){
+      .hero-grid,.product-card,.pricing-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .stats-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+      .product-card.reverse .product-copy,.product-card.reverse .product-media{order:initial}
+    }
+    @media (max-width: 640px){
+      .nav-inner{grid-template-columns:1fr auto}
+      .tj-logo{display:none}
+      .hero{min-height:auto}
+      .hero h1{font-size:clamp(40px,12vw,54px)}
+      .gallery-grid,.stats-grid{grid-template-columns:1fr}
+      .section{padding:68px 0}
+    }
+  `;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "lp"
+  }, /*#__PURE__*/React.createElement("style", null, css), /*#__PURE__*/React.createElement("nav", {
+    className: "nav"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "brand"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Seedream & Seedance")), /*#__PURE__*/React.createElement("div", {
+    className: "tj-logo muted"
+  }, "AI creative generation"), /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta nav-btn"
+  }, "Generate with AI"))), /*#__PURE__*/React.createElement("header", {
+    className: "hero precision-lines"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "spark"
+  }), "Multimodal AI creation"), /*#__PURE__*/React.createElement("h1", null, "Generate High-Fidelity Images and Native Audio-Visual Videos with Seedream 4.5 and Seedance 1.5 Pro"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Explore enterprise-grade AI image and video generation built for creative teams that need speed, control, and production-ready output across visual storytelling workflows."), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "grid"
+  }), "Text-to-image"), /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "video"
+  }), "Text-to-video"), /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "audio"
+  }), "Native audio-video sync")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta"
+  }, "Generate with AI"), /*#__PURE__*/React.createElement("button", {
+    className: "ghost-btn"
+  }, "Generate with AI"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-visual reveal-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-stack"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "glass-card hero-panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, "Creative output preview"), /*#__PURE__*/React.createElement("div", {
+    className: "hero-media-grid",
+    style: {
+      marginTop: 16
+    }
+  }, mediaGallery.slice(0, 4).map((src, idx) => /*#__PURE__*/React.createElement("div", {
+    className: "hero-thumb",
+    key: idx
+  }, /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: `Generated media ${idx + 1}`
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: "glass-card hero-panel"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      margin: 0
+    }
+  }, "Produce high-resolution visuals, edit with precision, and generate synchronized video with audio in one AI-powered creative workflow.")))))), /*#__PURE__*/React.createElement("section", {
+    className: "section section-dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "grid"
+  }), "Capability proof points"), /*#__PURE__*/React.createElement("h2", null, "Built for performance across image and video generation"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "From high-resolution image outputs to faster inference and synchronized audio-visual generation, the platform is designed to support demanding creative production use cases.")), /*#__PURE__*/React.createElement("div", {
+    className: "stats-grid stagger-parent reveal"
+  }, stats.map((stat, idx) => /*#__PURE__*/React.createElement("div", {
+    className: "stat-card",
+    key: idx
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-value"
+  }, stat.value), /*#__PURE__*/React.createElement("div", {
+    className: "stat-label"
+  }, stat.label)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "spark"
+  }), "Product capabilities"), /*#__PURE__*/React.createElement("h2", null, "Explore what each model is built to do"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Compare core functionality across image generation and audio-visual video generation to identify the right fit for your team.")), /*#__PURE__*/React.createElement("div", {
+    className: "product-grid"
+  }, productSections.map((section, idx) => /*#__PURE__*/React.createElement("div", {
+    className: `product-card reveal ${idx % 2 ? 'reverse' : ''}`,
+    key: idx
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "product-copy"
+  }, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      marginTop: 0,
+      fontSize: '30px',
+      lineHeight: 1.15
+    }
+  }, section.headline), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      lineHeight: 1.75
+    }
+  }, section.description), /*#__PURE__*/React.createElement("div", {
+    className: "feature-list"
+  }, section.features.map((feature, i) => /*#__PURE__*/React.createElement("div", {
+    className: "feature-item",
+    key: i
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: idx === 0 ? 'spark' : i % 2 ? 'video' : 'audio'
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h4", null, feature.title), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginTop: 6
+    }
+  }, feature.description))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 22
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta"
+  }, "Generate with AI"))), /*#__PURE__*/React.createElement("div", {
+    className: "product-media"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: section.image,
+    alt: section.headline
+  }))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section section-dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "grid"
+  }), "Media gallery"), /*#__PURE__*/React.createElement("h2", null, "See the range of generated visual outputs"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Browse example outputs across image generation, design composition, and cinematic video visuals.")), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-grid stagger-parent reveal"
+  }, mediaGallery.map((src, idx) => /*#__PURE__*/React.createElement("div", {
+    className: "gallery-item",
+    key: idx
+  }, /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: `Gallery item ${idx + 1}`
+  })))))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container testimonials-wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal",
+    style: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'end',
+      gap: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "spark"
+  }), "Testimonials"), /*#__PURE__*/React.createElement("h2", null, "What creative teams are saying"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Feedback from professionals evaluating image generation, video generation, and multimodal editing workflows.")), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-nav"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "icon-btn",
+    onClick: prevSlide,
+    "aria-label": "Previous testimonial"
+  }, "\u2190"), /*#__PURE__*/React.createElement("button", {
+    className: "icon-btn",
+    onClick: nextSlide,
+    "aria-label": "Next testimonial"
+  }, "\u2192"))), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card reveal"
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 20,
+      lineHeight: 1.8
+    }
+  }, "\u201C", testimonials[activeSlide].quote, "\u201D"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-author"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "avatar"
+  }, getInitials(testimonials[activeSlide].author)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h4", null, testimonials[activeSlide].author), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, testimonials[activeSlide].role)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section section-dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "spark"
+  }), "Plans"), /*#__PURE__*/React.createElement("h2", null, "Choose the right AI generation workflow"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Review included capabilities across image and video generation offerings.")), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-grid"
+  }, pricingPlans.map((plan, idx) => /*#__PURE__*/React.createElement("div", {
+    className: "pricing-card reveal",
+    key: idx
+  }, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontSize: 28,
+      lineHeight: 1.2
+    }
+  }, plan.name), plan.price ? /*#__PURE__*/React.createElement("p", {
+    style: {
+      marginTop: 10,
+      fontSize: 18,
+      fontWeight: 700,
+      color: '#fff'
+    }
+  }, plan.price) : null, /*#__PURE__*/React.createElement("ul", {
+    className: "pricing-list"
+  }, plan.includes.map((item, i) => /*#__PURE__*/React.createElement("li", {
+    key: i
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "spark"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "muted"
+  }, item)))), /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta"
+  }, plan.cta)))))), /*#__PURE__*/React.createElement("footer", {
+    className: "footer"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container",
+    style: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: 16,
+      flexWrap: 'wrap'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, "Seedream & Seedance"), /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta"
+  }, "Generate with AI"))));
+};
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

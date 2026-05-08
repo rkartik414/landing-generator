@@ -1,0 +1,14 @@
+{
+  "hero-split": {
+    "structure": "nav → hero(55/45 grid) → trust-bar",
+    "must-have": ["product-logo", "tj-logo", "cta-button", "h1-with-highlight", "feature-chips", "hero-image"],
+    "css-classes": ["nav-sticky", "hero-dark", "hero-grid", "hero-text", "hero-visual", "chip-row", "cta-primary", "cta-ghost"],
+    "html-skeleton": "<header class='nav-sticky'>...</header><section class='hero-dark'><div class='hero-grid'><div class='hero-text'>...</div><div class='hero-visual'>...</div></div></section>"
+  },
+  "feature-tabs": {
+    "structure": "section-header → tab-nav → tab-panels(with-image)",
+    "must-have": ["tab-buttons", "active-indicator", "content-panel", "visual-panel"],
+    "css-classes": ["tabs-section", "tab-nav", "tab-btn", "tab-btn-active", "tab-panel", "tab-visual"],
+    "js-behavior": "onclick switch active class + show/hide panels"
+  }
+}

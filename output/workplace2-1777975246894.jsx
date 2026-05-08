@@ -1,0 +1,826 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#e4292b';
+  const primary = '#e4292b';
+  const bodyBg = '#ffffff';
+
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [navScrolled, setNavScrolled] = useState(false);
+  const testimonialsRef = useRef(null);
+
+  const trustLogos = [
+    '/output/generated-assets/ds_1777974861721_cf750213/11-4e22c31148.png',
+    '/output/generated-assets/ds_1777974861721_cf750213/24-61e528786b.png',
+    '/output/generated-assets/ds_1777974861721_cf750213/25-75f766eeed.png',
+    '/output/generated-assets/ds_1777974861721_cf750213/23-b3d4199ca5.png',
+    '/output/generated-assets/ds_1777974861721_cf750213/26-d22596911f.png'
+  ];
+
+  const sections = [
+    {
+      label: 'FEATURES',
+      headline: 'Why Choose Zoho Workplace?',
+      description:
+        'Zoho Workplace brings everything your team needs to collaborate, communicate, and stay productive through a single unified platform.',
+      image: '/output/generated-assets/ds_1777974861721_cf750213/18-473c14de05.jpg',
+      dark: false,
+      features: [
+        {
+          title: 'All-in-One Unified Workspace',
+          description:
+            'Access email, chat, documents, meetings, and storage in a single integrated platform. Reduce app switching and boost productivity.'
+        },
+        {
+          title: 'Seamless Collaboration in Real Time',
+          description:
+            'Work together on documents, spreadsheets, and presentations with live editing, comments, and built-in communication tools.'
+        },
+        {
+          title: 'Work from Anywhere, Anytime',
+          description:
+            'Stay productive on the go. Reply to emails, access presentations, or host a video conference from anywhere effortlessly.'
+        },
+        {
+          title: 'AI-Powered Productivity (Zia)',
+          description:
+            'Leverage built-in AI for writing assistance in terms of grammar, readability and writing style while you work on Writer or Sheet.'
+        }
+      ]
+    },
+    {
+      label: 'STANDARD FEATURES',
+      headline: 'Unlock Your Business Growth with Zoho Workplace',
+      description:
+        'Zoho Workplace unifies email, collaboration, and productivity tools to streamline your business operations. Enable smarter teamwork and drive growth with a single platform.',
+      image: '/output/generated-assets/ds_1777974861721_cf750213/17-8ee9780f0b.jpg',
+      dark: false,
+      features: [
+        {
+          title: 'Ideal For Your Business Size',
+          description:
+            'Designed for any organization, Zoho Workplace enhances efficiency and teamwork at every scale.'
+        },
+        {
+          title: 'Communicate Effectively',
+          description:
+            'Go beyond email and chat, and connect teams with a social intranet using channels, feeds, and groups.'
+        },
+        {
+          title: 'Integrated Business Apps',
+          description:
+            'Connect with Zoho and third-party apps to unify workflows, eliminate silos, and streamline processes across your business.'
+        },
+        {
+          title: 'Customizable Workspace',
+          description:
+            'Customize settings, layouts, workflows to fit your needs. Also, get a professional, ad-free email service & advanced controls.'
+        }
+      ]
+    },
+    {
+      label: 'ADDITIONAL FEATURES',
+      headline: 'Integrate with Popular Apps',
+      description:
+        'Connect your Zoho Workplace with other business apps to ensure higher productivity and growth - all within a unified workspace.',
+      image: '/output/generated-assets/ds_1777974861721_cf750213/30-3965757185.jpeg',
+      dark: true,
+      features: [
+        { title: 'Zoho Apps', description: 'Zoho Meeting, Zoho Connect, Zoho Mail, Zoho Cliq, Zoho Writer, etc.' },
+        { title: 'Analytics', description: 'Zoho Analytics, Google Analytics' },
+        { title: 'Accounting & Finance', description: 'Zoho Invoice & Zoho Books' },
+        { title: 'Automation', description: 'Zoho Flow, Zapier, viaSocket' },
+        { title: 'Business Suites', description: 'Zoho One, Zoho Workspace' }
+      ]
+    },
+    {
+      label: 'INSIGHT',
+      headline: 'Performance Beyond Limits with Zoho Workplace',
+      description: '',
+      image: '/output/generated-assets/ds_1777974861721_cf750213/27-3d192a39e0.png',
+      dark: false,
+      features: [
+        {
+          title: 'Secure',
+          description:
+            '82.9% of users reported a secure email experience, ensuring strong data protection, and safe and reliable communication.'
+        },
+        {
+          title: 'Anywhere Access',
+          description:
+            '42.9% of them found it easier to work remotely with Zoho Workplace apps, enabling seamless access from any device, anywhere.'
+        },
+        {
+          title: 'Intuitive',
+          description:
+            '28.6% found Zoho Workplace easy to use, reducing the learning curve. Teams can quickly adapt and work efficiently.'
+        },
+        {
+          title: 'Collaborative',
+          description:
+            '14.3% of them saw improved collaboration, engagement and productivity, helping teams stay aligned and get more done faster.'
+        }
+      ]
+    }
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        'Zoho Workplace has streamlined our communication and collaboration by bringing email, documents, and team tools into one unified platform.',
+      author: 'Amit Kapoor',
+      role: 'IT Manager',
+      avatar: '/output/generated-assets/ds_1777974861721_cf750213/13-a1af876bc5.png'
+    },
+    {
+      quote:
+        'The platform is easy to use and has significantly improved team productivity by reducing dependency on multiple tools.',
+      author: 'Saurav Singh',
+      role: 'Head of Operations',
+      avatar: '/output/generated-assets/ds_1777974861721_cf750213/15-01fc6c95c0.jpg'
+    },
+    {
+      quote:
+        'Techjockey helped us identify the right Zoho Workplace plan based on our requirements. Their guidance made the entire purchase process quick and hassle-free.',
+      author: 'Shrimi Manchanda',
+      role: 'Operations Manager',
+      avatar: '/output/generated-assets/ds_1777974861721_cf750213/34-00ee58a5d0.jpg'
+    },
+    {
+      quote:
+        'The seamless integration between email, file management, and collaboration tools has made our daily workflows much more efficient.',
+      author: 'Shweta Thakur',
+      role: 'Senior System Administrator',
+      avatar: '/output/generated-assets/ds_1777974861721_cf750213/33-e3c4bcd1a9.png'
+    },
+    {
+      quote:
+        'Zoho Workplace helped us collaborate seamlessly, ensuring a more productive and efficient workflow across teams.',
+      author: 'Narinder Sahni',
+      role: 'IT Head',
+      avatar: '/output/generated-assets/ds_1777974861721_cf750213/13-a1af876bc5.png'
+    }
+  ];
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    const onScroll = () => setNavScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const els = document.querySelectorAll('.hero-headline, .hero-sub, .hero-chips, .hero-cta, .hero-visual');
+    els.forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transition = 'opacity 0.9s ease';
+      el.style.transitionDelay = i * 0.2 + 's';
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          el.style.opacity = '1';
+        }, 50);
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-parent').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const btns = document.querySelectorAll('.btn-magnetic');
+    const cleaners = [];
+    btns.forEach((btn) => {
+      const move = (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      };
+      const leave = () => {
+        btn.style.transform = 'translate(0, 0)';
+        btn.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      };
+      btn.addEventListener('mousemove', move);
+      btn.addEventListener('mouseleave', leave);
+      cleaners.push(() => {
+        btn.removeEventListener('mousemove', move);
+        btn.removeEventListener('mouseleave', leave);
+      });
+    });
+    return () => cleaners.forEach((fn) => fn());
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+
+  const css = `
+    :root { --accent:${accent}; --primary:${primary}; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:${bodyBg};color:#111827;font-family:Inter,sans-serif}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .page-wrapper{animation:pageReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;background:${bodyBg}}
+    .container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+    .section{padding:88px 0;position:relative}
+    .grid-lines{
+      background-image:
+        linear-gradient(rgba(17,24,39,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,24,39,.05) 1px, transparent 1px);
+      background-size:32px 32px;
+    }
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(15,23,42,.92);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      transition:all .3s ease;
+      backdrop-filter:blur(20px);
+    }
+    .nav.scrolled{background:rgba(15,23,42,.96)}
+    .nav-inner{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-text{font-weight:800;font-size:20px;color:var(--accent);font-family:'Plus Jakarta Sans',sans-serif}
+    .tj-logo{display:flex;align-items:center;justify-content:center}
+    .animated-cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 22px;border-radius:10px;border:1px solid transparent;
+      background:var(--accent);color:#fff;font-weight:700;font-size:14px;
+      box-shadow:0 10px 24px rgba(228,41,43,.22);
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+      white-space:nowrap;
+    }
+    .animated-cta:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(228,41,43,.28);background:var(--primary)}
+    .ghost-btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 22px;border-radius:10px;border:1px solid rgba(255,255,255,.2);
+      color:#fff;font-weight:700;background:rgba(255,255,255,.08);
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .ghost-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18);background:rgba(255,255,255,.14)}
+    .hero{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(228,41,43,.18), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(228,41,43,.14), transparent 32%),
+        #0f172a;
+      color:#fff;overflow:hidden;
+    }
+    .hero .container{position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;min-height:760px;padding:64px 0}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:13px;color:#e5e7eb
+    }
+    h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em;margin:0}
+    .hero h1{font-size:clamp(48px,6vw,68px);line-height:1.02;max-width:680px}
+    .hero p{font-size:18px;line-height:1.7;color:#d1d5db;margin:0}
+    .hero-copy{display:flex;flex-direction:column;gap:22px}
+    .gradient-text{
+      background:linear-gradient(135deg, ${accent} 0%, ${primary} 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .chips{display:flex;flex-wrap:wrap;gap:12px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(228,41,43,.35);background:rgba(228,41,43,.12);color:#fff;font-size:13px
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-visual{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center}
+    .hero-demo{
+      position:relative;width:100%;max-width:620px;border-radius:24px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);background:#09111f;box-shadow:0 28px 60px rgba(0,0,0,.35)
+    }
+    .hero-video{width:100%;min-height:500px;display:block;object-fit:cover;background:#09111f}
+    .floating-card{
+      position:absolute;background:#fff;color:#111827;border-radius:16px;padding:14px 16px;
+      box-shadow:0 18px 40px rgba(15,23,42,.22);border:1px solid rgba(17,24,39,.08);max-width:220px
+    }
+    .floating-card.small{font-size:13px}
+    .card-top-left{top:24px;left:-18px}
+    .card-bottom-right{right:-12px;bottom:22px}
+    .card-mid-right{right:-22px;top:160px}
+    .fc-title{font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:4px}
+    .fc-sub{font-size:13px;color:#4b5563;line-height:1.5}
+    .trust{
+      background:#f8fafc;border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7
+    }
+    .trust-top{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+    .trust-title{font-size:16px;font-weight:700;color:#111827}
+    .trust-proof{font-size:34px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif}
+    .logo-grid{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:14px
+    }
+    .logo-card{
+      height:72px;display:flex;align-items:center;justify-content:center;background:#fff;
+      border:1px solid #e5e7eb;border-radius:16px;padding:14px;filter:grayscale(1);
+      transition:filter .25s ease, transform .25s ease, box-shadow .25s ease
+    }
+    .logo-card:hover{filter:grayscale(0);transform:translateY(-2px);box-shadow:0 14px 28px rgba(15,23,42,.08)}
+    .logo-card img{max-height:32px;object-fit:contain}
+    .spotlight-wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:42px;align-items:center}
+    .spotlight-wrap.reverse .media-col{order:2}
+    .spotlight-wrap.reverse .text-col{order:1}
+    .section-tag{
+      display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(228,41,43,.08);
+      color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.08em
+    }
+    .headline-2{font-size:clamp(32px,4vw,44px);line-height:1.08;margin:14px 0 14px}
+    .desc-bar{border-left:3px solid rgba(228,41,43,.22);padding-left:18px;margin-bottom:26px}
+    .desc-bar p{font-size:17px;line-height:1.75;color:#4b5563;margin:0}
+    .browser-frame{
+      display:flex;flex-direction:column;overflow:hidden;border-radius:22px;
+      border:1px solid #e5e7eb;background:#f8f8f8;box-shadow:0 24px 50px rgba(15,23,42,.1)
+    }
+    .browser-frame.dark{background:#0a0a0a;border-color:#1f2937}
+    .browser-top{
+      height:44px;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid rgba(148,163,184,.2);gap:8px
+    }
+    .dot{width:10px;height:10px;border-radius:50%;background:#cbd5e1}
+    .browser-frame img{
+      flex:1;min-height:0;height:420px;width:100%;object-fit:cover;display:block
+    }
+    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .feature-card{
+      background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:18px;min-height:150px
+    }
+    .feature-card h3{font-size:18px;margin:12px 0 8px}
+    .feature-card p{margin:0;color:#4b5563;line-height:1.65;font-size:14px}
+    .icon-wrap{
+      width:44px;height:44px;border-radius:12px;background:rgba(228,41,43,.1);
+      display:flex;align-items:center;justify-content:center;color:var(--accent)
+    }
+    .section-alt{background:#f8fafc}
+    .dark-section{background:#0f172a;color:#fff}
+    .pricing-card{
+      max-width:780px;margin:0 auto;background:#fff;border-radius:24px;padding:30px;border:1px solid #e5e7eb;
+      box-shadow:0 24px 50px rgba(15,23,42,.14)
+    }
+    .pricing-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-bottom:20px}
+    .pricing-title{font-size:34px}
+    .price-box{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .old-price{color:#9ca3af;text-decoration:line-through;font-weight:700}
+    .new-price{font-size:38px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif}
+    .badge-green{
+      background:#ecfdf3;color:#15803d;border:1px solid #bbf7d0;padding:8px 12px;border-radius:999px;
+      font-size:13px;font-weight:700
+    }
+    .pricing-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0 26px}
+    .price-item{
+      display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:#f8fafc;border:1px solid #eef2f7
+    }
+    .price-item span{font-size:14px;line-height:1.55;color:#374151}
+    .testimonials{background:#fff}
+    .testi-header{text-align:center;max-width:760px;margin:0 auto 36px}
+    .testi-slider{overflow:hidden}
+    .testi-track{display:flex;transition:transform .6s cubic-bezier(0.4,0,0.2,1)}
+    .testi-slide{min-width:100%}
+    .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .testi-card{
+      background:#fff;border:1px solid #e5e7eb;border-radius:22px;padding:24px;
+      box-shadow:0 18px 38px rgba(15,23,42,.08)
+    }
+    .quote-mark{font-size:42px;line-height:1;color:var(--accent);font-weight:800}
+    .stars{color:#f59e0b;letter-spacing:2px;margin:10px 0 12px}
+    .testi-card p{margin:0 0 18px;color:#374151;line-height:1.75;font-size:16px}
+    .author{display:flex;align-items:center;gap:12px}
+    .author img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+    .author strong{display:block;font-size:15px}
+    .author span{color:#6b7280;font-size:14px}
+    .dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
+    .dots button{
+      width:8px;height:8px;border-radius:999px;border:none;background:#d1d5db;cursor:pointer;transition:all .25s ease
+    }
+    .dots button.active{width:24px;background:var(--accent)}
+    .footer{
+      background:#0f172a;color:#e5e7eb;padding:34px 0;border-top:1px solid rgba(255,255,255,.08)
+    }
+    .footer-grid{display:grid;grid-template-columns:1.2fr 1fr auto;gap:18px;align-items:center}
+    .footer-links,.socials{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .footer a{color:#e5e7eb}
+    .social{
+      width:36px;height:36px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;
+      border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)
+    }
+    .footer-meta{display:flex;flex-direction:column;gap:6px}
+    .muted{color:#94a3b8;font-size:14px}
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left  { opacity: 0; transform: translateX(-50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right { opacity: 0; transform: translateX(50px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .stagger-parent .stagger-child {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .stagger-parent.visible .stagger-child:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+    .stagger-parent.visible .stagger-child:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+    .stagger-parent.visible .stagger-child:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+    .stagger-parent.visible .stagger-child:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+    .stagger-parent.visible .stagger-child:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+    .stagger-parent.visible .stagger-child:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+    .hover-card {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .hover-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes marqueeScrollReverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+    .marquee-wrapper { overflow: hidden; }
+    .marquee-track {
+      display: flex; width: max-content;
+      animation: marqueeScroll 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-track-reverse { animation: marqueeScrollReverse 28s linear infinite; }
+    .marquee-track-fast { animation-duration: 16s; }
+    .marquee-track-slow { animation-duration: 40s; }
+    @keyframes pageReveal {
+      0%   { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    section { transition: background-color 0.4s ease; }
+    @media (max-width: 1024px){
+      .hero-grid,.spotlight-wrap,.footer-grid{grid-template-columns:1fr}
+      .spotlight-wrap.reverse .media-col,.spotlight-wrap.reverse .text-col{order:initial}
+      .logo-grid{grid-template-columns:repeat(3,1fr)}
+      .testi-grid,.pricing-list,.feature-grid{grid-template-columns:1fr}
+      .hero h1{max-width:100%}
+      .hero-grid{min-height:auto}
+      .hero-visual{min-height:420px}
+      .floating-card{display:none}
+    }
+    @media (max-width: 640px){
+      .container{width:min(100% - 24px,1180px)}
+      .section{padding:68px 0}
+      .nav-inner{grid-template-columns:1fr auto;gap:10px}
+      .nav-inner .cta-wrap{grid-column:1/-1}
+      .logo-grid{grid-template-columns:repeat(2,1fr)}
+      .hero-actions{flex-direction:column;align-items:flex-start}
+      .hero-video{min-height:360px}
+      .pricing-title{font-size:28px}
+      .new-price{font-size:30px}
+    }
+  `;
+
+  const Icon = ({ type = 0 }) => {
+    const icons = [
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" key="0"><path d="M4 6h16v12H4z" stroke="currentColor" strokeWidth="1.8"/><path d="m4 8 8 5 8-5" stroke="currentColor" strokeWidth="1.8"/></svg>,
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" key="1"><path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="1.8"/><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" strokeWidth="1.8"/></svg>,
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" key="2"><path d="M12 3v18M3 12h18" stroke="currentColor" strokeWidth="1.8"/><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/></svg>,
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" key="3"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.8"/><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" strokeWidth="1.8"/></svg>,
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" key="4"><path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="1.8"/><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8"/></svg>
+    ];
+    return icons[type % icons.length];
+  };
+
+  return (
+    <div className="page-wrapper">
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+
+      <nav className={`nav ${navScrolled ? 'scrolled' : ''}`}>
+        <div className="container nav-inner">
+          <div className="brand">
+            <span className="brand-text">Zoho Workplace</span>
+          </div>
+          <div className="tj-logo">
+            <img
+              src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg"
+              height="28px"
+              alt="Techjockey"
+            />
+          </div>
+          <div className="cta-wrap" style={{ justifySelf: 'end' }}>
+            <a
+              href="https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software"
+              className="animated-cta btn-magnetic"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Get quotation
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <section className="hero section">
+        <div className="container">
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <div className="eyebrow hero-sub">Email &amp; Collaboration Suite</div>
+              <h1 className="hero-headline">
+                Elevate Your Team’s Productivity with <span className="gradient-text">Zoho Workplace</span>
+              </h1>
+              <p className="hero-sub">
+                A Complete Email &amp; Collaboration Suite for Enterprises that Facilitates Unified Communication.
+              </p>
+              <div className="chips hero-chips">
+                {[
+                  'Trusted by 100,000+ Businesses Globally',
+                  'All-in-One Unified Workspace',
+                  'Work from Anywhere, Anytime',
+                  'AI-Powered Productivity (Zia)'
+                ].map((chip, i) => (
+                  <div className="chip" key={i}>
+                    <Icon type={i} />
+                    <span>{chip}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="hero-actions hero-cta">
+                <a
+                  href="https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software"
+                  className="animated-cta btn-magnetic"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Get quotation
+                </a>
+                <span className="ghost-btn">Enterprises and businesses</span>
+              </div>
+            </div>
+
+            <div className="hero-visual">
+              <div className="hero-demo reveal-scale">
+                <video autoPlay muted loop playsInline preload="auto" className="hero-video">
+                  <source src="/output/generated-assets/ds_1777974861721_cf750213/35-7f9baae9a1.mp4" type="video/mp4" />
+                </video>
+              </div>
+
+              <div className="floating-card card-top-left small">
+                <div className="fc-title">100,000+</div>
+                <div className="fc-sub">Trusted by 100,000+ Businesses Globally</div>
+              </div>
+              <div className="floating-card card-mid-right small">
+                <div className="fc-title">Unified Communication</div>
+                <div className="fc-sub">Email, chat, documents, meetings, and storage in one platform.</div>
+              </div>
+              <div className="floating-card card-bottom-right small">
+                <div className="fc-title">Work from Anywhere</div>
+                <div className="fc-sub">Access presentations, reply to emails, or host a video conference.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section trust">
+        <div className="container">
+          <div className="trust-top reveal">
+            <div>
+              <div className="trust-title">Trusted by 100,000+ Businesses Globally</div>
+              <div className="muted">The dominant trust signal across this page is recognisable logo proof.</div>
+            </div>
+            <div className="trust-proof">100,000+</div>
+          </div>
+          <div className="logo-grid stagger-parent reveal">
+            {trustLogos.map((logo, i) => (
+              <div className="logo-card stagger-child" key={i}>
+                <img src={logo} alt={`Trusted logo ${i + 1}`} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {sections.map((section, idx) => (
+        <section
+          key={section.headline}
+          className={`section ${idx % 2 === 1 ? 'section-alt' : ''}`}
+        >
+          <div className="container">
+            <div className={`spotlight-wrap ${idx % 2 === 1 ? 'reverse' : ''}`}>
+              <div className="media-col reveal-left">
+                <div className={`browser-frame ${section.dark ? 'dark' : ''}`}>
+                  <div className="browser-top">
+                    <span className="dot" />
+                    <span className="dot" />
+                    <span className="dot" />
+                  </div>
+                  <img src={section.image} alt={section.headline} />
+                </div>
+              </div>
+
+              <div className="text-col reveal-right">
+                <span className="section-tag">{section.label}</span>
+                <h2 className="headline-2">
+                  {section.headline.includes('Zoho Workplace') ? (
+                    <>
+                      {section.headline.replace('Zoho Workplace', '')}
+                      <span className="gradient-text">Zoho Workplace</span>
+                    </>
+                  ) : (
+                    section.headline
+                  )}
+                </h2>
+                {section.description ? (
+                  <div className="desc-bar">
+                    <p>{section.description}</p>
+                  </div>
+                ) : null}
+
+                <div className="feature-grid stagger-parent reveal">
+                  {section.features.map((feature, featureIndex) => (
+                    <div className="feature-card hover-card stagger-child" key={feature.title}>
+                      <div className="icon-wrap">
+                        <Icon type={featureIndex} />
+                      </div>
+                      <h3>{feature.title}</h3>
+                      <p>{feature.description}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {idx === 1 && (
+                  <div style={{ marginTop: '24px' }}>
+                    <a
+                      href="https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software"
+                      className="animated-cta btn-magnetic"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Get quotation
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <section className="section dark-section">
+        <div className="container">
+          <div className="testi-header reveal" style={{ marginBottom: '30px' }}>
+            <h2 className="headline-2" style={{ color: '#fff' }}>Zoho Workplace</h2>
+            <p style={{ color: '#cbd5e1', marginTop: '10px', lineHeight: 1.7 }}>
+              Enterprise-Grade Custom Email, Migration Assistance, Collaborative Office Suite, 30-GB Mail Storage Per User, File Storage Starts at 100 GB Per Team, File Sharing &amp; Permissions, Team Chat, Document Management, Supported Device: Android, iOS, Windows, Mac
+            </p>
+          </div>
+
+          <div className="pricing-card reveal-scale hover-card">
+            <div className="pricing-head">
+              <div>
+                <div className="section-tag">PRICING</div>
+                <h3 className="pricing-title" style={{ marginTop: '12px' }}>Zoho Workplace</h3>
+              </div>
+              <div className="price-box">
+                <span className="old-price">(was )</span>
+                <span className="new-price"> </span>
+                <span className="badge-green">Highlighted Card</span>
+              </div>
+            </div>
+
+            <div className="pricing-list">
+              {[
+                'Enterprise-Grade Custom Email',
+                'Migration Assistance',
+                'Collaborative Office Suite',
+                '30-GB Mail Storage Per User',
+                'File Storage Starts at 100 GB Per Team',
+                'File Sharing & Permissions',
+                'Team Chat',
+                'Document Management',
+                'Supported Device: Android, iOS, Windows, Mac'
+              ].map((item, i) => (
+                <div className="price-item" key={i}>
+                  <span style={{ color: '#16a34a', fontWeight: 900 }}>✓</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software"
+              className="animated-cta btn-magnetic"
+              style={{ width: '100%' }}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Get quotation
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="section testimonials" ref={testimonialsRef}>
+        <div className="container">
+          <div className="testi-header reveal">
+            <div className="section-tag">TESTIMONIALS</div>
+            <h2 className="headline-2" style={{ marginTop: '14px' }}>
+              What teams say about <span className="gradient-text">Zoho Workplace</span>
+            </h2>
+          </div>
+
+          <div className="testi-slider">
+            <div
+              className="testi-track"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, groupIndex) => {
+                const group = testimonials.slice(groupIndex * 2, groupIndex * 2 + 2);
+                return (
+                  <div className="testi-slide" key={groupIndex}>
+                    <div className="testi-grid">
+                      {group.map((t, i) => (
+                        <div className="testi-card hover-card reveal-scale" key={i}>
+                          <div className="quote-mark">❝</div>
+                          <div className="stars">★★★★★</div>
+                          <p>{t.quote}</p>
+                          <div className="author">
+                            <img src={t.avatar} alt={t.author} />
+                            <div>
+                              <strong>{t.author}</strong>
+                              <span>{t.role}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                      {group.length === 1 && <div className="testi-card" style={{ visibility: 'hidden' }} />}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="dots">
+            {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, i) => (
+              <button
+                key={i}
+                className={i === activeSlide % Math.ceil(testimonials.length / 2) ? 'active' : ''}
+                onClick={() => setActiveSlide(i)}
+                aria-label={`Go to testimonial slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container footer-grid">
+          <div className="footer-meta">
+            <img
+              src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg"
+              height="28px"
+              alt="Techjockey"
+              style={{ width: 'auto' }}
+            />
+            <a href="mailto:support@techjockey.com">support@techjockey.com</a>
+            <div className="muted">© 2024 Techjockey Infotech Pvt. Ltd.</div>
+          </div>
+
+          <div className="footer-links">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-condition">Terms</a>
+          </div>
+
+          <div className="socials">
+            <a className="social" href="https://www.facebook.com/Techjockey/" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.6-3h-3V9.4c0-.9.3-1.4 1.5-1.4H17V5.2c-.4-.1-1.4-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.5V11H7v3h3V21h3.5z"/></svg>
+            </a>
+            <a className="social" href="https://www.instagram.com/techjockey/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a className="social" href="https://twitter.com/techjockey" target="_blank" rel="noreferrer" aria-label="Twitter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.5-2.2.6.8-.5 1.3-1.2 1.6-2.1-.7.4-1.6.8-2.5.9A3.8 3.8 0 0 0 12.3 8c0 .3 0 .6.1.9-3.1-.2-5.9-1.7-7.7-4-.3.5-.5 1.2-.5 1.9 0 1.3.7 2.5 1.8 3.2-.6 0-1.2-.2-1.7-.5 0 1.9 1.3 3.5 3.1 3.8-.3.1-.7.1-1 .1-.2 0-.5 0-.7-.1.5 1.6 2 2.7 3.7 2.7A7.7 7.7 0 0 1 3 18.6a10.9 10.9 0 0 0 5.9 1.7c7 0 10.9-5.9 10.9-11v-.5c.8-.5 1.5-1.2 2.1-1.9z"/></svg>
+            </a>
+            <a className="social" href="https://www.linkedin.com/company/techjockey" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H3.8V20h3.1V8.5zM5.3 3a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5.3 3zM20.2 12.7c0-2.8-1.5-4.3-3.9-4.3-1.8 0-2.5 1-2.9 1.7V8.5h-3.1c0 1 .1 11.5 0 11.5h3.1v-6.4c0-.3 0-.7.1-1 .2-.7.8-1.5 1.8-1.5 1.3 0 1.9 1 1.9 2.5V20H21s.1-6.2.1-7.3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;

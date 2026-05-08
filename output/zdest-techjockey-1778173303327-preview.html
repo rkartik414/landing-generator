@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zdest-techjockey-1778173303327.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <link rel="stylesheet" href="/ui/tailwind.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: 'var(--accent)',
+            primary: 'var(--primary)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#F5364C';
+  const primary = '#F5364C';
+  const bodyBg = '#ffffff';
+  const unifiedCtaText = 'Get Your Free Trial';
+  const primaryHref = 'https://www.zoho.com/en-in/desk/?utm_source=techjockey&utm_medium=cpc&utm_campaign=helpdesk-ticketing-system';
+  const [activeSlide, setActiveSlide] = useState(0);
+  const pageRef = useRef(null);
+  const ctas = [{
+    text: unifiedCtaText,
+    href: primaryHref
+  }, {
+    text: unifiedCtaText,
+    href: primaryHref
+  }, {
+    text: unifiedCtaText,
+    href: primaryHref
+  }, {
+    text: unifiedCtaText,
+    href: primaryHref
+  }, {
+    text: unifiedCtaText,
+    href: primaryHref
+  }];
+  const testimonials = [{
+    quote: 'Zoho Desk helped us streamline our support tickets and respond faster to customer queries. Our team now handles requests more efficiently with better visibility.',
+    author: 'Sanjay Bhatnagar',
+    role: 'Customer Support Lead'
+  }, {
+    quote: 'Managing customer conversations across multiple channels became effortless with Zoho Desk. It significantly improved our response time and customer satisfaction.',
+    author: 'Arjun Mishra',
+    role: 'Operations Manager'
+  }, {
+    quote: 'Automation in Zoho Desk reduced manual work for our support team. We can now focus more on solving issues rather than managing tickets.',
+    author: 'Vanshika Malhotra',
+    role: 'Head of Support'
+  }, {
+    quote: 'The knowledge base and self-service portal helped reduce our ticket volume while improving customer experience.',
+    author: 'Nitin Singh',
+    role: 'Founder'
+  }, {
+    quote: 'Zoho Desk’s reporting and dashboards give us clear insights into support performance and customer issues.',
+    author: 'Akashdeep Sirkar',
+    role: 'Customer Experience Manager'
+  }];
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    const observer = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), {
+      threshold: 0.15
+    });
+    const nodes = document.querySelectorAll('.reveal');
+    nodes.forEach(el => observer.observe(el));
+    const script1 = document.createElement('script');
+    script1.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+    script1.async = true;
+    document.body.appendChild(script1);
+    const script2 = document.createElement('script');
+    script2.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js';
+    script2.async = true;
+    document.body.appendChild(script2);
+    const initGSAP = () => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const gsap = window.gsap;
+          gsap.registerPlugin(window.ScrollTrigger);
+          gsap.utils.toArray('.zoom-reveal').forEach(el => {
+            const img = el.querySelector('img,video,.visual-fill');
+            if (img) {
+              gsap.to(img, {
+                scale: 1,
+                duration: 1.2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 85%',
+                  toggleActions: 'play none none reverse'
+                }
+              });
+            }
+          });
+          gsap.utils.toArray('[data-depth]').forEach(el => {
+            gsap.to(el, {
+              y: () => -(window.innerHeight * (parseFloat(el.dataset.depth) || 0.2) * 0.5),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el.closest('section') || el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+              }
+            });
+          });
+          gsap.utils.toArray('.stagger-parent').forEach(p => {
+            gsap.to(p.children, {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: p,
+                start: 'top 80%'
+              }
+            });
+          });
+          gsap.utils.toArray('[data-count]').forEach(el => {
+            const end = parseFloat(el.getAttribute('data-count')) || 0;
+            const prefix = el.getAttribute('data-prefix') || '';
+            const suffix = el.getAttribute('data-suffix') || '';
+            const obj = {
+              val: 0
+            };
+            gsap.to(obj, {
+              val: end,
+              duration: 2,
+              snap: {
+                val: 0.1
+              },
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%'
+              },
+              onUpdate: () => {
+                el.textContent = `${prefix}${obj.val.toFixed(end % 1 === 0 ? 0 : 1)}${suffix}`;
+              }
+            });
+          });
+        });
+      });
+    };
+    script2.onload = initGSAP;
+    script1.onload = initGSAP;
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+  const getInitials = name => name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+  const Icon = ({
+    type
+  }) => {
+    const common = {
+      width: 20,
+      height: 20,
+      viewBox: '0 0 24 24',
+      fill: 'none',
+      stroke: accent,
+      strokeWidth: 2
+    };
+    if (type === 'omnichannel') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+      d: "M4 7h16M4 12h10M4 17h7"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "18",
+      cy: "17",
+      r: "2"
+    }));
+    if (type === 'ticket') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+      d: "M4 8V6h16v2a2 2 0 0 0 0 4v2a2 2 0 0 0 0 4v2H4v-2a2 2 0 0 0 0-4v-2a2 2 0 0 0 0-4Z"
+    }));
+    if (type === 'ai') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+      d: "M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "12",
+      cy: "12",
+      r: "3"
+    }));
+    if (type === 'flow') return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+      x: "3",
+      y: "4",
+      width: "7",
+      height: "6",
+      rx: "1"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "14",
+      y: "4",
+      width: "7",
+      height: "6",
+      rx: "1"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "8.5",
+      y: "14",
+      width: "7",
+      height: "6",
+      rx: "1"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M10 7h4M12 10v4"
+    }));
+    return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("circle", {
+      cx: "12",
+      cy: "12",
+      r: "9"
+    }));
+  };
+  const css = `
+    :root{--accent:${accent};--primary:${primary}}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:${bodyBg};font-family:Inter,sans-serif;color:#111827}
+    a{text-decoration:none}
+    img{max-width:100%}
+    input,button{font:inherit}
+    .page{background:${bodyBg};overflow:hidden}
+    .container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .main_header{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+    .nav-left,.nav-right-wrap{display:flex;align-items:center;gap:16px}
+    .logo{font-weight:800;font-size:20px;color:${accent};font-family:'Plus Jakarta Sans',sans-serif}
+    .animated-cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:10px;background:${accent};color:#fff;font-weight:700;border:1px solid ${accent};transition:.25s ease;box-shadow:0 10px 24px rgba(245,54,76,.22)}
+    .animated-cta:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(245,54,76,.28);background:${primary}}
+    .banner_wrap{background:#0f172a;position:relative;padding:88px 0 72px;color:#fff}
+    .banner_wrap:before,.banner_wrap:after{content:'';position:absolute;border-radius:999px;filter:blur(30px);opacity:.7;pointer-events:none}
+    .banner_wrap:before{width:340px;height:340px;right:-80px;top:-60px;background:radial-gradient(circle, rgba(245,54,76,.34), transparent 70%)}
+    .banner_wrap:after{width:260px;height:260px;left:-80px;bottom:-40px;background:radial-gradient(circle, rgba(245,54,76,.18), transparent 70%)}
+    .banner-area{display:flex;align-items:center;gap:44px;position:relative;z-index:1}
+    .banner-text,.hero-visual{flex:1}
+    .banner-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(48px,6vw,68px);line-height:1.03;font-weight:800;letter-spacing:-.03em;margin:0 0 18px;word-break:normal;overflow-wrap:normal;hyphens:none;white-space:normal}
+    .banner-content{font-size:18px;line-height:1.75;color:#cbd5e1;max-width:620px;margin:0 0 26px}
+    .gradient-text{background:linear-gradient(135deg,#F5364C 0%,#f5364c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .chip-row{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 30px}
+    .chip{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;border:1px solid rgba(245,54,76,.35);background:rgba(245,54,76,.1);color:#e5e7eb;font-size:13px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+    .hero-visual{min-height:500px;display:flex;align-items:center;justify-content:center}
+    .hero-card{width:100%;min-height:500px;border-radius:26px;padding:24px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 80px rgba(0,0,0,.28);position:relative;overflow:hidden}
+    .hero-mesh{position:absolute;inset:0;background:
+      radial-gradient(circle at 20% 20%, rgba(245,54,76,.3), transparent 30%),
+      radial-gradient(circle at 75% 30%, rgba(245,54,76,.18), transparent 28%),
+      radial-gradient(circle at 50% 85%, rgba(255,255,255,.08), transparent 25%),
+      linear-gradient(135deg,#131b2b 0%,#0b1220 100%)}
+    .dashboard{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;gap:16px}
+    .dash-top{display:flex;gap:12px;flex-wrap:wrap}
+    .dash-stat,.dash-panel,.mini-card,.list-row,.dock-pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(12px)}
+    .dash-stat{padding:14px 16px;border-radius:18px;min-width:148px}
+    .dash-stat strong{display:block;color:#fff;font-size:22px;font-family:'Plus Jakarta Sans',sans-serif}
+    .dash-stat span{display:block;color:#cbd5e1;font-size:12px;margin-top:4px}
+    .dash-main{display:flex;gap:16px;flex:1}
+    .dash-panel{flex:1;border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:12px}
+    .panel-head{display:flex;justify-content:space-between;align-items:center}
+    .panel-title{font-size:14px;color:#fff;font-weight:700}
+    .dots{display:flex;gap:6px}
+    .dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);display:block}
+    .list-row{border-radius:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
+    .list-row b{font-size:13px;color:#fff}
+    .list-row small{color:#cbd5e1}
+    .status{padding:5px 10px;border-radius:999px;background:rgba(245,54,76,.16);color:#fff;font-size:11px;border:1px solid rgba(245,54,76,.28)}
+    .mini-side{width:180px;display:flex;flex-direction:column;gap:12px}
+    .mini-card{border-radius:18px;padding:14px}
+    .mini-card strong{display:block;color:#fff;font-size:16px}
+    .mini-card span{display:block;color:#cbd5e1;font-size:12px;margin-top:6px}
+    .dock{display:flex;gap:10px;flex-wrap:wrap}
+    .dock-pill{padding:10px 12px;border-radius:999px;color:#fff;font-size:12px}
+    .lead-section{padding:34px 0 10px;background:${bodyBg}}
+    .lead-card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:22px;padding:24px;box-shadow:0 18px 50px rgba(15,23,42,.08)}
+    .lead-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    .lead-copy h3{margin:0 0 10px;font-size:28px;line-height:1.15;font-family:'Plus Jakarta Sans',sans-serif;color:#111827}
+    .lead-copy p{margin:0;color:#4b5563;line-height:1.7}
+    .lead-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .lead-form .full{grid-column:1 / -1}
+    .field{width:100%;padding:13px 14px;border-radius:12px;border:1px solid rgba(15,23,42,.12);background:#fff;color:#111827;outline:none;transition:.2s ease;box-shadow:0 4px 14px rgba(15,23,42,.04)}
+    .field:focus{border-color:${accent};box-shadow:0 0 0 4px rgba(245,54,76,.12)}
+    .lead-submit{width:100%;justify-content:center}
+    .lead-note{font-size:12px;color:#6b7280;margin-top:6px}
+    .testimonial-section{padding:56px 0 80px;background:${bodyBg}}
+    .testimonial-card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:24px;padding:28px;box-shadow:0 16px 45px rgba(15,23,42,.07)}
+    .testimonial-quote{font-size:20px;line-height:1.7;color:#111827;margin:0 0 18px}
+    .testimonial-meta{display:flex;align-items:center;gap:14px}
+    .avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(245,54,76,.12);color:${accent};font-weight:800}
+    .meta-text strong{display:block;color:#111827}
+    .meta-text span{display:block;color:#6b7280;font-size:14px}
+    .reveal{opacity:0;transform:translateY(18px);transition:all .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media (max-width: 980px){
+      .banner-area,.lead-grid,.dash-main{grid-template-columns:1fr;display:grid}
+      .hero-visual{min-height:auto}
+      .hero-card{min-height:420px}
+      .mini-side{width:100%}
+    }
+    @media (max-width: 640px){
+      .banner_wrap{padding:72px 0 56px}
+      .banner-title{font-size:clamp(36px,10vw,48px)}
+      .lead-form{grid-template-columns:1fr}
+      .lead-form .full{grid-column:auto}
+      .container{width:min(1180px,calc(100% - 20px))}
+    }
+  `;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, css), /*#__PURE__*/React.createElement("div", {
+    className: "page",
+    ref: pageRef
+  }, /*#__PURE__*/React.createElement("header", {
+    className: "main_header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav-bar"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nav-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "logo"
+  }, "Zoho Desk")), /*#__PURE__*/React.createElement("div", {
+    className: "nav-right-wrap"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta",
+    href: primaryHref,
+    target: "_blank",
+    rel: "noreferrer"
+  }, unifiedCtaText)))), /*#__PURE__*/React.createElement("section", {
+    className: "banner_wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container banner-area"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "banner-text reveal"
+  }, /*#__PURE__*/React.createElement("h1", {
+    className: "banner-title"
+  }, "Deliver faster, smarter customer support with ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Zoho Desk")), /*#__PURE__*/React.createElement("p", {
+    className: "banner-content"
+  }, "Centralize conversations, automate repetitive work, and help your support team resolve tickets across channels with more speed and visibility."), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "omnichannel"
+  }), "Omnichannel support"), /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "ticket"
+  }), "Smart ticketing"), /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "ai"
+  }), "AI-assisted responses"), /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    type: "flow"
+  }), "Workflow automation")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta",
+    href: ctas[0].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, unifiedCtaText))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-visual reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-mesh"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "dashboard"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dash-top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dash-stat"
+  }, /*#__PURE__*/React.createElement("strong", null, "24/7"), /*#__PURE__*/React.createElement("span", null, "Support continuity")), /*#__PURE__*/React.createElement("div", {
+    className: "dash-stat"
+  }, /*#__PURE__*/React.createElement("strong", null, "Multi-channel"), /*#__PURE__*/React.createElement("span", null, "Inbox visibility")), /*#__PURE__*/React.createElement("div", {
+    className: "dash-stat"
+  }, /*#__PURE__*/React.createElement("strong", null, "Automation"), /*#__PURE__*/React.createElement("span", null, "Fewer manual steps"))), /*#__PURE__*/React.createElement("div", {
+    className: "dash-main"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dash-panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "panel-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "panel-title"
+  }, "Live support queue"), /*#__PURE__*/React.createElement("div", {
+    className: "dots"
+  }, /*#__PURE__*/React.createElement("i", null), /*#__PURE__*/React.createElement("i", null), /*#__PURE__*/React.createElement("i", null))), /*#__PURE__*/React.createElement("div", {
+    className: "list-row"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Priority ticket routing"), /*#__PURE__*/React.createElement("small", null, "Assign by urgency and team")), /*#__PURE__*/React.createElement("span", {
+    className: "status"
+  }, "Active")), /*#__PURE__*/React.createElement("div", {
+    className: "list-row"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Knowledge suggestions"), /*#__PURE__*/React.createElement("small", null, "Surface relevant help articles")), /*#__PURE__*/React.createElement("span", {
+    className: "status"
+  }, "Running")), /*#__PURE__*/React.createElement("div", {
+    className: "list-row"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Response workflows"), /*#__PURE__*/React.createElement("small", null, "Automate repetitive actions")), /*#__PURE__*/React.createElement("span", {
+    className: "status"
+  }, "Enabled")), /*#__PURE__*/React.createElement("div", {
+    className: "dock"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dock-pill"
+  }, "SLA tracking"), /*#__PURE__*/React.createElement("div", {
+    className: "dock-pill"
+  }, "Self-service"), /*#__PURE__*/React.createElement("div", {
+    className: "dock-pill"
+  }, "Reports"))), /*#__PURE__*/React.createElement("div", {
+    className: "mini-side"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mini-card"
+  }, /*#__PURE__*/React.createElement("strong", null, "Unified inbox"), /*#__PURE__*/React.createElement("span", null, "Keep email, chat, and web tickets in one place.")), /*#__PURE__*/React.createElement("div", {
+    className: "mini-card"
+  }, /*#__PURE__*/React.createElement("strong", null, "Agent productivity"), /*#__PURE__*/React.createElement("span", null, "Reduce context switching and speed up resolution.")), /*#__PURE__*/React.createElement("div", {
+    className: "mini-card"
+  }, /*#__PURE__*/React.createElement("strong", null, "Customer experience"), /*#__PURE__*/React.createElement("span", null, "Deliver consistent support with better visibility."))))))))), /*#__PURE__*/React.createElement("section", {
+    className: "lead-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lead-card reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lead-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lead-copy"
+  }, /*#__PURE__*/React.createElement("h3", null, "Start with a quick free trial request"), /*#__PURE__*/React.createElement("p", null, "Submit your details and connect with the team to explore how Zoho Desk can support your customer service workflows.")), /*#__PURE__*/React.createElement("form", {
+    className: "lead-form",
+    action: primaryHref,
+    method: "get"
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "field",
+    type: "text",
+    name: "name",
+    placeholder: "Full name",
+    "aria-label": "Full name"
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "field",
+    type: "email",
+    name: "email",
+    placeholder: "Work email",
+    "aria-label": "Work email"
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "field",
+    type: "tel",
+    name: "phone",
+    placeholder: "Phone number",
+    "aria-label": "Phone number"
+  }), /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta lead-submit full",
+    type: "submit"
+  }, unifiedCtaText), /*#__PURE__*/React.createElement("div", {
+    className: "lead-note full"
+  }, "Only 3 fields for a faster start.")))))), /*#__PURE__*/React.createElement("section", {
+    className: "testimonial-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card reveal"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "testimonial-quote"
+  }, "\u201C", testimonials[activeSlide].quote, "\u201D"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-meta"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "avatar"
+  }, getInitials(testimonials[activeSlide].author)), /*#__PURE__*/React.createElement("div", {
+    className: "meta-text"
+  }, /*#__PURE__*/React.createElement("strong", null, testimonials[activeSlide].author), /*#__PURE__*/React.createElement("span", null, testimonials[activeSlide].role))))))));
+};
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

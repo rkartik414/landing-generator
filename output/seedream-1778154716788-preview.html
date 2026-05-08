@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seedream-1778154716788.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <link rel="stylesheet" href="/ui/tailwind.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: 'var(--accent)',
+            primary: 'var(--primary)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#b3713f';
+  const primary = '#b3713f';
+  const bodyBg = '#06080c';
+  const primaryCTA = 'Generate with AI';
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: ''
+  });
+  const [activeProduct, setActiveProduct] = useState(0);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const glowRef = useRef(null);
+  const products = [{
+    name: 'Seedream 4.5',
+    headline: 'AI Image Generation with Seedream 4.5',
+    description: 'Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.',
+    media: '/output/generated-assets/ds_1778154314765_f791aabc/12-581339b7d2.png',
+    mediaDark: true,
+    previewType: 'dashboard',
+    features: [{
+      title: 'Advanced Text–Image Alignment',
+      description: 'Accurately translates prompts into visuals with improved semantic understanding.'
+    }, {
+      title: 'High-Resolution Output',
+      description: 'Generate native images up to 1K–4K resolution with strong visual fidelity.'
+    }, {
+      title: 'Superior Typographic Rendering',
+      description: 'Optimized for posters, ads, and text-heavy visual designs.'
+    }, {
+      title: 'Multi-Image Composition with Identity Preservation',
+      description: 'Combines multiple inputs while accurately maintaining subject consistency.'
+    }, {
+      title: 'Strong Structural Fidelity',
+      description: 'Maintains composition, layout, and scene structure with high precision.'
+    }]
+  }, {
+    name: 'Seedance 1.5 Pro',
+    headline: 'AI Video Generation with Seedance 1.5 Pro by Bytedance',
+    description: 'Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.',
+    media: '/output/generated-assets/ds_1778154314765_f791aabc/14-e1b1bc05a8.jpeg',
+    mediaDark: false,
+    previewType: 'video',
+    features: [{
+      title: 'Text-to-Video Generation',
+      description: 'Create videos directly from text prompts.'
+    }, {
+      title: 'Audio-Visual Synchronization',
+      description: 'Generate video and audio simultaneously with strong multimodal alignment.'
+    }, {
+      title: 'Multilingual Lip-Sync',
+      description: 'Supports multilingual and dialect-level lip synchronization.'
+    }, {
+      title: 'Cinematic Camera Control',
+      description: 'Generate videos with dynamic camera movement and cinematic storytelling.'
+    }, {
+      title: '10× Faster Inference',
+      description: 'Optimized inference pipeline significantly improves generation speed.'
+    }]
+  }];
+  const testimonials = [{
+    quote: 'Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.',
+    author: 'Vaishali Saxena',
+    role: 'Creative Director'
+  }, {
+    quote: 'Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.',
+    author: 'Vihaan Pandey',
+    role: 'Video Producer'
+  }, {
+    quote: 'The multimodal editing capabilities in Seedream make it easy to refine images with precision.',
+    author: 'Anurag Malhotra',
+    role: 'Art Director'
+  }, {
+    quote: 'Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.',
+    author: 'Ashutosh Singh',
+    role: 'Marketing Manager'
+  }, {
+    quote: 'From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.',
+    author: 'Shrimmi Saxena',
+    role: 'Creative Lead'
+  }];
+  const pricing = [{
+    name: 'Seedream 4.5 (AI Image Generation)',
+    price: '',
+    originalPrice: '',
+    includes: ['High-resolution image generation (up to 4K quality)', 'Text-to-image & multimodal image editing', 'Multi-image composition for complex visuals', 'Enhanced typographic rendering for posters, ads & text-heavy designs']
+  }, {
+    name: 'Seedance 1.5 Pro (AI Video Generation)',
+    price: 'Starting at $1,000/month/',
+    originalPrice: '',
+    includes: ['Text-to-video generation with cinematic output', 'Native audio + video generation (synchronized)', 'Multilingual lip-sync capabilities', 'Fast inference for quicker video production']
+  }];
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+  }, [accent, primary]);
+  const handleCTA = () => {
+    const formSection = document.getElementById('lead-form');
+    if (formSection) {
+      formSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
+        :root {
+          --accent: ${accent};
+          --primary: ${primary};
+          --bg: ${bodyBg};
+          --surface: #0b0f14;
+          --surface-2: #11161d;
+          --text: #f5f7fa;
+          --muted: #9aa4b2;
+          --border: #202833;
+          --shadow: 6px 6px 0 ${primary};
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          background: var(--bg);
+          color: var(--text);
+          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .landing-page {
+          background: var(--bg);
+          color: var(--text);
+        }
+
+        .container {
+          width: min(1120px, calc(100% - 32px));
+          margin: 0 auto;
+        }
+
+        .section {
+          padding: 88px 0;
+        }
+
+        .card {
+          background: var(--surface);
+          border: 2px solid var(--border);
+          box-shadow: var(--shadow);
+        }
+
+        .hero {
+          padding: 96px 0 72px;
+        }
+
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 32px;
+          align-items: center;
+        }
+
+        .eyebrow {
+          display: inline-block;
+          margin-bottom: 16px;
+          padding: 8px 12px;
+          border: 2px solid var(--border);
+          background: var(--surface);
+          color: var(--muted);
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          box-shadow: 4px 4px 0 rgba(179, 113, 63, 0.35);
+        }
+
+        .hero h1 {
+          margin: 0 0 18px;
+          font-size: clamp(2.4rem, 5vw, 4.6rem);
+          line-height: 1.02;
+          letter-spacing: -0.04em;
+        }
+
+        .hero p {
+          margin: 0 0 28px;
+          color: var(--muted);
+          font-size: 1.05rem;
+          line-height: 1.7;
+          max-width: 62ch;
+        }
+
+        .cta-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 14px;
+          align-items: center;
+        }
+
+        .btn {
+          appearance: none;
+          border: 2px solid var(--border);
+          background: var(--surface-2);
+          color: var(--text);
+          padding: 14px 20px;
+          font-size: 0.98rem;
+          font-weight: 700;
+          cursor: pointer;
+          text-decoration: none;
+          transition: transform 0.15s ease, background 0.15s ease;
+          box-shadow: 4px 4px 0 #000;
+        }
+
+        .btn:hover {
+          transform: translate(-2px, -2px);
+        }
+
+        .btn-primary {
+          background: var(--primary);
+          color: #fff;
+          border-color: #7e4f2b;
+          box-shadow: 6px 6px 0 #000;
+        }
+
+        .hero-media {
+          padding: 14px;
+        }
+
+        .hero-media img {
+          display: block;
+          width: 100%;
+          height: auto;
+          border: 2px solid var(--border);
+        }
+
+        .section-title {
+          margin: 0 0 14px;
+          font-size: clamp(1.8rem, 3vw, 2.8rem);
+          line-height: 1.1;
+          letter-spacing: -0.03em;
+        }
+
+        .section-copy {
+          margin: 0 0 28px;
+          color: var(--muted);
+          line-height: 1.7;
+          max-width: 70ch;
+        }
+
+        .tabs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 24px;
+        }
+
+        .tab {
+          padding: 12px 16px;
+          border: 2px solid var(--border);
+          background: var(--surface);
+          color: var(--text);
+          cursor: pointer;
+          font-weight: 700;
+          box-shadow: 4px 4px 0 #000;
+        }
+
+        .tab.active {
+          background: var(--primary);
+          border-color: #7e4f2b;
+        }
+
+        .product-grid,
+        .pricing-grid,
+        .testimonial-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+        }
+
+        .product-card,
+        .price-card,
+        .testimonial-card,
+        .form-card {
+          padding: 24px;
+        }
+
+        .product-media {
+          margin-bottom: 18px;
+        }
+
+        .product-media img {
+          display: block;
+          width: 100%;
+          border: 2px solid var(--border);
+        }
+
+        .product-card h3,
+        .price-card h3,
+        .testimonial-card h3 {
+          margin: 0 0 12px;
+          font-size: 1.25rem;
+        }
+
+        .product-card p,
+        .price-card p,
+        .testimonial-card p,
+        .price-card li,
+        .product-card li {
+          color: var(--muted);
+          line-height: 1.7;
+        }
+
+        .list {
+          margin: 16px 0 0;
+          padding-left: 18px;
+        }
+
+        .price {
+          margin: 8px 0 16px;
+          color: var(--text);
+          font-size: 1.1rem;
+          font-weight: 700;
+        }
+
+        .testimonial-card blockquote {
+          margin: 0 0 16px;
+          font-size: 1.02rem;
+          line-height: 1.7;
+          color: var(--text);
+        }
+
+        .meta {
+          color: var(--muted);
+          font-size: 0.95rem;
+        }
+
+        .form-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+        }
+
+        .input,
+        .textarea {
+          width: 100%;
+          padding: 14px 16px;
+          border: 2px solid var(--border);
+          background: var(--surface-2);
+          color: var(--text);
+          outline: none;
+          box-shadow: 4px 4px 0 #000;
+        }
+
+        .input::placeholder,
+        .textarea::placeholder {
+          color: #7f8a98;
+        }
+
+        .full {
+          grid-column: 1 / -1;
+        }
+
+        @media (max-width: 900px) {
+          .hero-grid,
+          .product-grid,
+          .pricing-grid,
+          .testimonial-grid,
+          .form-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .hero {
+            padding-top: 72px;
+          }
+        }
+      `), /*#__PURE__*/React.createElement("div", {
+    className: "landing-page"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "hero"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+    className: "eyebrow"
+  }, "AI Image & Video Generation"), /*#__PURE__*/React.createElement("h1", null, "Generate high-fidelity AI images and cinematic videos with Seedream 4.5 and Seedance 1.5 Pro"), /*#__PURE__*/React.createElement("p", null, "Explore advanced multimodal generation for visuals, editing, composition, and native audio-visual storytelling. Compare capabilities, review pricing details, and request a free demo."), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-primary",
+    onClick: handleCTA
+  }, primaryCTA))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-media card"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: products[0].media,
+    alt: products[0].headline
+  })))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "Explore the products"), /*#__PURE__*/React.createElement("p", {
+    className: "section-copy"
+  }, "Review the core capabilities of Seedream and Seedance across image generation, editing, composition, and synchronized audio-visual creation."), /*#__PURE__*/React.createElement("div", {
+    className: "tabs"
+  }, products.map((product, index) => /*#__PURE__*/React.createElement("button", {
+    key: product.name,
+    type: "button",
+    className: `tab ${activeProduct === index ? 'active' : ''}`,
+    onClick: () => setActiveProduct(index)
+  }, product.name))), /*#__PURE__*/React.createElement("div", {
+    className: "product-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "product-card card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "product-media"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: products[activeProduct].media,
+    alt: products[activeProduct].headline
+  })), /*#__PURE__*/React.createElement("h3", null, products[activeProduct].headline), /*#__PURE__*/React.createElement("p", null, products[activeProduct].description), /*#__PURE__*/React.createElement("ul", {
+    className: "list"
+  }, products[activeProduct].features.map(feature => /*#__PURE__*/React.createElement("li", {
+    key: feature.title
+  }, /*#__PURE__*/React.createElement("strong", null, feature.title, ":"), " ", feature.description))), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row",
+    style: {
+      marginTop: 20
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-primary",
+    onClick: handleCTA
+  }, primaryCTA))), /*#__PURE__*/React.createElement("div", {
+    className: "product-card card"
+  }, /*#__PURE__*/React.createElement("h3", null, "Why teams evaluate these tools"), /*#__PURE__*/React.createElement("p", null, "Seedream supports high-resolution image generation, multimodal editing, text-heavy visual output, and structured image composition. Seedance focuses on cinematic text-to-video generation with synchronized audio and multilingual lip-sync."), /*#__PURE__*/React.createElement("p", null, "Use this comparison to identify the best fit for your creative workflow, production needs, and evaluation process before requesting a demo."), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row",
+    style: {
+      marginTop: 20
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-primary",
+    onClick: handleCTA
+  }, primaryCTA)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "What customers are saying"), /*#__PURE__*/React.createElement("p", {
+    className: "section-copy"
+  }, "Feedback from professionals evaluating AI image and video generation workflows."), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-grid"
+  }, testimonials.slice(0, 4).map((testimonial, index) => /*#__PURE__*/React.createElement("div", {
+    key: `${testimonial.author}-${index}`,
+    className: "testimonial-card card",
+    onMouseEnter: () => setActiveTestimonial(index)
+  }, /*#__PURE__*/React.createElement("blockquote", null, "\u201C", testimonial.quote, "\u201D"), /*#__PURE__*/React.createElement("div", {
+    className: "meta"
+  }, testimonial.author, " \u2014 ", testimonial.role)))), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row",
+    style: {
+      marginTop: 28
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-primary",
+    onClick: handleCTA
+  }, primaryCTA)))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "Pricing overview"), /*#__PURE__*/React.createElement("p", {
+    className: "section-copy"
+  }, "Review available pricing details and included capabilities for each product."), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-grid"
+  }, pricing.map(plan => /*#__PURE__*/React.createElement("div", {
+    key: plan.name,
+    className: "price-card card"
+  }, /*#__PURE__*/React.createElement("h3", null, plan.name), plan.price ? /*#__PURE__*/React.createElement("div", {
+    className: "price"
+  }, plan.price) : null, /*#__PURE__*/React.createElement("ul", {
+    className: "list"
+  }, plan.includes.map(item => /*#__PURE__*/React.createElement("li", {
+    key: item
+  }, item))), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row",
+    style: {
+      marginTop: 20
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-primary",
+    onClick: handleCTA
+  }, primaryCTA))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    id: "lead-form"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-card card"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "Request a free demo"), /*#__PURE__*/React.createElement("p", {
+    className: "section-copy"
+  }, "Share your details to learn more about Seedream and Seedance and explore the right fit for your team."), /*#__PURE__*/React.createElement("div", {
+    className: "form-grid"
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "input",
+    placeholder: "Name",
+    value: formData.name,
+    onChange: e => setFormData({
+      ...formData,
+      name: e.target.value
+    })
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "input",
+    placeholder: "Email",
+    value: formData.email,
+    onChange: e => setFormData({
+      ...formData,
+      email: e.target.value
+    })
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "input",
+    placeholder: "Phone",
+    value: formData.phone,
+    onChange: e => setFormData({
+      ...formData,
+      phone: e.target.value
+    })
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "input",
+    placeholder: "Company",
+    value: formData.company,
+    onChange: e => setFormData({
+      ...formData,
+      company: e.target.value
+    })
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "full"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-primary",
+    onClick: handleCTA
+  }, primaryCTA))))))));
+};
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

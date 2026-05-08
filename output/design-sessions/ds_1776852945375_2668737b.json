@@ -1,0 +1,446 @@
+{
+  "sessionId": "ds_1776852945375_2668737b",
+  "createdAt": "2026-04-22T10:15:45.377Z",
+  "updatedAt": "2026-04-22T10:19:59.819Z",
+  "status": "html-generated",
+  "productName": "bytedance",
+  "pageType": "category",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://seed.bytedance.com/en/seedream4_5",
+    "parsedSectionCount": 8
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": null,
+    "heroStrategy": {
+      "layout": "background-overlay",
+      "primaryVisual": null,
+      "secondaryVisual": null,
+      "accentVisuals": [
+        "layered model cards",
+        "floating capability chips",
+        "compact stat bars",
+        "subtle orange glow trail"
+      ],
+      "backgroundImage": null,
+      "backgroundVideo": null,
+      "backgroundTreatment": "grid-overlay",
+      "overlayStyle": "gradient",
+      "headline": "Create High-Quality AI Images & Videos with ByteDance Generative Models",
+      "subheadline": "Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation. From text prompts, images, or scripts, generate professional visuals and videos with powerful multimodal AI systems.",
+      "ctaText": "Generate with AI",
+      "secondaryCtaText": "",
+      "floatingChips": [
+        "AI Image Generation",
+        "AI Video Generation with Audio",
+        "Multimodal Content Creation",
+        "Enterprise-ready AI infrastructure"
+      ],
+      "animationStyle": "stagger",
+      "designNote": "Use a full-bleed dark command-center hero with no literal imagery. Build the visual entirely from CSS: layered product cards for Seedream and Seedance, orange-led accents, subtle grid texture, and minimal data-like stat bars. Keep text left-aligned, avoid centered editorial treatment, and make the hero feel premium, technical, and conversion-focused."
+    },
+    "blueprint": {
+      "rhythmPlan": {
+        "opening": "loud",
+        "middle": "modular",
+        "ending": "conversion"
+      },
+      "repetitionBreakers": [
+        "Hero uses a full-bleed command-center composition with layered model cards and orange glow accents",
+        "Trust is intentionally minimized and placed after the hero as a subtle utility strip, not a hero co-star",
+        "Seedream block is a spotlight-plus-grid image-led section",
+        "Seedance block switches to an accordion-with-visual video-led structure for contrast",
+        "Testimonials use a carousel to reduce length while preserving proof density",
+        "Pricing is presented as a highlighted-card pair rather than a comparison table",
+        "Form is a floating card with stronger visual separation to restore conversion focus at the end"
+      ],
+      "pageTitle": "Seedream 4.5 and Seedance 1.5 Pro | AI Image & Video Generation",
+      "metaDescription": "Explore Seedream 4.5 for high-fidelity AI image generation and Seedance 1.5 Pro for synchronized AI video creation. Built for creative, marketing, and production teams.",
+      "styles": {
+        "accentColor": "#ff6b00",
+        "bodyBg": "#1a1a1a",
+        "headingFont": "Inter",
+        "bodyFont": "Inter",
+        "themeFamily": "operational-dashboard",
+        "surfaceStyle": "tinted-panels",
+        "visualMotif": "dashboard-panels",
+        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "layout": "full-bleed",
+          "bgColor": "#1a1a1a",
+          "surfaceStyle": "tinted-panels",
+          "backgroundTreatment": "linear-gradient(180deg, #1a1a1a 0%, #111111 100%) with orange accent glow and layered dashboard shells",
+          "heroComposition": {
+            "mode": "background-overlay"
+          },
+          "renderMode": "layered",
+          "animationMode": "stagger",
+          "designNote": "Make the hero content-first but visually dynamic: large headline, compact benefit chips, and two abstract product panels for Seedream and Seedance beneath or beside the copy. Keep the CTA prominent and singular. The hero should feel like a premium command center, not a cinematic AI splash."
+        },
+        {
+          "id": "trust",
+          "type": "trust-bar",
+          "layout": "flex-wrap",
+          "bgColor": "#111111",
+          "renderMode": "static",
+          "designNote": "Use a restrained utility strip directly after the hero. Since trust data is sparse, present this as a subtle credibility divider with concise capability markers rather than a loud social-proof section."
+        },
+        {
+          "id": "products",
+          "type": "product-sections",
+          "layout": "alternating",
+          "bgColor": "#1a1a1a",
+          "renderMode": "spotlight-plus-grid",
+          "featurePresentation": {
+            "mode": "spotlight-plus-grid",
+            "primaryFeatureTitle": "Seedream 4.5",
+            "visualPriority": "high",
+            "useIcons": true,
+            "usePreviewPanel": true
+          },
+          "designNote": "Create two clearly separated product blocks with alternating visual structure. Lead with Seedream 4.5 as the image-generation anchor using a spotlight panel plus supporting feature grid. Then switch the Seedance 1.5 Pro block to a different rhythm, ideally with an accordion-with-visual or split-panel-list feel to avoid repetitive layouts. Since both sections have 5+ features, compress secondary details into expandable or grouped presentation."
+        },
+        {
+          "id": "why-techjockey",
+          "type": "why-techjockey",
+          "layout": "grid",
+          "bgColor": "#0f0f0f",
+          "renderMode": "card-grid",
+          "designNote": "Use this as a credibility-reinforcement block only if needed for buyer reassurance. Keep it concise and operational: implementation support, demo evaluation, and enterprise buying assistance. Avoid turning it into a generic benefits list."
+        },
+        {
+          "id": "pricing",
+          "type": "pricing-cart",
+          "layout": "card-center",
+          "bgColor": "#1a1a1a",
+          "renderMode": "highlighted-card",
+          "designNote": "Present pricing as a two-card, quote-led decision moment. Seedance can carry the only visible numeric anchor, while Seedream remains quote-based. Emphasize procurement clarity over discounting."
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "layout": "carousel-static",
+          "bgColor": "#111111",
+          "renderMode": "slider",
+          "designNote": "Use a carousel because there are 4+ testimonials. Prioritize the most outcome-driven quotes first: turnaround speed, synchronized audio-video, and multimodal editing precision. Keep the visual treatment elegant but compact."
+        },
+        {
+          "id": "form",
+          "type": "lead-form",
+          "layout": "centered-card",
+          "bgColor": "#1a1a1a",
+          "renderMode": "floating-card",
+          "designNote": "End with a strong conversion moment. Use a floating form card with clear hierarchy, minimal distraction, and the orange CTA as the final action. This should feel like the cleanest, most direct interaction on the page."
+        },
+        {
+          "id": "news",
+          "type": "media-logos",
+          "layout": "horizontal-logos",
+          "bgColor": "#111111",
+          "renderMode": "logo-strip",
+          "designNote": "If no media logos are available, repurpose this area as a slim footer utility strip with support and product-navigation cues. Keep it visually quiet so it does not compete with the form."
+        }
+      ],
+      "designPersonality": "Command-center premium: dark, precise, and conversion-focused, with orange brand energy, high-density product evidence, and an intelligent dashboard feel rather than a dreamy AI aesthetic.",
+      "imageryDirection": "Use abstract CSS-based product shells and dashboard-like visualizations instead of generic AI artwork. The hero should feature layered model cards for Seedream 4.5 and Seedance 1.5 Pro, floating capability chips, compact stat bars, and a subtle orange glow trail. Product sections should use dark technical panels with rendered sample frames, generation pathway diagrams, and compact proof cards to communicate multimodal control, fidelity, and speed.",
+      "typography": {
+        "headingFont": "Inter",
+        "bodyFont": "Inter",
+        "headingWeight": 700,
+        "heroFontSize": "40px",
+        "heroFontSizeReason": "The headline is long and needs a compact hero size to preserve hierarchy and avoid wrapping overload in a dark dashboard-style layout.",
+        "letterSpacing": "tight",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#1a1a1a",
+        "accent": "#ff6b00",
+        "accentHover": "#e85f00",
+        "bodyBg": "#1a1a1a",
+        "cardBg": "#f5f5f5",
+        "textDark": "#ffffff",
+        "textMid": "#f5f5f5",
+        "textLight": "#d1d5db",
+        "border": "#2a2a2a",
+        "colourReason": "Primary background and hero background use Techjockey's brand black, while the brand orange becomes the primary CTA and highlight colour. White and soft grey are used for contrast, with no external palette introduced."
+      },
+      "themeFamily": "operational-dashboard",
+      "surfaceStyle": "tinted-panels",
+      "visualMotif": "dashboard-panels",
+      "backgroundSystem": {
+        "bodyBase": "#1a1a1a",
+        "hero": "linear-gradient(180deg, #1a1a1a 0%, #111111 100%)",
+        "section1": "#111111",
+        "section2": "#1a1a1a",
+        "section3": "#0f0f0f"
+      },
+      "motionStrategy": {
+        "allowAnimations": true,
+        "style": "premium",
+        "heroEntrance": "stagger",
+        "cardHover": "lift",
+        "sectionReveal": "fade-up"
+      },
+      "referenceMap": {
+        "heroPattern": "Full-width dark hero banner with brand/logo placement at the top-left, large centered-left headline, short supporting copy, and a compact benefit list using tick icons. The hero reads as a strong split-structure intro even when no visual media is present, with content stacked in a single primary column and a secondary form area below.",
+        "sectionRhythm": "Top hero band followed by a lead-capture form section, using large vertical separation between major blocks and minimal nested subsection complexity. The page favors a linear sales flow: hero first, then qualification form, then deeper product detail sections.",
+        "cardStyle": "Simple rectangular content cards/blocks with light borders or subtle separation, minimal decoration, and information-dense layouts. Utility-first presentation is preferred over visual embellishment; emphasis comes from hierarchy, labels, and bold titles rather than shadows or glass effects.",
+        "ctaPattern": "Primary CTA is singular and action-oriented in the hero; secondary CTAs are sparse or absent. Product sections use localized CTAs near section headers when needed, supporting a conversion path from broad interest to demo/request action.",
+        "pricingPattern": "No visible pricing pattern in the provided structure. The page uses lead-generation and demo-request framing instead of price comparison or plan selection.",
+        "footerMode": "Not represented in the provided reference structure. If implemented, the likely footer mode is utilitarian and informational rather than marketing-heavy.",
+        "spacingScale": [
+          "tight inside list items and form fields",
+          "medium between headline, supporting copy, and bullet list",
+          "large between hero, form, and subsequent sections",
+          "extra-large between major product sections"
+        ],
+        "mediaPattern": "Light media usage in the exposed structure; logo treatment in the hero and optional slider/carousel scaffolding are present, but the visible layout is primarily text-led. Media, if used, should remain secondary and aligned within a wide hero container.",
+        "productSectionPattern": "Sequential feature sections with a label, section headline, descriptive paragraph, and a stacked list of capability bullets. Each section is self-contained and can carry its own CTA, using progressive disclosure from broad capability summary to detailed feature points.",
+        "formPattern": "Prominent lead form immediately after the hero, framed as a conversion card with a strong headline. The form architecture appears utility-driven, with multiple hidden tracking fields and a compact visible surface, indicating a high-priority capture module rather than a conversational form.",
+        "interactionPatterns": {
+          "usesCarousel": true,
+          "usesTabs": false,
+          "usesAccordion": false,
+          "usesStickyCta": false,
+          "usesRevealAnimations": false,
+          "usesHoverCards": false,
+          "usesCounters": false,
+          "usesMarqueeLogos": false
+        },
+        "surfacePatterns": {
+          "alternatesBackgrounds": false,
+          "usesDarkBandSections": true,
+          "usesTintedSections": false,
+          "usesGlassPanels": false,
+          "usesEditorialWhitespace": false
+        },
+        "animationStyle": "Static-first presentation with optional slider behavior in the hero; no obvious motion system is required beyond basic carousel transitions.",
+        "componentPatterns": [
+          "brand/logo lockup",
+          "dark hero banner",
+          "benefit tick list",
+          "lead-capture form card",
+          "section labels",
+          "feature bullet lists",
+          "optional carousel container"
+        ],
+        "designNotes": [
+          "Prioritize conversion-first hierarchy over visual storytelling.",
+          "Use strong contrast in the hero and simple surfaces elsewhere.",
+          "Keep feature sections dense, scannable, and vertically stacked.",
+          "Favor one primary CTA per major module.",
+          "Avoid decorative complexity; rely on typography and spacing for structure."
+        ]
+      },
+      "assetRules": {
+        "lockReferenceStructure": false,
+        "replaceImages": true,
+        "replaceVideos": true,
+        "preserveMode": "structure-styling",
+        "strictLayoutMatch": false,
+        "userSuppliedImagesOnly": false
+      },
+      "pageGoal": "single-product",
+      "trustLogos": [],
+      "includeForm": false,
+      "includePricing": true,
+      "includeTestimonials": true,
+      "includeTrust": true,
+      "additionalInstructions": "use dark theme for entire page",
+      "designStrategy": {
+        "primaryGoal": "lead-gen",
+        "buyerStage": "solution-aware",
+        "conversionPriority": "high",
+        "narrativeMode": "product-led",
+        "trustStrategy": "testimonial-first",
+        "emotionalTone": "confident",
+        "visualDominance": "hero-message",
+        "ctaAggression": "strong",
+        "sectionDensity": "dense",
+        "recommendedHeroStyle": "split",
+        "mustHaveMoments": [
+          "Dark, premium hero with clear value proposition for both image and video generation",
+          "Immediate primary CTA in the hero with a strong demo/request framing",
+          "Short benefit stack highlighting multimodal creation, speed, and enterprise readiness",
+          "Dedicated qualification or lead-capture moment early in the page flow",
+          "Separated product blocks for Seedream 4.5 and Seedance 1.5 Pro with clear differentiation",
+          "Testimonial section with role-based quotes to reduce perceived risk",
+          "Pricing or quote cards positioned as inquiry drivers rather than self-serve purchase",
+          "Final footer CTA reinforcing demo or quote request"
+        ],
+        "avoidPatterns": [
+          "Avoid bright or playful visual styling that weakens the enterprise AI positioning",
+          "Avoid long scrolling editorial storytelling before the first CTA",
+          "Avoid feature overload in the hero",
+          "Avoid decorative visuals that compete with the message hierarchy",
+          "Avoid pricing comparison tables or plan selection UX",
+          "Avoid generic stock imagery and vague AI buzzword panels"
+        ],
+        "reasoning": "This page is a high-intent lead generation asset for a sophisticated AI product category, so the strategy should prioritize conversion over exploration. The audience is solution-aware professionals who already understand generative AI and need confidence in output quality, workflow fit, and enterprise credibility. A product-led narrative works best because the content is centered on two named models with clear capabilities, and the dark theme should reinforce a premium, advanced, technical feel. The hero should be split-structure to support strong message hierarchy, with the headline doing most of the persuasion and a compact CTA guiding users toward demo or quote intent. Since there are no logos or hard metrics, testimonials become the primary trust mechanism, supported by structured product sections and inquiry-oriented pricing cards."
+      },
+      "designReview": {
+        "score": 7,
+        "verdict": "weak",
+        "issues": [
+          {
+            "area": "conversion flow",
+            "problem": "Lack of strong, unified CTAs across sections.",
+            "severity": "high",
+            "fix": "Ensure consistent, prominent CTAs in each major section to guide user action clearly."
+          },
+          {
+            "area": "proof placement",
+            "problem": "The trust section is minimalistic and lacks compelling badges, testimonials, or customer numbers.",
+            "severity": "medium",
+            "fix": "Enhance the trust bar with social proof, badges, or client logos to increase credibility."
+          },
+          {
+            "area": "visual monotony",
+            "problem": "Repetitive use of layout and visual motifs could lead to user fatigue.",
+            "severity": "medium",
+            "fix": "Incorporate more dynamic layout changes or interactive elements to maintain user engagement."
+          },
+          {
+            "area": "premium feel",
+            "problem": "The landing page lacks a distinct, polished design that reflects the premium nature of the product.",
+            "severity": "medium",
+            "fix": "Include higher-quality imagery, animation, and a more refined typography style to convey a premium brand image."
+          }
+        ],
+        "repairPrompt": "To enhance the landing page, focus on streamlining CTAs to ensure clear conversion paths, and enhance the trust section with more robust proof elements like client logos or testimonials. Break up visual sameness with varied layouts and animations to maintain user interest throughout their journey. Polish the overall design with higher-quality visuals and typography to reinforce the premium brand perception.",
+        "strengths": [
+          {
+            "area": "layout quality",
+            "description": "The alternating sections provide a clear separation between different product offerings, preventing information overload."
+          },
+          {
+            "area": "hierarchy",
+            "description": "The hero section effectively captures attention with a concise headline and standout CTA, creating a strong initiation point."
+          }
+        ]
+      },
+      "trustLogosCount": 0
+    },
+    "mediaPlan": {
+      "hero": {
+        "primaryVisual": "/output/generated-assets/ds_1776852945375_2668737b/01-f7e8992ab4.jpeg",
+        "secondaryVisual": "/output/generated-assets/ds_1776852945375_2668737b/02-7f64cfae87.jpeg",
+        "backgroundImage": null,
+        "backgroundVideo": null,
+        "accentVisuals": [
+          "/output/generated-assets/ds_1776852945375_2668737b/05-86a0e42439.jpeg",
+          "/output/generated-assets/ds_1776852945375_2668737b/04-fa9caa1249.png",
+          "/output/generated-assets/ds_1776852945375_2668737b/06-1d34b82b19.png"
+        ],
+        "color": "#1a1a2e"
+      },
+      "trust": {
+        "logos": [],
+        "badges": []
+      },
+      "productSections": [
+        {
+          "sectionId": "1",
+          "primaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/01-f7e8992ab4.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/02-7f64cfae87.jpeg",
+          "icons": []
+        },
+        {
+          "sectionId": "2",
+          "primaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/02-7f64cfae87.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/09-44be0cccb4.png",
+          "icons": []
+        },
+        {
+          "sectionId": "3",
+          "primaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/09-44be0cccb4.png",
+          "secondaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/08-84289b855f.png",
+          "icons": []
+        },
+        {
+          "sectionId": "4",
+          "primaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/08-84289b855f.png",
+          "secondaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/03-3965757185.jpeg",
+          "icons": []
+        },
+        {
+          "sectionId": "5",
+          "primaryPreview": "/output/generated-assets/ds_1776852945375_2668737b/03-3965757185.jpeg",
+          "secondaryPreview": null,
+          "icons": []
+        }
+      ],
+      "testimonials": {
+        "avatars": []
+      },
+      "demos": {
+        "heroDemo": null,
+        "sectionDemos": []
+      },
+      "product": [
+        "/output/generated-assets/ds_1776852945375_2668737b/01-f7e8992ab4.jpeg",
+        "/output/generated-assets/ds_1776852945375_2668737b/02-7f64cfae87.jpeg",
+        "/output/generated-assets/ds_1776852945375_2668737b/09-44be0cccb4.png",
+        "/output/generated-assets/ds_1776852945375_2668737b/08-84289b855f.png",
+        "/output/generated-assets/ds_1776852945375_2668737b/03-3965757185.jpeg"
+      ],
+      "features": [
+        "/output/generated-assets/ds_1776852945375_2668737b/05-86a0e42439.jpeg",
+        "/output/generated-assets/ds_1776852945375_2668737b/04-fa9caa1249.png",
+        "/output/generated-assets/ds_1776852945375_2668737b/06-1d34b82b19.png",
+        "/output/generated-assets/ds_1776852945375_2668737b/07-65027719ed.png",
+        "/output/generated-assets/ds_1776852945375_2668737b/09-44be0cccb4.png",
+        "/output/generated-assets/ds_1776852945375_2668737b/08-84289b855f.png"
+      ],
+      "logos": [],
+      "fallbackStrategy": {
+        "heroMode": "split-visual",
+        "productMode": "preview-panel"
+      },
+      "form": null,
+      "additionalInstructions": "use dark theme for entire page"
+    }
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": null,
+    "fileUrl": null,
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": "bytedance-1776853199754-preview.html",
+    "localizedAssetsBase": "/output/generated-assets/ds_1776852945375_2668737b"
+  },
+  "logs": [
+    {
+      "at": "2026-04-22T10:15:45.382Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-04-22T10:19:59.786Z",
+      "type": "workflow",
+      "step": "html-generated",
+      "message": "HTML output generated: bytedance-1776853199754-preview.html"
+    },
+    {
+      "at": "2026-04-22T10:19:59.819Z",
+      "type": "workflow",
+      "step": "mcp-auto-run-failed",
+      "message": "MCP execution failed: No figmaBuildPlan found in session: ds_1776852945375_2668737b"
+    }
+  ]
+}

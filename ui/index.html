@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Generator</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f; color: #e0e0e0;
+      min-height: 100vh; padding: 40px 20px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    h1 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .subtitle { font-size: 13px; color: #555; margin-bottom: 36px; }
+    .card {
+      background: #1a1a1a; border: 1px solid #252525;
+      border-radius: 12px; padding: 28px; margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #444; margin-bottom: 20px;
+    }
+    label { display: block; font-size: 13px; color: #888; margin-bottom: 6px; margin-top: 20px; }
+    label:first-of-type { margin-top: 0; }
+    label small { color: #444; font-size: 11px; margin-left: 6px; }
+    input[type="text"], input[type="url"], textarea, select {
+      width: 100%; background: #111; border: 1px solid #2a2a2a;
+      border-radius: 8px; color: #e0e0e0; font-size: 14px;
+      font-family: inherit; padding: 10px 14px; outline: none;
+      transition: border-color 0.15s; resize: vertical;
+    }
+    input:focus, textarea:focus, select:focus { border-color: #3a3a3a; }
+ 
+    /* Page type */
+    .page-type-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-top: 6px;
+    }
+    .page-type-card {
+      background: #111; border: 1px solid #2a2a2a; border-radius: 8px;
+      padding: 14px 12px; cursor: pointer; transition: all 0.15s; text-align: center;
+    }
+    .page-type-card:hover { border-color: #3a3a3a; }
+    .page-type-card.active { border-color: #FF6B00; background: #1a1200; }
+    .pt-icon { font-size: 16px; margin-bottom: 6px; color: #555; }
+    .page-type-card.active .pt-icon { color: #FF6B00; }
+    .pt-label { font-size: 13px; font-weight: 500; color: #888; }
+    .page-type-card.active .pt-label { color: #e0e0e0; }
+    .pt-desc { font-size: 11px; color: #444; margin-top: 3px; }
+ 
+    /* Product entries */
+    .product-entry { border: 1px solid #222; border-radius: 8px; padding: 16px; margin-top: 16px; }
+    .product-entry-header { display: flex; align-items: center; margin-bottom: 4px; }
+    .product-entry-label {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.07em; color: #FF6B00;
+    }
+    .product-remove {
+      margin-left: auto; background: none; border: none;
+      color: #444; cursor: pointer; font-size: 18px; line-height: 1;
+    }
+    .brand-url-status { font-size: 12px; margin-top: 5px; min-height: 16px; color: #444; }
+    .brand-url-status.ok  { color: #4CAF50; }
+    .brand-url-status.err { color: #f44336; }
+ 
+    /* Theme swatches */
+    .sections-preview-label {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.07em; color: #444; margin-bottom: 10px;
+    }
+    .theme-swatch {
+      width: 32px; height: 32px; border-radius: 6px;
+      border: 1px solid #2a2a2a; cursor: help;
+    }
+ 
+    /* Source toggle */
+    .source-toggle {
+      display: flex; background: #111; border: 1px solid #2a2a2a;
+      border-radius: 8px; padding: 3px; margin-bottom: 18px; width: fit-content;
+    }
+    .source-toggle button {
+      background: none; border: none; color: #555; font-size: 13px;
+      padding: 7px 18px; border-radius: 6px; cursor: pointer; transition: all 0.15s;
+    }
+    .source-toggle button.active { background: #252525; color: #e0e0e0; }
+ 
+    /* Upload zones */
+    .upload-zone {
+      border: 1.5px dashed #252525; border-radius: 8px; padding: 32px 24px;
+      text-align: center; cursor: pointer; position: relative;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .upload-zone:hover { border-color: #3a3a3a; background: #151515; }
+    .upload-zone.has-file { border-color: #2a3a2a; background: #111a11; }
+    .upload-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .upload-zone-icon { font-size: 28px; margin-bottom: 10px; }
+    .upload-zone p { font-size: 13px; color: #555; pointer-events: none; }
+    .upload-zone p strong { color: #888; font-weight: 500; }
+    .file-name { color: #4CAF50; font-size: 13px; margin-top: 6px; }
+ 
+    /* Sections chips */
+    .sections-preview { margin-top: 16px; display: none; }
+    .sections-preview.visible { display: block; }
+    .sections-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .section-chip {
+      background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 20px;
+      padding: 4px 12px; font-size: 12px; color: #888;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .section-chip .chip-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #FF6B00; flex-shrink: 0;
+    }
+    .parse-status { font-size: 12px; margin-top: 8px; min-height: 16px; }
+    .parse-status.ok      { color: #4CAF50; }
+    .parse-status.err     { color: #f44336; }
+    .parse-status.loading { color: #888; }
+ 
+    /* Hint box */
+    .hint-box {
+      background: #111; border: 1px solid #222;
+      border-radius: 8px; padding: 14px 16px; margin-top: 16px;
+    }
+    .hint-box p { font-size: 12px; color: #555; line-height: 1.6; }
+    .hint-box p strong { color: #777; font-weight: 500; }
+    .hint-example {
+      margin-top: 10px; font-size: 11px;
+      font-family: 'SF Mono', 'Fira Code', monospace; color: #444; line-height: 2;
+    }
+    .hint-example span { color: #FF6B00; }
+ 
+    /* Image upload */
+    .image-upload-zone {
+      border: 1.5px dashed #252525; border-radius: 8px; padding: 20px 24px;
+      text-align: center; cursor: pointer; position: relative; transition: border-color 0.15s;
+    }
+    .image-upload-zone:hover { border-color: #3a3a3a; }
+    .image-upload-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .image-upload-zone p { font-size: 13px; color: #555; pointer-events: none; }
+    .preview-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+      gap: 8px; margin-top: 12px;
+    }
+    .preview-item {
+      position: relative; aspect-ratio: 4/3;
+      border-radius: 6px; overflow: hidden; background: #111;
+    }
+    .preview-item img { width: 100%; height: 100%; object-fit: cover; }
+    .preview-item .preview-badge {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.75); font-size: 9px; color: #888;
+      padding: 2px 5px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .url-status { font-size: 12px; margin-top: 6px; min-height: 16px; color: #444; }
+    .url-status.ok  { color: #4CAF50; }
+    .url-status.err { color: #f44336; }
+ 
+    /* Buttons */
+    .btn {
+      background: #FF6B00; color: #fff; border: none; border-radius: 8px;
+      padding: 13px 32px; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn:hover    { background: #e05e00; }
+    .btn:disabled { background: #2a2a2a; color: #444; cursor: not-allowed; }
+    .btn-ghost {
+      background: #1a1a1a; border: 1px solid #2a2a2a; color: #888;
+      border-radius: 8px; padding: 11px 18px; font-size: 13px; cursor: pointer;
+    }
+    .btn-ghost:hover { background: #202020; }
+ 
+    /* Progress */
+    .progress-card { display: none; }
+    .progress-card.visible { display: block; }
+    .step-list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+    .step { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #444; transition: color 0.3s; }
+    .step.active { color: #e0e0e0; }
+    .step.done   { color: #4CAF50; }
+    .step-dot { width: 7px; height: 7px; border-radius: 50%; background: #222; flex-shrink: 0; transition: background 0.3s; }
+    .step.active .step-dot { background: #FF6B00; }
+    .step.done   .step-dot { background: #4CAF50; }
+ 
+    /* Result */
+    .result-card { display: none; }
+    .result-card.visible { display: block; }
+    .result-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+
+    .options-panel {
+  background: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.options-panel h3 {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.option-row:last-child { border-bottom: none; }
+
+.option-label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #111;
+  margin-bottom: 2px;
+}
+.option-desc {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  flex-shrink: 0;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #d1d5db;
+  border-radius: 999px;
+  transition: 0.25s;
+}
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.25s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: #ff6b00;
+}
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+  </style>
+</head>
+<body>
+<div class="container">
+ 
+  <h1>Landing Page Generator</h1>
+  <p class="subtitle">Paste your brand URL and content — the system reads the brand, builds the theme, and writes the page.</p>
+ 
+  <!-- 1. BRAND IDENTITY -->
+  <div class="card">
+    <div class="card-title">Brand identity</div>
+ 
+    <label>Page type</label>
+    <div class="page-type-grid">
+      <div class="page-type-card active" onclick="selectPageType('single', this)">
+        <div class="pt-icon">◆</div>
+        <div class="pt-label">Single product</div>
+        <div class="pt-desc">One product, focused</div>
+      </div>
+      <div class="page-type-card" onclick="selectPageType('category', this)">
+        <div class="pt-icon">◆◆</div>
+        <div class="pt-label">Category</div>
+        <div class="pt-desc">2–3 related products</div>
+      </div>
+      <div class="page-type-card" onclick="selectPageType('mixed', this)">
+        <div class="pt-icon">◈</div>
+        <div class="pt-label">Mixed</div>
+        <div class="pt-desc">Different product types</div>
+      </div>
+    </div>
+ 
+    <div id="productsList">
+      <div class="product-entry" id="product_0">
+        <div class="product-entry-header">
+          <span class="product-entry-label">Product 1</span>
+        </div>
+        <label>Product name</label>
+        <input type="text" class="product-name" placeholder="e.g. Acme CRM">
+        <label>Official brand / product page URL <small>System reads colors, fonts and logo automatically</small></label>
+        <input type="url" class="product-brand-url"
+          placeholder="https://product.com"
+          onblur="previewBrandPage(this)">
+        <div class="brand-url-status"></div>
+      </div>
+    </div>
+ 
+    <button class="btn-ghost" id="addProductBtn"
+      style="margin-top:14px;display:none" onclick="addProduct()">
+      + Add another product
+    </button>
+ 
+    <div id="themePreview" style="display:none;margin-top:24px">
+      <div class="sections-preview-label">Theme generated from brand</div>
+      <div id="themeSwatches" style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"></div>
+      <p id="themeReasoning" style="font-size:12px;color:#555;margin-top:10px;line-height:1.6"></p>
+    </div>
+  </div>
+ 
+  <!-- 2. CONTENT DOCUMENT -->
+  <div class="card">
+    <div class="card-title">Content document</div>
+ 
+    <div class="source-toggle">
+      <button class="active" id="toggleGdoc" onclick="switchSource('gdoc')">Google Doc URL</button>
+      <button id="toggleWord" onclick="switchSource('word')">Word document</button>
+    </div>
+ 
+    <div id="gdocInput">
+      <label>Paste your Google Doc link <small>Must be "Anyone with the link can view"</small></label>
+      <input type="url" id="gdocURL"
+        placeholder="https://docs.google.com/document/d/..."
+        onblur="parseGoogleDoc(this.value)">
+      <div class="parse-status" id="gdocStatus"></div>
+    </div>
+ 
+    <div id="wordInput" style="display:none">
+      <label>Upload your Word document <small>.docx only</small></label>
+      <div class="upload-zone" id="wordUploadZone">
+        <input type="file" id="wordFile" accept=".docx" onchange="handleWordUpload(this.files[0])">
+        <div class="upload-zone-icon">📄</div>
+        <p><strong>Click to upload</strong> or drag and drop</p>
+        <p style="margin-top:4px;font-size:11px">.docx files only</p>
+        <p class="file-name" id="wordFileName"></p>
+      </div>
+      <div class="parse-status" id="wordStatus"></div>
+    </div>
+ 
+    <div class="sections-preview" id="sectionsPreview">
+      <div class="sections-preview-label">Sections detected in your document</div>
+      <div class="sections-chips" id="sectionsChips"></div>
+    </div>
+ 
+    <div class="hint-box">
+      <p><strong>How to format your doc:</strong> Name each section in ALL CAPS or followed by a colon. Write content below each heading.</p>
+      <div class="hint-example">
+        <span>HERO</span><br>
+        Headline: The fastest way to manage your team<br>
+        Subheadline: Used by 10,000+ companies worldwide<br>
+        CTA: Start free trial<br><br>
+        <span>FEATURES:</span><br>
+        Fast setup — go live in under 10 minutes<br>
+        No code required — works without a developer<br><br>
+        <span>TESTIMONIALS</span><br>
+        "This changed how we work." — Sarah K., Acme Corp<br><br>
+        <span>PRICING:</span><br>
+        Starter | $29/mo | 5 users, basic reports<br>
+        Pro | $99/mo | Unlimited users, priority support
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Page Options Panel ─────────────────────────────── -->
+   <!-- ── Generation Mode (NEW) ─────────────────────────────── -->
+<div class="card">
+  <div class="card-title">Generation Mode</div>
+
+  <label>Mode</label>
+  <select id="generationMode" name="generationMode">
+    <option value="fresh-generate">Fresh Generate</option>
+    <option value="replicate-reference">Replicate Existing Landing Page</option>
+  </select>
+
+  <div id="referenceModeFields" style="display:none; margin-top:16px; border-top:1px solid #2a2a2a; padding-top:16px;">
+    
+    <label>Reference Landing Page URL</label>
+    <input type="url" id="referenceLandingUrl"
+      placeholder="https://www.techjockey.com/...">
+
+    <label style="margin-top:12px;">Preserve Mode</label>
+    <select id="preserveMode">
+      <option value="structure-only">Structure only</option>
+      <option value="structure-styling" selected>Structure + styling</option>
+      <option value="structure-styling-cta">Structure + styling + CTA</option>
+    </select>
+
+    <div style="margin-top:12px;">
+      <label><input type="checkbox" id="replaceImages" checked> Replace images</label><br>
+      <label><input type="checkbox" id="replaceVideos" checked> Replace videos</label><br>
+      <label><input type="checkbox" id="strictLayoutMatch"> Strict layout match</label>
+    </div>
+
+  </div>
+</div>
+<div class="options-panel">
+  <h3>Page Options</h3>
+
+  <!-- Form Toggle -->
+  <div class="option-row">
+    <div class="option-info">
+      <label class="option-label">Lead Capture Form</label>
+      <span class="option-desc">Include a contact/trial request form on the page</span>
+    </div>
+    <label class="toggle-switch">
+      <input type="checkbox" id="includeFormToggle" name="includeForm" value="true">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <!-- CTA Control -->
+<div class="option-row">
+  <div class="option-info">
+    <label class="option-label">CTA Count</label>
+    <span class="option-desc">Exact number of conversion CTAs for Fresh Generate mode</span>
+  </div>
+  <input
+    type="number"
+    id="ctaCount"
+    min="0"
+    max="8"
+    value="1"
+    oninput="renderCtaRows()"
+    style="width:90px;background:#111;border:1px solid #2a2a2a;border-radius:8px;color:#e0e0e0;padding:8px 10px;"
+  />
+</div>
+
+<div id="externalCtaFields">
+  <div style="margin-top:14px;margin-bottom:10px;">
+    <div class="option-label">CTA Names & Links</div>
+    <div class="option-desc">Used only when Lead Capture Form is disabled. One name and link per CTA.</div>
+  </div>
+
+  <div id="ctaRows"></div>
+</div>
+  
+
+  <!-- Pricing Toggle -->
+  <div class="option-row">
+    <div class="option-info">
+      <label class="option-label">Pricing Section</label>
+      <span class="option-desc">Show pricing plans or CTA pricing card</span>
+    </div>
+    <label class="toggle-switch">
+      <input type="checkbox" id="includePricingToggle" name="includePricing" value="true" checked>
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <!-- Testimonials Toggle -->
+  <div class="option-row">
+    <div class="option-info">
+      <label class="option-label">Testimonials</label>
+      <span class="option-desc">Include customer testimonials section</span>
+    </div>
+    <label class="toggle-switch">
+      <input type="checkbox" id="includeTestimonialsToggle" name="includeTestimonials" value="true" checked>
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+  <!-- Trust Bar Toggle -->
+  <div class="option-row">
+    <div class="option-info">
+      <label class="option-label">Trust / Logo Bar</label>
+      <span class="option-desc">Show partner or customer logo strip</span>
+    </div>
+    <label class="toggle-switch">
+      <input type="checkbox" id="includeTrustToggle" name="includeTrust" value="true" checked>
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+
+</div>
+ 
+  <!-- 3. IMAGE SOURCES -->
+  <div class="card">
+    <div class="card-title">Image sources</div>
+ 
+    <label>Competitor / reference page URL <small>We extract images from this page</small></label>
+    <input type="url" id="competitorURL"
+      placeholder="https://competitor.com/landing-page"
+      onblur="previewCompetitorURL(this.value)">
+    <div class="url-status" id="urlStatus"></div>
+ 
+    <label style="margin-top:20px">Designer image uploads <small>Edited Freepik, brand images, exports, GIFs, videos</small></label>
+    <div class="image-upload-zone">
+      <input type="file" id="imageFiles" multiple accept="image/*,video/mp4,.gif"
+        onchange="handleImageFiles(this.files)">
+      <p>Drop images, GIFs or videos here or <strong>click to browse</strong></p>
+      <p style="font-size:11px;margin-top:3px">JPG, PNG, WebP, GIF, MP4</p>
+    </div>
+    <div class="preview-grid" id="previewGrid"></div>
+ 
+    <label style="margin-top:20px">Stock image keywords <small>For Unsplash search</small></label>
+    <input type="text" id="imageKeywords" placeholder="e.g. modern office, team collaboration">
+  </div>
+ 
+  <!-- 4. ADDITIONAL INSTRUCTIONS -->
+  <div class="card">
+    <div class="card-title">Additional instructions <span style="color:#333;font-size:11px;text-transform:none;font-weight:400;letter-spacing:0">(optional)</span></div>
+    <textarea id="extraInstructions" style="min-height:70px"
+      placeholder="e.g. Use dark hero, lead with video testimonial, no pricing on this version"></textarea>
+  </div>
+ 
+  <div style="display:flex;justify-content:flex-end;margin-bottom:32px">
+    <button class="btn" id="generateBtn" onclick="generate()">Generate landing page →</button>
+  </div>
+ 
+  <!-- PROGRESS -->
+  <div class="card progress-card" id="progressCard">
+    <div class="card-title">Generating</div>
+    <div class="step-list">
+      <div class="step" id="step1"><div class="step-dot"></div>Reading content document</div>
+      <div class="step" id="step2"><div class="step-dot"></div>Reading brand page — extracting colors, fonts, logo</div>
+      <div class="step" id="step3"><div class="step-dot"></div>Gathering images from all sources</div>
+      <div class="step" id="step4"><div class="step-dot"></div>Building design blueprint</div>
+      <div class="step" id="step5"><div class="step-dot"></div>Writing full HTML / CSS</div>
+    </div>
+  </div>
+ 
+  <!-- RESULT -->
+<div class="card result-card" id="resultCard">
+  <div class="card-title">Done</div>
+  <p id="resultMessage" style="font-size:14px;color:#888;margin-top:8px"></p>
+  <div class="result-actions">
+    <a id="previewLink" href="#" target="_blank" class="btn">Open preview →</a>
+    <a id="downloadLink" href="#" class="btn-ghost">Download HTML</a>
+    <a id="downloadJsxLink" href="#" class="btn-ghost" style="display:none">Download JSX</a>
+    <div id="feedbackBox" style="display:none;margin-top:24px;border-top:1px solid #252525;padding-top:20px;">
+  <div class="card-title">Page Feedback</div>
+
+  <label>Feedback Type</label>
+  <select id="feedbackType">
+    <option value="design">Design issue</option>
+    <option value="development">Development error</option>
+    <option value="layout">Layout issue</option>
+    <option value="content">Content issue</option>
+    <option value="image">Image/media issue</option>
+    <option value="cta">CTA issue</option>
+    <option value="form">Form issue</option>
+    <option value="animation">Animation issue</option>
+    <option value="performance">Performance issue</option>
+    <option value="other">Other</option>
+  </select>
+
+  <label>Section</label>
+  <select id="feedbackSection">
+    <option value="full-page">Full page</option>
+    <option value="nav">Navigation</option>
+    <option value="hero">Hero</option>
+    <option value="trust">Trust section</option>
+    <option value="features">Features / product section</option>
+    <option value="pricing">Pricing</option>
+    <option value="testimonials">Testimonials</option>
+    <option value="form">Form</option>
+    <option value="news">News</option>
+    <option value="footer">Footer</option>
+  </select>
+
+  <label>Feedback</label>
+  <textarea
+    id="feedbackText"
+    rows="4"
+    placeholder="Example: Hero section has too much empty space, button animation looks bad, feature image is irrelevant..."
+  ></textarea>
+
+  <label>Screenshot <small>optional</small></label>
+  <input
+    type="file"
+    id="feedbackScreenshot"
+    accept="image/png,image/jpeg,image/webp"
+  />
+
+  <div class="result-actions">
+    <button class="btn-ghost" type="button" onclick="submitFeedback('save-only')">
+      Save Feedback
+    </button>
+
+    <button class="btn" type="button" onclick="submitFeedback('regenerate-section')">
+      Save + Regenerate Section
+    </button>
+  </div>
+
+  <div id="feedbackStatus" style="font-size:12px;color:#888;margin-top:12px;"></div>
+</div>
+  </div>
+</div>
+ 
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const modeEl = document.getElementById('generationMode');
+  const refFields = document.getElementById('referenceModeFields');
+
+  function toggleMode() {
+    refFields.style.display =
+      modeEl.value === 'replicate-reference' ? 'block' : 'none';
+  }
+
+  modeEl.addEventListener('change', toggleMode);
+  toggleMode();
+});
+
+let activeSource = 'gdoc', parsedContent = null;
+let uploadedImageFiles = [], selectedPageType = 'single', productCount = 1;
+
+let lastGeneratedPage = {
+  sessionId: null,
+  filename: null,
+  jsxFilename: null
+};
+ 
+function selectPageType(type, el) {
+  selectedPageType = type;
+  document.querySelectorAll('.page-type-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('addProductBtn').style.display =
+    (type === 'category' || type === 'mixed') ? 'block' : 'none';
+}
+ 
+function addProduct() {
+  const idx = productCount++;
+  const id  = `product_${idx}`;
+  const div = document.createElement('div');
+  div.className = 'product-entry';
+  div.id = id;
+  div.innerHTML = `
+    <div class="product-entry-header">
+      <span class="product-entry-label">Product ${idx + 1}</span>
+      <button class="product-remove" onclick="removeProduct('${id}')">×</button>
+    </div>
+    <label>Product name</label>
+    <input type="text" class="product-name" placeholder="e.g. Acme Pro">
+    <label>Official brand / product page URL <small>System reads brand automatically</small></label>
+    <input type="url" class="product-brand-url" placeholder="https://product.com" onblur="previewBrandPage(this)">
+    <div class="brand-url-status"></div>`;
+  document.getElementById('productsList').appendChild(div);
+}
+ 
+function removeProduct(id) { document.getElementById(id)?.remove(); }
+ 
+async function previewBrandPage(input) {
+  const url = input.value, statusEl = input.nextElementSibling;
+  if (!url?.startsWith('http')) return;
+  statusEl.textContent = 'Reading brand page...';
+  statusEl.className   = 'brand-url-status';
+  try {
+    const res  = await fetch('/preview-brand', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    });
+    const data = await res.json();
+    if (data.success) {
+      const parts = [];
+      if (data.colorCount) parts.push(`${data.colorCount} colors`);
+      if (data.fontCount)  parts.push(`${data.fontCount} fonts`);
+      if (data.logoFound)  parts.push('logo found');
+      statusEl.textContent = `✓ ${parts.join(', ')}`;
+      statusEl.className   = 'brand-url-status ok';
+    } else {
+      statusEl.textContent = 'Could not read — will try at generation time';
+      statusEl.className   = 'brand-url-status err';
+    }
+  } catch {
+    statusEl.textContent = 'Will read at generation time';
+    statusEl.className   = 'brand-url-status';
+  }
+}
+ 
+function collectProducts() {
+  return Array.from(document.querySelectorAll('.product-entry')).map((entry, i) => ({
+    name:     entry.querySelector('.product-name')?.value     || `Product ${i + 1}`,
+    brandURL: entry.querySelector('.product-brand-url')?.value || ''
+  }));
+}
+ 
+function switchSource(source) {
+  activeSource = source;
+  document.getElementById('gdocInput').style.display = source === 'gdoc' ? 'block' : 'none';
+  document.getElementById('wordInput').style.display = source === 'word' ? 'block' : 'none';
+  document.getElementById('toggleGdoc').className    = source === 'gdoc' ? 'active' : '';
+  document.getElementById('toggleWord').className    = source === 'word' ? 'active' : '';
+  clearSectionsPreview();
+}
+function getCtaCountValue() {
+  const raw = Number(document.getElementById('ctaCount')?.value || 0);
+  if (!Number.isFinite(raw)) return 0;
+  return Math.max(0, Math.min(8, Math.floor(raw)));
+}
+
+function renderCtaRows() {
+  const rowsBox = document.getElementById('ctaRows');
+  if (!rowsBox) return;
+
+  const count = getCtaCountValue();
+
+  const existing = [];
+  document.querySelectorAll('.cta-row').forEach((row) => {
+    existing.push({
+      text: row.querySelector('.cta-item-text')?.value || '',
+      href: row.querySelector('.cta-item-href')?.value || ''
+    });
+  });
+
+  rowsBox.innerHTML = '';
+
+  for (let i = 0; i < count; i++) {
+    const old = existing[i] || {};
+
+    const row = document.createElement('div');
+    row.className = 'cta-row';
+    row.style.cssText = `
+      display:grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap:10px;
+      margin-bottom:10px;
+      padding:12px;
+      border:1px solid #252525;
+      border-radius:8px;
+      background:#111;
+    `;
+
+    row.innerHTML = `
+      <div>
+        <label style="margin-top:0;">CTA ${i + 1} Name</label>
+        <input
+          type="text"
+          class="cta-item-text"
+          placeholder="e.g. Talk to Expert"
+          value="${old.text || ''}"
+        />
+      </div>
+
+      <div>
+        <label style="margin-top:0;">CTA ${i + 1} Link</label>
+        <input
+          type="url"
+          class="cta-item-href"
+          placeholder="https://www.techjockey.com/contact"
+          value="${old.href || ''}"
+        />
+      </div>
+    `;
+
+    rowsBox.appendChild(row);
+  }
+}
+
+function collectCtaItems() {
+  return Array.from(document.querySelectorAll('.cta-row')).map((row) => ({
+    text: row.querySelector('.cta-item-text')?.value?.trim() || '',
+    href: row.querySelector('.cta-item-href')?.value?.trim() || ''
+  }));
+}
+
+function toggleExternalCtaFields() {
+  const includeForm = document.getElementById('includeFormToggle')?.checked;
+  const externalBox = document.getElementById('externalCtaFields');
+
+  if (externalBox) {
+    externalBox.style.display = includeForm ? 'none' : 'block';
+  }
+}
+ 
+async function parseGoogleDoc(url) {
+  if (!url || !url.includes('docs.google.com')) return;
+  const status = document.getElementById('gdocStatus');
+  status.textContent = 'Reading document...'; status.className = 'parse-status loading';
+  try {
+    const formData = new FormData();
+    formData.append('type', 'gdoc');
+    formData.append('url', url);
+    const res  = await fetch('/parse-doc', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    if (data.success) {
+      parsedContent = data.parsed;
+      status.textContent = `✓ ${data.parsed.sectionCount} sections found`;
+      status.className   = 'parse-status ok';
+      showSectionsPreview(data.parsed.sectionNames);
+    } else {
+      status.textContent = `Error: ${data.error}`; status.className = 'parse-status err';
+    }
+  } catch { status.textContent = 'Could not read — check sharing settings'; status.className = 'parse-status err'; }
+}
+ 
+async function handleWordUpload(file) {
+  if (!file) return;
+  document.getElementById('wordFileName').textContent = file.name;
+  document.getElementById('wordUploadZone').classList.add('has-file');
+  const status = document.getElementById('wordStatus');
+  status.textContent = 'Reading document...'; status.className = 'parse-status loading';
+  const formData = new FormData();
+  formData.append('doc', file); formData.append('type', 'word');
+  try {
+    const res = await fetch('/parse-doc', { method: 'POST', body: formData });
+    const data = await res.json();
+    if (data.success) {
+      parsedContent = data.parsed;
+      status.textContent = `✓ ${data.parsed.sectionCount} sections found`;
+      status.className   = 'parse-status ok';
+      showSectionsPreview(data.parsed.sectionNames);
+    } else { status.textContent = `Error: ${data.error}`; status.className = 'parse-status err'; }
+  } catch { status.textContent = 'Failed to read document'; status.className = 'parse-status err'; }
+}
+ 
+function showSectionsPreview(names) {
+  document.getElementById('sectionsChips').innerHTML = names.map(n =>
+    `<div class="section-chip"><div class="chip-dot"></div>${n}</div>`).join('');
+  document.getElementById('sectionsPreview').classList.add('visible');
+}
+function clearSectionsPreview() {
+  parsedContent = null;
+  document.getElementById('sectionsPreview').classList.remove('visible');
+  document.getElementById('sectionsChips').innerHTML = '';
+}
+ 
+async function previewCompetitorURL(url) {
+  if (!url?.startsWith('http')) return;
+  const status = document.getElementById('urlStatus');
+  status.textContent = 'Checking...'; status.className = 'url-status';
+  try {
+    const res  = await fetch('/preview-url', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    });
+    const data = await res.json();
+    status.textContent = data.imageCount > 0 ? `✓ ${data.imageCount} images found` : 'No large images found';
+    status.className   = data.imageCount > 0 ? 'url-status ok' : 'url-status';
+  } catch { status.textContent = 'Will try at generation time'; status.className = 'url-status err'; }
+}
+ 
+function handleImageFiles(files) {
+  const grid = document.getElementById('previewGrid');
+  Array.from(files).forEach(file => {
+    uploadedImageFiles.push(file);
+    const reader = new FileReader();
+    reader.onload = e => {
+      const item = document.createElement('div');
+      item.className = 'preview-item';
+      const isImg = file.type.startsWith('image/');
+      item.innerHTML = isImg
+        ? `<img src="${e.target.result}" alt="${file.name}"><div class="preview-badge">${file.name.endsWith('.gif') ? 'GIF' : 'Upload'}</div>`
+        : `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#555;font-size:11px">🎬 ${file.name}</div><div class="preview-badge">Video</div>`;
+      grid.appendChild(item);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+ 
+function showThemePreview(theme) {
+  const keys = ['primaryColor','accentColor','backgroundColor','secondaryBackground','textPrimary'];
+  document.getElementById('themeSwatches').innerHTML = keys.filter(k => theme[k])
+    .map(k => `<div class="theme-swatch" style="background:${theme[k]}" title="${k}: ${theme[k]}"></div>`).join('');
+  document.getElementById('themeReasoning').textContent = theme.reasoning || '';
+  document.getElementById('themePreview').style.display = 'block';
+}
+ 
+const stepTimings = [500, 3000, 7000, 12000, 18000];
+ 
+async function generate() {
+  if (!parsedContent) { alert('Please upload a document or paste a Google Doc URL first.'); return; }
+  const products = collectProducts();
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true; btn.textContent = 'Generating...';
+  document.getElementById('progressCard').classList.add('visible');
+  document.getElementById('resultCard').classList.remove('visible');
+  ['step1','step2','step3','step4','step5'].forEach((id, i) => setTimeout(() => activateStep(id), stepTimings[i]));
+ 
+  const formData = new FormData();
+  formData.append('parsedContent',     JSON.stringify(parsedContent));
+  formData.append('pageType',          selectedPageType);
+  formData.append('products',          JSON.stringify(products));
+  formData.append('additionalInstructions', document.getElementById('extraInstructions').value);
+  formData.append('competitorURL',     document.getElementById('competitorURL').value);
+  formData.append('imageKeywords',     document.getElementById('imageKeywords').value);
+  uploadedImageFiles.forEach(f => formData.append('images', f));
+  // ── Page options ─────────────────────────────
+formData.append('includeForm',         document.getElementById('includeFormToggle').checked);
+formData.append('includePricing',      document.getElementById('includePricingToggle').checked);
+formData.append('includeTestimonials', document.getElementById('includeTestimonialsToggle').checked);
+formData.append('includeTrust',        document.getElementById('includeTrustToggle').checked);
+
+// ── Strict CTA options — Fresh Generate only ─────────────────
+formData.append('ctaCount', document.getElementById('ctaCount')?.value || '4');
+formData.append('ctaItems', JSON.stringify(collectCtaItems()));
+
+// ── Generation mode (NEW) ────────────────────
+formData.append('generationMode', document.getElementById('generationMode').value);
+formData.append('referenceLandingUrl', document.getElementById('referenceLandingUrl').value);
+formData.append('preserveMode', document.getElementById('preserveMode').value);
+formData.append('replaceImages', document.getElementById('replaceImages').checked);
+formData.append('replaceVideos', document.getElementById('replaceVideos').checked);
+formData.append('strictLayoutMatch', document.getElementById('strictLayoutMatch').checked);
+ 
+  try {
+    const res  = await fetch('/generate', { method: 'POST', body: formData });
+    const data = await res.json();
+    ['step1','step2','step3','step4','step5'].forEach(id => { document.getElementById(id).className = 'step done'; });
+    if (data.success) {
+  if (data.theme) showThemePreview(data.theme);
+
+  lastGeneratedPage = {
+    sessionId: data.sessionId || null,
+    filename: data.filename || null,
+    jsxFilename: data.jsxFilename || null
+  };
+
+  document.getElementById('resultMessage').textContent = `Page ready — ${data.jsxFilename}`;
+  document.getElementById('previewLink').href  = `/output/${data.filename}`;
+  document.getElementById('downloadLink').href = `/download/${data.filename}`;
+  document.getElementById('downloadJsxLink').href = `/download-jsx/${data.jsxFilename}`;
+  document.getElementById('downloadJsxLink').style.display = 'inline-block';
+
+  document.getElementById('feedbackBox').style.display = 'block';
+} else {
+      document.getElementById('resultMessage').textContent = `Error: ${data.error}`;
+    }
+    document.getElementById('resultCard').classList.add('visible');
+  } catch (e) {
+    document.getElementById('resultMessage').textContent = `Request failed: ${e.message}`;
+    document.getElementById('resultCard').classList.add('visible');
+
+// Add to FormData
+formData.append('includeForm',         includeForm);
+formData.append('includePricing',      includePricing);
+formData.append('includeTestimonials', includeTestimonials);
+formData.append('includeTrust',        includeTrust);
+  }
+  btn.disabled = false; btn.textContent = 'Generate landing page →';
+}
+
+async function submitFeedback(action) {
+  const status = document.getElementById('feedbackStatus');
+  const feedbackText = document.getElementById('feedbackText')?.value?.trim();
+
+  if (!feedbackText) {
+    status.textContent = 'Please enter feedback first.';
+    status.style.color = '#f44336';
+    return;
+  }
+
+  if (!lastGeneratedPage.jsxFilename) {
+    status.textContent = 'No generated page found for feedback.';
+    status.style.color = '#f44336';
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('sessionId', lastGeneratedPage.sessionId || '');
+  formData.append('filename', lastGeneratedPage.filename || '');
+  formData.append('jsxFilename', lastGeneratedPage.jsxFilename || '');
+  formData.append('feedbackType', document.getElementById('feedbackType')?.value || 'other');
+  formData.append('section', document.getElementById('feedbackSection')?.value || 'full-page');
+  formData.append('feedbackText', feedbackText);
+  formData.append('action', action);
+
+  const screenshot = document.getElementById('feedbackScreenshot')?.files?.[0];
+  if (screenshot) {
+    formData.append('screenshot', screenshot);
+  }
+
+  const endpoint = action === 'regenerate-section'
+    ? '/feedback/regenerate-section'
+    : '/feedback';
+
+  try {
+    status.textContent = action === 'regenerate-section'
+      ? 'Saving feedback and regenerating section...'
+      : 'Saving feedback...';
+    status.style.color = '#888';
+
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await res.json();
+
+    if (!data.success) {
+      status.textContent = `Error: ${data.error}`;
+      status.style.color = '#f44336';
+      return;
+    }
+
+    if (action === 'regenerate-section') {
+      status.innerHTML = `Section regenerated. <a href="${data.previewUrl}" target="_blank" style="color:#FF6B00;">Open revised preview</a>`;
+
+      document.getElementById('previewLink').href = data.previewUrl;
+      document.getElementById('downloadLink').href = `/download/${data.revisedPreviewFilename}`;
+      document.getElementById('downloadJsxLink').href = `/download-jsx/${data.revisedJsxFilename}`;
+
+      lastGeneratedPage.filename = data.revisedPreviewFilename;
+      lastGeneratedPage.jsxFilename = data.revisedJsxFilename;
+    } else {
+      status.textContent = 'Feedback saved. Future generations will use this learning.';
+    }
+
+    status.style.color = '#4CAF50';
+
+  } catch (e) {
+    status.textContent = `Request failed: ${e.message}`;
+    status.style.color = '#f44336';
+  }
+}
+ 
+function activateStep(id) {
+  document.querySelector('.step.active')?.classList.replace('active', 'done');
+  document.getElementById(id).className = 'step active';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  renderCtaRows();
+  toggleExternalCtaFields();
+
+  document
+    .getElementById('includeFormToggle')
+    ?.addEventListener('change', toggleExternalCtaFields);
+});
+</script>
+</body>
+</html>

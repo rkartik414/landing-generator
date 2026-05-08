@@ -1,0 +1,997 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#f26430';
+  const primary = '#f26430';
+  const bodyBg = '#ffffff';
+
+  const [activeTab1, setActiveTab1] = useState(0);
+  const [activeTab2, setActiveTab2] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const pageRef = useRef(null);
+
+  const ctas = [
+    {
+      text: 'Talk to Expert',
+      href: 'https://www.manageengine.com/products/desktop-central/endpoint-central-endpoint-security.html',
+    },
+    {
+      text: 'Talk to Expert',
+      href: 'https://www.manageengine.com/products/desktop-central/endpoint-central-endpoint-security.html',
+    },
+    {
+      text: 'Talk to Expert',
+      href: 'https://www.manageengine.com/products/desktop-central/endpoint-central-endpoint-security.html',
+    },
+    {
+      text: 'Talk to Expert',
+      href: 'https://www.manageengine.com/products/desktop-central/endpoint-central-endpoint-security.html',
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        'Endpoint Central helps us stay on top of patch management. The remote support features are fantastic and help us manage systems efficiently.',
+      author: 'Rahul Verma',
+      designation: 'ICT & Service Desk Administrator',
+    },
+    {
+      quote:
+        'Endpoint Central has helped our business enhance employee experience and support users in a timely and efficient manner.',
+      author: 'Shweta Singh',
+      designation: 'IT Infrastructure Manager',
+    },
+    {
+      quote:
+        'Endpoint Central has simplified patch management and software deployment for our IT team. Managing hundreds of devices from one console has significantly improved our operational efficiency.',
+      author: 'Sachin Gupta',
+      designation: 'IT Operations Manager',
+    },
+    {
+      quote:
+        'We purchased Endpoint Central through Techjockey and the experience was seamless. Their team guided us through the evaluation, purchase process, and even helped us with the post-purchase demo and onboarding.',
+      author: 'Rounak Sharma',
+      designation: 'Head of IT Infrastructure',
+    },
+    {
+      quote:
+        'Techjockey made our Endpoint Central purchase extremely smooth. From product consultation to after-purchase support and demo sessions, their team ensured we could deploy the solution quickly.',
+      author: 'Ayushi Jain',
+      designation: 'Senior System Administrator',
+    },
+  ];
+
+  const sectionOneFeatures = [
+    {
+      title: 'Patch & Update Management',
+      description:
+        'Secure and stabilize your operating systems, applications, and mobile apps with automated patches and updates.',
+    },
+    {
+      title: 'Browser Security',
+      description:
+        'Protect and manage multiple browsers, track usage patterns, and maintain compliance with standards like STIG.',
+    },
+    {
+      title: 'Data Security',
+      description:
+        'Identify and encrypt sensitive data, enforce policies for authorized usage, and ensure secure transmission.',
+    },
+    {
+      title: 'Vulnerability Remediation',
+      description:
+        'Leverage continuous threat intelligence, thorough assessments, and swift remediation to mitigate risks.',
+    },
+  ];
+
+  const sectionTwoFeatures = [
+    {
+      title: 'Strengthen Endpoint Security',
+      description:
+        'Built-in security controls for malware protection, such as next-gen antivirus and anti-ransomware.',
+    },
+    {
+      title: 'Manage IT Assets Effectively',
+      description:
+        'Live notifications and ready-made reports to discover, track, and manage your hardware, software, and digital assets.',
+    },
+    {
+      title: 'Enhance Application Control & Privileges',
+      description:
+        'Define install permissions, track privileges, and enforce zero-trust security with role-based and time-bound access.',
+    },
+    {
+      title: 'Facilitate Remote Access & Troubleshooting',
+      description:
+        'Remotely perform system operations with multi-user collaboration to efficiently troubleshoot devices.',
+    },
+    {
+      title: 'Ensure Compliance',
+      description: 'Adhere to regulatory compliance and generate comprehensive audit-ready reports.',
+    },
+  ];
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        }),
+      { threshold: 0.15 }
+    );
+
+    const nodes = document.querySelectorAll('.reveal');
+    nodes.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [accent, primary]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [accent, primary, testimonials.length]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const loadScript = (src) =>
+      new Promise((resolve) => {
+        const existing = document.querySelector(`script[src="${src}"]`);
+        if (existing) {
+          resolve();
+          return;
+        }
+        const s = document.createElement('script');
+        s.src = src;
+        s.async = true;
+        s.onload = resolve;
+        s.onerror = resolve;
+        document.body.appendChild(s);
+      });
+
+    const initGSAP = () => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const gsap = window.gsap;
+          const ScrollTrigger = window.ScrollTrigger;
+          gsap.registerPlugin(ScrollTrigger);
+
+          gsap.utils.toArray('.zoom-reveal').forEach((el) => {
+            const img = el.querySelector('img,video');
+            if (img) {
+              gsap.to(img, {
+                scale: 1,
+                duration: 1.2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 85%',
+                  toggleActions: 'play none none reverse',
+                },
+              });
+            }
+          });
+
+          gsap.utils.toArray('[data-depth]').forEach((el) => {
+            gsap.to(el, {
+              y: () => -(window.innerHeight * (parseFloat(el.dataset.depth) || 0.2) * 0.5),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el.closest('section') || el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+              },
+            });
+          });
+
+          gsap.utils.toArray('.stagger-parent').forEach((p) => {
+            gsap.to(p.children, {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: 'power3.out',
+              scrollTrigger: { trigger: p, start: 'top 80%' },
+            });
+          });
+
+          const splitTextEl = document.querySelector('.split-text');
+          if (splitTextEl && !splitTextEl.dataset.ready) {
+            const text = splitTextEl.textContent || '';
+            splitTextEl.dataset.ready = 'true';
+            splitTextEl.innerHTML = text
+              .split('')
+              .map((char) => `<span class="char">${char === ' ' ? '&nbsp;' : char}</span>`)
+              .join('');
+            gsap.fromTo(
+              splitTextEl.querySelectorAll('.char'),
+              { opacity: 0, y: 24 },
+              { opacity: 1, y: 0, duration: 0.5, stagger: 0.02, ease: 'power3.out' }
+            );
+          }
+        });
+      });
+    };
+
+    Promise.all([
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js'),
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js'),
+    ]).then(() => {
+      initGSAP();
+    });
+  }, [accent, primary]);
+
+  const css = `
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:'Inter',sans-serif;background:${bodyBg};color:#111827;scroll-behavior:smooth}
+    body{overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .lp-root{background:${bodyBg}}
+    .container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .section{padding:72px 0;position:relative}
+    .section-light{background:#ffffff}
+    .section-soft{background:#f8fafc}
+    .gradient-text{
+      background:linear-gradient(135deg, ${accent} 0%, ${primary} 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(20px);
+      background:rgba(255,255,255,.92);
+      border-bottom:1px solid #e5e7eb;
+    }
+    .nav-inner{
+      display:grid;
+      grid-template-columns:1fr auto auto;
+      align-items:center;
+      gap:16px;
+      min-height:78px;
+    }
+    .brand-left{display:flex;align-items:center;gap:12px}
+    .brand-mark{
+      width:40px;height:40px;border-radius:12px;
+      background:linear-gradient(135deg, ${accent}, ${primary});
+      color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 10px 24px rgba(242,100,48,.22);
+    }
+    .brand-name{font-weight:800;font-size:18px;line-height:1.2}
+    .brand-sub{font-size:12px;color:#6b7280}
+    .nav-right{display:flex;align-items:center;gap:18px}
+    .animated-cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 22px;border-radius:12px;border:1px solid ${accent};
+      background:${accent};color:#fff;font-weight:700;font-size:14px;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+      white-space:nowrap;
+    }
+    .animated-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(242,100,48,.24);background:${primary}}
+    .ghost-btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 22px;border-radius:12px;border:1px solid #d1d5db;
+      background:#fff;color:#111827;font-weight:700;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .ghost-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.08);border-color:${accent}}
+    .hero{
+      padding:52px 0 70px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(242,100,48,.08) 0%, rgba(242,100,48,0) 32%),
+        linear-gradient(180deg, #ffffff 0%, #fffaf7 100%);
+      overflow:hidden;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:34px;align-items:center;
+      min-height:560px;
+    }
+    .hero-copy{position:relative;z-index:2;max-width:620px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 14px;border-radius:999px;background:rgba(242,100,48,.10);
+      color:${accent};border:1px solid rgba(242,100,48,.18);font-size:13px;font-weight:700;
+      margin-bottom:18px;
+    }
+    .hero h1{
+      font-size:54px;line-height:1.05;letter-spacing:-.03em;
+      margin:0 0 16px;font-weight:800;color:#111827;max-width:11ch;
+    }
+    .hero p.sub{
+      font-size:18px;line-height:1.65;color:#4b5563;margin:0 0 10px;max-width:560px;
+    }
+    .hero p.support{
+      font-size:16px;line-height:1.7;color:#4b5563;margin:0 0 24px;max-width:560px;
+    }
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:999px;background:#fff;border:1px solid #e5e7eb;
+      color:#374151;font-size:13px;font-weight:600;
+      box-shadow:0 8px 24px rgba(0,0,0,.04);
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-visual{
+      position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;
+    }
+    .hero-cinematic-bg{
+      position:absolute;inset:18px 0 18px 18px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(242,100,48,.08), rgba(255,255,255,.96));
+      border:1px solid #f1dfd7;
+      box-shadow:0 20px 50px rgba(242,100,48,.08);
+    }
+    .hero-orb,.hero-orb2{
+      position:absolute;border-radius:50%;filter:blur(8px);pointer-events:none;
+    }
+    .hero-orb{
+      width:220px;height:220px;right:-10px;top:-6px;
+      background:radial-gradient(circle, rgba(242,100,48,.18) 0%, rgba(242,100,48,0) 70%);
+    }
+    .hero-orb2{
+      width:180px;height:180px;left:0;bottom:18px;
+      background:radial-gradient(circle, rgba(242,100,48,.12) 0%, rgba(242,100,48,0) 72%);
+    }
+    .visual-card{
+      position:relative;z-index:2;width:100%;
+      border-radius:24px;background:#fff;border:1px solid #e5e7eb;
+      box-shadow:0 30px 70px rgba(17,24,39,.10);overflow:hidden;
+    }
+    .browser-frame{
+      display:flex;flex-direction:column;overflow:hidden;background:#ffffff;border-radius:24px;
+    }
+    .browser-top{
+      display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid #eef2f7;background:#f8fafc;
+    }
+    .dot{width:10px;height:10px;border-radius:50%;background:#d1d5db}
+    .browser-frame img{
+      flex:1;min-height:0;height:420px;width:100%;object-fit:contain;object-position:center;
+      display:block;background:#ffffff;padding:10px;
+    }
+    .float-card{
+      position:absolute;z-index:3;background:#fff;border:1px solid #e5e7eb;border-radius:18px;
+      padding:14px 16px;box-shadow:0 18px 40px rgba(17,24,39,.10);max-width:220px;
+    }
+    .float-card.small{right:-8px;top:58px}
+    .float-card.bottom{left:-8px;bottom:30px}
+    .float-title{font-size:12px;color:#6b7280;margin-bottom:6px}
+    .float-value{font-size:18px;font-weight:800;color:#111827}
+    .float-line{height:8px;border-radius:999px;background:linear-gradient(90deg, ${accent}, rgba(242,100,48,.15));margin-top:10px}
+    .human-png{
+      position:absolute;right:18px;bottom:-2px;width:170px;z-index:4;pointer-events:none;
+      filter:drop-shadow(0 16px 24px rgba(0,0,0,.12));
+    }
+
+    .trust-grid{
+      display:grid;grid-template-columns:1.1fr 1.3fr;gap:28px;align-items:center;
+    }
+    .trust-copy h2,.section-head h2{
+      font-size:clamp(32px,4vw,42px);line-height:1.08;margin:0 0 12px;font-weight:800;
+    }
+    .trust-copy p,.section-head p{font-size:16px;line-height:1.75;color:#4b5563;margin:0}
+    .logo-grid{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+    }
+    .logo-item{
+      height:72px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;padding:12px;
+      transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+      filter:grayscale(1);
+    }
+    .logo-item:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(0,0,0,.08);filter:grayscale(0)}
+    .logo-item img{max-height:32px;max-width:100%;object-fit:contain}
+    .proof-pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #e5e7eb;
+      font-size:13px;font-weight:700;color:#111827;margin-bottom:12px;
+    }
+
+    .split-section{
+      display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+    }
+    .media-panel{
+      position:relative;border-radius:24px;overflow:hidden;border:1px solid #e5e7eb;
+      background:#ffffff;box-shadow:0 24px 60px rgba(17,24,39,.10);
+    }
+    .media-panel.light{background:#f8f8f8}
+    .media-panel img{width:100%;height:460px;object-fit:cover;display:block}
+    .section-tag{
+      display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(242,100,48,.18);background:rgba(242,100,48,.08);color:${accent};
+      font-size:13px;font-weight:700;margin-bottom:16px;
+    }
+    .desc-rail{
+      border-left:3px solid rgba(242,100,48,.28);padding-left:18px;margin:16px 0 24px;
+      color:#4b5563;font-size:16px;line-height:1.8;
+    }
+    .feature-shell{
+      display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:stretch;
+    }
+    .tabs{
+      display:flex;flex-direction:column;gap:10px;
+    }
+    .tab-btn{
+      text-align:left;border:1px solid #e5e7eb;background:#fff;border-radius:16px;
+      padding:16px;cursor:pointer;transition:.25s ease;font-weight:700;color:#111827;
+    }
+    .tab-btn span{display:block;font-size:13px;line-height:1.6;color:#6b7280;font-weight:500;margin-top:6px}
+    .tab-btn.active{
+      border-color:rgba(242,100,48,.35);background:rgba(242,100,48,.06);
+      box-shadow:0 14px 30px rgba(242,100,48,.10);
+    }
+    .preview-card{
+      background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:22px;
+      box-shadow:0 16px 40px rgba(17,24,39,.06);height:100%;
+    }
+    .preview-icon{
+      width:54px;height:54px;border-radius:14px;background:rgba(242,100,48,.12);
+      color:${accent};display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+    }
+    .preview-card h3{margin:0 0 10px;font-size:24px;line-height:1.2}
+    .preview-card p{margin:0;color:#4b5563;line-height:1.8;font-size:16px}
+    .mini-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    .metric{
+      background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:14px;
+    }
+    .metric strong{display:block;font-size:14px;color:#111827;margin-bottom:6px}
+    .metric span{font-size:13px;color:#6b7280;line-height:1.6}
+    .hover-lift{transition:transform .25s ease, box-shadow .25s ease}
+    .hover-lift:hover{transform:translateY(-6px);box-shadow:0 18px 34px rgba(17,24,39,.10)}
+
+    .pricing-wrap{
+      display:grid;grid-template-columns:minmax(0,1fr);gap:20px;max-width:760px;margin:0 auto;
+    }
+    .pricing-card{
+      background:#fff;border:1px solid #e5e7eb;border-radius:24px;padding:28px;
+      box-shadow:0 20px 50px rgba(17,24,39,.06);text-align:left;
+    }
+    .pricing-badge{
+      display:inline-flex;padding:8px 12px;border-radius:999px;background:#ecfdf5;color:#047857;
+      font-size:13px;font-weight:800;border:1px solid #a7f3d0;margin-bottom:16px;
+    }
+    .pricing-card h3{margin:0 0 10px;font-size:28px}
+    .pricing-card p{margin:0;color:#4b5563;line-height:1.8}
+    .pricing-empty{
+      margin-top:20px;padding:18px;border-radius:16px;background:#f8fafc;border:1px dashed #d1d5db;
+      color:#6b7280;font-size:15px;
+    }
+
+    .testimonial-stage{
+      position:relative;overflow:hidden;
+      background:#fff;border:1px solid #e5e7eb;border-radius:28px;box-shadow:0 20px 50px rgba(17,24,39,.06);
+    }
+    .testimonial-track{
+      display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);
+    }
+    .testimonial-slide{min-width:100%;padding:36px}
+    .quote-mark{font-size:56px;line-height:1;color:${accent};font-weight:800}
+    .stars{color:#f59e0b;letter-spacing:2px;font-size:18px;margin:8px 0 16px}
+    .testimonial-quote{font-size:22px;line-height:1.7;color:#111827;margin:0 0 24px;font-weight:500}
+    .author-row{display:flex;align-items:center;gap:14px}
+    .avatar{
+      width:54px;height:54px;border-radius:50%;background:${accent};color:#fff;
+      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;
+    }
+    .author-meta strong{display:block;font-size:16px}
+    .author-meta span{display:block;color:#6b7280;font-size:14px;margin-top:4px}
+    .slider-controls{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 8px 8px;
+      margin-top:18px;
+    }
+    .arrow-btn{
+      width:44px;height:44px;border-radius:50%;border:1px solid #e5e7eb;background:#fff;cursor:pointer;
+      font-size:18px;transition:.25s ease;
+    }
+    .arrow-btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.08);border-color:${accent}}
+    .dots{display:flex;justify-content:center;gap:8px;flex:1}
+    .dot-btn{
+      width:8px;height:8px;border-radius:999px;border:none;background:#d1d5db;cursor:pointer;transition:.3s ease;
+    }
+    .dot-btn.active{width:26px;background:${accent}}
+
+    .footer{
+      background:#111827;color:#fff;padding:34px 0 26px;
+    }
+    .footer-top{
+      display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.12)
+    }
+    .footer-brand{display:flex;align-items:center;gap:14px}
+    .footer-info{display:flex;flex-wrap:wrap;gap:18px;align-items:center;color:rgba(255,255,255,.78);font-size:14px;margin-top:14px}
+    .footer-links{display:flex;gap:16px;flex-wrap:wrap}
+    .footer-links a{color:rgba(255,255,255,.85)}
+    .socials{display:flex;gap:10px}
+    .socials a{
+      width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(255,255,255,.16);color:#fff;transition:.25s ease;
+    }
+    .socials a:hover{transform:translateY(-2px);background:${accent};border-color:${accent}}
+    .footer-bottom{
+      padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+      color:rgba(255,255,255,.68);font-size:14px
+    }
+
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:.1s}
+    .reveal-delay-2{transition-delay:.2s}
+    .reveal-delay-3{transition-delay:.3s}
+    .zoom-reveal{overflow:hidden}
+    .zoom-reveal img,.zoom-reveal video{transform:scale(1.1);will-change:transform}
+    [data-depth]{will-change:transform}
+    .float-ambient{animation:floatY 6s ease-in-out infinite}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .stagger-parent>*{opacity:0;transform:translateY(24px)}
+    .glass-card{
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(16px);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px;
+    }
+
+    @media (max-width: 991px){
+      .hero-grid,.trust-grid,.split-section,.feature-shell{grid-template-columns:1fr}
+      .nav-inner{grid-template-columns:1fr auto}
+      .nav-right{display:none}
+      .hero{padding:42px 0 56px}
+      .hero h1{font-size:54px;max-width:12ch}
+      .hero-copy{max-width:100%}
+      .hero-visual{min-height:auto;margin-top:10px}
+      .hero-cinematic-bg{inset:12px 0 12px 0}
+      .float-card.small{right:8px;top:18px}
+      .float-card.bottom{left:8px;bottom:18px}
+      .human-png{width:140px;right:10px}
+      .logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+
+    @media (max-width: 767px){
+      .section{padding:56px 0}
+      .container{width:min(1180px,calc(100% - 24px))}
+      .hero-grid{gap:24px}
+      .hero h1{font-size:54px;line-height:1.06;max-width:none}
+      .hero p.sub{font-size:17px}
+      .hero p.support{font-size:15px}
+      .chips{gap:8px}
+      .chip{font-size:12px;padding:9px 12px}
+      .browser-frame img{height:320px;padding:8px}
+      .float-card{position:static;max-width:none;margin-top:12px}
+      .hero-visual{display:block}
+      .visual-card{margin-top:0}
+      .testimonial-slide{padding:24px}
+      .testimonial-quote{font-size:18px}
+      .footer-top{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column}
+    }
+
+    @media (max-width: 575px){
+      .hero h1{font-size:54px}
+      .animated-cta,.ghost-btn{width:100%}
+      .hero-actions{flex-direction:column}
+      .browser-frame img{height:280px}
+      .proof-pill,.eyebrow{font-size:12px}
+    }
+  `;
+
+  return (
+    <div className="lp-root" ref={pageRef}>
+      <style>{css}</style>
+
+      <nav className="nav">
+        <div className="container nav-inner">
+          <div className="brand-left">
+            <div className="brand-mark">Tj</div>
+            <div>
+              <div className="brand-name">Techjockey</div>
+              <div className="brand-sub">Authorized Software Buying Assistance</div>
+            </div>
+          </div>
+
+          <div className="nav-right">
+            <a href="#features">Features</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#testimonials">Reviews</a>
+          </div>
+
+          <a className="animated-cta" href={ctas[0].href} target="_blank" rel="noreferrer">
+            {ctas[0].text}
+          </a>
+        </div>
+      </nav>
+
+      <section className="hero">
+        <div className="container hero-grid">
+          <div className="hero-copy reveal">
+            <div className="eyebrow">Unified Endpoint Security & Management</div>
+            <h1 className="split-text">Secure every endpoint with Endpoint Central</h1>
+            <p className="sub">
+              Simplify endpoint protection, patching, browser control, and vulnerability remediation from a single console.
+            </p>
+            <p className="support">
+              Techjockey helps you evaluate, buy, and deploy ManageEngine Endpoint Central with expert guidance, product consultation, and post-purchase support.
+            </p>
+
+            <div className="chips stagger-parent">
+              <div className="chip">Automated Patch Management</div>
+              <div className="chip">Browser & Data Security</div>
+              <div className="chip">Remote Troubleshooting</div>
+              <div className="chip">Compliance-Ready Reports</div>
+            </div>
+
+            <div className="hero-actions">
+              <a className="animated-cta" href={ctas[0].href} target="_blank" rel="noreferrer">
+                {ctas[0].text}
+              </a>
+              <a className="ghost-btn" href="#features">
+                Explore Features
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-visual reveal reveal-delay-1">
+            <div className="hero-cinematic-bg" />
+            <div className="hero-orb float-ambient" />
+            <div className="hero-orb2 float-ambient" />
+
+            <div className="visual-card zoom-reveal">
+              <div className="browser-frame">
+                <div className="browser-top">
+                  <span className="dot" />
+                  <span className="dot" />
+                  <span className="dot" />
+                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1200&q=80"
+                  alt="IT professional using endpoint security dashboard"
+                />
+              </div>
+            </div>
+
+            <div className="float-card small reveal reveal-delay-2">
+              <div className="float-title">Patch Status</div>
+              <div className="float-value">Automated Control</div>
+              <div className="float-line" />
+            </div>
+
+            <div className="float-card bottom reveal reveal-delay-3">
+              <div className="float-title">Threat Visibility</div>
+              <div className="float-value">Faster Remediation</div>
+              <div className="float-line" />
+            </div>
+
+            <img
+              className="human-png"
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+              alt="Security expert"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-soft">
+        <div className="container trust-grid">
+          <div className="trust-copy reveal">
+            <div className="proof-pill">Why businesses buy with Techjockey</div>
+            <h2>Expert assistance for evaluating and purchasing endpoint security software</h2>
+            <p>
+              From product discovery to deployment support, Techjockey helps organizations choose the right solution faster. Get expert consultation, tailored recommendations, and a smoother buying journey.
+            </p>
+          </div>
+
+          <div className="logo-grid reveal reveal-delay-1">
+            {[
+              'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+              'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
+              'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+              'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
+              'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
+              'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg',
+              'https://upload.wikimedia.org/wikipedia/commons/9/96/Salesforce_logo.svg',
+              'https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg',
+            ].map((logo, index) => (
+              <div className="logo-item" key={index}>
+                <img src={logo} alt={`Brand ${index + 1}`} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-light" id="features">
+        <div className="container split-section">
+          <div className="media-panel light zoom-reveal reveal">
+            <img
+              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80"
+              alt="Endpoint management visualization"
+            />
+          </div>
+
+          <div className="reveal reveal-delay-1">
+            <div className="section-tag">Core Capabilities</div>
+            <div className="section-head">
+              <h2>Protect endpoints with comprehensive security and management controls</h2>
+            </div>
+            <div className="desc-rail">
+              ManageEngine Endpoint Central helps secure endpoints while reducing IT overhead through automated control, monitoring, and remediation capabilities.
+            </div>
+
+            <div className="feature-shell">
+              <div className="tabs">
+                {sectionOneFeatures.map((item, index) => (
+                  <button
+                    key={index}
+                    className={`tab-btn ${activeTab1 === index ? 'active' : ''}`}
+                    onClick={() => setActiveTab1(index)}
+                  >
+                    {item.title}
+                    <span>{item.description}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="preview-card hover-lift">
+                <div className="preview-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2l7 4v6c0 5-3.5 8.74-7 10-3.5-1.26-7-5-7-10V6l7-4z" stroke="currentColor" strokeWidth="1.8" />
+                    <path d="M9.5 12.5l1.8 1.8 3.7-4.1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3>{sectionOneFeatures[activeTab1].title}</h3>
+                <p>{sectionOneFeatures[activeTab1].description}</p>
+
+                <div className="mini-metrics">
+                  <div className="metric">
+                    <strong>Centralized Visibility</strong>
+                    <span>Track endpoint posture from one unified console.</span>
+                  </div>
+                  <div className="metric">
+                    <strong>Policy Enforcement</strong>
+                    <span>Apply secure standards across distributed devices.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '24px' }}>
+              <a className="animated-cta" href={ctas[1].href} target="_blank" rel="noreferrer">
+                {ctas[1].text}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-soft" id="benefits">
+        <div className="container split-section">
+          <div className="reveal">
+            <div className="section-tag">Business Benefits</div>
+            <div className="section-head">
+              <h2>Support IT teams with faster response, stronger control, and easier compliance</h2>
+            </div>
+            <div className="desc-rail">
+              Endpoint Central combines endpoint security and unified endpoint management to help businesses reduce risk while improving operational efficiency.
+            </div>
+
+            <div className="feature-shell">
+              <div className="tabs">
+                {sectionTwoFeatures.map((item, index) => (
+                  <button
+                    key={index}
+                    className={`tab-btn ${activeTab2 === index ? 'active' : ''}`}
+                    onClick={() => setActiveTab2(index)}
+                  >
+                    {item.title}
+                    <span>{item.description}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="preview-card hover-lift">
+                <div className="preview-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 7h16M7 4v6M17 4v6M6 12h12v7H6z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3>{sectionTwoFeatures[activeTab2].title}</h3>
+                <p>{sectionTwoFeatures[activeTab2].description}</p>
+
+                <div className="mini-metrics">
+                  <div className="metric">
+                    <strong>Operational Efficiency</strong>
+                    <span>Reduce manual tasks with automation and ready-to-use workflows.</span>
+                  </div>
+                  <div className="metric">
+                    <strong>Risk Reduction</strong>
+                    <span>Improve security posture with better visibility and control.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '24px' }}>
+              <a className="animated-cta" href={ctas[2].href} target="_blank" rel="noreferrer">
+                {ctas[2].text}
+              </a>
+            </div>
+          </div>
+
+          <div className="media-panel zoom-reveal reveal reveal-delay-1">
+            <img
+              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80"
+              alt="Security operations center monitoring"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-light" id="pricing">
+        <div className="container">
+          <div className="section-head reveal" style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 26px' }}>
+            <h2>Get pricing and product consultation from Techjockey</h2>
+            <p>
+              Connect with our software experts to understand product fitment, licensing options, and deployment support for ManageEngine Endpoint Central.
+            </p>
+          </div>
+
+          <div className="pricing-wrap reveal reveal-delay-1">
+            <div className="pricing-card">
+              <div className="pricing-badge">Custom Quote Available</div>
+              <h3>Talk to our software experts</h3>
+              <p>
+                Pricing depends on business requirements, endpoint count, and deployment scope. Our team will help you evaluate the right plan and buying options.
+              </p>
+              <div className="pricing-empty">
+                Contact Techjockey for pricing details, demo assistance, implementation guidance, and post-purchase support.
+              </div>
+              <div style={{ marginTop: '22px' }}>
+                <a className="animated-cta" href={ctas[3].href} target="_blank" rel="noreferrer">
+                  {ctas[3].text}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-soft" id="testimonials">
+        <div className="container">
+          <div className="section-head reveal" style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 24px' }}>
+            <h2>What users say about Endpoint Central and Techjockey support</h2>
+            <p>
+              Businesses rely on Endpoint Central for stronger endpoint control, while Techjockey helps simplify product evaluation and onboarding.
+            </p>
+          </div>
+
+          <div className="testimonial-stage reveal reveal-delay-1">
+            <div
+              className="testimonial-track"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {testimonials.map((item, index) => (
+                <div className="testimonial-slide" key={index}>
+                  <div className="quote-mark">“</div>
+                  <div className="stars">★★★★★</div>
+                  <p className="testimonial-quote">{item.quote}</p>
+                  <div className="author-row">
+                    <div className="avatar">{item.author.charAt(0)}</div>
+                    <div className="author-meta">
+                      <strong>{item.author}</strong>
+                      <span>{item.designation}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="slider-controls">
+            <button
+              className="arrow-btn"
+              onClick={() => setActiveSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              aria-label="Previous testimonial"
+            >
+              ←
+            </button>
+
+            <div className="dots">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  className={`dot-btn ${activeSlide === index ? 'active' : ''}`}
+                  onClick={() => setActiveSlide(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              className="arrow-btn"
+              onClick={() => setActiveSlide((prev) => (prev + 1) % testimonials.length)}
+              aria-label="Next testimonial"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-top">
+            <div>
+              <div className="footer-brand">
+                <div className="brand-mark">Tj</div>
+                <div>
+                  <div className="brand-name">Techjockey</div>
+                  <div className="brand-sub" style={{ color: 'rgba(255,255,255,.72)' }}>
+                    Software buying guidance for modern businesses
+                  </div>
+                </div>
+              </div>
+
+              <div className="footer-info">
+                <span>Software Consultation</span>
+                <span>Product Comparison</span>
+                <span>Licensing Assistance</span>
+                <span>Post-Purchase Support</span>
+              </div>
+            </div>
+
+            <div className="socials">
+              <a href="https://www.facebook.com/TechjockeyInfo/" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H17V4.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V11H7.5v3h2.8v8h3.2z" />
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/techjockey-com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.94 8.5A1.94 1.94 0 1 1 6.94 4.62 1.94 1.94 0 0 1 6.94 8.5zM5.2 9.98H8.7V20H5.2V9.98zM10.87 9.98h3.35v1.37h.05c.47-.88 1.6-1.8 3.28-1.8 3.5 0 4.15 2.3 4.15 5.29V20h-3.5v-4.57c0-1.09-.02-2.49-1.52-2.49-1.52 0-1.75 1.19-1.75 2.41V20h-3.5V9.98z" />
+                </svg>
+              </a>
+              <a href="https://twitter.com/TechjockeyInfo" target="_blank" rel="noreferrer" aria-label="Twitter">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22 5.92c-.74.33-1.53.56-2.36.66a4.12 4.12 0 0 0 1.8-2.27 8.2 8.2 0 0 1-2.61 1 4.1 4.1 0 0 0-6.99 3.74A11.64 11.64 0 0 1 3.4 4.88a4.1 4.1 0 0 0 1.27 5.47 4.06 4.06 0 0 1-1.86-.51v.05a4.11 4.11 0 0 0 3.29 4.03c-.45.12-.92.18-1.41.18-.34 0-.68-.03-1-.09a4.12 4.12 0 0 0 3.84 2.85A8.24 8.24 0 0 1 2 18.58a11.6 11.6 0 0 0 6.29 1.84c7.55 0 11.68-6.26 11.68-11.69l-.01-.53A8.3 8.3 0 0 0 22 5.92z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/techjockey/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm4.75-3.35a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <div>© 2026 Techjockey. All rights reserved.</div>
+            <div className="footer-links">
+              <a href="https://www.techjockey.com/privacy-policy" target="_blank" rel="noreferrer">
+                Privacy Policy
+              </a>
+              <a href="https://www.techjockey.com/terms-of-use" target="_blank" rel="noreferrer">
+                Terms of Use
+              </a>
+              <a href="https://www.techjockey.com/contact-us" target="_blank" rel="noreferrer">
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;

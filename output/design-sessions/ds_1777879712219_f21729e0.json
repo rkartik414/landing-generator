@@ -1,0 +1,44 @@
+{
+  "sessionId": "ds_1777879712219_f21729e0",
+  "createdAt": "2026-05-04T07:28:32.220Z",
+  "updatedAt": "2026-05-04T07:28:32.226Z",
+  "status": "created",
+  "productName": "testtest12",
+  "pageType": "category",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://www.imagine.art/video",
+    "parsedSectionCount": 8
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": null,
+    "heroStrategy": null,
+    "blueprint": null,
+    "mediaPlan": null
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": null,
+    "fileUrl": null,
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": null
+  },
+  "logs": [
+    {
+      "at": "2026-05-04T07:28:32.226Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    }
+  ]
+}

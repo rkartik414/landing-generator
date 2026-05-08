@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>workplace-1778143273751.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <link rel="stylesheet" href="/ui/tailwind.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: 'var(--accent)',
+            primary: 'var(--primary)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#e4292b';
+  const primary = '#e4292b';
+  const bodyBg = '#ffffff';
+  const heroRef = useRef(null);
+  const [activeFeatureTab, setActiveFeatureTab] = useState(0);
+  const [activeStandardTab, setActiveStandardTab] = useState(0);
+  const [activeAdditionalTab, setActiveAdditionalTab] = useState(0);
+  const [activeInsightTab, setActiveInsightTab] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    workEmail: '',
+    company: ''
+  });
+  const ctas = [{
+    text: 'Get Started',
+    href: 'https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software'
+  }, {
+    text: 'Get Started',
+    href: 'https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software'
+  }, {
+    text: 'Get Started',
+    href: 'https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software'
+  }, {
+    text: 'Get Started',
+    href: 'https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software'
+  }, {
+    text: 'Get Started',
+    href: 'https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software'
+  }];
+  const trustLogos = ['/output/generated-assets/ds_1778142936650_2bbec4dd/10-4e22c31148.png', '/output/generated-assets/ds_1778142936650_2bbec4dd/22-b3d4199ca5.png', '/output/generated-assets/ds_1778142936650_2bbec4dd/23-61e528786b.png'];
+  const sections = [{
+    name: 'Features',
+    headline: 'Why Choose Zoho Workplace?',
+    description: 'Zoho Workplace brings everything your team needs to collaborate, communicate, and stay productive through a single unified platform.',
+    image: '/output/generated-assets/ds_1778142936650_2bbec4dd/17-8ee9780f0b.jpg',
+    features: [{
+      title: 'All-in-One Unified Workspace',
+      description: 'Access email, chat, documents, meetings, and storage in a single integrated platform. Reduce app switching and boost productivity.'
+    }, {
+      title: 'Seamless Collaboration in Real Time',
+      description: 'Work together on documents, spreadsheets, and presentations with live editing, comments, and built-in communication tools.'
+    }, {
+      title: 'Work from Anywhere, Anytime',
+      description: 'Stay productive on the go. Reply to emails, access presentations, or host a video conference from anywhere effortlessly.'
+    }, {
+      title: 'AI-Powered Productivity (Zia)',
+      description: 'Leverage built-in AI for writing assistance in terms of grammar, readability and writing style while you work on Writer or Sheet.'
+    }]
+  }, {
+    name: 'Standard Features',
+    headline: 'Unlock Your Business Growth with Zoho Workplace',
+    description: 'Zoho Workplace unifies email, collaboration, and productivity tools to streamline your business operations. Enable smarter teamwork and drive growth with a single platform.',
+    image: '/output/generated-assets/ds_1778142936650_2bbec4dd/18-473c14de05.jpg',
+    features: [{
+      title: 'Ideal For Your Business Size',
+      description: 'Designed for any organization, Zoho Workplace enhances efficiency and teamwork at every scale.'
+    }, {
+      title: 'Communicate Effectively',
+      description: 'Go beyond email and chat, and connect teams with a social intranet using channels, feeds, and groups.'
+    }, {
+      title: 'Integrated Business Apps',
+      description: 'Connect with Zoho and third-party apps to unify workflows, eliminate silos, and streamline processes across your business.'
+    }, {
+      title: 'Customizable Workspace',
+      description: 'Customize settings, layouts, workflows to fit your needs. Also, get a professional, ad-free email service & advanced controls.'
+    }]
+  }, {
+    name: 'Additional Features',
+    headline: 'Integrate with Popular Apps',
+    description: 'Connect your Zoho Workplace with other business apps to ensure higher productivity and growth - all within a unified workspace.',
+    image: '/output/generated-assets/ds_1778142936650_2bbec4dd/24-c93738f621.png',
+    features: [{
+      title: 'Zoho Apps',
+      description: 'Zoho Meeting, Zoho Connect, Zoho Mail, Zoho Cliq, Zoho Writer, etc.'
+    }, {
+      title: 'Analytics',
+      description: 'Zoho Analytics, Google Analytics'
+    }, {
+      title: 'Accounting & Finance',
+      description: 'Zoho Invoice & Zoho Books'
+    }, {
+      title: 'Automation',
+      description: 'Zoho Flow, Zapier, viaSocket'
+    }, {
+      title: 'Business Suites',
+      description: 'Zoho One, Zoho Workspace'
+    }]
+  }, {
+    name: 'Insight',
+    headline: 'Performance Beyond Limits with Zoho Workplace',
+    description: '',
+    image: '/output/generated-assets/ds_1778142936650_2bbec4dd/25-5d0d126da2.png',
+    features: [{
+      title: 'Secure',
+      description: '82.9% of users reported a secure email experience, ensuring strong data protection, and safe and reliable communication.'
+    }, {
+      title: 'Anywhere Access',
+      description: '42.9% of them found it easier to work remotely with Zoho Workplace apps, enabling seamless access from any device, anywhere.'
+    }, {
+      title: 'Intuitive',
+      description: '28.6% found Zoho Workplace easy to use, reducing the learning curve. Teams can quickly adapt and work efficiently.'
+    }, {
+      title: 'Collaborative',
+      description: '14.3% of them saw improved collaboration, engagement and productivity, helping teams stay aligned and get more done faster.'
+    }]
+  }];
+  const testimonials = [{
+    quote: 'Zoho Workplace has streamlined our communication and collaboration by bringing email, documents, and team tools into one unified platform.',
+    name: 'Amit Kapoor',
+    role: 'IT Manager',
+    avatar: '/output/generated-assets/ds_1778142936650_2bbec4dd/13-a1af876bc5.png'
+  }, {
+    quote: 'The platform is easy to use and has significantly improved team productivity by reducing dependency on multiple tools.',
+    name: 'Saurav Singh',
+    role: 'Head of Operations',
+    avatar: '/output/generated-assets/ds_1778142936650_2bbec4dd/15-01fc6c95c0.jpg'
+  }, {
+    quote: 'Techjockey helped us identify the right Zoho Workplace plan based on our requirements. Their guidance made the entire purchase process quick and hassle-free.',
+    name: 'Shrimi Manchanda',
+    role: 'Operations Manager',
+    avatar: '/output/generated-assets/ds_1778142936650_2bbec4dd/13-a1af876bc5.png'
+  }, {
+    quote: 'The seamless integration between email, file management, and collaboration tools has made our daily workflows much more efficient.',
+    name: 'Shweta Thakur',
+    role: 'Senior System Administrator',
+    avatar: '/output/generated-assets/ds_1778142936650_2bbec4dd/15-01fc6c95c0.jpg'
+  }, {
+    quote: 'Zoho Workplace helped us collaborate seamlessly, ensuring a more productive and efficient workflow across teams.',
+    name: 'Narinder Sahni',
+    role: 'IT Head',
+    avatar: '/output/generated-assets/ds_1778142936650_2bbec4dd/13-a1af876bc5.png'
+  }];
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    document.documentElement.style.setProperty('--accent-glow', 'rgba(228,41,43,0.14)');
+    document.body.style.background = bodyBg;
+  }, [accent, primary, bodyBg]);
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), {
+      threshold: 0.15
+    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+  const handleFormChange = e => {
+    const {
+      name,
+      value
+    } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    window.open(ctas[0].href, '_blank', 'noopener,noreferrer');
+  };
+  const renderFeatureSection = (section, activeTab, setActiveTab, ctaIndex) => /*#__PURE__*/React.createElement("section", {
+    className: "content-section reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container section-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-copy"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, section.name), /*#__PURE__*/React.createElement("h2", null, section.headline), section.description ? /*#__PURE__*/React.createElement("p", {
+    className: "section-description"
+  }, section.description) : null, /*#__PURE__*/React.createElement("div", {
+    className: "feature-tabs"
+  }, section.features.map((feature, idx) => /*#__PURE__*/React.createElement("button", {
+    key: feature.title,
+    className: `feature-tab ${activeTab === idx ? 'active' : ''}`,
+    onClick: () => setActiveTab(idx),
+    type: "button"
+  }, feature.title))), /*#__PURE__*/React.createElement("div", {
+    className: "feature-panel soft-shadow"
+  }, /*#__PURE__*/React.createElement("h3", null, section.features[activeTab].title), /*#__PURE__*/React.createElement("p", null, section.features[activeTab].description)), /*#__PURE__*/React.createElement("a", {
+    className: "primary-btn",
+    href: ctas[ctaIndex].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[ctaIndex].text)), /*#__PURE__*/React.createElement("div", {
+    className: "section-media soft-shadow zoom-reveal"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: section.image,
+    alt: section.headline
+  }))));
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          background: ${bodyBg};
+          color: #101828;
+        }
+
+        a {
+          text-decoration: none;
+        }
+
+        button,
+        input {
+          font: inherit;
+        }
+
+        img {
+          max-width: 100%;
+          display: block;
+        }
+
+        .landing-page {
+          background: ${bodyBg};
+        }
+
+        .container {
+          width: min(1180px, calc(100% - 32px));
+          margin: 0 auto;
+        }
+
+        .soft-shadow {
+          box-shadow: 0 18px 50px rgba(16, 24, 40, 0.08), 0 6px 18px rgba(16, 24, 40, 0.05);
+        }
+
+        .reveal {
+          opacity: 0;
+          transform: translateY(24px);
+          transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .hero {
+          padding: 72px 0 36px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 28px;
+          align-items: center;
+        }
+
+        .hero-copy h1 {
+          font-size: clamp(2.2rem, 5vw, 4.2rem);
+          line-height: 1.02;
+          margin: 0 0 16px;
+          letter-spacing: -0.04em;
+        }
+
+        .hero-copy p {
+          font-size: 1.05rem;
+          line-height: 1.7;
+          color: #475467;
+          margin: 0 0 28px;
+          max-width: 640px;
+        }
+
+        .hero-actions {
+          display: flex;
+          gap: 14px;
+          flex-wrap: wrap;
+          margin-bottom: 22px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 48px;
+          padding: 0 20px;
+          border-radius: 12px;
+          font-weight: 700;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .primary-btn {
+          background: ${primary};
+          color: #fff;
+          box-shadow: 0 14px 28px rgba(228, 41, 43, 0.24);
+        }
+
+        .secondary-btn {
+          background: #fff;
+          color: #101828;
+          border: 1px solid #e4e7ec;
+        }
+
+        .primary-btn:hover,
+        .secondary-btn:hover {
+          transform: translateY(-1px);
+        }
+
+        .hero-proof {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .proof-chip {
+          padding: 10px 14px;
+          border: 1px solid #eaecf0;
+          border-radius: 999px;
+          background: #fff;
+          color: #344054;
+          font-size: 0.92rem;
+          font-weight: 600;
+        }
+
+        .hero-card {
+          background: linear-gradient(180deg, #101828 0%, #1d2939 100%);
+          color: #fff;
+          border-radius: 24px;
+          padding: 24px;
+        }
+
+        .hero-card h3 {
+          margin: 0 0 18px;
+          font-size: 1.1rem;
+        }
+
+        .hero-form {
+          display: grid;
+          gap: 12px;
+        }
+
+        .hero-form input {
+          width: 100%;
+          height: 48px;
+          border-radius: 12px;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          background: rgba(255, 255, 255, 0.06);
+          color: #fff;
+          padding: 0 14px;
+          outline: none;
+        }
+
+        .hero-form input::placeholder {
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .hero-form button {
+          border: none;
+          cursor: pointer;
+        }
+
+        .form-note {
+          color: rgba(255, 255, 255, 0.72);
+          font-size: 0.86rem;
+          margin: 4px 0 0;
+        }
+
+        .trust-strip {
+          padding: 12px 0 28px;
+        }
+
+        .trust-wrap {
+          display: grid;
+          gap: 18px;
+          align-items: center;
+        }
+
+        .trust-title {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #344054;
+          text-align: center;
+        }
+
+        .logo-row {
+          display: flex;
+          gap: 18px;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .logo-badge {
+          background: #fff;
+          border: 1px solid #eaecf0;
+          border-radius: 16px;
+          padding: 14px 18px;
+          min-width: 132px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .logo-badge img {
+          max-height: 34px;
+          width: auto;
+          object-fit: contain;
+        }
+
+        .proof-points {
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .proof-point {
+          background: #f8fafc;
+          color: #344054;
+          border: 1px solid #eaecf0;
+          border-radius: 999px;
+          padding: 10px 14px;
+          font-size: 0.9rem;
+          font-weight: 600;
+        }
+
+        .dark-stats {
+          padding: 28px 0 64px;
+        }
+
+        .dark-panel {
+          background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+          border-radius: 28px;
+          padding: 28px;
+          color: #fff;
+        }
+
+        .dark-panel-header {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+          align-items: end;
+          margin-bottom: 24px;
+        }
+
+        .dark-panel-header h2 {
+          margin: 0 0 8px;
+          font-size: clamp(1.8rem, 4vw, 2.6rem);
+        }
+
+        .dark-panel-header p {
+          margin: 0;
+          color: rgba(255, 255, 255, 0.72);
+          max-width: 700px;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 16px;
+        }
+
+        .stat-card {
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 20px;
+          padding: 20px;
+        }
+
+        .stat-card strong {
+          display: block;
+          font-size: 2rem;
+          line-height: 1;
+          margin-bottom: 10px;
+          color: #fff;
+        }
+
+        .stat-card span {
+          color: rgba(255, 255, 255, 0.78);
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+
+        .content-section {
+          padding: 72px 0;
+        }
+
+        .section-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          align-items: center;
+        }
+
+        .eyebrow {
+          display: inline-block;
+          color: ${primary};
+          font-weight: 800;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          font-size: 0.82rem;
+          margin-bottom: 14px;
+        }
+
+        .section-copy h2 {
+          margin: 0 0 14px;
+          font-size: clamp(1.9rem, 4vw, 3rem);
+          line-height: 1.08;
+        }
+
+        .section-description {
+          color: #475467;
+          line-height: 1.75;
+          margin: 0 0 24px;
+        }
+
+        .feature-tabs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-bottom: 18px;
+        }
+
+        .feature-tab {
+          border: 1px solid #e4e7ec;
+          background: #fff;
+          color: #344054;
+          padding: 10px 14px;
+          border-radius: 999px;
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        .feature-tab.active {
+          background: rgba(228, 41, 43, 0.08);
+          border-color: rgba(228, 41, 43, 0.22);
+          color: ${primary};
+        }
+
+        .feature-panel {
+          background: #fff;
+          border: 1px solid #eaecf0;
+          border-radius: 20px;
+          padding: 22px;
+          margin-bottom: 22px;
+        }
+
+        .feature-panel h3 {
+          margin: 0 0 10px;
+          font-size: 1.1rem;
+        }
+
+        .feature-panel p {
+          margin: 0;
+          color: #475467;
+          line-height: 1.7;
+        }
+
+        .section-media {
+          background: #fff;
+          border: 1px solid #eaecf0;
+          border-radius: 24px;
+          overflow: hidden;
+        }
+
+        .section-media img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .testimonials {
+          padding: 72px 0 88px;
+        }
+
+        .testimonials h2 {
+          margin: 0 0 28px;
+          text-align: center;
+          font-size: clamp(1.9rem, 4vw, 3rem);
+        }
+
+        .testimonial-card {
+          background: #fff;
+          border: 1px solid #eaecf0;
+          border-radius: 24px;
+          padding: 28px;
+          max-width: 860px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .testimonial-card p {
+          font-size: 1.08rem;
+          line-height: 1.8;
+          color: #344054;
+          margin: 0 0 22px;
+        }
+
+        .testimonial-meta {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+        }
+
+        .testimonial-meta img {
+          width: 54px;
+          height: 54px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .testimonial-meta strong {
+          display: block;
+          font-size: 0.98rem;
+        }
+
+        .testimonial-meta span {
+          color: #667085;
+          font-size: 0.9rem;
+        }
+
+        .dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 18px;
+        }
+
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #d0d5dd;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+        }
+
+        .dot.active {
+          background: ${primary};
+        }
+
+        @media (max-width: 980px) {
+          .hero-grid,
+          .section-grid,
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .dark-panel-header {
+            align-items: start;
+            flex-direction: column;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero {
+            padding-top: 48px;
+          }
+
+          .hero-card,
+          .dark-panel,
+          .feature-panel,
+          .testimonial-card {
+            padding: 20px;
+          }
+
+          .logo-badge {
+            min-width: 110px;
+          }
+        }
+      `), /*#__PURE__*/React.createElement("div", {
+    className: "landing-page"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "hero reveal visible",
+    ref: heroRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-copy"
+  }, /*#__PURE__*/React.createElement("h1", null, "Empower Your Team with Smarter Collaboration Using Zoho Workplace"), /*#__PURE__*/React.createElement("p", null, "Bring email, chat, meetings, storage, and document collaboration into one productivity suite built to simplify communication and help teams work better together."), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "primary-btn",
+    href: ctas[0].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[0].text), /*#__PURE__*/React.createElement("a", {
+    className: "secondary-btn",
+    href: ctas[1].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[1].text)), /*#__PURE__*/React.createElement("div", {
+    className: "hero-proof"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "proof-chip"
+  }, "Unified productivity suite"), /*#__PURE__*/React.createElement("span", {
+    className: "proof-chip"
+  }, "Built for collaboration"), /*#__PURE__*/React.createElement("span", {
+    className: "proof-chip"
+  }, "Secure business communication"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-card soft-shadow"
+  }, /*#__PURE__*/React.createElement("h3", null, "Get Started with a quick request"), /*#__PURE__*/React.createElement("form", {
+    className: "hero-form",
+    onSubmit: handleFormSubmit
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    name: "name",
+    placeholder: "Your name",
+    value: formData.name,
+    onChange: handleFormChange,
+    required: true
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "email",
+    name: "workEmail",
+    placeholder: "Work email",
+    value: formData.workEmail,
+    onChange: handleFormChange,
+    required: true
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    name: "company",
+    placeholder: "Company name",
+    value: formData.company,
+    onChange: handleFormChange,
+    required: true
+  }), /*#__PURE__*/React.createElement("button", {
+    className: "primary-btn",
+    type: "submit"
+  }, "Get Started")), /*#__PURE__*/React.createElement("p", {
+    className: "form-note"
+  }, "Minimal fields. Faster access. No unnecessary friction.")))), /*#__PURE__*/React.createElement("section", {
+    className: "trust-strip reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container trust-wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-title"
+  }, "Trusted proof points"), /*#__PURE__*/React.createElement("div", {
+    className: "logo-row"
+  }, trustLogos.map((logo, index) => /*#__PURE__*/React.createElement("div", {
+    className: "logo-badge soft-shadow",
+    key: `${logo}-${index}`
+  }, /*#__PURE__*/React.createElement("img", {
+    src: logo,
+    alt: `Trust logo ${index + 1}`
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "proof-points"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "proof-point"
+  }, "Integrated email, chat, docs, and meetings"), /*#__PURE__*/React.createElement("span", {
+    className: "proof-point"
+  }, "Secure collaboration environment"), /*#__PURE__*/React.createElement("span", {
+    className: "proof-point"
+  }, "Supports flexible work from anywhere")))), /*#__PURE__*/React.createElement("section", {
+    className: "dark-stats reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dark-panel soft-shadow"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dark-panel-header"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Key performance highlights"), /*#__PURE__*/React.createElement("p", null, "Real product insights from the platform\u2019s own performance section to reinforce value at a glance.")), /*#__PURE__*/React.createElement("a", {
+    className: "primary-btn",
+    href: ctas[2].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[2].text)), /*#__PURE__*/React.createElement("div", {
+    className: "stats-grid"
+  }, sections[3].features.map(item => {
+    const valueMatch = item.description.match(/^\d+(\.\d+)?%/);
+    const statValue = valueMatch ? valueMatch[0] : item.title;
+    const statText = valueMatch ? item.description.replace(valueMatch[0], '').trim() : item.description;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "stat-card",
+      key: item.title
+    }, /*#__PURE__*/React.createElement("strong", null, statValue), /*#__PURE__*/React.createElement("span", null, statText));
+  }))))), renderFeatureSection(sections[0], activeFeatureTab, setActiveFeatureTab, 1), renderFeatureSection(sections[1], activeStandardTab, setActiveStandardTab, 2), renderFeatureSection(sections[2], activeAdditionalTab, setActiveAdditionalTab, 3), renderFeatureSection(sections[3], activeInsightTab, setActiveInsightTab, 4), /*#__PURE__*/React.createElement("section", {
+    className: "testimonials reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("h2", null, "What customers are saying"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card soft-shadow"
+  }, /*#__PURE__*/React.createElement("p", null, "\u201C", testimonials[activeSlide].quote, "\u201D"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-meta"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: testimonials[activeSlide].avatar,
+    alt: testimonials[activeSlide].name
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, testimonials[activeSlide].name), /*#__PURE__*/React.createElement("span", null, testimonials[activeSlide].role)))), /*#__PURE__*/React.createElement("div", {
+    className: "dots"
+  }, testimonials.map((_, idx) => /*#__PURE__*/React.createElement("button", {
+    key: idx,
+    type: "button",
+    className: `dot ${activeSlide === idx ? 'active' : ''}`,
+    onClick: () => setActiveSlide(idx),
+    "aria-label": `Go to testimonial ${idx + 1}`
+  })))))));
+};
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

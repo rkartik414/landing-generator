@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Engine Endpoint Central | Unified Endpoint Management & Security</title>
+  <meta name="description" content="Manage, secure, and automate desktops, laptops, servers, and mobile devices from one console with Manage Engine Endpoint Central for IT teams." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#4F46E5;
+      --accent-2:#6D66F6;
+      --dark:#101526;
+      --dark-2:#1a1f36;
+      --text:#111827;
+      --muted:#667085;
+      --border:#e5e7eb;
+      --bg:#f5f7fb;
+      --light:#f8fafc;
+      --white:#ffffff;
+      --success:#16a34a;
+      --gold:#f5b301;
+      --shadow:0 10px 30px rgba(15,23,42,.10);
+      --shadow-lg:0 18px 50px rgba(15,23,42,.18);
+      --radius:18px;
+      --radius-sm:12px;
+      --container:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+
+    .container{
+      width:min(100% - 32px, var(--container));
+      margin:0 auto;
+    }
+
+    .section{
+      padding:84px 0;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .section-dark{
+      background:var(--dark);
+      color:#fff;
+    }
+
+    .section-light{
+      background:#f8f9fa;
+    }
+
+    .section-white{
+      background:#fff;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 14px;
+      font-family:'Rajdhani',sans-serif;
+      line-height:1.05;
+      letter-spacing:.2px;
+    }
+
+    h1{
+      font-size:clamp(48px, 6vw, 72px);
+      color:#fff;
+    }
+
+    h2{
+      font-size:clamp(32px, 4vw, 46px);
+    }
+
+    h3{
+      font-size:24px;
+    }
+
+    p{
+      margin:0 0 16px;
+      color:inherit;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:#c7d2fe;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    .eyebrow.light{
+      color:var(--accent);
+      background:rgba(79,70,229,.08);
+      border-color:rgba(79,70,229,.14);
+    }
+
+    .section-head{
+      max-width:760px;
+      margin-bottom:40px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .section-dark .section-head p{
+      color:rgba(255,255,255,.78);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:52px;
+      padding:0 22px;
+      border-radius:12px;
+      font-weight:700;
+      transition:all .25s ease;
+      cursor:pointer;
+      border:none;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 30px rgba(0,0,0,.15);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#fff;
+      box-shadow:0 12px 28px rgba(79,70,229,.35);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--dark);
+      border:1px solid rgba(255,255,255,.16);
+    }
+
+    .btn-outline{
+      background:transparent;
+      border:1px solid rgba(79,70,229,.22);
+      color:var(--accent);
+    }
+
+    .btn-full{
+      width:100%;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(15,23,42,.06);
+    }
+
+    .nav-wrap{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .nav-left,.nav-right{
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .product-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .product-logo img{
+      height:40px;
+      width:auto;
+      object-fit:contain;
+    }
+
+    .product-name{
+      font-weight:700;
+      color:var(--dark);
+      line-height:1.1;
+    }
+
+    .product-name small{
+      display:block;
+      color:var(--muted);
+      font-weight:600;
+      font-size:12px;
+      margin-top:2px;
+    }
+
+    .techjockey-logo img{
+      height:28px;
+      width:auto;
+      opacity:.9;
+    }
+
+    .hero{
+      background:linear-gradient(180deg, #101526 0%, #1a1f36 100%);
+      color:#fff;
+      padding:76px 0 56px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(79,70,229,.25), transparent 30%),
+        radial-gradient(circle at 84% 22%, rgba(96,165,250,.16), transparent 26%),
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:auto,auto,40px 40px,40px 40px;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      align-items:center;
+      gap:42px;
+    }
+
+    .hero-copy p{
+      font-size:18px;
+      color:rgba(255,255,255,.82);
+      max-width:620px;
+    }
+
+    .hero-support{
+      color:#a5b4fc;
+      font-weight:600;
+      font-size:15px;
+      margin-bottom:18px;
+    }
+
+    .hero-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .hero-list{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:26px;
+      max-width:580px;
+    }
+
+    .hero-list .chip{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:#e5e7eb;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .hero-list svg{
+      flex:0 0 18px;
+    }
+
+    .hero-visual{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:520px;
+    }
+
+    .dashboard-shell{
+      position:relative;
+      width:100%;
+      padding:24px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow-lg);
+      backdrop-filter:blur(12px);
+    }
+
+    .hero-main-img{
+      width:100%;
+      max-height:480px;
+      object-fit:contain;
+      border-radius:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .float-chip{
+      position:absolute;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(16,21,38,.86);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 14px 24px rgba(0,0,0,.25);
+      font-size:13px;
+      font-weight:600;
+      z-index:3;
+      animation:float 4.8s ease-in-out infinite;
+    }
+
+    .float-chip.one{top:10%; left:-2%; animation-delay:0s;}
+    .float-chip.two{top:18%; right:-2%; animation-delay:.8s;}
+    .float-chip.three{bottom:18%; left:2%; animation-delay:1.4s;}
+    .float-chip.four{bottom:6%; right:2%; animation-delay:2.2s;}
+
+    .float-chip .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 0 4px rgba(34,197,94,.18);
+    }
+
+    .float-chip.alert .dot{background:#ef4444; box-shadow:0 0 0 4px rgba(239,68,68,.16);}
+    .float-chip.progress .dot{background:#f59e0b; box-shadow:0 0 0 4px rgba(245,158,11,.16);}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
+
+    .proof-strip{
+      background:#f8fafc;
+      border-top:1px solid rgba(15,23,42,.06);
+      border-bottom:1px solid rgba(15,23,42,.06);
+      padding:22px 0;
+    }
+
+    .proof-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .proof-card{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 16px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:0 6px 18px rgba(15,23,42,.05);
+    }
+
+    .proof-card svg{
+      flex:0 0 22px;
+    }
+
+    .proof-card strong{
+      display:block;
+      font-size:14px;
+      line-height:1.3;
+    }
+
+    .proof-card span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.4;
+    }
+
+    .spotlight-layout{
+      display:grid;
+      grid-template-columns:1fr 1.05fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .preview-panel{
+      position:relative;
+      background:linear-gradient(180deg,#ffffff,#f6f8ff);
+      border:1px solid #e6eaf7;
+      border-radius:24px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      min-height:480px;
+    }
+
+    .preview-panel::before{
+      content:"";
+      position:absolute;
+      inset:auto -40px -40px auto;
+      width:180px;height:180px;
+      background:radial-gradient(circle, rgba(79,70,229,.18), transparent 65%);
+      pointer-events:none;
+    }
+
+    .window-top{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:18px;
+    }
+
+    .window-top span{
+      width:10px;height:10px;border-radius:50%;
+      background:#d1d5db;
+    }
+
+    .window-top span:nth-child(1){background:#fb7185}
+    .window-top span:nth-child(2){background:#fbbf24}
+    .window-top span:nth-child(3){background:#4ade80}
+
+    .preview-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:16px;
+      height:calc(100% - 28px);
+    }
+
+    .panel-large,.panel-stack .stack-card{
+      border-radius:18px;
+      background:#fff;
+      border:1px solid #e8ecf7;
+      box-shadow:0 8px 24px rgba(15,23,42,.06);
+    }
+
+    .panel-large{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .metric-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:14px;
+      border-radius:14px;
+      background:#f8faff;
+      border:1px solid #eef2ff;
+    }
+
+    .metric b{
+      display:block;
+      font-size:22px;
+      color:var(--dark);
+      margin-bottom:4px;
+    }
+
+    .metric span{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .chart-card{
+      flex:1;
+      padding:16px;
+      border-radius:16px;
+      background:linear-gradient(180deg,#121831,#1c2446);
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .bars{
+      display:flex;
+      align-items:flex-end;
+      gap:10px;
+      height:140px;
+      margin-top:18px;
+    }
+
+    .bars span{
+      flex:1;
+      background:linear-gradient(180deg,#8b83ff,#4F46E5);
+      border-radius:10px 10px 4px 4px;
+      opacity:.95;
+    }
+
+    .bars span:nth-child(1){height:48%}
+    .bars span:nth-child(2){height:68%}
+    .bars span:nth-child(3){height:58%}
+    .bars span:nth-child(4){height:84%}
+    .bars span:nth-child(5){height:76%}
+
+    .panel-stack{
+      display:grid;
+      gap:14px;
+    }
+
+    .stack-card{
+      padding:16px;
+    }
+
+    .progress-line{
+      margin-top:12px;
+      height:10px;
+      background:#eef2ff;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .progress-line i{
+      display:block;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,#4F46E5,#7c72ff);
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+
+    .feature-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:20px;
+      box-shadow:0 8px 22px rgba(15,23,42,.05);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 32px rgba(15,23,42,.1);
+    }
+
+    .feature-icon{
+      width:54px;height:54px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:rgba(79,70,229,.08);
+      margin-bottom:16px;
+    }
+
+    .feature-card p{
+      color:var(--muted);
+      margin-bottom:0;
+    }
+
+    .feature-band{
+      margin-top:36px;
+      background:linear-gradient(180deg,#151b31,#0f1528);
+      color:#fff;
+      border-radius:24px;
+      padding:34px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow-lg);
+    }
+
+    .tab-shell{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:26px;
+      align-items:start;
+    }
+
+    .tab-nav{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .tab-btn{
+      text-align:left;
+      width:100%;
+      padding:16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+      color:#dbe4ff;
+      cursor:pointer;
+      transition:all .25s ease;
+      font-weight:700;
+    }
+
+    .tab-btn.active{
+      background:linear-gradient(135deg, rgba(79,70,229,.28), rgba(79,70,229,.12));
+      color:#fff;
+      border-color:rgba(124,114,255,.45);
+      box-shadow:0 12px 28px rgba(79,70,229,.18);
+    }
+
+    .tab-panel{
+      display:none;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+
+    .tab-panel.active{
+      display:grid;
+    }
+
+    .mini-card{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .mini-card p{
+      color:rgba(255,255,255,.76);
+      margin-bottom:0;
+      font-size:14px;
+    }
+
+    .mini-top{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .mini-icon{
+      width:46px;height:46px;border-radius:12px;
+      display:grid;place-items:center;
+      background:rgba(79,70,229,.16);
+      flex:0 0 46px;
+    }
+
+    .pricing{
+      display:grid;
+      place-items:center;
+    }
+
+    .pricing-card{
+      width:min(100%, 760px);
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .pricing-top{
+      padding:30px;
+      background:linear-gradient(180deg,#fafbff,#f4f7ff);
+      border-bottom:1px solid var(--border);
+      text-align:center;
+    }
+
+    .pricing-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:#dcfce7;
+      color:#166534;
+      font-weight:700;
+      border-radius:999px;
+      padding:8px 14px;
+      font-size:13px;
+      margin-bottom:16px;
+    }
+
+    .pricing-note{
+      color:var(--muted);
+      font-size:15px;
+      max-width:580px;
+      margin:0 auto;
+    }
+
+    .price-row{
+      margin-top:18px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .price-old{
+      color:#9ca3af;
+      text-decoration:line-through;
+      font-size:24px;
+      font-weight:700;
+    }
+
+    .price-new{
+      font-size:42px;
+      font-weight:800;
+      color:var(--dark);
+      font-family:'Rajdhani',sans-serif;
+      line-height:1;
+    }
+
+    .pricing-body{
+      padding:30px;
+    }
+
+    .check-list{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px 22px;
+      margin:0 0 26px;
+      padding:0;
+      list-style:none;
+    }
+
+    .check-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:#374151;
+      font-weight:500;
+    }
+
+    .check-list svg{
+      flex:0 0 18px;
+      margin-top:3px;
+    }
+
+    .carousel-wrap{
+      position:relative;
+    }
+
+    .testimonial-slider{
+      overflow:hidden;
+    }
+
+    .testimonial-track{
+      display:flex;
+      transition:transform .45s ease;
+    }
+
+    .testimonial-slide{
+      min-width:100%;
+      padding:6px;
+    }
+
+    .testimonial-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      padding:28px;
+      color:#fff;
+      box-shadow:0 16px 40px rgba(0,0,0,.22);
+      min-height:290px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .quote-mark{
+      font-size:54px;
+      line-height:1;
+      color:var(--accent);
+      margin-bottom:10px;
+      font-family:'Rajdhani',sans-serif;
+    }
+
+    .stars{
+      color:var(--gold);
+      letter-spacing:2px;
+      margin-bottom:12px;
+      font-size:20px;
+    }
+
+    .testimonial-card p{
+      color:rgba(255,255,255,.86);
+      font-size:18px;
+      margin-bottom:20px;
+    }
+
+    .author{
+      font-weight:700;
+      font-size:18px;
+      color:#fff;
+    }
+
+    .designation{
+      color:#9ca3af;
+      font-size:14px;
+    }
+
+    .carousel-arrows{
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .arrow-btn{
+      width:46px;height:46px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition:all .25s ease;
+    }
+
+    .arrow-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 24px rgba(0,0,0,.22);
+      background:rgba(79,70,229,.28);
+      border-color:rgba(124,114,255,.38);
+    }
+
+    .dots{
+      display:flex;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .dot-btn{
+      width:10px;height:10px;border-radius:50%;
+      background:rgba(255,255,255,.22);
+      border:none;
+      padding:0;
+      cursor:pointer;
+    }
+
+    .dot-btn.active{background:var(--accent)}
+
+    .form-section{
+      background:#fff;
+    }
+
+    .form-card{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:0;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .form-copy{
+      padding:36px;
+      background:linear-gradient(180deg,#f7f9ff,#eef3ff);
+      border-right:1px solid var(--border);
+    }
+
+    .form-copy p{
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .benefit-list{
+      display:grid;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .benefit-item{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      background:rgba(255,255,255,.72);
+      border:1px solid #e7ecfb;
+      border-radius:14px;
+      padding:14px;
+    }
+
+    .benefit-item strong{
+      display:block;
+      margin-bottom:4px;
+    }
+
+    .lead_form{
+      padding:36px;
+    }
+
+    .field{
+      margin-bottom:16px;
+    }
+
+    .form-control{
+      width:100%;
+      min-height:54px;
+      border-radius:12px;
+      border:1px solid #dbe2f0;
+      background:#fff;
+      padding:0 16px;
+      color:var(--text);
+      outline:none;
+      transition:border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .form-control:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 4px rgba(79,70,229,.12);
+    }
+
+    .disclaimer{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:14px;
+    }
+
+    .footer{
+      background:#0b1020;
+      color:#cbd5e1;
+      padding:24px 0;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-logos{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footer-logos img{
+      height:28px;
+      width:auto;
+      opacity:.9;
+      filter:grayscale(1);
+      transition:all .25s ease;
+    }
+
+    .footer-logos img:hover{
+      filter:none;
+      opacity:1;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:none;
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid,
+      .spotlight-layout,
+      .form-card,
+      .tab-shell{
+        grid-template-columns:1fr;
+      }
+
+      .proof-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .feature-grid,
+      .tab-panel,
+      .check-list{
+        grid-template-columns:1fr;
+      }
+
+      .hero-visual{
+        min-height:auto;
+      }
+
+      .form-copy{
+        border-right:none;
+        border-bottom:1px solid var(--border);
+      }
+    }
+
+    @media (max-width: 768px){
+      .section{
+        padding:64px 0;
+      }
+
+      .nav-wrap{
+        min-height:70px;
+      }
+
+      .product-name{
+        display:none;
+      }
+
+      .hero{
+        padding-top:54px;
+      }
+
+      .hero-list{
+        grid-template-columns:1fr;
+      }
+
+      .proof-grid{
+        grid-template-columns:1fr;
+      }
+
+      .metric-row{
+        grid-template-columns:1fr;
+      }
+
+      .preview-grid{
+        grid-template-columns:1fr;
+      }
+
+      .float-chip{
+        position:static;
+        margin:10px 0 0;
+      }
+
+      .hero-visual{
+        display:block;
+      }
+
+      .dashboard-shell{
+        padding:18px;
+      }
+
+      .pricing-top,.pricing-body,.form-copy,.lead_form{
+        padding:24px;
+      }
+
+      .footer-row{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <div class="nav-left">
+        <a href="#hero" class="product-logo">
+          <img src="https://www.techjockey.com/c/manageengine/assets/img/logo.png" alt="Manage Engine Endpoint Central Logo">
+          <div class="product-name">
+            Manage Engine Endpoint Central
+            <small>Unified Endpoint Management &amp; Security</small>
+          </div>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <a class="techjockey-logo" href="#lead-form" aria-label="Techjockey">
+          <img src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" alt="Techjockey Logo">
+        </a>
+        <a href="#lead-form" class="btn btn-primary">Request Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="hero" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">Centralized Endpoint Management for Modern IT Teams</div>
+        <h1>Unified Endpoint Management &amp; Security with <span style="color:#4F46E5">Manage Engine Endpoint Central</span></h1>
+        <p>Manage, secure, and automate your entire endpoint ecosystem from a single console.</p>
+        <div class="hero-support">Centralized Endpoint Management for Modern IT Teams</div>
+
+        <div class="hero-cta">
+          <a href="#lead-form" class="btn btn-primary">Request Demo</a>
+          <a href="#products" class="btn btn-secondary">Explore Features</a>
+        </div>
+
+        <div class="hero-list">
+          <div class="chip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3l7 3v6c0 4.5-2.7 7.9-7 9-4.3-1.1-7-4.5-7-9V6l7-3z" stroke="#4F46E5" stroke-width="1.8" fill="rgba(79,70,229,.18)"/>
+              <path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Compliance-ready controls
+          </div>
+          <div class="chip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="5" width="16" height="10" rx="2" stroke="#60A5FA" stroke-width="1.8"/>
+              <path d="M9 19h6M12 15v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            Desktop, laptop & server coverage
+          </div>
+          <div class="chip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <rect x="7" y="2.5" width="10" height="19" rx="2.5" stroke="#34D399" stroke-width="1.8"/>
+              <circle cx="12" cy="18" r="1" fill="#fff"/>
+            </svg>
+            Mobile device management
+          </div>
+          <div class="chip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h5l2-5 3 10 2-5h2" stroke="#F59E0B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Automated patch & response workflows
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="dashboard-shell">
+          <img class="hero-main-img" src="https://www.techjockey.com/c/manageengine/images/mweb.png" alt="Manage Engine Endpoint Central Dashboard">
+        </div>
+        <div class="float-chip one"><span class="dot"></span> 1 Console • Multi-endpoint visibility</div>
+        <div class="float-chip two progress"><span class="dot"></span> Patch Progress • 84% complete</div>
+        <div class="float-chip three"><span class="dot"></span> Compliance Status • Policy aligned</div>
+        <div class="float-chip four alert"><span class="dot"></span> Threat Alert • Action recommended</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trust" class="proof-strip">
+    <div class="container">
+      <div class="proof-grid reveal">
+        <div class="proof-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="14" rx="3" stroke="#4F46E5" stroke-width="1.8"/>
+            <path d="M8 20h8" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="8" cy="11" r="2" fill="#A5B4FC"/>
+            <path d="M12 10h4M12 13h5" stroke="#4F46E5" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <strong>Unified endpoint coverage</strong>
+            <span>Manage desktops, laptops, servers, and mobile devices together.</span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3l7 3v6c0 4.5-2.7 7.9-7 9-4.3-1.1-7-4.5-7-9V6l7-3z" stroke="#16A34A" stroke-width="1.8" fill="rgba(22,163,74,.12)"/>
+            <path d="M9 12l2 2 4-4" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Security automation built in</strong>
+            <span>Reduce manual overhead with patching, monitoring, and remediation workflows.</span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 4v16M4 12h16" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="8" stroke="#F59E0B" stroke-width="1.8"/>
+          </svg>
+          <div>
+            <strong>Compliance-focused management</strong>
+            <span>Support policy enforcement and audit-ready endpoint controls.</span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7h16M7 4v16M17 4v16" stroke="#06B6D4" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="4" y="4" width="16" height="16" rx="3" stroke="#06B6D4" stroke-width="1.8"/>
+          </svg>
+          <div>
+            <strong>Centralized operational control</strong>
+            <span>Monitor continuously and respond instantly from one dashboard.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="section section-white">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow light">Features</div>
+        <h2>All-in-One Endpoint Security &amp; Management Platform</h2>
+        <p>Bring devices, apps, data, and people together in one place with Endpoint Central to securely manage your digital workplace and global workforce.</p>
+      </div>
+
+      <div class="spotlight-layout">
+        <div class="preview-panel reveal">
+          <div class="window-top">
+            <span></span><span></span><span></span>
+          </div>
+
+          <div class="preview-grid">
+            <div class="panel-large">
+              <div class="metric-row">
+                <div class="metric">
+                  <b>24/7</b>
+                  <span>Endpoint visibility</span>
+                </div>
+                <div class="metric">
+                  <b>1</b>
+                  <span>Unified management console</span>
+                </div>
+                <div class="metric">
+                  <b>Fast</b>
+                  <span>Automated remediation</span>
+                </div>
+              </div>
+
+              <div class="chart-card">
+                <strong>Patch &amp; Security Posture</strong>
+                <div style="opacity:.78;font-size:13px;margin-top:6px;">Streamline updates, policy checks, and threat response across distributed endpoints.</div>
+                <div class="bars">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-stack">
+              <div class="stack-card">
+                <strong>Compliance Workflow</strong>
+                <div class="progress-line"><i style="width:88%"></i></div>
+                <div style="font-size:12px;color:#6b7280;margin-top:8px;">Policy alignment in progress</div>
+              </div>
+              <div class="stack-card">
+                <strong>Remote Device Actions</strong>
+                <div class="progress-line"><i style="width:72%;background:linear-gradient(90deg,#34D399,#22C55E)"></i></div>
+                <div style="font-size:12px;color:#6b7280;margin-top:8px;">Troubleshooting workflows enabled</div>
+              </div>
+              <div class="stack-card">
+                <img src="https://www.techjockey.com/c/manageengine/assets/img/product_image.png" alt="Product preview" style="width:100%;height:140px;object-fit:contain;border-radius:12px;background:#f8fafc;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-grid reveal">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l2 2.2 2.9-.2.8 2.8 2.6 1.2-1.2 2.6 1.2 2.6-2.6 1.2-.8 2.8-2.9-.2L12 21l-2-2.2-2.9.2-.8-2.8-2.6-1.2 1.2-2.6L3.7 9l2.6-1.2.8-2.8 2.9.2L12 3z" fill="#E0E7FF" stroke="#4F46E5" stroke-width="1.4"/>
+                <path d="M9.5 12l1.7 1.7L14.8 10" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Patch &amp; Update Management</h3>
+            <p>Secure and stabilize your operating systems, applications, and mobile apps with automated patches and updates.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" style="background:rgba(6,182,212,.10)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M4 6.5C4 5.12 5.12 4 6.5 4h11C18.88 4 20 5.12 20 6.5v7C20 14.88 18.88 16 17.5 16H13l-4 4v-4H6.5A2.5 2.5 0 014 13.5v-7z" fill="#CFFAFE" stroke="#0891B2" stroke-width="1.5"/>
+                <path d="M8 9h8M8 12h5" stroke="#0891B2" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Browser Security</h3>
+            <p>Protect and manage multiple browsers, track usage patterns, and maintain compliance with standards like STIG.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" style="background:rgba(22,163,74,.10)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="10" width="16" height="10" rx="2" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/>
+                <path d="M8 10V7a4 4 0 118 0v3" stroke="#16A34A" stroke-width="1.7" stroke-linecap="round"/>
+                <circle cx="12" cy="15" r="1.5" fill="#16A34A"/>
+              </svg>
+            </div>
+            <h3>Data Security</h3>
+            <p>Identify and encrypt sensitive data, enforce policies for authorized usage, and ensure secure transmission.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" style="background:rgba(245,158,11,.10)">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Vulnerability Remediation</h3>
+            <p>Leverage continuous threat intelligence, thorough assessments, and swift remediation to mitigate risks.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-band reveal">
+        <div class="section-head" style="margin-bottom:26px;max-width:720px;">
+          <div class="eyebrow">Standard Features</div>
+          <h2 style="color:#fff;">Monitor Continuously. Respond Instantly</h2>
+          <p>Explore the core capabilities that help IT teams strengthen control, accelerate response, and support compliance across distributed environments.</p>
+        </div>
+
+        <div class="tab-shell">
+          <div class="tab-nav" id="featureTabs">
+            <button class="tab-btn active" data-tab="tab1">Strengthen Endpoint Security</button>
+            <button class="tab-btn" data-tab="tab2">Manage IT Assets Effectively</button>
+            <button class="tab-btn" data-tab="tab3">Application Control &amp; Privileges</button>
+            <button class="tab-btn" data-tab="tab4">Remote Access &amp; Troubleshooting</button>
+            <button class="tab-btn" data-tab="tab5">Ensure Compliance</button>
+          </div>
+
+          <div>
+            <div class="tab-panel active" id="tab1">
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 3l7 3v6c0 4.5-2.7 7.9-7 9-4.3-1.1-7-4.5-7-9V6l7-3z" fill="#E0E7FF" stroke="#7C72FF" stroke-width="1.4"/>
+                      <path d="M9 12l2 2 4-4" stroke="#7C72FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Built-in security controls</strong>
+                  </div>
+                </div>
+                <p>Built-in security controls for malware protection, such as next-gen antivirus and anti-ransomware.</p>
+              </div>
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M6 20h12M9 16h6M5 4h14v8H5z" stroke="#34D399" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Operational resilience</strong>
+                  </div>
+                </div>
+                <p>Centralize preventive controls to reduce risk exposure while keeping endpoint performance manageable.</p>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="tab2">
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <rect x="4" y="4" width="16" height="16" rx="3" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"/>
+                      <path d="M8 9h8M8 13h8M8 17h5" stroke="#3B82F6" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Live notifications &amp; reports</strong>
+                  </div>
+                </div>
+                <p>Discover, track, and manage hardware, software, and digital assets with live notifications and ready-made reporting.</p>
+              </div>
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 3v18M3 12h18" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round"/>
+                      <circle cx="12" cy="12" r="8" stroke="#F59E0B" stroke-width="1.5"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Visibility for planning</strong>
+                  </div>
+                </div>
+                <p>Improve lifecycle planning and governance with a clearer view of asset inventory and software utilization.</p>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="tab3">
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M7 11V8a5 5 0 0110 0v3" stroke="#10B981" stroke-width="1.7" stroke-linecap="round"/>
+                      <rect x="5" y="11" width="14" height="9" rx="2" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Zero-trust privilege controls</strong>
+                  </div>
+                </div>
+                <p>Define install permissions, track privileges, and enforce zero-trust security with role-based and time-bound access.</p>
+              </div>
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 7v5l3 2" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/>
+                      <circle cx="12" cy="12" r="8" stroke="#A78BFA" stroke-width="1.5"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Controlled software changes</strong>
+                  </div>
+                </div>
+                <p>Minimize unnecessary elevation and create stronger guardrails around application usage and administrative actions.</p>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="tab4">
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <rect x="3" y="5" width="18" height="12" rx="2" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.5"/>
+                      <path d="M8 20h8M12 17v3" stroke="#0284C7" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Remote support operations</strong>
+                  </div>
+                </div>
+                <p>Remotely perform system operations with multi-user collaboration to efficiently troubleshoot devices.</p>
+              </div>
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M7 12h10M13 8l4 4-4 4" stroke="#FB7185" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                      <rect x="3" y="4" width="18" height="16" rx="3" stroke="#FB7185" stroke-width="1.4"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Faster issue resolution</strong>
+                  </div>
+                </div>
+                <p>Accelerate service desk response by connecting diagnostics, remote actions, and user support in a unified flow.</p>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="tab5">
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 3l7 3v6c0 4.5-2.7 7.9-7 9-4.3-1.1-7-4.5-7-9V6l7-3z" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.4"/>
+                      <path d="M8.5 12.5l2 2 5-5" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Regulatory alignment</strong>
+                  </div>
+                </div>
+                <p>Adhere to regulatory compliance and generate comprehensive audit-ready reports.</p>
+              </div>
+              <div class="mini-card">
+                <div class="mini-top">
+                  <div class="mini-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M6 4h12v16H6z" stroke="#60A5FA" stroke-width="1.5"/>
+                      <path d="M9 9h6M9 13h6M9 17h4" stroke="#60A5FA" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong>Audit-ready visibility</strong>
+                  </div>
+                </div>
+                <p>Support internal reviews and external assessments with consistent records, policies, and reporting outputs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section section-light">
+    <div class="container pricing">
+      <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
+        <div class="eyebrow light">Commercial Snapshot</div>
+        <h2>Talk to Techjockey for the Best Available Endpoint Central Offer</h2>
+        <p>Exact pricing is not published here. Connect with our product specialists to get the latest plan guidance, assisted evaluation, and offer details for your requirement.</p>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-top">
+          <div class="pricing-badge">Best Deal via Techjockey</div>
+          <h3 style="font-size:34px;">Manage Engine Endpoint Central</h3>
+          <div class="price-row">
+            <span class="price-old">Price on Request</span>
+            <span class="price-new">Custom Quote</span>
+          </div>
+          <p class="pricing-note">Pricing depends on deployment scope, endpoint volume, and business requirements. Request a tailored quote from our team.</p>
+        </div>
+        <div class="pricing-body">
+          <ul class="check-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#DCFCE7"/>
+                <path d="M8 12l2.5 2.5L16 9" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Guided product consultation
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#DCFCE7"/>
+                <path d="M8 12l2.5 2.5L16 9" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Assisted evaluation support
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#DCFCE7"/>
+                <path d="M8 12l2.5 2.5L16 9" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Purchase process assistance
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#DCFCE7"/>
+                <path d="M8 12l2.5 2.5L16 9" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Demo and onboarding coordination
+            </li>
+          </ul>
+          <a href="#lead-form" class="btn btn-primary btn-full">Request Pricing &amp; Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Customer Voice</div>
+        <h2 style="color:#fff;">What IT Leaders Say About Endpoint Central &amp; Techjockey</h2>
+        <p>Hear how teams are improving patching, support efficiency, and deployment experience with the right endpoint management approach.</p>
+      </div>
+
+      <div class="carousel-wrap reveal">
+        <div class="testimonial-slider">
+          <div class="testimonial-track" id="testimonialTrack">
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Endpoint Central helps us stay on top of patch management. The remote support features are fantastic and help us manage systems efficiently.</p>
+                </div>
+                <div>
+                  <div class="author">Rahul Verma</div>
+                  <div class="designation">ICT &amp; Service Desk Administrator</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Endpoint Central has helped our business enhance employee experience and support users in a timely and efficient manner.</p>
+                </div>
+                <div>
+                  <div class="author">Shweta Singh</div>
+                  <div class="designation">IT Infrastructure Manager</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Endpoint Central has simplified patch management and software deployment for our IT team. Managing hundreds of devices from one console has significantly improved our operational efficiency.</p>
+                </div>
+                <div>
+                  <div class="author">Sachin Gupta</div>
+                  <div class="designation">IT Operations Manager</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>We purchased Endpoint Central through Techjockey and the experience was seamless. Their team guided us through the evaluation, purchase process, and even helped us with the post-purchase demo and onboarding.</p>
+                </div>
+                <div>
+                  <div class="author">Rounak Sharma</div>
+                  <div class="designation">Head of IT Infrastructure</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-slide">
+              <div class="testimonial-card">
+                <div>
+                  <div class="quote-mark">❝</div>
+                  <div class="stars">★★★★★</div>
+                  <p>Techjockey made our Endpoint Central purchase extremely smooth. From product consultation to after-purchase support and demo sessions, their team ensured we could deploy the solution quickly.</p>
+                </div>
+                <div>
+                  <div class="author">Ayushi Jain</div>
+                  <div class="designation">Senior System Administrator</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-arrows">
+          <button class="arrow-btn" id="prevTestimonial" aria-label="Previous testimonial">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="arrow-btn" id="nextTestimonial" aria-label="Next testimonial">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="dots" id="testimonialDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lead-form" class="section form-section">
+    <div class="container">
+      <div class="form-card reveal">
+        <div class="form-copy">
+          <div class="eyebrow light">Request Demo</div>
+          <h2>See How Endpoint Central Fits Your IT Environment</h2>
+          <p>Talk to Techjockey’s solution team for product guidance, feature walkthroughs, and assistance with evaluation, purchase, and onboarding.</p>
+
+          <div class="benefit-list">
+            <div class="benefit-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#E0E7FF"/>
+                <path d="M8 12l2.5 2.5L16 9" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <strong>Product consultation</strong>
+                <span style="color:#6b7280;font-size:14px;">Understand relevant capabilities for your endpoint landscape.</span>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#DCFCE7"/>
+                <path d="M8 12l2.5 2.5L16 9" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <strong>Demo assistance</strong>
+                <span style="color:#6b7280;font-size:14px;">Schedule a guided walkthrough tailored to your use case.</span>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#FEF3C7"/>
+                <path d="M8 12l2.5 2.5L16 9" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <strong>Purchase &amp; onboarding support</strong>
+                <span style="color:#6b7280;font-size:14px;">Get help from evaluation to post-purchase coordination.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lead_form">
+          <form>
+            <div class="field">
+              <input type="text" class="form-control" placeholder="Full Name" required>
+            </div>
+            <div class="field">
+              <input type="email" class="form-control" placeholder="Work Email" required>
+            </div>
+            <div class="field">
+              <input type="tel" class="form-control" placeholder="Phone Number" required>
+            </div>
+            <div class="field">
+              <input type="text" class="form-control" placeholder="Company Name">
+            </div>
+            <div class="field">
+              <input type="text" class="form-control" placeholder="Number of Endpoints / Requirement">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Request Demo</button>
+            <div class="disclaimer">By submitting this form, you agree to be contacted by Techjockey regarding Manage Engine Endpoint Central.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <script>
+    // Feature tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    // Testimonials carousel
+    const track = document.getElementById('testimonialTrack');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+    const dotsWrap = document.getElementById('testimonialDots');
+    let currentIndex = 0;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot-btn' + (index === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to testimonial ' + (index + 1));
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = dotsWrap.querySelectorAll('.dot-btn');
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+    }
+
+    function goToSlide(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    // Auto rotate
+    let autoSlide = setInterval(() => goToSlide(currentIndex + 1), 5000);
+    [prevBtn, nextBtn, track].forEach(el => {
+      el.addEventListener('mouseenter', () => clearInterval(autoSlide));
+      el.addEventListener('mouseleave', () => {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => goToSlide(currentIndex + 1), 5000);
+      });
+    });
+
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
+<!-- TECHJOCKEY FOOTER -->
+    <footer class="footer-lsit-dv1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer_dv1">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="footer_logo">
+                                    <a href="#"><img alt="logo" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="footer_email">
+                                    <a href="#" mailto="support@techjockey.com"><img alt="mail"
+                                            src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/mail.svg">
+                                        support@techjockey.com</a>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="footer_link">
+                                <ul>
+                                    <li class="flo_1">Follow us:</li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/facebook_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/instagram_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/twitter_icon_footer.svg"></a></li>
+                                    <li><a href="#"><img alt="mail" src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/linkedin_icon_footer.svg"></a></li>
+
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</body>
+</html>

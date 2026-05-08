@@ -1,0 +1,673 @@
+{
+  "sessionId": "ds_1776330556524_8cb8445b",
+  "createdAt": "2026-04-16T09:09:16.524Z",
+  "updatedAt": "2026-04-16T09:12:10.643Z",
+  "status": "html-generated",
+  "productName": "Zoho-workplace",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "",
+    "parsedSectionCount": 19
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": null,
+    "heroStrategy": {
+      "layout": "reference-preserved"
+    },
+    "blueprint": {
+      "source": "reference-adapted",
+      "preserveMode": "structure-styling",
+      "strictLayoutMatch": true,
+      "sectionOrder": [
+        "generic",
+        "form",
+        "trust",
+        "generic",
+        "generic",
+        "generic",
+        "generic",
+        "trust",
+        "pricing",
+        "testimonials",
+        "footer"
+      ],
+      "sections": [
+        {
+          "id": "generic-1",
+          "type": "generic",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "form-2",
+          "type": "form",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "trust-3",
+          "type": "trust",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "generic-4",
+          "type": "generic",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "generic-5",
+          "type": "generic",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "generic-6",
+          "type": "generic",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "generic-7",
+          "type": "generic",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "trust-8",
+          "type": "trust",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "pricing-9",
+          "type": "pricing",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "testimonials-10",
+          "type": "testimonials",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        },
+        {
+          "id": "footer-11",
+          "type": "footer",
+          "layout": "reference-preserved-section",
+          "renderMode": "adaptive-reference"
+        }
+      ],
+      "strategy": {
+        "primaryGoal": "replicate",
+        "narrativeMode": "reference-preserved",
+        "visualDominance": "reference-preserved",
+        "trustStrategy": "logos-first",
+        "ctaAggression": "medium",
+        "recommendedHeroStyle": "centered"
+      },
+      "intent": {
+        "pageGoal": "single-product",
+        "pageType": "single",
+        "sectionOrder": [
+          "generic",
+          "form",
+          "trust",
+          "generic",
+          "generic",
+          "generic",
+          "generic",
+          "trust",
+          "pricing",
+          "testimonials",
+          "footer"
+        ]
+      },
+      "contentMap": {
+        "productName": "Zoho Workplace",
+        "productCategory": "Email & Collaboration Suite",
+        "targetAudience": "Enterprises",
+        "contentVolume": "long",
+        "hero": {
+          "headline": "Elevate Your Team’s Productivity with Zoho Workplace",
+          "subheadline": "A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.",
+          "supportingLine": "Easy Setup & Quick Onboarding; A Made in India solution; 24x7 Support; Get Your Free Trial",
+          "primaryCTA": "Get Started",
+          "secondaryCTA": "",
+          "wordCount": 20
+        },
+        "trust": {
+          "badges": [
+            "Trusted by 100,000+ Businesses Globally"
+          ],
+          "socialProof": "Trusted by 100,000+ Businesses Globally",
+          "customerCount": "100,000+ Businesses Globally"
+        },
+        "productSections": [
+          {
+            "name": "Why Choose Zoho Workplace?",
+            "label": "Features",
+            "headline": "Why Choose Zoho Workplace?",
+            "description": "Zoho Workplace brings everything your team needs to collaborate, communicate, and stay productive through a single unified platform.",
+            "primaryCTA": "",
+            "features": [
+              {
+                "title": "All-in-One Unified Workspace",
+                "description": "Access email, chat, documents, meetings, and storage in a single integrated platform. Reduce app switching and boost productivity.",
+                "hasIcon": false
+              },
+              {
+                "title": "Seamless Collaboration in Real Time",
+                "description": "Work together on documents, spreadsheets, and presentations with live editing, comments, and built-in communication tools.",
+                "hasIcon": false
+              },
+              {
+                "title": "Work from Anywhere, Anytime",
+                "description": "Stay productive on the go. Reply to emails, access presentations, or host a video conference from anywhere effortlessly.",
+                "hasIcon": false
+              },
+              {
+                "title": "AI-Powered Productivity (Zia)",
+                "description": "Leverage built-in AI for writing assistance in terms of grammar, readability and writing style while you work on Writer or Sheet.",
+                "hasIcon": false
+              }
+            ]
+          },
+          {
+            "name": "Unlock Your Business Growth with Zoho Workplace",
+            "label": "Standard Features",
+            "headline": "Unlock Your Business Growth with Zoho Workplace",
+            "description": "Zoho Workplace unifies email, collaboration, and productivity tools to streamline your business operations. Enable smarter teamwork and drive growth with a single platform.",
+            "primaryCTA": "",
+            "features": [
+              {
+                "title": "Ideal For Your Business Size",
+                "description": "Designed for any organization, Zoho Workplace enhances efficiency and teamwork at every scale.",
+                "hasIcon": false
+              },
+              {
+                "title": "Communicate Effectively",
+                "description": "Go beyond email and chat, and connect teams with a social intranet using channels, feeds, and groups.",
+                "hasIcon": false
+              },
+              {
+                "title": "Integrated Business Apps",
+                "description": "Connect with Zoho and third-party apps to unify workflows, eliminate silos, and streamline processes across your business.",
+                "hasIcon": false
+              },
+              {
+                "title": "Customizable Workspace",
+                "description": "Customize settings, layouts, workflows to fit your needs. Also, get a professional, ad-free email service & advanced controls.",
+                "hasIcon": false
+              }
+            ]
+          },
+          {
+            "name": "Integrate with Popular Apps",
+            "label": "Additional Features",
+            "headline": "Integrate with Popular Apps",
+            "description": "Connect your Zoho Workplace with other business apps to ensure higher productivity and growth - all within a unified workspace.",
+            "primaryCTA": "",
+            "features": [
+              {
+                "title": "Zoho Apps",
+                "description": "Zoho Meeting, Zoho Connect, Zoho Mail, Zoho Cliq, Zoho Writer, etc.",
+                "hasIcon": false
+              },
+              {
+                "title": "Analytics",
+                "description": "Zoho Analytics, Google Analytics",
+                "hasIcon": false
+              },
+              {
+                "title": "Accounting & Finance",
+                "description": "Zoho Invoice & Zoho Books",
+                "hasIcon": false
+              },
+              {
+                "title": "Automation",
+                "description": "Zoho Flow, Zapier, viaSocket",
+                "hasIcon": false
+              },
+              {
+                "title": "Business Suites",
+                "description": "Zoho One, Zoho Workspace",
+                "hasIcon": false
+              }
+            ]
+          },
+          {
+            "name": "Performance Beyond Limits with Zoho Workplace",
+            "label": "Insight",
+            "headline": "Performance Beyond Limits with Zoho Workplace",
+            "description": "",
+            "primaryCTA": "",
+            "features": [
+              {
+                "title": "Secure",
+                "description": "82.9% of users reported a secure email experience, ensuring strong data protection, and safe and reliable communication.",
+                "hasIcon": false
+              },
+              {
+                "title": "Anywhere Access",
+                "description": "42.9% of them found it easier to work remotely with Zoho Workplace apps, enabling seamless access from any device, anywhere.",
+                "hasIcon": false
+              },
+              {
+                "title": "Intuitive",
+                "description": "28.6% found Zoho Workplace easy to use, reducing the learning curve. Teams can quickly adapt and work efficiently.",
+                "hasIcon": false
+              },
+              {
+                "title": "Collaborative",
+                "description": "14.3% of them saw improved collaboration, engagement and productivity, helping teams stay aligned and get more done faster.",
+                "hasIcon": false
+              }
+            ]
+          }
+        ],
+        "whyTechjockey": {
+          "include": false,
+          "headline": "",
+          "points": []
+        },
+        "pricing": {
+          "headline": "Zoho Workplace Price Plan Includes:",
+          "plans": [
+            {
+              "name": "Zoho Workplace",
+              "price": "",
+              "originalPrice": "",
+              "discount": "",
+              "includes": [
+                "Enterprise-Grade Custom Email",
+                "Migration Assistance",
+                "Collaborative Office Suite",
+                "30-GB Mail Storage Per User",
+                "File Storage Starts at 100 GB Per Team",
+                "File Sharing & Permissions",
+                "Team Chat",
+                "Document Management",
+                "Supported Device: Android, iOS, Windows, Mac"
+              ],
+              "cta": "Get Started"
+            }
+          ],
+          "emiText": ""
+        },
+        "testimonials": [
+          {
+            "quote": "Zoho Workplace has streamlined our communication and collaboration by bringing email, documents, and team tools into one unified platform.",
+            "author": "Amit Kapoor",
+            "designation": "IT Manager",
+            "company": ""
+          },
+          {
+            "quote": "The platform is easy to use and has significantly improved team productivity by reducing dependency on multiple tools.",
+            "author": "Saurav Singh",
+            "designation": "Head of Operations",
+            "company": ""
+          },
+          {
+            "quote": "Techjockey helped us identify the right Zoho Workplace plan based on our requirements. Their guidance made the entire purchase process quick and hassle-free.",
+            "author": "Shrimi Manchanda",
+            "designation": "Operations Manager",
+            "company": ""
+          },
+          {
+            "quote": "The seamless integration between email, file management, and collaboration tools has made our daily workflows much more efficient.",
+            "author": "Shweta Thakur",
+            "designation": "Senior System Administrator",
+            "company": ""
+          },
+          {
+            "quote": "Zoho Workplace helped us collaborate seamlessly, ensuring a more productive and efficient workflow across teams.",
+            "author": "Narinder Sahni",
+            "designation": "IT Head",
+            "company": ""
+          }
+        ],
+        "form": {
+          "headline": "",
+          "fields": [],
+          "primaryCTA": ""
+        },
+        "news": [],
+        "extras": [
+          "6th Fold) * This section will remain the same - As for Zoho Desk"
+        ],
+        "generationMode": "replicate-reference",
+        "referenceLandingUrl": "https://dev.techjockey.com/c/zoho_crm/"
+      },
+      "includeForm": false,
+      "includePricing": true,
+      "includeTestimonials": true,
+      "includeTrust": true,
+      "typography": {
+        "headingFont": "Inter",
+        "bodyFont": "Inter",
+        "headingWeight": 700,
+        "heroFontSize": "56px",
+        "letterSpacing": "normal",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#111827",
+        "accent": "#111827",
+        "accentHover": "#111827",
+        "bodyBg": "#ffffff",
+        "cardBg": "#ffffff",
+        "textDark": "#111827",
+        "textMid": "#4b5563",
+        "textLight": "#ffffff",
+        "border": "#e5e7eb",
+        "colourReason": "Taken from reference/brand colors for replicate mode"
+      },
+      "themeFamily": "reference-preserved",
+      "surfaceStyle": "reference-preserved",
+      "visualMotif": "reference-preserved",
+      "backgroundSystem": {
+        "bodyBase": "#ffffff",
+        "hero": "#111827",
+        "section1": "#ffffff",
+        "section2": "#f8fafc",
+        "section3": "#ffffff"
+      },
+      "motionStrategy": {
+        "allowAnimations": false,
+        "style": "subtle",
+        "heroEntrance": "none",
+        "cardHover": "none",
+        "sectionReveal": "none"
+      },
+      "styles": {},
+      "referenceMap": {
+        "source": "reference-layout-map",
+        "sectionOrder": [
+          "generic",
+          "form",
+          "trust",
+          "generic",
+          "generic",
+          "generic",
+          "generic",
+          "trust",
+          "pricing",
+          "testimonials",
+          "footer"
+        ],
+        "sections": [
+          {
+            "index": 0,
+            "id": "",
+            "className": "main_header",
+            "type": "generic",
+            "headings": 0,
+            "images": 2,
+            "videos": 0,
+            "buttons": 1,
+            "forms": 0,
+            "textSample": "Talk to Expert"
+          },
+          {
+            "index": 1,
+            "id": "",
+            "className": "section1",
+            "type": "form",
+            "headings": 1,
+            "images": 4,
+            "videos": 0,
+            "buttons": 1,
+            "forms": 0,
+            "textSample": "Sell Smarter and Grow Faster with Zoho CRM Manage leads, automate sales processes, and build lasting customer relationsh"
+          },
+          {
+            "index": 2,
+            "id": "",
+            "className": "section2",
+            "type": "trust",
+            "headings": 1,
+            "images": 6,
+            "videos": 0,
+            "buttons": 0,
+            "forms": 0,
+            "textSample": "Trusted by 300K + Businesses Globally"
+          },
+          {
+            "index": 3,
+            "id": "",
+            "className": "section3",
+            "type": "generic",
+            "headings": 9,
+            "images": 0,
+            "videos": 0,
+            "buttons": 0,
+            "forms": 0,
+            "textSample": "Why Choose Zoho CRM? With powerful automation and AI-driven insights, Zoho CRM helps organizations improve productivity,"
+          },
+          {
+            "index": 4,
+            "id": "",
+            "className": "section4",
+            "type": "generic",
+            "headings": 9,
+            "images": 1,
+            "videos": 0,
+            "buttons": 0,
+            "forms": 0,
+            "textSample": "Make Smarter Decisions with I Zia A Zoho CRM includes Zia, an AI-powered assistant that helps sales teams focus on high-"
+          },
+          {
+            "index": 5,
+            "id": "",
+            "className": "section5",
+            "type": "generic",
+            "headings": 7,
+            "images": 2,
+            "videos": 0,
+            "buttons": 0,
+            "forms": 0,
+            "textSample": "1,100+ Ready Integrations Connect your CRM with apps across marketing, sales, finance, and more. Easily configure everyt"
+          },
+          {
+            "index": 6,
+            "id": "",
+            "className": "section6",
+            "type": "generic",
+            "headings": 9,
+            "images": 8,
+            "videos": 0,
+            "buttons": 0,
+            "forms": 0,
+            "textSample": "Customization Beyond Limits Zoho CRM isn’t just software, it’s a flexible canvas and sandbox that lets you design,test, "
+          },
+          {
+            "index": 7,
+            "id": "",
+            "className": "software_wrap",
+            "type": "trust",
+            "headings": 8,
+            "images": 0,
+            "videos": 0,
+            "buttons": 0,
+            "forms": 0,
+            "textSample": "Techjockey India’s Largest Software Marketplace 2M+ Happy Customers Best Price Guaranteed Free Consultation Why to buy f"
+          },
+          {
+            "index": 8,
+            "id": "",
+            "className": "section8",
+            "type": "pricing",
+            "headings": 2,
+            "images": 6,
+            "videos": 0,
+            "buttons": 1,
+            "forms": 0,
+            "textSample": "Teams that work together, win together Multiple teams come together with sales to close deals. you can build unique, col"
+          },
+          {
+            "index": 9,
+            "id": "",
+            "className": "testimonial_wrap",
+            "type": "testimonials",
+            "headings": 1,
+            "images": 10,
+            "videos": 0,
+            "buttons": 0,
+            "forms": 0,
+            "textSample": "What Customers Say About Zoho CRM Ravindra Joshi Owner (Manufacturing Unit) Zoho CRM helped us organize distributor lead"
+          },
+          {
+            "index": 10,
+            "id": "",
+            "className": "footer-wrap",
+            "type": "footer",
+            "headings": 0,
+            "images": 6,
+            "videos": 0,
+            "buttons": 6,
+            "forms": 0,
+            "textSample": "support@techjockey.com Follow us:"
+          }
+        ],
+        "heroType": null,
+        "hasTrustBand": true,
+        "hasFormSection": true
+      },
+      "assetRules": {
+        "lockReferenceStructure": true,
+        "replaceImages": true,
+        "replaceVideos": false,
+        "preserveMode": "structure-styling",
+        "strictLayoutMatch": true,
+        "userSuppliedImagesOnly": false
+      },
+      "pageGoal": "single-product",
+      "trustLogos": [],
+      "additionalInstructions": "",
+      "designStrategy": {
+        "primaryGoal": "replicate",
+        "narrativeMode": "reference-preserved",
+        "visualDominance": "reference-preserved",
+        "trustStrategy": "logos-first",
+        "ctaAggression": "medium",
+        "recommendedHeroStyle": "centered"
+      },
+      "designReview": {
+        "score": 100,
+        "verdict": "reference-preserved",
+        "issues": [],
+        "strengths": [
+          "Reference structure preserved by design"
+        ]
+      },
+      "trustLogosCount": 0
+    },
+    "mediaPlan": {
+      "hero": {
+        "primaryVisual": "/output/generated-assets/ds_1776330556524_8cb8445b/07-99aef319c0.png",
+        "secondaryVisual": "/output/generated-assets/ds_1776330556524_8cb8445b/01-a0abc94658.jpeg",
+        "backgroundImage": null,
+        "backgroundVideo": null,
+        "accentVisuals": [
+          "/output/generated-assets/ds_1776330556524_8cb8445b/03-f7e8992ab4.jpeg",
+          "/output/generated-assets/ds_1776330556524_8cb8445b/08-c638891b5a.png"
+        ]
+      },
+      "trust": {
+        "logos": [],
+        "badges": []
+      },
+      "productSections": [
+        {
+          "sectionId": "1",
+          "primaryPreview": "/output/generated-assets/ds_1776330556524_8cb8445b/02-b32757542d.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1776330556524_8cb8445b/01-a0abc94658.jpeg",
+          "icons": []
+        },
+        {
+          "sectionId": "2",
+          "primaryPreview": "/output/generated-assets/ds_1776330556524_8cb8445b/01-a0abc94658.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1776330556524_8cb8445b/03-f7e8992ab4.jpeg",
+          "icons": []
+        },
+        {
+          "sectionId": "3",
+          "primaryPreview": "/output/generated-assets/ds_1776330556524_8cb8445b/03-f7e8992ab4.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1776330556524_8cb8445b/08-c638891b5a.png",
+          "icons": []
+        },
+        {
+          "sectionId": "4",
+          "primaryPreview": "/output/generated-assets/ds_1776330556524_8cb8445b/08-c638891b5a.png",
+          "secondaryPreview": null,
+          "icons": []
+        }
+      ],
+      "testimonials": {
+        "avatars": []
+      },
+      "demos": {
+        "heroDemo": null,
+        "sectionDemos": []
+      },
+      "product": [
+        "/output/generated-assets/ds_1776330556524_8cb8445b/02-b32757542d.jpeg",
+        "/output/generated-assets/ds_1776330556524_8cb8445b/01-a0abc94658.jpeg",
+        "/output/generated-assets/ds_1776330556524_8cb8445b/03-f7e8992ab4.jpeg",
+        "/output/generated-assets/ds_1776330556524_8cb8445b/08-c638891b5a.png"
+      ],
+      "features": [
+        "/output/generated-assets/ds_1776330556524_8cb8445b/03-f7e8992ab4.jpeg",
+        "/output/generated-assets/ds_1776330556524_8cb8445b/08-c638891b5a.png"
+      ],
+      "logos": [],
+      "fallbackStrategy": {
+        "heroMode": "split-visual",
+        "productMode": "preview-panel"
+      },
+      "form": null,
+      "additionalInstructions": null
+    }
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": null,
+    "fileUrl": null,
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": "zoho-workplace-1776330730633.html",
+    "localizedAssetsBase": "/output/generated-assets/ds_1776330556524_8cb8445b"
+  },
+  "logs": [
+    {
+      "at": "2026-04-16T09:09:16.528Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-04-16T09:12:10.641Z",
+      "type": "workflow",
+      "step": "html-generated",
+      "message": "HTML output generated: zoho-workplace-1776330730633.html"
+    },
+    {
+      "at": "2026-04-16T09:12:10.643Z",
+      "type": "workflow",
+      "step": "mcp-auto-run-failed",
+      "message": "MCP execution failed: No figmaBuildPlan found in session: ds_1776330556524_8cb8445b"
+    }
+  ]
+}

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seedream-1777541630130.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#ff6b00';
+  const primary = '#1a1a1a';
+  const bodyBg = '#1a1a1a';
+  const testimonials = [{
+    quote: 'Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.',
+    author: 'Vaishali Saxena',
+    role: 'Creative Director',
+    avatar: '/output/generated-assets/ds_1777541379259_3299cc2d/05-fd8403a48b.png'
+  }, {
+    quote: 'Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.',
+    author: 'Vihaan Pandey',
+    role: 'Video Producer',
+    avatar: '/output/generated-assets/ds_1777541379259_3299cc2d/04-2770603589.png'
+  }, {
+    quote: 'The multimodal editing capabilities in Seedream make it easy to refine images with precision.',
+    author: 'Anurag Malhotra',
+    role: 'Art Director',
+    avatar: '/output/generated-assets/ds_1777541379259_3299cc2d/06-ea188ac20a.png'
+  }, {
+    quote: 'Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.',
+    author: 'Ashutosh Singh',
+    role: 'Marketing Manager',
+    avatar: '/output/generated-assets/ds_1777541379259_3299cc2d/07-2f95c6a6c6.png'
+  }, {
+    quote: 'From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.',
+    author: 'Shrimmi Saxena',
+    role: 'Creative Lead',
+    avatar: '/output/generated-assets/ds_1777541379259_3299cc2d/08-26297278f3.png'
+  }];
+  const pricingPlans = [{
+    name: 'Seedream 4.5 (AI Image Generation)',
+    price: '',
+    originalPrice: '',
+    discount: '',
+    includes: ['High-resolution image generation (up to 4K quality)', 'Text-to-image & multimodal image editing', 'Multi-image composition for complex visuals', 'Enhanced typographic rendering for posters, ads & text-heavy designs']
+  }, {
+    name: 'Seedance 1.5 Pro (AI Video Generation)',
+    price: 'Starting at $1,000/month/',
+    originalPrice: '',
+    discount: '',
+    includes: ['Text-to-video generation with cinematic output', 'Native audio + video generation (synchronized)', 'Multilingual lip-sync capabilities', 'Fast inference for quicker video production']
+  }];
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: ''
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, {
+      threshold: 0.14,
+      rootMargin: '0px 0px -80px 0px'
+    });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger-parent').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+  const handleChange = e => {
+    setFormData(p => ({
+      ...p,
+      [e.target.name]: e.target.value
+    }));
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 2500);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: ''
+    });
+  };
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
+  const renderIcon = type => {
+    const common = {
+      width: 18,
+      height: 18,
+      viewBox: '0 0 24 24',
+      fill: 'none',
+      stroke: accent,
+      strokeWidth: 2,
+      strokeLinecap: 'round',
+      strokeLinejoin: 'round'
+    };
+    if (type === 'image') {
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+        x: "3",
+        y: "3",
+        width: "18",
+        height: "18",
+        rx: "2"
+      }), /*#__PURE__*/React.createElement("circle", {
+        cx: "8.5",
+        cy: "8.5",
+        r: "1.5"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M21 15l-5-5L5 21"
+      }));
+    }
+    if (type === 'video') {
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+        x: "3",
+        y: "5",
+        width: "15",
+        height: "14",
+        rx: "2"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M18 10l3-2v8l-3-2z"
+      }));
+    }
+    if (type === 'audio') {
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+        d: "M12 6v12"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M8 9v6"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M16 9v6"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M4 11v2"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M20 11v2"
+      }));
+    }
+    return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+      d: "M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"
+    }));
+  };
+  const css = `
+    :root{--accent:${accent};--primary:${primary};--bodyBg:${bodyBg};--border:#2a2a2a;--text:#fff;--muted:#c7c7c7;--light:#f5f5f5;--dark2:#111111}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,sans-serif;background:var(--bodyBg);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .lp{background:var(--bodyBg);overflow:hidden}
+    .container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .section{position:relative;padding:88px 0}
+    .dark{background:#111111}.light{background:#f5f5f5;color:#151515}.hero-bg{background:#1a1a1a}
+    h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;margin:0 0 14px}
+    h1{font-size:clamp(48px,6vw,68px);line-height:1.05;font-weight:800;letter-spacing:-.03em}
+    h2{font-size:clamp(32px,4vw,44px);line-height:1.12;font-weight:800;letter-spacing:-.02em}
+    h3{font-size:22px;font-weight:700}
+    p{margin:0 0 14px;line-height:1.7;color:inherit}
+    .muted{color:var(--muted)} .light .muted{color:#4b5563}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(17,17,17,.82);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-inner{display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;padding:16px 0}
+    .brand{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:var(--accent)}
+    .nav-right{display:flex;align-items:center;gap:16px}
+    .animated-cta,.ghost-btn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:12px;padding:14px 22px;font-weight:700;cursor:pointer}
+    @keyframes borderRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .animated-cta{position:relative;background:transparent;color:#fff;z-index:1}
+    .animated-cta::before{content:'';position:absolute;inset:-2px;background:conic-gradient(from 0deg,var(--accent),var(--primary),var(--accent));border-radius:inherit;animation:borderRotate 3s linear infinite;z-index:-2}
+    .animated-cta::after{content:'';position:absolute;inset:1px;background:#1a1a1a;border-radius:11px;z-index:-1}
+    .animated-cta,.btn-magnetic{position:relative;overflow:hidden;transition:transform .22s ease, box-shadow .22s ease, background .22s ease}
+    .animated-cta:hover,.btn-magnetic:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.18)}
+    .animated-cta::after{display:block!important}.animated-cta::before{display:block!important}
+    .ghost-btn{background:transparent;border:1px solid rgba(255,255,255,.16);color:#fff}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;min-height:calc(100vh - 82px)}
+    .hero-copy{position:relative;z-index:2}
+    .eyebrow,.section-tag{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,107,0,.3);background:rgba(255,107,0,.08);color:#fff;font-size:13px;font-weight:600;margin-bottom:18px}
+    .light .section-tag{color:#151515;border-color:rgba(255,107,0,.35)}
+    .gradient-text{background:linear-gradient(135deg,var(--accent) 0%, var(--primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 30px}
+    .chip{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,107,0,.3);background:rgba(255,107,0,.08);color:#ddd;font-size:13px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:500px}
+    .glass-card{background:rgba(255,255,255,.06);backdrop-filter:blur(18px) saturate(170%);border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 60px rgba(0,0,0,.25)}
+    .hero-panel{width:100%;padding:16px;border-radius:24px;position:relative}
+    .hero-main-img{width:100%;max-height:480px;object-fit:contain;border-radius:16px}
+    .float-card{position:absolute;border-radius:16px;padding:14px 16px;min-width:170px}
+    .fc1{top:30px;left:-10px}.fc2{right:-8px;top:90px}.fc3{left:30px;bottom:24px}
+    .orb{position:absolute;border-radius:50%;filter:blur(30px);opacity:.65;pointer-events:none}
+    .orb1{width:260px;height:260px;background:radial-gradient(circle, rgba(255,107,0,.26), transparent 70%);top:-60px;right:-40px}
+    .orb2{width:180px;height:180px;background:radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);bottom:40px;left:-30px}
+    .marquee-wrapper{overflow:hidden;background:#f5f5f5;padding:20px 0;border-top:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a}
+    .marquee-track{display:flex;width:max-content;animation:marqueeScroll 20s linear infinite}
+    @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .marquee-item{font:800 28px 'Plus Jakarta Sans',sans-serif;margin-right:48px;white-space:nowrap;color:#151515}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+    .browser-frame{background:#0e0e0e;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:14px;box-shadow:0 24px 70px rgba(0,0,0,.25)}
+    .browser-top{display:flex;gap:8px;padding-bottom:12px}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .desc-bar{border-left:2px solid rgba(0,0,0,.14);padding-left:18px}
+    .dark .desc-bar{border-left-color:rgba(255,255,255,.16)}
+    .spotlight{padding:20px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);margin-bottom:20px}
+    .light .spotlight{background:#fff;border:1px solid #e9e9e9;box-shadow:0 12px 30px rgba(0,0,0,.06)}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .feature-card{padding:18px;border-radius:18px}
+    .light .feature-card{background:#fff;border:1px solid #e8e8e8;box-shadow:0 10px 24px rgba(0,0,0,.05)}
+    .dark .feature-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .feature-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}
+    .icon-wrap{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,107,0,.12);flex:0 0 42px}
+    .gallery-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:16px}
+    .gallery-card{border-radius:18px;overflow:hidden;position:relative;background:#0c0c0c;border:1px solid rgba(255,255,255,.08);min-height:220px}
+    .gallery-card img,.gallery-card video{width:100%;height:100%;object-fit:cover}
+    .gallery-card.tall{grid-row:span 2;min-height:460px}
+    .gallery-label{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.62);color:#fff;padding:8px 12px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.12)}
+    .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .price-card{padding:26px;border-radius:24px;position:relative}
+    .price-card.highlight{outline:1px solid rgba(255,107,0,.35);box-shadow:0 0 0 1px rgba(255,107,0,.14),0 20px 60px rgba(0,0,0,.25)}
+    .plan-name{font:800 24px 'Plus Jakarta Sans',sans-serif;margin-bottom:10px}
+    .price{font:800 36px 'Plus Jakarta Sans',sans-serif;margin:8px 0 18px}
+    .badge-green{display:inline-block;background:rgba(34,197,94,.14);color:#86efac;border:1px solid rgba(34,197,94,.25);padding:7px 12px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:14px}
+    .checklist{display:grid;gap:12px;margin:20px 0 24px;padding:0;list-style:none}
+    .checklist li{display:flex;gap:10px;align-items:flex-start;color:#ddd}
+    .light .checklist li{color:#374151}
+    .check{width:18px;height:18px;border-radius:50%;background:rgba(255,107,0,.12);display:grid;place-items:center;flex:0 0 18px;margin-top:2px}
+    .testimonial-wrap{position:relative;overflow:hidden}
+    .testimonial-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+    .testimonial-card{min-width:100%;padding:10px}
+    .testimonial-box{background:#fff;border:1px solid #e9e9e9;border-radius:24px;padding:34px;box-shadow:0 14px 35px rgba(0,0,0,.06)}
+    .quote-mark{font-size:48px;color:var(--accent);line-height:1}
+    .stars{color:#f59e0b;font-size:18px;letter-spacing:2px;margin:10px 0 18px}
+    .t-author{display:flex;align-items:center;gap:14px;margin-top:22px}
+    .t-author img{width:58px;height:58px;border-radius:50%;object-fit:cover}
+    .slider-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px}
+    .arrow-btn{width:42px;height:42px;border-radius:50%;border:1px solid #d7d7d7;background:#fff;cursor:pointer}
+    .slider-dot{width:10px;height:10px;border-radius:999px;border:none;background:rgba(0,0,0,.18);cursor:pointer}
+    .slider-dot.active{transform:scale(1.25);background:var(--accent)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    .form-card{padding:28px;border-radius:24px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:8px;margin-bottom:14px}
+    label{font-size:14px;font-weight:600}
+    .input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff}
+    .input-focus-glow:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,107,0,.12)}
+    .submit-full{width:100%;margin-top:8px}
+    .success{margin-top:14px;color:#86efac;font-weight:700}
+    .sticky-cta{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:999;animation:stickyEnter .45s cubic-bezier(.16,1,.3,1) both}
+    @keyframes stickyEnter{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
+    .footer{padding:40px 0;background:#0f0f0f;border-top:1px solid rgba(255,255,255,.08)}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;align-items:start}
+    .footer-links,.socials{display:flex;gap:14px;flex-wrap:wrap}
+    .social{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+    .hero-fade-up{animation:fadeInUp .8s cubic-bezier(.16,1,.3,1) both}.hero-fade-left{animation:fadeInLeft .8s cubic-bezier(.16,1,.3,1) both}.hero-fade-right{animation:fadeInRight .8s cubic-bezier(.16,1,.3,1) both}.pop-in{animation:popIn .55s cubic-bezier(.16,1,.3,1) both}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}} @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}} @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}} @keyframes popIn{0%{opacity:0;transform:scale(.85)}70%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+    .reveal{opacity:0;transform:translateY(42px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .stagger-parent>*{opacity:0;transform:translateY(28px);transition:.65s cubic-bezier(.16,1,.3,1)}
+    .stagger-parent.visible>*{opacity:1;transform:translateY(0)}
+    .stagger-parent.visible>*:nth-child(2){transition-delay:.08s}.stagger-parent.visible>*:nth-child(3){transition-delay:.16s}.stagger-parent.visible>*:nth-child(4){transition-delay:.24s}
+    .hover-card{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,border-color .3s ease}
+    .hover-card:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 24px 70px rgba(0,0,0,.16)}
+    @media (max-width:980px){
+      .hero-grid,.split,.form-grid,.footer-grid,.pricing-grid,.gallery-grid{grid-template-columns:1fr}
+      .feature-grid,.form-row{grid-template-columns:1fr}
+      .nav-inner{grid-template-columns:1fr auto}
+      .nav-right{justify-content:flex-end}
+      .nav-cta{grid-column:1/-1;justify-self:end}
+      .hero-visual{min-height:360px}
+      .float-card{display:none}
+      .gallery-card.tall{min-height:320px}
+    }
+  `;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "lp"
+  }, /*#__PURE__*/React.createElement("link", {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+  }), /*#__PURE__*/React.createElement("style", {
+    dangerouslySetInnerHTML: {
+      __html: css
+    }
+  }), /*#__PURE__*/React.createElement("nav", {
+    className: "nav"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "brand"
+  }, "Seedream 4.5 and Seedance 1.5 Pro"), /*#__PURE__*/React.createElement("div", {
+    className: "nav-right"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg",
+    height: "28px",
+    alt: "Techjockey"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "nav-cta"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta",
+    onClick: scrollToForm
+  }, "Generate with AI")))), /*#__PURE__*/React.createElement("section", {
+    className: "section hero-bg"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "orb orb1 float-1"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "orb orb2 float-2"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-copy"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow hero-fade-up"
+  }, "AI Image Generation and AI Video Generation"), /*#__PURE__*/React.createElement("h1", {
+    className: "hero-fade-left"
+  }, "Create High-Quality ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "AI Images & Videos"), " with ByteDance Generative Models"), /*#__PURE__*/React.createElement("p", {
+    className: "muted hero-fade-up",
+    style: {
+      fontSize: 18,
+      maxWidth: 700
+    }
+  }, "Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation."), /*#__PURE__*/React.createElement("p", {
+    className: "muted hero-fade-up"
+  }, "Professionals creating visual content, including creative directors, video producers, art directors, marketing managers, and creative leads"), /*#__PURE__*/React.createElement("div", {
+    className: "hero-chips"
+  }, [['AI Image Generation', 'image'], ['AI Video Generation', 'video'], ['Audio-Visual Synchronization', 'audio'], ['High-Resolution Output', 'star']].map(([label, icon], i) => /*#__PURE__*/React.createElement("div", {
+    className: "chip pop-in",
+    key: i
+  }, renderIcon(icon), /*#__PURE__*/React.createElement("span", null, label)))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta pulse-cta",
+    onClick: scrollToForm
+  }, "Generate with AI"), /*#__PURE__*/React.createElement("button", {
+    className: "ghost-btn",
+    onClick: scrollToForm
+  }, "Generate with AI"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-visual hero-fade-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-panel glass-card"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "hero-main-img",
+    src: "/output/generated-assets/ds_1777541379259_3299cc2d/17-1e5ff9f843.png",
+    alt: "Seedream 4.5 and Seedance 1.5 Pro"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "float-card glass-card fc1"
+  }, /*#__PURE__*/React.createElement("strong", null, "Seedream 4.5"), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginTop: 6,
+      marginBottom: 0,
+      fontSize: 13
+    }
+  }, "AI Image Generation")), /*#__PURE__*/React.createElement("div", {
+    className: "float-card glass-card fc2"
+  }, /*#__PURE__*/React.createElement("strong", null, "Seedance 1.5 Pro"), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginTop: 6,
+      marginBottom: 0,
+      fontSize: 13
+    }
+  }, "AI Video Generation")), /*#__PURE__*/React.createElement("div", {
+    className: "float-card glass-card fc3"
+  }, /*#__PURE__*/React.createElement("strong", null, "Generate with AI"), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginTop: 6,
+      marginBottom: 0,
+      fontSize: 13
+    }
+  }, "High-quality visual content creation"))))), /*#__PURE__*/React.createElement("section", {
+    className: "marquee-wrapper"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "marquee-track"
+  }, Array.from({
+    length: 8
+  }).map((_, i) => /*#__PURE__*/React.createElement("span", {
+    className: "marquee-item",
+    key: i
+  }, "Seedream 4.5 and Seedance 1.5 Pro ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "\u2605"), " AI Image Generation and AI Video Generation")))), /*#__PURE__*/React.createElement("section", {
+    className: "section dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal",
+    style: {
+      marginBottom: 26
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "section-tag"
+  }, "Trust"), /*#__PURE__*/React.createElement("h2", null, "Proof strategy led by product capability")), /*#__PURE__*/React.createElement("div", {
+    className: "stagger-parent",
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3,1fr)',
+      gap: 18
+    }
+  }, ['Seedream 4.5', 'Seedance 1.5 Pro', 'Generate with AI'].map((item, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "glass-card hover-card",
+    style: {
+      padding: 24,
+      borderRadius: 20
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "icon-wrap",
+    style: {
+      marginBottom: 14
+    }
+  }, renderIcon(i === 0 ? 'image' : i === 1 ? 'video' : 'star')), /*#__PURE__*/React.createElement("h3", {
+    style: {
+      color: '#fff'
+    }
+  }, item), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginBottom: 0
+    }
+  }, i === 0 && 'AI Image Generation with high-resolution, high-fidelity images from text prompts and visual inputs.', i === 1 && 'AI Video Generation with synchronized creation of video and sound together.', i === 2 && 'Unlock the power of next-generation generative AI for high-quality visual content creation.')))))), /*#__PURE__*/React.createElement("section", {
+    className: "section light"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal",
+    style: {
+      marginBottom: 24
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "section-tag"
+  }, "Gallery"), /*#__PURE__*/React.createElement("h2", null, "Visual content ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "gallery"), " with videos and images")), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-grid stagger-parent"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "gallery-card tall hover-card"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/ds_1777541379259_3299cc2d/01-3965757185.jpeg",
+    alt: "AI visual generation gallery"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "gallery-label"
+  }, "Seedream 4.5")), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-card hover-card"
+  }, /*#__PURE__*/React.createElement("video", {
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+    preload: "auto"
+  }, /*#__PURE__*/React.createElement("source", {
+    src: "https://assets-static.invideo.io/files/Invideo_Demo_HP_18_10_2024_V001_8d82de6d4a.mp4",
+    type: "video/mp4"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "gallery-label"
+  }, "AI Video Generation")), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-card hover-card"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/ds_1777541379259_3299cc2d/10-7f64cfae87.jpeg",
+    alt: "AI video generation interface"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "gallery-label"
+  }, "Seedance 1.5 Pro")), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-card hover-card"
+  }, /*#__PURE__*/React.createElement("video", {
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+    preload: "auto"
+  }, /*#__PURE__*/React.createElement("source", {
+    src: "https://assets-static.invideo.io/files/Generative_v30_b53e1e8491.mp4",
+    type: "video/mp4"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "gallery-label"
+  }, "Generate with AI")), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-card hover-card"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/ds_1777541379259_3299cc2d/11-f578e07b46.jpeg",
+    alt: "Creative content preview"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "gallery-label"
+  }, "High-Quality Visuals"))))), /*#__PURE__*/React.createElement("section", {
+    className: "marquee-wrapper"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "marquee-track"
+  }, Array.from({
+    length: 8
+  }).map((_, i) => /*#__PURE__*/React.createElement("span", {
+    className: "marquee-item",
+    key: i
+  }, "AI Image Generation with Seedream 4.5 ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "\u2605"))))), /*#__PURE__*/React.createElement("section", {
+    className: "section dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container split"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-frame hover-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-top"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot",
+    style: {
+      background: '#ff5f57'
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot",
+    style: {
+      background: '#febc2e'
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot",
+    style: {
+      background: '#28c840'
+    }
+  })), /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/ds_1777541379259_3299cc2d/01-3965757185.jpeg",
+    alt: "AI Image Generation with Seedream 4.5",
+    style: {
+      borderRadius: 14
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "reveal-right"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "section-tag"
+  }, "Seedream 4.5"), /*#__PURE__*/React.createElement("h2", null, "AI Image Generation with ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Seedream 4.5")), /*#__PURE__*/React.createElement("div", {
+    className: "desc-bar"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.")), /*#__PURE__*/React.createElement("div", {
+    className: "spotlight hover-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "icon-wrap"
+  }, renderIcon('image')), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Advanced Capabilities of Seedream 4.5 by ByteDance"), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginBottom: 0
+    }
+  }, "From accurate text rendering to consistent image editing and multi-image composition, Seedream 4.5 powers high-quality, professional visual creation with superior precision and control.")))), /*#__PURE__*/React.createElement("div", {
+    className: "feature-grid stagger-parent"
+  }, [['Advanced Text–Image Alignment', 'Accurately translates prompts into visuals with improved semantic understanding.', 'image'], ['High-Resolution Output', 'Generate native images up to 1K–4K resolution with strong visual fidelity.', 'star'], ['Superior Typographic Rendering', 'Optimized for posters, ads, and text-heavy visual designs.', 'star'], ['Multi-Image Composition with Identity Preservation', 'Combines multiple inputs while accurately maintaining subject consistency.', 'image'], ['Strong Structural Fidelity', 'Maintains composition, layout, and scene structure with high precision.', 'star']].map((f, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "feature-card hover-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "icon-wrap"
+  }, renderIcon(f[2])), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontSize: 18
+    }
+  }, f[0]), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginBottom: 0
+    }
+  }, f[1])))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 24
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta",
+    onClick: scrollToForm
+  }, "Generate with AI"))))), /*#__PURE__*/React.createElement("section", {
+    className: "marquee-wrapper"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "marquee-track"
+  }, Array.from({
+    length: 8
+  }).map((_, i) => /*#__PURE__*/React.createElement("span", {
+    className: "marquee-item",
+    key: i
+  }, "AI Video Generation with Seedance 1.5 Pro by Bytedance ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "\u2605"))))), /*#__PURE__*/React.createElement("section", {
+    className: "section light"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container split"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal-left"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "section-tag"
+  }, "Seedance 1.5 Pro"), /*#__PURE__*/React.createElement("h2", null, "AI Video Generation with ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Seedance 1.5 Pro"), " by Bytedance"), /*#__PURE__*/React.createElement("div", {
+    className: "desc-bar"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.")), /*#__PURE__*/React.createElement("div", {
+    className: "spotlight hover-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "icon-wrap"
+  }, renderIcon('video')), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Key Capabilities of Seedance 1.5 Pro"), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginBottom: 0
+    }
+  }, "Seedance enables professional-grade AI video production with narrative coherence and realistic motion.")))), /*#__PURE__*/React.createElement("div", {
+    className: "feature-grid stagger-parent"
+  }, [['Text-to-Video Generation', 'Create videos directly from text prompts.', 'video'], ['Audio-Visual Synchronization', 'Generate video and audio simultaneously with strong multimodal alignment.', 'audio'], ['Multilingual Lip-Sync', 'Supports multilingual and dialect-level lip synchronization.', 'audio'], ['Cinematic Camera Control', 'Generate videos with dynamic camera movement and cinematic storytelling.', 'video'], ['10× Faster Inference', 'Optimized inference pipeline significantly improves generation speed.', 'star']].map((f, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "feature-card hover-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "icon-wrap"
+  }, renderIcon(f[2])), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontSize: 18
+    }
+  }, f[0]), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginBottom: 0
+    }
+  }, f[1])))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 24
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta",
+    onClick: scrollToForm
+  }, "Generate with AI"))), /*#__PURE__*/React.createElement("div", {
+    className: "reveal-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-frame hover-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-top"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot",
+    style: {
+      background: '#ff5f57'
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot",
+    style: {
+      background: '#febc2e'
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot",
+    style: {
+      background: '#28c840'
+    }
+  })), /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/ds_1777541379259_3299cc2d/10-7f64cfae87.jpeg",
+    alt: "AI Video Generation with Seedance 1.5 Pro by Bytedance",
+    style: {
+      borderRadius: 14,
+      marginBottom: 14
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      borderRadius: 14,
+      overflow: 'hidden'
+    }
+  }, /*#__PURE__*/React.createElement("video", {
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+    preload: "auto",
+    style: {
+      width: '100%',
+      borderRadius: 12,
+      display: 'block'
+    }
+  }, /*#__PURE__*/React.createElement("source", {
+    src: "https://assets-static.invideo.io/files/Stock_Footage2x_V2_78c7e1c798.mp4",
+    type: "video/mp4"
+  }))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal",
+    style: {
+      marginBottom: 28
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "section-tag"
+  }, "Pricing"), /*#__PURE__*/React.createElement("h2", null, "Choose the right ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "AI workflow"))), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-grid stagger-parent"
+  }, pricingPlans.map((plan, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: `glass-card price-card hover-card ${i === 1 ? 'highlight' : ''}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "plan-name"
+  }, plan.name), plan.price ? /*#__PURE__*/React.createElement("div", {
+    className: "price"
+  }, plan.price) : /*#__PURE__*/React.createElement("div", {
+    className: "price"
+  }, " "), /*#__PURE__*/React.createElement("div", {
+    className: "badge-green"
+  }, "Includes"), /*#__PURE__*/React.createElement("ul", {
+    className: "checklist"
+  }, plan.includes.map((item, idx) => /*#__PURE__*/React.createElement("li", {
+    key: idx
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "check"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "12",
+    height: "12",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: accent,
+    strokeWidth: "3",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M20 6L9 17l-5-5"
+  }))), /*#__PURE__*/React.createElement("span", null, item)))), /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta submit-full",
+    onClick: scrollToForm
+  }, "Generate with AI")))))), /*#__PURE__*/React.createElement("section", {
+    className: "section light"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal",
+    style: {
+      marginBottom: 28
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "section-tag"
+  }, "Testimonials"), /*#__PURE__*/React.createElement("h2", null, "What creative teams say about ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Seedream and Seedance"))), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-wrap reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-track",
+    style: {
+      transform: `translateX(-${activeSlide * 100}%)`
+    }
+  }, testimonials.map((t, i) => /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card",
+    key: i
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "quote-mark"
+  }, "\u275D"), /*#__PURE__*/React.createElement("div", {
+    className: "stars"
+  }, "\u2605\u2605\u2605\u2605\u2605"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 22,
+      lineHeight: 1.7,
+      color: '#151515'
+    }
+  }, t.quote), /*#__PURE__*/React.createElement("div", {
+    className: "t-author"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: t.avatar,
+    alt: t.author
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 800,
+      fontFamily: 'Plus Jakarta Sans, sans-serif'
+    }
+  }, t.author), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: '#6b7280'
+    }
+  }, t.role))))))), /*#__PURE__*/React.createElement("div", {
+    className: "slider-controls"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "arrow-btn",
+    onClick: () => setActiveSlide((activeSlide - 1 + testimonials.length) % testimonials.length),
+    "aria-label": "Previous testimonial"
+  }, "\u2039"), testimonials.map((_, i) => /*#__PURE__*/React.createElement("button", {
+    key: i,
+    className: `slider-dot ${i === activeSlide ? 'active' : ''}`,
+    onClick: () => setActiveSlide(i),
+    "aria-label": `Go to testimonial ${i + 1}`
+  })), /*#__PURE__*/React.createElement("button", {
+    className: "arrow-btn",
+    onClick: () => setActiveSlide((activeSlide + 1) % testimonials.length),
+    "aria-label": "Next testimonial"
+  }, "\u203A"))))), /*#__PURE__*/React.createElement("section", {
+    className: "section dark",
+    ref: formRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container form-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal-left"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "section-tag"
+  }, "Lead Form"), /*#__PURE__*/React.createElement("h2", null, "Generate with ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "AI")), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation)."), /*#__PURE__*/React.createElement("div", {
+    className: "gallery-card",
+    style: {
+      minHeight: 320
+    }
+  }, /*#__PURE__*/React.createElement("video", {
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+    preload: "auto"
+  }, /*#__PURE__*/React.createElement("source", {
+    src: "https://assets-static.invideo.io/files/Landing_Page_V001_30_10_2024_1b17e50c44.mp4",
+    type: "video/mp4"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "gallery-label"
+  }, "High-quality visual content creation"))), /*#__PURE__*/React.createElement("div", {
+    className: "reveal-right"
+  }, /*#__PURE__*/React.createElement("form", {
+    className: "glass-card form-card",
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    htmlFor: "name"
+  }, "Name"), /*#__PURE__*/React.createElement("input", {
+    id: "name",
+    name: "name",
+    className: "input input-focus-glow",
+    value: formData.name,
+    onChange: handleChange,
+    required: true
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    htmlFor: "email"
+  }, "Email"), /*#__PURE__*/React.createElement("input", {
+    id: "email",
+    type: "email",
+    name: "email",
+    className: "input input-focus-glow",
+    value: formData.email,
+    onChange: handleChange,
+    required: true
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    htmlFor: "phone"
+  }, "Phone"), /*#__PURE__*/React.createElement("input", {
+    id: "phone",
+    name: "phone",
+    className: "input input-focus-glow",
+    value: formData.phone,
+    onChange: handleChange,
+    required: true
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "field"
+  }, /*#__PURE__*/React.createElement("label", {
+    htmlFor: "company"
+  }, "Company"), /*#__PURE__*/React.createElement("input", {
+    id: "company",
+    name: "company",
+    className: "input input-focus-glow",
+    value: formData.company,
+    onChange: handleChange,
+    required: true
+  }))), /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "animated-cta submit-full"
+  }, "Generate with AI"), submitted && /*#__PURE__*/React.createElement("div", {
+    className: "success success-check"
+  }, "Generate with AI"))))), /*#__PURE__*/React.createElement("div", {
+    className: "sticky-cta"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "animated-cta",
+    onClick: scrollToForm
+  }, "Generate with AI")), /*#__PURE__*/React.createElement("footer", {
+    className: "footer"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container footer-grid"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
+    src: "https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg",
+    height: "28px",
+    alt: "Techjockey",
+    style: {
+      marginBottom: 14
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginBottom: 10
+    }
+  }, "support@techjockey.com"), /*#__PURE__*/React.createElement("p", {
+    className: "muted",
+    style: {
+      marginBottom: 0
+    }
+  }, "\xA9 2024 Techjockey Infotech Pvt. Ltd.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      color: '#fff',
+      fontSize: 18,
+      marginBottom: 12
+    }
+  }, "Links"), /*#__PURE__*/React.createElement("div", {
+    className: "footer-links"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "/"
+  }, "Privacy Policy"), /*#__PURE__*/React.createElement("a", {
+    href: "/"
+  }, "Terms"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      color: '#fff',
+      fontSize: 18,
+      marginBottom: 12
+    }
+  }, "Social"), /*#__PURE__*/React.createElement("div", {
+    className: "socials"
+  }, [['Facebook', 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z'], ['Instagram', 'M16 3H8a5 5 0 0 0-5 5v8a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5V8a5 5 0 0 0-5-5z M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z M17.5 6.5h.01'], ['Twitter', 'M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.4 2a8.94 8.94 0 0 1-2.83 1.08A4.48 4.48 0 0 0 16.11 2c-2.63 0-4.61 2.45-4.02 5A12.94 12.94 0 0 1 3 4s-4 9 5 13a13.3 13.3 0 0 1-7 2c9 5 20 0 20-11.5 0-.18 0-.35-.01-.53A7.72 7.72 0 0 0 23 3z'], ['LinkedIn', 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-12h4v2 M2 9h4v12H2z M4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z']].map(([label, path], i) => /*#__PURE__*/React.createElement("a", {
+    key: i,
+    href: "/",
+    className: "social",
+    "aria-label": label
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#fff",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: path
+  })))))))));
+};
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

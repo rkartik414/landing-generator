@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manage Engine Endpoint Central - Unified Endpoint Management &amp; Security</title>
+  <meta name="description"
+    content="Manage Engine Endpoint Central offers unified endpoint management and security for IT teams to automate, secure, and streamline endpoint operations from a single console." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      color: #1a1f36;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 16px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-style: none;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #4f46e5;
+      outline-offset: 2px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      margin: 0 0 0.5em 0;
+      color: #1a1f36;
+      line-height: 1.3;
+    }
+    p {
+      margin: 0 0 1em 0;
+      color: #4b5563;
+      font-size: 1rem;
+    }
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    /* Container and grid */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+    .col-6 {
+      width: 50%;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .col-12 {
+      width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    @media (max-width: 767px) {
+      .col-6 {
+        width: 100%;
+      }
+    }
+    /* Sticky top nav bar [A] */
+    header.sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-family: 'Rajdhani', sans-serif;
+      user-select: none;
+    }
+    header.sticky-nav .brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #1a1f36;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    header.sticky-nav .brand .logo-text {
+      user-select: text;
+    }
+    header.sticky-nav .cta-button {
+      background-color: #4f46e5;
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 1rem;
+      border-radius: 24px;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+      white-space: nowrap;
+    }
+    header.sticky-nav .cta-button:hover,
+    header.sticky-nav .cta-button:focus-visible {
+      background-color: #3b3fc1;
+      outline-offset: 2px;
+    }
+    /* Hero [B] */
+    #hero {
+      background: linear-gradient(135deg, #1a1f36 0%, #12172b 100%);
+      color: #fff;
+      padding: 64px 0 64px 0;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    #hero .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    #hero .hero-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
+    #hero h1 {
+      font-size: 52px;
+      line-height: 1.3;
+      margin-bottom: 0.5em;
+      letter-spacing: normal;
+      font-weight: 700;
+    }
+    #hero p.subheadline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 1.125rem;
+      color: #d1d5db;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    #hero .hero-image {
+      flex: 1 1 400px;
+      max-width: 560px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    }
+    /* Product Sections [D][E] */
+    section.product-section {
+      padding: 56px 0;
+    }
+    section.product-section:nth-child(odd) {
+      background-color: #ffffff;
+    }
+    section.product-section:nth-child(even) {
+      background-color: #f9fafb;
+    }
+    section.product-section .container {
+      max-width: 900px;
+    }
+    section.product-section h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5em;
+      color: #1a1f36;
+    }
+    section.product-section p.description {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 1.5em;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    section.product-section .btn-primary {
+      display: inline-block;
+      background-color: #4f46e5;
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      padding: 12px 28px;
+      border-radius: 24px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 2rem;
+    }
+    section.product-section .btn-primary:hover,
+    section.product-section .btn-primary:focus-visible {
+      background-color: #3b3fc1;
+      outline-offset: 2px;
+    }
+    /* Feature List */
+    ul.feature-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    ul.feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    ul.feature-list li:hover,
+    ul.feature-list li:focus-within {
+      transform: translateY(-4px);
+    }
+    ul.feature-list li .feature-icon {
+      flex-shrink: 0;
+      margin-top: 4px;
+      color: #4f46e5;
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: currentColor;
+      fill: none;
+      user-select: none;
+    }
+    ul.feature-list li .feature-text {
+      flex: 1 1 auto;
+    }
+    ul.feature-list li .feature-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: #1a1f36;
+      margin-bottom: 0.25em;
+    }
+    ul.feature-list li .feature-desc {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.9375rem;
+      color: #4b5563;
+      margin: 0;
+      line-height: 1.4;
+    }
+    /* Testimonials [H] */
+    #testimonials {
+      background: linear-gradient(135deg, #1a1f36 0%, #12172b 100%);
+      color: #fff;
+      padding: 56px 0 72px 0;
+      font-family: 'Inter', sans-serif;
+    }
+    #testimonials .container {
+      max-width: 960px;
+      position: relative;
+    }
+    #testimonials h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #fff;
+      text-align: center;
+    }
+    .testimonial-slider {
+      overflow: hidden;
+      position: relative;
+    }
+    .testimonial-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.5s ease;
+      will-change: transform;
+    }
+    .testimonial-card {
+      background: #262d4a;
+      border-radius: 12px;
+      padding: 24px 28px 32px 28px;
+      min-width: 280px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      user-select: text;
+    }
+    .testimonial-quote {
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #d1d5db;
+      margin-bottom: 1.5em;
+      white-space: pre-line;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.125rem;
+      color: #fff;
+      margin-bottom: 0.125em;
+    }
+    .testimonial-role {
+      font-size: 0.875rem;
+      color: #9ca3af;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+    /* Testimonial nav buttons */
+    .testimonial-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .testimonial-nav button {
+      background: rgba(79, 70, 229, 0.85);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: #fff;
+      font-size: 20px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      pointer-events: all;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .testimonial-nav button:hover,
+    .testimonial-nav button:focus-visible {
+      background-color: #3b3fc1;
+      outline-offset: 2px;
+    }
+    .testimonial-nav button:disabled {
+      background: rgba(79, 70, 229, 0.3);
+      cursor: default;
+      pointer-events: none;
+    }
+    /* Lead form or CTA card [I] */
+    #lead-cta {
+      background: #ffffff;
+      padding: 48px 24px;
+      margin: 56px auto 72px auto;
+      max-width: 480px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgb(0 0 0 / 0.1);
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+    #lead-cta h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: #1a1f36;
+      margin-bottom: 24px;
+    }
+    #lead-cta p {
+      color: #4b5563;
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+    #lead-cta .btn-primary {
+      padding: 14px 36px;
+      font-size: 1.125rem;
+      border-radius: 24px;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      background-color: #4f46e5;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    #lead-cta .btn-primary:hover,
+    #lead-cta .btn-primary:focus-visible {
+      background-color: #3b3fc1;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sticky Top Nav Bar [A] -->
+  <header class="sticky-nav" role="banner" aria-label="Primary navigation">
+    <div class="brand" aria-label="Techjockey brand and product name">
+      <span class="logo-text" aria-hidden="true" style="user-select:text;">Techjockey</span> &mdash;
+      <span aria-label="Product Name">Manage Engine Endpoint Central</span>
+    </div>
+    <a href="#lead-cta" class="cta-button" role="button" tabindex="0">Request Demo</a>
+  </header>
+
+  <!-- Hero Section [B] -->
+  <section id="hero" role="region" aria-label="Hero section: Unified Endpoint Management & Security">
+    <div class="container" tabindex="-1">
+      <div class="hero-text" >
+        <h1>Unified Endpoint Management &amp; Security with Manage Engine Endpoint Central</h1>
+        <p class="subheadline">Manage, secure, and automate your entire endpoint ecosystem from a single console.</p>
+      </div>
+      <div class="hero-image" aria-hidden="true">
+        <img src="https://static.hexnode.com/v2/assets/images/open-graph/hexnode.jpg" alt="IT professionals managing endpoints on laptops in a digital network environment" width="560" height="360" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust section omitted as per content rules -->
+
+  <!-- Product Sections [D][E] -->
+  <main>
+    <!-- Banner2 product section -->
+    <section class="product-section" style="background-color:#ffffff;" aria-labelledby="banner2-headline">
+      <div class="container">
+        <h2 id="banner2-headline">Centralized Endpoint Management for Modern IT Teams</h2>
+        <p class="description">Automate endpoint management while improving security and operational efficiency with Manage Engine Endpoint Central. It’s a unified endpoint management and security solution that helps IT teams manage desktops, laptops, servers, and mobile devices from a single console.</p>
+        <button class="btn-primary" type="button" onclick="location.href='#lead-cta'">Request Demo</button>
+      </div>
+    </section>
+
+    <!-- All-in-One Endpoint Security & Management Platform -->
+    <section class="product-section" style="background-color:#f9fafb;" aria-labelledby="all-in-one-headline">
+      <div class="container">
+        <h2 id="all-in-one-headline">All-in-One Endpoint Security &amp; Management Platform</h2>
+        <p class="description">Bring devices, apps, data, and people together in one place with Endpoint Central to securely manage your digital workplace and global workforce.</p>
+        <ul class="feature-list" role="list">
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Patch &amp; Update Management</h3>
+              <p class="feature-desc">Secure and stabilize your operating systems, applications, and mobile apps with automated patches and updates.</p>
+            </div>
+          </li>
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Browser Security</h3>
+              <p class="feature-desc">Protect and manage multiple browsers, track usage patterns, and maintain compliance with standards like STIG.</p>
+            </div>
+          </li>
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Data Security</h3>
+              <p class="feature-desc">Identify and encrypt sensitive data, enforce policies for authorized usage, and ensure secure transmission.</p>
+            </div>
+          </li>
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Vulnerability Remediation</h3>
+              <p class="feature-desc">Leverage continuous threat intelligence, thorough assessments, and swift remediation to mitigate risks.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Standard Features -->
+    <section class="product-section" style="background-color:#ffffff;" aria-labelledby="standard-features-headline">
+      <div class="container">
+        <h2 id="standard-features-headline">Monitor Continuously. Respond Instantly</h2>
+        <ul class="feature-list" role="list">
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Strengthen Endpoint Security</h3>
+              <p class="feature-desc">Built-in security controls for malware protection, such as next-gen antivirus and anti-ransomware.</p>
+            </div>
+          </li>
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Manage IT Assets Effectively</h3>
+              <p class="feature-desc">Live notifications and ready-made reports to discover, track, and manage your hardware, software, and digital assets.</p>
+            </div>
+          </li>
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Enhance Application Control &amp; Privileges</h3>
+              <p class="feature-desc">Define install permissions, track privileges, and enforce zero-trust security with role-based and time-bound access.</p>
+            </div>
+          </li>
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Facilitate Remote Access &amp; Troubleshooting</h3>
+              <p class="feature-desc">Remotely perform system operations with multi-user collaboration to efficiently troubleshoot devices.</p>
+            </div>
+          </li>
+          <li tabindex="0">
+            <svg class="feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <div class="feature-text">
+              <h3 class="feature-title">Ensure Compliance</h3>
+              <p class="feature-desc">Adhere to regulatory compliance and generate comprehensive audit-ready reports.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Testimonials Carousel [H] -->
+  <section id="testimonials" aria-label="Customer testimonials">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonial-slider" aria-live="polite" aria-atomic="true">
+        <div class="testimonial-track" id="testimonial-track" style="transform: translateX(0);">
+          <article class="testimonial-card" tabindex="0">
+            <p class="testimonial-quote">“Endpoint Central helps us stay on top of patch management. The remote support features are fantastic and help us manage systems efficiently.”</p>
+            
+          </article>
+          <article class="testimonial-card" tabindex="0">
+            <p class="testimonial-quote">“Endpoint Central has helped our business enhance employee experience and support users in a timely and efficient manner.”</p>
+            
+          </article>
+          <article class="testimonial-card" tabindex="0">
+            <p class="testimonial-quote">“Endpoint Central has simplified patch management and software deployment for our IT team. Managing hundreds of devices from one console has significantly improved our operational efficiency.”</p>
+            
+          </article>
+          <article class="testimonial-card" tabindex="0">
+            <p class="testimonial-quote">“We purchased Endpoint Central through Techjockey and the experience was seamless. Their team guided us through the evaluation, purchase process, and even helped us with the post-purchase demo and onboarding.”</p>
+            
+          </article>
+          <article class="testimonial-card" tabindex="0">
+            <p class="testimonial-quote">“Techjockey made our Endpoint Central purchase extremely smooth. From product consultation to after-purchase support and demo sessions, their team ensured we could deploy the solution quickly.”</p>
+            
+          </article>
+        </div>
+        <div class="testimonial-nav" aria-label="Testimonial navigation">
+          <button type="button" id="testimonial-prev" aria-controls="testimonial-track" aria-label="Previous testimonial" disabled>&#10094;</button>
+          <button type="button" id="testimonial-next" aria-controls="testimonial-track" aria-label="Next testimonial">&#10095;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead CTA card [I] -->
+  <section id="lead-cta" role="region" aria-label="Request demo call to action">
+    <h2>Request a Demo</h2>
+    <p>Discover how Manage Engine Endpoint Central can transform your endpoint management and security. Our team is ready to assist you with a personalized demo tailored to your IT team's needs.</p>
+    <button type="button" onclick="location.href='mailto:sales@techjockey.com?subject=Request%20for%20Endpoint%20Central%20Demo'">Request Demo</button>
+  </section>
+
+  <script>
+    (function () {
+      const track = document.getElementById('testimonial-track');
+      const prevBtn = document.getElementById('testimonial-prev');
+      const nextBtn = document.getElementById('testimonial-next');
+      const cards = track.children;
+      const cardCount = cards.length;
+      let currentIndex = 0;
+
+      function updateButtons() {
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= cardCount - 1;
+      }
+      function updateTrackPosition() {
+        const cardWidth = cards[0].offsetWidth + 24; // card width + gap
+        const offset = -currentIndex * cardWidth;
+        track.style.transform = `translateX(${offset}px)`;
+      }
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateTrackPosition();
+          updateButtons();
+        }
+      });
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < cardCount - 1) {
+          currentIndex++;
+          updateTrackPosition();
+          updateButtons();
+        }
+      });
+      // Initialize buttons state
+      updateButtons();
+      // Keyboard accessibility: Left/Right arrows on testimonial slider container
+      const slider = document.querySelector('.testimonial-slider');
+      slider.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          prevBtn.click();
+          e.preventDefault();
+        } else if (e.key === 'ArrowRight') {
+          nextBtn.click();
+          e.preventDefault();
+        }
+      });
+    })();
+  </script>
+
+<!-- TECHJOCKEY FOOTER -->
+    
+</body>
+
+</html>

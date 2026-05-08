@@ -1,0 +1,44 @@
+{
+  "sessionId": "ds_1776344264364_bd6e6487",
+  "createdAt": "2026-04-16T12:57:44.364Z",
+  "updatedAt": "2026-04-16T12:57:44.368Z",
+  "status": "created",
+  "productName": "lp",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "",
+    "parsedSectionCount": 19
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": null,
+    "heroStrategy": null,
+    "blueprint": null,
+    "mediaPlan": null
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": null,
+    "fileUrl": null,
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": null
+  },
+  "logs": [
+    {
+      "at": "2026-04-16T12:57:44.368Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    }
+  ]
+}

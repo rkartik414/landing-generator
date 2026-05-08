@@ -1,0 +1,808 @@
+{
+  "sessionId": "ds_1776073652130_df99629d",
+  "createdAt": "2026-04-13T09:47:32.131Z",
+  "updatedAt": "2026-04-13T09:48:37.416Z",
+  "status": "planned",
+  "productName": "ManageEngine Firewall Analyzer",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://www.techjockey.com/c/manageengine/",
+    "parsedSectionCount": 13
+  },
+  "workflow": {
+    "contentMap": {
+      "productName": "ManageEngine Firewall Analyzer",
+      "productCategory": "Firewall log monitoring and management software",
+      "targetAudience": "Administrators, IT teams, MSSPs, and organizations looking to automate firewall management, monitor network traffic, analyze logs, and improve compliance and security",
+      "contentVolume": "medium",
+      "hero": {
+        "headline": "Simplified firewall log monitoring with ManageEngine Firewall Analyzer",
+        "subheadline": "Now, it’s easy to automate firewall management and secure your network within no time.",
+        "supportingLine": "",
+        "primaryCTA": "Book Free Trial",
+        "secondaryCTA": "",
+        "wordCount": 17
+      },
+      "trust": {
+        "badges": [],
+        "socialProof": "",
+        "customerCount": ""
+      },
+      "productSections": [
+        {
+          "name": "Compatible With All Major Firewalls",
+          "label": "",
+          "headline": "Compatible With All Major Firewalls",
+          "description": "Supports leading firewalls like Check Point, Cisco, Juniper, Fortinet, Huawei, SonicWall, pfSense, and Palo Alto.",
+          "primaryCTA": "",
+          "features": [
+            {
+              "title": "Agentless Log Analytics and Configuration Management",
+              "description": "Gaining network activity insights and keeping abreast about firewall log is easier now. Firewall Analyzer helps administrators understand network bandwidth usage.",
+              "hasIcon": false
+            },
+            {
+              "title": "Real-Time Firewall Monitoring",
+              "description": "Continuously monitor firewall activity and detect threats instantly with live insights.",
+              "hasIcon": false
+            },
+            {
+              "title": "Bandwidth Monitoring & Traffic Analysis",
+              "description": "Analyze bandwidth usage, identify high-consumption apps/users, and optimize network performance.",
+              "hasIcon": false
+            },
+            {
+              "title": "Log Analysis & Forensic Investigation",
+              "description": "Drill down into detailed logs to investigate incidents and identify root causes",
+              "hasIcon": false
+            },
+            {
+              "title": "Firewall Rule & Policy Management",
+              "description": "Analyze, optimize, and manage firewall rules to improve security and performance.",
+              "hasIcon": false
+            }
+          ]
+        },
+        {
+          "name": "Why Choose ManageEngine Firewall Analyzer?",
+          "label": "",
+          "headline": "Why Choose ManageEngine Firewall Analyzer?",
+          "description": "Gain complete visibility, control, and compliance across your network with advanced monitoring, auditing, and reporting capabilities.",
+          "primaryCTA": "",
+          "features": [
+            {
+              "title": "Configuration Change Management",
+              "description": "Track and audit configuration changes with alerts to prevent unauthorized modifications.",
+              "hasIcon": false
+            },
+            {
+              "title": "Compliance & Security Audits",
+              "description": "Automate compliance reporting and ensure adherence to industry standards and regulations.",
+              "hasIcon": false
+            },
+            {
+              "title": "Centralized Dashboard & Reporting",
+              "description": "Get a single-pane view with customizable dashboards, scheduled reports, and actionable insights.",
+              "hasIcon": false
+            },
+            {
+              "title": "Comprehensive Reporting & Compliance",
+              "description": "Gain actionable insights with reports for threat monitoring, change management, and regulatory compliance.",
+              "hasIcon": false
+            }
+          ]
+        },
+        {
+          "name": "All-In-One Solution to Comprehensive Network Security Device Management",
+          "label": "",
+          "headline": "All-In-One Solution to Comprehensive Network Security Device Management",
+          "description": "Streamline security operations with cost-effective deployment, faster productivity, real-time insights, and complete visibility across your network.",
+          "primaryCTA": "",
+          "features": [
+            {
+              "title": "Low Total Cost of Ownership",
+              "description": "No additional hardware required, minimal entry cost, and a maintenance-inclusive model ensure low total cost of ownership.",
+              "hasIcon": false
+            },
+            {
+              "title": "Faster IT Productivity",
+              "description": "Go from deployment to report generation in minutes, improving efficiency for IT teams and MSSPs.",
+              "hasIcon": false
+            },
+            {
+              "title": "Actionable Insights & Flexible Reporting",
+              "description": "Transform security logs into actionable insights with easy-to-use reports in formats like PDF and CSV.",
+              "hasIcon": false
+            },
+            {
+              "title": "Rapid ROI & Quick Deployment",
+              "description": "Competitively priced with fast deployment, instant results, and reduced IT overhead for quicker returns.",
+              "hasIcon": false
+            },
+            {
+              "title": "Maximized Value of Security Devices",
+              "description": "Supports logs from firewalls, VPNs, IDS/IPS, and proxy servers for complete visibility.",
+              "hasIcon": false
+            }
+          ]
+        }
+      ],
+      "whyTechjockey": {
+        "include": false,
+        "headline": "",
+        "points": []
+      },
+      "pricing": {
+        "headline": "",
+        "plans": [],
+        "emiText": ""
+      },
+      "testimonials": [
+        {
+          "quote": "ManageEngine Firewall Analyzer gives us clear visibility into network traffic and helps us respond to threats faster. A dependable solution for growing operations.",
+          "author": "Amit Verma",
+          "designation": "IT Manager",
+          "company": "Manufacturing Industry"
+        },
+        {
+          "quote": "Custom reports and easy compliance tracking make ManageEngine Firewall Analyzer a perfect fit for our scaling infrastructure. It adds real control to our security stack.",
+          "author": "Neha Kapoor",
+          "designation": "Head of IT",
+          "company": "E-commerce Industry"
+        }
+      ],
+      "form": {
+        "headline": "",
+        "fields": [],
+        "primaryCTA": ""
+      },
+      "news": [],
+      "extras": []
+    },
+    "referenceMap": {
+      "heroPattern": "Split hero with brand/logo presence, large headline, short supporting copy, and a compact bullet-value list; CTA emphasis is primarily via a prominent trial/demo action rather than multiple competing buttons.",
+      "sectionRhythm": "Top hero band followed by vertically stacked content sections; each section uses a strong headline, brief explanatory paragraph, then a feature grid/list. Rhythm is content-led with clear separation between modules rather than dense mixed layouts.",
+      "cardStyle": "Primarily simple informational cards/feature blocks with minimal ornamentation; content appears in clean white/light panels, basic icon-accented bullets, and restrained borders/shadows if any.",
+      "ctaPattern": "Single primary conversion CTA in hero/form area; supporting sections are mostly informational and do not introduce repeated CTA clutter. Lead capture is prioritized through an adjacent form module.",
+      "pricingPattern": "No pricing pattern evident in the provided reference excerpt.",
+      "footerMode": "Not visible in the provided reference excerpt; no footer pattern can be reliably extracted.",
+      "spacingScale": [
+        "32",
+        "24",
+        "20",
+        "16",
+        "12",
+        "8"
+      ],
+      "mediaPattern": "Minimal media usage in the visible reference: logo mark, small inline tick icons, and no heavy imagery. Visual communication relies on typography and icon bullets rather than large product visuals.",
+      "productSectionPattern": "Sequential product-benefit sections with repeated headline + description + feature-list structure. Sections read as modular blocks that can be scanned quickly, likely using multi-column feature rows on desktop and stacked cards on mobile.",
+      "formPattern": "Dedicated lead form card placed near the hero; compact title, hidden tracking fields, and a structured input area. Form is treated as a high-priority conversion module with clear containment and separation from informational content.",
+      "interactionPatterns": {
+        "usesCarousel": false,
+        "usesTabs": false,
+        "usesAccordion": false,
+        "usesStickyCta": false,
+        "usesRevealAnimations": false,
+        "usesHoverCards": false,
+        "usesCounters": false,
+        "usesMarqueeLogos": false
+      },
+      "surfacePatterns": {
+        "alternatesBackgrounds": false,
+        "usesDarkBandSections": false,
+        "usesTintedSections": false,
+        "usesGlassPanels": false,
+        "usesEditorialWhitespace": true
+      },
+      "animationStyle": "No explicit motion system is visible in the excerpt; interaction style appears static and utility-driven rather than animation-heavy.",
+      "componentPatterns": [
+        "brand/logo header",
+        "hero headline block",
+        "benefit bullet list with tick icons",
+        "lead capture form card",
+        "stacked feature sections",
+        "scan-friendly content blocks"
+      ],
+      "designNotes": [
+        "Design language is functional and enterprise-oriented.",
+        "Hierarchy is driven by large headings, concise subcopy, and listable benefits.",
+        "Conversion is supported by an immediately visible form rather than long progressive persuasion.",
+        "The layout favors clarity and rapid scanning over visual complexity.",
+        "Reusable pattern should prioritize modular sections, strong typography, and compact trust/benefit messaging."
+      ]
+    },
+    "personality": {
+      "productType": "security",
+      "buyer": "Administrators, IT teams, MSSPs, and compliance-focused organizations",
+      "emotion": "controlled urgency, operational confidence, and audit-grade trust",
+      "reasoning": "Firewall Analyzer is a security operations product built for visibility, monitoring, compliance, and incident investigation. The visual language should feel precise, technical, and dependable rather than flashy. Use a dark-forward, command-center style with strong contrast, structured grids, and intelligent data panels. Brand orange from techjockey.com should be used as the primary energy point for CTA and hero emphasis, while the rest of the palette stays restrained to support trust and clarity.",
+      "themeFamily": "compliance-trust",
+      "surfaceStyle": "layered",
+      "visualMotif": "dashboard-panels",
+      "typography": {
+        "headingFont": "Rajdhani",
+        "bodyFont": "Inter",
+        "headingWeight": 700,
+        "heroFontSize": "48px",
+        "heroFontSizeReason": "The headline is long and technically dense, so 48px keeps it authoritative without breaking the split hero layout.",
+        "letterSpacing": "tight",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#1a1a1a",
+        "accent": "#ff6b00",
+        "accentHover": "#e85f00",
+        "bodyBg": "#f5f5f5",
+        "cardBg": "#ffffff",
+        "textDark": "#1a1a1a",
+        "textMid": "#5f6368",
+        "textLight": "#ffffff",
+        "border": "#e5e7eb",
+        "colourReason": "Primary is grounded in the brand's dark neutral for a premium security feel, while accent uses the exact brand orange for CTA and key highlights. The palette avoids generic blue/purple security tropes and stays fully derived from brand colors."
+      },
+      "backgroundSystem": {
+        "bodyBase": "#f5f5f5",
+        "hero": "Solid #1a1a1a with subtle orange edge glow and faint grid overlay",
+        "section1": "#ffffff",
+        "section2": "#f5f5f5",
+        "section3": "#111111"
+      },
+      "layout": {
+        "heroStyle": "split-left-text-right-image",
+        "heroBackground": "Dark charcoal hero with a layered command-center visual on the right",
+        "heroReason": "The product benefits from a split hero because firewall analytics are easiest to communicate with an interface-led visual. The left side carries clear value proposition and CTA, while the right side uses a PNG dashboard mockup, floating metric chips, and log-stream panels to signal operational intelligence.",
+        "featureStyle": "spotlight-plus-grid",
+        "featureReason": "Five operational features are best presented as a strong spotlight row followed by a structured grid. This lets the platform capabilities feel both premium and practical, while maintaining strong readability for IT buyers.",
+        "sectionSpacing": "generous",
+        "usesDarkSections": true,
+        "darkSectionFor": "hero, mid-page proof band, and final CTA strip to create contrast and a command-center rhythm",
+        "bannerFeatureChips": true,
+        "heroFormPreferred": false
+      },
+      "ctaStyle": {
+        "shape": "sharp",
+        "size": "large",
+        "style": "solid",
+        "primaryText": "Book Free Trial"
+      },
+      "motionStrategy": {
+        "allowAnimations": true,
+        "style": "premium",
+        "heroEntrance": "stagger",
+        "cardHover": "lift",
+        "sectionReveal": "fade-up"
+      },
+      "imageryDirection": "Use a high-clarity product interface visual with layered monitoring panels, log tables, anomaly alerts, bandwidth charts, and compliance report cards. Keep it realistic and enterprise-grade, with subtle orange highlights on active states. Add floating chips like 'Real-time monitoring', 'Compliance ready', and 'Log forensics' to create depth. If product imagery is limited, build a CSS-based dashboard shell with chart blocks, table rows, and status pills.",
+      "formatStrategy": {
+        "hero": "jpeg",
+        "logos": "svg",
+        "ui": "png",
+        "photos": "jpeg",
+        "featureIcons": "svg"
+      },
+      "designPersonality": "A precise, command-center security aesthetic: dark, disciplined, and trustworthy, with orange as the only high-energy accent. The page should feel like a premium network operations cockpit — layered panels, clear hierarchy, strong borders, intelligent data visualization, and minimal decorative noise."
+    },
+    "designIntent": {
+      "pageGoal": "lead-generation",
+      "pageType": "single-product",
+      "audience": "Administrators, IT teams, MSSPs, and organizations evaluating firewall log monitoring, traffic analysis, compliance reporting, and security operations automation",
+      "primaryUserIntent": "Understand whether ManageEngine Firewall Analyzer fits their firewall monitoring and compliance needs, then initiate a free trial or sales conversation",
+      "conversionPriority": "high",
+      "contentDensity": "medium",
+      "brandDirection": {
+        "tone": "technical, authoritative, and reassuring",
+        "visualStyle": "security-first, content-led, structured layout with clean white feature cards and a strong dark/blue authority hero",
+        "trustLevel": "high",
+        "motionLevel": "subtle"
+      },
+      "sectionOrder": [
+        "hero",
+        "compatibility",
+        "why-choose",
+        "all-in-one-value",
+        "testimonials"
+      ],
+      "sectionPurpose": [
+        {
+          "id": "hero",
+          "purpose": "Establish product value instantly, communicate firewall monitoring benefits, and drive the primary free-trial action above the fold",
+          "priority": "high"
+        },
+        {
+          "id": "compatibility",
+          "purpose": "Reduce adoption friction by showing broad firewall support and core operational capabilities",
+          "priority": "high"
+        },
+        {
+          "id": "why-choose",
+          "purpose": "Translate features into operational value for admins and IT teams with monitoring, audits, reporting, and centralized control",
+          "priority": "high"
+        },
+        {
+          "id": "all-in-one-value",
+          "purpose": "Strengthen purchase rationale with ROI, deployment speed, and total-cost-of-ownership framing",
+          "priority": "medium"
+        },
+        {
+          "id": "testimonials",
+          "purpose": "Provide credibility through role-relevant peer validation and compliance/security outcomes",
+          "priority": "medium"
+        }
+      ],
+      "componentNeeds": [
+        {
+          "sectionId": "hero",
+          "componentType": "split-hero",
+          "variantHint": "security product hero with prominent CTA and compact value bullets",
+          "notes": "Use strong authority styling, concise supporting copy, and one dominant action. Keep the hero visually disciplined and technical, not promotional. Since no image is provided, favor a text-led hero with bullet-value list and high contrast."
+        },
+        {
+          "sectionId": "compatibility",
+          "componentType": "feature-grid",
+          "variantHint": "3-column grid on desktop, stacked on mobile",
+          "notes": "Present firewall compatibility and key capabilities as a modular feature section. Make the first row about supported firewalls, then scan-friendly benefit cards. Prioritize agentless analytics, monitoring, bandwidth analysis, log investigation, and policy management."
+        },
+        {
+          "sectionId": "why-choose",
+          "componentType": "feature-card-grid",
+          "variantHint": "3-column or 2x2 card layout depending on available width",
+          "notes": "Frame these as business outcomes for IT teams: configuration change tracking, compliance audits, centralized reporting, and security oversight. Keep text dense enough to inform but not overwhelm."
+        },
+        {
+          "sectionId": "all-in-one-value",
+          "componentType": "benefit-grid",
+          "variantHint": "value-prop cards with cost/ROI emphasis",
+          "notes": "Surface low TCO, faster productivity, actionable insights, quick deployment, and broader device visibility. Use this section to support decision-makers who need operational justification."
+        },
+        {
+          "sectionId": "testimonials",
+          "componentType": "testimonial-cards",
+          "variantHint": "2-card grid with strong quote hierarchy",
+          "notes": "Use the two available testimonials only. Emphasize role and industry context to make the proof feel relevant to IT managers and heads of IT."
+        }
+      ],
+      "layoutStrategy": {
+        "hero": "Use a strong dark or deep authority-colored hero background with white text, a short supporting line, and a single prominent primary CTA. Because there is no product screenshot, keep the hero centered or slightly split with a compact bullet-value list rather than a visual-heavy layout. Avoid secondary CTA clutter.",
+        "features": "Stack vertically with clear module separation. Each section should begin with a bold headline and short description, followed by a clean feature grid. Use 3-column cards on desktop for the 5-item and 4-item sections, then collapse to single-column on mobile.",
+        "proof": "Introduce testimonials after the value sections so proof arrives once the product story is established. Keep the cards clean, with clear author hierarchy and a restrained layout to maintain trust.",
+        "pricing": "No pricing section should be introduced because no pricing content is available in the source input.",
+        "form": "No form module should be added because includeForm is false in the context. Conversion should rely on the hero CTA and overall page persuasion rather than lead-capture form placement."
+      },
+      "designConstraints": {
+        "mustUseDesignSystem": true,
+        "preferFigmaFirst": true,
+        "avoidDirectHtmlReasoning": true,
+        "needsStrongAboveFold": true,
+        "needsTrustSignalsEarly": true
+      },
+      "tokenProfileHint": "Security product token direction: use Rajdhani for headings and Inter for body copy; lean into dark authority tones with an accent blue/violet treatment, high-contrast white cards, restrained borders, and minimal motion. Keep spacing generous and consistent with a modular enterprise software layout.",
+      "figmaReadySummary": "Design a single-product, lead-generation landing page for a firewall security tool. Prioritize a strong authority hero, early compatibility proof, and sequential content-led benefit sections. Use clean feature cards, minimal ornamentation, and one dominant CTA path. No pricing, no form, and no invented trust modules. The page should feel technical, credible, and easy to scan for IT decision-makers."
+    },
+    "figmaBuildPlan": {
+      "fileName": "manageengine-firewall-analyzer-landing-page",
+      "pageType": "single-product",
+      "designSystemMode": "design-system-first",
+      "tokenProfileHint": "security | trust-authority | Rajdhani headings + Inter body | dark authoritative hero with light text and accent CTA",
+      "pages": [
+        {
+          "name": "Desktop",
+          "frame": {
+            "name": "Desktop / ManageEngine Firewall Analyzer",
+            "width": 1440,
+            "heightHint": 5200,
+            "grid": "12-col",
+            "sectionSpacing": 96
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Split Conversion",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Security hero, split text + lead form card, no product screenshot, strong dark authority background",
+              "contentSource": "contentMap.hero + contentMap.form + referenceMap.heroPattern + referenceMap.formPattern",
+              "priority": "high",
+              "notes": "Use a split hero composition even without a screenshot: left side for headline/subheadline and compact value bullets; right side for a dedicated lead form card because form is a high-priority conversion module. Keep one primary CTA only in the hero. Because hero headline is 16+ words, apply the smaller hero type scale. Include short bullet-value list derived from product benefits, not extra marketing claims.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": true
+              }
+            },
+            {
+              "id": "compatibility-features",
+              "type": "features",
+              "frameName": "Section / Compatible With All Major Firewalls",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column feature grid with intro block; 5 feature cards total",
+              "contentSource": "contentMap.productSections[0]",
+              "priority": "high",
+              "notes": "Render a section header block above the grid with headline and description, then a 3-column feature card grid on desktop because there are 5 features. Keep cards informational and clean with simple icon area placeholders if no source icon exists. Do not add CTA in this section. Use white cards with subtle borders and consistent card spacing.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "why-choose",
+              "type": "features",
+              "frameName": "Section / Why Choose ManageEngine Firewall Analyzer?",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "2-row feature grid, 4 cards",
+              "contentSource": "contentMap.productSections[1]",
+              "priority": "high",
+              "notes": "Use a standard section intro followed by a 2-column grid on desktop because there are 4 features. Keep wording concise in cards and let the section headline carry the value proposition. Maintain the same card system as other feature sections for consistency.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "all-in-one-value",
+              "type": "features",
+              "frameName": "Section / All-In-One Solution to Comprehensive Network Security Device Management",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column feature grid, 5 cards total; split intro plus cards",
+              "contentSource": "contentMap.productSections[2]",
+              "priority": "medium",
+              "notes": "Use a second stacked feature module with a strong headline, descriptive paragraph, and 3-column card grid because there are 5 features. Keep layout rhythm consistent with previous sections but vary the content density slightly by using more compact card copy. No media, no CTA.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "testimonials",
+              "type": "testimonials",
+              "frameName": "Section / Customer Testimonials",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "2-card testimonial grid on desktop, accent left border, star rating row",
+              "contentSource": "contentMap.testimonials",
+              "priority": "medium",
+              "notes": "Render the two provided testimonials as a clean card grid. Each card must include star rating row, italic quote, bold author, and grey designation/company line. No extra testimonial count or logos because they are not provided. Keep separation from feature sections with a light grey or tinted background.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": true,
+                "form": false
+              }
+            },
+            {
+              "id": "form",
+              "type": "form",
+              "frameName": "Section / Lead Capture",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Standalone conversion form card, centered within light section",
+              "contentSource": "contentMap.form + referenceMap.formPattern",
+              "priority": "high",
+              "notes": "Because the form object has no explicit copy/fields, create a structured lead-capture card with standard B2B fields only if needed by the form component system, but keep content minimal and deterministic. Treat this as a dedicated conversion section with strong containment, clear heading placeholder if available from CMS, and primary CTA placed inside the card. On desktop, center the card in a light grey section background.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": true
+              }
+            },
+            {
+              "id": "news",
+              "type": "news",
+              "frameName": "Section / Techjockey in News",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Horizontal publication strip with dividers",
+              "contentSource": "contentMap.news + referenceMap.news",
+              "priority": "low",
+              "notes": "Content map has an empty news array, so include only if the CMS slot is present. If rendered, use the Techjockey in News pattern from memory with publication name + headline items in a horizontal strip. Otherwise omit in implementation. Keep as the final optional section only if content is later populated.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile",
+          "frame": {
+            "name": "Mobile / ManageEngine Firewall Analyzer",
+            "width": 390,
+            "heightHint": 7000,
+            "grid": "4-col",
+            "sectionSpacing": 64
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Stacked Conversion",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Mobile hero with text first, form below or deferred; primary CTA full-width",
+              "contentSource": "contentMap.hero + contentMap.form + referenceMap.heroPattern + mobileRules.heroLayout",
+              "priority": "high",
+              "notes": "Stack the hero for mobile. Keep headline, subheadline, and a short value bullet list above the fold; move the form card below the copy or into the next fold depending on space. Primary CTA should be full-width. No secondary CTA. Use mobile hero text sizing from the security system and ensure the long headline wraps cleanly.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": true
+              }
+            },
+            {
+              "id": "compatibility-features",
+              "type": "features",
+              "frameName": "Section / Compatible With All Major Firewalls",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single-column stacked feature cards",
+              "contentSource": "contentMap.productSections[0]",
+              "priority": "high",
+              "notes": "Convert the 5-feature grid into a single-column stacked list of cards on mobile. Maintain the same card component, but make each card full width with comfortable vertical spacing. Keep the section introduction above the cards.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "why-choose",
+              "type": "features",
+              "frameName": "Section / Why Choose ManageEngine Firewall Analyzer?",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single-column stacked feature cards",
+              "contentSource": "contentMap.productSections[1]",
+              "priority": "high",
+              "notes": "Use the same stacked mobile treatment for the 4 feature cards. Keep headline and description at top, then list cards one per row. Preserve card spacing and borders for scanability.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "all-in-one-value",
+              "type": "features",
+              "frameName": "Section / All-In-One Solution to Comprehensive Network Security Device Management",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Single-column stacked feature cards",
+              "contentSource": "contentMap.productSections[2]",
+              "priority": "medium",
+              "notes": "Stack the 5 feature cards in a single column with consistent card height behavior and shorter text line lengths. Keep the section intro compact to avoid excessive scroll depth.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "testimonials",
+              "type": "testimonials",
+              "frameName": "Section / Customer Testimonials",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Single-column testimonial cards with vertical scroll behavior if needed",
+              "contentSource": "contentMap.testimonials",
+              "priority": "medium",
+              "notes": "Display testimonials as a single-column stack on mobile. Preserve star rating, italic quote, bold author, and grey designation/company. Keep each card compact and readable.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": true,
+                "form": false
+              }
+            },
+            {
+              "id": "form",
+              "type": "form",
+              "frameName": "Section / Lead Capture",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Full-width form card, reduced chrome, stacked actions",
+              "contentSource": "contentMap.form + mobileRules.cartCard + mobileRules.ctaButtons",
+              "priority": "high",
+              "notes": "On mobile, render the form as a full-width card with reduced shadow or no shadow. Keep form fields stacked and use a full-width primary CTA. If any secondary actions exist in the form component, place them below the primary. The form remains a dedicated conversion module rather than embedded in other sections.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": true
+              }
+            },
+            {
+              "id": "news",
+              "type": "news",
+              "frameName": "Section / Techjockey in News",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Optional stacked news items",
+              "contentSource": "contentMap.news + referenceMap.news",
+              "priority": "low",
+              "notes": "Omit by default because news content is empty. If populated later, render as stacked items with dividers and small type. Keep this as a final optional module only.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            }
+          ]
+        }
+      ],
+      "buildSummary": {
+        "desktopSectionCount": 7,
+        "mobileSectionCount": 7,
+        "sharedComponentFamilies": [
+          "compose-from-design-system"
+        ],
+        "figmaExecutionNotes": [
+          "Use Rajdhani for headings and Inter for body across the page because the product category is security.",
+          "Apply a dark authoritative hero treatment with white text and accent CTA, consistent with trust-authority emotion.",
+          "Keep all feature sections as modular white-card grids with 1px borders and 12px radius for design-system consistency.",
+          "Do not invent pricing, awards, or Techjockey benefits because they are not supported by the input content.",
+          "Treat the form as a dedicated conversion block and keep the hero CTA count to one primary action only.",
+          "Mobile should collapse all grids into one-column stacked layouts while preserving section order and content hierarchy.",
+          "News is optional and should remain hidden unless CMS content is added later."
+        ]
+      }
+    },
+    "heroStrategy": null,
+    "blueprint": null,
+    "mediaPlan": null
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": "manageengine-firewall-analyzer-landing-page",
+    "fileUrl": null,
+    "pages": [
+      {
+        "name": "Desktop",
+        "frameName": "Desktop / ManageEngine Firewall Analyzer",
+        "width": 1440,
+        "heightHint": 5200,
+        "grid": "12-col",
+        "sectionSpacing": 96,
+        "sectionCount": 7
+      },
+      {
+        "name": "Mobile",
+        "frameName": "Mobile / ManageEngine Firewall Analyzer",
+        "width": 390,
+        "heightHint": 7000,
+        "grid": "4-col",
+        "sectionSpacing": 64,
+        "sectionCount": 7
+      }
+    ],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": null
+  },
+  "logs": [
+    {
+      "at": "2026-04-13T09:47:32.133Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-04-13T09:48:19.438Z",
+      "type": "workflow",
+      "step": "figma-plan-saved",
+      "message": "Design planning state saved successfully"
+    },
+    {
+      "at": "2026-04-13T09:48:37.416Z",
+      "type": "workflow",
+      "step": "assets-localized",
+      "message": "Localized 17 assets, failed 2"
+    }
+  ]
+}

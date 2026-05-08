@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seedream-1777546821909.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#3a2ef8';
+  const primary = '#3a2ef8';
+  const bodyBg = '#1a1a1a';
+  const ctaText = 'Generate with AI';
+  const testimonials = [{
+    quote: "Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.",
+    author: 'Vaishali Saxena',
+    role: 'Creative Director',
+    avatar: '/output/generated-assets/ds_1777546555572_e56ff0ce/04-2770603589.png'
+  }, {
+    quote: "Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.",
+    author: 'Vihaan Pandey',
+    role: 'Video Producer',
+    avatar: '/output/generated-assets/ds_1777546555572_e56ff0ce/05-fd8403a48b.png'
+  }, {
+    quote: "The multimodal editing capabilities in Seedream make it easy to refine images with precision.",
+    author: 'Anurag Malhotra',
+    role: 'Art Director',
+    avatar: '/output/generated-assets/ds_1777546555572_e56ff0ce/07-2f95c6a6c6.png'
+  }, {
+    quote: "Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.",
+    author: 'Ashutosh Singh',
+    role: 'Marketing Manager',
+    avatar: '/output/generated-assets/ds_1777546555572_e56ff0ce/06-ea188ac20a.png'
+  }, {
+    quote: "From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.",
+    author: 'Shrimmi Saxena',
+    role: 'Creative Lead',
+    avatar: '/output/generated-assets/ds_1777546555572_e56ff0ce/08-26297278f3.png'
+  }];
+  const galleryMedia = ['/output/generated-assets/ds_1777546555572_e56ff0ce/11-f578e07b46.jpeg', '/output/generated-assets/ds_1777546555572_e56ff0ce/13-577dd50cc7.jpeg', '/output/generated-assets/ds_1777546555572_e56ff0ce/17-1e5ff9f843.png', '/output/generated-assets/ds_1777546555572_e56ff0ce/29-447ebcaa7d.webp', 'https://assets-static.invideo.io/files/Invideo_Demo_HP_18_10_2024_V001_8d82de6d4a.mp4', 'https://assets-static.invideo.io/files/Generative_v30_b53e1e8491.mp4'];
+  const [activeSlide, setActiveSlide] = useState(0);
+  const heroRef = useRef(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, {
+      threshold: 0.14,
+      rootMargin: '0px 0px -80px 0px'
+    });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger-parent').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+  const css = `
+    :root{--accent:${accent};--primary:${primary};--bodyBg:${bodyBg};--text:#fff;--muted:#c7c7c7;--line:#2a2a2a}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,sans-serif;background:var(--bodyBg);color:var(--text)}
+    h1,h2,h3,h4{font-family:"Plus Jakarta Sans",sans-serif;margin:0 0 16px}
+    p{margin:0 0 14px;line-height:1.7}
+    a{text-decoration:none;color:inherit}
+    img,video{max-width:100%;display:block}
+    .container{width:min(1200px,calc(100% - 32px));margin:auto}
+    .section{padding:88px 0;position:relative;overflow:hidden}
+    .section-sm{padding:32px 0}
+    .light{background:#f5f5f5;color:#121212}
+    .dark{background:#111}
+    .deep{background:#1a1a1a}
+    .heroBg{background:#ff6b00}
+    .muted{color:var(--muted)}
+    .light .muted{color:#5f6368}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.1);font-size:12px;font-weight:700;letter-spacing:.02em}
+    .light .tag{border-color:rgba(0,0,0,.08);background:rgba(58,46,248,.07);color:#222}
+    .btn{border:0;padding:14px 22px;border-radius:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+    .animated-cta,.btn-magnetic{position:relative;overflow:hidden;background:var(--accent);color:#fff;transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+    .animated-cta:hover,.btn-magnetic:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.18)}
+    .animated-cta::before,.animated-cta::after{display:none!important;content:none!important}
+    .ghost-btn{background:transparent;border:1px solid rgba(255,255,255,.22);color:#fff}
+    .light .ghost-btn{border-color:rgba(0,0,0,.14);color:#121212}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-bar{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:16px 0}
+    .brand-left{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:20px;color:var(--accent)}
+    .nav-right{display:flex;align-items:center;justify-content:flex-end}
+    .hero-grid,.split-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:48px;align-items:center}
+    .banner-title{font-size:clamp(48px,6vw,70px);line-height:1.02;letter-spacing:-.03em}
+    .hero-copy{max-width:640px}
+    .chip-row{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 28px}
+    .chip{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.12);font-size:13px;color:#fff}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-visual{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center}
+    .visual-shell{position:relative;width:100%;max-width:560px;padding:18px;border-radius:28px;background:rgba(255,255,255,.11);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);box-shadow:0 30px 80px rgba(0,0,0,.22)}
+    .hero-main-media{border-radius:20px;overflow:hidden}
+    .hero-main-media img{width:100%;max-height:480px;object-fit:cover}
+    .float-card{position:absolute;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);border-radius:18px;padding:14px 16px;box-shadow:0 18px 42px rgba(0,0,0,.18)}
+    .float-a{top:16px;left:-18px}.float-b{right:-10px;bottom:26px}.float-c{left:40px;bottom:-12px}
+    .float-card strong{display:block;font-family:"Plus Jakarta Sans",sans-serif}
+    .orb{position:absolute;border-radius:50%;filter:blur(12px);pointer-events:none}
+    .orb1{width:280px;height:280px;right:-90px;top:-40px;background:radial-gradient(circle, rgba(58,46,248,.38), transparent 68%)}
+    .orb2{width:240px;height:240px;left:-80px;bottom:-50px;background:radial-gradient(circle, rgba(255,255,255,.18), transparent 70%)}
+    .gradient-text{background:linear-gradient(135deg,var(--accent),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes zoomIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+    @keyframes popIn{0%{opacity:0;transform:scale(.85)}70%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+    .hero-fade-up{animation:fadeInUp .8s cubic-bezier(.16,1,.3,1) both}
+    .hero-fade-left{animation:fadeInLeft .8s cubic-bezier(.16,1,.3,1) both}
+    .hero-fade-right{animation:fadeInRight .8s cubic-bezier(.16,1,.3,1) both}
+    .hero-zoom{animation:zoomIn .75s cubic-bezier(.16,1,.3,1) both}
+    .pop-in{animation:popIn .55s cubic-bezier(.16,1,.3,1) both}
+    .reveal{opacity:0;transform:translateY(42px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-left{opacity:0;transform:translateX(-42px);transition:.75s cubic-bezier(.16,1,.3,1)}
+    .reveal-right{opacity:0;transform:translateX(42px);transition:.75s cubic-bezier(.16,1,.3,1)}
+    .reveal-left.visible,.reveal-right.visible{opacity:1;transform:translateX(0)}
+    .stagger-parent>*{opacity:0;transform:translateY(28px);transition:.65s cubic-bezier(.16,1,.3,1)}
+    .stagger-parent.visible>*{opacity:1;transform:translateY(0)}
+    .stagger-parent.visible>*:nth-child(2){transition-delay:.08s}
+    .stagger-parent.visible>*:nth-child(3){transition-delay:.16s}
+    .stagger-parent.visible>*:nth-child(4){transition-delay:.24s}
+    .stagger-parent.visible>*:nth-child(5){transition-delay:.32s}
+    .metrics-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:18px;margin-top:26px}
+    .metric-logo{height:74px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;padding:16px;filter:grayscale(1);transition:.25s ease}
+    .metric-logo:hover{filter:grayscale(0);transform:translateY(-2px)}
+    .metric-logo img{max-height:30px;max-width:100%;opacity:.9}
+    .trust-copy{margin-bottom:28px;max-width:720px}
+    .trust-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .trust-badge{padding:18px 20px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(14px)}
+    .trust-badge strong{display:block;font-size:14px;font-family:"Plus Jakarta Sans",sans-serif;margin-bottom:6px;color:#fff}
+    .trust-badge span{font-size:13px;color:var(--muted)}
+    .marquee-wrapper{overflow:hidden;background:#1a1a1a;padding:20px 0;border-top:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a}
+    .marquee-track{display:flex;width:max-content;animation:marqueeScroll 20s linear infinite}
+    .marquee-item{font-size:28px;font-weight:800;margin-right:48px;white-space:nowrap;color:rgba(255,255,255,.8);font-family:"Plus Jakarta Sans",sans-serif}
+    @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .browser-frame{background:#0d0d0d;border:1px solid rgba(255,255,255,.1);border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.2)}
+    .browser-top{display:flex;align-items:center;gap:8px;padding:14px 16px;background:#161616;border-bottom:1px solid rgba(255,255,255,.08)}
+    .dot{width:10px;height:10px;border-radius:50%;background:#666}.dot:nth-child(1){background:#ff5f57}.dot:nth-child(2){background:#febc2e}.dot:nth-child(3){background:#28c840}
+    .browser-frame img,.browser-frame video{width:100%;height:420px;object-fit:cover}
+    .spotlight-card{padding:22px;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+    .light .spotlight-card{background:#fff;border-color:#ececec}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .feature-box{padding:18px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+    .light .feature-box{background:#fff;border-color:#e8e8e8}
+    .feature-top{display:flex;gap:12px;align-items:flex-start}
+    .feature-icon{width:42px;height:42px;min-width:42px;border-radius:12px;display:grid;place-items:center;background:rgba(58,46,248,.15);color:var(--accent)}
+    .feature-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:16px;font-weight:700;margin-bottom:6px}
+    .left-bar{border-left:2px solid rgba(255,255,255,.15);padding-left:20px}
+    .light .left-bar{border-left-color:rgba(0,0,0,.12)}
+    .auto-scroll-media{max-height:520px;overflow:hidden;position:relative;border-radius:26px}
+    .auto-scroll-track{display:flex;flex-direction:column;gap:16px;animation:autoScrollY 18s linear infinite}
+    .auto-scroll-media:hover .auto-scroll-track{animation-play-state:paused}
+    @keyframes autoScrollY{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+    .auto-scroll-track img,.auto-scroll-track video{width:100%;border-radius:18px;object-fit:cover;height:220px}
+    .testimonial-card{padding:24px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+    .testimonial-meta{display:flex;align-items:center;gap:14px;margin-top:18px}
+    .testimonial-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover}
+    .cta-row{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap}
+    @media (max-width: 960px){
+      .hero-grid,.split-grid,.trust-badges{grid-template-columns:1fr}
+      .metrics-strip{grid-template-columns:repeat(2,1fr)}
+      .nav-bar{grid-template-columns:1fr auto}
+    }
+  `;
+  const currentTestimonial = testimonials[activeSlide];
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, css), /*#__PURE__*/React.createElement("nav", {
+    className: "nav"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav-bar"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "brand-left"
+  }, "Seedream \xD7 Seedance"), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
+    className: "nav-right"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn animated-cta"
+  }, ctaText)))), /*#__PURE__*/React.createElement("section", {
+    className: "section deep heroBg",
+    ref: heroRef
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-copy"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag hero-fade-up"
+  }, "Cinematic AI Creation Suite"), /*#__PURE__*/React.createElement("h1", {
+    className: "banner-title hero-fade-up",
+    style: {
+      animationDelay: '0.06s'
+    }
+  }, "Turn prompts into stunning image and video campaigns with Seedream and Seedance"), /*#__PURE__*/React.createElement("p", {
+    className: "muted hero-fade-up",
+    style: {
+      animationDelay: '0.12s'
+    }
+  }, "Create high-resolution visuals, synchronized audio-video stories, and edit with precision using a multimodal AI workflow designed for modern creative teams."), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row hero-fade-up",
+    style: {
+      animationDelay: '0.18s'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, "AI image generation"), /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, "AI video generation"), /*#__PURE__*/React.createElement("div", {
+    className: "chip"
+  }, "Multimodal editing")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions hero-fade-up",
+    style: {
+      animationDelay: '0.24s'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn animated-cta"
+  }, ctaText), /*#__PURE__*/React.createElement("button", {
+    className: "btn ghost-btn"
+  }, "See it in action"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-visual hero-fade-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "orb orb1"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "orb orb2"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "visual-shell hero-zoom"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-main-media"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: galleryMedia[0],
+    alt: "AI generated creative visual"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "float-card float-a pop-in"
+  }, /*#__PURE__*/React.createElement("strong", null, "High-resolution output"), /*#__PURE__*/React.createElement("span", {
+    className: "muted"
+  }, "From simple prompts")), /*#__PURE__*/React.createElement("div", {
+    className: "float-card float-b pop-in",
+    style: {
+      animationDelay: '.08s'
+    }
+  }, /*#__PURE__*/React.createElement("strong", null, "Audio + video sync"), /*#__PURE__*/React.createElement("span", {
+    className: "muted"
+  }, "Built for storytelling")), /*#__PURE__*/React.createElement("div", {
+    className: "float-card float-c pop-in",
+    style: {
+      animationDelay: '.16s'
+    }
+  }, /*#__PURE__*/React.createElement("strong", null, "Precise editing"), /*#__PURE__*/React.createElement("span", {
+    className: "muted"
+  }, "Multimodal refinement")))))), /*#__PURE__*/React.createElement("section", {
+    className: "section-sm deep"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-badges"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-badge"
+  }, /*#__PURE__*/React.createElement("strong", null, "Creative teams trust the workflow"), /*#__PURE__*/React.createElement("span", null, "Used for image generation, video creation, and fast concept exploration.")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-badge"
+  }, /*#__PURE__*/React.createElement("strong", null, "Validated by real buyers"), /*#__PURE__*/React.createElement("span", null, "Feedback highlights easier evaluation, smoother demos, and clearer decision-making.")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-badge"
+  }, /*#__PURE__*/React.createElement("strong", null, "Built for production-ready output"), /*#__PURE__*/React.createElement("span", null, "High-resolution visuals and synchronized media support branded content at speed."))))), /*#__PURE__*/React.createElement("section", {
+    className: "section deep"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container split-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-frame"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-top"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot"
+  })), /*#__PURE__*/React.createElement("video", {
+    src: galleryMedia[4],
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "reveal-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, "Why teams choose it"), /*#__PURE__*/React.createElement("h2", null, "Go from concept to campaign faster"), /*#__PURE__*/React.createElement("p", {
+    className: "muted left-bar"
+  }, "Seedream and Seedance help creative and marketing teams generate assets faster while keeping quality high across image, video, and post-generation refinement."), /*#__PURE__*/React.createElement("div", {
+    className: "feature-grid stagger-parent"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-icon"
+  }, "\u2726"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "feature-title"
+  }, "Prompt to visual"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Generate polished images from simple creative direction.")))), /*#__PURE__*/React.createElement("div", {
+    className: "feature-box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-icon"
+  }, "\u25B6"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "feature-title"
+  }, "Story-ready video"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Create synchronized audio and video for branded storytelling.")))), /*#__PURE__*/React.createElement("div", {
+    className: "feature-box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-icon"
+  }, "\u2318"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "feature-title"
+  }, "Multimodal editing"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Refine outputs with greater control and visual precision.")))), /*#__PURE__*/React.createElement("div", {
+    className: "feature-box"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-top"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-icon"
+  }, "\u26A1"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "feature-title"
+  }, "Faster turnaround"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Reduce production delays and accelerate creative delivery."))))), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn animated-cta"
+  }, ctaText))))), /*#__PURE__*/React.createElement("section", {
+    className: "section dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container split-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "reveal-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag"
+  }, "Showcase"), /*#__PURE__*/React.createElement("h2", null, "Explore generated visuals and motion"), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, "Browse a cinematic mix of generated stills and video outputs that reflect the range of image creation and motion storytelling possible with the platform."), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn animated-cta"
+  }, ctaText))), /*#__PURE__*/React.createElement("div", {
+    className: "reveal-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "auto-scroll-media"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "auto-scroll-track"
+  }, galleryMedia.concat(galleryMedia).map((media, index) => media.endsWith('.mp4') ? /*#__PURE__*/React.createElement("video", {
+    key: index,
+    src: media,
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true
+  }) : /*#__PURE__*/React.createElement("img", {
+    key: index,
+    src: media,
+    alt: `Gallery media ${index + 1}`
+  }))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section deep"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tag reveal"
+  }, "Customer feedback"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card reveal",
+    style: {
+      marginTop: 18
+    }
+  }, /*#__PURE__*/React.createElement("p", null, "\"", currentTestimonial.quote, "\""), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-meta"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "testimonial-avatar",
+    src: currentTestimonial.avatar,
+    alt: currentTestimonial.author
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, currentTestimonial.author), /*#__PURE__*/React.createElement("div", {
+    className: "muted"
+  }, currentTestimonial.role))), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn animated-cta"
+  }, ctaText))))));
+};
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

@@ -1,0 +1,1230 @@
+{
+  "sessionId": "ds_1777971286353_9f3f42db",
+  "createdAt": "2026-05-05T08:54:46.354Z",
+  "updatedAt": "2026-05-05T08:59:18.843Z",
+  "status": "html-generated",
+  "productName": "workplace2",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software",
+    "parsedSectionCount": 19
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": {
+      "fileName": "zoho-workplace-enterprise-landing-page",
+      "pageType": "single-product",
+      "designSystemMode": "design-system-first",
+      "tokenProfileHint": "Warm collaboration suite styling: use Techjockey default typography (Plus Jakarta Sans + Inter), purple-forward warm theme with orange accent CTA, hero with dark brand-tinted background and white text, trust badges/logos as the dominant proof signal, enterprise-friendly spacing and dense content rhythm.",
+      "pages": [
+        {
+          "name": "Desktop",
+          "frame": {
+            "name": "Zoho Workplace — Desktop",
+            "width": 1440,
+            "heightHint": 6200,
+            "grid": "12-col",
+            "sectionSpacing": 96
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Split Lead",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "split-layout with text left and logo-trust strip below CTAs; no UI screenshot required",
+              "contentSource": "",
+              "priority": "high",
+              "notes": "Use exact hero content: headline 'Elevate Your Team’s Productivity with Zoho Workplace', subheadline 'A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.', supporting line 'Easy Setup & Quick Onboarding; A Made in India solution; 24x7 Support', primary CTA 'Get Started', secondary CTA 'Get Your Free Trial'. Apply warm purple hero background with white text and orange solid primary CTA; secondary CTA as outlined/ghost. Keep headline sizing aligned to long-form rule for 16+ words. Add a compact logos-first trust band directly in hero using 100,000+ businesses proof.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "trust",
+              "type": "trust",
+              "frameName": "Trust / Logo-First Proof Bar",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "logo-forward badges with customer count stat and divider-separated items",
+              "contentSource": "",
+              "priority": "high",
+              "notes": "Dominant proof signal must be logos/badges. Use a centered light-grey trust band with pill badges and a customer count stat '100,000+ Businesses Globally' plus 'Trusted by 100,000+ Businesses Globally'. Keep this section compact and visually stronger than a typical stats row.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features_why_choose",
+              "type": "product-features",
+              "frameName": "Features / Why Choose Zoho Workplace",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "4-card grid, no imagery, cards with icon placeholders replaced by colored SVG icons",
+              "contentSource": "",
+              "priority": "high",
+              "notes": "Use exact section content: label 'FEATURES', headline 'Why Choose Zoho Workplace?', description about a single unified platform. Render 4 feature cards: All-in-One Unified Workspace, Seamless Collaboration in Real Time, Work from Anywhere, Anytime, AI-Powered Productivity (Zia). White background, 1px border cards, 24px padding, 2-column grid on desktop because there are 4 features.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features_growth",
+              "type": "product-features",
+              "frameName": "Features / Business Growth",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "4-card grid with section header and enterprise-oriented copy",
+              "contentSource": "",
+              "priority": "high",
+              "notes": "Use exact section content: label 'STANDARD FEATURES', headline 'Unlock Your Business Growth with Zoho Workplace', description about unifying email, collaboration, and productivity tools. Cards: Ideal For Your Business Size, Communicate Effectively, Integrated Business Apps, Customizable Workspace. Maintain same feature card component family for consistency and to avoid empty-space issues.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "features_integrations",
+              "type": "product-features",
+              "frameName": "Features / Integrations",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "multi-category integration cards, compact list-style cards, no large image slot",
+              "contentSource": "",
+              "priority": "medium",
+              "notes": "Use exact section content: label 'ADDITIONAL FEATURES', headline 'Integrate with Popular Apps', description about connecting Zoho Workplace with other business apps. Present integrations as categorized compact cards or chips to avoid large empty areas. Include the provided categories and visible items: Zoho Apps, Analytics, Accounting & Finance, Automation, and additional integration categories from contentMap if available in the final source.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            }
+          ]
+        }
+      ],
+      "buildSummary": {
+        "desktopSectionCount": 5,
+        "mobileSectionCount": 0,
+        "sharedComponentFamilies": [
+          "compose-from-design-system"
+        ],
+        "figmaExecutionNotes": [
+          "Keep the build strictly aligned to the provided content; do not add unsupported sections such as pricing, testimonials, forms, or news.",
+          "Use a mobile adaptation where the hero stacks vertically with CTAs full-width and stacked, trust bar remains compact, and all feature grids collapse to a single column.",
+          "Avoid oversized image placeholders and avoid strip-style placeholders; use dense card layouts so no section feels underfilled.",
+          "Use Techjockey default typography tokens: Plus Jakarta Sans for headings and Inter for body, with warm collaboration palette and orange CTA accent.",
+          "Ensure logo/customer-count trust is visually dominant across hero and trust sections, since proof strategy prioritizes logos most.",
+          "Keep section spacing generous but not excessive: desktop 96px between sections, with content-width containers and consistent 24px gutters."
+        ]
+      }
+    },
+    "heroStrategy": {
+      "layout": "text-right-media-left",
+      "primaryVisual": "https://cdn.techjockey.com/zoho-workplace-hero-dashboard.png",
+      "secondaryVisual": "https://cdn.techjockey.com/zoho-workplace-collaboration-panels.png",
+      "accentVisuals": [
+        "https://cdn.techjockey.com/zoho-workplace-logo-band.svg",
+        "https://cdn.techjockey.com/zoho-workplace-stats-pills.svg"
+      ],
+      "backgroundImage": null,
+      "backgroundVideo": null,
+      "backgroundTreatment": "mesh-gradient",
+      "overlayStyle": "light",
+      "headline": "Elevate Your Team’s Productivity with Zoho Workplace",
+      "subheadline": "A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.",
+      "ctaText": "Get Started",
+      "secondaryCtaText": "Get Your Free Trial",
+      "floatingChips": [
+        "Enterprise Email",
+        "Live Collaboration",
+        "AI Writing Assistant",
+        "24x7 Support",
+        "Made in India"
+      ],
+      "animationStyle": "stagger",
+      "designNote": "Use an unexpected asymmetrical hero: keep the copy on the right in a strong editorial stack, while the left side features a layered enterprise dashboard mockup with floating app chips for Mail, Cliq, Writer, Meetings, and WorkDrive. Add a slim logo-first trust band directly beneath the subheadline, and include one compact stat pill row to reinforce 100,000+ businesses. Brand red must drive both CTAs and key highlights. The hero should feel like a clean operational control center, not a marketing illustration. Use a soft mesh gradient with subtle grid lines and a few red orbital accents for depth. Typography must be dramatic: H1 at 64px+ and H2 at 40px+, with crisp enterprise spacing and premium soft-shadow cards."
+    },
+    "blueprint": {
+      "rhythmPlan": {
+        "opening": "loud",
+        "middle": "proof-led",
+        "ending": "conversion"
+      },
+      "repetitionBreakers": [
+        "Split hero with product visual right and continuity-driven ad-match messaging left",
+        "Logo-first trust bar immediately after hero to anchor enterprise credibility",
+        "How-it-works section uses a compact 3-step horizontal timeline instead of cards",
+        "Feature blocks alternate between spotlight-plus-grid and split-panel visuals to avoid repeated patterns",
+        "Testimonials use a carousel rather than a grid because there are 5 quotes",
+        "Pricing is isolated in a centered highlighted card to reset rhythm before the final CTA",
+        "Final form section is intentionally simpler and more conversion-led than earlier sections"
+      ],
+      "pageTitle": "Zoho Workplace for Enterprises | Unified Email and Collaboration Suite",
+      "metaDescription": "Explore Zoho Workplace for enterprises with unified email, chat, documents, meetings, and secure collaboration. See trusted logos, key features, pricing, and get started.",
+      "styles": {
+        "accentColor": "#e4292b",
+        "bodyBg": "#ffffff",
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Inter",
+        "themeFamily": "enterprise-grid",
+        "surfaceStyle": "soft-shadow",
+        "visualMotif": "dashboard-panels",
+        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap",
+        "primaryColor": "#e4292b"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "layout": "split-left",
+          "bgColor": "#ffffff",
+          "surfaceStyle": "soft-shadow",
+          "backgroundTreatment": "light split hero with white-to-slate wash and subtle dashboard-grid texture",
+          "heroComposition": {
+            "mode": "text-left-media-right"
+          },
+          "renderMode": "split-visual",
+          "animationMode": "stagger",
+          "designNote": "Hero must answer what it is, who it is for, and what to do next. Keep the headline enterprise-clear and continuity-matched to the ad: Zoho Workplace as an all-in-one email and collaboration suite for enterprises. Use a product dashboard mockup on the right with floating app chips for Mail, Cliq, Writer, Meetings, and WorkDrive. Include a compact supporting-benefits row beneath the CTA. CTA remains only 'Get started' in solid Zoho red and visually dominant."
+        },
+        {
+          "id": "trust",
+          "type": "trust-bar",
+          "layout": "marquee-strip",
+          "bgColor": "#f8fafc",
+          "renderMode": "marquee",
+          "designNote": "Place trust immediately after the hero. Show 3-6 recognizable customer logos in a slim horizontal band, with the customer-count badge secondary and smaller. If logo availability is limited, convert to a metric strip, but keep the visual light and fast-scanning. This section should feel like an enterprise credibility checkpoint rather than a testimonial block."
+        },
+        {
+          "id": "products",
+          "type": "product-sections",
+          "layout": "alternating",
+          "bgColor": "#ffffff",
+          "renderMode": "split-panel-list",
+          "featurePresentation": {
+            "mode": "split-panel-list",
+            "primaryFeatureTitle": "All-in-One Unified Workspace",
+            "visualPriority": "high",
+            "useIcons": true,
+            "usePreviewPanel": true
+          },
+          "designNote": "This section should combine the required how-it-works flow with the strongest feature story, rather than using a generic SaaS grid. First panel: a 3-step, under-60-seconds workflow explaining setup, collaboration, and daily use. Second panel: a spotlight on the core click-driving feature, All-in-One Unified Workspace, with a preview panel showing email, chat, docs, and meetings in one interface. Third panel: a tight supporting panel for real-time collaboration and AI productivity. Keep the rhythm alternating between text-led and visual-led blocks so adjacent sections never feel identical."
+        },
+        {
+          "id": "why-techjockey",
+          "type": "why-techjockey",
+          "layout": "grid",
+          "bgColor": "#f8fafc",
+          "renderMode": "card-grid",
+          "designNote": "Use a compact enterprise-trust explanation block only if the content is present; in this blueprint, keep it minimal because the primary trust strategy is logos-first. Since the source content has whyTechjockey excluded, this section should be omitted or replaced with a slim reassurance strip only if required by the page system. Do not let it interrupt the conversion rhythm."
+        },
+        {
+          "id": "pricing",
+          "type": "pricing-cart",
+          "layout": "card-center",
+          "bgColor": "#ffffff",
+          "renderMode": "highlighted-card",
+          "designNote": "Present one highlighted enterprise pricing card with included services and support benefits. Keep the layout restrained and legible, with the red CTA button as the only action. This section should feel practical and procurement-friendly rather than salesy."
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "layout": "carousel-static",
+          "bgColor": "#f8fafc",
+          "renderMode": "slider",
+          "designNote": "Because there are 5 testimonials, use a carousel. Make it quote-first with author, role, and company hierarchy. The carousel should feel credible and operational, not promotional. Keep card surfaces clean with subtle shadow and short quote truncation for scanability."
+        },
+        {
+          "id": "form",
+          "type": "lead-form",
+          "layout": "centered-card",
+          "bgColor": "#ffffff",
+          "renderMode": "floating-card",
+          "designNote": "Final conversion block should be a simplified centered card with strong supporting copy and one action only: Get started. Keep the field set minimal if used at all. Mobile CTA must be full-width. This is the final reassurance-and-action moment, so the layout should be quieter than the hero but more urgent than the middle sections."
+        },
+        {
+          "id": "news",
+          "type": "media-logos",
+          "layout": "horizontal-logos",
+          "bgColor": "#f8fafc",
+          "renderMode": "logo-strip",
+          "designNote": "No media/news content is available, so do not force a news block. If the page system requires this slot, use it as an optional secondary logo or compliance strip. Keep it visually lightweight and non-competing."
+        }
+      ],
+      "designPersonality": "A crisp, enterprise productivity system with strong brand-red accents, white space discipline, logos-first trust hierarchy, and dashboard-style components that make Zoho Workplace feel reliable, organized, and easy to adopt.",
+      "imageryDirection": "Use a polished Zoho Workplace-style dashboard mockup, floating collaboration chips for Mail, Cliq, Writer, Meetings, and WorkDrive, plus a clean trust strip of customer logos as the dominant proof element. The visual should feel like an enterprise suite overview rather than a marketing illustration. Add compact stat pills and app icons, but keep the layout spacious only around the hero visual and dense in feature sections.",
+      "primaryGoal": "Drive enterprise evaluation and demo-start intent for Zoho Workplace by matching the ad message, proving trust early, and moving visitors toward a single Get started action.",
+      "narrativeMode": "continuity-first enterprise story: what it is, how it works, why it is trusted, what features matter most, then a final conversion prompt",
+      "trustStrategy": "logos-first",
+      "visualDominance": "hero-product",
+      "ctaAggression": "strong",
+      "sectionDensity": "dense",
+      "recommendedHeroStyle": "split-left-text-right-image",
+      "strictCta": {
+        "enabled": true,
+        "mode": "external",
+        "count": 4,
+        "items": [
+          {
+            "text": "Get quotation",
+            "href": "https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software"
+          },
+          {
+            "text": "Get quotation",
+            "href": "https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software"
+          },
+          {
+            "text": "Get quotation",
+            "href": "https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software"
+          },
+          {
+            "text": "Get quotation",
+            "href": "https://www.zoho.com/en-in/workplace/?utm_source=techjockey&utm_medium=cpc&utm_campaign=productivity-software"
+          }
+        ],
+        "rule": "EXACT_CTA_COUNT_FRONTEND_ITEMS_ONLY"
+      },
+      "additionalInstructions": "PROOF STRATEGY: The visitor trusts logos most. Make this the dominant trust signal.\n\n\nPAST USER FEEDBACK MEMORY — AVOID REPEATING THESE MISTAKES:\n1. [design/features] feature section has too much empty space before and after the image still not fixed and also check the brand color if not find check the CTA color at the brand page  and customize the theme accordingly, content is not exactly what i have shared from the front end\n2. [content/full-page] content is not exactly as shared from the doc\n3. [content/full-page] content is not exactly as shared from the doc\n4. [content/hero] Hero section is still miss matched from the content\n5. [design/pricing] cart section is completely missing\n6. [design/pricing] cart section is completely missing\n7. [design/pricing] cart section is completely missing\n8. [development/features] Feature Image is not placed properly having too much empty space\n9. [development/features] look at this section not corrected\n10. [design/full-page] Instead of alligning small image to big empty area try to place another same size image or video at the place\n11. [design/full-page] Instead of alligning small image to big empty area try to place another same size image or video at the place\n12. [design/full-page] why always using strip in all created pages\n\nRules:\n- Treat this as design/development memory.\n- Do not repeat these mistakes in new landing pages.\n- Apply only when relevant to the current product/page.\n- Do not copy feedback text into the landing page.\n\n\nLearn from the brrand",
+      "typography": {
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Zoho_Puvi_Regular, sans-serif",
+        "headingWeight": 700,
+        "heroFontSize": "56px",
+        "heroFontSizeReason": "The headline is medium length and needs enough scale to feel enterprise-grade while staying balanced on a split layout.",
+        "letterSpacing": "tight",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#e4292b",
+        "accent": "#e4292b",
+        "accentHover": "#c92426",
+        "bodyBg": "#ffffff",
+        "cardBg": "#ffffff",
+        "textDark": "#111827",
+        "textMid": "#4b5563",
+        "textLight": "#ffffff",
+        "border": "#e5e7eb"
+      },
+      "themeFamily": "enterprise-grid",
+      "surfaceStyle": "soft-shadow",
+      "visualMotif": "dashboard-panels",
+      "backgroundSystem": {
+        "bodyBase": "#ffffff",
+        "hero": "#ffffff",
+        "section1": "#ffffff",
+        "section2": "#f8fafc",
+        "section3": "#ffffff"
+      },
+      "motionStrategy": {
+        "allowAnimations": true,
+        "style": "premium",
+        "heroEntrance": "stagger",
+        "cardHover": "lift",
+        "sectionReveal": "fade-up"
+      },
+      "referenceMap": {
+        "heroPattern": "Full-width top hero with brand/logo at the upper left, followed by a centered or left-aligned headline block. Uses a bold H1, a short supporting paragraph, and a compact benefits list with tick icons. Visual hierarchy is strong and conversion-focused, with CTA emphasis implied in the hero/form pairing rather than a single large hero button.",
+        "sectionRhythm": "Long-form single-page sales layout. Starts with a prominent hero, then immediately transitions into a lead-capture form card, followed by stacked information sections with repeating headline + description + feature grid patterns. Sections are arranged vertically with clear separation and consistent internal spacing.",
+        "cardStyle": "Primary card treatment is functional rather than decorative: white/light card surfaces, simple borders or shadow separation, rounded corners, and dense form/content blocks. Feature cards appear structured and grid-based, with minimal ornamentation and strong text-first layout.",
+        "ctaPattern": "Conversion-oriented dual-CTA pattern in the hero context, paired with form-first lead capture. Primary CTA is stronger and action-driven; secondary CTA acts as a lower-friction alternative. CTAs are placed near the top and repeated through the funnel rather than distributed heavily across the page.",
+        "pricingPattern": "No visible pricing module in the referenced structure. The layout favors inquiry/lead-gen over self-serve pricing.",
+        "footerMode": "Not represented in the provided reference structure. Likely minimal or standard utility footer rather than a content-heavy closing band.",
+        "spacingScale": [
+          "tight internal spacing within cards",
+          "medium vertical spacing between content rows",
+          "large section gaps between major blocks",
+          "full-width edge-to-edge hero band",
+          "container-based centered content with generous side padding"
+        ],
+        "mediaPattern": "Logo-first header treatment with limited hero imagery visible in the extracted structure. The page leans more on typography and iconography than large product visuals. Media, where present, supports trust and recognition rather than feature demonstration.",
+        "productSectionPattern": "Repeating section formula: small label/kicker, headline, short summary, then a feature grid. Features are presented as concise title + description units, optimized for scanning. Content appears modular and scalable for multiple feature categories.",
+        "formPattern": "Prominent lead form placed immediately after the hero. Uses a boxed card layout, likely with multiple hidden tracking fields, suggesting a conversion-optimized, CRM-integrated form workflow. Form is positioned as a central action step rather than an isolated contact page.",
+        "interactionPatterns": {
+          "usesCarousel": true,
+          "usesTabs": false,
+          "usesAccordion": false,
+          "usesStickyCta": false,
+          "usesRevealAnimations": false,
+          "usesHoverCards": false,
+          "usesCounters": false,
+          "usesMarqueeLogos": false
+        },
+        "surfacePatterns": {
+          "alternatesBackgrounds": false,
+          "usesDarkBandSections": true,
+          "usesTintedSections": false,
+          "usesGlassPanels": false,
+          "usesEditorialWhitespace": true
+        },
+        "animationStyle": "Light-touch motion only, with carousel-based slide behavior as the primary interaction. No evidence of elaborate reveal, parallax, or animated metric systems.",
+        "componentPatterns": [
+          "brand logo header",
+          "split or stacked hero composition",
+          "bullet list with check icons",
+          "lead capture form card",
+          "feature grid sections",
+          "section kicker labels",
+          "dense text-first benefit blocks",
+          "carousel hero module"
+        ],
+        "designNotes": [
+          "The page is optimized for enterprise lead generation, not exploratory browsing.",
+          "Structure emphasizes immediate value proposition, trust cues, and fast conversion.",
+          "Content hierarchy is straightforward and scan-friendly, with repeated headline-supporting copy-feature patterns.",
+          "Use modular sections that can scale to long-form product messaging without feeling visually noisy.",
+          "Favor strong typography, restrained visuals, and clear conversion paths over decorative UI."
+        ]
+      },
+      "assetRules": {
+        "lockReferenceStructure": false,
+        "replaceImages": true,
+        "replaceVideos": true,
+        "preserveMode": "structure-styling",
+        "strictLayoutMatch": false,
+        "userSuppliedImagesOnly": false
+      },
+      "brandLogoUrl": null,
+      "brandSiteName": "Zoho",
+      "hasSvgLogo": false,
+      "pageGoal": "single-product",
+      "trustLogos": [],
+      "includeForm": false,
+      "formPlacement": "none",
+      "heroMediaMode": "split-visual",
+      "includePricing": true,
+      "includeTestimonials": true,
+      "includeTrust": true,
+      "designStrategy": {
+        "primaryGoal": "lead-gen",
+        "buyerStage": "solution-aware",
+        "conversionPriority": "high",
+        "narrativeMode": "product-led",
+        "trustStrategy": "logos-first",
+        "emotionalTone": "confident",
+        "visualDominance": "hero-proof",
+        "ctaAggression": "strong",
+        "sectionDensity": "dense",
+        "recommendedHeroStyle": "split",
+        "mustHaveMoments": [
+          "Prominent logo/trust strip immediately above or adjacent to the hero content",
+          "Clear enterprise-oriented hero message with a compact benefit list",
+          "Fast-follow lead capture or trial CTA reinforced within the first screen",
+          "Feature sections with tightly grouped cards and minimal vertical waste",
+          "Pricing/cart section clearly visible and not omitted",
+          "Testimonials placed after feature proof to reinforce purchase confidence",
+          "Integration/apps section to validate ecosystem fit for enterprise buyers"
+        ],
+        "avoidPatterns": [
+          "Large empty gaps around feature imagery or cards",
+          "Misaligned visuals that leave unused whitespace",
+          "Generic strip-heavy layouts that feel repetitive",
+          "Hero copy that does not exactly match the provided content",
+          "Replacing provided content with paraphrased or missing sections",
+          "Burying logo trust signals below the fold",
+          "Omitting the pricing/cart section",
+          "Using decorative visuals that do not support enterprise credibility"
+        ],
+        "reasoning": "Zoho Workplace for enterprises is a solution-aware, conversion-focused page where visitors need fast validation rather than education from scratch. Since the strongest trust signal is logos, the page should lead with proof first, then product clarity. A split hero works best because it can hold a strong message on one side and proof/CTA support on the other without wasting space. Dense but well-structured sections suit the long-form content volume and prevent the whitespace issues noted in prior feedback. The tone should feel confident and efficient, with a product-led story supported by testimonials, integration credibility, and a clearly visible pricing/cart moment."
+      },
+      "designBrief": {
+        "heroHeadline": null,
+        "heroCTA": null,
+        "brandColorHex": null,
+        "personalityWords": null,
+        "visitorRole": null,
+        "visitorTemperature": "warm",
+        "proofType": "logos",
+        "competitorUrl": null,
+        "avoidConstraint": null,
+        "singleGoal": null
+      },
+      "forcedNarrativeMode": "product-led",
+      "brandSectionReference": "\nBRAND SECTION DESIGN REFERENCE:\nBrand page title: Enterprise Collaboration Suite Made in India — Zoho Workplace\nBrand body font: Zoho_Puvi_Regular, sans-serif\nBrand body background: rgb(255, 255, 255)\n\nUse the brand URL as a section-level design reference.\nLearn visual rhythm, section spacing, card shape, CTA style, feature layout, hero structure, and background treatment.\nDo NOT copy exact brand content.\nDo NOT copy full page HTML.\nOnly adapt design patterns that fit Techjockey landing page.\n\n\nSECTION 0\nclass/id: header\nsize: 1440x143\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: Zoho.com Zoho OneFinance PlusCRM PlusMarketing PlusSpendPeople PlusAll Products English (India) Sign InGet Started\nbuttons: Zoho.com | Zoho One | Finance Plus | CRM Plus | Marketing Plus | Spend\ncards found: 8\nimages found: 5\n\n\nSECTION 1\nclass/id: banner-section\nsize: 1440x1494\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: Enterprise email and collaboration suite. Made in India. Contact Sales Zoho Workplace is a beautiful new home that elevates your team's productivity Watch Video Launch interactive demo Workplace Mail Cliq Connect Calenda\nbuttons: Contact Sales\ncards found: 5\nimages found: 0\n\n\nSECTION 3\nclass/id: zwc-leo-corp-section zsection\nsize: 1440x619\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: But what about... Migration? Pricing? Privacy? Switching tools is a big step, and we understand you may have a lot of questions. We recommend taking 5 minutes to watch this video. Watch video about the chronicles of leo \nbuttons: Watch video about the chronicles of leo corp\ncards found: 2\nimages found: 1\n\n\nSECTION 4\nclass/id: zsection feature-section communication-feature-section\nsize: 1440x1285\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: Unified Communication Bring home flexibility. WFO or WFH—make work accommodating using enterprise email, conferencing, calling, voice, and team messaging tools for everyone to connect with each other, on any device. “Zoh\nbuttons: none\ncards found: 2\nimages found: 0\n\n\nSECTION 5\nclass/id: feature-media-wrap\nsize: 1440x776\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: \nbuttons: none\ncards found: 0\nimages found: 0\n\n\nSECTION 6\nclass/id: feature-media-wrap-inner\nsize: 1440x776\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: \nbuttons: none\ncards found: 0\nimages found: 0\n\n\nSECTION 7\nclass/id: feature-media-inner\nsize: 1096x696\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 25px 25px 0px 0px\nshadow: none\ntext sample: \nbuttons: none\ncards found: 0\nimages found: 0\n\n\nSECTION 8\nclass/id: zwc-col feature-quote-wrap\nsize: 1120x77\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: “Zoho Workplace aggregates all communication mediums into one platform so that email, messaging and video are all in the same place and integrated with other productivity and business applications.”\nbuttons: none\ncards found: 1\nimages found: 0\n\n\nSECTION 9\nclass/id: zsection feature-section collabration-feature-section\nsize: 1440x1269\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: Unified Collaboration Bring home collaboration. Give everyone a single space to create, share, and manage files, tasks, and calendars. Our collaborative document, spreadsheet, and presentation apps make co-creation easy.\nbuttons: none\ncards found: 2\nimages found: 0\n\n\nSECTION 10\nclass/id: feature-media-wrap\nsize: 1440x776\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: \nbuttons: none\ncards found: 0\nimages found: 0\n\n",
+      "brandDesignInstructions": "\n\nBRAND SECTION DESIGN REFERENCE:\nBrand page title: Enterprise Collaboration Suite Made in India — Zoho Workplace\nBrand body font: Zoho_Puvi_Regular, sans-serif\nBrand body background: rgb(255, 255, 255)\n\nUse the brand URL as a section-level design reference.\nLearn visual rhythm, section spacing, card shape, CTA style, feature layout, hero structure, and background treatment.\nDo NOT copy exact brand content.\nDo NOT copy full page HTML.\nOnly adapt design patterns that fit Techjockey landing page.\n\n\nSECTION 0\nclass/id: header\nsize: 1440x143\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: Zoho.com Zoho OneFinance PlusCRM PlusMarketing PlusSpendPeople PlusAll Products English (India) Sign InGet Started\nbuttons: Zoho.com | Zoho One | Finance Plus | CRM Plus | Marketing Plus | Spend\ncards found: 8\nimages found: 5\n\n\nSECTION 1\nclass/id: banner-section\nsize: 1440x1494\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: Enterprise email and collaboration suite. Made in India. Contact Sales Zoho Workplace is a beautiful new home that elevates your team's productivity Watch Video Launch interactive demo Workplace Mail Cliq Connect Calenda\nbuttons: Contact Sales\ncards found: 5\nimages found: 0\n\n\nSECTION 3\nclass/id: zwc-leo-corp-section zsection\nsize: 1440x619\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: But what about... Migration? Pricing? Privacy? Switching tools is a big step, and we understand you may have a lot of questions. We recommend taking 5 minutes to watch this video. Watch video about the chronicles of leo \nbuttons: Watch video about the chronicles of leo corp\ncards found: 2\nimages found: 1\n\n\nSECTION 4\nclass/id: zsection feature-section communication-feature-section\nsize: 1440x1285\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: Unified Communication Bring home flexibility. WFO or WFH—make work accommodating using enterprise email, conferencing, calling, voice, and team messaging tools for everyone to connect with each other, on any device. “Zoh\nbuttons: none\ncards found: 2\nimages found: 0\n\n\nSECTION 5\nclass/id: feature-media-wrap\nsize: 1440x776\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: \nbuttons: none\ncards found: 0\nimages found: 0\n\n\nSECTION 6\nclass/id: feature-media-wrap-inner\nsize: 1440x776\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: \nbuttons: none\ncards found: 0\nimages found: 0\n\n\nSECTION 7\nclass/id: feature-media-inner\nsize: 1096x696\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 25px 25px 0px 0px\nshadow: none\ntext sample: \nbuttons: none\ncards found: 0\nimages found: 0\n\n\nSECTION 8\nclass/id: zwc-col feature-quote-wrap\nsize: 1120x77\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: “Zoho Workplace aggregates all communication mediums into one platform so that email, messaging and video are all in the same place and integrated with other productivity and business applications.”\nbuttons: none\ncards found: 1\nimages found: 0\n\n\nSECTION 9\nclass/id: zsection feature-section collabration-feature-section\nsize: 1440x1269\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: Unified Collaboration Bring home collaboration. Give everyone a single space to create, share, and manage files, tasks, and calendars. Our collaborative document, spreadsheet, and presentation apps make co-creation easy.\nbuttons: none\ncards found: 2\nimages found: 0\n\n\nSECTION 10\nclass/id: feature-media-wrap\nsize: 1440x776\nbg: rgba(0, 0, 0, 0)\nfont: Zoho_Puvi_Regular, sans-serif\nlayout: display=block, columns=none, flex=row, gap=normal\nradius: 0px\nshadow: none\ntext sample: \nbuttons: none\ncards found: 0\nimages found: 0\n\n\n\nHARD BRAND DESIGN RULES:\n- Use brand URL section patterns for layout inspiration.\n- Match brand-like spacing rhythm, CTA shape, card style, and section composition.\n- If user requested light theme, prefer brand page light surfaces and avoid forced dark/orange theme.\n- Do not use unrelated category default colors if brand reference shows a clear visual style.\n- Do not use irrelevant scraped media just because it is available.\n",
+      "themeTokens": {
+        "primary": "#e4292b",
+        "accent": "#e4292b",
+        "accentHover": "#c92426",
+        "mode": "light",
+        "source": "logo-vibrant",
+        "confidence": 78,
+        "bodyBg": "#ffffff",
+        "heroBg": "#ffffff",
+        "cardBg": "#ffffff",
+        "textDark": "#111827",
+        "textMid": "#4b5563",
+        "textLight": "#ffffff",
+        "border": "#e5e7eb",
+        "section1": "#ffffff",
+        "section2": "#f8fafc",
+        "section3": "#ffffff"
+      },
+      "designReview": {
+        "score": 85,
+        "verdict": "planned",
+        "issues": [],
+        "strengths": [
+          "Design planned from strategy and intent layers"
+        ]
+      },
+      "__themeLocked": true,
+      "sectionImageMap": {
+        "hero": {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/34-2d8c21be11.gif",
+          "hasDarkBackground": false,
+          "overlayNeeded": true,
+          "note": "An animated illustration depicting interconnected digital tools and applications."
+        },
+        "trust": {
+          "logos": [
+            "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/25-d22596911f.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png"
+          ],
+          "strategy": "logo-grid"
+        },
+        "testimonials": {
+          "avatars": [
+            "/output/generated-assets/ds_1777971286353_9f3f42db/15-01fc6c95c0.jpg",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/13-a1af876bc5.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/32-e3c4bcd1a9.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/33-00ee58a5d0.jpg"
+          ]
+        },
+        "feature_0": {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/16-dd7a47979f.gif",
+          "sectionName": "Why Choose Zoho Workplace?",
+          "wrapInFrame": true,
+          "hasDarkBackground": false
+        },
+        "feature_1": {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/18-473c14de05.jpg",
+          "sectionName": "Unlock Your Business Growth with Zoho Workplace",
+          "wrapInFrame": true,
+          "hasDarkBackground": false
+        },
+        "feature_2": {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/30-89ce3cb959.jpeg",
+          "sectionName": "Integrate with Popular Apps",
+          "wrapInFrame": true,
+          "hasDarkBackground": false
+        },
+        "feature_3": {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/29-3965757185.jpeg",
+          "sectionName": "Performance Beyond Limits with Zoho Workplace",
+          "wrapInFrame": true,
+          "hasDarkBackground": true
+        }
+      },
+      "trustLogosCount": 8
+    },
+    "mediaPlan": {
+      "hero": {
+        "primaryVisual": "/output/generated-assets/ds_1777971286353_9f3f42db/34-2d8c21be11.gif",
+        "secondaryVisual": "/output/generated-assets/ds_1777971286353_9f3f42db/16-dd7a47979f.gif",
+        "backgroundImage": null,
+        "backgroundVideo": "/output/generated-assets/ds_1777971286353_9f3f42db/35-7f9baae9a1.mp4",
+        "accentVisuals": [
+          "/output/generated-assets/ds_1777971286353_9f3f42db/01-256e5d95aa.png",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/10-27e04915d6.png",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/12-113610f4ed.png"
+        ],
+        "color": "#1a1a2e"
+      },
+      "trust": {
+        "logos": [
+          "/output/generated-assets/ds_1777971286353_9f3f42db/02-975eb13e3f.svg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/05-84d4bfdd99.svg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/03-a1d419253b.svg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/04-8da7f26504.svg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/09-428c7ca4a9.svg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/08-401f045b7d.svg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/07-d38fc0a4cb.svg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/06-ae76f0c421.svg"
+        ],
+        "badges": []
+      },
+      "productSections": [
+        {
+          "sectionId": "1",
+          "primaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/17-8ee9780f0b.jpg",
+          "secondaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/16-dd7a47979f.gif",
+          "icons": [
+            "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png"
+          ]
+        },
+        {
+          "sectionId": "2",
+          "primaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/16-dd7a47979f.gif",
+          "secondaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/18-473c14de05.jpg",
+          "icons": [
+            "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png"
+          ]
+        },
+        {
+          "sectionId": "3",
+          "primaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/18-473c14de05.jpg",
+          "secondaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/30-89ce3cb959.jpeg",
+          "icons": [
+            "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png"
+          ]
+        },
+        {
+          "sectionId": "4",
+          "primaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/30-89ce3cb959.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/29-3965757185.jpeg",
+          "icons": [
+            "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png"
+          ]
+        },
+        {
+          "sectionId": "5",
+          "primaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/29-3965757185.jpeg",
+          "secondaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/26-3d192a39e0.png",
+          "icons": [
+            "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png"
+          ]
+        },
+        {
+          "sectionId": "6",
+          "primaryPreview": "/output/generated-assets/ds_1777971286353_9f3f42db/26-3d192a39e0.png",
+          "secondaryPreview": null,
+          "icons": [
+            "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+            "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png"
+          ]
+        }
+      ],
+      "testimonials": {
+        "avatars": [
+          "/output/generated-assets/ds_1777971286353_9f3f42db/33-00ee58a5d0.jpg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/15-01fc6c95c0.jpg",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/13-a1af876bc5.png",
+          "/output/generated-assets/ds_1777971286353_9f3f42db/32-e3c4bcd1a9.png"
+        ]
+      },
+      "demos": {
+        "heroDemo": "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%227nbagtjv%22%2C%22p%22%3A%22a63a3daff87f4d33b6cffbe7a949ff5f%22%2C%22sc%22%3A%220%22%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%2F%3Futm_source%3Dtechjockey%26utm_medium%3Dcpc%26utm_campaign%3Dproductivity-software%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%22%2C%22up%22%3A%5B%7B%22pn%22%3A%22utm_source%22%2C%22pv%22%3A%22techjockey%22%7D%2C%7B%22pn%22%3A%22utm_medium%22%2C%22pv%22%3A%22cpc%22%7D%2C%7B%22pn%22%3A%22utm_campaign%22%2C%22pv%22%3A%22productivity-software%22%7D%5D%2C%22tv%22%3A%22CAMPAIGN%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777971307518zabu0.9563205307286289%22%2C%22d%22%3A%221777971307692zabv0.6669900521886494%22%2C%22sid%22%3A%221777971308752zsc0.26123048204794275%22%2C%22ts%22%3A0%2C%22n%22%3Atrue%2C%22lp%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%22%2C%22lpr%22%3A%22%22%2C%22fsrc%22%3A%22techjockey%22%2C%22fmdm%22%3A%22cpc%22%2C%22fchn%22%3A%22paid%20search%22%2C%22ifr%22%3Atrue%2C%22isef%22%3Atrue%2C%22ht%22%3A%22pageview%22%2C%22iht%22%3Atrue%2C%22src%22%3A%22techjockey%22%2C%22mdm%22%3A%22cpc%22%2C%22chn%22%3A%22paid%20search%22%2C%22utm_src%22%3A%22techjockey%22%2C%22utm_mdm%22%3A%22cpc%22%2C%22utm_cmp%22%3A%22productivity-software%22%2C%22dtte%22%3A%22Enterprise%20Collaboration%20Suite%20Made%20in%20India%20%E2%80%94%20Zoho%20Workplace%22%7D%7D&type=21&domainname=7nbagtjv",
+        "sectionDemos": [
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%227nbagtjv%22%2C%22p%22%3A%22a63a3daff87f4d33b6cffbe7a949ff5f%22%2C%22sc%22%3A%220%22%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%2F%3Futm_source%3Dtechjockey%26utm_medium%3Dcpc%26utm_campaign%3Dproductivity-software%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%22%2C%22up%22%3A%5B%7B%22pn%22%3A%22utm_source%22%2C%22pv%22%3A%22techjockey%22%7D%2C%7B%22pn%22%3A%22utm_medium%22%2C%22pv%22%3A%22cpc%22%7D%2C%7B%22pn%22%3A%22utm_campaign%22%2C%22pv%22%3A%22productivity-software%22%7D%5D%2C%22tv%22%3A%22CAMPAIGN%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777971306769zabu0.6771277869907137%22%2C%22d%22%3A%221777971307102zabv0.6819913939812408%22%2C%22sid%22%3A%221777971308016zsc0.3723541929436516%22%2C%22ts%22%3A0%2C%22n%22%3Atrue%2C%22lp%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%22%2C%22lpr%22%3A%22%22%2C%22fsrc%22%3A%22techjockey%22%2C%22fmdm%22%3A%22cpc%22%2C%22fchn%22%3A%22paid%20search%22%2C%22ifr%22%3Atrue%2C%22isef%22%3Atrue%2C%22ht%22%3A%22pageview%22%2C%22iht%22%3Atrue%2C%22src%22%3A%22techjockey%22%2C%22mdm%22%3A%22cpc%22%2C%22chn%22%3A%22paid%20search%22%2C%22utm_src%22%3A%22techjockey%22%2C%22utm_mdm%22%3A%22cpc%22%2C%22utm_cmp%22%3A%22productivity-software%22%2C%22dtte%22%3A%22Enterprise%20Collaboration%20Suite%20Made%20in%20India%20%E2%80%94%20Zoho%20Workplace%22%7D%7D&type=21&domainname=7nbagtjv",
+          "https://www.zohowebstatic.com/sites/zweb/images/workplace/homepage/banner-video.mp4",
+          "https://www.zohowebstatic.com/sites/zweb/images/workplace/homepage/flexibility-video.mp4",
+          "https://www.zohowebstatic.com/sites/zweb/images/workplace/homepage/workdrive-video.mp4",
+          "https://www.zohowebstatic.com/sites/zweb/images/workplace/homepage/happiness-video.mp4",
+          "https://previewengine-accl.zohoexternal.com/video/WD/uvl0u892dc3bf4804457499e7506faf0ece85/version/1.0/v_1080/seg_0.mp4",
+          "https://previewengine-accl.zohoexternal.com/video/WD/uvl0u892dc3bf4804457499e7506faf0ece85/version/1.0/a_original/seg_0.mp4",
+          "https://pagesense-collect.zoho.in/pslog.gif?type=2",
+          "https://pagesense-collect.zoho.in/pslog.gif?type=1",
+          "https://pagesense-hb-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%227nbagtjv%22%2C%22p%22%3A%22a63a3daff87f4d33b6cffbe7a949ff5f%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22f%22%3A%221777971307518zabu0.9563205307286289%22%2C%22d%22%3A%221777971307692zabv0.6669900521886494%22%7D%7D&type=24&domainname=7nbagtjv&uuid=1777971307518zabu0.9563205307286289",
+          "https://pagesense-hb-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%227nbagtjv%22%2C%22p%22%3A%22a63a3daff87f4d33b6cffbe7a949ff5f%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22f%22%3A%221777971306769zabu0.6771277869907137%22%2C%22d%22%3A%221777971307102zabv0.6819913939812408%22%7D%7D&type=24&domainname=7nbagtjv&uuid=1777971306769zabu0.6771277869907137",
+          "https://pagesense-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%227nbagtjv%22%2C%22p%22%3A%22a63a3daff87f4d33b6cffbe7a949ff5f%22%2C%22sc%22%3A%220%22%7D%5D%2C%22urd%22%3A%7B%22bv%22%3A%22Chrome%22%2C%22lv%22%3A%22en-US%22%2C%22ov%22%3A%22Mac%20OS%22%2C%22dv%22%3A%22desktop%22%2C%22mdv%22%3A%22Apple%22%2C%22rv%22%3A%22%22%2C%22frv%22%3A%22%22%2C%22fcv%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%2F%3Futm_source%3Dtechjockey%26utm_medium%3Dcpc%26utm_campaign%3Dproductivity-software%22%2C%22cv%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%22%2C%22up%22%3A%5B%7B%22pn%22%3A%22utm_source%22%2C%22pv%22%3A%22techjockey%22%7D%2C%7B%22pn%22%3A%22utm_medium%22%2C%22pv%22%3A%22cpc%22%7D%2C%7B%22pn%22%3A%22utm_campaign%22%2C%22pv%22%3A%22productivity-software%22%7D%5D%2C%22tv%22%3A%22CAMPAIGN%22%2C%22srv%22%3A%221680x1050%22%2C%22f%22%3A%221777971306769zabu0.6771277869907137%22%2C%22d%22%3A%221777971307102zabv0.6819913939812408%22%2C%22sid%22%3A%221777971308016zsc0.3723541929436516%22%2C%22ts%22%3A0%2C%22n%22%3Atrue%2C%22lp%22%3A%22https%3A%2F%2Fwww.zoho.com%2Fen-in%2Fworkplace%22%2C%22lpr%22%3A%22%22%2C%22fsrc%22%3A%22techjockey%22%2C%22fmdm%22%3A%22cpc%22%2C%22fchn%22%3A%22paid%20search%22%2C%22ifr%22%3Atrue%2C%22isef%22%3Atrue%2C%22ht%22%3A%22pageview%22%2C%22iht%22%3Atrue%2C%22src%22%3A%22techjockey%22%2C%22mdm%22%3A%22cpc%22%2C%22chn%22%3A%22paid%20search%22%2C%22utm_src%22%3A%22techjockey%22%2C%22utm_mdm%22%3A%22cpc%22%2C%22utm_cmp%22%3A%22productivity-software%22%2C%22dtte%22%3A%22Enterprise%20Collaboration%20Suite%20Made%20in%20India%20%E2%80%94%20Zoho%20Workplace%22%7D%7D&type=21&domainname=7nbagtjv",
+          "https://www.zohowebstatic.com/sites/zweb/images/workplace/homepage/banner-video.mp4",
+          "https://www.zohowebstatic.com/sites/zweb/images/workplace/homepage/flexibility-video.mp4",
+          "https://www.zohowebstatic.com/sites/zweb/images/workplace/homepage/workdrive-video.mp4",
+          "https://www.zohowebstatic.com/sites/zweb/images/workplace/homepage/happiness-video.mp4",
+          "https://previewengine-accl.zohoexternal.com/video/WD/uvl0u892dc3bf4804457499e7506faf0ece85/version/1.0/v_1080/seg_0.mp4",
+          "https://previewengine-accl.zohoexternal.com/video/WD/uvl0u892dc3bf4804457499e7506faf0ece85/version/1.0/a_original/seg_0.mp4",
+          "https://pagesense-collect.zoho.in/pslog.gif?type=2",
+          "https://pagesense-collect.zoho.in/pslog.gif?type=1",
+          "https://pagesense-hb-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%227nbagtjv%22%2C%22p%22%3A%22a63a3daff87f4d33b6cffbe7a949ff5f%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22f%22%3A%221777971307518zabu0.9563205307286289%22%2C%22d%22%3A%221777971307692zabv0.6669900521886494%22%7D%7D&type=24&domainname=7nbagtjv&uuid=1777971307518zabu0.9563205307286289",
+          "https://pagesense-hb-collect.zoho.in/psimg.gif?raw=%7B%22vrd%22%3A%5B%7B%22a%22%3A%227nbagtjv%22%2C%22p%22%3A%22a63a3daff87f4d33b6cffbe7a949ff5f%22%2C%22n%22%3Atrue%7D%5D%2C%22urd%22%3A%7B%22f%22%3A%221777971306769zabu0.6771277869907137%22%2C%22d%22%3A%221777971307102zabv0.6819913939812408%22%7D%7D&type=24&domainname=7nbagtjv&uuid=1777971306769zabu0.6771277869907137"
+        ]
+      },
+      "product": [
+        "/output/generated-assets/ds_1777971286353_9f3f42db/17-8ee9780f0b.jpg",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/16-dd7a47979f.gif",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/18-473c14de05.jpg",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/30-89ce3cb959.jpeg",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/29-3965757185.jpeg",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/26-3d192a39e0.png"
+      ],
+      "features": [
+        "/output/generated-assets/ds_1777971286353_9f3f42db/01-256e5d95aa.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/10-27e04915d6.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/12-113610f4ed.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/28-ff13c93ca8.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/18-473c14de05.jpg",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/30-89ce3cb959.jpeg",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/29-3965757185.jpeg",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/26-3d192a39e0.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/27-1bc9c6f2ac.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/31-f91cb31461.jpeg"
+      ],
+      "logos": [
+        "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/25-d22596911f.png"
+      ],
+      "fallbackStrategy": {
+        "heroMode": "split-visual",
+        "productMode": "preview-panel"
+      },
+      "form": null,
+      "additionalInstructions": "PROOF STRATEGY: The visitor trusts logos most. Make this the dominant trust signal.\n\n\nPAST USER FEEDBACK MEMORY — AVOID REPEATING THESE MISTAKES:\n1. [design/features] feature section has too much empty space before and after the image still not fixed and also check the brand color if not find check the CTA color at the brand page  and customize the theme accordingly, content is not exactly what i have shared from the front end\n2. [content/full-page] content is not exactly as shared from the doc\n3. [content/full-page] content is not exactly as shared from the doc\n4. [content/hero] Hero section is still miss matched from the content\n5. [design/pricing] cart section is completely missing\n6. [design/pricing] cart section is completely missing\n7. [design/pricing] cart section is completely missing\n8. [development/features] Feature Image is not placed properly having too much empty space\n9. [development/features] look at this section not corrected\n10. [design/full-page] Instead of alligning small image to big empty area try to place another same size image or video at the place\n11. [design/full-page] Instead of alligning small image to big empty area try to place another same size image or video at the place\n12. [design/full-page] why always using strip in all created pages\n\nRules:\n- Treat this as design/development memory.\n- Do not repeat these mistakes in new landing pages.\n- Apply only when relevant to the current product/page.\n- Do not copy feedback text into the landing page.\n\n\nLearn from the brrand",
+      "imageContext": [
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/01-256e5d95aa.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Illustration showing a padlock, gears, and clock representing password security.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/10-27e04915d6.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 90,
+          "description": "Illustration of a yellow box with various app icons emerging from it.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/14-9f8efaf073.png",
+          "role": "generic-stock",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "A speech bubble containing five yellow stars representing a five-star rating.",
+          "placementHints": [
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/12-113610f4ed.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "An illustration with communication and collaboration icons and the text 'Workroom' and 'Explore Now'.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/15-01fc6c95c0.jpg",
+          "role": "person-or-team",
+          "isWide": true,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Online video meeting with six participants, one presenting charts.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/13-a1af876bc5.png",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 90,
+          "description": "A smiling woman with a headset, pointing sideways, wearing a suit.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/11-4e22c31148.png",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A grid of various company logos including Mailchimp, Shopify, and JIRA.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/16-dd7a47979f.gif",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Animated GIF showing a simple loading spinner.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/18-473c14de05.jpg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A software interface showing a discussion forum for book cover design process.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/17-8ee9780f0b.jpg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A screenshot of an online document editor interface showing a grayscale photo of a smiling child.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/24-75f766eeed.png",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 98,
+          "description": "Logo of The India Cements Ltd.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/25-d22596911f.png",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": true,
+          "confidence": 90,
+          "description": "The image shows the UpStack company logo.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background",
+            "TRANSPARENT: safe to place on any background color"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/23-61e528786b.png",
+          "role": "logo-or-icon",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "Logo of Zoho Workplace with text on a white background.",
+          "placementHints": [
+            "BEST FOR: trust bar or partner logo strip, grayscale by default",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/30-89ce3cb959.jpeg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A computer screen displaying source code in an IDE with a visible file structure and editor.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/29-3965757185.jpeg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A screenshot of a software interface showing layered tracks in a timeline or editing application.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/26-3d192a39e0.png",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Screenshot of a dashboard interface with navigation and quick access features.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/27-1bc9c6f2ac.png",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Screenshot of a webpage for WhatsApp with a focus on messaging features.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/28-ff13c93ca8.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Illustration of three people interacting with digital elements on a workspace-themed landing page.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/34-2d8c21be11.gif",
+          "role": "hero-visual",
+          "isWide": true,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "An animated illustration depicting interconnected digital tools and applications.",
+          "placementHints": [
+            "BEST FOR: full-bleed hero background or large split panel",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/31-f91cb31461.jpeg",
+          "role": "ui-screenshot",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A computer screen showing audio software with an equalizer and playlist.",
+          "placementHints": [
+            "BEST FOR: product feature section, wrap in browser/device frame",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/32-e3c4bcd1a9.png",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A man in a pink shirt standing in front of a building with a sign.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/33-00ee58a5d0.jpg",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 95,
+          "description": "A man wearing glasses with a mustache, standing in a clothing store environment.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/35-7f9baae9a1.mp4",
+          "role": "video-demo",
+          "isWide": true,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "Video asset — suitable for demo sections, hero background, or feature walkthrough",
+          "placementHints": [
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/38-0ce883ad9f.mp4",
+          "role": "video-demo",
+          "isWide": true,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "Video asset — suitable for demo sections, hero background, or feature walkthrough",
+          "placementHints": [
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/37-1877498769.mp4",
+          "role": "video-demo",
+          "isWide": true,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "Video asset — suitable for demo sections, hero background, or feature walkthrough",
+          "placementHints": [
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/36-6bde8a0ae9.mp4",
+          "role": "video-demo",
+          "isWide": true,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "Video asset — suitable for demo sections, hero background, or feature walkthrough",
+          "placementHints": [
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/39-6a1ff83a3f.mp4",
+          "role": "video-demo",
+          "isWide": true,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "Video asset — suitable for demo sections, hero background, or feature walkthrough",
+          "placementHints": [
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1777971286353_9f3f42db/40-4f0dc27c4c.mp4",
+          "role": "video-demo",
+          "isWide": true,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "Video asset — suitable for demo sections, hero background, or feature walkthrough",
+          "placementHints": [
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        }
+      ],
+      "teamPhotos": [
+        "/output/generated-assets/ds_1777971286353_9f3f42db/13-a1af876bc5.png",
+        "/output/generated-assets/ds_1777971286353_9f3f42db/32-e3c4bcd1a9.png"
+      ]
+    }
+  },
+  "figma": {
+    "fileId": "figma_file_ds_1777971286353_9f3f42db",
+    "fileName": "zoho-workplace-enterprise-landing-page",
+    "fileUrl": "https://www.figma.com/file/figma_file_ds_1777971286353_9f3f42db",
+    "pages": [
+      {
+        "pageId": "page_1",
+        "name": "Desktop",
+        "frameName": "Zoho Workplace — Desktop",
+        "width": 1440,
+        "heightHint": 6200,
+        "grid": "12-col",
+        "sectionCount": 5
+      }
+    ],
+    "frames": [
+      {
+        "pageName": "Desktop",
+        "frameName": "Zoho Workplace — Desktop",
+        "width": 1440,
+        "builtSectionCount": 5
+      },
+      {
+        "pageName": "Desktop",
+        "frameName": "Zoho Workplace — Desktop",
+        "width": 1440,
+        "builtSectionCount": 5
+      }
+    ],
+    "nodes": {
+      "Desktop": [
+        {
+          "nodeId": "node_desktop_1",
+          "id": "hero",
+          "type": "hero",
+          "frameName": "Hero / Split Lead",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "split-layout with text left and logo-trust strip below CTAs; no UI screenshot required",
+          "priority": "high",
+          "contentSource": "",
+          "notes": "Use exact hero content: headline 'Elevate Your Team’s Productivity with Zoho Workplace', subheadline 'A Complete Email & Collaboration Suite for Enterprises that Facilitates Unified Communication.', supporting line 'Easy Setup & Quick Onboarding; A Made in India solution; 24x7 Support', primary CTA 'Get Started', secondary CTA 'Get Your Free Trial'. Apply warm purple hero background with white text and orange solid primary CTA; secondary CTA as outlined/ghost. Keep headline sizing aligned to long-form rule for 16+ words. Add a compact logos-first trust band directly in hero using 100,000+ businesses proof."
+        },
+        {
+          "nodeId": "node_desktop_2",
+          "id": "trust",
+          "type": "trust",
+          "frameName": "Trust / Logo-First Proof Bar",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "logo-forward badges with customer count stat and divider-separated items",
+          "priority": "high",
+          "contentSource": "",
+          "notes": "Dominant proof signal must be logos/badges. Use a centered light-grey trust band with pill badges and a customer count stat '100,000+ Businesses Globally' plus 'Trusted by 100,000+ Businesses Globally'. Keep this section compact and visually stronger than a typical stats row."
+        },
+        {
+          "nodeId": "node_desktop_3",
+          "id": "features_why_choose",
+          "type": "product-features",
+          "frameName": "Features / Why Choose Zoho Workplace",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "4-card grid, no imagery, cards with icon placeholders replaced by colored SVG icons",
+          "priority": "high",
+          "contentSource": "",
+          "notes": "Use exact section content: label 'FEATURES', headline 'Why Choose Zoho Workplace?', description about a single unified platform. Render 4 feature cards: All-in-One Unified Workspace, Seamless Collaboration in Real Time, Work from Anywhere, Anytime, AI-Powered Productivity (Zia). White background, 1px border cards, 24px padding, 2-column grid on desktop because there are 4 features."
+        },
+        {
+          "nodeId": "node_desktop_4",
+          "id": "features_growth",
+          "type": "product-features",
+          "frameName": "Features / Business Growth",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "4-card grid with section header and enterprise-oriented copy",
+          "priority": "high",
+          "contentSource": "",
+          "notes": "Use exact section content: label 'STANDARD FEATURES', headline 'Unlock Your Business Growth with Zoho Workplace', description about unifying email, collaboration, and productivity tools. Cards: Ideal For Your Business Size, Communicate Effectively, Integrated Business Apps, Customizable Workspace. Maintain same feature card component family for consistency and to avoid empty-space issues."
+        },
+        {
+          "nodeId": "node_desktop_5",
+          "id": "features_integrations",
+          "type": "product-features",
+          "frameName": "Features / Integrations",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "multi-category integration cards, compact list-style cards, no large image slot",
+          "priority": "medium",
+          "contentSource": "",
+          "notes": "Use exact section content: label 'ADDITIONAL FEATURES', headline 'Integrate with Popular Apps', description about connecting Zoho Workplace with other business apps. Present integrations as categorized compact cards or chips to avoid large empty areas. Include the provided categories and visible items: Zoho Apps, Analytics, Accounting & Finance, Automation, and additional integration categories from contentMap if available in the final source."
+        }
+      ]
+    },
+    "syncStatus": "sections-planned",
+    "lastSyncAt": "2026-05-05T08:59:18.839Z"
+  },
+  "outputs": {
+    "htmlFilename": "workplace2-1777971550832-preview.html",
+    "localizedAssetsBase": "/output/generated-assets/ds_1777971286353_9f3f42db"
+  },
+  "logs": [
+    {
+      "at": "2026-05-05T08:54:46.360Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-05-05T08:59:18.829Z",
+      "type": "workflow",
+      "step": "html-generated",
+      "message": "HTML output generated: workplace2-1777971550832-preview.html"
+    },
+    {
+      "at": "2026-05-05T08:59:18.832Z",
+      "type": "mcp",
+      "step": "create-landing-file",
+      "message": "Created adapter-backed placeholder Figma file figma_file_ds_1777971286353_9f3f42db"
+    },
+    {
+      "at": "2026-05-05T08:59:18.836Z",
+      "type": "mcp",
+      "step": "build-sections-from-plan",
+      "message": "Prepared 5 sections for Desktop"
+    },
+    {
+      "at": "2026-05-05T08:59:18.839Z",
+      "type": "mcp",
+      "step": "build-sections-from-plan",
+      "message": "Prepared 5 sections for Desktop"
+    },
+    {
+      "at": "2026-05-05T08:59:18.843Z",
+      "type": "workflow",
+      "step": "mcp-auto-run",
+      "message": "MCP execution layer completed successfully"
+    }
+  ]
+}

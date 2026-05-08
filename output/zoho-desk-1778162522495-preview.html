@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zoho-desk-1778162522495.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <link rel="stylesheet" href="/ui/tailwind.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: 'var(--accent)',
+            primary: 'var(--primary)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#d42d2d';
+  const primary = '#d42d2d';
+  const bodyBg = '#ffffff';
+  const ctaItems = [{
+    text: 'Get Your Free Trial',
+    href: 'https://www.zoho.com/en-in/desk/'
+  }, {
+    text: 'Get Your Free Trial',
+    href: 'https://www.zoho.com/en-in/desk/'
+  }, {
+    text: 'Get Your Free Trial',
+    href: 'https://www.zoho.com/en-in/desk/'
+  }, {
+    text: 'Get Your Free Trial',
+    href: 'https://www.zoho.com/en-in/desk/'
+  }, {
+    text: 'Get Your Free Trial',
+    href: 'https://www.zoho.com/en-in/desk/'
+  }];
+  const testimonials = [{
+    quote: 'Zoho Desk helped us streamline our support tickets and respond faster to customer queries. Our team now handles requests more efficiently with better visibility.',
+    author: 'Sanjay Bhatnagar',
+    role: 'Customer Support Lead'
+  }, {
+    quote: 'Managing customer conversations across multiple channels became effortless with Zoho Desk. It significantly improved our response time and customer satisfaction.',
+    author: 'Arjun Mishra',
+    role: 'Operations Manager'
+  }, {
+    quote: 'Automation in Zoho Desk reduced manual work for our support team. We can now focus more on solving issues rather than managing tickets.',
+    author: 'Vanshika Malhotra',
+    role: 'Head of Support'
+  }, {
+    quote: 'The knowledge base and self-service portal helped reduce our ticket volume while improving customer experience.',
+    author: 'Nitin Singh',
+    role: 'Founder'
+  }, {
+    quote: 'Zoho Desk’s reporting and dashboards give us clear insights into support performance and customer issues.',
+    author: 'Akashdeep Sirkar',
+    role: 'Customer Experience Manager'
+  }];
+  const productSections = [{
+    name: 'Why Choose Zoho Desk?',
+    headline: 'Why Choose Zoho Desk?',
+    description: 'With powerful automation and contextual AI, Zoho Desk helps businesses deliver faster, smarter, and more personalized customer support.',
+    features: [{
+      title: 'Omnichannel Support',
+      description: 'Manage customer conversations across email, chat, phone, and social media from a single platform.'
+    }, {
+      title: 'Ticket Management',
+      description: 'Organize, prioritize, and resolve tickets efficiently with automation and smart workflows.'
+    }, {
+      title: 'AI Assistance (Zia)',
+      description: 'Get intelligent suggestions, auto-tag tickets, detect sentiment, and respond faster with AI-powered insights.'
+    }, {
+      title: 'Workflow Automation',
+      description: 'Automate repetitive support tasks, assign tickets, and streamline processes for faster resolutions.'
+    }]
+  }, {
+    name: 'Additional Features',
+    headline: 'Make Smarter Support Decisions with Zia AI',
+    description: 'Zoho Desk includes Zia, an AI-powered assistant that helps support teams improve response quality and resolution speed.',
+    features: [{
+      title: 'AI-Powered Responses',
+      description: 'Generate accurate replies, suggest solutions, and assist agents in real time.'
+    }, {
+      title: 'Sentiment Analysis',
+      description: 'Understand customer emotions and prioritize critical issues for better service.'
+    }, {
+      title: 'Auto Tagging & Insights',
+      description: 'Automatically categorize tickets and uncover patterns to improve support efficiency.'
+    }, {
+      title: 'Conversation Intelligence',
+      description: 'Analyze interactions across channels to deliver consistent and contextual support experiences.'
+    }]
+  }, {
+    name: 'Standard Feature',
+    headline: 'Integrate with popular apps and Zoho ecosystem',
+    description: 'Connect your help desk with your favorite apps across CRM, communication, and business tools with ease.',
+    features: [{
+      title: 'CRM Integration',
+      description: 'Zoho CRM, HubSpot, and more'
+    }, {
+      title: 'Collaboration Tools',
+      description: 'Slack, Microsoft Teams'
+    }, {
+      title: 'Telephony',
+      description: 'Aircall, RingCentral'
+    }, {
+      title: 'E-commerce Platforms',
+      description: 'Shopify, WooCommerce'
+    }, {
+      title: 'Automation Tools',
+      description: 'Zapier & Zoho Flow'
+    }]
+  }, {
+    name: 'Other Features',
+    headline: 'Customization Beyond Limits',
+    description: 'Zoho Desk is built to adapt to your support workflows and business needs.',
+    features: [{
+      title: 'Layouts',
+      description: 'Customize ticket views, fields, and workflows to match your processes.'
+    }, {
+      title: 'Blueprints',
+      description: 'Design structured workflows to guide agents through every support process.'
+    }, {
+      title: 'Extensions',
+      description: 'Extend functionality with custom apps and integrations.'
+    }, {
+      title: 'Help Center',
+      description: 'Create branded self-service portals and knowledge bases for customers.'
+    }]
+  }];
+  const [activeSection, setActiveSection] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const appTrackRef = useRef(null);
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    const observer = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), {
+      threshold: 0.15
+    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    const loadScript = src => new Promise(resolve => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) return resolve();
+      const s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = resolve;
+      document.body.appendChild(s);
+    });
+    const initGSAP = () => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const gsap = window.gsap;
+          gsap.registerPlugin(window.ScrollTrigger);
+          gsap.utils.toArray('.zoom-reveal').forEach(el => {
+            const img = el.querySelector('img,video');
+            if (img) gsap.to(img, {
+              scale: 1,
+              duration: 1.2,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+              }
+            });
+          });
+          gsap.utils.toArray('[data-depth]').forEach(el => {
+            gsap.to(el, {
+              y: () => -(window.innerHeight * (parseFloat(el.dataset.depth) || 0.2) * 0.5),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el.closest('section') || el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+              }
+            });
+          });
+          gsap.utils.toArray('.stagger-parent').forEach(p => {
+            gsap.to(p.children, {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: p,
+                start: 'top 80%'
+              }
+            });
+          });
+          gsap.utils.toArray('[data-count]').forEach(el => {
+            const target = parseFloat(el.getAttribute('data-count')) || 0;
+            const suffix = el.getAttribute('data-suffix') || '';
+            const prefix = el.getAttribute('data-prefix') || '';
+            const obj = {
+              val: 0
+            };
+            gsap.to(obj, {
+              val: target,
+              duration: 2,
+              snap: {
+                val: 0.1
+              },
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 90%'
+              },
+              onUpdate: () => {
+                el.textContent = `${prefix}${obj.val.toFixed(target % 1 === 0 ? 0 : 1)}${suffix}`;
+              }
+            });
+          });
+        });
+      });
+    };
+    Promise.all([loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js'), loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js')]).then(initGSAP);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+  const currentSection = productSections[activeSection];
+  const css = `
+    :root{--accent:${accent};--primary:${primary};--bodyBg:${bodyBg}}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:${bodyBg};font-family:Inter,sans-serif;color:#111827;scroll-behavior:smooth}
+    body{overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .page{background:${bodyBg}}
+    .container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .main_header{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .nav-left{display:flex;align-items:center;min-width:0}
+    .nav-right{display:flex;align-items:center;gap:14px}
+    .logo-text{font-weight:800;font-size:20px;color:var(--accent);font-family:"Plus Jakarta Sans",sans-serif}
+    .animated-cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:10px;background:var(--accent);color:#fff;font-weight:700;border:1px solid var(--accent);transition:.25s transform,.25s box-shadow,.25s background;white-space:nowrap}
+    .animated-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,45,45,.28);background:#bc2323}
+    .ghost-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:10px;background:transparent;color:#fff;font-weight:700;border:1px solid rgba(255,255,255,.22);transition:.25s}
+    .ghost-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18);background:rgba(255,255,255,.06)}
+    .hero-section{background:#0f172a;position:relative;overflow:hidden}
+    .hero-section:before,.hero-section:after{content:"";position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none}
+    .hero-section:before{width:360px;height:360px;right:-60px;top:-60px;background:radial-gradient(circle, rgba(212,45,45,.28), transparent 70%)}
+    .hero-section:after{width:280px;height:280px;left:-40px;bottom:-60px;background:radial-gradient(circle, rgba(212,45,45,.18), transparent 70%)}
+    .banner_wrap{display:flex;align-items:center;gap:54px;min-height:calc(100vh - 74px);padding:88px 0 72px;position:relative}
+    .banner-text,.hero-visual{flex:1}
+    .banner-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:clamp(64px,6vw,72px);line-height:1.02;letter-spacing:-.03em;color:#fff;margin:0 0 18px;word-break:normal;overflow-wrap:normal;hyphens:none;white-space:normal}
+    .banner-content{font-size:18px;line-height:1.75;color:#cbd5e1;max-width:620px;margin:0 0 28px}
+    .gradient-text{background:linear-gradient(135deg, ${accent} 0%, ${primary} 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .chip-row{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 30px}
+    .chip{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.08);color:#e5e7eb;font-size:14px;border:1px solid rgba(255,255,255,.12)}
+    .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+    .hero-card{background:#fff;border-radius:24px;box-shadow:0 20px 60px rgba(15,23,42,.18);padding:28px;border:1px solid rgba(15,23,42,.08)}
+    .hero-card h3{margin:0 0 12px;font-size:24px}
+    .hero-card p{margin:0;color:#475569;line-height:1.7}
+    .trust-strip{padding:26px 0;background:#fff;border-bottom:1px solid rgba(15,23,42,.08)}
+    .trust-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+    .trust-proof{font-size:18px;font-weight:800;color:#0f172a}
+    .trust-points{display:flex;flex-wrap:wrap;gap:12px}
+    .trust-pill{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#f8fafc;border:1px solid rgba(15,23,42,.08);color:#334155;font-size:14px;font-weight:700;box-shadow:0 8px 24px rgba(15,23,42,.06)}
+    .section{padding:88px 0}
+    .section-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:42px;line-height:1.1;letter-spacing:-.02em;margin:0 0 14px;color:#0f172a}
+    .section-copy{font-size:18px;line-height:1.75;color:#475569;max-width:760px;margin:0 0 28px}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .feature-card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:20px;padding:22px;box-shadow:0 14px 34px rgba(15,23,42,.06)}
+    .feature-card h4{margin:0 0 10px;font-size:20px;color:#0f172a}
+    .feature-card p{margin:0;color:#475569;line-height:1.7}
+    .tabs{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
+    .tab-btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(15,23,42,.1);background:#fff;color:#334155;font-weight:700;cursor:pointer}
+    .tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .testimonial-wrap{background:#0f172a;color:#fff;border-radius:24px;padding:28px;box-shadow:0 20px 60px rgba(15,23,42,.18)}
+    .testimonial-quote{font-size:20px;line-height:1.8;margin:0 0 16px;color:#e2e8f0}
+    .testimonial-meta{font-weight:700}
+    .testimonial-role{color:#94a3b8;font-weight:500}
+    .footer-cta{background:#fff;padding:24px;border:1px solid rgba(15,23,42,.08);border-radius:20px;box-shadow:0 14px 34px rgba(15,23,42,.06);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .reveal{opacity:1;transform:none}
+    @media (max-width: 960px){
+      .banner_wrap{flex-direction:column;align-items:flex-start;min-height:auto;padding:72px 0 56px}
+      .feature-grid{grid-template-columns:1fr}
+      .section-title{font-size:34px}
+    }
+    @media (max-width: 640px){
+      .banner-title{font-size:64px}
+      .banner-content{font-size:16px}
+      .nav-right{gap:10px}
+      .animated-cta,.ghost-btn{padding:11px 16px}
+      .section{padding:68px 0}
+      .trust-inner{align-items:flex-start}
+    }
+  `;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "page"
+  }, /*#__PURE__*/React.createElement("style", null, css), /*#__PURE__*/React.createElement("header", {
+    className: "main_header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav-bar"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nav-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "logo-text"
+  }, "Zoho Desk")), /*#__PURE__*/React.createElement("div", {
+    className: "nav-right"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "ghost-btn",
+    href: "https://www.zoho.com/en-in/desk/",
+    target: "_blank",
+    rel: "noreferrer"
+  }, "Learn More"), /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta",
+    href: ctaItems[0].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, "Get Your Free Trial")))), /*#__PURE__*/React.createElement("section", {
+    className: "hero-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container banner_wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "banner-text"
+  }, /*#__PURE__*/React.createElement("h1", {
+    className: "banner-title"
+  }, "Deliver Faster, Smarter Customer Support with ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Zoho Desk")), /*#__PURE__*/React.createElement("p", {
+    className: "banner-content"
+  }, "Empower your support teams with automation, contextual AI, omnichannel ticketing, and deep reporting so every customer interaction is handled with speed and precision."), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "chip"
+  }, "Omnichannel Support"), /*#__PURE__*/React.createElement("span", {
+    className: "chip"
+  }, "Zia AI Assistance"), /*#__PURE__*/React.createElement("span", {
+    className: "chip"
+  }, "Workflow Automation")), /*#__PURE__*/React.createElement("div", {
+    className: "cta-row"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta",
+    href: ctaItems[1].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, "Get Your Free Trial"), /*#__PURE__*/React.createElement("a", {
+    className: "ghost-btn",
+    href: "https://www.zoho.com/en-in/desk/",
+    target: "_blank",
+    rel: "noreferrer"
+  }, "Explore Features"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-visual"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-card"
+  }, /*#__PURE__*/React.createElement("h3", null, "Support built for growing teams"), /*#__PURE__*/React.createElement("p", null, "Centralize tickets, automate repetitive workflows, and give agents the context they need to resolve issues faster across every support channel."))))), /*#__PURE__*/React.createElement("section", {
+    className: "trust-strip"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container trust-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-proof"
+  }, "Trusted by 100,000+ Businesses Globally"), /*#__PURE__*/React.createElement("div", {
+    className: "trust-points"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "trust-pill"
+  }, "100,000+ Businesses"), /*#__PURE__*/React.createElement("span", {
+    className: "trust-pill"
+  }, "Global Customer Base"), /*#__PURE__*/React.createElement("span", {
+    className: "trust-pill"
+  }, "Used Across Industries Worldwide")))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tabs"
+  }, productSections.map((section, index) => /*#__PURE__*/React.createElement("button", {
+    key: section.name,
+    className: `tab-btn ${activeSection === index ? 'active' : ''}`,
+    onClick: () => setActiveSection(index),
+    type: "button"
+  }, section.name))), /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, currentSection.headline), /*#__PURE__*/React.createElement("p", {
+    className: "section-copy"
+  }, currentSection.description), /*#__PURE__*/React.createElement("div", {
+    className: "feature-grid"
+  }, currentSection.features.map(feature => /*#__PURE__*/React.createElement("div", {
+    className: "feature-card",
+    key: feature.title
+  }, /*#__PURE__*/React.createElement("h4", null, feature.title), /*#__PURE__*/React.createElement("p", null, feature.description)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "section-title"
+  }, "What Teams Say"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-wrap"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "testimonial-quote"
+  }, "\u201C", testimonials[activeSlide].quote, "\u201D"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-meta"
+  }, testimonials[activeSlide].author), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-role"
+  }, testimonials[activeSlide].role)))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "footer-cta"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      margin: '0 0 8px',
+      fontSize: '28px',
+      color: '#0f172a'
+    }
+  }, "Ready to simplify customer support?"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      color: '#475569',
+      lineHeight: 1.7
+    }
+  }, "See how Zoho Desk can help your team resolve issues faster and improve customer satisfaction.")), /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta",
+    href: ctaItems[2].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, "Get Your Free Trial")))));
+};
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

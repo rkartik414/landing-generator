@@ -1,0 +1,1272 @@
+{
+  "sessionId": "ds_1776948141878_06ae8fa9",
+  "createdAt": "2026-04-23T12:42:21.878Z",
+  "updatedAt": "2026-04-23T13:00:21.093Z",
+  "status": "html-generated",
+  "productName": "bttest",
+  "pageType": "category",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "https://www.imagine.art/video",
+    "parsedSectionCount": 8
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": {
+      "fileName": "seedream-4-5-seedance-1-5-pro-category-landing-page",
+      "pageType": "category",
+      "designSystemMode": "design-system-first",
+      "tokenProfileHint": "Use Techjockey default tokens with marketing-category treatment: Plus Jakarta Sans headings, Inter body, deep indigo hero background with warm orange accent CTA, light grey trust band, white feature cards, and elevated pricing/testimonial cards. Keep logo-led trust dominant in the hero and use compact conversion forms integrated into the hero left column.",
+      "pages": [
+        {
+          "name": "Desktop",
+          "frame": {
+            "name": "Seedream 4.5 and Seedance 1.5 Pro - Desktop",
+            "width": 1440,
+            "heightHint": 5600,
+            "grid": "12-col",
+            "sectionSpacing": 96
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Split Conversion Banner",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Dark hero with left-aligned creative form stack and right-aligned headline/value stack; strong logo trust strip above fold; primary CTA prominent; secondary CTA omitted because none provided.",
+              "contentSource": "contentMap.hero + context.additionalInstructions + referenceMap.heroPattern + Techjockey memory hero rules",
+              "priority": "high",
+              "notes": "Build a split hero with creative form on the left and persuasive content on the right. Left column should include a compact lead-capture form card embedded into the hero, styled as a creative panel rather than a plain utility form. Right column should include product/category headline, subheadline, supporting line, and a dominant primary CTA. Place a logo trust strip at the top of the hero because logos are the primary trust signal. Keep the hero visually dense but structured, using brand-dark background, white text, orange CTA, and minimal decorative media only if needed for balance.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": true
+              }
+            },
+            {
+              "id": "trust-logos",
+              "type": "trust",
+              "frameName": "Logo Trust Strip",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Logo-first trust band with a compact supporting label; use a single row of partner/customer logos or logo placeholders if actual brands are unavailable.",
+              "contentSource": "context.additionalInstructions + Techjockey memory trustSignals + referenceMap.heroPattern",
+              "priority": "high",
+              "notes": "Create a dedicated trust strip directly below the hero or integrated within the hero lower band. Since no logos are explicitly provided, reserve structured logo slots and a short trust label. This section must visually prioritize logos over stats. If brand logos are unavailable, use monochrome logo placeholders with label text rather than icon badges.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "product-seedream",
+              "type": "product-features",
+              "frameName": "Seedream 4.5 Feature Section",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "Feature section with intro copy and 5-feature card grid; use 3-column desktop layout with one spanning card if needed for rhythm.",
+              "contentSource": "contentMap.productSections[0]",
+              "priority": "high",
+              "notes": "Present Seedream 4.5 as the image-generation module. Include section label, headline, descriptive paragraph, and a CTA button. Use white feature cards with simple icon areas and 5 feature items. Because there are 5 features, arrange as a 3-column grid with two rows or 3+2 composition. Keep cards highly structured and text-forward, without decorative effects beyond standard card elevation.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "product-seedance",
+              "type": "product-features",
+              "frameName": "Seedance 1.5 Pro Feature Section",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "Feature section with intro copy and 5-feature card grid; differentiate as video-generation module using same system family and alternate accent treatment for subsection label only.",
+              "contentSource": "contentMap.productSections[1]",
+              "priority": "high",
+              "notes": "Present Seedance 1.5 Pro as the video-generation module. Include section label, headline, descriptive paragraph, and feature cards. Since there is no CTA text provided, omit a CTA button rather than inventing one. Use the same card system as Seedream to maintain consistency, but add a subtle section treatment to distinguish it as the second product pillar. Keep the layout product-led and not editorial.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "pricing",
+              "type": "pricing",
+              "frameName": "Pricing / Quote Cards",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "horizontal",
+              "variantHint": "Two pricing cards side by side; one without price value and one with starting price displayed; quote-led conversion rather than checkout-led.",
+              "contentSource": "contentMap.pricing",
+              "priority": "medium",
+              "notes": "Build a pricing section because pricing content is explicitly provided. Use two elevated cards on a light grey section background. The first card should support quote-led selling with no numeric price. The second card should visually emphasize the starting monthly price. Include checklist inclusions, CTA button, and required trust line pattern. Do not add EMI if not provided in the content. Keep this section conversion-focused and utilitarian.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": true,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "testimonials",
+              "type": "testimonials",
+              "frameName": "Customer Testimonials",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "grid",
+              "variantHint": "3-column testimonial grid with gold star rating row, italic quote, bold author line, and grey designation line; use 5 cards total.",
+              "contentSource": "contentMap.testimonials",
+              "priority": "medium",
+              "notes": "Display testimonials as a structured proof section with 5-star rating at top of each card. Use 3-column desktop grid with five total cards flowing into a second row. Keep the cards consistent and readable. Since company names are mostly empty, use author and designation as primary identity lines and reserve company line only when provided.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": true,
+                "form": false
+              }
+            },
+            {
+              "id": "footer",
+              "type": "footer",
+              "frameName": "Utility Footer",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Minimal utility footer only, no dense sitemap treatment.",
+              "contentSource": "context.additionalInstructions + referenceMap.footerMode + extras",
+              "priority": "low",
+              "notes": "Use a minimal footer to close the page cleanly. Keep it lightweight and utility-focused since this is a focused lead-gen landing page. Do not invent elaborate navigation. Include only essential Techjockey utility links treatment if needed as placeholder structure.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mobile",
+          "frame": {
+            "name": "Seedream 4.5 and Seedance 1.5 Pro - Mobile",
+            "width": 390,
+            "heightHint": 7600,
+            "grid": "4-col",
+            "sectionSpacing": 64
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "frameName": "Hero / Mobile Conversion Banner",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Stack form first or title first depending on space, but keep the creative form visible and compact; primary CTA full width; trust logos condensed into a swipeable row or wrapped grid.",
+              "contentSource": "contentMap.hero + context.additionalInstructions + referenceMap.heroPattern + mobileRules",
+              "priority": "high",
+              "notes": "Stack the hero for mobile. Keep the form visible and compact, with reduced fields and full-width CTA. Maintain the logo trust signal near the top or directly below the CTA. Ensure headline wraps cleanly and remains readable without excessive vertical growth. Avoid any side-by-side layout on mobile.",
+              "needs": {
+                "headline": true,
+                "subheadline": true,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": true
+              }
+            },
+            {
+              "id": "trust-logos",
+              "type": "trust",
+              "frameName": "Logo Trust Strip Mobile",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Compact logo trust band with wrap or horizontal scroll behavior depending on available logo count.",
+              "contentSource": "context.additionalInstructions + Techjockey memory trustSignals",
+              "priority": "high",
+              "notes": "Keep logos dominant even on mobile. If the logo set is long, use a horizontally scrollable strip with restrained height. If few logos exist, stack into two rows with small separators. Keep the visual treatment minimal and utilitarian.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": true,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "product-seedream",
+              "type": "product-features",
+              "frameName": "Seedream 4.5 Mobile Features",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "accordion",
+              "variantHint": "Single-column feature cards; if density becomes too high, convert feature detail into accordion-like stacked cards with equal spacing.",
+              "contentSource": "contentMap.productSections[0]",
+              "priority": "high",
+              "notes": "Render all Seedream content in a single-column layout. The 5 features should appear as stacked cards with consistent spacing and strong typography hierarchy. Keep CTA visible below intro copy. Avoid multi-column arrangements on mobile.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": true,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "product-seedance",
+              "type": "product-features",
+              "frameName": "Seedance 1.5 Pro Mobile Features",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "accordion",
+              "variantHint": "Single-column feature cards with compact intro; preserve hierarchy and avoid excessive text blocks by tightening padding.",
+              "contentSource": "contentMap.productSections[1]",
+              "priority": "high",
+              "notes": "Render Seedance as stacked single-column cards. Keep intro copy brief and readable. Since no CTA is provided, do not add a button. Preserve the 5 features with consistent spacing and card treatment.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": true,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "pricing",
+              "type": "pricing",
+              "frameName": "Pricing / Mobile Quote Cards",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Stack pricing cards vertically with strong price emphasis and full-width CTA buttons.",
+              "contentSource": "contentMap.pricing",
+              "priority": "medium",
+              "notes": "Convert the pricing section into stacked cards on mobile. Keep the quote-led Seedream card first, then the Seedance card with the monthly starting price. Maintain all required inclusion lists and trust line in compact form.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": true,
+                "testimonials": false,
+                "form": false
+              }
+            },
+            {
+              "id": "testimonials",
+              "type": "testimonials",
+              "frameName": "Customer Testimonials Mobile",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "stacked",
+              "variantHint": "Single-column testimonial stack with swipe-friendly spacing if needed.",
+              "contentSource": "contentMap.testimonials",
+              "priority": "medium",
+              "notes": "Use a single-column testimonial stack for mobile. Keep stars, quote, and identity lines readable. If space is tight, use a vertical list with card separation rather than a carousel to preserve content clarity.",
+              "needs": {
+                "headline": true,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": true,
+                "form": false
+              }
+            },
+            {
+              "id": "footer",
+              "type": "footer",
+              "frameName": "Utility Footer Mobile",
+              "componentStrategy": "compose-from-design-system",
+              "layoutMode": "vertical",
+              "variantHint": "Minimal footer with reduced density and compact link stack.",
+              "contentSource": "context.additionalInstructions + referenceMap.footerMode + extras",
+              "priority": "low",
+              "notes": "Keep the mobile footer minimal, with no clutter. Use small utility links or simple closing brand treatment only.",
+              "needs": {
+                "headline": false,
+                "subheadline": false,
+                "primaryCta": false,
+                "secondaryCta": false,
+                "media": false,
+                "logos": false,
+                "features": false,
+                "pricing": false,
+                "testimonials": false,
+                "form": false
+              }
+            }
+          ]
+        }
+      ],
+      "buildSummary": {
+        "desktopSectionCount": 7,
+        "mobileSectionCount": 7,
+        "sharedComponentFamilies": [
+          "compose-from-design-system"
+        ],
+        "figmaExecutionNotes": [
+          "Use Plus Jakarta Sans for headlines and Inter for body text as the default Techjockey category pairing.",
+          "Keep the hero background dark and use the left column for a compact creative form; do not make the hero centered.",
+          "Prioritize logo trust above any stat-based trust treatment because the brief explicitly says visitors trust logos most.",
+          "Use consistent white card surfaces with 1px borders and 12px radius for feature cards and 8px radius or stronger elevation for pricing/testimonial cards.",
+          "Do not invent unsupported sections such as news or why-Techjockey; they are excluded because content is not supplied or explicitly disabled.",
+          "Use section spacing from the design memory: 96px desktop and 64px mobile, with tighter card internal spacing for dense product content.",
+          "Seedream and Seedance should share a common product-section template while remaining clearly distinct through section labels and copy hierarchy.",
+          "Treat pricing as a quote-led conversion section rather than a checkout module; keep the CTA text exactly as provided."
+        ]
+      }
+    },
+    "heroStrategy": {
+      "layout": "text-right-media-left",
+      "primaryVisual": "https://cdn.techjockey.com/assets/hero/seedream-seedance-cinematic-mockup.jpg",
+      "secondaryVisual": "https://cdn.techjockey.com/assets/hero/seedream-seedance-editorial-ui-shell.png",
+      "accentVisuals": [
+        "https://cdn.techjockey.com/assets/hero/floating-chip-seedream.svg",
+        "https://cdn.techjockey.com/assets/hero/floating-chip-seedance.svg",
+        "https://cdn.techjockey.com/assets/hero/audio-waveform-line.svg",
+        "https://cdn.techjockey.com/assets/hero/prompt-connector-grid.svg"
+      ],
+      "backgroundImage": "https://cdn.techjockey.com/assets/hero/orange-studio-abstract-noise.jpg",
+      "backgroundVideo": null,
+      "backgroundTreatment": "mesh-gradient",
+      "overlayStyle": "gradient",
+      "headline": "Create High-Quality AI Images & Videos with ByteDance Generative Models",
+      "subheadline": "Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.",
+      "ctaText": "Generate with AI",
+      "secondaryCtaText": "",
+      "floatingChips": [
+        "Seedream 4.5",
+        "Seedance 1.5 Pro",
+        "Text-to-Image",
+        "Text-to-Video",
+        "Audio-Visual Sync"
+      ],
+      "animationStyle": "stagger",
+      "designNote": "Use an unexpected editorial split: place the content column on the right and a large layered studio mockup on the left. The hero visual should feel premium and tangible, combining image outputs, video frames, prompt UI, and subtle waveform cues in a single composited JPEG. Keep the orange brand hero with black/white contrast, add a soft noise texture plus mesh gradient for depth, and use floating SVG chips to reinforce the two products. CTA buttons must be solid orange. Avoid neon/futuristic styling; this should feel like a high-end B2B magazine spread with enterprise polish and strong conversion intent."
+    },
+    "blueprint": {
+      "rhythmPlan": {
+        "opening": "loud",
+        "middle": "modular",
+        "ending": "conversion"
+      },
+      "repetitionBreakers": [
+        "Start with a split-screen hero, then immediately switch to a high-contrast marquee trust bar to avoid repeating the same visual density.",
+        "Use an alternating product rhythm: Seedream as a spotlight-plus-grid editorial block, Seedance as a darker split-panel or accordion-style block with a different reading pace.",
+        "Insert a compact credibility section before pricing so the page doesn’t feel like a linear feature dump.",
+        "Make testimonials a carousel to compress proof and break the card-grid cadence.",
+        "Use a floating lead-form card near the end to change from reading mode to action mode."
+      ],
+      "pageTitle": "Seedream 4.5 and Seedance 1.5 Pro | AI Image & Video Generation",
+      "metaDescription": "Explore Seedream 4.5 for high-fidelity AI image generation and Seedance 1.5 Pro for cinematic AI video creation with audio, multilingual lip-sync, and enterprise-grade creative control.",
+      "styles": {
+        "accentColor": "#1a1a1a",
+        "bodyBg": "#f5f5f5",
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Inter",
+        "themeFamily": "editorial-b2b",
+        "surfaceStyle": "soft-shadow",
+        "visualMotif": "editorial-clean",
+        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "layout": "split-left",
+          "bgColor": "#ff6b00",
+          "surfaceStyle": "soft-shadow",
+          "backgroundTreatment": "solid-brand-block with subtle editorial layering",
+          "heroComposition": {
+            "mode": "text-left-media-right"
+          },
+          "renderMode": "split-visual",
+          "animationMode": "stagger",
+          "designNote": "Make the hero content-first but highly dynamic: left side carries the long headline, tight supporting copy, and a compact CTA stack; right side shows a premium studio-style composite with image outputs, video frames, prompt chips, and small floating product tags for Seedream 4.5 and Seedance 1.5 Pro. Keep the composition polished and conversion-focused rather than futuristic."
+        },
+        {
+          "id": "trust",
+          "type": "trust-bar",
+          "layout": "marquee-strip",
+          "bgColor": "#1a1a1a",
+          "renderMode": "marquee",
+          "designNote": "Place trust immediately after the hero as a dense, dark marquee band. Since social proof inputs are sparse, use an enterprise credibility strip with logo placeholders, capability claims, and short proof phrases. This should feel prominent and fast-moving, creating strong contrast after the orange hero."
+        },
+        {
+          "id": "products",
+          "type": "product-sections",
+          "layout": "alternating",
+          "bgColor": "#ffffff",
+          "renderMode": "spotlight-plus-grid",
+          "featurePresentation": {
+            "mode": "spotlight-plus-grid",
+            "primaryFeatureTitle": "Seedream 4.5",
+            "visualPriority": "high",
+            "useIcons": true,
+            "usePreviewPanel": true
+          },
+          "designNote": "Use two distinct product blocks with alternating visual rhythm. Lead with Seedream 4.5 in a spotlight-plus-grid layout: one large feature story panel on the left and a clean feature grid on the right. Then switch style for Seedance 1.5 Pro into a darker or reversed split-panel presentation with stronger motion cues and an accordion-like feature list. Because both products have 5 features, avoid simple flat grids throughout; instead use a spotlight first, then a different reading pattern for the second block."
+        },
+        {
+          "id": "why-techjockey",
+          "type": "why-techjockey",
+          "layout": "grid",
+          "bgColor": "#f5f5f5",
+          "renderMode": "card-grid",
+          "designNote": "Keep this section compact and utility-oriented, even though include=false means it can be minimized or omitted in implementation. If retained, frame it as a brief reassurance block with 3-4 cards covering evaluation support, quick demo access, and enterprise buying confidence. Visually, it should feel lighter and quieter than the product sections."
+        },
+        {
+          "id": "pricing",
+          "type": "pricing-cart",
+          "layout": "card-center",
+          "bgColor": "#ffffff",
+          "renderMode": "highlighted-card",
+          "designNote": "Use a centered pricing card composition with one highlighted card for Seedance 1.5 Pro and a secondary card for Seedream 4.5. Keep this section editorial rather than transactional: price and quote actions should be clear, but not overly aggressive. Add a thin trust strip or subtle proof line near the pricing cards to reduce friction."
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "layout": "carousel-static",
+          "bgColor": "#1a1a1a",
+          "renderMode": "slider",
+          "designNote": "Convert the five testimonials into a dark, premium carousel to break the white-card rhythm and compress a lot of proof into a high-impact, story-like band. Prioritize roles like Creative Director, Video Producer, Art Director, and Marketing Manager. Use large quote marks and minimal chrome."
+        },
+        {
+          "id": "form",
+          "type": "lead-form",
+          "layout": "split",
+          "bgColor": "#f5f5f5",
+          "renderMode": "floating-card",
+          "designNote": "Finish with a floating, high-intent lead form card that feels like the conversion endpoint of the page. Because the hero already carried the main CTA, this form should be calmer and more consultative than aggressive. Place it against a soft neutral background with strong visual separation from the testimonial carousel."
+        },
+        {
+          "id": "news",
+          "type": "media-logos",
+          "layout": "marquee-strip",
+          "bgColor": "#ffffff",
+          "renderMode": "logo-strip",
+          "designNote": "Use this only if additional media or brand logos exist; otherwise omit. If included, make it a restrained horizontal logo strip or utility footer-like band so the page ends cleanly without adding more conversion pressure."
+        }
+      ],
+      "designPersonality": "Premium editorial B2B with strong enterprise proof, clean contrast, and a creative studio feel. It should feel intelligent, composed, and conversion-focused rather than futuristic or neon. The layout should feel like a high-end product magazine meets software marketplace: bold orange hero, white content panels, black trust bands, floating chips, and carefully structured sections for image generation, video generation, and pricing.",
+      "imageryDirection": "Use a large, polished JPEG hero visual showing AI-generated creative work in a layered studio-like mockup: one side with image generation outputs and the other with cinematic video frames, audio waveform hints, and prompt controls. Add floating badges for Seedream 4.5 and Seedance 1.5 Pro, plus a visible enterprise logo proof band. Support sections can use PNG UI shells and SVG icons; logos must be SVG. Since trust is key, include a dense logo marquee directly under the hero and a secondary trust strip near pricing.",
+      "typography": {
+        "headingFont": "Plus Jakarta Sans",
+        "bodyFont": "Inter",
+        "headingWeight": 700,
+        "heroFontSize": "40px",
+        "heroFontSizeReason": "The headline is long and needs to fit a premium split hero with form and visual area, so a smaller hero size keeps balance and prevents awkward wrapping.",
+        "letterSpacing": "tight",
+        "lineHeight": "1.1"
+      },
+      "colours": {
+        "primary": "#ff6b00",
+        "accent": "#1a1a1a",
+        "accentHover": "#e85f00",
+        "bodyBg": "#f5f5f5",
+        "cardBg": "#ffffff",
+        "textDark": "#1a1a1a",
+        "textMid": "#5b5b5b",
+        "textLight": "#ffffff",
+        "border": "#e5e5e5",
+        "colourReason": "The brand palette is derived exclusively from the supplied Techjockey colors: orange, white, black, and soft grey. Orange is used as the primary hero background and CTA color, while black and white create premium editorial contrast. No extra palette colors are introduced."
+      },
+      "themeFamily": "editorial-b2b",
+      "surfaceStyle": "soft-shadow",
+      "visualMotif": "editorial-clean",
+      "backgroundSystem": {
+        "bodyBase": "#f5f5f5",
+        "hero": "#ff6b00",
+        "section1": "#ffffff",
+        "section2": "#f5f5f5",
+        "section3": "#ffffff"
+      },
+      "motionStrategy": {
+        "allowAnimations": true,
+        "style": "premium",
+        "heroEntrance": "stagger",
+        "cardHover": "lift",
+        "sectionReveal": "fade-up"
+      },
+      "referenceMap": {
+        "heroPattern": "Single-screen split hero with brand/logo placement, large bold headline, short supporting copy, and a compact bullet/value list; primary conversion CTA is surfaced near the hero content with strong visual hierarchy.",
+        "sectionRhythm": "Top-heavy landing page flow: hero first, then a lead capture/form block, followed by modular product/feature sections; content is grouped into stacked sections with clear heading hierarchy and minimal visual interruption.",
+        "cardStyle": "Functional form and content cards with simple rectangular structure, subtle framing, and utility-first layout; no evidence of decorative glassmorphism or heavy shadow treatment in the reference HTML.",
+        "ctaPattern": "Primary CTA-led conversion flow with one dominant action in the hero and a secondary CTA pattern in product sections when needed; CTAs are likely prominent, rectangular, and placed near persuasive copy rather than repeated excessively.",
+        "pricingPattern": "No pricing module is present in the reference structure, so pricing behavior should default to omitted or collapsed into a later conversion section if needed.",
+        "footerMode": "Footer is not represented in the provided HTML; default to a minimal utility footer or omit if the page is kept as a focused lead-gen landing page.",
+        "spacingScale": [
+          "24",
+          "32",
+          "48",
+          "64",
+          "80"
+        ],
+        "mediaPattern": "Minimal media usage in the hero aside from logo and icon bullets; product-heavy pages should use optional supporting imagery or diagrams only if they reinforce comprehension, not as a dominant carousel/media strip.",
+        "productSectionPattern": "Modular feature sections with a clear product label, headline, descriptive paragraph, CTA, and a feature list; best treated as stacked content blocks with strong information hierarchy and progressive disclosure of details.",
+        "formPattern": "Dedicated lead form block near the top of the page, visually separated from the hero and optimized for conversion; hidden metadata fields indicate a form-driven acquisition pattern with utility styling and straightforward field layout.",
+        "interactionPatterns": {
+          "usesCarousel": true,
+          "usesTabs": false,
+          "usesAccordion": false,
+          "usesStickyCta": false,
+          "usesRevealAnimations": false,
+          "usesHoverCards": false,
+          "usesCounters": false,
+          "usesMarqueeLogos": false
+        },
+        "surfacePatterns": {
+          "alternatesBackgrounds": false,
+          "usesDarkBandSections": true,
+          "usesTintedSections": false,
+          "usesGlassPanels": false,
+          "usesEditorialWhitespace": false
+        },
+        "animationStyle": "If motion is used, it should be lightweight and utility-driven, aligned to carousel/slide behavior rather than elaborate reveal animations.",
+        "componentPatterns": [
+          "Brand/logo header",
+          "Split hero content block",
+          "Bullet benefit list with icons",
+          "Lead generation form card",
+          "Stacked feature section",
+          "Label + headline + description pattern",
+          "CTA button module",
+          "Utility hidden-field form inputs"
+        ],
+        "designNotes": [
+          "Optimize for conversion and clarity over storytelling complexity.",
+          "Use a strong first-screen headline, concise benefit bullets, and a clear CTA.",
+          "Keep section structure modular so multiple product lines can be repeated consistently.",
+          "Prefer simple layout hierarchy, compact form placement, and low-distraction surfaces.",
+          "If adding richer media, keep it secondary to the message and CTA."
+        ]
+      },
+      "assetRules": {
+        "lockReferenceStructure": false,
+        "replaceImages": true,
+        "replaceVideos": true,
+        "preserveMode": "structure-styling",
+        "strictLayoutMatch": false,
+        "userSuppliedImagesOnly": false
+      },
+      "brandLogoUrl": null,
+      "brandSiteName": "Seedream 4.5 and Seedance 1.5 Pro",
+      "hasSvgLogo": true,
+      "pageGoal": "single-product",
+      "trustLogos": [],
+      "includeForm": true,
+      "includePricing": true,
+      "includeTestimonials": true,
+      "includeTrust": true,
+      "additionalInstructions": "PROOF STRATEGY: The visitor trusts logos most. Make this the dominant trust signal.\n\nAdd form on left side of the hero banner make it creative",
+      "designStrategy": {
+        "primaryGoal": "lead-gen",
+        "buyerStage": "solution-aware",
+        "conversionPriority": "high",
+        "narrativeMode": "product-led",
+        "trustStrategy": "logos-first",
+        "emotionalTone": "confident",
+        "visualDominance": "hero-form",
+        "ctaAggression": "strong",
+        "sectionDensity": "balanced",
+        "recommendedHeroStyle": "split",
+        "mustHaveMoments": [
+          "Left-side hero lead form with a creative, high-contrast treatment",
+          "Prominent logo-trust strip above or near the hero form",
+          "Clear split between Seedream 4.5 and Seedance 1.5 Pro with distinct value propositions",
+          "Outcome-focused feature blocks emphasizing quality, speed, fidelity, and multimodal capability",
+          "Testimonials from relevant creative roles to reinforce credibility",
+          "Pricing/quote section positioned after product proof, not too early"
+        ],
+        "avoidPatterns": [
+          "Generic abstract AI visuals without product relevance",
+          "Badge-heavy trust styling that dilutes the logo-first strategy",
+          "Overly decorative layouts, glassmorphism, or heavy shadow effects",
+          "Long unbroken text walls in the hero",
+          "Multiple competing CTAs above the fold",
+          "Form placement below the fold",
+          "Overly dense sections that reduce scanability"
+        ],
+        "reasoning": "This page is a high-intent lead-generation landing page for a solution-aware audience evaluating advanced AI image and video models. The strongest conversion path is a product-led narrative supported by logo-first trust, because the brief explicitly says visitors trust logos most. The hero should use a split layout with a creative left-side form to capture leads immediately while the right side communicates the product promise and visual credibility. Since the page is category-oriented but goal-focused on a single conversion outcome, the design should prioritize immediate form engagement, concise proof, and clear product differentiation. The tone should feel confident and premium rather than playful, with balanced density so technical buyers can scan features, testimonials, and pricing without feeling overwhelmed."
+      },
+      "designBrief": {
+        "heroHeadline": null,
+        "heroCTA": null,
+        "brandColorHex": null,
+        "personalityWords": null,
+        "visitorRole": null,
+        "visitorTemperature": "warm",
+        "proofType": "logos",
+        "competitorUrl": null,
+        "avoidConstraint": null,
+        "singleGoal": null
+      },
+      "forcedNarrativeMode": "product-led",
+      "designReview": {
+        "score": 85,
+        "verdict": "planned",
+        "issues": [],
+        "strengths": [
+          "Design planned from strategy and intent layers"
+        ]
+      },
+      "trustLogosCount": 0
+    },
+    "mediaPlan": {
+      "hero": {
+        "primaryVisual": "/output/generated-assets/ds_1776948141878_06ae8fa9/01-b88c55c730.png",
+        "secondaryVisual": null,
+        "backgroundImage": null,
+        "backgroundVideo": null,
+        "accentVisuals": [
+          "/output/generated-assets/ds_1776948141878_06ae8fa9/12-9604231d6b.png",
+          "/output/generated-assets/ds_1776948141878_06ae8fa9/11-37e01d49c6.png",
+          "/output/generated-assets/ds_1776948141878_06ae8fa9/15-41ea7f7485.png"
+        ],
+        "color": "#1a1a2e"
+      },
+      "trust": {
+        "logos": [],
+        "badges": []
+      },
+      "productSections": [
+        {
+          "sectionId": "1",
+          "primaryPreview": "/output/generated-assets/ds_1776948141878_06ae8fa9/04-32b015d440.webp",
+          "secondaryPreview": null,
+          "icons": []
+        },
+        {
+          "sectionId": "2",
+          "primaryPreview": "/output/generated-assets/ds_1776948141878_06ae8fa9/02-6d75b26b02.webp",
+          "secondaryPreview": null,
+          "icons": []
+        },
+        {
+          "sectionId": "3",
+          "primaryPreview": "/output/generated-assets/ds_1776948141878_06ae8fa9/03-c4e1793d4f.webp",
+          "secondaryPreview": null,
+          "icons": []
+        },
+        {
+          "sectionId": "4",
+          "primaryPreview": "/output/generated-assets/ds_1776948141878_06ae8fa9/05-d572846595.webp",
+          "secondaryPreview": null,
+          "icons": []
+        },
+        {
+          "sectionId": "5",
+          "primaryPreview": "/output/generated-assets/ds_1776948141878_06ae8fa9/10-f07eea6cc3.webp",
+          "secondaryPreview": null,
+          "icons": []
+        },
+        {
+          "sectionId": "6",
+          "primaryPreview": "/output/generated-assets/ds_1776948141878_06ae8fa9/09-582e8d98ee.webp",
+          "secondaryPreview": null,
+          "icons": []
+        }
+      ],
+      "testimonials": {
+        "avatars": [
+          "/output/generated-assets/ds_1776948141878_06ae8fa9/02-6d75b26b02.webp",
+          "/output/generated-assets/ds_1776948141878_06ae8fa9/06-fcb6d8d105.webp",
+          "/output/generated-assets/ds_1776948141878_06ae8fa9/10-f07eea6cc3.webp"
+        ]
+      },
+      "demos": {
+        "heroDemo": "https://cdn.web.imagine.art/imagine-one/cdge/sora1.mp4",
+        "sectionDemos": [
+          "https://cdn.web.imagine.art/imagine-one/cdge/sora2.mp4",
+          "https://cdn.web.imagine.art/imagine-one/cdge/sora33.mp4",
+          "https://cdn.web.imagine.art/remote-config/assets/video_effects/sd/podcast.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/text-to-image.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/edit-image.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/image-models.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/Upscale.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/Personalize.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/TextToVideo.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/CTI_.mp4",
+          "https://cdn.web.imagine.art/imagine-one/video-left-panel/preset-def.mp4",
+          "https://cdn.web.imagine.art/imagine-one/cdge/sora2.mp4",
+          "https://cdn.web.imagine.art/imagine-one/cdge/sora33.mp4",
+          "https://cdn.web.imagine.art/remote-config/assets/video_effects/sd/podcast.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/text-to-image.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/edit-image.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/image-models.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/Upscale.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/Personalize.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/TextToVideo.mp4",
+          "https://cdn.web.imagine.art/imagine-one/onboarding-videos/CTI_.mp4",
+          "https://cdn.web.imagine.art/imagine-one/video-left-panel/preset-def.mp4"
+        ]
+      },
+      "product": [
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/04-32b015d440.webp",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/02-6d75b26b02.webp",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/03-c4e1793d4f.webp",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/05-d572846595.webp",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/10-f07eea6cc3.webp",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/09-582e8d98ee.webp",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/06-fcb6d8d105.webp",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/07-197f864ae1.webp"
+      ],
+      "features": [
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/12-9604231d6b.png",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/11-37e01d49c6.png",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/15-41ea7f7485.png",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/16-893d6fb5a9.png",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/14-e1b1bc05a8.jpeg",
+        "/output/generated-assets/ds_1776948141878_06ae8fa9/13-d1b7a86038.png"
+      ],
+      "logos": [],
+      "fallbackStrategy": {
+        "heroMode": "split-visual",
+        "productMode": "css-shell"
+      },
+      "form": {
+        "fields": [
+          "name",
+          "email",
+          "phone",
+          "company"
+        ],
+        "cta": "Request Trial"
+      },
+      "additionalInstructions": "PROOF STRATEGY: The visitor trusts logos most. Make this the dominant trust signal.\n\nAdd form on left side of the hero banner make it creative",
+      "imageContext": [
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/04-32b015d440.webp",
+          "role": "generic-stock",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "An abstract image with colorful balls on different colored surfaces.",
+          "placementHints": [
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/02-6d75b26b02.webp",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A portrait of a person centered between two other images.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/03-c4e1793d4f.webp",
+          "role": "hero-visual",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "An aesthetic product arrangement featuring skincare items and natural elements.",
+          "placementHints": [
+            "BEST FOR: hero right-side panel, avoid full-bleed",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/05-d572846595.webp",
+          "role": "generic-stock",
+          "isWide": true,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "Woman reading a magazine at an outdoor cafe with a city street in the background.",
+          "placementHints": [
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/01-b88c55c730.png",
+          "role": "hero-visual",
+          "isWide": true,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A woman is relaxing in a car filled with flowers, depicting a serene lifestyle scene.",
+          "placementHints": [
+            "BEST FOR: full-bleed hero background or large split panel",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/10-f07eea6cc3.webp",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "A person piloting a vintage aircraft with a background of the sky.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/09-582e8d98ee.webp",
+          "role": "generic-stock",
+          "isWide": true,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "An empty industrial space with large windows and a dark floor, suitable as a background texture.",
+          "placementHints": [
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/06-fcb6d8d105.webp",
+          "role": "person-or-team",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A person holding a gun against a backdrop of an electric tower.",
+          "placementHints": [
+            "BEST FOR: testimonial avatar or team section",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/14-e1b1bc05a8.jpeg",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "Abstract graphic resembling a brain with geometric patterns and colors.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/15-41ea7f7485.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "An abstract graphic with cubes and light effects.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/12-9604231d6b.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Abstract geometric structure surrounded by interconnected lines.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/11-37e01d49c6.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": true,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "Abstract graphic with a symmetrical, glowing, star-like design.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS DARK BG: pair with dark sections OR use directly without overlay"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/13-d1b7a86038.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "An abstract graphic depicting a molecular structure with glowing connections.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/17-caa00c6fa9.webp",
+          "role": "hero-visual",
+          "isWide": true,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 90,
+          "description": "A dynamic shot of a woman playing golf with a large club and a golf ball on a tee.",
+          "placementHints": [
+            "BEST FOR: full-bleed hero background or large split panel",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/16-893d6fb5a9.png",
+          "role": "feature-illustration",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 85,
+          "description": "An abstract graphic with distorted text suggesting perception and synthesis.",
+          "placementHints": [
+            "BEST FOR: feature card image or section background with overlay",
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        },
+        {
+          "url": "/output/generated-assets/ds_1776948141878_06ae8fa9/19-11db7dde2e.webp",
+          "role": "generic-stock",
+          "isWide": false,
+          "hasDarkBackground": false,
+          "isTransparent": false,
+          "confidence": 80,
+          "description": "A person standing in the rain with arms outstretched.",
+          "placementHints": [
+            "HAS LIGHT BG: add dark overlay if used as background"
+          ]
+        }
+      ]
+    }
+  },
+  "figma": {
+    "fileId": "figma_file_ds_1776948141878_06ae8fa9",
+    "fileName": "seedream-4-5-seedance-1-5-pro-category-landing-page",
+    "fileUrl": "https://www.figma.com/file/figma_file_ds_1776948141878_06ae8fa9",
+    "pages": [
+      {
+        "pageId": "page_1",
+        "name": "Desktop",
+        "frameName": "Seedream 4.5 and Seedance 1.5 Pro - Desktop",
+        "width": 1440,
+        "heightHint": 5600,
+        "grid": "12-col",
+        "sectionCount": 7
+      },
+      {
+        "pageId": "page_2",
+        "name": "Mobile",
+        "frameName": "Seedream 4.5 and Seedance 1.5 Pro - Mobile",
+        "width": 390,
+        "heightHint": 7600,
+        "grid": "4-col",
+        "sectionCount": 7
+      }
+    ],
+    "frames": [
+      {
+        "pageName": "Desktop",
+        "frameName": "Seedream 4.5 and Seedance 1.5 Pro - Desktop",
+        "width": 1440,
+        "builtSectionCount": 7
+      },
+      {
+        "pageName": "Mobile",
+        "frameName": "Seedream 4.5 and Seedance 1.5 Pro - Mobile",
+        "width": 390,
+        "builtSectionCount": 7
+      }
+    ],
+    "nodes": {
+      "Desktop": [
+        {
+          "nodeId": "node_desktop_1",
+          "id": "hero",
+          "type": "hero",
+          "frameName": "Hero / Split Conversion Banner",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "Dark hero with left-aligned creative form stack and right-aligned headline/value stack; strong logo trust strip above fold; primary CTA prominent; secondary CTA omitted because none provided.",
+          "priority": "high",
+          "contentSource": "contentMap.hero + context.additionalInstructions + referenceMap.heroPattern + Techjockey memory hero rules",
+          "notes": "Build a split hero with creative form on the left and persuasive content on the right. Left column should include a compact lead-capture form card embedded into the hero, styled as a creative panel rather than a plain utility form. Right column should include product/category headline, subheadline, supporting line, and a dominant primary CTA. Place a logo trust strip at the top of the hero because logos are the primary trust signal. Keep the hero visually dense but structured, using brand-dark background, white text, orange CTA, and minimal decorative media only if needed for balance."
+        },
+        {
+          "nodeId": "node_desktop_2",
+          "id": "trust-logos",
+          "type": "trust",
+          "frameName": "Logo Trust Strip",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "Logo-first trust band with a compact supporting label; use a single row of partner/customer logos or logo placeholders if actual brands are unavailable.",
+          "priority": "high",
+          "contentSource": "context.additionalInstructions + Techjockey memory trustSignals + referenceMap.heroPattern",
+          "notes": "Create a dedicated trust strip directly below the hero or integrated within the hero lower band. Since no logos are explicitly provided, reserve structured logo slots and a short trust label. This section must visually prioritize logos over stats. If brand logos are unavailable, use monochrome logo placeholders with label text rather than icon badges."
+        },
+        {
+          "nodeId": "node_desktop_3",
+          "id": "product-seedream",
+          "type": "product-features",
+          "frameName": "Seedream 4.5 Feature Section",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "Feature section with intro copy and 5-feature card grid; use 3-column desktop layout with one spanning card if needed for rhythm.",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[0]",
+          "notes": "Present Seedream 4.5 as the image-generation module. Include section label, headline, descriptive paragraph, and a CTA button. Use white feature cards with simple icon areas and 5 feature items. Because there are 5 features, arrange as a 3-column grid with two rows or 3+2 composition. Keep cards highly structured and text-forward, without decorative effects beyond standard card elevation."
+        },
+        {
+          "nodeId": "node_desktop_4",
+          "id": "product-seedance",
+          "type": "product-features",
+          "frameName": "Seedance 1.5 Pro Feature Section",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "Feature section with intro copy and 5-feature card grid; differentiate as video-generation module using same system family and alternate accent treatment for subsection label only.",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[1]",
+          "notes": "Present Seedance 1.5 Pro as the video-generation module. Include section label, headline, descriptive paragraph, and feature cards. Since there is no CTA text provided, omit a CTA button rather than inventing one. Use the same card system as Seedream to maintain consistency, but add a subtle section treatment to distinguish it as the second product pillar. Keep the layout product-led and not editorial."
+        },
+        {
+          "nodeId": "node_desktop_5",
+          "id": "pricing",
+          "type": "pricing",
+          "frameName": "Pricing / Quote Cards",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "horizontal",
+          "variantHint": "Two pricing cards side by side; one without price value and one with starting price displayed; quote-led conversion rather than checkout-led.",
+          "priority": "medium",
+          "contentSource": "contentMap.pricing",
+          "notes": "Build a pricing section because pricing content is explicitly provided. Use two elevated cards on a light grey section background. The first card should support quote-led selling with no numeric price. The second card should visually emphasize the starting monthly price. Include checklist inclusions, CTA button, and required trust line pattern. Do not add EMI if not provided in the content. Keep this section conversion-focused and utilitarian."
+        },
+        {
+          "nodeId": "node_desktop_6",
+          "id": "testimonials",
+          "type": "testimonials",
+          "frameName": "Customer Testimonials",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "grid",
+          "variantHint": "3-column testimonial grid with gold star rating row, italic quote, bold author line, and grey designation line; use 5 cards total.",
+          "priority": "medium",
+          "contentSource": "contentMap.testimonials",
+          "notes": "Display testimonials as a structured proof section with 5-star rating at top of each card. Use 3-column desktop grid with five total cards flowing into a second row. Keep the cards consistent and readable. Since company names are mostly empty, use author and designation as primary identity lines and reserve company line only when provided."
+        },
+        {
+          "nodeId": "node_desktop_7",
+          "id": "footer",
+          "type": "footer",
+          "frameName": "Utility Footer",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Minimal utility footer only, no dense sitemap treatment.",
+          "priority": "low",
+          "contentSource": "context.additionalInstructions + referenceMap.footerMode + extras",
+          "notes": "Use a minimal footer to close the page cleanly. Keep it lightweight and utility-focused since this is a focused lead-gen landing page. Do not invent elaborate navigation. Include only essential Techjockey utility links treatment if needed as placeholder structure."
+        }
+      ],
+      "Mobile": [
+        {
+          "nodeId": "node_mobile_1",
+          "id": "hero",
+          "type": "hero",
+          "frameName": "Hero / Mobile Conversion Banner",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Stack form first or title first depending on space, but keep the creative form visible and compact; primary CTA full width; trust logos condensed into a swipeable row or wrapped grid.",
+          "priority": "high",
+          "contentSource": "contentMap.hero + context.additionalInstructions + referenceMap.heroPattern + mobileRules",
+          "notes": "Stack the hero for mobile. Keep the form visible and compact, with reduced fields and full-width CTA. Maintain the logo trust signal near the top or directly below the CTA. Ensure headline wraps cleanly and remains readable without excessive vertical growth. Avoid any side-by-side layout on mobile."
+        },
+        {
+          "nodeId": "node_mobile_2",
+          "id": "trust-logos",
+          "type": "trust",
+          "frameName": "Logo Trust Strip Mobile",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Compact logo trust band with wrap or horizontal scroll behavior depending on available logo count.",
+          "priority": "high",
+          "contentSource": "context.additionalInstructions + Techjockey memory trustSignals",
+          "notes": "Keep logos dominant even on mobile. If the logo set is long, use a horizontally scrollable strip with restrained height. If few logos exist, stack into two rows with small separators. Keep the visual treatment minimal and utilitarian."
+        },
+        {
+          "nodeId": "node_mobile_3",
+          "id": "product-seedream",
+          "type": "product-features",
+          "frameName": "Seedream 4.5 Mobile Features",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "accordion",
+          "variantHint": "Single-column feature cards; if density becomes too high, convert feature detail into accordion-like stacked cards with equal spacing.",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[0]",
+          "notes": "Render all Seedream content in a single-column layout. The 5 features should appear as stacked cards with consistent spacing and strong typography hierarchy. Keep CTA visible below intro copy. Avoid multi-column arrangements on mobile."
+        },
+        {
+          "nodeId": "node_mobile_4",
+          "id": "product-seedance",
+          "type": "product-features",
+          "frameName": "Seedance 1.5 Pro Mobile Features",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "accordion",
+          "variantHint": "Single-column feature cards with compact intro; preserve hierarchy and avoid excessive text blocks by tightening padding.",
+          "priority": "high",
+          "contentSource": "contentMap.productSections[1]",
+          "notes": "Render Seedance as stacked single-column cards. Keep intro copy brief and readable. Since no CTA is provided, do not add a button. Preserve the 5 features with consistent spacing and card treatment."
+        },
+        {
+          "nodeId": "node_mobile_5",
+          "id": "pricing",
+          "type": "pricing",
+          "frameName": "Pricing / Mobile Quote Cards",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Stack pricing cards vertically with strong price emphasis and full-width CTA buttons.",
+          "priority": "medium",
+          "contentSource": "contentMap.pricing",
+          "notes": "Convert the pricing section into stacked cards on mobile. Keep the quote-led Seedream card first, then the Seedance card with the monthly starting price. Maintain all required inclusion lists and trust line in compact form."
+        },
+        {
+          "nodeId": "node_mobile_6",
+          "id": "testimonials",
+          "type": "testimonials",
+          "frameName": "Customer Testimonials Mobile",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "stacked",
+          "variantHint": "Single-column testimonial stack with swipe-friendly spacing if needed.",
+          "priority": "medium",
+          "contentSource": "contentMap.testimonials",
+          "notes": "Use a single-column testimonial stack for mobile. Keep stars, quote, and identity lines readable. If space is tight, use a vertical list with card separation rather than a carousel to preserve content clarity."
+        },
+        {
+          "nodeId": "node_mobile_7",
+          "id": "footer",
+          "type": "footer",
+          "frameName": "Utility Footer Mobile",
+          "componentStrategy": "compose-from-design-system",
+          "layoutMode": "vertical",
+          "variantHint": "Minimal footer with reduced density and compact link stack.",
+          "priority": "low",
+          "contentSource": "context.additionalInstructions + referenceMap.footerMode + extras",
+          "notes": "Keep the mobile footer minimal, with no clutter. Use small utility links or simple closing brand treatment only."
+        }
+      ]
+    },
+    "syncStatus": "sections-planned",
+    "lastSyncAt": "2026-04-23T13:00:21.090Z"
+  },
+  "outputs": {
+    "htmlFilename": "bttest-1776949154548-preview.html",
+    "localizedAssetsBase": "/output/generated-assets/ds_1776948141878_06ae8fa9"
+  },
+  "logs": [
+    {
+      "at": "2026-04-23T12:42:21.881Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    },
+    {
+      "at": "2026-04-23T13:00:21.080Z",
+      "type": "workflow",
+      "step": "html-generated",
+      "message": "HTML output generated: bttest-1776949154548-preview.html"
+    },
+    {
+      "at": "2026-04-23T13:00:21.084Z",
+      "type": "mcp",
+      "step": "create-landing-file",
+      "message": "Created adapter-backed placeholder Figma file figma_file_ds_1776948141878_06ae8fa9"
+    },
+    {
+      "at": "2026-04-23T13:00:21.087Z",
+      "type": "mcp",
+      "step": "build-sections-from-plan",
+      "message": "Prepared 7 sections for Desktop"
+    },
+    {
+      "at": "2026-04-23T13:00:21.090Z",
+      "type": "mcp",
+      "step": "build-sections-from-plan",
+      "message": "Prepared 7 sections for Mobile"
+    },
+    {
+      "at": "2026-04-23T13:00:21.093Z",
+      "type": "workflow",
+      "step": "mcp-auto-run",
+      "message": "MCP execution layer completed successfully"
+    }
+  ]
+}

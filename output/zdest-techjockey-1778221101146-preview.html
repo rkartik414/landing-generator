@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zdest-techjockey-1778221101146.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <link rel="stylesheet" href="/ui/tailwind.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: 'var(--accent)',
+            primary: 'var(--primary)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const accent = '#ff3f3f';
+  const primary = '#ff3f3f';
+  const bodyBg = '#f5f5f5';
+  const unifiedCta = {
+    text: 'Get Your Free Trial',
+    href: 'https://www.zoho.com/en-in/desk/?utm_source=techjockey&utm_medium=cpc&utm_campaign=helpdesk-ticketing-system'
+  };
+  const [activeTab, setActiveTab] = useState(0);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const scriptsLoaded = useRef(false);
+  const ctas = [unifiedCta, unifiedCta, unifiedCta, unifiedCta, unifiedCta];
+  const productSections = [{
+    name: 'Why Choose Zoho Desk?',
+    headline: 'Why Choose Zoho Desk?',
+    description: 'With powerful automation and contextual AI, Zoho Desk helps businesses deliver faster, smarter, and more personalized customer support.',
+    image: '/output/generated-assets/ds_1778219578825_159b6c5f/18-7f64cfae87.jpeg',
+    browserFrame: true,
+    features: [{
+      title: 'Omnichannel Support',
+      description: 'Manage customer conversations across email, chat, phone, and social media from a single platform.'
+    }, {
+      title: 'Ticket Management',
+      description: 'Organize, prioritize, and resolve tickets efficiently with automation and smart workflows.'
+    }, {
+      title: 'AI Assistance (Zia)',
+      description: 'Get intelligent suggestions, auto-tag tickets, detect sentiment, and respond faster with AI-powered insights.'
+    }, {
+      title: 'Workflow Automation',
+      description: 'Automate repetitive support tasks, assign tickets, and streamline processes for faster resolutions.'
+    }]
+  }, {
+    name: 'Make Smarter Support Decisions with Zia AI',
+    headline: 'Make Smarter Support Decisions with Zia AI',
+    description: 'Zoho Desk includes Zia, an AI-powered assistant that helps support teams improve response quality and resolution speed.',
+    image: '/output/generated-assets/ds_1778219578825_159b6c5f/17-3965757185.jpeg',
+    browserFrame: true,
+    features: [{
+      title: 'AI-Powered Responses',
+      description: 'Generate accurate replies, suggest solutions, and assist agents in real time.'
+    }, {
+      title: 'Sentiment Analysis',
+      description: 'Understand customer emotions and prioritize critical issues for better service.'
+    }, {
+      title: 'Auto Tagging & Insights',
+      description: 'Automatically categorize tickets and uncover patterns to improve support efficiency.'
+    }, {
+      title: 'Conversation Intelligence',
+      description: 'Analyze interactions across channels to deliver consistent and contextual support experiences.'
+    }]
+  }, {
+    name: 'Integrate with popular apps and Zoho ecosystem',
+    headline: 'Integrate with popular apps and Zoho ecosystem',
+    description: 'Connect your help desk with your favorite apps across CRM, communication, and business tools with ease.',
+    image: '/output/generated-assets/ds_1778219578825_159b6c5f/19-b36bdf959c.jpeg',
+    browserFrame: true,
+    features: [{
+      title: 'CRM Integration',
+      description: 'Zoho CRM, HubSpot, and more'
+    }, {
+      title: 'Collaboration Tools',
+      description: 'Slack, Microsoft Teams'
+    }, {
+      title: 'Telephony',
+      description: 'Aircall, RingCentral'
+    }, {
+      title: 'E-commerce Platforms',
+      description: 'Shopify, WooCommerce'
+    }, {
+      title: 'Automation Tools',
+      description: 'Zapier & Zoho Flow'
+    }]
+  }, {
+    name: 'Customization Beyond Limits',
+    headline: 'Customization Beyond Limits',
+    description: 'Zoho Desk is built to adapt to your support workflows and business needs.',
+    image: '/output/generated-assets/ds_1778219578825_159b6c5f/14-73fff62169.png',
+    browserFrame: false,
+    features: [{
+      title: 'Layouts',
+      description: 'Customize ticket views, fields, and workflows to match your processes.'
+    }, {
+      title: 'Blueprints',
+      description: 'Design structured workflows to guide agents through every support process.'
+    }, {
+      title: 'Extensions',
+      description: 'Extend functionality with custom apps and integrations.'
+    }, {
+      title: 'Help Center',
+      description: 'Create branded self-service portals and knowledge bases for customers.'
+    }]
+  }];
+  const pricingFeatures = ['Ticket Management', 'Omnichannel Support', 'Workflow Automation', 'AI-Powered Assistance', 'Knowledge Base', 'Reporting & Analytics', 'Integrations', 'Alerts & Notifications', 'Supported Device: Android, iOS, Windows, Mac'];
+  const testimonials = [{
+    quote: 'Zoho Desk helped us streamline our support tickets and respond faster to customer queries. Our team now handles requests more efficiently with better visibility.',
+    name: 'Sanjay Bhatnagar',
+    role: 'Customer Support Lead'
+  }, {
+    quote: 'Managing customer conversations across multiple channels became effortless with Zoho Desk. It significantly improved our response time and customer satisfaction.',
+    name: 'Arjun Mishra',
+    role: 'Operations Manager'
+  }, {
+    quote: 'Automation in Zoho Desk reduced manual work for our support team. We can now focus more on solving issues rather than managing tickets.',
+    name: 'Vanshika Malhotra',
+    role: 'Head of Support'
+  }, {
+    quote: 'The knowledge base and self-service portal helped reduce our ticket volume while improving customer experience.',
+    name: 'Nitin Singh',
+    role: 'Founder'
+  }, {
+    quote: 'Zoho Desk’s reporting and dashboards give us clear insights into support performance and customer issues.',
+    name: 'Akashdeep Sirkar',
+    role: 'Customer Experience Manager'
+  }];
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, {
+      threshold: 0.15
+    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, [accent, primary]);
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    const timer = setInterval(() => {
+      setTestimonialIndex(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [accent, primary, testimonials.length]);
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    if (scriptsLoaded.current) return;
+    scriptsLoaded.current = true;
+    const loadScript = src => new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) return resolve();
+      const s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.body.appendChild(s);
+    });
+    Promise.all([loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js'), loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js')]).then(() => {
+      const initGSAP = () => {
+        if (!window.gsap || !window.ScrollTrigger) return;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const gsap = window.gsap;
+            gsap.registerPlugin(window.ScrollTrigger);
+            gsap.utils.toArray('.zoom-reveal').forEach(el => {
+              const img = el.querySelector('img,video');
+              if (img) {
+                gsap.to(img, {
+                  scale: 1,
+                  duration: 1.2,
+                  ease: 'power2.out',
+                  scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                  }
+                });
+              }
+            });
+            gsap.utils.toArray('[data-depth]').forEach(el => {
+              gsap.to(el, {
+                y: () => -(window.innerHeight * ((parseFloat(el.dataset.depth) || 0.2) * 0.5)),
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: el.closest('section') || el,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: true
+                }
+              });
+            });
+            gsap.utils.toArray('.stagger-parent').forEach(p => {
+              gsap.to(p.children, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                  trigger: p,
+                  start: 'top 80%'
+                }
+              });
+            });
+            gsap.utils.toArray('[data-count]').forEach(el => {
+              const target = parseFloat(el.getAttribute('data-count')) || 0;
+              const suffix = el.getAttribute('data-suffix') || '';
+              const prefix = el.getAttribute('data-prefix') || '';
+              const obj = {
+                val: 0
+              };
+              gsap.to(obj, {
+                val: target,
+                duration: 2,
+                ease: 'power2.out',
+                snap: {
+                  val: 0.1
+                },
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 90%'
+                },
+                onUpdate: () => {
+                  el.textContent = `${prefix}${Math.round(obj.val).toLocaleString()}${suffix}`;
+                }
+              });
+            });
+          });
+        });
+      };
+      initGSAP();
+    }).catch(() => {});
+    return () => {};
+  }, [accent, primary, testimonials.length]);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
+        * { box-sizing: border-box; }
+        body { margin: 0; background: ${bodyBg}; font-family: Inter, Arial, sans-serif; color: #111; }
+        a { text-decoration: none; }
+        .lp-shell { background: ${bodyBg}; color: #111; }
+        .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 14px 22px;
+          border-radius: 999px;
+          font-weight: 700;
+          transition: 0.25s ease;
+          border: 1px solid transparent;
+          cursor: pointer;
+        }
+        .btn-primary {
+          background: ${primary};
+          color: #fff;
+          box-shadow: 0 12px 30px rgba(255, 63, 63, 0.22);
+        }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .hero {
+          padding: 88px 0 64px;
+        }
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 36px;
+          align-items: center;
+        }
+        .hero-card, .form-card, .soft-card, .testimonial-card {
+          background: #fff;
+          border-radius: 24px;
+          box-shadow: 0 20px 60px rgba(17, 17, 17, 0.08);
+        }
+        .hero-card { padding: 42px; }
+        .eyebrow {
+          display: inline-block;
+          margin-bottom: 14px;
+          color: ${primary};
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          font-size: 12px;
+        }
+        .hero h1 {
+          margin: 0 0 16px;
+          font-size: clamp(2.25rem, 5vw, 4.4rem);
+          line-height: 1.02;
+          letter-spacing: -0.03em;
+        }
+        .hero p {
+          margin: 0 0 24px;
+          font-size: 1.05rem;
+          line-height: 1.7;
+          color: #444;
+        }
+        .hero-actions {
+          display: flex;
+          gap: 14px;
+          flex-wrap: wrap;
+        }
+        .form-card {
+          padding: 28px;
+        }
+        .form-card h3 {
+          margin: 0 0 8px;
+          font-size: 1.5rem;
+        }
+        .form-card p {
+          margin: 0 0 18px;
+          color: #555;
+          line-height: 1.6;
+        }
+        .lead-form {
+          display: grid;
+          gap: 12px;
+        }
+        .lead-form input {
+          width: 100%;
+          padding: 14px 16px;
+          border-radius: 14px;
+          border: 1px solid #ddd;
+          font-size: 0.98rem;
+          outline: none;
+          background: #fff;
+        }
+        .lead-form input:focus {
+          border-color: ${primary};
+          box-shadow: 0 0 0 4px rgba(255, 63, 63, 0.1);
+        }
+        .stats-section {
+          padding: 24px 0 72px;
+        }
+        .stats-wrap {
+          background: #111;
+          color: #fff;
+          border-radius: 28px;
+          padding: 32px;
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+        }
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+        }
+        .stat-item {
+          padding: 12px 8px;
+        }
+        .stat-number {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 800;
+          line-height: 1;
+          margin-bottom: 8px;
+        }
+        .stat-label {
+          color: rgba(255,255,255,0.75);
+          line-height: 1.5;
+        }
+        .section {
+          padding: 64px 0;
+        }
+        .section-head {
+          margin-bottom: 28px;
+        }
+        .section-head h2 {
+          margin: 0 0 10px;
+          font-size: clamp(1.8rem, 3vw, 3rem);
+          line-height: 1.08;
+        }
+        .section-head p {
+          margin: 0;
+          color: #555;
+          line-height: 1.7;
+        }
+        .feature-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+        }
+        .soft-card {
+          padding: 24px;
+        }
+        .soft-card h3 {
+          margin: 0 0 10px;
+        }
+        .soft-card p, .soft-card li {
+          color: #555;
+          line-height: 1.7;
+        }
+        .pricing-list {
+          margin: 0;
+          padding-left: 18px;
+        }
+        .testimonial-card {
+          padding: 28px;
+        }
+        .testimonial-quote {
+          font-size: 1.08rem;
+          line-height: 1.8;
+          color: #222;
+          margin: 0 0 18px;
+        }
+        .testimonial-meta {
+          color: #666;
+          font-weight: 600;
+        }
+        .center-cta {
+          margin-top: 22px;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+        @media (max-width: 900px) {
+          .hero-grid, .feature-grid, .stats-grid {
+            grid-template-columns: 1fr;
+          }
+          .hero-card { padding: 32px 24px; }
+        }
+      `), /*#__PURE__*/React.createElement("div", {
+    className: "lp-shell"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "hero"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-card reveal"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "eyebrow"
+  }, "Editorial B2B Support Software"), /*#__PURE__*/React.createElement("h1", null, "Deliver Faster, Smarter Customer Support with Zoho Desk"), /*#__PURE__*/React.createElement("p", null, "Centralize customer conversations, automate repetitive tasks, and empower your support team with contextual AI to resolve issues faster."), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary",
+    href: unifiedCta.href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, unifiedCta.text))), /*#__PURE__*/React.createElement("div", {
+    className: "form-card reveal"
+  }, /*#__PURE__*/React.createElement("h3", null, "Start your free trial"), /*#__PURE__*/React.createElement("p", null, "Sign up in minutes and explore how Zoho Desk can streamline your support operations."), /*#__PURE__*/React.createElement("form", {
+    className: "lead-form"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "Full Name",
+    "aria-label": "Full Name"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "email",
+    placeholder: "Work Email",
+    "aria-label": "Work Email"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "Company Name",
+    "aria-label": "Company Name"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "tel",
+    placeholder: "Phone Number",
+    "aria-label": "Phone Number"
+  }), /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary",
+    href: unifiedCta.href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, unifiedCta.text))))), /*#__PURE__*/React.createElement("section", {
+    className: "stats-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stats-wrap reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stats-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-number",
+    "data-count": "4"
+  }, "4"), /*#__PURE__*/React.createElement("div", {
+    className: "stat-label"
+  }, "Core support capabilities highlighted across the platform.")), /*#__PURE__*/React.createElement("div", {
+    className: "stat-item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-number",
+    "data-count": "5"
+  }, "5"), /*#__PURE__*/React.createElement("div", {
+    className: "stat-label"
+  }, "Customer testimonials featured from different support leaders.")), /*#__PURE__*/React.createElement("div", {
+    className: "stat-item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-number",
+    "data-count": "9"
+  }, "9"), /*#__PURE__*/React.createElement("div", {
+    className: "stat-label"
+  }, "Key product and platform features available for teams.")), /*#__PURE__*/React.createElement("div", {
+    className: "stat-item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-number",
+    "data-count": "4"
+  }, "4"), /*#__PURE__*/React.createElement("div", {
+    className: "stat-label"
+  }, "Product sections covering automation, AI, integrations, and customization.")))))), productSections.map((section, index) => /*#__PURE__*/React.createElement("section", {
+    className: "section",
+    key: section.name
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal"
+  }, /*#__PURE__*/React.createElement("h2", null, section.headline), /*#__PURE__*/React.createElement("p", null, section.description)), /*#__PURE__*/React.createElement("div", {
+    className: "feature-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "soft-card reveal"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: section.image,
+    alt: section.name,
+    style: {
+      width: '100%',
+      display: 'block',
+      borderRadius: '18px',
+      marginBottom: '18px'
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "soft-card reveal"
+  }, section.features.map(feature => /*#__PURE__*/React.createElement("div", {
+    key: feature.title,
+    style: {
+      marginBottom: '18px'
+    }
+  }, /*#__PURE__*/React.createElement("h3", null, feature.title), /*#__PURE__*/React.createElement("p", null, feature.description))), /*#__PURE__*/React.createElement("div", {
+    className: "center-cta"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary",
+    href: ctas[index % ctas.length].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, unifiedCta.text))))))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal"
+  }, /*#__PURE__*/React.createElement("h2", null, "Included Features"), /*#__PURE__*/React.createElement("p", null, "Explore the core capabilities designed to help support teams work faster and serve customers better.")), /*#__PURE__*/React.createElement("div", {
+    className: "soft-card reveal"
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: "pricing-list"
+  }, pricingFeatures.map(feature => /*#__PURE__*/React.createElement("li", {
+    key: feature
+  }, feature))), /*#__PURE__*/React.createElement("div", {
+    className: "center-cta"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary",
+    href: unifiedCta.href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, unifiedCta.text))))), /*#__PURE__*/React.createElement("section", {
+    className: "section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-head reveal"
+  }, /*#__PURE__*/React.createElement("h2", null, "What Customers Say")), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card reveal"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "testimonial-quote"
+  }, "\u201C", testimonials[testimonialIndex].quote, "\u201D"), /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-meta"
+  }, testimonials[testimonialIndex].name, " \u2014 ", testimonials[testimonialIndex].role), /*#__PURE__*/React.createElement("div", {
+    className: "center-cta"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary",
+    href: unifiedCta.href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, unifiedCta.text)))))));
+};
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

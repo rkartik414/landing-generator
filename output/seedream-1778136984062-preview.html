@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>seedream-1778136984062.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <link rel="stylesheet" href="/ui/tailwind.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: 'var(--accent)',
+            primary: 'var(--primary)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef } = React;
+    const LandingPage = () => {
+  const [heroForm, setHeroForm] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), {
+      threshold: 0.12
+    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+  const handleHeroFormChange = e => {
+    const {
+      name,
+      value
+    } = e.target;
+    setHeroForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  const handleHeroFormSubmit = e => {
+    e.preventDefault();
+  };
+  const css = `
+    :root {
+      --accent: #b3713f;
+      --primary: #b3713f;
+      --accent-rgb: 179,113,63;
+      --bodyBg: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', ui-sans-serif, sans-serif; background: var(--bodyBg); color: #111827; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    button, input, textarea { font-family: inherit; }
+  
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes scaleIn { from { opacity:0; transform:scale(0.94); } to { opacity:1; transform:scale(1); } }
+    .anim { opacity:0; animation:fadeUp 0.85s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .anim-scale { opacity:0; animation:scaleIn 1s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .d0{animation-delay:0.05s}.d1{animation-delay:0.2s}.d2{animation-delay:0.35s}
+    .d3{animation-delay:0.5s}.d4{animation-delay:0.65s}.d5{animation-delay:0.8s}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .section{padding:96px 0;position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;background:rgba(var(--accent-rgb),0.1);border:1px solid rgba(var(--accent-rgb),0.25);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase}
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    .hvf { position:relative; min-height:100vh; overflow:hidden; font-family:'Geist',ui-sans-serif,sans-serif; background:#fff; }
+    .hvf-video { position:absolute; inset:0; z-index:0; }
+    .hvf-video video { width:100%; height:100%; object-fit:cover; transform:scaleY(-1); }
+    .hvf-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(255,255,255,0) 26.416%, rgba(255,255,255,1) 66.943%); }
+    .hvf-content { position:relative; z-index:10; display:flex; justify-content:center; padding:220px 24px 80px; }
+    .hvf-inner { max-width:1200px; width:100%; display:grid; grid-template-columns:minmax(0, 1.15fr) minmax(320px, 420px); gap:40px; align-items:start; }
+    .hvf-copy { display:flex; flex-direction:column; gap:22px; }
+    .hvf-h1 { font-size:64px; font-weight:500; letter-spacing:-0.04em; line-height:1.04; color:#0a0a0f; max-width:900px; }
+    .hvf-accent { font-family:'Instrument Serif',Georgia,serif; font-style:italic; font-size:84px; font-weight:400; letter-spacing:-0.03em; }
+    .hvf-desc { font-size:18px; line-height:1.65; color:#373a46; opacity:0.8; max-width:554px; }
+    .hvf-next { font-size:15px; line-height:1.7; color:#4b5563; max-width:560px; }
+    .hvf-chips { display:flex; flex-wrap:wrap; gap:10px; }
+    .hvf-chip { display:flex; align-items:center; gap:7px; padding:8px 14px; border-radius:100px; background:rgba(var(--accent-rgb,255,107,0),0.08); border:1px solid rgba(var(--accent-rgb,255,107,0),0.22); color:#374151; font-size:13px; font-weight:500; }
+    .hvf-actions { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+    .hvf-btn { border-radius:100px; color:#fff; border:none; flex-shrink:0; background:var(--primary); box-shadow:0 12px 30px rgba(var(--accent-rgb),0.24); padding:14px 24px; font-size:14px; font-weight:600; cursor:pointer; white-space:nowrap; }
+    .hvf-btn-secondary { display:inline-flex; align-items:center; justify-content:center; border-radius:100px; border:1px solid rgba(17,24,39,0.12); background:#fff; color:#111827; padding:14px 24px; font-size:14px; font-weight:600; white-space:nowrap; box-shadow:0 10px 30px rgba(15,23,42,0.06); }
+    .hvf-formWrap { background:#fff; border:1px solid rgba(17,24,39,0.08); border-radius:24px; box-shadow:0 20px 50px rgba(15,23,42,0.1); padding:24px; }
+    .hvf-formTitle { font-size:22px; font-weight:700; letter-spacing:-0.02em; color:#111827; margin-bottom:8px; }
+    .hvf-formText { font-size:14px; line-height:1.6; color:#6b7280; margin-bottom:18px; }
+    .hvf-form { display:flex; flex-direction:column; gap:12px; }
+    .hvf-field { width:100%; border:1px solid #e5e7eb; border-radius:14px; padding:13px 14px; font-size:14px; color:#111827; background:#fff; outline:none; transition:border-color 0.2s, box-shadow 0.2s; }
+    .hvf-field:focus { border-color:rgba(var(--accent-rgb),0.6); box-shadow:0 0 0 4px rgba(var(--accent-rgb),0.12); }
+    .hvf-field::placeholder { color:#9ca3af; }
+    .hvf-formNote { font-size:12px; line-height:1.6; color:#6b7280; }
+    .hvf-proof { display:flex; align-items:center; gap:10px; padding-left:4px; }
+    .hvf-avatars { display:flex; }
+    .hvf-av { width:26px; height:26px; border-radius:50%; border:1.5px solid #fff; display:flex; align-items:center; justify-content:center; font-size:8px; font-weight:700; margin-left:-7px; }
+    .hvf-av:first-child { margin-left:0; }
+    .hvf-stars { display:flex; gap:2px; }
+    .hvf-rcount { font-size:13px; font-weight:500; color:#373a46; opacity:0.72; }
+
+    @media (max-width: 1024px) {
+      .hvf-content { padding-top:180px; }
+      .hvf-inner { grid-template-columns:1fr; }
+      .hvf-h1 { font-size:54px; }
+      .hvf-accent { font-size:70px; }
+    }
+
+    @media (max-width: 640px) {
+      .hvf-content { padding:140px 20px 56px; }
+      .hvf-h1 { font-size:42px; }
+      .hvf-accent { font-size:52px; }
+      .hvf-actions { flex-direction:column; align-items:stretch; }
+      .hvf-btn, .hvf-btn-secondary { width:100%; text-align:center; justify-content:center; }
+      .hvf-formWrap { padding:20px; }
+    }
+  `;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, css), /*#__PURE__*/React.createElement("section", {
+    className: "hvf"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hvf-overlay"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "hvf-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hvf-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hvf-copy"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow anim d0"
+  }, "AI workflow"), /*#__PURE__*/React.createElement("h1", {
+    className: "hvf-h1 anim d1"
+  }, "Create faster with ", /*#__PURE__*/React.createElement("span", {
+    className: "hvf-accent"
+  }, "AI"), " that fits your workflow"), /*#__PURE__*/React.createElement("p", {
+    className: "hvf-desc anim d2"
+  }, "Move from idea to output with a streamlined AI experience designed to help your team produce high-quality work with less manual effort."), /*#__PURE__*/React.createElement("p", {
+    className: "hvf-next anim d2"
+  }, "Start by sharing a few details in the form, then click ", /*#__PURE__*/React.createElement("strong", null, "Generate with AI"), " to take the next step."), /*#__PURE__*/React.createElement("div", {
+    className: "hvf-actions anim d3"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "hvf-btn",
+    type: "button"
+  }, "Generate with AI"), /*#__PURE__*/React.createElement("a", {
+    href: "#hero-form",
+    className: "hvf-btn-secondary"
+  }, "Generate with AI"))), /*#__PURE__*/React.createElement("div", {
+    className: "hvf-formWrap anim-scale d2",
+    id: "hero-form"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hvf-formTitle"
+  }, "Get started"), /*#__PURE__*/React.createElement("div", {
+    className: "hvf-formText"
+  }, "Share a few details and generate your next step with AI."), /*#__PURE__*/React.createElement("form", {
+    className: "hvf-form",
+    onSubmit: handleHeroFormSubmit
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "hvf-field",
+    type: "text",
+    name: "name",
+    placeholder: "Your name",
+    value: heroForm.name,
+    onChange: handleHeroFormChange
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "hvf-field",
+    type: "email",
+    name: "email",
+    placeholder: "Work email",
+    value: heroForm.email,
+    onChange: handleHeroFormChange
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "hvf-field",
+    type: "text",
+    name: "company",
+    placeholder: "Company",
+    value: heroForm.company,
+    onChange: handleHeroFormChange
+  }), /*#__PURE__*/React.createElement("textarea", {
+    className: "hvf-field",
+    name: "message",
+    placeholder: "What would you like to generate?",
+    rows: "4",
+    value: heroForm.message,
+    onChange: handleHeroFormChange
+  }), /*#__PURE__*/React.createElement("button", {
+    className: "hvf-btn",
+    type: "submit"
+  }, "Generate with AI"), /*#__PURE__*/React.createElement("p", {
+    className: "hvf-formNote"
+  }, "Fill out the form and select Generate with AI to continue.")))))));
+};
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

@@ -1,0 +1,923 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#e4292b';
+  const primary = '#e4292b';
+  const bodyBg = '#ffffff';
+
+  const [activeTab1, setActiveTab1] = useState(0);
+  const [activeTab2, setActiveTab2] = useState(0);
+  const [activeTab3, setActiveTab3] = useState(0);
+  const [activeTab4, setActiveTab4] = useState(0);
+  const [activeTab5, setActiveTab5] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const pageRef = useRef(null);
+
+  const heroChips = [
+    'Easy Setup & Quick Onboarding',
+    'A Made in India solution',
+    '24x7 Support',
+    'Unified Communication'
+  ];
+
+  const trustLogos = [
+    '/output/generated-assets/ds_1778089223494_5a7ebced/10-4e22c31148.png',
+    '/output/generated-assets/ds_1778089223494_5a7ebced/09-75f766eeed.png',
+    '/output/generated-assets/ds_1778089223494_5a7ebced/08-61e528786b.png',
+    '/output/generated-assets/ds_1778089223494_5a7ebced/17-d22596911f.png',
+    '/output/generated-assets/ds_1778089223494_5a7ebced/18-b3d4199ca5.png'
+  ];
+
+  const sections = [
+    {
+      id: 'why',
+      label: 'Features',
+      headline: 'Why Choose Zoho Workplace?',
+      description:
+        'Zoho Workplace brings everything your team needs to collaborate, communicate, and stay productive through a single unified platform.',
+      image: '/output/generated-assets/ds_1778089223494_5a7ebced/14-8ee9780f0b.jpg',
+      features: [
+        {
+          title: 'All-in-One Unified Workspace',
+          description:
+            'Access email, chat, documents, meetings, and storage in a single integrated platform. Reduce app switching and boost productivity.'
+        },
+        {
+          title: 'Seamless Collaboration in Real Time',
+          description:
+            'Work together on documents, spreadsheets, and presentations with live editing, comments, and built-in communication tools.'
+        },
+        {
+          title: 'Work from Anywhere, Anytime',
+          description:
+            'Stay productive on the go. Reply to emails, access presentations, or host a video conference from anywhere effortlessly.'
+        },
+        {
+          title: 'AI-Powered Productivity (Zia)',
+          description:
+            'Leverage built-in AI for writing assistance in terms of grammar, readability and writing style while you work on Writer or Sheet.'
+        }
+      ]
+    },
+    {
+      id: 'growth',
+      label: 'Standard Features',
+      headline: 'Unlock Your Business Growth with Zoho Workplace',
+      description:
+        'Zoho Workplace unifies email, collaboration, and productivity tools to streamline your business operations. Enable smarter teamwork and drive growth with a single platform.',
+      image: '/output/generated-assets/ds_1778089223494_5a7ebced/15-473c14de05.jpg',
+      features: [
+        {
+          title: 'Ideal For Your Business Size',
+          description:
+            'Designed for any organization, Zoho Workplace enhances efficiency and teamwork at every scale.'
+        },
+        {
+          title: 'Communicate Effectively',
+          description:
+            'Go beyond email and chat, and connect teams with a social intranet using channels, feeds, and groups.'
+        },
+        {
+          title: 'Integrated Business Apps',
+          description:
+            'Connect with Zoho and third-party apps to unify workflows, eliminate silos, and streamline processes across your business.'
+        },
+        {
+          title: 'Customizable Workspace',
+          description:
+            'Customize settings, layouts, workflows to fit your needs. Also, get a professional, ad-free email service & advanced controls.'
+        }
+      ]
+    },
+    {
+      id: 'apps',
+      label: 'Additional Features',
+      headline: 'Integrate with Popular Apps',
+      description:
+        'Connect your Zoho Workplace with other business apps to ensure higher productivity and growth - all within a unified workspace.',
+      image: '/output/generated-assets/ds_1778089223494_5a7ebced/25-3921942fc4.jpeg',
+      features: [
+        { title: 'Zoho Apps', description: 'Zoho Meeting, Zoho Connect, Zoho Mail, Zoho Cliq, Zoho Writer, etc.' },
+        { title: 'Analytics', description: 'Zoho Analytics, Google Analytics' },
+        { title: 'Accounting & Finance', description: 'Zoho Invoice & Zoho Books' },
+        { title: 'Automation', description: 'Zoho Flow, Zapier, viaSocket' },
+        { title: 'Business Suites', description: 'Zoho One, Zoho Workspace' }
+      ]
+    },
+    {
+      id: 'performance',
+      label: 'Insight',
+      headline: 'Performance Beyond Limits with Zoho Workplace',
+      description: '',
+      image: '/output/generated-assets/ds_1778089223494_5a7ebced/26-b32757542d.jpeg',
+      features: [
+        {
+          title: 'Secure',
+          description:
+            '82.9% of users reported a secure email experience, ensuring strong data protection, and safe and reliable communication.'
+        },
+        {
+          title: 'Anywhere Access',
+          description:
+            '42.9% of them found it easier to work remotely with Zoho Workplace apps, enabling seamless access from any device, anywhere.'
+        },
+        {
+          title: 'Intuitive',
+          description:
+            '28.6% found Zoho Workplace easy to use, reducing the learning curve. Teams can quickly adapt and work efficiently.'
+        },
+        {
+          title: 'Collaborative',
+          description:
+            '14.3% of them saw improved collaboration, engagement and productivity, helping teams stay aligned and get more done faster.'
+        }
+      ]
+    },
+    {
+      id: 'secure',
+      label: 'Price Plan Includes',
+      headline: 'Create a Secure Digital Workspace',
+      description:
+        'Enjoy privacy-first, enterprise-grade cloud capabilities with strong spam protection, SSO, Directory, MFA, and a secure password manager.',
+      image: '/output/generated-assets/ds_1778089223494_5a7ebced/27-26fc6b7064.jpeg',
+      features: [
+        {
+          title: 'Zoho Workplace Price Plan Includes',
+          description:
+            'Enterprise-Grade Custom Email; Migration Assistance; Collaborative Office Suite; 30-GB Mail Storage Per User; File Storage Starts at 100 GB Per Team; File Sharing & Permissions; Team Chat; Document Management; Supported Device: Android, iOS, Windows, Mac'
+        }
+      ]
+    }
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        'Zoho Workplace has streamlined our communication and collaboration by bringing email, documents, and team tools into one unified platform.',
+      author: 'Amit Kapoor',
+      role: 'IT Manager',
+      avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/11-a1af876bc5.png'
+    },
+    {
+      quote:
+        'The platform is easy to use and has significantly improved team productivity by reducing dependency on multiple tools.',
+      author: 'Saurav Singh',
+      role: 'Head of Operations',
+      avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/13-01fc6c95c0.jpg'
+    },
+    {
+      quote:
+        'Techjockey helped us identify the right Zoho Workplace plan based on our requirements. Their guidance made the entire purchase process quick and hassle-free.',
+      author: 'Shrimi Manchanda',
+      role: 'Operations Manager',
+      avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/11-a1af876bc5.png'
+    },
+    {
+      quote:
+        'The seamless integration between email, file management, and collaboration tools has made our daily workflows much more efficient.',
+      author: 'Shweta Thakur',
+      role: 'Senior System Administrator',
+      avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/13-01fc6c95c0.jpg'
+    },
+    {
+      quote:
+        'Zoho Workplace helped us collaborate seamlessly, ensuring a more productive and efficient workflow across teams.',
+      author: 'Narinder Sahni',
+      role: 'IT Head',
+      avatar: '/output/generated-assets/ds_1778089223494_5a7ebced/11-a1af876bc5.png'
+    }
+  ];
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    document.documentElement.style.setProperty('--accent-glow', 'rgba(228,41,43,0.14)');
+
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        }),
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    const scripts = [
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/SplitText.min.js'
+    ];
+
+    const loaded = [];
+    scripts.forEach((src) => {
+      if (!document.querySelector(`script[src="${src}"]`)) {
+        const s = document.createElement('script');
+        s.src = src;
+        s.async = true;
+        document.body.appendChild(s);
+        loaded.push(s);
+      }
+    });
+
+    const initGSAP = () => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const gsap = window.gsap;
+          const ScrollTrigger = window.ScrollTrigger;
+          gsap.registerPlugin(ScrollTrigger);
+
+          let glow = document.querySelector('.cursor-glow');
+          if (!glow) {
+            glow = document.createElement('div');
+            glow.className = 'cursor-glow';
+            document.body.appendChild(glow);
+          }
+
+          const moveHandler = (e) => {
+            gsap.to(glow, { x: e.clientX, y: e.clientY, duration: 0.6, ease: 'power2.out' });
+          };
+          window.addEventListener('mousemove', moveHandler);
+
+          gsap.utils.toArray('.scene-expand').forEach((scene) => {
+            gsap.to(scene, {
+              width: '100%',
+              borderRadius: '0px',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: scene,
+                start: 'top 80%',
+                end: 'top 20%',
+                scrub: 1.2
+              }
+            });
+            const media = scene.querySelector('img, video');
+            if (media) {
+              gsap.to(media, {
+                scale: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: scene,
+                  start: 'top 80%',
+                  end: 'top 20%',
+                  scrub: 1.2
+                }
+              });
+            }
+          });
+
+          gsap.utils.toArray('.zoom-reveal').forEach((el) => {
+            const media = el.querySelector('img, video');
+            if (!media) return;
+            gsap.to(media, {
+              scale: 1,
+              ease: 'power2.out',
+              duration: 1.2,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+              }
+            });
+          });
+
+          gsap.utils.toArray('[data-depth]').forEach((el) => {
+            const depth = parseFloat(el.dataset.depth) || 0.3;
+            gsap.to(el, {
+              y: () => -(window.innerHeight * depth * 0.6),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el.closest('section') || el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+              }
+            });
+          });
+
+          const heroBg = document.querySelector('.hero-cinematic-bg');
+          if (heroBg) {
+            gsap.to(heroBg, {
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: heroBg.closest('section'),
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 2
+              }
+            });
+          }
+
+          gsap.utils.toArray('.clip-reveal').forEach((el) => {
+            gsap.to(el, {
+              clipPath: 'inset(0% 0 0 0)',
+              ease: 'power3.out',
+              duration: 1.1,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+              }
+            });
+          });
+
+          gsap.utils.toArray('.stagger-parent').forEach((parent) => {
+            gsap.to(parent.children, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.12,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: parent,
+                start: 'top 80%',
+                toggleActions: 'play none none none'
+              }
+            });
+          });
+
+          gsap.utils.toArray('.split-text').forEach((el) => {
+            if (el.dataset.splitDone) return;
+            const text = el.textContent || '';
+            el.dataset.splitDone = 'true';
+            el.innerHTML = text
+              .split('')
+              .map((char) =>
+                char === ' '
+                  ? ' '
+                  : `<span class="char" style="display:inline-block;will-change:transform,opacity">${char}</span>`
+              )
+              .join('');
+            gsap.from(el.querySelectorAll('.char'), {
+              y: 80,
+              opacity: 0,
+              rotateX: -40,
+              stagger: 0.025,
+              duration: 0.9,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              }
+            });
+          });
+
+          gsap.utils.toArray('.text-reveal-mask').forEach((mask) => {
+            const inner = mask.querySelector('.text-reveal-inner');
+            if (!inner) return;
+            gsap.to(inner, {
+              y: '0%',
+              duration: 1,
+              ease: 'power4.out',
+              scrollTrigger: {
+                trigger: mask,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+              }
+            });
+          });
+
+          document.querySelectorAll('.btn-magnetic').forEach((btn) => {
+            if (btn.dataset.magInit) return;
+            btn.dataset.magInit = 'true';
+            btn.addEventListener('mousemove', (e) => {
+              const rect = btn.getBoundingClientRect();
+              const x = (e.clientX - rect.left - rect.width / 2) * 0.35;
+              const y = (e.clientY - rect.top - rect.height / 2) * 0.35;
+              gsap.to(btn, { x, y, duration: 0.4, ease: 'power2.out' });
+            });
+            btn.addEventListener('mouseleave', () => {
+              gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+            });
+          });
+
+          gsap.utils.toArray('[data-count]').forEach((el) => {
+            const target = parseFloat(el.dataset.count);
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            if (Number.isNaN(target) || target < 0) return;
+            gsap.from({ val: 0 }, {
+              val: target,
+              duration: 2,
+              ease: 'power2.out',
+              snap: { val: 1 },
+              scrollTrigger: { trigger: el, start: 'top 80%', once: true },
+              onUpdate: function () {
+                const current = Math.max(0, Math.round(this.targets()[0].val));
+                el.textContent = prefix + current.toLocaleString() + suffix;
+              }
+            });
+          });
+
+          window.__landingMoveHandler = moveHandler;
+        });
+      });
+    };
+
+    const gsapTimer = setTimeout(initGSAP, 700);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(gsapTimer);
+      if (window.__landingMoveHandler) {
+        window.removeEventListener('mousemove', window.__landingMoveHandler);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+
+  const css = `
+    :root{--accent:${accent};--primary:${primary};--bodyBg:${bodyBg};--text:#111827;--muted:#4b5563;--border:#e5e7eb;--card:#ffffff;--soft:#f8fafc}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:${bodyBg};color:var(--text);font-family:Inter,sans-serif}
+    a{text-decoration:none;color:inherit}
+    img,video{max-width:100%}
+    .lp{background:${bodyBg};overflow:hidden}
+    .container{width:min(1180px,calc(100% - 40px));margin:0 auto;position:relative;z-index:2}
+    .section{padding:72px 0;position:relative}
+    .bg-white{background:#ffffff}
+    .bg-soft{background:#f8fafc}
+    .main_header{position:sticky;top:0;z-index:50;background:rgba(17,24,39,.82);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-bar{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:18px;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:12px}
+    .brand-mark{font-weight:800;font-size:20px;color:var(--accent);font-family:"Plus Jakarta Sans",sans-serif}
+    .techjockey-lockup{display:flex;align-items:center;justify-content:center}
+    .nav-links{display:flex;align-items:center;gap:22px;color:#fff}
+    .nav-link{font-size:14px;color:rgba(255,255,255,.84)}
+    .animated-cta,.ghost-btn,.tab-btn,.nav-btn,.slider-btn{
+      transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease,color .25s ease;
+    }
+    .animated-cta{
+      display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;border-radius:12px;
+      background:var(--accent);color:#fff;font-weight:700;border:1px solid var(--accent);box-shadow:0 10px 30px rgba(228,41,43,.2)
+    }
+    .animated-cta:hover,.ghost-btn:hover,.tab-btn:hover,.slider-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
+    .ghost-btn{
+      display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:12px;
+      background:rgba(255,255,255,.08);color:#fff;font-weight:700;border:1px solid rgba(255,255,255,.22)
+    }
+    .hero{min-height:100vh;display:flex;align-items:center;color:#fff;position:relative;background:#0d1117}
+    .hero-media-bg{position:absolute;inset:0;overflow:hidden}
+    .hero-media-bg img,.hero-media-bg video{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.08)}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,20,.88) 0%,rgba(8,12,20,.72) 42%,rgba(8,12,20,.46) 100%)}
+    .precision-lines:before,.precision-lines:after{
+      content:'';position:absolute;border:1px solid rgba(255,255,255,.08);pointer-events:none;border-radius:28px
+    }
+    .precision-lines:before{inset:40px 40px auto auto;width:240px;height:240px}
+    .precision-lines:after{inset:auto auto 50px 20px;width:180px;height:180px}
+    .banner_wrap{padding:88px 0 60px;position:relative;width:100%}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:center}
+    .banner-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:64px;line-height:1.03;letter-spacing:-.03em;font-weight:800;margin:0 0 16px;max-width:760px}
+    .banner-content{font-size:18px;line-height:1.7;color:rgba(255,255,255,.86);max-width:650px}
+    .gradient-text{background:linear-gradient(135deg, #ffffff 0%, #ffd9d9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .chips{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 24px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);font-size:13px;color:#fff}
+    .chip svg{width:16px;height:16px;color:${accent};flex:none}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-visual{min-height:500px;display:flex;align-items:center;justify-content:center}
+    .form-card{
+      width:100%;max-width:440px;background:rgba(255,255,255,.97);color:#111827;border-radius:24px;padding:26px;
+      box-shadow:0 30px 80px rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.55)
+    }
+    .form-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:28px;line-height:1.2;margin:0 0 10px;font-weight:800}
+    .form-sub{font-size:14px;line-height:1.6;color:#4b5563;margin:0 0 18px}
+    .lead_form{display:grid;gap:14px}
+    .form-control{
+      width:100%;height:50px;padding:0 14px;border:1px solid var(--border);border-radius:12px;background:#fff;
+      color:#111827;outline:none;font-size:15px
+    }
+    textarea.form-control{height:100px;padding:14px;resize:vertical}
+    .form-control:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(228,41,43,.12)}
+    .full-btn{width:100%}
+    .trust-grid-wrap{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:center}
+    .trust-stat-card{
+      background:#fff;border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,.06)
+    }
+    .trust-kicker{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:8px;font-weight:700}
+    .trust-big{font-family:"Plus Jakarta Sans",sans-serif;font-size:46px;font-weight:800;line-height:1;color:var(--text)}
+    .trust-big small{font-size:26px}
+    .trust-copy{color:var(--muted);font-size:15px;line-height:1.7;margin-top:10px}
+    .logo-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+    .logo-card{
+      height:72px;max-height:72px;background:#fff;border:1px solid var(--border);border-radius:16px;display:flex;
+      align-items:center;justify-content:center;padding:14px;box-shadow:0 4px 24px rgba(0,0,0,.04)
+    }
+    .logo-card img{max-height:32px;filter:grayscale(1);opacity:.8;transition:filter .25s ease,opacity .25s ease,transform .25s ease}
+    .logo-card:hover img{filter:grayscale(0);opacity:1;transform:scale(1.03)}
+    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}
+    .section-tag{
+      display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;background:rgba(228,41,43,.08);border:1px solid rgba(228,41,43,.18);
+      color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase
+    }
+    .section-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:42px;line-height:1.08;letter-spacing:-.02em;margin:0 0 10px;font-weight:800}
+    .section-desc{font-size:16px;line-height:1.7;color:var(--muted);margin:0;max-width:760px}
+    .feature-wrap{display:grid;grid-template-columns:.94fr 1.06fr;gap:28px;align-items:center}
+    .feature-media{
+      position:relative;border-radius:24px;overflow:hidden;min-height:420px;box-shadow:0 16px 50px rgba(17,24,39,.08)
+    }
+    .feature-media img{width:100%;height:100%;object-fit:cover;display:block}
+    .feature-list{display:flex;flex-direction:column;gap:14px}
+    .feature-card{
+      background:#fff;border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.04)
+    }
+    .feature-card h3{margin:0 0 8px;font-size:20px;line-height:1.3;font-weight:800;font-family:"Plus Jakarta Sans",sans-serif}
+    .feature-card p{margin:0;font-size:15px;line-height:1.7;color:var(--muted)}
+    .tabs{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px}
+    .tab-btn{
+      padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#fff;color:#111827;font-weight:700;cursor:pointer
+    }
+    .tab-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(228,41,43,.18)}
+    .stats-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:24px}
+    .stat-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(0,0,0,.04)}
+    .stat-num{font-size:34px;font-weight:900;line-height:1;color:var(--accent);font-family:"Plus Jakarta Sans",sans-serif}
+    .stat-label{margin-top:8px;color:var(--muted);font-size:14px;line-height:1.6}
+    .testimonial-shell{
+      position:relative;background:linear-gradient(180deg,#111827 0%,#0f172a 100%);border-radius:28px;padding:30px;color:#fff;overflow:hidden
+    }
+    .testimonial-slider{position:relative;min-height:220px}
+    .testimonial-card{
+      display:grid;grid-template-columns:80px 1fr;gap:20px;align-items:center;
+      opacity:0;transform:translateX(16px);position:absolute;inset:0;transition:all .55s ease
+    }
+    .testimonial-card.active{opacity:1;transform:translateX(0);position:relative}
+    .testimonial-avatar{
+      width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.18);background:#1f2937
+    }
+    .testimonial-avatar img{width:100%;height:100%;object-fit:cover}
+    .testimonial-quote{font-size:22px;line-height:1.6;margin:0 0 16px;font-weight:600}
+    .testimonial-meta{display:flex;flex-direction:column;gap:4px}
+    .testimonial-name{font-weight:800;font-size:18px}
+    .testimonial-role{color:rgba(255,255,255,.72);font-size:14px}
+    .slider-dots{display:flex;gap:8px;margin-top:18px}
+    .slider-dot{
+      width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.28);border:none;cursor:pointer;padding:0
+    }
+    .slider-dot.active{width:28px;background:var(--accent)}
+    .cta-strip{
+      padding:28px 0;background:linear-gradient(90deg,#111827 0%,#0f172a 45%,#111827 100%);color:#fff;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    .cta-strip-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .cta-strip-copy h3{margin:0 0 6px;font-size:28px;line-height:1.2;font-weight:800;font-family:"Plus Jakarta Sans",sans-serif}
+    .cta-strip-copy p{margin:0;color:rgba(255,255,255,.78);font-size:15px;line-height:1.7}
+    .cta-strip-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .footer{
+      background:#0b1220;color:#fff;padding:54px 0 22px
+    }
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:28px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .footer-brand{max-width:420px}
+    .footer-brand p,.footer-links a,.footer-contact a,.footer-contact div{color:rgba(255,255,255,.72);font-size:14px;line-height:1.8}
+    .footer-title{font-size:16px;font-weight:800;margin:0 0 12px}
+    .footer-links,.footer-contact{display:flex;flex-direction:column;gap:8px}
+    .socials{display:flex;gap:10px;margin-top:14px}
+    .socials a{
+      width:38px;height:38px;border-radius:999px;display:flex;align-items:center;justify-content:center;
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:#fff
+    }
+    .footer-bottom{padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:rgba(255,255,255,.6);font-size:13px}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .clip-reveal{clip-path:inset(12% 0 12% 0)}
+    .scene-expand{width:94%;margin-inline:auto;border-radius:28px;overflow:hidden}
+    .zoom-reveal img,.zoom-reveal video,.hero-cinematic-bg{transform:scale(1.08)}
+    .cursor-glow{
+      position:fixed;left:0;top:0;width:280px;height:280px;border-radius:50%;
+      background:radial-gradient(circle, rgba(228,41,43,.14) 0%, rgba(228,41,43,0) 70%);
+      pointer-events:none;z-index:1;transform:translate(-50%,-50%)
+    }
+    @media (max-width: 1100px){
+      .hero-grid,.feature-wrap,.footer-grid,.trust-grid-wrap{grid-template-columns:1fr}
+      .banner-title{font-size:52px}
+      .logo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .stats-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .cta-strip-wrap{flex-direction:column;align-items:flex-start}
+    }
+    @media (max-width: 767px){
+      .container{width:min(100% - 24px,1180px)}
+      .section{padding:56px 0}
+      .nav-bar{grid-template-columns:1fr auto}
+      .nav-links{display:none}
+      .banner_wrap{padding:72px 0 42px}
+      .banner-title{font-size:38px}
+      .banner-content{font-size:16px}
+      .hero{min-height:auto}
+      .hero-visual{min-height:auto}
+      .form-card{padding:22px;border-radius:20px}
+      .section-title{font-size:30px}
+      .feature-media{min-height:300px}
+      .logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .stats-row{grid-template-columns:1fr}
+      .testimonial-card{grid-template-columns:1fr;gap:16px}
+      .testimonial-quote{font-size:18px}
+      .footer-grid{grid-template-columns:1fr}
+      .cta-strip-copy h3{font-size:22px}
+    }
+  `;
+
+  const renderFeatureSection = (section, activeTab, setActiveTab, soft = false) => {
+    const currentFeature = section.features[activeTab] || section.features[0];
+    return (
+      <section id={section.id} className={`section ${soft ? 'bg-soft' : 'bg-white'}`}>
+        <div className="container">
+          <div className="section-head reveal">
+            <div>
+              <div className="section-tag">{section.label}</div>
+              <h2 className="section-title split-text">{section.headline}</h2>
+              {section.description ? <p className="section-desc">{section.description}</p> : null}
+            </div>
+          </div>
+          <div className="feature-wrap">
+            <div className="feature-media scene-expand reveal zoom-reveal">
+              <img src={section.image} alt={section.headline} />
+            </div>
+            <div className="reveal">
+              <div className="tabs">
+                {section.features.map((item, index) => (
+                  <button
+                    key={item.title}
+                    className={`tab-btn ${activeTab === index ? 'active' : ''}`}
+                    onClick={() => setActiveTab(index)}
+                    type="button"
+                  >
+                    {item.title}
+                  </button>
+                ))}
+              </div>
+              <div className="feature-list">
+                <div className="feature-card">
+                  <h3>{currentFeature.title}</h3>
+                  <p>{currentFeature.description}</p>
+                </div>
+                {section.features
+                  .filter((_, index) => index !== activeTab)
+                  .slice(0, 3)
+                  .map((item) => (
+                    <div className="feature-card" key={item.title}>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  };
+
+  return (
+    <>
+      <style>{css}</style>
+      <div className="lp" ref={pageRef}>
+        <header className="main_header">
+          <div className="container">
+            <div className="nav-bar">
+              <a href="#top" className="logo" aria-label="Techjockey">
+                <div className="brand-mark">TECHJOCKEY</div>
+                <div style={{ width: 1, height: 20, background: 'rgba(255,255,255,.18)' }} />
+                <div style={{ color: '#fff', fontWeight: 800 }}>Zoho Workplace</div>
+              </a>
+              <nav className="nav-links">
+                <a className="nav-link" href="#why">Features</a>
+                <a className="nav-link" href="#growth">Standard Features</a>
+                <a className="nav-link" href="#apps">Integrations</a>
+                <a className="nav-link" href="#testimonials">Testimonials</a>
+              </nav>
+              <a href="#lead-form" className="animated-cta btn-magnetic">Book Free Demo</a>
+            </div>
+          </div>
+        </header>
+
+        <section id="top" className="hero precision-lines">
+          <div className="hero-media-bg hero-cinematic-bg">
+            <img src="/output/generated-assets/ds_1778089223494_5a7ebced/14-8ee9780f0b.jpg" alt="Zoho Workplace background" />
+          </div>
+          <div className="hero-overlay" />
+          <div className="container">
+            <div className="banner_wrap">
+              <div className="hero-grid">
+                <div className="reveal">
+                  <div className="section-tag" style={{ background: 'rgba(255,255,255,.08)', borderColor: 'rgba(255,255,255,.18)', color: '#fff' }}>
+                    Unified Communication
+                  </div>
+                  <h1 className="banner-title">
+                    Power your team with <span className="gradient-text">Zoho Workplace</span>
+                  </h1>
+                  <p className="banner-content">
+                    Zoho Workplace unifies email, collaboration, and productivity tools to streamline your business operations.
+                    Enable smarter teamwork and drive growth with a single platform.
+                  </p>
+                  <div className="chips">
+                    {heroChips.map((chip) => (
+                      <div className="chip" key={chip}>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {chip}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="hero-actions">
+                    <a href="#lead-form" className="animated-cta btn-magnetic">Get Best Price</a>
+                    <a href="#why" className="ghost-btn">Explore Features</a>
+                  </div>
+                </div>
+
+                <div className="hero-visual reveal">
+                  <div id="lead-form" className="form-card">
+                    <h3 className="form-title">Talk to our product expert</h3>
+                    <p className="form-sub">
+                      Share your requirements and get the right Zoho Workplace plan with expert assistance from Techjockey.
+                    </p>
+                    <form className="lead_form">
+                      <input className="form-control" type="text" placeholder="Full Name" />
+                      <input className="form-control" type="email" placeholder="Work Email" />
+                      <input className="form-control" type="tel" placeholder="Phone Number" />
+                      <input className="form-control" type="text" placeholder="Company Name" />
+                      <textarea className="form-control" placeholder="Tell us about your requirement"></textarea>
+                      <button type="submit" className="animated-cta full-btn btn-magnetic">Request Callback</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section bg-soft">
+          <div className="container">
+            <div className="trust-grid-wrap">
+              <div className="trust-stat-card reveal">
+                <div className="trust-kicker">Trusted Business Workspace</div>
+                <div className="trust-big">
+                  <span data-count="82" data-suffix=".9%">82.9%</span>
+                </div>
+                <div className="trust-copy">
+                  Users reported a secure email experience with reliable communication and stronger data protection.
+                </div>
+              </div>
+              <div className="reveal">
+                <div className="section-head" style={{ marginBottom: 16 }}>
+                  <div>
+                    <div className="section-tag">Trusted By Businesses</div>
+                    <h2 className="section-title" style={{ fontSize: 30, marginBottom: 0 }}>Popular brands rely on Techjockey</h2>
+                  </div>
+                </div>
+                <div className="logo-grid">
+                  {trustLogos.map((logo, i) => (
+                    <div className="logo-card" key={i}>
+                      <img src={logo} alt={`Trusted brand ${i + 1}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="stats-row reveal">
+              <div className="stat-card">
+                <div className="stat-num" data-count="42" data-suffix=".9%">42.9%</div>
+                <div className="stat-label">Found it easier to work remotely with Zoho Workplace apps.</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-num" data-count="28" data-suffix=".6%">28.6%</div>
+                <div className="stat-label">Found Zoho Workplace easy to use with a shorter learning curve.</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-num" data-count="14" data-suffix=".3%">14.3%</div>
+                <div className="stat-label">Reported improved collaboration, engagement and productivity.</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-num">24x7</div>
+                <div className="stat-label">Support and expert assistance to help you choose the right plan.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {renderFeatureSection(sections[0], activeTab1, setActiveTab1, false)}
+        {renderFeatureSection(sections[1], activeTab2, setActiveTab2, true)}
+        {renderFeatureSection(sections[2], activeTab3, setActiveTab3, false)}
+        {renderFeatureSection(sections[3], activeTab4, setActiveTab4, true)}
+        {renderFeatureSection(sections[4], activeTab5, setActiveTab5, false)}
+
+        <section id="testimonials" className="section bg-soft">
+          <div className="container">
+            <div className="section-head reveal">
+              <div>
+                <div className="section-tag">Customer Stories</div>
+                <h2 className="section-title split-text">What businesses say about Zoho Workplace</h2>
+                <p className="section-desc">
+                  Teams choose Zoho Workplace for unified collaboration, smoother communication, and a hassle-free buying experience with Techjockey.
+                </p>
+              </div>
+            </div>
+
+            <div className="testimonial-shell reveal">
+              <div className="testimonial-slider">
+                {testimonials.map((item, index) => (
+                  <div key={index} className={`testimonial-card ${activeSlide === index ? 'active' : ''}`}>
+                    <div className="testimonial-avatar">
+                      <img src={item.avatar} alt={item.author} />
+                    </div>
+                    <div>
+                      <p className="testimonial-quote">“{item.quote}”</p>
+                      <div className="testimonial-meta">
+                        <span className="testimonial-name">{item.author}</span>
+                        <span className="testimonial-role">{item.role}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="slider-dots">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`slider-dot ${activeSlide === index ? 'active' : ''}`}
+                    onClick={() => setActiveSlide(index)}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="cta-strip">
+          <div className="container">
+            <div className="cta-strip-wrap">
+              <div className="cta-strip-copy reveal">
+                <h3>Ready to simplify work with Zoho Workplace?</h3>
+                <p>Connect with Techjockey experts to compare plans, understand features, and get the best-fit solution for your business.</p>
+              </div>
+              <div className="cta-strip-actions reveal">
+                <a href="#lead-form" className="animated-cta btn-magnetic">Get Best Price</a>
+                <a href="#lead-form" className="ghost-btn">Request Demo</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="footer">
+          <div className="container">
+            <div className="footer-grid">
+              <div className="footer-brand">
+                <div className="brand-mark" style={{ marginBottom: 12 }}>TECHJOCKEY</div>
+                <p>
+                  Techjockey helps businesses discover, compare, and buy the right software solutions with expert guidance and trusted support.
+                </p>
+                <div className="socials">
+                  <a href="https://www.facebook.com/techjockey/" target="_blank" rel="noreferrer" aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H17V4.8c-.4-.1-1.4-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.6V11H7v3h3v8h3.5z" /></svg>
+                  </a>
+                  <a href="https://www.linkedin.com/company/techjockeyinfotech/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5A1.94 1.94 0 1 1 6.94 4.6a1.94 1.94 0 0 1 0 3.88zM5.2 9.8h3.5V20H5.2V9.8zm5.7 0h3.36v1.4h.05c.47-.89 1.62-1.83 3.33-1.83 3.56 0 4.22 2.34 4.22 5.39V20h-3.5v-4.65c0-1.11-.02-2.53-1.54-2.53-1.54 0-1.77 1.2-1.77 2.45V20h-3.5V9.8z" /></svg>
+                  </a>
+                  <a href="https://www.instagram.com/techjockey/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.8 6.7a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z" /></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="footer-title">Quick Links</h4>
+                <div className="footer-links">
+                  <a href="#why">Why Choose Zoho Workplace?</a>
+                  <a href="#growth">Standard Features</a>
+                  <a href="#apps">Integrations</a>
+                  <a href="#testimonials">Testimonials</a>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="footer-title">Contact</h4>
+                <div className="footer-contact">
+                  <a href="#lead-form">Request a callback</a>
+                  <div>Get expert help choosing the right Zoho Workplace plan.</div>
+                  <a href="https://www.techjockey.com/" target="_blank" rel="noreferrer">www.techjockey.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="footer-bottom">
+              <div>© 2026 Techjockey. All rights reserved.</div>
+              <div>Zoho Workplace solutions for modern business collaboration.</div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </>
+  );
+};
+
+export default LandingPage;

@@ -1,0 +1,1014 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+  const accent = '#ff6b00';
+  const primary = '#ff6b00';
+  const bodyBg = '#0f172a';
+
+  const [activeSeedreamTab, setActiveSeedreamTab] = useState(0);
+  const [activeSeedanceTab, setActiveSeedanceTab] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const cursorGlowRef = useRef(null);
+
+  const ctaItems = [
+    { text: 'Talk to Expert', href: 'https://seed.bytedance.com/en/seedream4_5' },
+    { text: 'Talk to Expert', href: 'https://seed.bytedance.com/en/seedream4_5' },
+    { text: 'Talk to Expert', href: 'https://seed.bytedance.com/en/seedream4_5' },
+    { text: 'Talk to Expert', href: 'https://seed.bytedance.com/en/seedream4_5' }
+  ];
+
+  const seedreamFeatures = [
+    {
+      title: 'Advanced Text–Image Alignment',
+      description: 'Accurately translates prompts into visuals with improved semantic understanding.'
+    },
+    {
+      title: 'High-Resolution Output',
+      description: 'Generate native images up to 1K–4K resolution with strong visual fidelity.'
+    },
+    {
+      title: 'Superior Typographic Rendering',
+      description: 'Optimized for posters, ads, and text-heavy visual designs.'
+    },
+    {
+      title: 'Multi-Image Composition with Identity Preservation',
+      description: 'Combines multiple inputs while accurately maintaining subject consistency.'
+    },
+    {
+      title: 'Strong Structural Fidelity',
+      description: 'Maintains composition, layout, and scene structure with high precision.'
+    }
+  ];
+
+  const seedanceFeatures = [
+    {
+      title: 'Text-to-Video Generation',
+      description: 'Create videos directly from text prompts.'
+    },
+    {
+      title: 'Audio-Visual Synchronization',
+      description: 'Generate video and audio simultaneously with strong multimodal alignment.'
+    },
+    {
+      title: 'Multilingual Lip-Sync',
+      description: 'Supports multilingual and dialect-level lip synchronization.'
+    },
+    {
+      title: 'Cinematic Camera Control',
+      description: 'Generate videos with dynamic camera movement and cinematic storytelling.'
+    },
+    {
+      title: '10× Faster Inference',
+      description: 'Optimized inference pipeline significantly improves generation speed.'
+    }
+  ];
+
+  const testimonials = [
+    {
+      quote: 'Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.',
+      name: 'Vaishali Saxena',
+      role: 'Creative Director'
+    },
+    {
+      quote: 'Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.',
+      name: 'Vihaan Pandey',
+      role: 'Video Producer'
+    },
+    {
+      quote: 'The multimodal editing capabilities in Seedream make it easy to refine images with precision.',
+      name: 'Anurag Malhotra',
+      role: 'Art Director'
+    },
+    {
+      quote: 'Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.',
+      name: 'Ashutosh Singh',
+      role: 'Marketing Manager'
+    },
+    {
+      quote: 'From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.',
+      name: 'Shrimmi Saxena',
+      role: 'Creative Lead'
+    }
+  ];
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [accent, primary]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [accent, primary, testimonials.length]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+
+    const loadScript = (src) =>
+      new Promise((resolve) => {
+        const existing = document.querySelector(`script[src="${src}"]`);
+        if (existing) {
+          resolve();
+          return;
+        }
+        const s = document.createElement('script');
+        s.src = src;
+        s.async = true;
+        s.onload = resolve;
+        document.body.appendChild(s);
+      });
+
+    Promise.all([
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js'),
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js'),
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/SplitText.min.js')
+    ]).then(() => {
+      const initGSAP = () => {
+        if (!window.gsap || !window.ScrollTrigger) return;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const gsap = window.gsap;
+            const ScrollTrigger = window.ScrollTrigger;
+            gsap.registerPlugin(ScrollTrigger);
+
+            if (!cursorGlowRef.current) {
+              const glow = document.createElement('div');
+              glow.className = 'cursor-glow';
+              document.body.appendChild(glow);
+              cursorGlowRef.current = glow;
+              window.addEventListener('mousemove', (e) => {
+                gsap.to(glow, { x: e.clientX, y: e.clientY, duration: 0.6, ease: 'power2.out' });
+              });
+            }
+
+            gsap.utils.toArray('.scene-expand').forEach((scene) => {
+              gsap.to(scene, {
+                width: '100%',
+                borderRadius: '0px',
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: scene,
+                  start: 'top 80%',
+                  end: 'top 20%',
+                  scrub: 1.2
+                }
+              });
+              const media = scene.querySelector('img, video');
+              if (media) {
+                gsap.to(media, {
+                  scale: 1,
+                  ease: 'none',
+                  scrollTrigger: {
+                    trigger: scene,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    scrub: 1.2
+                  }
+                });
+              }
+            });
+
+            gsap.utils.toArray('.zoom-reveal').forEach((el) => {
+              const img = el.querySelector('img, video');
+              if (!img) return;
+              gsap.to(img, {
+                scale: 1,
+                ease: 'power2.out',
+                duration: 1.2,
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 85%',
+                  toggleActions: 'play none none reverse'
+                }
+              });
+            });
+
+            gsap.utils.toArray('[data-depth]').forEach((el) => {
+              const depth = parseFloat(el.dataset.depth) || 0.3;
+              gsap.to(el, {
+                y: () => -(window.innerHeight * depth * 0.6),
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: el.closest('section') || el,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: true
+                }
+              });
+            });
+
+            const heroBg = document.querySelector('.hero-cinematic-bg');
+            if (heroBg) {
+              gsap.to(heroBg, {
+                scale: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: heroBg.closest('section'),
+                  start: 'top top',
+                  end: 'bottom top',
+                  scrub: 2
+                }
+              });
+            }
+
+            gsap.utils.toArray('.clip-reveal').forEach((el) => {
+              gsap.to(el, {
+                clipPath: 'inset(0% 0 0 0)',
+                ease: 'power3.out',
+                duration: 1.1,
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 80%',
+                  toggleActions: 'play none none reverse'
+                }
+              });
+            });
+
+            gsap.utils.toArray('.stagger-parent').forEach((parent) => {
+              gsap.to(parent.children, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.12,
+                ease: 'power3.out',
+                scrollTrigger: {
+                  trigger: parent,
+                  start: 'top 80%',
+                  toggleActions: 'play none none none'
+                }
+              });
+            });
+
+            gsap.utils.toArray('.split-text').forEach((el) => {
+              const text = el.textContent;
+              el.innerHTML = text
+                .split('')
+                .map((char) =>
+                  char === ' '
+                    ? ' '
+                    : `<span class="char" style="display:inline-block;will-change:transform,opacity">${char}</span>`
+                )
+                .join('');
+              gsap.from(el.querySelectorAll('.char'), {
+                y: 80,
+                opacity: 0,
+                rotateX: -40,
+                stagger: 0.025,
+                duration: 0.9,
+                ease: 'power3.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 85%',
+                  toggleActions: 'play none none none'
+                }
+              });
+            });
+
+            gsap.utils.toArray('.text-reveal-mask').forEach((mask) => {
+              const inner = mask.querySelector('.text-reveal-inner');
+              if (!inner) return;
+              gsap.to(inner, {
+                y: '0%',
+                duration: 1.0,
+                ease: 'power4.out',
+                scrollTrigger: {
+                  trigger: mask,
+                  start: 'top 85%',
+                  toggleActions: 'play none none reverse'
+                }
+              });
+            });
+
+            document.querySelectorAll('.btn-magnetic').forEach((btn) => {
+              btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.35;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.35;
+                gsap.to(btn, { x, y, duration: 0.4, ease: 'power2.out' });
+              });
+              btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+              });
+            });
+
+            gsap.utils.toArray('.pin-scene').forEach((scene) => {
+              ScrollTrigger.create({
+                trigger: scene,
+                start: 'top top',
+                end: '+=600',
+                pin: true,
+                pinSpacing: true
+              });
+            });
+          });
+        });
+      };
+
+      initGSAP();
+    });
+
+    return () => {
+      if (cursorGlowRef.current && cursorGlowRef.current.parentNode) {
+        cursorGlowRef.current.parentNode.removeChild(cursorGlowRef.current);
+        cursorGlowRef.current = null;
+      }
+    };
+  }, [accent, primary]);
+
+  const iconSvg = (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3l2.6 5.27L20 9.1l-4 3.9.94 5.5L12 15.8l-4.94 2.7L8 13 4 9.1l5.4-.83L12 3z" fill={accent} />
+    </svg>
+  );
+
+  const getInitials = (name) =>
+    name
+      .split(' ')
+      .map((n) => n[0])
+      .join('')
+      .slice(0, 2)
+      .toUpperCase();
+
+  const css = `
+    :root{--accent:${accent};--primary:${primary};--accent-glow:rgba(255,107,0,.14)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Inter',sans-serif;background:${bodyBg};color:#fff}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .lp-root{background:${bodyBg};color:#fff;overflow:hidden}
+    .container{width:min(1200px,calc(100% - 32px));margin:0 auto}
+    .section{position:relative;padding:88px 0}
+    .bg-hero{background:#0f172a}
+    .bg-trust{background:#111827}
+    .bg-products{background:#020617}
+    .bg-proof{background:#0f172a}
+    .bg-features{background:#111827}
+    .bg-pricing{background:#020617}
+    .bg-testimonials{background:#0f172a}
+    .bg-footer{background:#020617}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1)}
+    .nav-inner{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:18px;padding:16px 0}
+    .brand-text{font-weight:800;font-size:20px;line-height:1.2;color:#fff}
+    .brand-text span{color:var(--accent)}
+    .tj-logo{display:flex;align-items:center;justify-content:center}
+    .animated-cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:10px;background:var(--accent);color:#fff;font-weight:700;border:1px solid rgba(255,255,255,.08);transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+    .animated-cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,107,0,.25);background:#ff7d21}
+    .ghost-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:#fff;font-weight:700;transition:transform .25s ease,box-shadow .25s ease}
+    .ghost-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.2)}
+    .hero-grid,.split-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+    .hero-copy h1{font-size:clamp(48px,6vw,72px);line-height:1.02;margin:0 0 18px;font-weight:800;letter-spacing:-.04em}
+    .hero-copy p{font-size:18px;line-height:1.7;color:#cbd5e1;margin:0 0 24px;max-width:680px}
+    .gradient-text{background:linear-gradient(135deg, ${accent} 0%, #7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .chip-row{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 28px}
+    .chip{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,107,0,.35);background:rgba(255,107,0,.08);color:#cbd5e1;font-size:13px}
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-shell{position:relative;min-height:520px;display:flex;align-items:center;justify-content:center;border-radius:28px;padding:28px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);box-shadow:0 0 0 1px rgba(255,107,0,.16),0 24px 80px rgba(0,0,0,.35);overflow:hidden}
+    .hero-shell:before{content:'';position:absolute;inset:-20%;background:
+      radial-gradient(circle at 20% 20%, rgba(255,107,0,.18), transparent 22%),
+      radial-gradient(circle at 80% 30%, rgba(124,58,237,.18), transparent 26%),
+      radial-gradient(circle at 50% 80%, rgba(59,130,246,.18), transparent 24%);
+      pointer-events:none}
+    .hero-shell:after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);background-size:42px 42px;opacity:.12;pointer-events:none}
+    .hero-art{position:absolute;inset:0}
+    .hero-bg-image{position:absolute;inset:0;background:url('/output/generated-assets/ds_1778062193770_30b9322b/01-8108d24ee9.png') center/cover no-repeat;opacity:.38}
+    .hero-dashboard{position:relative;z-index:2;width:100%;max-width:560px}
+    .panel{background:rgba(17,24,39,.72);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(18px);border-radius:20px}
+    .main-panel{padding:18px}
+    .panel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    .panel-pill{padding:6px 10px;border-radius:999px;background:rgba(255,107,0,.14);border:1px solid rgba(255,107,0,.35);font-size:12px;color:#fff}
+    .thumb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .thumb{aspect-ratio:1/1;border-radius:16px;position:relative;overflow:hidden;background:linear-gradient(135deg, rgba(255,107,0,.25), rgba(124,58,237,.25));border:1px solid rgba(255,255,255,.08)}
+    .thumb:nth-child(2){background:linear-gradient(135deg, rgba(59,130,246,.25), rgba(255,107,0,.22))}
+    .thumb:nth-child(3){background:linear-gradient(135deg, rgba(124,58,237,.24), rgba(59,130,246,.24))}
+    .thumb:nth-child(4){background:linear-gradient(135deg, rgba(255,107,0,.2), rgba(234,179,8,.24))}
+    .thumb:nth-child(5){background:linear-gradient(135deg, rgba(34,197,94,.22), rgba(59,130,246,.2))}
+    .thumb:nth-child(6){background:linear-gradient(135deg, rgba(236,72,153,.22), rgba(124,58,237,.18))}
+    .thumb span{position:absolute;left:10px;bottom:10px;font-size:11px;color:#fff;background:rgba(15,23,42,.55);padding:4px 8px;border-radius:999px}
+    .floating-card{position:absolute;padding:14px 16px;min-width:170px}
+    .float-a{top:36px;right:24px}
+    .float-b{bottom:48px;left:18px}
+    .float-c{bottom:18px;right:36px}
+    .mini-title{font-size:12px;color:#cbd5e1;margin-bottom:6px}
+    .mini-big{font-size:20px;font-weight:800}
+    .mini-line{height:6px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#7c3aed);margin-top:10px;opacity:.9}
+    .metrics-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .metric-card{padding:22px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);text-align:center}
+    .metric-card .m-top{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;margin-bottom:8px}
+    .metric-card .m-val{font-size:20px;font-weight:800;line-height:1.3}
+    .section-head{max-width:760px;margin-bottom:36px}
+    .section-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:#fff;margin-bottom:16px}
+    h2{font-size:clamp(32px,4vw,48px);line-height:1.08;margin:0 0 16px;font-weight:800;letter-spacing:-.03em}
+    .desc-block{border-left:2px solid rgba(255,255,255,.14);padding-left:20px;color:#cbd5e1;font-size:17px;line-height:1.75}
+    .tabs-layout{display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
+    .tabs-list{display:flex;flex-direction:column;gap:14px}
+    .tab-btn{width:100%;text-align:left;padding:18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#fff;cursor:pointer;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+    .tab-btn:hover,.hover-lift:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.22)}
+    .tab-btn.active{background:rgba(255,107,0,.12);border-color:rgba(255,107,0,.45)}
+    .tab-btn h4{margin:0 0 8px;font-size:18px}
+    .tab-btn p{margin:0;color:#cbd5e1;font-size:14px;line-height:1.6}
+    .preview-card{padding:24px;border-radius:24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);overflow:hidden}
+    .preview-copy{margin-bottom:20px}
+    .preview-copy h3{margin:0 0 8px;font-size:26px}
+    .preview-copy p{margin:0;color:#cbd5e1;line-height:1.7}
+    .browser-frame{display:flex;flex-direction:column;overflow:hidden;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:#f8f8f8;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+    .browser-bar{display:flex;gap:8px;padding:12px 14px;background:rgba(15,23,42,.95)}
+    .browser-dot{width:10px;height:10px;border-radius:50%}
+    .browser-dot:nth-child(1){background:#ef4444}.browser-dot:nth-child(2){background:#f59e0b}.browser-dot:nth-child(3){background:#22c55e}
+    .browser-frame img{flex:1;min-height:0;height:420px;width:100%;object-fit:cover;display:block}
+    .feature-bullets{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .feature-bullet{display:flex;gap:12px;padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .feature-bullet strong{display:block;margin-bottom:4px;font-size:15px}
+    .feature-bullet span{display:block;color:#cbd5e1;font-size:13px;line-height:1.6}
+    .split-panel{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+    .dashboard-visual{padding:24px;border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);position:relative;overflow:hidden}
+    .dash-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .dash-card{padding:18px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+    .dash-card h4{margin:0 0 10px;font-size:16px}
+    .dash-card p{margin:0;color:#cbd5e1;font-size:13px;line-height:1.7}
+    .chart-bars{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:12px}
+    .chart-bars span{flex:1;border-radius:10px 10px 0 0;background:linear-gradient(180deg,var(--accent),#7c3aed)}
+    .chart-bars span:nth-child(1){height:42%}
+    .chart-bars span:nth-child(2){height:70%}
+    .chart-bars span:nth-child(3){height:56%}
+    .chart-bars span:nth-child(4){height:88%}
+    .chart-bars span:nth-child(5){height:64%}
+    .list-stack{display:flex;flex-direction:column;gap:14px}
+    .list-item{display:flex;gap:14px;padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
+    .list-item h5{margin:0 0 6px;font-size:16px}
+    .list-item p{margin:0;color:#cbd5e1;line-height:1.6;font-size:14px}
+    .pricing-table{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .price-card{padding:28px;border-radius:24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column}
+    .price-card.featured{box-shadow:0 0 0 1px rgba(255,107,0,.25),0 22px 48px rgba(0,0,0,.32)}
+    .price-top{display:flex;justify-content:space-between;gap:10px;align-items:start;margin-bottom:16px}
+    .price-top h3{margin:0;font-size:24px;line-height:1.3}
+    .badge-green{padding:7px 10px;border-radius:999px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.28);color:#86efac;font-size:12px;font-weight:700;white-space:nowrap}
+    .price-line{font-size:16px;color:#fff;margin-bottom:18px;min-height:32px}
+    .price-line .strike{text-decoration:line-through;color:#94a3b8;margin-right:8px}
+    .price-line .current{font-size:28px;font-weight:800}
+    .price-line .muted{color:#94a3b8}
+    .checklist{display:flex;flex-direction:column;gap:12px;margin:0 0 22px;padding:0;list-style:none}
+    .checklist li{display:flex;gap:12px;align-items:flex-start;color:#cbd5e1;line-height:1.6}
+    .full-btn{width:100%}
+    .testimonial-wrap{overflow:hidden;position:relative}
+    .testimonial-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+    .testimonial-slide{min-width:100%;padding:6px}
+    .testimonial-card{padding:34px;border-radius:24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+    .quote-mark{font-size:58px;line-height:1;color:var(--accent);margin-bottom:10px}
+    .stars{color:#fbbf24;letter-spacing:2px;font-size:18px;margin-bottom:16px}
+    .testimonial-card p{font-size:20px;line-height:1.8;color:#fff;margin:0 0 24px}
+    .author{display:flex;align-items:center;gap:14px}
+    .avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:800}
+    .author strong{display:block}
+    .author span{display:block;color:#94a3b8;font-size:14px}
+    .dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
+    .dot{width:8px;height:8px;border-radius:999px;border:none;cursor:pointer;background:rgba(255,255,255,.28);transition:all .3s ease}
+    .dot.active{width:26px;background:var(--accent)}
+    .arrow-row{display:flex;justify-content:center;gap:12px;margin-top:18px}
+    .arrow-btn{width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#fff;cursor:pointer}
+    .footer{padding:36px 0}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}
+    .footer-left img{height:28px}
+    .footer-left p,.footer-right p{color:#cbd5e1;margin:14px 0 0}
+    .footer-links,.socials{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px}
+    .footer-links a,.socials a{color:#cbd5e1;transition:color .25s ease}
+    .footer-links a:hover,.socials a:hover{color:#fff}
+    .glass-card{background:rgba(255,255,255,.06);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:20px}
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+    .orbs:before,.orbs:after{content:'';position:absolute;border-radius:50%;pointer-events:none;filter:blur(10px)}
+    .orbs:before{width:320px;height:320px;top:-110px;right:-90px;background:radial-gradient(circle, rgba(255,107,0,.18) 0%, transparent 70%)}
+    .orbs:after{width:260px;height:260px;bottom:-80px;left:-70px;background:radial-gradient(circle, rgba(124,58,237,.18) 0%, transparent 70%)}
+    .muted{color:#cbd5e1}
+    .text-center{text-align:center}
+    .hover-lift{transition:transform .25s ease,box-shadow .25s ease}
+
+    .scene-expand{width:75%;margin:0 auto;border-radius:24px;overflow:hidden;will-change:width,border-radius}
+    .scene-expand img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);will-change:transform}
+    .zoom-reveal{overflow:hidden;border-radius:16px}
+    .zoom-reveal img,.zoom-reveal video{transform:scale(1.15);will-change:transform;transition:transform 0s}
+    [data-depth]{will-change:transform}
+    .depth-foreground{position:relative;z-index:3}
+    .depth-midground{position:relative;z-index:2}
+    .depth-background{position:absolute;inset:0;z-index:1}
+    .card-3d-stack{position:relative;transform-style:preserve-3d;perspective:1000px}
+    .card-3d-stack>*:nth-child(1){transform:translateZ(40px) translateY(0)}
+    .card-3d-stack>*:nth-child(2){transform:translateZ(20px) translateY(12px) scale(.97);opacity:.8}
+    .card-3d-stack>*:nth-child(3){transform:translateZ(0) translateY(24px) scale(.94);opacity:.5}
+    .clip-reveal{clip-path:inset(100% 0 0 0);will-change:clip-path}
+    .hero-cinematic-bg{transform:scale(1.06);transform-origin:center center;will-change:transform}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    @keyframes floatRotate{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+    @keyframes ambientPulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+    @keyframes driftLeft{0%,100%{transform:translateX(0) translateY(0)}33%{transform:translateX(-12px) translateY(-8px)}66%{transform:translateX(8px) translateY(-14px)}}
+    .float-ambient{animation:floatY 6s ease-in-out infinite}
+    .float-rotate{animation:floatRotate 8s ease-in-out infinite}
+    .float-pulse{animation:ambientPulse 4s ease-in-out infinite}
+    .float-drift{animation:driftLeft 10s ease-in-out infinite}
+    .float-delay-1{animation-delay:-2s}.float-delay-2{animation-delay:-4s}.float-delay-3{animation-delay:-1s}
+    .stagger-parent>*{opacity:0;transform:translateY(32px);will-change:opacity,transform}
+    .split-text .word{display:inline-block;overflow:hidden}
+    .split-text .char{display:inline-block;will-change:transform,opacity}
+    .h-scroll-track{display:flex;gap:24px;will-change:transform}
+    .btn-magnetic{position:relative;transition:transform .3s cubic-bezier(.34,1.56,.64,1);display:inline-block}
+    .text-reveal-mask{overflow:hidden;display:block}
+    .text-reveal-inner{display:block;transform:translateY(110%);will-change:transform}
+    .cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);transition:opacity .3s ease}
+    .section-overlap{margin-top:-80px;position:relative;z-index:2}
+    .noise-overlay:after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;opacity:.4;z-index:1}
+
+    @media (max-width: 991px){
+      .hero-grid,.split-grid,.split-panel,.tabs-layout,.pricing-table,.footer-grid{grid-template-columns:1fr}
+      .nav-inner{grid-template-columns:1fr auto;gap:12px}
+      .nav-inner .tj-logo{justify-self:end}
+      .nav-inner .nav-cta{grid-column:1/-1}
+      .hero-shell{min-height:460px}
+      .metrics-strip{grid-template-columns:1fr}
+      .feature-bullets{grid-template-columns:1fr}
+      .testimonial-card p{font-size:18px}
+    }
+    @media (max-width: 640px){
+      .section{padding:72px 0}
+      .container{width:min(1200px,calc(100% - 24px))}
+      .brand-text{font-size:18px}
+      .hero-copy p{font-size:16px}
+      .cta-row{flex-direction:column;align-items:flex-start}
+      .animated-cta,.ghost-btn{width:100%}
+      .thumb-grid{grid-template-columns:repeat(2,1fr)}
+      .floating-card{position:relative;top:auto;left:auto;right:auto;bottom:auto;margin-top:12px}
+      .hero-dashboard{display:flex;flex-direction:column}
+    }
+  `;
+
+  return (
+    <div className="lp-root">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+
+      <nav className="nav">
+        <div className="container nav-inner">
+          <div className="brand-text">
+            <span>Seedream 4.5</span> and Seedance 1.5 Pro
+          </div>
+          <div className="tj-logo">
+            <img
+              src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg"
+              height="28px"
+              alt="Techjockey"
+            />
+          </div>
+          <div className="nav-cta" style={{ justifySelf: 'end' }}>
+            <a
+              href={ctaItems[0].href}
+              className="animated-cta btn-magnetic"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {ctaItems[0].text}
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <section className="section bg-hero orbs noise-overlay">
+        <div className="container hero-grid">
+          <div className="hero-copy depth-foreground" data-depth="0.15">
+            <div className="section-tag reveal">AI Image Generation and AI Video Generation</div>
+            <h1 className="split-text reveal">
+              Create High-Quality AI Images &amp; Videos with ByteDance Generative Models
+            </h1>
+            <p className="reveal reveal-delay-1">
+              Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation)
+              and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by
+              ByteDance for high-quality visual content creation.
+            </p>
+            <p className="reveal reveal-delay-2 muted">
+              From text prompts, images, or scripts, generate professional visuals and videos with
+              powerful multimodal AI systems.
+            </p>
+
+            <div className="chip-row reveal reveal-delay-2">
+              {[
+                'AI Image Generation',
+                'AI Video Generation',
+                'High-Resolution Output',
+                'Audio-Visual Synchronization',
+                'Multilingual Lip-Sync'
+              ].map((chip, i) => (
+                <div className="chip" key={i}>
+                  {iconSvg}
+                  <span>{chip}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="cta-row reveal reveal-delay-3">
+              <a
+                href={ctaItems[1].href}
+                className="animated-cta btn-magnetic"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {ctaItems[1].text}
+              </a>
+              <a href="#pricing" className="ghost-btn">
+                Generate with AI
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-shell hero-cinematic-bg reveal" data-depth="0.4">
+            <div className="hero-art depth-background float-drift">
+              <div className="hero-bg-image" />
+            </div>
+            <div className="hero-dashboard">
+              <div className="panel main-panel glass-card">
+                <div className="panel-top">
+                  <strong>Seedream 4.5 and Seedance 1.5 Pro</strong>
+                  <span className="panel-pill">ByteDance Generative Models</span>
+                </div>
+                <div className="thumb-grid">
+                  <div className="thumb"><span>Image</span></div>
+                  <div className="thumb"><span>Video</span></div>
+                  <div className="thumb"><span>Prompt</span></div>
+                  <div className="thumb"><span>4K</span></div>
+                  <div className="thumb"><span>Audio</span></div>
+                  <div className="thumb"><span>Lip-Sync</span></div>
+                </div>
+              </div>
+              <div className="floating-card panel float-a float-ambient glass-card">
+                <div className="mini-title">High-Resolution Output</div>
+                <div className="mini-big">1K–4K</div>
+                <div className="mini-line" />
+              </div>
+              <div className="floating-card panel float-b float-rotate float-delay-1 glass-card">
+                <div className="mini-title">Text-to-Video Generation</div>
+                <div className="mini-big">Native</div>
+                <div className="mini-line" />
+              </div>
+              <div className="floating-card panel float-c float-pulse float-delay-2 glass-card">
+                <div className="mini-title">Audio-Visual Synchronization</div>
+                <div className="mini-big">Aligned</div>
+                <div className="mini-line" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-trust clip-reveal">
+        <div className="container">
+          <div className="section-head text-center">
+            <div className="section-tag reveal">Proof</div>
+            <h2 className="reveal">Trust signals, built around the product capabilities</h2>
+          </div>
+          <div className="metrics-strip stagger-parent">
+            <div className="metric-card glass-card hover-lift">
+              <div className="m-top">Seedream 4.5</div>
+              <div className="m-val">1K–4K resolution</div>
+            </div>
+            <div className="metric-card glass-card hover-lift">
+              <div className="m-top">Seedance 1.5 Pro</div>
+              <div className="m-val">10× Faster Inference</div>
+            </div>
+            <div className="metric-card glass-card hover-lift">
+              <div className="m-top">Creative Output</div>
+              <div className="m-val">Multimodal image + audio-video generation</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-products orbs">
+        <div className="container">
+          <div className="section-head">
+            <div className="section-tag reveal">Seedream 4.5</div>
+            <h2 className="reveal">
+              AI Image Generation with <span className="gradient-text">Seedream 4.5</span>
+            </h2>
+            <div className="desc-block reveal reveal-delay-1">
+              Seedream 4.5 is a high-performance multimodal image generation system designed to
+              produce high-resolution, high-fidelity images from text prompts and visual inputs.
+              <br />
+              The model unifies text-to-image synthesis, image editing, and multi-image composition
+              within a single framework.
+            </div>
+          </div>
+
+          <div className="tabs-layout">
+            <div className="tabs-list stagger-parent">
+              {seedreamFeatures.map((feature, idx) => (
+                <button
+                  key={feature.title}
+                  className={`tab-btn ${activeSeedreamTab === idx ? 'active' : ''}`}
+                  onClick={() => setActiveSeedreamTab(idx)}
+                >
+                  <h4>{feature.title}</h4>
+                  <p>{feature.description}</p>
+                </button>
+              ))}
+            </div>
+
+            <div className="preview-card glass-card">
+              <div className="preview-copy reveal">
+                <h3>{seedreamFeatures[activeSeedreamTab].title}</h3>
+                <p>{seedreamFeatures[activeSeedreamTab].description}</p>
+              </div>
+
+              <div className="scene-expand">
+                <div className="zoom-reveal browser-frame">
+                  <div className="browser-bar">
+                    <span className="browser-dot" />
+                    <span className="browser-dot" />
+                    <span className="browser-dot" />
+                  </div>
+                  <img
+                    src="/output/generated-assets/ds_1778062193770_30b9322b/15-fa9caa1249.png"
+                    alt="Seedream 4.5"
+                  />
+                </div>
+              </div>
+
+              <div className="feature-bullets stagger-parent" style={{ marginTop: 20 }}>
+                {seedreamFeatures.slice(0, 4).map((item) => (
+                  <div className="feature-bullet glass-card" key={item.title}>
+                    <div>{iconSvg}</div>
+                    <div>
+                      <strong>{item.title}</strong>
+                      <span>{item.description}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: 24 }}>
+                <a
+                  href={ctaItems[2].href}
+                  className="animated-cta"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {ctaItems[2].text}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-features pin-scene orbs">
+        <div className="container split-panel">
+          <div>
+            <div className="section-tag reveal">Seedance 1.5 Pro</div>
+            <h2 className="reveal">
+              AI Video Generation with <span className="gradient-text">Seedance 1.5 Pro</span> by
+              Bytedance
+            </h2>
+            <div className="desc-block reveal reveal-delay-1">
+              Seedance 1.5 Pro is a next-generation generative model designed for native
+              audio-visual generation, enabling synchronized creation of video and sound together.
+              <br />
+              Built on a dual-branch diffusion transformer architecture, the model integrates
+              cross-modal learning to produce coherent visual and audio outputs.
+              <br />
+              Headline: Key Capabilities of Seedance 1.5 Pro
+              <br />
+              Description: Seedance enables professional-grade AI video production with narrative
+              coherence and realistic motion.
+            </div>
+
+            <div className="tabs-list" style={{ marginTop: 24 }}>
+              {seedanceFeatures.map((feature, idx) => (
+                <button
+                  key={feature.title}
+                  className={`tab-btn ${activeSeedanceTab === idx ? 'active' : ''}`}
+                  onClick={() => setActiveSeedanceTab(idx)}
+                >
+                  <h4>{feature.title}</h4>
+                  <p>{feature.description}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="dashboard-visual glass-card depth-foreground" data-depth="0.15">
+            <div className="scene-expand" style={{ width: '100%', borderRadius: 20 }}>
+              <div className="zoom-reveal browser-frame">
+                <div className="browser-bar">
+                  <span className="browser-dot" />
+                  <span className="browser-dot" />
+                  <span className="browser-dot" />
+                </div>
+                <img
+                  src="/output/generated-assets/ds_1778062193770_30b9322b/14-41ea7f7485.png"
+                  alt="Seedance 1.5 Pro"
+                />
+              </div>
+            </div>
+
+            <div className="dash-grid" style={{ marginTop: 18 }}>
+              <div className="dash-card glass-card hover-lift">
+                <h4>{seedanceFeatures[activeSeedanceTab].title}</h4>
+                <p>{seedanceFeatures[activeSeedanceTab].description}</p>
+                <div className="chart-bars" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </div>
+              <div className="list-stack">
+                {seedanceFeatures.slice(0, 3).map((item) => (
+                  <div className="list-item glass-card hover-lift" key={item.title}>
+                    <div>{iconSvg}</div>
+                    <div>
+                      <h5>{item.title}</h5>
+                      <p>{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="section bg-pricing orbs clip-reveal">
+        <div className="container">
+          <div className="section-head text-center">
+            <div className="section-tag reveal">Pricing</div>
+            <h2 className="reveal">Compare Seedream 4.5 and Seedance 1.5 Pro</h2>
+          </div>
+
+          <div className="pricing-table stagger-parent">
+            <div className="price-card glass-card hover-lift">
+              <div className="price-top">
+                <h3>Seedream 4.5 (AI Image Generation)</h3>
+                <span className="badge-green">Includes</span>
+              </div>
+              <div className="price-line">
+                <span className="muted">Price on request</span>
+              </div>
+              <ul className="checklist">
+                <li>{iconSvg}<span>High-resolution image generation (up to 4K quality)</span></li>
+                <li>{iconSvg}<span>Text-to-image &amp; multimodal image editing</span></li>
+                <li>{iconSvg}<span>Multi-image composition for complex visuals</span></li>
+                <li>{iconSvg}<span>Enhanced typographic rendering for posters, ads &amp; text-heavy designs</span></li>
+              </ul>
+              <div style={{ marginTop: 'auto' }}>
+                <div className="ghost-btn full-btn" style={{ width: '100%' }}>Get Quote</div>
+              </div>
+            </div>
+
+            <div className="price-card featured glass-card hover-lift">
+              <div className="price-top">
+                <h3>Seedance 1.5 Pro (AI Video Generation)</h3>
+                <span className="badge-green">Starting at $1,000/month/</span>
+              </div>
+              <div className="price-line">
+                <span className="current">Starting at $1,000/month/</span>
+              </div>
+              <ul className="checklist">
+                <li>{iconSvg}<span>Text-to-video generation with cinematic output</span></li>
+                <li>{iconSvg}<span>Native audio + video generation (synchronized)</span></li>
+                <li>{iconSvg}<span>Multilingual lip-sync capabilities</span></li>
+                <li>{iconSvg}<span>Fast inference for quicker video production</span></li>
+              </ul>
+              <div style={{ marginTop: 'auto' }}>
+                <a
+                  href={ctaItems[3].href}
+                  className="animated-cta full-btn"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ width: '100%' }}
+                >
+                  {ctaItems[3].text}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-testimonials orbs">
+        <div className="container">
+          <div className="section-head text-center">
+            <div className="section-tag reveal">Testimonials</div>
+            <h2 className="reveal">What creative professionals are saying</h2>
+          </div>
+
+          <div className="testimonial-wrap">
+            <div
+              className="testimonial-track"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {testimonials.map((t, i) => (
+                <div className="testimonial-slide" key={i}>
+                  <div className="testimonial-card glass-card">
+                    <div className="quote-mark">❝</div>
+                    <div className="stars">★★★★★</div>
+                    <p>{t.quote}</p>
+                    <div className="author">
+                      <div className="avatar">{getInitials(t.name)}</div>
+                      <div>
+                        <strong>{t.name}</strong>
+                        <span>{t.role}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="dots">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  className={`dot ${i === activeSlide ? 'active' : ''}`}
+                  onClick={() => setActiveSlide(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <div className="arrow-row">
+              <button
+                className="arrow-btn"
+                onClick={() => setActiveSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                aria-label="Previous testimonial"
+              >
+                ←
+              </button>
+              <button
+                className="arrow-btn"
+                onClick={() => setActiveSlide((prev) => (prev + 1) % testimonials.length)}
+                aria-label="Next testimonial"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="section footer bg-footer">
+        <div className="container footer-grid">
+          <div className="footer-left">
+            <img
+              src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg"
+              alt="Techjockey"
+            />
+            <p>support@techjockey.com</p>
+            <p>© 2024 Techjockey Infotech Pvt. Ltd.</p>
+            <div className="footer-links">
+              <a href="/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a>
+              <a href="/terms" target="_blank" rel="noreferrer">Terms</a>
+            </div>
+          </div>
+
+          <div className="footer-right">
+            <p>Seedream 4.5 and Seedance 1.5 Pro</p>
+            <div className="socials">
+              <a href="https://www.facebook.com/techjockey/" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H16.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2V11H7.5v3h2.7v8h3.3z" /></svg>
+              </a>
+              <a href="https://www.instagram.com/techjockey/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5A4.5 4.5 0 1112 16.5 4.5 4.5 0 0112 7.5zm0 2A2.5 2.5 0 1014.5 12 2.5 2.5 0 0012 9.5zm4.75-3.25a1.25 1.25 0 11-1.25 1.25 1.25 1.25 0 011.25-1.25z" /></svg>
+              </a>
+              <a href="https://twitter.com/TechjockeyInfo" target="_blank" rel="noreferrer" aria-label="Twitter">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.8-2.6 1-1.5-1.6-4.2-1.7-5.8-.1-1 1-1.4 2.4-1.1 3.7-3-.2-5.8-1.6-7.6-3.9-1 1.8-.5 4 1.1 5.2-.6 0-1.2-.2-1.7-.5 0 2 1.4 3.8 3.4 4.2-.6.2-1.2.2-1.8.1.5 1.7 2.1 2.9 3.9 2.9A8.5 8.5 0 012 19.5a12 12 0 006.5 1.9c7.8 0 12.2-6.6 12-12.5.8-.6 1.5-1.3 2-2z" /></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/techjockeyinfotech/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 103 4.97 1.99 1.99 0 005.25 3zM20.44 12.45c0-3.02-1.61-4.42-3.76-4.42a3.26 3.26 0 00-2.94 1.62V8.5h-3.37V20h3.37v-6.03c0-1.59.3-3.14 2.27-3.14s1.99 1.84 1.99 3.24V20h3.44z" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;
