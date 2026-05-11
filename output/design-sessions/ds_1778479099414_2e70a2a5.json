@@ -1,0 +1,44 @@
+{
+  "sessionId": "ds_1778479099414_2e70a2a5",
+  "createdAt": "2026-05-11T05:58:19.418Z",
+  "updatedAt": "2026-05-11T05:58:19.426Z",
+  "status": "created",
+  "productName": "keka",
+  "pageType": "single",
+  "source": {
+    "brandURL": "",
+    "competitorURL": "",
+    "parsedSectionCount": 8
+  },
+  "workflow": {
+    "contentMap": null,
+    "referenceMap": null,
+    "personality": null,
+    "designIntent": null,
+    "figmaBuildPlan": null,
+    "heroStrategy": null,
+    "blueprint": null,
+    "mediaPlan": null
+  },
+  "figma": {
+    "fileId": null,
+    "fileName": null,
+    "fileUrl": null,
+    "pages": [],
+    "frames": [],
+    "nodes": {},
+    "syncStatus": "not-started",
+    "lastSyncAt": null
+  },
+  "outputs": {
+    "htmlFilename": null
+  },
+  "logs": [
+    {
+      "at": "2026-05-11T05:58:19.426Z",
+      "type": "workflow",
+      "step": "session-created",
+      "message": "Design session initialized"
+    }
+  ]
+}

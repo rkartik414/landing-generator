@@ -1,0 +1,723 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+const LandingPage = () => {
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+    const cta_text = "Generate with AI";
+  const accentColor = "#ff0057";
+  const primaryColor = "#ff0057";
+  const css = `
+    :root {
+      --accent: #ff0057;
+      --primary: #ff0057;
+      --accent-rgb: 255,0,87;
+      --bodyBg: #f5f5f5;
+      --section-alt: #f8fafc;
+      --section-deeper: #f1f5f9;
+      --card-bg: #ffffff;
+      --card-border: #e5e7eb;
+      --text-primary: #111827;
+      --text-muted: #6b7280
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', ui-sans-serif, sans-serif; background: var(--bodyBg); color: var(--text-primary); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    button { font-family: inherit; }
+    h1, h2, h3 { word-break: normal !important; overflow-wrap: normal !important; hyphens: none !important; }
+    h1, [class*="h1"], [class*="hero-title"], [class*="banner-title"], [class*="hvf-h1"] {
+      font-size: clamp(32px, 5vw, 60px) !important;
+      line-height: 1.1 !important;
+    }
+      .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    .stagger-parent > * { opacity:0; transform:translateY(24px); }
+    .zoom-reveal { overflow:hidden; }
+    .zoom-reveal img, .zoom-reveal video { transform:scale(1.12); will-change:transform; }
+    .slide-left { opacity:0; transform:translateX(-60px); }
+    .slide-right { opacity:0; transform:translateX(60px); }
+    .pop-in { opacity:0; transform:scale(0.7); }
+    .btn-magnetic { will-change:transform; }
+    .h-scroll-track { display:flex; gap:24px; will-change:transform; }
+    .sticky-scroll-section { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+    .sticky-panel { position:sticky; top:120px; height:fit-content; }
+    .scroll-step { min-height:280px; padding:32px 0; opacity:0.4; transition:opacity .3s; }
+    .scroll-step.active { opacity:1; }
+  
+@keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+     @keyframes scaleIn { from { opacity:0; transform:scale(0.94); } to { opacity:1; transform:scale(1); } }
+     .anim { opacity:0; animation:fadeUp 0.85s cubic-bezier(0.22,1,0.36,1) forwards; }
+     .anim-scale { opacity:0; animation:scaleIn 1s cubic-bezier(0.22,1,0.36,1) forwards; }
+     .d0{animation-delay:0.05s}.d1{animation-delay:0.2s}.d2{animation-delay:0.35s}
+     .d3{animation-delay:0.5s}.d4{animation-delay:0.65s}.d5{animation-delay:0.8s}
+     .container{max-width:1200px;margin:0 auto;padding:0 24px}
+     .section{padding:96px 0;position:relative}
+
+      .hvf         { position:relative; min-height:100vh; overflow:hidden;
+                     font-family:'Geist',ui-sans-serif,sans-serif;
+                     background:#fff; }
+      .hvf-video   { position:absolute; inset:0; z-index:0; }
+      .hvf-video video { width:100%; height:100%; object-fit:cover;
+                         transform:scaleY(-1); }
+      .hvf-overlay { position:absolute; inset:0;
+                     background:linear-gradient(to bottom,
+                       rgba(255,255,255,0) 26.416%,
+                       rgba(255,255,255,1) 66.943%); }
+                       .hero-right-col > *:not(form):not(.form-card) { display: none !important; }
+      .hvf-content { position:relative; z-index:10;
+                     display:flex; justify-content:center;
+                     padding:290px 24px 80px; }
+      .hvf-inner   { max-width:1200px; width:100%;
+                     display:flex; flex-direction:column; gap:32px; }
+      .hvf-h1      { font-size:80px; font-weight:500;
+                     letter-spacing:-0.04em; line-height:1.02;
+                     color:#0a0a0f; max-width:900px; }
+      .hvf-accent  { font-family:'Instrument Serif',Georgia,serif;
+                     font-style:italic; font-size:100px;
+                     font-weight:400; letter-spacing:-0.03em; }
+      .hvf-desc    { font-size:18px; line-height:1.65; color:#373a46;
+                     opacity:0.8; max-width:554px; }
+      .hvf-chips   { display:flex; flex-wrap:wrap; gap:10px; }
+      .hvf-chip    { display:flex; align-items:center; gap:7px;
+                     padding:8px 14px; border-radius:100px;
+                     background:rgba(var(--accent-rgb,255,107,0),0.08);
+                     border:1px solid rgba(var(--accent-rgb,255,107,0),0.22);
+                     color:#374151; font-size:13px; font-weight:500; }
+      .hvf-pill    { display:flex; align-items:center; max-width:510px;
+                     background:#fcfcfc; border-radius:40px;
+                     border:1px solid rgba(0,0,0,0.065);
+                     box-shadow:0px 10px 40px 5px rgba(194,194,194,0.25);
+                     padding:5px 5px 5px 22px; gap:8px; }
+      .hvf-input   { flex:1; min-width:0; border:none; outline:none;
+                     background:transparent; font-size:15px;
+                     color:#0f0f0f; letter-spacing:-0.01em; }
+      .hvf-input::placeholder { color:#b8bcc8; }
+      .hvf-btn     { border-radius:100px; color:#fff; border:none; flex-shrink:0;
+                     background:linear-gradient(180deg,#323232,#1d1d1d,#111);
+                     box-shadow:inset -4px -6px 25px 0px rgba(201,201,201,0.08),
+                                inset 4px 4px 10px 0px rgba(29,29,29,0.24);
+                     padding:13px 22px; font-size:14px; font-weight:500;
+                     cursor:pointer; white-space:nowrap; }
+      .hvf-proof   { display:flex; align-items:center; gap:10px;
+                     padding-left:4px; }
+      .hvf-avatars { display:flex; }
+      .hvf-av      { width:26px; height:26px; border-radius:50%;
+                     border:1.5px solid #fff; display:flex;
+                     align-items:center; justify-content:center;
+                     font-size:8px; font-weight:700; margin-left:-7px; }
+      .hvf-av:first-child { margin-left:0; }
+      .hvf-stars   { display:flex; gap:2px; }
+      .hvf-rcount  { font-size:13px; font-weight:500; color:#373a46;
+                     opacity:0.72; }
+    
+
+      .tms        { padding:60px 0; background:var(--bodyBg,#fff);
+                    border-top:1px solid rgba(0,0,0,0.06);
+                    border-bottom:1px solid rgba(0,0,0,0.06); }
+      .tms-grid   { display:grid; grid-template-columns:repeat(3,1fr);
+                    gap:2px; max-width:1200px; margin:0 auto; padding:0 24px; }
+      .tms-cell   { text-align:center; padding:32px 24px;
+                    position:relative; }
+      .tms-cell:not(:last-child)::after {
+                    content:''; position:absolute; right:0; top:20%;
+                    height:60%; width:1px;
+                    background:rgba(0,0,0,0.08); }
+      .tms-val    { font-size:48px; font-weight:800; letter-spacing:-0.04em;
+                    color:var(--accent,#ff6b00); line-height:1; }
+      .tms-label  { font-size:15px; font-weight:600; color:#111827;
+                    margin:8px 0 6px; }
+      .tms-note   { font-size:13px; color:#6b7280; line-height:1.5; }
+    
+
+      .falt        { padding:96px 0; }
+      .falt-head   { text-align:center; max-width:720px;
+                     margin:0 auto 80px; }
+      .falt-head h2 { font-size:44px; font-weight:700;
+                      letter-spacing:-0.04em; line-height:1.08;
+                      margin:14px 0; }
+      .falt-block  { display:grid; grid-template-columns:1fr 1fr;
+                     gap:80px; align-items:center; padding:0 24px;
+                     max-width:1200px; margin:0 auto 100px; }
+      .falt-block:last-child { margin-bottom:0; }
+      .falt-block.flip { direction:rtl; }
+      .falt-block.flip > * { direction:ltr; }
+      .falt-num    { font-size:13px; font-weight:700; letter-spacing:0.1em;
+                     text-transform:uppercase;
+                     color:var(--accent,#ff6b00); margin-bottom:16px; }
+      .falt-copy h3 { font-size:36px; font-weight:700;
+                      letter-spacing:-0.03em; line-height:1.1;
+                      margin:0 0 18px; }
+      .falt-copy p  { font-size:17px; color:#4b5563; line-height:1.8;
+                      margin:0 0 28px; }
+      .falt-chips  { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+      .falt-chip   { padding:7px 14px; border-radius:100px; font-size:13px;
+                     font-weight:600; background:rgba(var(--accent-rgb,255,107,0),0.08);
+                     border:1px solid rgba(var(--accent-rgb,255,107,0),0.2);
+                     color:#374151; }
+      .falt-visual { border-radius:24px; overflow:hidden;
+                     box-shadow:0 24px 60px rgba(15,23,42,0.1);
+                     border:1px solid #e5e7eb; }
+      .falt-visual img, .falt-visual video { width:100%; display:block; }
+      .falt-visual-dark { background:#111827; min-height:380px;
+                          display:flex; align-items:center;
+                          justify-content:center; position:relative;
+                          overflow:hidden; }
+    
+
+      .mns         { padding:80px 0; background:#fff;
+                     border-top:1px solid #f3f4f6; }
+      .mns-head    { text-align:center; margin-bottom:48px; }
+      .mns-label   { font-size:13px; font-weight:700; letter-spacing:0.08em;
+                     text-transform:uppercase; color:#9ca3af; }
+      .mns-grid    { display:grid; grid-template-columns:repeat(3,1fr);
+                     gap:20px; max-width:900px; margin:0 auto; padding:0 24px; }
+      .mns-card    { padding:24px; border-radius:16px; background:#f8fafc;
+                     border:1px solid #f3f4f6;
+                     transition:transform .25s, box-shadow .25s; }
+      .mns-card:hover { transform:translateY(-4px);
+                        box-shadow:0 12px 32px rgba(15,23,42,0.08); }
+      .mns-pub     { font-size:13px; font-weight:700;
+                     color:var(--accent,#ff6b00); margin-bottom:10px; }
+      .mns-text    { font-size:14px; color:#374151; line-height:1.65;
+                     font-style:italic; }
+    
+
+      .fig         { padding:96px 0; }
+      .fig.dark    { background:var(--bodyBg,#111827); color:#fff; }
+      .fig-head    { text-align:center; max-width:720px;
+                     margin:0 auto 60px; }
+      .fig-head h2 { font-size:44px; font-weight:700;
+                     letter-spacing:-0.04em; line-height:1.08;
+                     margin:14px 0 16px; }
+      .fig-head p  { opacity:0.72; font-size:17px; line-height:1.75; }
+      .fig-grid    { display:grid; grid-template-columns:repeat(3,1fr);
+                     gap:20px; max-width:1200px; margin:0 auto; padding:0 24px; }
+      .fig-card    { padding:28px; border-radius:20px;
+                     border:1px solid rgba(0,0,0,0.07);
+                     background:#fff;
+                     transition:transform 0.25s, box-shadow 0.25s; }
+      .fig.dark .fig-card { background:rgba(255,255,255,0.04);
+                            border-color:rgba(255,255,255,0.09); }
+      .fig-card:hover { transform:translateY(-6px);
+                        box-shadow:0 20px 48px rgba(15,23,42,0.1); }
+      .fig-icon    { width:48px; height:48px; border-radius:14px;
+                     background:rgba(var(--accent-rgb,255,107,0),0.1);
+                     display:flex; align-items:center;
+                     justify-content:center; margin-bottom:20px; }
+      .fig-card h4 { font-size:17px; font-weight:700; letter-spacing:-0.025em;
+                     margin:0 0 10px; }
+      .fig-card p  { font-size:14px; line-height:1.7; margin:0;
+                     color:#6b7280; }
+      .fig.dark .fig-card p { color:rgba(255,255,255,0.6); }
+    
+
+      .gvw         { padding:96px 0; background:var(--bodyBg,#fff); }
+      .gvw-head    { text-align:center; max-width:680px;
+                     margin:0 auto 56px; }
+      .gvw-head h2 { font-size:44px; font-weight:700;
+                     letter-spacing:-0.04em; line-height:1.08;
+                     margin:14px 0 16px; }
+      .gvw-head p  { font-size:17px; line-height:1.75; opacity:0.72; }
+      .gvw-grid    { display:grid; grid-template-columns:repeat(2,1fr);
+                     gap:20px; max-width:1200px; margin:0 auto; padding:0 24px; }
+      .gvw-card    { border-radius:20px; overflow:hidden;
+                     background:#fff; border:1px solid #e5e7eb;
+                     box-shadow:0 16px 40px rgba(15,23,42,0.08);
+                     transition:transform 0.3s, box-shadow 0.3s; }
+      .gvw-card:hover { transform:translateY(-6px) scale(1.01);
+                        box-shadow:0 28px 64px rgba(15,23,42,0.14); }
+      .gvw-video   { position:relative; aspect-ratio:16/9; overflow:hidden; }
+      .gvw-video video { width:100%; height:100%; object-fit:cover;
+                         display:block; }
+      .gvw-caption { padding:16px 18px; font-size:14px; font-weight:600;
+                     color:#111827; letter-spacing:-0.01em; }
+    
+
+      .wtj         { padding:80px 0; background:#111827; color:#fff; }
+      .wtj-inner   { max-width:1200px; margin:0 auto; padding:0 24px; }
+      .wtj-top     { display:flex; align-items:center; gap:20px;
+                     margin-bottom:48px; }
+      .wtj-logo    { height:36px; opacity:0.9; }
+      .wtj-divider { width:1px; height:36px; background:rgba(255,255,255,0.15); }
+      .wtj-tagline { font-size:18px; font-weight:500;
+                     color:rgba(255,255,255,0.8); }
+      .wtj-grid    { display:grid; grid-template-columns:repeat(4,1fr);
+                     gap:20px; }
+      .wtj-card    { padding:24px; border-radius:18px;
+                     background:rgba(255,255,255,0.05);
+                     border:1px solid rgba(255,255,255,0.09);
+                     transition:background 0.25s, border-color 0.25s; }
+      .wtj-card:hover { background:rgba(255,255,255,0.08);
+                        border-color:rgba(var(--accent-rgb,255,107,0),0.35); }
+      .wtj-icon    { width:44px; height:44px; border-radius:12px;
+                     background:rgba(var(--accent-rgb,255,107,0),0.15);
+                     display:flex; align-items:center; justify-content:center;
+                     margin-bottom:18px; }
+      .wtj-card h4 { font-size:16px; font-weight:700; margin:0 0 10px;
+                     letter-spacing:-0.02em; }
+      .wtj-card p  { font-size:14px; color:rgba(255,255,255,0.6);
+                     line-height:1.65; margin:0; }
+    
+
+      .pdc         { padding:96px 0; background:var(--bodyBg,#06080c);
+                     color:#fff; }
+      .pdc-head    { text-align:center; max-width:680px;
+                     margin:0 auto 60px; }
+      .pdc-head h2 { font-size:44px; font-weight:700;
+                     letter-spacing:-0.04em; margin:14px 0; }
+      .pdc-grid    { display:grid;
+                     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+                     gap:20px; max-width:1200px; margin:0 auto; padding:0 24px; }
+      .pdc-card    { padding:32px; border-radius:24px;
+                     background:rgba(255,255,255,0.04);
+                     border:1px solid rgba(255,255,255,0.09);
+                     position:relative; }
+      .pdc-card.featured { background:rgba(var(--accent-rgb,255,107,0),0.08);
+                           border-color:rgba(var(--accent-rgb,255,107,0),0.4);
+                           box-shadow:0 0 60px rgba(var(--accent-rgb,255,107,0),0.1); }
+      .pdc-badge   { display:inline-block; padding:5px 12px; border-radius:100px;
+                     background:#15803d; color:#fff; font-size:12px;
+                     font-weight:700; margin-bottom:16px; }
+      .pdc-plan    { font-size:20px; font-weight:700;
+                     letter-spacing:-0.02em; margin:0 0 16px; }
+      .pdc-price   { margin:12px 0 20px; }
+      .pdc-amount  { font-size:44px; font-weight:800; letter-spacing:-0.04em;
+                     color:var(--accent,#ff6b00); }
+      .pdc-old     { font-size:18px; color:rgba(255,255,255,0.4);
+                     text-decoration:line-through; margin-left:8px; }
+      .pdc-period  { font-size:14px; color:rgba(255,255,255,0.5);
+                     display:block; margin-top:4px; }
+      .pdc-desc    { font-size:15px; color:rgba(255,255,255,0.65);
+                     line-height:1.7; margin-bottom:24px; }
+      .pdc-list    { list-style:none; padding:0; margin:0 0 28px;
+                     display:grid; gap:12px; }
+      .pdc-list li { display:flex; gap:10px; align-items:start;
+                     font-size:14px; color:rgba(255,255,255,0.8);
+                     line-height:1.55; }
+      .pdc-check   { width:18px; height:18px; color:var(--accent,#ff6b00);
+                     flex-shrink:0; margin-top:1px; }
+      .pdc-btn     { width:100%; padding:14px; border-radius:12px;
+                     font-size:15px; font-weight:700; cursor:pointer;
+                     border:none; background:var(--accent,#ff6b00); color:#fff;
+                     transition:opacity .2s, transform .2s; }
+      .pdc-btn:hover { opacity:0.9; transform:translateY(-1px); }
+    
+
+      .tcar        { padding:96px 0; background:#f8fafc; }
+      .tcar-head   { text-align:center; max-width:720px;
+                     margin:0 auto 60px; }
+      .tcar-head h2 { font-size:44px; font-weight:700;
+                      letter-spacing:-0.04em; margin:14px 0 16px; }
+      .tcar-head p  { font-size:17px; color:#4b5563; line-height:1.75;
+                      opacity:0.8; }
+      .tcar-layout { display:grid; grid-template-columns:300px 1fr;
+                     gap:24px; max-width:1200px; margin:0 auto;
+                     padding:0 24px; align-items:start; }
+      .tcar-rail   { display:grid; gap:14px; }
+      .tcar-mini   { padding:18px; border-radius:18px; background:#fff;
+                     border:1px solid #e5e7eb; font-size:14px;
+                     color:#374151; line-height:1.65; }
+      .tcar-mini-stars { color:#f59e0b; font-size:13px;
+                         margin-bottom:8px; }
+      .tcar-stage  { border-radius:28px; background:#fff;
+                     border:1px solid #e5e7eb;
+                     box-shadow:0 20px 60px rgba(15,23,42,0.08);
+                     overflow:hidden; }
+      .tcar-track  { display:flex; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+      .tcar-slide  { min-width:100%; padding:44px; }
+      .tcar-quote  { font-size:64px; line-height:1;
+                     color:var(--accent,#ff6b00); font-family:Georgia,serif;
+                     margin-bottom:8px; }
+      .tcar-stars  { color:#f59e0b; font-size:18px;
+                     letter-spacing:2px; margin-bottom:16px; }
+      .tcar-text   { font-size:20px; line-height:1.75; color:#111827;
+                     margin:0 0 28px; }
+      .tcar-author { display:flex; align-items:center; gap:14px; }
+      .tcar-avatar { width:52px; height:52px; border-radius:50%;
+                     display:flex; align-items:center; justify-content:center;
+                     font-size:16px; font-weight:700; color:#fff;
+                     background:var(--accent,#ff6b00); flex-shrink:0; }
+      .tcar-name   { font-size:16px; font-weight:700; }
+      .tcar-role   { font-size:14px; color:#6b7280; margin-top:2px; }
+      .tcar-dots   { display:flex; gap:8px; justify-content:center;
+                     padding:20px 0; }
+      .tcar-dot    { border:none; cursor:pointer; border-radius:100px;
+                     height:8px; background:#d1d5db;
+                     transition:all 0.3s ease; }
+      .tcar-dot.active { width:28px; background:var(--accent,#ff6b00); }
+      .tcar-dot:not(.active) { width:8px; }
+    
+
+      .ctavb       { position:relative; padding:100px 24px;
+                     text-align:center; color:#fff; overflow:hidden;
+                     min-height:420px; display:flex; align-items:center;
+                     justify-content:center; }
+      .ctavb-bg    { position:absolute; inset:0; z-index:0; }
+      .ctavb-bg video { width:100%; height:100%; object-fit:cover; }
+      .ctavb-overlay { position:absolute; inset:0;
+                       background:rgba(0,0,0,0.6); z-index:1; }
+      .ctavb-inner { position:relative; z-index:2;
+                     max-width:680px; margin:0 auto; }
+      .ctavb h2   { font-size:48px; font-weight:700; letter-spacing:-0.04em;
+                    line-height:1.08; margin:0 0 18px; }
+      .ctavb p    { font-size:18px; color:rgba(255,255,255,0.8);
+                    line-height:1.7; margin:0 0 36px; }
+      .ctavb-btn  { display:inline-flex; align-items:center; gap:10px;
+                    padding:16px 36px; border-radius:14px; font-size:16px;
+                    font-weight:700; cursor:pointer;
+                    background:var(--accent,#ff6b00); color:#fff; border:none;
+                    transition:transform .2s, box-shadow .2s; }
+      .ctavb-btn:hover { transform:translateY(-2px) scale(1.02);
+                         box-shadow:0 14px 36px rgba(var(--accent-rgb,255,107,0),0.45); }
+    `;
+
+  return (
+    <div>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+     <nav className="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-xl border-b border-white/10 py-3.5">
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center gap-4">
+          <span className="font-extrabold text-xl" style={{color:'#ff0057'}}>Seedream 4.5 and Seedance 1.5 Pro</span>
+          <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey" className="h-7 opacity-95" />
+          <a href="#lead-form" className="inline-flex items-center justify-center rounded-xl text-sm font-semibold h-11 px-6 bg-[#ff0057] text-white shadow hover:-translate-y-0.5 hover:opacity-90 transition-all focus-visible:outline-none disabled:opacity-50 text-sm" style={{textDecoration:'none'}}>Get Free Consultation</a>
+        </div>
+      </nav>
+
+      <section className="hvf" style={{backgroundColor: '#ffffff', display: 'flex', padding: '40px', gap: '20px'}}>
+  <div className="hvf-content" style={{flex: '1'}}>
+    <h1 className="hvf-h1 anim d0" style={{fontSize: 'clamp(32px, 5vw, 60px)', lineHeight: '1.2', fontWeight: '700'}}>
+      Create High-Quality AI Images & Videos with <span className="hvf-accent">Seedream 4.5 and Seedance 1.5 Pro</span>
+    </h1>
+    <p className="hvf-desc anim d1" style={{fontSize: '1.125rem', color: '#333', margin: '20px 0'}}>
+      Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.
+    </p>
+    <div className="hvf-chips" style={{display: 'flex', gap: '10px'}}>
+      {["Seedream 4.5", "Seedance 1.5 Pro"].map((chip, i) => (
+        <span key={i} className="hvf-chip" style={{backgroundColor: '#f8fafc', padding: '10px 20px', borderRadius: '20px', fontWeight: '500'}}>
+          {chip}
+        </span>
+      ))}
+    </div>
+    <button className="hvf-btn" style={{marginTop: '20px', padding: '15px 30px', color: '#fff', backgroundColor:'#ff0057', borderRadius: '8px', fontWeight: '700'}}>Generate with AI</button>
+  </div>
+  <div className="hvf-video" style={{flex: '1', position: 'relative'}}>
+    <video autoPlay muted loop playsInline style={{width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '12px'}}>
+      <source src="https://v3-magicarena-v.365yg.com/5ebff7332764d966c484e7d608a2a5ff/7c0cf93c/video/tos/cn/tos-cn-v-13c08f/oQsw1SfxDoEA29eB7Og5EQii81A6A0AhBcAHBE/?a=611830&ch=0&cr=0&dr=0&er=0&lr=default&cd=0%7C0%7C0%7C0&br=8909&bt=8909&cs=0&ds=3&ft=7ubAHfXEBBkq8Zmo-N-6U_vjVQWw&mime_type=video_mp4&qs=13&rc=M3Q4Zm85cjppODczNGllM0BpM3Q4Zm85cjppODczNGllM0BvLmNsMmRjYC1hLS1kXzBzYSNvLmNsMmRjYC1hLS1kXzBzcw%3D%3D&btag=80000e00008000&dy_q=1765865013&l=20251216140333C070E0BD30CE0970742B" type="video/mp4"/>
+    </video>
+  </div>
+  <div className="hvf-inner" style={{width: '400px', padding: '20px', backgroundColor: '#f8fafc', borderRadius: '12px'}}>
+    <form className="anim d2">
+      <div className="hvf-input" style={{marginBottom: '15px'}}>
+        <input type="text" placeholder="Name" style={{width: '100%', padding: '12px', borderRadius: '8px', borderColor: '#ccc', borderWidth: '1px'}}/>
+      </div>
+      <div className="hvf-input" style={{marginBottom: '15px'}}>
+        <input type="email" placeholder="Email" style={{width: '100%', padding: '12px', borderRadius: '8px', borderColor: '#ccc', borderWidth: '1px'}}/>
+      </div>
+      <div className="hvf-input" style={{marginBottom: '15px'}}>
+        <input type="tel" placeholder="Phone" style={{width: '100%', padding: '12px', borderRadius: '8px', borderColor: '#ccc', borderWidth: '1px'}}/>
+      </div>
+      <div className="hvf-input" style={{marginBottom: '15px'}}>
+        <input type="text" placeholder="Company" style={{width: '100%', padding: '12px', borderRadius: '8px', borderColor: '#ccc', borderWidth: '1px'}}/>
+      </div>
+      <button type="submit" className="hvf-btn" style={{width: '100%', padding: '15px', backgroundColor: '#ff0057', color: '#fff', borderRadius: '8px', fontWeight: '700'}}>Submit</button>
+    </form>
+  </div>
+</section>
+
+<section className="tms" style={{backgroundColor: '#f8fafc', padding: '40px 0'}}>
+  <div className="tms-grid max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="tms-cell reveal stagger" style={{textAlign: 'center'}}>
+      <div className="tms-val text-4xl font-bold" data-count="12345">12,345</div>
+      <div className="tms-label text-lg">AI Models Deployed</div>
+      <div className="tms-note text-sm text-gray-600">//</div>
+    </div>
+    <div className="tms-cell reveal stagger" style={{textAlign: 'center'}}>
+      <div className="tms-val text-4xl font-bold" data-count="6789">6,789</div>
+      <div className="tms-label text-lg">Creative Projects</div>
+      <div className="tms-note text-sm text-gray-600">//</div>
+    </div>
+    <div className="tms-cell reveal stagger" style={{textAlign: 'center'}}>
+      <div className="tms-val text-4xl font-bold" data-count="23456">23,456</div>
+      <div className="tms-label text-lg">Visual Content Pieces</div>
+      <div className="tms-note text-sm text-gray-600">//</div>
+    </div>
+  </div>
+  <img src="/output/generated-assets/ds_1778482403905_c2fa33a4/02-7f64cfae87.jpeg" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%', height:'100%', objectFit:'cover', display:'block', position:'absolute', inset:0}} />
+</section>
+
+<section className="falt bg-white">
+  <div className="falt-head reveal anim d0">
+    <h2 className="font-bold text-2xl md:text-4xl lg:text-5xl mb-4">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
+    <img src="/output/generated-assets/ds_1778482403905_c2fa33a4/02-7f64cfae87.jpeg" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
+  </div>
+  {[{"num":"01","title":"AI Image Generation with Seedream 4.5","description":"Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.","features":["Advanced Text–Image Alignment","High-Resolution Output","Superior Typographic Rendering","Multi-Image Composition with Identity Preservation","Strong Structural Fidelity"],"image_url":"/output/generated-assets/ds_1778482403905_c2fa33a4/01-3965757185.jpeg","video_url":""},{"num":"02","title":"AI Video Generation with Seedance 1.5 Pro by Bytedance","description":"Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.","features":["Key Capabilities of Seedance 1.5 Pro","Text-to-Video Generation","Audio-Visual Synchronization","Multilingual Lip-Sync","Cinematic Camera Control","10× Faster Inference"],"image_url":"/output/generated-assets/ds_1778482403905_c2fa33a4/05-577dd50cc7.jpeg","video_url":""}].map((section, i) => (
+    <div className={`falt-block reveal anim d${i}`} key={section.num}>
+      <div className="flex flex-col gap-4 mb-8 lg:flex-row">
+        <div className={`lg:w-1/2 ${i % 2 === 1 ? 'lg:order-last' : ''}`}>
+          <div className="flex items-center mb-2">
+            <span className="falt-num text-xl font-semibold text-[#ff0057]">{section.num}</span>
+            <h3 className="ml-4 text-xl font-bold">{section.title}</h3>
+          </div>
+          <p className="falt-copy mb-4">{section.description}</p>
+          <div className="falt-chips flex flex-wrap gap-2">
+            {section.features.map((feature, j) => (
+              <span className="falt-chip px-3 py-1 bg-gray-200 text-sm font-medium rounded" key={j}>{feature}</span>
+            ))}
+          </div>
+        </div>
+        <div className="falt-visual lg:w-1/2">
+          {section.video_url ? (
+            <video autoPlay muted loop playsInline style={{width:'100%',borderRadius:'12px'}}>
+              <source src={section.video_url} type="video/mp4"/>
+            </video>
+          ) : (
+            <img src={section.image_url} alt={`Feature ${section.num}`} style={{width:'100%',borderRadius:'12px',display:'block'}}/>
+          )}
+        </div>
+      </div>
+    </div>
+  ))}
+</section>
+
+<section className="mns bg-[#ffffff] py-14">
+  <div className="mns-head text-center mb-8">
+    <h3 className="mns-label text-lg font-bold text-[#ff0057]">FEATURES</h3>
+  </div>
+  <div className="mns-grid flex justify-center items-center space-x-8 anim stagger">
+    {[{publication: "TechCrunch", headline: "Revolutionizing AI Image & Video Production"},{"publication": "Wired", headline: "Enhancing Creative Workflows with AI"}].map((item, index) => (
+      <div key={index} className="mns-card w-1/3 bg-white shadow-lg p-6 rounded-lg">
+        <div className="mns-pub text-sm text-[#ff0057] font-semibold">{item.publication}</div>
+        <div className="mns-text mt-2 text-gray-700 font-medium">"{item.headline}"</div>
+      </div>
+    ))}
+  </div>
+  <div className="relative mt-8">
+    <img src="/output/generated-assets/ds_1778482403905_c2fa33a4/02-7f64cfae87.jpeg" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
+  </div>
+</section>
+
+<section className="fig bg-[#ffffff]">
+  <div className="fig-head">
+    <h2>Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
+    <p>Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.</p>
+    <img src="/output/generated-assets/ds_1778482403905_c2fa33a4/02-7f64cfae87.jpeg" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
+  </div>
+  <div className="fig-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-parent">
+    {[{"title":"Advanced Text–Image Alignment","description":"Accurately translates prompts into visuals with improved semantic understanding."},{"title":"High-Resolution Output","description":"Generate native images up to 1K–4K resolution with strong visual fidelity."},{"title":"Superior Typographic Rendering","description":"Optimized for posters, ads, and text-heavy visual designs."},{"title":"Multi-Image Composition with Identity Preservation","description":"Combines multiple inputs while accurately maintaining subject consistency."},{"title":"Strong Structural Fidelity","description":"Maintains composition, layout, and scene structure with high precision."},{"title":"Key Capabilities of Seedance 1.5 Pro","description":"Seedance enables professional-grade AI video production with narrative coherence and realistic motion."}].map((feature, index) => (
+      <div key={index} className="fig-card opacity-0 translate-y-10 transition-all duration-300 delay-${index * 100}ms">
+        <div className="fig-icon">
+          <svg width="16" height="16" fill="var(--accent)">
+            {/* Simple SVG placeholder example, replace with actual relevant icons */}
+            <circle cx="8" cy="8" r="7" />
+          </svg>
+        </div>
+        <h4 className="inline">{feature.title}</h4>
+        <p className="inline">{feature.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section className="gvw bg-[#f8fafc]">
+  <div className="gvw-head text-center py-12 reveal">
+    <p className="eyebrow text-[#ff0057] font-bold">Gallery Video Wall</p>
+    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-2" style={{ fontSize: 'clamp(32px,5vw,60px)', wordBreak: 'normal', overflowWrap: 'normal', hyphens: 'none' }}>
+      Create High-Quality AI Images & Videos with ByteDance Generative Models
+    </h2>
+    <p className="mt-2 text-lg text-gray-700 max-w-3xl mx-auto">
+      Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.
+    </p>
+  </div>
+  <div className="gvw-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 pb-12 reveal anim-scale">
+    {[{url: "https://v3-magicarena-v.365yg.com/5ebff7332764d966c484e7d608a2a5ff/7c0cf93c/video/tos/cn/tos-cn-v-13c08f/oQsw1SfxDoEA29eB7Og5EQii81A6A0AhBcAHBE/?a=611830&ch=0&cr=0&dr=0&er=0&lr=default&cd=0%7C0%7C0%7C0&br=8909&bt=8909&cs=0&ds=3&ft=7ubAHfXEBBkq8Zmo-N-6U_vjVQWw&mime_type=video_mp4&qs=13&rc=M3Q4Zm85cjppODczNGllM0BpM3Q4Zm85cjppODczNGllM0BvLmNsMmRjYC1hLS1kXzBzYSNvLmNsMmRjYC1hLS1kXzBzcw%3D%3D&btag=80000e00008000&dy_q=1765865013&l=20251216140333C070E0BD30CE0970742B", caption: "Seedream 4.5"}].map((video, i) => (
+      <div key={i} className="gvw-card rounded-lg overflow-hidden relative">
+        <div className="gvw-video">
+          <video autoPlay muted loop playsInline style={{ width: '100%', borderRadius: '12px' }}>
+            <source src={video.url} type="video/mp4" />
+          </video>
+        </div>
+        <div className="gvw-caption bg-white p-4 absolute bottom-0 left-0 right-0 text-center" style={{ background: 'rgba(255,255,255,0.8)' }}>
+          <span className="text-lg font-medium text-gray-800">{video.caption}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+  <div style={{position: 'relative', paddingBottom: '56.25%', height: 0}}>
+    <img src="/output/generated-assets/ds_1778482403905_c2fa33a4/02-7f64cfae87.jpeg" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}} />
+  </div>
+</section>
+
+<section className="wtj bg-[#f8fafc] py-16">
+  <div className="wtj-inner max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="wtj-top text-center mb-12">
+      <div className="wtj-logo mb-4">
+        <img src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" alt="Techjockey" className="mx-auto"/>
+      </div>
+      <div className="wtj-tagline text-lg text-gray-700">
+        India's #1 B2B Software Marketplace
+      </div>
+    </div>
+    <div className="wtj-divider border-t border-gray-200 my-8"></div>
+    <div className="wtj-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start" style={{ animationDelay: '0.3s' }}>
+      {[
+        { title: "Free Expert Consultation", description: "Get matched with the right software" },
+        { title: "Verified Reviews", description: "1000+ genuine customer reviews" },
+        { title: "Best Price Guarantee", description: "Competitive pricing assured" },
+        { title: "Dedicated Support", description: "Post-sale onboarding assistance" }
+      ].map((point, index) => (
+        <div className="wtj-card flex flex-col items-center p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 reveal" key={index}>
+          <div className="wtj-icon mb-4 text-[#ff0057]">
+            {/* Replace with actual SVGs related to the point */}
+            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h4 className="text-xl font-semibold text-gray-800">{point.title}</h4>
+          <p className="text-gray-500 mt-2 text-center">{point.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div className="relative">
+    <img src="/output/generated-assets/ds_1778482403905_c2fa33a4/02-7f64cfae87.jpeg" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }} />
+  </div>
+</section>
+
+<section className="pdc bg-[#ffffff]">
+  <div className="pdc-head text-center pb-12 reveal">
+    <h2 className="font-['Plus Jakarta Sans'] text-4xl text-[#ff0057] anim d0">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
+  </div>
+  <div className="pdc-grid flex justify-between items-start flex-wrap px-8 reveal">
+    {[{"name":"Seedream 4.5 (AI Image Generation)","price":"","originalPrice":"","discount":"20% off","period":"per user/month","description":"","includes":["High-resolution image generation (up to 4K quality)","Text-to-image & multimodal image editing","Multi-image composition for complex visuals","Enhanced typographic rendering for posters, ads & text-heavy designs"],"highlighted":true},{"name":"Seedance 1.5 Pro (AI Video Generation)","price":"Starting at $1,000/month/","originalPrice":"","discount":"","period":"per user/month","description":"","includes":["Text-to-video generation with cinematic output","Native audio + video generation (synchronized)","Multilingual lip-sync capabilities","Fast inference for quicker video production"],"highlighted":false}].map((plan, index) => (
+      <div key={index} className={`pdc-card p-6 rounded-lg shadow-lg bg-white ${plan.highlighted ? 'featured' : ''} anim`} style={{transitionDelay: `${0.1 * index}s`}}>
+        {plan.highlighted && <div className="pdc-badge bg-[#ff0057] text-white text-xs uppercase px-2 py-1 mb-4 inline-block rounded">{plan.discount}</div>}
+        <h3 className="pdc-plan font-['Inter'] text-xl text-gray-800">{plan.name}</h3>
+        <div className={`pdc-price flex items-end mt-2 ${plan.price ? '' : 'text-[#ff0057]'}`}>
+          <span className="pdc-amount text-2xl font-bold">{plan.price || 'Contact for Pricing'}</span>
+          <span className="pdc-old text-sm text-gray-500 ml-2">{plan.originalPrice}</span>
+        </div>
+        <div className="pdc-period text-sm text-gray-500 mt-2">{plan.period}</div>
+        <div className="pdc-desc mt-4">
+          <ul className="pdc-list list-none mt-4 space-y-2">
+            {plan.includes.map((feature, idx) => (
+              <li key={idx} className="flex items-center">
+                <svg className="pdc-check w-4 h-4 text-[#ff0057] mr-2" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M8.293 14.293a1 1 0 011.414 0l6.293-6.293a1 1 0 10-1.414-1.414L9 12.586l-4.293-4.293a1 1 0 00-1.414 1.414l5 5z" clipRule="evenodd" /></svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex justify-center mt-6">
+          <button className="pdc-btn bg-[#ff0057] text-white py-2 px-4 rounded-lg hover:bg-[#e60030] transition">Generate with AI</button>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section className="tcar bg-[#f8fafc] py-16">
+  {(() => {
+    const [slide, setSlide] = React.useState(0); 
+    React.useEffect(() => { 
+      const t = setInterval(() => setSlide(p => (p + 1) % 5), 4000); 
+      return () => clearInterval(t); 
+    }, []);
+    
+    return (
+      <>
+        <div className="tcar-head text-center mb-8">
+          <h2 className="eyebrow text-[#ff0057]">Testimonials</h2>
+          <h3 className="anim d0 head text-3xl font-bold mt-4 mb-2">Create High-Quality AI Images & Videos with ByteDance Generative Models</h3>
+          <p className="text-gray-700 max-w-3xl mx-auto">Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.</p>
+        </div>
+        <div className="tcar-layout flex justify-center items-center space-x-8 mb-8">
+          {[
+            {"quote":"Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.","author":"Vaishali Saxena"},
+            {"quote":"Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.","author":"Vihaan Pandey"},
+            {"quote":"The multimodal editing capabilities in Seedream make it easy to refine images with precision.","author":"Anurag Malhotra"}
+          ].map((testimonial, index) => (
+            <div key={index} className="tcar-mini w-64 p-4 bg-white rounded-lg shadow">
+              <p className="tcar-mini-stars text-[#ff0057] mb-2">★★★★★</p>
+              <p className="tcar-quote text-gray-700 truncate">{testimonial.quote}</p>
+              <p className="tcar-author mt-2 text-sm font-semibold">{testimonial.author}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="tcar-stage anim-scale d1 mb-8 overflow-hidden relative">
+          <div className="tcar-track flex transition-transform ease-linear duration-300" style={{ transform: `translateX(-${slide * 100}%)`, width: '500%' }}>
+            {[
+              {"quote":"Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.","author":"Vaishali Saxena","role":"Creative Director"},
+              {"quote":"Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.","author":"Vihaan Pandey","role":"Video Producer"},
+              {"quote":"The multimodal editing capabilities in Seedream make it easy to refine images with precision.","author":"Anurag Malhotra","role":"Art Director"},
+              {"quote":"Techjockey made it easy to evaluate Seedream and Seedance. The free demo helped us understand the capabilities.","author":"Ashutosh Singh","role":"Marketing Manager"},
+              {"quote":"From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.","author":"Shrimmi Saxena","role":"Creative Lead"}
+            ].map((testimonial, index) => (
+              <div key={index} className="tcar-slide p-8 bg-white rounded-lg shadow w-full">
+                <p className="tcar-stars text-[#ff0057] mb-4">★★★★★</p>
+                <p className="tcar-text mb-4">{testimonial.quote}</p>
+                <div className="tcar-avatar text-xl rounded-full w-12 h-12 bg-[#ff0057] text-white flex items-center justify-center">{testimonial.author.slice(0, 1)}</div>
+                <p className="tcar-name font-bold text-lg">{testimonial.author}</p>
+                <p className="tcar-role text-gray-600 text-sm">{testimonial.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="tcar-dots flex justify-center space-x-2">
+          {[0, 1, 2, 3, 4].map((index) => (
+            <div 
+              key={index} 
+              className={`tcar-dot w-3 h-3 rounded-full ${index === slide ? 'bg-[#ff0057]' : 'bg-gray-400'}`} 
+              onClick={() => setSlide(index)}
+            ></div>
+          ))}
+        </div>
+      </>
+    );
+  })()}
+</section>
+
+<section className="ctavb">
+  <div className="ctavb-bg">
+    <video autoPlay muted loop playsInline style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}>
+      <source src="https://v3-magicarena-v.365yg.com/5ebff7332764d966c484e7d608a2a5ff/7c0cf93c/video/tos/cn/tos-cn-v-13c08f/oQsw1SfxDoEA29eB7Og5EQii81A6A0AhBcAHBE/?a=611830&ch=0&cr=0&dr=0&er=0&lr=default&cd=0%7C0%7C0%7C0&br=8909&bt=8909&cs=0&ds=3&ft=7ubAHfXEBBkq8Zmo-N-6U_vjVQWw&mime_type=video_mp4&qs=13&rc=M3Q4Zm85cjppODczNGllM0BpM3Q4Zm85cjppODczNGllM0BvLmNsMmRjYC1hLS1kXzBzYSNvLmNsMmRjYC1hLS1kXzBzcw%3D%3D&btag=80000e00008000&dy_q=1765865013&l=20251216140333C070E0BD30CE0970742B" type="video/mp4"/>
+    </video>
+  </div>
+  <div className="ctavb-overlay">
+    <img src="/output/generated-assets/ds_1778482403905_c2fa33a4/02-7f64cfae87.jpeg" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
+  </div>
+  <div className="ctavb-inner">
+    <h2 className="reveal anim d0" style={{color:'#ffffff',fontSize:'clamp(32px,5vw,60px)',fontFamily:'Plus Jakarta Sans',wordBreak:'normal',overflowWrap:'normal',hyphens:'none'}}>Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
+    <p className="reveal anim d1" style={{color:'#ffffff',fontFamily:'Inter',padding:'1em 0'}}>Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.</p>
+    <a href="#lead-form" className="ctavb-btn reveal anim d2" style={{backgroundColor:'#ff0057',color:'#ffffff',padding:'0.75em 2em',borderRadius:'8px',fontFamily:'Inter'}}>Generate with AI</a>
+  </div>
+</section>
+
+      <footer style={{background:'#0f172a',color:'#fff',padding:'42px 0'}}>
+        <div className="container" style={{display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:24}}>
+          <div>
+            <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey" style={{marginBottom:14,display:'block'}} />
+            <div style={{display:'flex',flexWrap:'wrap',gap:'10px 20px',fontSize:14,color:'rgba(255,255,255,0.75)'}}>
+              <a href="mailto:support@techjockey.com" style={{color:'rgba(255,255,255,0.85)'}}>support@techjockey.com</a>
+              <span>© 2024 Techjockey Infotech Pvt. Ltd.</span>
+              <a href="/privacy-policy" style={{color:'rgba(255,255,255,0.85)'}}>Privacy Policy</a>
+              <a href="/terms-condition" style={{color:'rgba(255,255,255,0.85)'}}>Terms</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;
