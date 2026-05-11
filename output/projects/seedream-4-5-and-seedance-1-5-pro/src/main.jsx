@@ -4,5 +4,5 @@ import './index.css';
 import LandingPage from './LandingPage';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  "hello world"
+  <React.StrictMode><LandingPage /></React.StrictMode>
 );

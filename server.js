@@ -195,6 +195,7 @@ function buildStrictCtaConfig({
   };
 }
 
+
 function buildReactPreviewWrapper(jsxCode, filename) {
 
   if (!jsxCode.includes('support@techjockey.com')) {
@@ -227,9 +228,9 @@ export default LandingPage;`
       filename: filename
     });
     compiledJs = result.code
-      // Remove import statement — browser doesn't support it
-      .replace(/^import React.*from 'react';\n?/m, '')
-      .replace(/^import \{.*\} from 'react';\n?/gm, '')
+      // Remove all ES module import statements — browser UMD context has no module loader
+      .replace(/^import\s+.*?\s+from\s+['"][^'"]+['"];?\n?/gm, '')
+      .replace(/^import\s+['"][^'"]+['"];?\n?/gm, '')
       // Remove export default — we call it directly
       .replace(/export default LandingPage;?\s*$/, '');
   } catch(e) {
@@ -248,7 +249,6 @@ export default LandingPage;`
   <title>${filename}</title>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <link rel="stylesheet" href="/ui/tailwind.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -267,7 +267,7 @@ export default LandingPage;`
 <body>
   <div id="root"></div>
   <script>
-    const { useState, useEffect, useRef } = React;
+    const { useState, useEffect, useRef, useCallback, useMemo, useContext, useReducer, useId } = React;
     ${compiledJs}
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(React.createElement(LandingPage));
@@ -1003,6 +1003,18 @@ const bodyIsDark = /^#0|^#1/.test(blueprint?.colours?.bodyBg || '#fff');
 
   // Generate all sections in parallel
   function extractSectionJSX(jsx) {
+    jsx = jsx.replace(/export\s+default\s+\w+\s*;?\s*\n?/g, '');
+    jsx = jsx.replace(/\bclass=/g, 'className=');
+    jsx = jsx.replace(/\bstyle="([^"]*)"/g, (_, css) => {
+      const obj = css.split(';').filter(Boolean).map(rule => {
+        const [prop, ...rest] = rule.split(':');
+        if (!prop || !rest.length) return null;
+        const camel = prop.trim().replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+        return `${camel}:'${rest.join(':').trim()}'`;
+      }).filter(Boolean).join(',');
+      return `style={{${obj}}}`;
+    });
+
     jsx = jsx.replace(/^import\s+.*?;\s*\n?/gm, '');
     jsx = jsx.replace(/^const\s*\{[^}]*\}\s*=\s*React\s*;?\s*\n?/gm, '');
     jsx = jsx.replace(/export\s+default\s+\w+\s*;?\s*\n?/g, '');
@@ -1097,6 +1109,17 @@ Below: ${nextSection}
 `;
 
         const systemPrompt = `
+
+        HARD JSX RULES — VIOLATION BREAKS THE PAGE:
+1. NEVER use class= — always use className=
+2. NEVER use style="color:#hex" — always use style={{color:'#hex'}}
+3. NEVER write export default LandingPage; anywhere in your output
+4. NEVER define variables before the JSX — no const x = [...] before <section>
+5. NEVER define sub-components — no const X = () => {}, no function X() {}
+6. NEVER use if() statements at top level — use ternary inside JSX only
+7. ALL data arrays must be inline inside .map() — never stored in const first
+8. Output must START with a JSX element — <section or <div only
+
         TOP-LEVEL JS RULE — ABSOLUTE:
 - Output must START with a JSX element: <section or <div
 - NEVER declare: const testimonials = [...] before the JSX
@@ -1388,6 +1411,9 @@ const LandingPage = () => {
     return () => observer.disconnect();
   }, []);
 
+    const cta_text = "${contentMap?.hero?.primaryCTA || 'Get Free Consultation'}";
+  const accentColor = "${accentVal}";
+  const primaryColor = "${primaryVal}";
   const css = \`${allCss.replace(/`/g, '\\`')}\`;
 
   return (
@@ -1398,7 +1424,7 @@ const LandingPage = () => {
         <div className="${tw.container} flex justify-between items-center gap-4">
           ${blueprint?.brandLogoUrl
   ? `<img src="${blueprint.brandLogoUrl}" alt="${contentMap?.productName || 'Product'}" style="height:32px;display:block;object-fit:contain" />`
-  : `<span class="font-extrabold text-xl" style="color:${accentVal}">${contentMap?.productName || 'Product'}</span>`
+  : `<span className="font-extrabold text-xl" style={{color:'${accentVal}'}}>${contentMap?.productName || 'Product'}</span>`
 }
           <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey" className="h-7 opacity-95" />
           <a href="#lead-form" className="${shadcn.Button.default} text-sm" style={{textDecoration:'none'}}>Get Free Consultation</a>

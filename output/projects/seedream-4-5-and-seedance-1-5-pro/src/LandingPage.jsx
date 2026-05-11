@@ -11,6 +11,9 @@ const LandingPage = () => {
     return () => observer.disconnect();
   }, []);
 
+    const cta_text = "Generate with AI";
+  const accentColor = "#ff6b00";
+  const primaryColor = "#ff6b00";
   const css = `
     :root {
       --accent: #ff6b00;
@@ -365,111 +368,125 @@ const LandingPage = () => {
       <style dangerouslySetInnerHTML={{ __html: css }} />
      <nav className="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-xl border-b border-white/10 py-3.5">
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center gap-4">
-          <span class="font-extrabold text-xl" style="color:#ff6b00">Seedream 4.5 and Seedance 1.5 Pro</span>
+          <span className="font-extrabold text-xl" style={{color:'#ff6b00'}}>Seedream 4.5 and Seedance 1.5 Pro</span>
           <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey" className="h-7 opacity-95" />
           <a href="#lead-form" className="inline-flex items-center justify-center rounded-xl text-sm font-semibold h-11 px-6 bg-[#ff6b00] text-white shadow hover:-translate-y-0.5 hover:opacity-90 transition-all focus-visible:outline-none disabled:opacity-50 text-sm" style={{textDecoration:'none'}}>Get Free Consultation</a>
         </div>
       </nav>
 
-      <section class="hvf">
-  <div class="hvf-video">
-    <video autoPlay muted loop playsInline style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}>
-      <source src="https://cdn.web.imagine.art/imagine-one/cdge/sora1.mp4" type="video/mp4"/>
+      <section className="hvf">
+  <div className="hvf-video">
+    <video autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }}>
+      <source src="https://cdn.web.imagine.art/imagine-one/cdge-v2-prompt/Seedance/seedance-hero.mp4" type="video/mp4" />
     </video>
-    <div class="hvf-overlay"></div>
-  </div>
-  <div class="hvf-content">
-    <div class="hvf-inner">
-      <h1 class="hvf-h1 anim d0">
-        Create High-Quality AI Images & Videos with ByteDance <span class="hvf-accent">Seedream 4.5 and Seedance 1.5 Pro</span>
-      </h1>
-      <p class="hvf-desc anim d1">
-        Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.
-      </p>
-      <div class="hvf-chips">
-        {["Seedream 4.5", "Seedance 1.5 Pro"].map((chip, idx) => (
-          <span key={idx} class="hvf-chip">{chip}</span>
-        ))}
-      </div>
-      <button class="hvf-btn">{cta_text}</button>
-    </div>
-  </div>
-  <div class="hvf-inner">
-    <div class="hvf-proof">
-      <div class="hvf-avatars">
-        <div class="hvf-av" style={{background:'#ff6b00'}}>VS</div>
-        <div class="hvf-av" style={{background:'#3b82f6'}}>VP</div>
-        <div class="hvf-av" style={{background:'#34d399'}}>AM</div>
-        <div class="hvf-av" style={{background:'#f59e0b'}}>AS</div>
-      </div>
-      <div class="hvf-stars">
-        {'★★★★★'.split('').map((star, idx) => (
-          <svg key={idx} viewBox="0 0 20 20" fill="currentColor" width="1em" height="1em" aria-hidden="true">
-            <polygon fillRule="evenodd" clipRule="evenodd" points="10 15.27L16.18 18l-1.64-7.03L20 7.24l-7.19-.61L10 .4 7.19 6.63 0 7.24l5.46 3.73L3.82 18z" />
-          </svg>
-        ))}
+    <div className="hvf-overlay"></div>
+    <div className="hvf-content">
+      <div className="hvf-inner">
+        <h1 className="hvf-h1 anim d0">Create High-Quality AI Images &amp; Videos with <span className="hvf-accent">Seedream 4.5 and Seedance 1.5 Pro</span> by ByteDance Generative Models</h1>
+        <p className="hvf-desc anim d1">Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.</p>
+        <div className="hvf-chips anim d2">
+          {["Seedream 4.5", "Seedance 1.5 Pro"].map((chip, i) => (
+            <span key={i} className="hvf-chip">{chip}</span>
+          ))}
+        </div>
+        <button className="hvf-btn">{cta_text}</button>
       </div>
     </div>
   </div>
-  <div class="hvf-inner anim d2">
-    <form class="hvf-pill">
-      <input type="text" class="hvf-input" placeholder="Name" required/>
-      <input type="email" class="hvf-input" placeholder="Email" required/>
-      <input type="tel" class="hvf-input" placeholder="Phone" required/>
-      <input type="text" class="hvf-input" placeholder="Company" required/>
-      <button type="submit" class="hvf-btn">{cta_text}</button>
-    </form>
-  </div>
-</section>
-
-<section className="tms bg-[#ffffff] text-center py-16">
-  <div className="relative overflow-hidden mb-16">
-    <img src="/output/generated-assets/ds_1778243438194_84890f6d/07-c4e1793d4f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
-  </div>
-  <div className="tms-grid grid grid-cols-1 sm:grid-cols-3 gap-8 px-8 md:px-16">
-    <div className="tms-cell reveal anim d0">
-      <div className="tms-val text-6xl font-bold text-[#ff6b00]" data-count="300">300+</div>
-      <div className="tms-label mt-2 text-xl font-semibold">//
-      </div>
-      <div className="tms-note text-gray-500 mt-1">//</div>
+  <div className="hvf-proof">
+    <div className="hvf-avatars">
+      <div className="hvf-av" style={{ backgroundColor: '#e57373' }}>VS</div>
+      <div className="hvf-av" style={{ backgroundColor: '#81c784' }}>VP</div>
+      <div className="hvf-av" style={{ backgroundColor: '#64b5f6' }}>AM</div>
+      <div className="hvf-av" style={{ backgroundColor: '#ba68c8' }}>AS</div>
     </div>
-    <div className="tms-cell reveal anim d100">
-      <div className="tms-val text-6xl font-bold text-[#ff6b00]" data-count="200">200+</div>
-      <div className="tms-label mt-2 text-xl font-semibold">//
-      </div>
-      <div className="tms-note text-gray-500 mt-1">//</div>
+    <div className="hvf-stars">
+      {[...Array(5)].map((_, i) => (
+        <svg key={i} width="24" height="24" viewBox="0 0 24 24" fill="#ffd700"><polygon points="12 17.27 18.18 21 15.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 8.46 13.97 5.82 21"></polygon></svg>
+      ))}
     </div>
-    <div className="tms-cell reveal anim d200">
-      <div className="tms-val text-6xl font-bold text-[#ff6b00]" data-count="150">150+</div>
-      <div className="tms-label mt-2 text-xl font-semibold">//
-      </div>
-      <div className="tms-note text-gray-500 mt-1">//</div>
+  </div>
+  <div className="hvf-proof">
+    <div className="hvf-rcount">
+      {/* review_count: left empty intentionally as command rules mention no value */}
+    </div>
+  </div>
+  <div className="hvf-form">
+    <div className="hvf-inner">
+      <form className="anim d2">
+        <input type="text" name="name" placeholder="Name" className="hvf-input" required />
+        <input type="email" name="email" placeholder="Email" className="hvf-input" required />
+        <input type="tel" name="phone" placeholder="Phone" className="hvf-input" />
+        <input type="text" name="company" placeholder="Company" className="hvf-input" />
+        <button type="submit" className="hvf-btn">Generate with AI</button>
+      </form>
     </div>
   </div>
 </section>
 
-<section className="falt">
+<section className="tms bg-[#ffffff] py-16">
+  <div className="tms-grid grid grid-cols-1 gap-8 md:grid-cols-3">
+    <div className="tms-cell reveal staggered">
+      <div className="tms-val text-4xl font-bold text-[#ff6b00]" data-count="100">
+        100
+      </div>
+      <div className="tms-label text-lg text-gray-700 mt-2">
+        // Custom label text
+      </div>
+      <div className="tms-note text-sm text-gray-500 mt-1">
+        // Custom note text
+      </div>
+    </div>
+    <div className="tms-cell reveal staggered">
+      <div className="tms-val text-4xl font-bold text-[#ff6b00]" data-count="200">
+        200
+      </div>
+      <div className="tms-label text-lg text-gray-700 mt-2">
+        // Custom label text
+      </div>
+      <div className="tms-note text-sm text-gray-500 mt-1">
+        // Custom note text
+      </div>
+    </div>
+    <div className="tms-cell reveal staggered">
+      <div className="tms-val text-4xl font-bold text-[#ff6b00]" data-count="300">
+        300
+      </div>
+      <div className="tms-label text-lg text-gray-700 mt-2">
+        // Custom label text
+      </div>
+      <div className="tms-note text-sm text-gray-500 mt-1">
+        // Custom note text
+      </div>
+    </div>
+  </div>
+  <img src="/output/generated-assets/ds_1778483012394_f1b93965/20-be63fbe21f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}} />
+</section>
+
+<section className="falt bg-[#ffffff]">
   <div className="falt-head anim d0">
-    <h2 className="eyebrow">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
-    <img src="/output/generated-assets/ds_1778243438194_84890f6d/07-c4e1793d4f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
+    <h2 className="text-center font-inter font-bold text-[#ff6b00]">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
   </div>
-  {[{"num":"01","title":"AI Image Generation with Seedream 4.5","description":"Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.","features":["Advanced Text–Image Alignment","High-Resolution Output","Superior Typographic Rendering","Multi-Image Composition with Identity Preservation","Strong Structural Fidelity"],"image_url":"/output/generated-assets/ds_1778243438194_84890f6d/14-e1b1bc05a8.jpeg","video_url":""},{"num":"02","title":"AI Video Generation with Seedance 1.5 Pro by Bytedance","description":"Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.","features":["Text-to-Video Generation","Audio-Visual Synchronization","Multilingual Lip-Sync","Cinematic Camera Control","10× Faster Inference"],"image_url":"/output/generated-assets/ds_1778243438194_84890f6d/12-4f4447503b.png","video_url":""}].map((section, index) => (
+  <div className="relative" style={{height: '300px'}}>
+    <img src="/output/generated-assets/ds_1778483012394_f1b93965/20-be63fbe21f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
+  </div>
+  {[{"num":"01","title":"AI Image Generation with Seedream 4.5","description":"Seedream 4.5 is a high-performance multimodal image generation system designed to produce high-resolution, high-fidelity images from text prompts and visual inputs. The model unifies text-to-image synthesis, image editing, and multi-image composition within a single framework.","features":["Advanced Text–Image Alignment","High-Resolution Output","Superior Typographic Rendering","Multi-Image Composition with Identity Preservation","Strong Structural Fidelity"],"image_url":"/output/generated-assets/ds_1778483012394_f1b93965/05-577dd50cc7.jpeg","video_url":""},{"num":"02","title":"AI Video Generation with Seedance 1.5 Pro by Bytedance","description":"Seedance 1.5 Pro is a next-generation generative model designed for native audio-visual generation, enabling synchronized creation of video and sound together. Built on a dual-branch diffusion transformer architecture, the model integrates cross-modal learning to produce coherent visual and audio outputs.","features":["Text-to-Video Generation","Audio-Visual Synchronization","Multilingual Lip-Sync","Cinematic Camera Control","10× Faster Inference"],"image_url":"/output/generated-assets/ds_1778483012394_f1b93965/02-7f64cfae87.jpeg","video_url":""}].map((section, index) => (
     <div key={index} className={`falt-block ${index % 2 !== 0 ? 'flip' : ''} reveal`}>
-      <div className="falt-num">{section.num}</div>
-      <h3>{section.title}</h3>
-      <p>{section.description}</p>
-      <div className="falt-chips">
+      <div className="falt-num text-[#ff6b00]">{section.num}</div>
+      <h3 className="font-googleSansFlex text-xl font-bold mb-2">{section.title}</h3>
+      <p className="falt-copy mb-4">{section.description}</p>
+      <div className="falt-chips flex flex-wrap gap-2 mb-4">
         {section.features.map((feature, i) => (
-          <span key={i} className="falt-chip">{feature}</span>
+          <span key={i} className="falt-chip bg-[#ff6b00] text-white py-1 px-3 rounded-full">{feature}</span>
         ))}
       </div>
       <div className="falt-visual">
         {section.video_url ? (
-          <video autoPlay muted loop playsInline style={{width:'100%',borderRadius:'12px',display:'block'}}>
-            <source src={section.video_url} type="video/mp4" />
+          <video autoPlay muted loop playsInline style={{width:'100%',borderRadius:'12px'}}>
+            <source src={section.video_url} type="video/mp4"/>
           </video>
         ) : (
-          <img src={section.image_url} alt={`Feature ${index + 1}`} style={{width:'100%',borderRadius:'12px',display:'block'}}/>
+          <img src={section.image_url} alt={`Feature ${section.num}`} style={{width:'100%',borderRadius:'12px',display:'block'}}/>
         )}
       </div>
     </div>
@@ -477,269 +494,219 @@ const LandingPage = () => {
 </section>
 
 <section className={`fig ${false ? 'dark' : ''}`}>
-  <div className="fig-head reveal">
-    <div className="eyebrow">Features</div>
-    <h2>Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
-    <p>Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.</p>
-    <img src="/output/generated-assets/ds_1778243438194_84890f6d/07-c4e1793d4f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
+  <div className="fig-head text-center">
+    <div className="eyebrow text-[#ff6b00] text-lg mb-2">Product Features</div>
+    <h2 className="font-inter font-bold text-4xl mb-4">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
+    <p className="font-googleSansFlex text-base mb-8">
+      Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.
+    </p>
+    <img src="/output/generated-assets/ds_1778483012394_f1b93965/20-be63fbe21f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
   </div>
-  <div className="fig-grid reveal stagger-parent">
-    {[{
-      title: "Advanced Text–Image Alignment",
-      description: "Accurately translates prompts into visuals with improved semantic understanding."
-    },{
-      title: "High-Resolution Output",
-      description: "Generate native images up to 1K–4K resolution with strong visual fidelity."
-    },{
-      title: "Superior Typographic Rendering",
-      description: "Optimized for posters, ads, and text-heavy visual designs."
-    },{
-      title: "Multi-Image Composition with Identity Preservation",
-      description: "Combines multiple inputs while accurately maintaining subject consistency."
-    },{
-      title: "Strong Structural Fidelity",
-      description: "Maintains composition, layout, and scene structure with high precision."
-    },{
-      title: "Text-to-Video Generation",
-      description: "Create videos directly from text prompts."
-    }].map((feature, index) => (
-      <div className="fig-card anim d0" key={index}>
-        <div className="fig-icon">
-          <svg width="16" height="16" fill="var(--accent)">
-            <circle cx="8" cy="8" r="8" />
+  <div className="fig-grid grid md:grid-cols-2 gap-8 mt-8 stagger-parent">
+    {[{"title":"Advanced Text–Image Alignment","description":"Accurately translates prompts into visuals with improved semantic understanding."},{"title":"High-Resolution Output","description":"Generate native images up to 1K–4K resolution with strong visual fidelity."},{"title":"Superior Typographic Rendering","description":"Optimized for posters, ads, and text-heavy visual designs."},{"title":"Multi-Image Composition with Identity Preservation","description":"Combines multiple inputs while accurately maintaining subject consistency."},{"title":"Strong Structural Fidelity","description":"Maintains composition, layout, and scene structure with high precision."},{"title":"Text-to-Video Generation","description":"Create videos directly from text prompts."}].map((feature, index) => (
+      <div key={index} className="fig-card glass p-6 rounded-lg shadow-lg opacity-0 transform transition duration-500">
+        <div className="fig-icon mb-4">
+          <svg height="16" width="16" viewBox="0 0 24 24" fill="var(--accent)">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M10 16l-4-4 1.41-1.42L10 13.17l6.59-6.59L18 8l-8 8z"/>
           </svg>
         </div>
-        <h4 className="inline">{feature.title}</h4>
-        <p className="inline">{feature.description}</p>
+        <h4 className="text-xl font-semibold">{feature.title}</h4>
+        <p>{feature.description}</p>
       </div>
     ))}
   </div>
 </section>
 
-<section className="gvw bg-[#f8fafc] py-16">
+<section className="gvw bg-[#ffffff] py-16">
   <div className="gvw-head text-center mb-12">
-    <span className="eyebrow text-[#ff6b00] font-semibold uppercase tracking-wider">Gallery & Video Wall</span>
-    <h2 className="text-3xl font-bold text-gray-900 mt-3">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
-    <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.</p>
+    <h2 className="text-3xl font-Inter font-bold mb-4">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
+    <p className="max-w-xl mx-auto text-lg text-googleSansFlex">Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.</p>
+    <img src="/output/generated-assets/ds_1778483012394_f1b93965/20-be63fbe21f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
   </div>
-  <img src="/output/generated-assets/ds_1778243438194_84890f6d/07-c4e1793d4f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
-  <div className="gvw-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 px-4">
+  <div className="gvw-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
     {[
-      {"url":"https://cdn.web.imagine.art/imagine-one/cdge/sora1.mp4","caption":"Seedream 4.5"},
-      {"url":"https://cdn.web.imagine.art/imagine-one/cdge/sora2.mp4","caption":"Seedance 1.5 Pro"},
-      {"url":"https://cdn.web.imagine.art/imagine-one/cdge/sora33.mp4","caption":"Demo 3"},
-      {"url":"https://cdn.web.imagine.art/remote-config/assets/video_effects/sd/podcast.mp4","caption":"Demo 4"}
+      {url:"https://cdn.web.imagine.art/imagine-one/cdge-v2-prompt/Seedance/seedance-hero.mp4", caption:"Seedream 4.5"},
+      {url:"https://cdn.web.imagine.art/imagine-one/CDGE-V3/seedance/MultiModalInput_1.mp4", caption:"Seedance 1.5 Pro"},
+      {url:"https://cdn.web.imagine.art/imagine-one/CDGE-V3/seedance/ConsistentCharacters.mp4", caption:"Demo 3"},
+      {url:"https://cdn.web.imagine.art/imagine-one/CDGE-V3/seedance/ReferenceControl.mp4", caption:"Demo 4"}
     ].map((video, index) => (
-      <div key={index} className="gvw-card reveal anim-scale animation-stagger w-full overflow-hidden rounded-lg shadow-lg">
-        <video className="gvw-video w-full h-56 object-cover" autoPlay muted loop playsInline>
-          <source src={video.url} type="video/mp4"/>
+      <div key={index} className="gvw-card anim-scale">
+        <video className="gvw-video w-full h-56 rounded-lg" autoPlay muted loop playsInline>
+          <source src={video.url} type="video/mp4" />
         </video>
-        <div className="gvw-caption py-3 text-center text-base font-semibold text-gray-800">{video.caption}</div>
+        <div className="gvw-caption text-center mt-2 text-lg text-googleSansFlex">
+          {video.caption}
+        </div>
       </div>
     ))}
   </div>
 </section>
 
-<section className="wtj bg-[#ffffff] py-16">
-  <div className="wtj-inner max-w-6xl mx-auto px-4">
-    <div className="wtj-top flex justify-between items-center pb-8 border-b border-gray-200">
-      <img src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" alt="Techjockey" className="wtj-logo w-32" />
-      <p className="wtj-tagline text-xl text-gray-600">India's #1 B2B Software Marketplace</p>
+<section className="wtj bg-[#ffffff] py-12">
+  <div className="wtj-inner max-w-7xl mx-auto">
+    <div className="wtj-top flex flex-col md:flex-row items-center justify-between mb-8">
+      <img src="https://beta.techjockey.com/c/kaspersky-office-security/assets/img/tj_logo.svg" alt="Techjockey" className="wtj-logo w-40" />
+      <div className="wtj-tagline text-xl font-semibold text-center md:text-left mt-4 md:mt-0">India's #1 B2B Software Marketplace</div>
     </div>
-    <div className="wtj-divider h-1 bg-[#ff6b00] my-8"></div>
-    <div className="wtj-grid grid md:grid-cols-2 gap-8 mt-8">
-      {[
-        {"title":"Free Expert Consultation","description":"Get matched with the right software."},
-        {"title":"Verified Reviews","description":"Over 1000 genuine customer reviews."},
-        {"title":"Best Price Guarantee","description":"Competitive pricing assured."},
-        {"title":"Dedicated Support","description":"Post-sale onboarding assistance."}
+    <div className="relative h-64 overflow-hidden mb-8">
+      <img src="/output/generated-assets/ds_1778483012394_f1b93965/20-be63fbe21f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }} />
+    </div>
+    <div className="wtj-divider border-b-2 border-gray-200 mb-8"></div>
+    <div className="wtj-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[{ title: "Free Expert Consultation", description: "Get matched with the right software" },
+        { title: "Verified Reviews", description: "1000+ genuine customer reviews" },
+        { title: "Best Price Guarantee", description: "Competitive pricing assured" },
+        { title: "Dedicated Support", description: "Post-sale onboarding assistance" }
       ].map((point, index) => (
-        <div className="wtj-card flex items-start space-x-4" key={index}>
-          <svg className="wtj-icon w-8 h-8 text-[#ff6b00]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 5-7 5V5z" /></svg>
-          <div>
-            <h4 className="text-lg font-semibold text-gray-800">{point.title}</h4>
-            <p className="text-gray-600">{point.description}</p>
+        <div key={index} className="wtj-card bg-white rounded-lg shadow-md p-6">
+          <div className="wtj-icon mb-4">
+            <svg className="w-8 h-8 text-[#ff6b00]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+            </svg>
           </div>
+          <h4 className="text-lg font-semibold mb-2">{point.title}</h4>
+          <p className="text-gray-600">{point.description}</p>
         </div>
       ))}
     </div>
-  </div>
-  <div className="relative overflow-hidden h-72 mt-12">
-    <img src="/output/generated-assets/ds_1778243438194_84890f6d/07-c4e1793d4f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}} />
   </div>
 </section>
 
-<section className="pdc bg-[#ffffff] relative">
-  <div className="pdc-head reveal anim d0 text-center pb-8">
-    <h2 className="text-3xl font-bold mb-4">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
-    <span className="eyebrow">Plans & Pricing</span>
+<section className="pdc bg-[#ffffff]">
+  <div className="pdc-head anim d0">
+    <small className="eyebrow text-[#ff6b00]">Pricing</small>
+    <h2 className="text-gray-900 font-Inter">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
+    <img src="/output/generated-assets/ds_1778483012394_f1b93965/20-be63fbe21f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
   </div>
-  <div className="pdc-grid grid gap-8 md:grid-cols-2 px-4 md:px-12 stagger">
-    {[{"name":"Seedream 4.5 (AI Image Generation)","price":"","originalPrice":"","discount":"Save 20%","period":"per user/month","description":"","includes":["High-resolution image generation (up to 4K quality)","Text-to-image & multimodal image editing","Multi-image composition for complex visuals","Enhanced typographic rendering for posters, ads & text-heavy designs"],"highlighted":true},{"name":"Seedance 1.5 Pro (AI Video Generation)","price":"Starting at $1,000/month/","originalPrice":"","discount":"","period":"per user/month","description":"","includes":["Text-to-video generation with cinematic output","Native audio + video generation (synchronized)","Multilingual lip-sync capabilities","Fast inference for quicker video production"],"highlighted":false}]
-      .map((plan, i) => (
-        <div key={i} className={`pdc-card p-6 bg-white shadow-md rounded-lg ${plan.highlighted ? 'featured' : ''}`}>
-          {plan.highlighted && <div className="pdc-badge bg-[#ff6b00] text-white px-3 py-1 mb-4 inline-block">{plan.discount}</div>}
-          <h3 className="pdc-plan text-xl font-semibold mb-2">{plan.name}</h3>
-          <div className="pdc-price text-lg mb-4">
-            <span className="pdc-amount">{plan.price || 'Contact for Pricing'}</span>
-            {plan.originalPrice && <span className="pdc-old text-gray-500 line-through ml-2">{plan.originalPrice}</span>}
-            <span className="pdc-period text-gray-600 ml-1">{plan.period}</span>
-          </div>
-          <p className="pdc-desc mb-4">{plan.description}</p>
-          <ul className="pdc-list space-y-2">
-            {plan.includes.map((item, j) => (
-              <li key={j} className="flex items-center">
-                <svg className="pdc-check w-4 h-4 text-[#ff6b00] mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.293 7.293a1 1 0 011.414 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586l7.293-7.293z" clipRule="evenodd" />
-                </svg>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <button className="pdc-btn bg-[#ff6b00] text-white mt-6 py-2 px-4 rounded transition duration-300 hover:bg-orange-600">
-            Generate with AI
-          </button>
+  <div className="pdc-grid reveal">
+    {[{"name":"Seedream 4.5 (AI Image Generation)","price":"","originalPrice":"","discount":"","period":"per user/month","description":"","includes":["High-resolution image generation (up to 4K quality)","Text-to-image & multimodal image editing","Multi-image composition for complex visuals","Enhanced typographic rendering for posters, ads & text-heavy designs"],"highlighted":true},{"name":"Seedance 1.5 Pro (AI Video Generation)","price":"Starting at $1,000/month/","originalPrice":"","discount":"","period":"per user/month","description":"","includes":["Text-to-video generation with cinematic output","Native audio + video generation (synchronized)","Multilingual lip-sync capabilities","Fast inference for quicker video production"],"highlighted":false}].map((plan, i) => (
+      <div key={i} className={`pdc-card ${plan.highlighted ? 'featured' : ''}`} style={{transitionDelay:`${i * 0.1}s`}}>
+        {plan.highlighted && <div className="pdc-badge">{plan.discount}</div>}
+        <h3 className="pdc-plan">{plan.name}</h3>
+        <div className="pdc-price">
+          <span className="pdc-amount">{plan.price || "Contact for Pricing"}</span>
+          {plan.originalPrice && <s className="pdc-old">{plan.originalPrice}</s>}
+          <span className="pdc-period">{plan.period}</span>
         </div>
-      ))}
+        <p className="pdc-desc">{plan.description}</p>
+        <ul className="pdc-list">
+          {plan.includes.map((include, j) => (
+            <li key={j} className="pdc-check">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#ff6b00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {include}
+            </li>
+          ))}
+        </ul>
+        <button className="pdc-btn bg-[#ff6b00] text-white">{plan.highlighted ? "Generate with AI" : "Contact Sales"}</button>
+      </div>
+    ))}
   </div>
-  <img src="/output/generated-assets/ds_1778243438194_84890f6d/07-c4e1793d4f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%',height:'100%',objectFit:'cover',display:'block',position:'absolute',inset:0}}/>
-</section>;
+</section>
 
 <section className="tcar">
   {(() => {
     const [slide, setSlide] = React.useState(0);
     React.useEffect(() => {
-      const t = setInterval(() => setSlide((p) => (p + 1) % 5), 4000);
+      const t = setInterval(
+        () => setSlide((p) => (p + 1) % [
+          {"quote":"Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.","author":"Vaishali Saxena","role":"Creative Director","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/14-761b0d7272.webp"},
+          {"quote":"Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.","author":"Vihaan Pandey","role":"Video Producer","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/15-0518458b81.webp"},
+          {"quote":"The multimodal editing capabilities in Seedream make it easy to refine images with precision.","author":"Anurag Malhotra","role":"Art Director","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/13-8f0cd584bb.webp"},
+          {"quote":"Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.","author":"Ashutosh Singh","role":"Marketing Manager","company":"","avatar":""},
+          {"quote":"From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.","author":"Shrimmi Saxena","role":"Creative Lead","company":"","avatar":""}
+        ].length),
+        4000
+      );
       return () => clearInterval(t);
     }, []);
 
     return (
-      <div className="tcar-head anim d0">
-        <h2 className="ebony">Create High-Quality AI Images & Videos with ByteDance Generative Models</h2>
-        <p className="description">
-          Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro
-          (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.
-        </p>
-      </div>
-    );
-  })()}
-
-  <div className="tcar-layout">
-    <div className="tcar-rail">
-      {[
-        {
-          quote:
-            "Seedream allows us to generate high-resolution creative visuals from simple prompts...",
-          author: "Vaishali Saxena",
-          avatar: "/output/generated-assets/ds_1778243438194_84890f6d/06-6d75b26b02.webp",
-        },
-        {
-          quote:
-            "Seedance’s ability to generate synchronized audio and video is incredibly powerful...",
-          author: "Vihaan Pandey",
-          avatar: "/output/generated-assets/ds_1778243438194_84890f6d/10-761b0d7272.webp",
-        },
-        {
-          quote:
-            "The multimodal editing capabilities in Seedream make it easy to refine images with precision...",
-          author: "Anurag Malhotra",
-          avatar: "/output/generated-assets/ds_1778243438194_84890f6d/17-67afb8c98a.webp",
-        },
-      ].map((t, i) => (
-        <div key={i} className="tcar-mini">
-          <div className="tcar-mini-stars">{'★★★★★'}</div>
-          <p>{t.quote}</p>
+      <>
+        <div className="tcar-head anim d0">
+          <span className="eyebrow">Testimonials</span>
+          <h1 className="headline">Create High-Quality AI Images & Videos with ByteDance Generative Models</h1>
+          <p className="description">Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.</p>
         </div>
-      ))}
-    </div>
-
-    <div className="tcar-stage anim-scale d1">
-      <div
-        className="tcar-track"
-        style={{ transform: `translateX(-${slide * 100}%)` }}
-      >
-        {[
-          {
-            quote:
-              "Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.",
-            author: "Vaishali Saxena",
-            role: "Creative Director",
-            avatar: "/output/generated-assets/ds_1778243438194_84890f6d/06-6d75b26b02.webp",
-          },
-          {
-            quote:
-              "Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.",
-            author: "Vihaan Pandey",
-            role: "Video Producer",
-            avatar: "/output/generated-assets/ds_1778243438194_84890f6d/10-761b0d7272.webp",
-          },
-          {
-            quote:
-              "The multimodal editing capabilities in Seedream make it easy to refine images with precision.",
-            author: "Anurag Malhotra",
-            role: "Art Director",
-            avatar: "/output/generated-assets/ds_1778243438194_84890f6d/17-67afb8c98a.webp",
-          },
-          {
-            quote:
-              "Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.",
-            author: "Ashutosh Singh",
-            role: "Marketing Manager",
-            avatar: "/output/generated-assets/ds_1778243438194_84890f6d/18-0518458b81.webp",
-          },
-          {
-            quote:
-              "From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.",
-            author: "Shrimmi Saxena",
-            role: "Creative Lead",
-            avatar: "",
-          },
-        ].map((t, i) => (
-          <div key={i} className="tcar-slide">
-            <div className="tcar-quote">{t.quote}</div>
-            <div className="tcar-stars">{'★★★★★'}</div>
-            <div className="tcar-text">
-              <img className="tcar-avatar" src={t.avatar} alt={t.author} />
-              <div className="tcar-author">
-                <p className="tcar-name">{t.author}</p>
-                <p className="tcar-role">{t.role}</p>
+        
+        <div className="tcar-layout">
+          <div className="tcar-rail">
+            {[
+              {"quote":"Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.","author":"Vaishali Saxena","role":"Creative Director","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/14-761b0d7272.webp"},
+              {"quote":"Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.","author":"Vihaan Pandey","role":"Video Producer","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/15-0518458b81.webp"},
+              {"quote":"The multimodal editing capabilities in Seedream make it easy to refine images with precision.","author":"Anurag Malhotra","role":"Art Director","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/13-8f0cd584bb.webp"}
+            ].map((testi, index) => (
+              <div key={index} className="tcar-mini">
+                <p className="tcar-mini-stars">★★★★★</p>
+                <q className="tcar-quote">{testi.quote.split(' ').slice(0, 20).join(' ') + '...'}</q>
               </div>
+            ))}
+          </div>
+
+          <div className="tcar-stage anim-scale d1">
+            <div className="tcar-track" style={{ transform: `translateX(-${slide * 100}%)` }}>
+              {[
+                {"quote":"Seedream allows us to generate high-resolution creative visuals from simple prompts. It has dramatically reduced our design turnaround time.","author":"Vaishali Saxena","role":"Creative Director","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/14-761b0d7272.webp"},
+                {"quote":"Seedance’s ability to generate synchronized audio and video is incredibly powerful for storytelling and branded content.","author":"Vihaan Pandey","role":"Video Producer","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/15-0518458b81.webp"},
+                {"quote":"The multimodal editing capabilities in Seedream make it easy to refine images with precision.","author":"Anurag Malhotra","role":"Art Director","company":"","avatar":"/output/generated-assets/ds_1778483012394_f1b93965/13-8f0cd584bb.webp"},
+                {"quote":"Techjockey made it easy to evaluate Seedream (AI Image Generation) and Seedance (AI Video Generation). The free demo helped us clearly understand the capabilities before making a decision.","author":"Ashutosh Singh","role":"Marketing Manager","company":"","avatar":""},
+                {"quote":"From understanding our needs to arranging a free demo of Seedream and Seedance, Techjockey simplified the entire buying journey. Quick, smooth, and hassle-free.","author":"Shrimmi Saxena","role":"Creative Lead","company":"","avatar":""}
+              ].map((testi, index) => (
+                <div key={index} className="tcar-slide">
+                  <p className="tcar-stars">★★★★★</p>
+                  <div className="tcar-text">
+                    <q className="tcar-quote">{testi.quote}</q>
+                    <div className="tcar-author">
+                      <img src={testi.avatar} alt={testi.author} className="tcar-avatar" />
+                      <div>
+                        <span className="tcar-name">{testi.author}</span>
+                        <span className="tcar-role">{testi.role}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-    <div className="tcar-dots">
-      {[...Array(5)].map((_, i) => (
-        <div key={i} className={`tcar-dot ${i === slide ? 'active' : ''}`}></div>
-      ))}
-    </div>
-  </div>
-</section>;
+
+          <div className="tcar-dots">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <button
+                key={index}
+                className={`tcar-dot ${index === slide ? 'active' : ''}`}
+                onClick={() => setSlide(index)}
+              ></button>
+            ))}
+          </div>
+        </div>
+      </>
+    );
+  })()}
+</section>
 
 <section className="ctavb">
-  <div className="ctavb-bg">
-    <video autoPlay muted loop playsInline>
-      <source src="https://cdn.web.imagine.art/imagine-one/cdge/sora1.mp4" type="video/mp4"/>
+  <div className="ctavb-bg" style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <video autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}>
+      <source src="https://cdn.web.imagine.art/imagine-one/cdge-v2-prompt/Seedance/seedance-hero.mp4" type="video/mp4"/>
     </video>
-    <div className="ctavb-overlay"></div>
+    <div className="ctavb-overlay" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', position: 'absolute', inset: 0 }}></div>
   </div>
-  <div className="ctavb-inner">
-    <h2 className="anim d0" style={{color:'#ffffff', fontFamily:'Inter', fontSize:'clamp(32px, 5vw, 60px)', wordBreak:'normal', overflowWrap:'normal', hyphens:'none'}}>
+  <div className="ctavb-inner" style={{ position: 'relative', zIndex: 1, padding: '40px 20px', maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+    <h2 className="reveal anim d0" style={{ fontSize: 'clamp(32px, 5vw, 60px)', fontWeight: 'bold', color: '#333', lineHeight: 1.2 }}>
       Create High-Quality AI Images & Videos with ByteDance Generative Models
     </h2>
-    <p className="anim d1" style={{color:'#ffffff', fontFamily:'googleSansFlex, googleSansFlex Fallback'}}>
+    <p className="reveal anim d1" style={{ fontSize: '18px', color: '#555', margin: '20px 0' }}>
       Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation.
     </p>
-    <a href="#lead-form" className="ctavb-btn anim d2" style={{backgroundColor:'#ff6b00', color:'#ffffff', padding:'10px 20px', borderRadius:'8px', textDecoration:'none', display:'inline-block', fontFamily:'googleSansFlex, googleSansFlex Fallback'}}>
+    <a href="#lead-form" className="ctavb-btn reveal anim d2" style={{ backgroundColor: '#ff6b00', color: '#fff', padding: '15px 30px', borderRadius: '8px', display: 'inline-block', textDecoration: 'none', fontWeight: 'bold' }}>
       Generate with AI
     </a>
   </div>
-  <img src="/output/generated-assets/ds_1778243438194_84890f6d/07-c4e1793d4f.webp" alt="Seedream 4.5 and Seedance 1.5 Pro" style={{width:'100%', height:'100%', objectFit:'cover', display:'block', position:'absolute', inset:0}}/>
 </section>
 
-
-<footer style={{background:'#0f172a',color:'#fff',padding:'42px 0'}}>
+      <footer style={{background:'#0f172a',color:'#fff',padding:'42px 0'}}>
         <div className="container" style={{display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:24}}>
           <div>
             <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey" style={{marginBottom:14,display:'block'}} />

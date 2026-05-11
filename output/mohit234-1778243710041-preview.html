@@ -8,24 +8,30 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <link rel="stylesheet" href="/ui/tailwind.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            accent: 'var(--accent)',
-            primary: 'var(--primary)'
-          }
-        }
-      }
-    }
-  </script>
+  <script>tailwind.config={theme:{extend:{colors:{accent:'var(--accent)',primary:'var(--primary)'}}}}</script>
   <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
 </head>
 <body>
   <div id="root"></div>
   <script>
     const { useState, useEffect, useRef } = React;
+    
+class _ErrorBoundary extends React.Component {
+  constructor(p) { super(p); this.state = { err: null }; }
+  static getDerivedStateFromError(e) { return { err: e }; }
+  render() {
+    if (this.state.err) {
+      return React.createElement('div', {
+        style: {padding:'48px 40px', fontFamily:'monospace', background:'#fff1f0',
+                border:'2px solid #ff4d4f', borderRadius:8, margin:40}
+      },
+        React.createElement('h2', {style:{color:'#cf1322',marginBottom:16,fontFamily:'sans-serif'}}, 'Preview render error'),
+        React.createElement('pre', {style:{color:'#333',whiteSpace:'pre-wrap',fontSize:13,lineHeight:1.6}}, String(this.state.err))
+      );
+    }
+    return this.props.children;
+  }
+}
     const LandingPage = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(entries => entries.forEach(e => {
@@ -395,8 +401,10 @@
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl mx-auto px-6 flex justify-between items-center gap-4"
   }, /*#__PURE__*/React.createElement("span", {
-    class: "font-extrabold text-xl",
-    style: "color:#ff6b00"
+    className: "font-extrabold text-xl",
+    style: {
+      "color": "#ff6b00"
+    }
   }, "Seedream 4.5 and Seedance 1.5 Pro"), /*#__PURE__*/React.createElement("img", {
     src: "https://cdn.techjockey.com/web/assets/V5/img/logo.svg",
     height: "28",
@@ -409,9 +417,9 @@
       textDecoration: 'none'
     }
   }, "Get Free Consultation"))), /*#__PURE__*/React.createElement("section", {
-    class: "hvf"
+    className: "hvf"
   }, /*#__PURE__*/React.createElement("div", {
-    class: "hvf-video"
+    className: "hvf-video"
   }, /*#__PURE__*/React.createElement("video", {
     autoPlay: true,
     muted: true,
@@ -429,52 +437,50 @@
     src: "https://cdn.web.imagine.art/imagine-one/cdge/sora1.mp4",
     type: "video/mp4"
   })), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-overlay"
+    className: "hvf-overlay"
   })), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-content"
+    className: "hvf-content"
   }, /*#__PURE__*/React.createElement("div", {
-    class: "hvf-inner"
+    className: "hvf-inner"
   }, /*#__PURE__*/React.createElement("h1", {
-    class: "hvf-h1 anim d0"
+    className: "hvf-h1 anim d0"
   }, "Create High-Quality AI Images & Videos with ByteDance ", /*#__PURE__*/React.createElement("span", {
-    class: "hvf-accent"
+    className: "hvf-accent"
   }, "Seedream 4.5 and Seedance 1.5 Pro")), /*#__PURE__*/React.createElement("p", {
-    class: "hvf-desc anim d1"
+    className: "hvf-desc anim d1"
   }, "Unlock the power of next-generation generative AI with Seedream 4.5 (Image Generation) and Seedance 1.5 Pro (Video Generation) - advanced foundation models developed by ByteDance for high-quality visual content creation."), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-chips"
+    className: "hvf-chips"
   }, ["Seedream 4.5", "Seedance 1.5 Pro"].map((chip, idx) => /*#__PURE__*/React.createElement("span", {
     key: idx,
-    class: "hvf-chip"
+    className: "hvf-chip"
   }, chip))), /*#__PURE__*/React.createElement("button", {
-    class: "hvf-btn"
-  }, cta_text))), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-inner"
+    className: "hvf-btn"
   }, /*#__PURE__*/React.createElement("div", {
-    class: "hvf-proof"
+    className: "hvf-proof"
   }, /*#__PURE__*/React.createElement("div", {
-    class: "hvf-avatars"
+    className: "hvf-avatars"
   }, /*#__PURE__*/React.createElement("div", {
-    class: "hvf-av",
+    className: "hvf-av",
     style: {
       background: '#ff6b00'
     }
   }, "VS"), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-av",
+    className: "hvf-av",
     style: {
       background: '#3b82f6'
     }
   }, "VP"), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-av",
+    className: "hvf-av",
     style: {
       background: '#34d399'
     }
   }, "AM"), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-av",
+    className: "hvf-av",
     style: {
       background: '#f59e0b'
     }
   }, "AS")), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-stars"
+    className: "hvf-stars"
   }, '★★★★★'.split('').map((star, idx) => /*#__PURE__*/React.createElement("svg", {
     key: idx,
     viewBox: "0 0 20 20",
@@ -487,32 +493,32 @@
     clipRule: "evenodd",
     points: "10 15.27L16.18 18l-1.64-7.03L20 7.24l-7.19-.61L10 .4 7.19 6.63 0 7.24l5.46 3.73L3.82 18z"
   })))))), /*#__PURE__*/React.createElement("div", {
-    class: "hvf-inner anim d2"
+    className: "hvf-inner anim d2"
   }, /*#__PURE__*/React.createElement("form", {
-    class: "hvf-pill"
+    className: "hvf-pill"
   }, /*#__PURE__*/React.createElement("input", {
     type: "text",
-    class: "hvf-input",
+    className: "hvf-input",
     placeholder: "Name",
     required: true
   }), /*#__PURE__*/React.createElement("input", {
     type: "email",
-    class: "hvf-input",
+    className: "hvf-input",
     placeholder: "Email",
     required: true
   }), /*#__PURE__*/React.createElement("input", {
     type: "tel",
-    class: "hvf-input",
+    className: "hvf-input",
     placeholder: "Phone",
     required: true
   }), /*#__PURE__*/React.createElement("input", {
     type: "text",
-    class: "hvf-input",
+    className: "hvf-input",
     placeholder: "Company",
     required: true
   }), /*#__PURE__*/React.createElement("button", {
     type: "submit",
-    class: "hvf-btn"
+    className: "hvf-btn"
   }, cta_text)))), /*#__PURE__*/React.createElement("section", {
     className: "tms bg-[#ffffff] text-center py-16"
   }, /*#__PURE__*/React.createElement("div", {
@@ -854,7 +860,7 @@
       position: 'absolute',
       inset: 0
     }
-  })), "; export default LandingPage;", /*#__PURE__*/React.createElement("section", {
+  })), ";", /*#__PURE__*/React.createElement("section", {
     className: "tcar"
   }, (() => {
     const [slide, setSlide] = React.useState(0);
@@ -1001,7 +1007,7 @@
       position: 'absolute',
       inset: 0
     }
-  })), "export default LandingPage;", /*#__PURE__*/React.createElement("footer", {
+  })), /*#__PURE__*/React.createElement("footer", {
     style: {
       background: '#0f172a',
       color: '#fff',
@@ -1049,9 +1055,8 @@
     }
   }, "Terms"))))));
 };
-
     const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(React.createElement(LandingPage));
+    root.render(React.createElement(_ErrorBoundary, null, React.createElement(LandingPage)));
   </script>
 </body>
 </html>
