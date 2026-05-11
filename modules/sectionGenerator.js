@@ -6,7 +6,7 @@
 const { SECTION_LIBRARY } = require('../sections/section-library');
 const { OpenAI } = require('openai');
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
+const babel = require('@babel/core');
 // Fill slot placeholders in prompt template
 function fillSlots(template, slots) {
   let filled = template;
@@ -131,8 +131,20 @@ async function generateAllSections(selectedSections, slotMap, colors) {
   );
 
   const valid = results.filter(Boolean);
-  console.log('[SectionGen] Done:', valid.length, '/', selectedSections.length, 'succeeded');
-  return valid;
+
+console.log('[SectionGen] Done:', valid.length, '/', selectedSections.length, 'succeeded');
+
+if (valid.length === 0) {
+  throw new Error('All generated sections failed JSX validation.');
+}
+
+if (valid.length < Math.ceil(selectedSections.length * 0.5)) {
+  throw new Error(
+    `Too many sections failed JSX validation: ${valid.length}/${selectedSections.length} succeeded.`
+  );
+}
+
+return valid;
 }
 
 // Assemble all sections into a full React component
@@ -174,6 +186,11 @@ const ${compName} = () => {
     const compName = `Section${i}_${s.sectionId.replace(/[^a-zA-Z0-9]/g, '_')}`;
     return `      <${compName} />`;
   }).join('\n');
+
+  const accentClean = String(accent || '#ff6b00').replace('#', '');
+const r = parseInt(accentClean.substring(0, 2), 16) || 255;
+const g = parseInt(accentClean.substring(2, 4), 16) || 107;
+const b = parseInt(accentClean.substring(4, 6), 16) || 0;
 
   // ── All locked CSS merged ─────────────────────────────────────
 const brandRoot = `

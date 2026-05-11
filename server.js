@@ -6,6 +6,9 @@ const fs      = require('fs');
 const axios   = require('axios');
 const cheerio = require('cheerio');
 const babel = require('@babel/core');
+const { spawn } = require('child_process');
+const { validateFinalJsx } = require('./modules/outputValidator');
+const { buildSafeLandingPage } = require('./modules/safeLandingPage');
 
 function isUsableBrandColor(hex) {
   if (!hex) return false;
@@ -249,19 +252,6 @@ export default LandingPage;`
   <title>${filename}</title>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            accent: 'var(--accent)',
-            primary: 'var(--primary)'
-          }
-        }
-      }
-    }
-  </script>
   <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
 </head>
 <body>
@@ -285,7 +275,6 @@ export default LandingPage;`
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
 </head>
 <body>
@@ -484,7 +473,7 @@ function buildSectionImageMap(analyzedImages, blueprint, contentMap) {
           const url  = (img.url || '').toLowerCase();
           const blocked = ['cartoon', 'robot', 'clipart', 'mascot',
                            'character', 'avatar', 'emoji', 'icon-set', 'vector',
-                           'cookie', 'og.', 'favicon', 'grass', 'ground'];
+                           'cookie', 'og.', 'favicon', 'grass', 'ground', 'abstract', 'colorful', 'circuit', 'neon', 'glitch', 'bokeh', 'texture', 'pattern'];
           return !blocked.some(b => desc.includes(b) || url.includes(b));
         })
         .filter(img => ['ui-screenshot','feature-illustration','hero-visual','generic-stock'].includes(img.role))
@@ -923,11 +912,6 @@ async function generateSectionLibraryPage(
 
   const rgbVal = hexToRgb(accentVal);
 
-  const { buildTailwindTokens } = require('./modules/tailwindTokens');
-  const tw = buildTailwindTokens(blueprint);
-
-  const { buildShadcnComponents } = require('./modules/shadcn');
-  const shadcn = buildShadcnComponents(accentVal, primaryVal);
 
   // Shared CSS injected once at the top of the component
 const bodyIsDark = /^#0|^#1/.test(blueprint?.colours?.bodyBg || '#fff');
@@ -979,7 +963,7 @@ const bodyIsDark = /^#0|^#1/.test(blueprint?.colours?.bodyBg || '#fff');
     primaryHex:   primaryVal,
     headingFont:  blueprint?.typography?.headingFont || 'Plus Jakarta Sans',
     bodyFont:     blueprint?.typography?.bodyFont    || 'Inter',
-    radius:       shadcn?.radius || { btn: 'rounded-xl', card: 'rounded-2xl' },
+    radius:       { btn: '12px', card: '16px' },
     sectionIds:   pickedSections.map(s => s.id),
     totalSections: pickedSections.length
   };
@@ -1222,18 +1206,15 @@ JSX VALIDITY HARD RULE:
 - Final line MUST be:
 export default LandingPage;
 
-USE TAILWIND CLASSES — these are loaded via CDN. Use utility classes directly on elements.
-DO NOT write any <style> tags. DO NOT use className with custom CSS class names.
-Use inline Tailwind arbitrary values like bg-[#F15623] for brand colors.
+STYLING RULES — Use inline styles and CSS variables only. NO Tailwind classes whatsoever.
+Use style={{...}} props on every element for layout, spacing, colors, and typography.
+Use CSS custom properties (var(--accent), var(--primary), var(--bodyBg)) for brand colors.
+You MAY use className ONLY for the pre-defined animation/layout classes from lockedCSS: reveal, anim, anim-scale, d0–d5, container, section, stagger-parent, zoom-reveal, slide-left, slide-right, pop-in, btn-magnetic, h-scroll-track, sticky-scroll-section, sticky-panel, scroll-step.
 
-BRAND TOKENS (use these as Tailwind arbitrary values):
-accent color:  ${accentVal}  → bg-[${accentVal}] text-[${accentVal}] border-[${accentVal}]
-primary color: ${primaryVal} → bg-[${primaryVal}]
+BRAND TOKENS (use as CSS variables or direct hex values in style props):
+accent color:  ${accentVal}  → style={{color:'${accentVal}'}} or style={{background:'${accentVal}'}}
+primary color: ${primaryVal} → style={{color:'${primaryVal}'}} or style={{background:'${primaryVal}'}}
 body bg:       ${blueprint?.colours?.bodyBg || '#ffffff'}
-
-
-USE THE CSS CLASSES already defined in the section's lockedCSS.
-Use Tailwind arbitrary values for brand colors: bg-[${accentVal}] text-[${accentVal}]
 
 STILL VALID (keep using):
 - className="reveal" for scroll animations
@@ -1420,14 +1401,14 @@ const LandingPage = () => {
     <div>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
       <style dangerouslySetInnerHTML={{ __html: css }} />
-     <nav className="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-xl border-b border-white/10 py-3.5">
-        <div className="${tw.container} flex justify-between items-center gap-4">
+     <nav style={{position:'sticky',top:0,zIndex:50,background:'rgba(15,23,42,0.92)',backdropFilter:'blur(16px)',borderBottom:'1px solid rgba(255,255,255,0.1)',padding:'12px 0'}}>
+        <div className="container" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:16}}>
           ${blueprint?.brandLogoUrl
   ? `<img src="${blueprint.brandLogoUrl}" alt="${contentMap?.productName || 'Product'}" style="height:32px;display:block;object-fit:contain" />`
-  : `<span className="font-extrabold text-xl" style={{color:'${accentVal}'}}>${contentMap?.productName || 'Product'}</span>`
+  : `<span style={{fontWeight:800,fontSize:20,color:'${accentVal}'}}>${contentMap?.productName || 'Product'}</span>`
 }
-          <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey" className="h-7 opacity-95" />
-          <a href="#lead-form" className="${shadcn.Button.default} text-sm" style={{textDecoration:'none'}}>Get Free Consultation</a>
+          <img src="https://cdn.techjockey.com/web/assets/V5/img/logo.svg" height="28" alt="Techjockey" style={{opacity:0.95}} />
+          <a href="#lead-form" style={{display:'inline-flex',alignItems:'center',justifyContent:'center',borderRadius:12,fontSize:13,fontWeight:600,padding:'10px 20px',background:'var(--accent)',color:'#fff',border:'none',cursor:'pointer',textDecoration:'none'}}>Get Free Consultation</a>
         </div>
       </nav>
 
@@ -1547,8 +1528,31 @@ const footerJSX = `
   return component;
 }
 
-function generateReactProjectFolder(jsxCode, productName) {
-  const folderName = productName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function generateReactProjectFolder(productName, jsxCode, contentMap = {}, themeTokens = {}) {
+  if (
+    typeof productName !== 'string' ||
+    productName.length > 120 ||
+    productName.includes('import React') ||
+    productName.includes('function LandingPage') ||
+    productName.includes('const LandingPage') ||
+    productName.includes('React.createElement') ||
+    productName.includes('<section') ||
+    productName.includes('<div')
+  ) {
+    console.warn('[ProjectGen] Invalid productName received. Falling back to contentMap/productName.');
+
+    productName =
+      contentMap?.productName ||
+      contentMap?.hero?.productName ||
+      'generated-landing-page';
+  }
+
+  const folderName = String(productName || 'generated-landing-page')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .substring(0, 70) || 'generated-landing-page';
+
   const projectPath = path.join(__dirname, 'output', 'projects', folderName);
   fs.mkdirSync(path.join(projectPath, 'src'), { recursive: true });
   fs.mkdirSync(path.join(projectPath, 'public'), { recursive: true });
@@ -1556,7 +1560,7 @@ function generateReactProjectFolder(jsxCode, productName) {
   fs.writeFileSync(path.join(projectPath, 'package.json'), JSON.stringify({
     name: folderName, version: '1.0.0', private: true, type: 'module',
     dependencies: { react: '^18.2.0', 'react-dom': '^18.2.0' },
-    devDependencies: { '@vitejs/plugin-react': '^4.0.0', vite: '^4.4.0', tailwindcss: '^3.3.0', autoprefixer: '^10.4.14', postcss: '^8.4.27' },
+    devDependencies: { '@vitejs/plugin-react': '^4.0.0', vite: '^4.4.0' },
     scripts: { dev: 'vite', build: 'vite build', preview: 'vite preview' }
   }, null, 2));
 
@@ -1572,25 +1576,42 @@ export default defineConfig({
   }
 });`);
 
-  fs.writeFileSync(path.join(projectPath, 'tailwind.config.js'),
-    `export default { content: ['./src/**/*.{js,jsx}'], theme: { extend: {} }, plugins: [] };`);
-
   fs.writeFileSync(path.join(projectPath, 'postcss.config.js'),
-    `export default { plugins: { tailwindcss: {}, autoprefixer: {} } };`);
+    `export default { plugins: { autoprefixer: {} } };`);
 
-  fs.writeFileSync(path.join(projectPath, 'public', 'index.html'),
+  fs.writeFileSync(path.join(projectPath, 'index.html'),
     `<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n  <title>${productName}</title>\n</head>\n<body>\n  <div id="root"></div>\n  <script type="module" src="/src/main.jsx"></script>\n</body>\n</html>`);
 
   fs.writeFileSync(path.join(projectPath, 'src', 'main.jsx'),
     `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport './index.css';\nimport LandingPage from './LandingPage';\n\nReactDOM.createRoot(document.getElementById('root')).render(\n  <React.StrictMode><LandingPage /></React.StrictMode>\n);`);
 
   fs.writeFileSync(path.join(projectPath, 'src', 'index.css'),
-    `@tailwind base;\n@tailwind components;\n@tailwind utilities;`);
+    `*, *::before, *::after { box-sizing: border-box; }\nbody { margin: 0; font-family: 'Inter', ui-sans-serif, sans-serif; }\n`);
 
 // Clean JSX before writing — remove duplicate exports
-  let cleanJsx = jsxCode.replace(/export\s+default\s+LandingPage\s*;?\s*\n?/g, '');
-  cleanJsx = cleanJsx.trimEnd() + '\nexport default LandingPage;\n';
-  fs.writeFileSync(path.join(projectPath, 'src', 'LandingPage.jsx'), cleanJsx);
+  let cleanJsx;
+
+try {
+  cleanJsx = validateFinalJsx(jsxCode, 'LandingPage.jsx');
+} catch (err) {
+  console.warn('[ProjectGen] JSX invalid before writing project. Using safe fallback:', err.message);
+
+  cleanJsx = buildSafeLandingPage(
+  {
+    ...contentMap,
+    productName: contentMap?.productName || productName
+  },
+  themeTokens || { accent: '#ff6b00' }
+);
+
+  cleanJsx = validateFinalJsx(cleanJsx, 'LandingPage.jsx');
+}
+
+fs.writeFileSync(
+  path.join(projectPath, 'src', 'LandingPage.jsx'),
+  cleanJsx,
+  'utf8'
+);
   fs.writeFileSync(path.join(projectPath, 'README.md'),
     `# ${productName}\n\nGenerated landing page.\n\n## Run\n\`\`\`\nnpm install\nnpm run dev\n\`\`\``);
 
@@ -1611,7 +1632,7 @@ function uniqueByUrl(items) {
 const { proxyImage } = require('./modules/imageProxy');
 
 const app = express();
-
+const runningProjects = new Map();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -3212,6 +3233,14 @@ if (themeTokens) {
   blueprint.__themeLocked = true;
 }
 
+   // ── Pre-Step 6: Inject reusable assets from previous sessions ────────────
+    const assetIndex  = require('./modules/assetIndex');
+    let   reusedAssets = assetIndex.findReusableAssets(contentMap, designSession.sessionId, 6);
+    if (reusedAssets.length > 0) {
+      finalImages.push(...reusedAssets);
+      console.log(`[AssetReuse] Injected ${reusedAssets.length} reusable assets into finalImages pool`);
+    }
+
    // ── STEP 6: Build initial mediaPlan from scored images ─────────────────
     console.log('[6/8] Building initial mediaPlan...');
     const heroUrl0    = finalImages[0]?.url || null;
@@ -3267,7 +3296,8 @@ if (generationMode === 'replicate-reference') {
 
   if (refImages.length > 0) {
     localized = await localizeAssets({
-      sessionId: designSession.sessionId,
+      sessionId:   designSession.sessionId,
+      productName: contentMap?.productName,
       mediaPlan,
       assetRules: {},
       extraUrls: refImages
@@ -3346,7 +3376,8 @@ const topImages = [...new Set([...relevantUrls, ...scrapedImages, ...videoUrls])
   });
 
     localized = await localizeAssets({
-    sessionId: designSession.sessionId,
+    sessionId:   designSession.sessionId,
+    productName: contentMap?.productName,
     mediaPlan,
     assetRules: {},
     extraUrls: topImages
@@ -3429,6 +3460,31 @@ try {
     visionInputs,
     contentMap?.productName || products[0]?.name || 'software'
   );
+
+  // Persist freshly analyzed images to the cross-session asset index
+  assetIndex.appendAnalyzedImages(analyzedImages, {
+    productName:     contentMap?.productName     || '',
+    productCategory: contentMap?.productCategory || '',
+    sessionId:       designSession.sessionId
+  });
+
+  // Merge stored metadata for reused assets — no re-analysis needed
+  if (reusedAssets.length > 0) {
+    analyzedImages.push(...reusedAssets.map(r => ({
+      url:               r.url,
+      originalUrl:       r.originalUrl || '',
+      role:              r.role,
+      confidence:        r.confidence,
+      description:       r.description || '',
+      isWide:            r.isWide            || false,
+      hasDarkBackground: r.hasDarkBackground || false,
+      isTransparent:     r.isTransparent     || false,
+      sectionFit:        r.sectionFit        || {},
+      isUsable:          true,
+      _reused:           true
+    })));
+    console.log(`[AssetReuse] Merged ${reusedAssets.length} reused assets into analyzed pool`);
+  }
 
   // ── Part 3: Pick best per role from ALL analyzed images ──────────────────
   const byRole = {
@@ -3915,20 +3971,45 @@ else {
   }
 }
 
-    const jsxFilename = (products[0]?.name || 'page')
-  .replace(/[^a-z0-9]/gi, '-').toLowerCase() + '-' + Date.now() + '.jsx';
+const jsxFilename = (products[0]?.name || 'page')
+  .replace(/[^a-z0-9]/gi, '-')
+  .toLowerCase() + '-' + Date.now() + '.jsx';
+
+if (generationMode !== 'replicate-reference') {
+  try {
+    html = validateFinalJsx(html, jsxFilename);
+  } catch (firstErr) {
+    console.warn('[FinalValidator] Generated JSX invalid. Repairing:', firstErr.message);
+
+    try {
+      html = await repairInvalidJsx({
+        claudeEngine,
+        jsxCode: html,
+        errorMessage: firstErr.message,
+        blueprint,
+        contentMap
+      });
+
+      html = validateFinalJsx(html, jsxFilename);
+    } catch (repairErr) {
+      console.warn('[FinalValidator] Repair failed. Using safe fallback:', repairErr.message);
+
+      html = buildSafeLandingPage(contentMap, themeTokens);
+      html = validateFinalJsx(html, jsxFilename);
+    }
+  }
+}
 
 fs.writeFileSync(path.join(__dirname, 'output', jsxFilename), html, 'utf8');
 
 // ── JSX Completion Validator ────────────────────────────────────────────
 function isJsxComplete(jsx) {
-  if (!jsx || jsx.length < 2000) return false;
-  const hasExport   = jsx.includes('export default LandingPage');
-  const hasFooter   = jsx.toLowerCase().includes('footer') || jsx.includes('Techjockey');
-  const openBraces  = (jsx.match(/{/g)  || []).length;
-  const closeBraces = (jsx.match(/}/g)  || []).length;
-  const balanced    = Math.abs(openBraces - closeBraces) < 30;
-  return hasExport && hasFooter && balanced;
+  try {
+    validateFinalJsx(jsx, 'completion-check.jsx');
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 if (generationMode !== 'replicate-reference' && !isJsxComplete(html)) {
@@ -4013,9 +4094,11 @@ const fixableIssues = (postGenReview?.issues || []).filter(issue => {
   return true;
 });
 
-if ((postGenReview?.score || 0) < 0 &&
-    fixableIssues.length > 0 &&
-    fixableIssues.some(i => !['trust', 'logo'].some(w => (i.area || '').toLowerCase().includes(w)))) {
+if (
+  Number(postGenReview?.score || 100) < 75 &&
+  fixableIssues.length > 0 &&
+  fixableIssues.some(i => !['trust', 'logo'].some(w => (i.area || '').toLowerCase().includes(w)))
+) {
 
       console.log('[PostGenCritic] Score below 65 — running fix pass on these issues:');
       console.log(fixableIssues);
@@ -4090,12 +4173,18 @@ const filename = previewFilename; // for the response
     console.log('=== DONE ===', filename);
 
     let projectFolder = null;
-    try {
-      const folderName = generateReactProjectFolder(html, contentMap?.productName || 'landing-page');
-      projectFolder = folderName;
-    } catch(e) {
-      console.warn('[ProjectGen] Failed:', e.message);
-    }
+try {
+  const folderName = generateReactProjectFolder(
+    contentMap?.productName || products?.[0]?.name || 'landing-page',
+    html,
+    contentMap,
+    themeTokens
+  );
+
+  projectFolder = folderName;
+} catch(e) {
+  console.warn('[ProjectGen] Failed:', e.message);
+}
 
     updateDesignSession(designSession.sessionId, {
   status: 'html-generated',
@@ -4107,7 +4196,7 @@ const filename = previewFilename; // for the response
   },
       outputs: {
         htmlFilename: filename,
-        localizedAssetsBase: `/output/generated-assets/${designSession.sessionId}`
+        localizedAssetsBase: localized?.publicBase || `/output/generated-assets/${designSession.sessionId}`
       }
     });
 
@@ -4376,24 +4465,40 @@ const revisedPreviewFilename = safeFilename(
   `${baseFilename}-${targetSection}-revised-${revisionId}-preview.html`
 );
 
-    try {
-  validateGeneratedJsxOrThrow(html, jsxFilename);
+    let finalRevisedJsx = revisedJsx;
+
+try {
+  finalRevisedJsx = validateFinalJsx(finalRevisedJsx, revisedJsxFilename);
 } catch (err) {
-  html = await repairInvalidJsx({
+  console.warn('[FeedbackRegenerate] Revised JSX invalid. Repairing:', err.message);
+
+  finalRevisedJsx = await repairInvalidJsx({
     claudeEngine,
-    jsxCode: html,
+    jsxCode: finalRevisedJsx,
     errorMessage: err.message,
-    blueprint,
-    contentMap
+    blueprint: {},
+    contentMap: {}
   });
 
-  validateGeneratedJsxOrThrow(html, jsxFilename);
+  finalRevisedJsx = validateFinalJsx(finalRevisedJsx, revisedJsxFilename);
 }
 
-fs.writeFileSync(path.join(__dirname, 'output', jsxFilename), html, 'utf8');
+fs.writeFileSync(
+  path.join(__dirname, 'output', revisedJsxFilename),
+  finalRevisedJsx,
+  'utf8'
+);
 
-const previewHtml = buildReactPreviewWrapper(html, jsxFilename);
-fs.writeFileSync(path.join(__dirname, 'output', previewFilename), previewHtml, 'utf8');
+const revisedPreviewHtml = buildReactPreviewWrapper(
+  finalRevisedJsx,
+  revisedJsxFilename
+);
+
+fs.writeFileSync(
+  path.join(__dirname, 'output', revisedPreviewFilename),
+  revisedPreviewHtml,
+  'utf8'
+);
 
     feedbackItem.status = 'regenerated';
     feedbackItem.revisedJsxFilename = revisedJsxFilename;
@@ -4432,6 +4537,90 @@ app.get('/projects', (req, res) => {
   const projectFolders = fs.existsSync(path.join(__dirname, 'output', 'projects'))
     ? fs.readdirSync(path.join(__dirname, 'output', 'projects'))
     : [];
+app.post('/projects/:projectname/run', async (req, res) => {
+  try {
+    const projectName = req.params.projectname;
+
+    if (!/^[a-z0-9._-]+$/i.test(projectName)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid project name.'
+      });
+    }
+
+    const projectPath = path.join(__dirname, 'output', 'projects', projectName);
+
+    if (!fs.existsSync(projectPath)) {
+      return res.status(404).json({
+        success: false,
+        error: 'Project folder not found.'
+      });
+    }
+
+    const packageJsonPath = path.join(projectPath, 'package.json');
+
+    if (!fs.existsSync(packageJsonPath)) {
+      return res.status(400).json({
+        success: false,
+        error: 'package.json missing in project folder.'
+      });
+    }
+
+    if (runningProjects.has(projectName)) {
+      return res.json({
+        success: true,
+        alreadyRunning: true,
+        url: runningProjects.get(projectName).url
+      });
+    }
+
+    const port = 5173 + runningProjects.size;
+
+    const child = spawn(
+      'npm',
+      ['run', 'dev', '--', '--host', '0.0.0.0', '--port', String(port)],
+      {
+        cwd: projectPath,
+        shell: true,
+        stdio: 'pipe'
+      }
+    );
+
+    child.stdout.on('data', data => {
+      console.log(`[Vite:${projectName}]`, data.toString());
+    });
+
+    child.stderr.on('data', data => {
+      console.warn(`[Vite:${projectName}]`, data.toString());
+    });
+
+    child.on('exit', code => {
+      console.log(`[Vite:${projectName}] exited with code`, code);
+      runningProjects.delete(projectName);
+    });
+
+    const url = `http://localhost:${port}`;
+
+    runningProjects.set(projectName, {
+      process: child,
+      port,
+      url
+    });
+
+    res.json({
+      success: true,
+      url
+    });
+
+  } catch (e) {
+    console.error('[ProjectRun] Error:', e.message);
+
+    res.status(500).json({
+      success: false,
+      error: e.message
+    });
+  }
+});
 
   const html = `<!DOCTYPE html>
 <html>
@@ -4463,7 +4652,6 @@ app.get('/projects', (req, res) => {
 
   res.send(html);
 });
-
 app.get('/projects/:projectname', (req, res) => {
   const previewFiles = fs.readdirSync(path.join(__dirname, 'output'))
     .filter(f => f.startsWith(req.params.projectname) && f.endsWith('-preview.html'))
@@ -4555,6 +4743,88 @@ app.post('/apply-fixes', async (req, res) => {
   } catch(e) {
     console.error('[apply-fixes] Error:', e.message);
     res.status(500).json({ success: false, error: e.message });
+  }
+});
+app.post('/projects/:projectname/run', async (req, res) => {
+  try {
+    const projectName = req.params.projectname;
+
+    if (!/^[a-z0-9._-]+$/i.test(projectName)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid project name.'
+      });
+    }
+
+    const projectPath = path.join(__dirname, 'output', 'projects', projectName);
+
+    if (!fs.existsSync(projectPath)) {
+      return res.status(404).json({
+        success: false,
+        error: 'Project folder not found.'
+      });
+    }
+
+    const packageJsonPath = path.join(projectPath, 'package.json');
+    if (!fs.existsSync(packageJsonPath)) {
+      return res.status(400).json({
+        success: false,
+        error: 'package.json missing in project folder.'
+      });
+    }
+
+    if (runningProjects.has(projectName)) {
+      return res.json({
+        success: true,
+        alreadyRunning: true,
+        url: runningProjects.get(projectName).url
+      });
+    }
+
+    const port = 5173 + runningProjects.size;
+
+    const child = spawn(
+      'npm',
+      ['run', 'dev', '--', '--host', '0.0.0.0', '--port', String(port)],
+      {
+        cwd: projectPath,
+        shell: true,
+        stdio: 'pipe'
+      }
+    );
+
+    child.stdout.on('data', data => {
+      console.log(`[Vite:${projectName}]`, data.toString());
+    });
+
+    child.stderr.on('data', data => {
+      console.warn(`[Vite:${projectName}]`, data.toString());
+    });
+
+    child.on('exit', code => {
+      console.log(`[Vite:${projectName}] exited with code`, code);
+      runningProjects.delete(projectName);
+    });
+
+    const url = `http://localhost:${port}`;
+
+    runningProjects.set(projectName, {
+      process: child,
+      port,
+      url
+    });
+
+    res.json({
+      success: true,
+      url
+    });
+
+  } catch (e) {
+    console.error('[ProjectRun] Error:', e.message);
+    res.status(500).json({
+      success: false,
+      error: e.message
+    });
   }
 });
 // ── START ───────────────────────────────────────────────────────────────────────

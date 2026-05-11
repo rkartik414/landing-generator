@@ -2265,9 +2265,10 @@ if (type === 'hero-code') {
 role: 'system',
 content: `You are a senior React developer specialising in conversion-optimised hero sections.
 Build ONLY the hero section as a complete standalone React component called HeroSection.
-Load Tailwind CSS CDN + GSAP + ScrollTrigger CDN in the component.
+Load GSAP + ScrollTrigger CDN in the component. Do NOT load or use Tailwind CSS.
 Use .hero-cinematic-bg on background image, .split-text on H1, .btn-magnetic on CTA.
-Use Tailwind classes for layout. Add parallax data-depth attributes to decorative elements.
+Use inline style={{}} props for all layout and styling. Do NOT use any Tailwind utility classes.
+Add parallax data-depth attributes to decorative elements.
 Start with: import React, { useState, useEffect } from 'react';
 End with: export default HeroSection;`
 },
@@ -2299,7 +2300,7 @@ CINEMATIC REQUIREMENTS:
 - Decorative: .float-ambient, .float-drift
 - data-depth="0.2" on foreground, data-depth="0.5" on background layer
 - Floating stat cards with real numbers from contentMap
-- Load: GSAP + ScrollTrigger + Tailwind from CDN
+- Load: GSAP + ScrollTrigger from CDN (no Tailwind)
 COLORS: accent='${accentVal}', primary='${primaryVal}'`
 }
 ]

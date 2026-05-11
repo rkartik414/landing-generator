@@ -9,12 +9,23 @@ function ensureDir(dirPath) {
   if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath, { recursive: true });
 }
 
-function getAssetOutputDir(sessionId) {
-  return path.join(__dirname, '../output/generated-assets', sessionId);
+// Sanitize a product name into a safe folder name
+// "Zoho Desk"         → "zoho-desk"
+// "Seedream 4.5 & Co" → "seedream-4-5-co"
+function sanitizeProductName(name) {
+  return (name || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .substring(0, 60) || null;
 }
 
-function getPublicAssetBase(sessionId) {
-  return `/output/generated-assets/${sessionId}`;
+function getAssetOutputDir(folderName) {
+  return path.join(__dirname, '../output/generated-assets', folderName);
+}
+
+function getPublicAssetBase(folderName) {
+  return `/output/generated-assets/${folderName}`;
 }
 
 function safeExtFromUrl(url, fallback = '.png') {
@@ -97,12 +108,15 @@ function optimizeImage(imagePath) {
         });
 }
 
-async function localizeAssets({ sessionId, mediaPlan = {}, assetRules = {}, extraUrls = [] }) {
-  if (!sessionId) throw new Error('sessionId is required for asset localization');
+async function localizeAssets({ sessionId, productName, mediaPlan = {}, assetRules = {}, extraUrls = [] }) {
+  const folderName = sanitizeProductName(productName) || sessionId;
+  if (!folderName) throw new Error('productName or sessionId is required for asset localization');
 
-  const outputDir  = getAssetOutputDir(sessionId);
-  const publicBase = getPublicAssetBase(sessionId);
+  const outputDir  = getAssetOutputDir(folderName);
+  const publicBase = getPublicAssetBase(folderName);
+  const isNew      = !fs.existsSync(outputDir);
   ensureDir(outputDir);
+  console.log(`[AssetFolder] Using folder: output/generated-assets/${folderName}/ (${isNew ? 'created new' : 'reused existing'})`);
 
   const urls = Array.from(new Set([
     ...collectUrlsFromMediaPlan(mediaPlan),

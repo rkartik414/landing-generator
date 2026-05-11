@@ -912,6 +912,7 @@ formData.append('strictLayoutMatch', document.getElementById('strictLayoutMatch'
  
   try {
     const res  = await fetch('/generate', { method: 'POST', body: formData });
+    lastGeneratedPage.projectFolder = data.projectFolder;
     const data = await res.json();
     ['step1','step2','step3','step4','step5'].forEach(id => { document.getElementById(id).className = 'step done'; });
     if (data.success) {
@@ -945,6 +946,26 @@ formData.append('includeTestimonials', includeTestimonials);
 formData.append('includeTrust',        includeTrust);
   }
   btn.disabled = false; btn.textContent = 'Generate landing page →';
+}
+
+async function openGeneratedProject(projectFolder) {
+  if (!projectFolder) {
+    alert('No project folder found.');
+    return;
+  }
+
+  const res = await fetch(`/projects/${projectFolder}/run`, {
+    method: 'POST'
+  });
+
+  const data = await res.json();
+
+  if (!data.success) {
+    alert(data.error || 'Could not start project.');
+    return;
+  }
+
+  window.open(data.url, '_blank');
 }
 
 async function submitFeedback(action) {
