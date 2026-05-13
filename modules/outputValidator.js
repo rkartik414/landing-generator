@@ -57,9 +57,9 @@ function assertRequiredStructure(code) {
     missing.push('return statement');
   }
 
-  if (!/Techjockey|techjockey\.com|support@techjockey\.com/i.test(code)) {
-    missing.push('Techjockey branding');
-  }
+  if (!/Techjockey|techjockey|support@techjockey\.com|cdn\.techjockey\.com/i.test(code)) {
+  missing.push('Techjockey branding');
+}
 
   if (missing.length) {
     throw new Error('Missing required structure: ' + missing.join(', '));

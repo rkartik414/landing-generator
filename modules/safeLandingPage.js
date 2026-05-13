@@ -14,6 +14,7 @@ function buildSafeLandingPage(contentMap = {}, themeTokens = {}) {
   const sections = Array.isArray(contentMap?.productSections)
     ? contentMap.productSections
     : [];
+    const includeForm = contentMap?.includeForm === true || contentMap?.forceHeroRightForm === true;
 
   const headline = esc(hero.headline || productName);
   const subheadline = esc(hero.subheadline || hero.supportingLine || '');
@@ -74,6 +75,51 @@ function LandingPage() {
           background: var(--bg);
           color: var(--text);
         }
+          .safe-form {
+  background: rgba(15,23,42,.88);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: 0 28px 90px rgba(0,0,0,.38);
+}
+
+.safe-form h3 {
+  font-size: 26px;
+  margin: 0 0 10px;
+}
+
+.safe-form p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 22px;
+}
+
+.safe-form input {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  padding: 0 14px;
+  outline: none;
+}
+
+.safe-form input::placeholder {
+  color: rgba(255,255,255,.52);
+}
+
+.safe-form button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
 
         .safe-page {
           background:
@@ -333,6 +379,19 @@ function LandingPage() {
           <a className="safe-cta" href="#lead-form">${cta}</a>
         </div>
 
+        ${includeForm ? `
+        <form className="safe-form" id="lead-form">
+          <h3>Get Free Consultation</h3>
+          <p>Talk to Techjockey experts for pricing, demos, and product guidance.</p>
+
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="tel" placeholder="Phone" />
+          <input type="text" placeholder="Company" />
+
+          <button type="submit">${cta}</button>
+        </form>
+` : `
         <div className="safe-visual" aria-hidden="true">
           <div className="safe-window">
             <p className="safe-eyebrow">${productName}</p>
@@ -344,7 +403,7 @@ function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+`}
 
       ${sectionMarkup}
 
