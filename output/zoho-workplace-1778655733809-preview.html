@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zoho-workplace-1778655733809.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef, useCallback, useMemo, useContext, useReducer, useId } = React;
+    const LandingPage = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), {
+      threshold: 0.12
+    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+  const cta_text = 'Get Started';
+  const accentColor = '#ff6b00';
+  const primaryColor = '#ff6b00';
+  const css = `
+    :root {
+      --accent: #ff6b00;
+      --primary: #ff6b00;
+      --accent-rgb: 255,107,0;
+      --bodyBg: #ffffff;
+      --section-alt: #f8fafc;
+      --section-deeper: #f1f5f9;
+      --card-bg: #ffffff;
+      --card-border: #e5e7eb;
+      --text-primary: #111827;
+      --text-muted: #6b7280
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', ui-sans-serif, sans-serif; background: var(--bodyBg); color: var(--text-primary); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    button { font-family: inherit; }
+    h1, h2, h3 { word-break: normal !important; overflow-wrap: normal !important; hyphens: none !important; }
+    h1, [class*="h1"], [class*="hero-title"], [class*="banner-title"], [class*="hvf-h1"] {
+      font-size: clamp(32px, 5vw, 60px) !important;
+      line-height: 1.1 !important;
+    }
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    .stagger-parent > * { opacity:0; transform:translateY(24px); }
+    .zoom-reveal { overflow:hidden; }
+    .zoom-reveal img, .zoom-reveal video { transform:scale(1.12); will-change:transform; }
+    .slide-left { opacity:0; transform:translateX(-60px); }
+    .slide-right { opacity:0; transform:translateX(60px); }
+    .pop-in { opacity:0; transform:scale(0.7); }
+    .btn-magnetic { will-change:transform; }
+    .h-scroll-track { display:flex; gap:24px; will-change:transform; }
+    .sticky-scroll-section { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+    .sticky-panel { position:sticky; top:120px; height:fit-content; }
+    .scroll-step { min-height:280px; padding:32px 0; opacity:0.4; transition:opacity .3s; }
+    .scroll-step.active { opacity:1; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes scaleIn { from { opacity:0; transform:scale(0.94); } to { opacity:1; transform:scale(1); } }
+    .anim { opacity:0; animation:fadeUp 0.85s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .anim-scale { opacity:0; animation:scaleIn 1s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .d0{animation-delay:0.05s}.d1{animation-delay:0.2s}.d2{animation-delay:0.35s}
+    .d3{animation-delay:0.5s}.d4{animation-delay:0.65s}.d5{animation-delay:0.8s}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .section{padding:96px 0;position:relative}
+
+    .hero-layered{position:relative;min-height:92vh;overflow:hidden;display:flex;align-items:center}
+    .hero-layer{position:absolute;inset:0;z-index:0}
+    .hero-layer img,.hero-layer video{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-layer-overlay{z-index:1;background:linear-gradient(to right,rgba(0,0,0,0.7) 45%,transparent 85%)}
+    .hero-layered-content{position:relative;z-index:4;max-width:1200px;margin:0 auto;padding:0 24px;width:100%}
+    .hero-layered h1{font-size:clamp(36px,5.5vw,60px)!important;font-weight:800;color:#fff;line-height:1.05;letter-spacing:-0.03em;max-width:600px;word-break:normal!important;overflow-wrap:normal!important;hyphens:none!important}
+    .hero-layered p{font-size:18px;color:rgba(255,255,255,0.82);max-width:500px;line-height:1.7;margin:18px 0 28px}
+    .hero-cta-row{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-primary-btn,
+    .pdv-btn,
+    .section-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 32px;border-radius:12px;
+      background:var(--accent,#ff6b00);color:#fff;border:none;
+      font-size:15px;font-weight:700;cursor:pointer;
+      transition:transform .2s, box-shadow .2s;
+    }
+    .hero-primary-btn:hover,
+    .pdv-btn:hover,
+    .section-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(0,0,0,0.2);
+    }
+    .hero-floating-panel{position:absolute;bottom:48px;right:60px;z-index:5;width:420px;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.12)}
+    .hero-floating-panel video,.hero-floating-panel img{width:100%;display:block}
+    @media(max-width:991px){.hero-floating-panel{display:none}}
+
+    .tlg { padding:48px 0; background:#f8fafc; border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb; }
+    .tlg-label { text-align:center; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#9ca3af; margin-bottom:28px; }
+    .tlg-logos { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:36px; max-width:900px; margin:0 auto; padding:0 24px; }
+    .tlg-logo { height:30px; opacity:0.45; filter:grayscale(1); object-fit:contain; transition:opacity 0.25s, filter 0.25s; }
+    .tlg-logo:hover { opacity:0.85; filter:grayscale(0); }
+    .trust-badges{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      max-width:900px;
+      margin:28px auto 0;
+      padding:0 24px;
+    }
+    .trust-badge{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      padding:18px 20px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(15,23,42,0.06);
+    }
+    .trust-badge strong{
+      display:block;
+      font-size:18px;
+      color:#111827;
+      margin-bottom:6px;
+    }
+    .trust-badge span{
+      font-size:13px;
+      color:#6b7280;
+    }
+    @media(max-width:767px){
+      .trust-badges{grid-template-columns:1fr;}
+    }
+
+    .falt { padding:96px 0; }
+    .falt-head { text-align:center; max-width:720px; margin:0 auto 80px; }
+    .falt-head h2 { font-size:44px; font-weight:700; letter-spacing:-0.04em; line-height:1.08; margin:14px 0; }
+    .falt-block { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; padding:0 24px; max-width:1200px; margin:0 auto 100px; }
+    .falt-block:last-child { margin-bottom:0; }
+    .falt-block.flip { direction:rtl; }
+    .falt-block.flip > * { direction:ltr; }
+    .falt-num { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent,#ff6b00); margin-bottom:16px; }
+    .falt-copy h3 { font-size:36px; font-weight:700; letter-spacing:-0.03em; line-height:1.1; margin:0 0 18px; }
+    .falt-copy p { font-size:17px; color:#4b5563; line-height:1.8; margin:0 0 28px; }
+    .falt-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+    .falt-chip { padding:7px 14px; border-radius:100px; font-size:13px; font-weight:600; background:rgba(var(--accent-rgb,255,107,0),0.08); border:1px solid rgba(var(--accent-rgb,255,107,0),0.2); color:#374151; }
+    .falt-visual { border-radius:24px; overflow:hidden; box-shadow:0 24px 60px rgba(15,23,42,0.1); border:1px solid #e5e7eb; }
+    .falt-visual img, .falt-visual video { width:100%; display:block; }
+    .falt-visual-dark { background:#111827; min-height:380px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+
+    .fig { padding:96px 0; }
+    .fig.dark { background:var(--bodyBg,#111827); color:#fff; }
+    .fig-head { text-align:center; max-width:720px; margin:0 auto 60px; }
+    .fig-head h2 { font-size:44px; font-weight:700; letter-spacing:-0.04em; line-height:1.08; margin:14px 0 16px; }
+    .fig-head p { opacity:0.72; font-size:17px; line-height:1.75; }
+    .fig-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1200px; margin:0 auto; padding:0 24px; }
+    .fig-card { padding:28px; border-radius:20px; border:1px solid rgba(0,0,0,0.07); background:#fff; transition:transform 0.25s, box-shadow 0.25s; }
+    .fig.dark .fig-card { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.09); }
+    .fig-card:hover { transform:translateY(-6px); box-shadow:0 20px 48px rgba(15,23,42,0.1); }
+    .fig-icon { width:48px; height:48px; border-radius:14px; background:rgba(var(--accent-rgb,255,107,0),0.1); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+    .fig-card h4 { font-size:17px; font-weight:700; letter-spacing:-0.025em; margin:0 0 10px; }
+    .fig-card p { font-size:14px; line-height:1.7; margin:0; color:#6b7280; }
+    .fig.dark .fig-card p { color:rgba(255,255,255,0.6); }
+
+    .mns { padding:80px 0; background:#fff; border-top:1px solid #f3f4f6; }
+    .mns-head { text-align:center; margin-bottom:48px; }
+    .mns-label { font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#9ca3af; }
+    .mns-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:900px; margin:0 auto; padding:0 24px; }
+    .mns-card { padding:24px; border-radius:16px; background:#f8fafc; border:1px solid #f3f4f6; transition:transform .25s, box-shadow .25s; }
+    .mns-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(15,23,42,0.08); }
+    .mns-pub { font-size:13px; font-weight:700; color:var(--accent,#ff6b00); margin-bottom:10px; }
+    .mns-text { font-size:14px; color:#374151; line-height:1.65; font-style:italic; }
+
+    .pdv { padding:96px 0; background:#f8fafc; }
+    .pdv-head { text-align:center; max-width:680px; margin:0 auto 48px; }
+    .pdv-head h2 { font-size:44px; font-weight:700; letter-spacing:-0.04em; margin:14px 0 16px; }
+    .pdv-head p { font-size:17px; color:#4b5563; line-height:1.75; }
+    .pdv-frame { max-width:1000px; margin:0 auto; padding:0 24px; }
+    .pdv-browser { border-radius:20px; overflow:hidden; background:#111827; border:1px solid rgba(255,255,255,0.1); box-shadow:0 40px 100px rgba(15,23,42,0.2); }
+    .pdv-bar { display:flex; gap:8px; align-items:center; padding:14px 18px; background:#1f2937; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .pdv-dot { width:11px; height:11px; border-radius:50%; background:#374151; }
+    .pdv-video { aspect-ratio:16/9; width:100%; display:block; object-fit:cover; }
+    .pdv-cta { text-align:center; margin-top:40px; }
+
+    .footer-space{height:40px}
+
+    @media (max-width: 991px) {
+      .falt-block,
+      .fig-grid,
+      .mns-grid { grid-template-columns:1fr; }
+    }
+  `;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, css), /*#__PURE__*/React.createElement("section", {
+    className: "hero-layered"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-layer"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+    alt: "Operational dashboard interface"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "hero-layer hero-layer-overlay"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "hero-layered-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "anim d0"
+  }, /*#__PURE__*/React.createElement("h1", null, "Turn operational complexity into a clear, real-time dashboard your team can act on.")), /*#__PURE__*/React.createElement("p", {
+    className: "anim d1"
+  }, "Centralize workflows, monitor performance, and keep every team aligned with a system built for operational visibility."), /*#__PURE__*/React.createElement("div", {
+    className: "hero-cta-row anim d2"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "hero-primary-btn"
+  }, cta_text))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-floating-panel anim-scale d3"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+    alt: "Dashboard preview"
+  }))), /*#__PURE__*/React.createElement("section", {
+    className: "tlg"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tlg-label"
+  }, "Trusted operational teams rely on measurable performance"), /*#__PURE__*/React.createElement("div", {
+    className: "trust-badges reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-badge"
+  }, /*#__PURE__*/React.createElement("strong", null, "99.9% uptime"), /*#__PURE__*/React.createElement("span", null, "Reliable access for always-on operations")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-badge"
+  }, /*#__PURE__*/React.createElement("strong", null, "Real-time visibility"), /*#__PURE__*/React.createElement("span", null, "Live dashboards for faster decision-making")), /*#__PURE__*/React.createElement("div", {
+    className: "trust-badge"
+  }, /*#__PURE__*/React.createElement("strong", null, "Enterprise-ready controls"), /*#__PURE__*/React.createElement("span", null, "Built for secure, cross-functional workflows"))))), /*#__PURE__*/React.createElement("section", {
+    className: "falt"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "falt-head reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "falt-num"
+  }, "Core capabilities"), /*#__PURE__*/React.createElement("h2", null, "Everything your operations team needs to stay aligned")), /*#__PURE__*/React.createElement("div", {
+    className: "falt-block reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "falt-copy"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "falt-num"
+  }, "01"), /*#__PURE__*/React.createElement("h3", null, "Unify metrics across teams"), /*#__PURE__*/React.createElement("p", null, "Bring fragmented operational data into one shared view so leaders and frontline teams can make faster decisions with confidence."), /*#__PURE__*/React.createElement("div", {
+    className: "falt-chips"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "falt-chip"
+  }, "Live reporting"), /*#__PURE__*/React.createElement("span", {
+    className: "falt-chip"
+  }, "Shared visibility"), /*#__PURE__*/React.createElement("span", {
+    className: "falt-chip"
+  }, "Cross-team alignment")), /*#__PURE__*/React.createElement("button", {
+    className: "section-btn"
+  }, cta_text)), /*#__PURE__*/React.createElement("div", {
+    className: "falt-visual"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    alt: "Team collaborating with dashboards"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "falt-block flip reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "falt-copy"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "falt-num"
+  }, "02"), /*#__PURE__*/React.createElement("h3", null, "Automate routine operational follow-up"), /*#__PURE__*/React.createElement("p", null, "Reduce manual coordination with workflows that keep projects moving and make next steps visible for every stakeholder."), /*#__PURE__*/React.createElement("div", {
+    className: "falt-chips"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "falt-chip"
+  }, "Task routing"), /*#__PURE__*/React.createElement("span", {
+    className: "falt-chip"
+  }, "Operational alerts"), /*#__PURE__*/React.createElement("span", {
+    className: "falt-chip"
+  }, "Workflow consistency")), /*#__PURE__*/React.createElement("button", {
+    className: "section-btn"
+  }, cta_text)), /*#__PURE__*/React.createElement("div", {
+    className: "falt-visual"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+    alt: "Operations workflow interface"
+  })))), /*#__PURE__*/React.createElement("section", {
+    className: "fig dark"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "fig-head reveal"
+  }, /*#__PURE__*/React.createElement("h2", null, "Built for operational clarity at every level"), /*#__PURE__*/React.createElement("p", null, "From daily execution to executive visibility, keep the entire organization connected to the signals that matter most.")), /*#__PURE__*/React.createElement("div", {
+    className: "fig-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "fig-card reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "fig-icon"
+  }, "\uD83D\uDCCA"), /*#__PURE__*/React.createElement("h4", null, "Live dashboards"), /*#__PURE__*/React.createElement("p", null, "Track performance as work happens, not after the fact.")), /*#__PURE__*/React.createElement("div", {
+    className: "fig-card reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "fig-icon"
+  }, "\u2699\uFE0F"), /*#__PURE__*/React.createElement("h4", null, "Operational workflows"), /*#__PURE__*/React.createElement("p", null, "Standardize handoffs and reduce delays across teams.")), /*#__PURE__*/React.createElement("div", {
+    className: "fig-card reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "fig-icon"
+  }, "\uD83D\uDD14"), /*#__PURE__*/React.createElement("h4", null, "Actionable alerts"), /*#__PURE__*/React.createElement("p", null, "Surface issues early so teams can respond before they escalate.")))), /*#__PURE__*/React.createElement("section", {
+    className: "mns"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mns-head reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mns-label"
+  }, "What teams notice")), /*#__PURE__*/React.createElement("div", {
+    className: "mns-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mns-card reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mns-pub"
+  }, "Visibility"), /*#__PURE__*/React.createElement("div", {
+    className: "mns-text"
+  }, "A single view reduces reporting friction and keeps decision-makers aligned.")), /*#__PURE__*/React.createElement("div", {
+    className: "mns-card reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mns-pub"
+  }, "Speed"), /*#__PURE__*/React.createElement("div", {
+    className: "mns-text"
+  }, "Clear workflows help teams move faster without losing accountability.")), /*#__PURE__*/React.createElement("div", {
+    className: "mns-card reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mns-pub"
+  }, "Control"), /*#__PURE__*/React.createElement("div", {
+    className: "mns-text"
+  }, "Operational leaders gain confidence with better oversight and fewer blind spots.")))), /*#__PURE__*/React.createElement("section", {
+    className: "pdv"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pdv-head reveal"
+  }, /*#__PURE__*/React.createElement("h2", null, "See the dashboard in action"), /*#__PURE__*/React.createElement("p", null, "Explore how a modern operational command center can help your team monitor execution, coordinate work, and improve response time.")), /*#__PURE__*/React.createElement("div", {
+    className: "pdv-frame reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pdv-browser"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pdv-bar"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pdv-dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "pdv-dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "pdv-dot"
+  })), /*#__PURE__*/React.createElement("img", {
+    className: "pdv-video",
+    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
+    alt: "Product dashboard demo"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "pdv-cta"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "pdv-btn"
+  }, cta_text)))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-space"
+  }));
+};
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

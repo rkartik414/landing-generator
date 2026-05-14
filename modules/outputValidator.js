@@ -57,10 +57,9 @@ function assertRequiredStructure(code) {
     missing.push('return statement');
   }
 
-  if (!/Techjockey|techjockey|support@techjockey\.com|cdn\.techjockey\.com/i.test(code)) {
+  if (!/Techjockey|techjockey|support@techjockey\.com|cdn\.techjockey\.com|Techjockey Infotech/i.test(code)) {
   missing.push('Techjockey branding');
 }
-
   if (missing.length) {
     throw new Error('Missing required structure: ' + missing.join(', '));
   }
@@ -68,8 +67,14 @@ function assertRequiredStructure(code) {
 
 function validateFinalJsx(rawCode, filename = 'LandingPage.jsx') {
   const cleaned = normalizeReactCode(rawCode);
-  assertRequiredStructure(cleaned);
+
+  // Compile first. If JSX is broken, we must repair/fallback.
+  // Do not treat broken JSX as only a branding issue.
   compileReactOrThrow(cleaned, filename);
+
+  // Then check branding/structure.
+  assertRequiredStructure(cleaned);
+
   return cleaned;
 }
 

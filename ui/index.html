@@ -541,6 +541,7 @@
     <a id="previewLink" href="#" target="_blank" class="btn">Open preview →</a>
     <a id="downloadLink" href="#" class="btn-ghost">Download HTML</a>
     <a id="downloadJsxLink" href="#" class="btn-ghost" style="display:none">Download JSX</a>
+    <a id="projectPreviewLink" href="#" target="_blank" class="btn" style="display:none">Open Project →</a>
     <div id="feedbackBox" style="display:none;margin-top:24px;border-top:1px solid #252525;padding-top:20px;">
   <div class="card-title">Page Feedback</div>
 
@@ -912,8 +913,8 @@ formData.append('strictLayoutMatch', document.getElementById('strictLayoutMatch'
  
   try {
     const res  = await fetch('/generate', { method: 'POST', body: formData });
-    lastGeneratedPage.projectFolder = data.projectFolder;
-    const data = await res.json();
+lastGeneratedPage.projectFolder = data.projectFolder;
+const data = await res.json();
     ['step1','step2','step3','step4','step5'].forEach(id => { document.getElementById(id).className = 'step done'; });
     if (data.success) {
   if (data.theme) showThemePreview(data.theme);
@@ -927,6 +928,13 @@ formData.append('strictLayoutMatch', document.getElementById('strictLayoutMatch'
   document.getElementById('resultMessage').textContent = `Page ready — ${data.jsxFilename}`;
   document.getElementById('previewLink').href  = `/output/${data.filename}`;
   document.getElementById('downloadLink').href = `/download/${data.filename}`;
+  if (data.projectFolder) {
+    const projLink = document.getElementById('projectPreviewLink');
+    if (projLink) {
+      projLink.href = `/project/${data.projectFolder}/preview`;
+      projLink.style.display = 'inline-block';
+    }
+  }
   document.getElementById('downloadJsxLink').href = `/download-jsx/${data.jsxFilename}`;
   document.getElementById('downloadJsxLink').style.display = 'inline-block';
 

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>manageenginetest-1778739588300.jsx</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <style>* { box-sizing: border-box; } body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useEffect, useRef, useCallback, useMemo, useContext, useReducer, useId } = React;
+    const LandingPage = () => {
+  const accent = '#da3e3e';
+  const primary = '#da3e3e';
+  const bodyBg = '#111827';
+  const pageRef = useRef(null);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const ctas = [{
+    text: 'Talk to Expert',
+    href: 'https://www.manageengine.com/products/desktop-central/?network=g&device=c&keyword=manageengine%20endpoint%20central&campaignid=19654588997&creative=647688791211&matchtype=p&adposition=&placement=&adgroup=145683667093&targetid=kwd-1683172609861&gad_source=1&gad_campaignid=19654588997&gbraid=0AAAAAChbZwW9bQQkbQyooq2JcTE3E84lk&gclid=CjwKCAjwwpDQBhAuEiwAa-4WozVmwpASl6_BlZ5WrrwPCu6ObZZs6KpisJFaqbI1iEwQBfkZxhE0XRoC_ZkQAvD_BwE'
+  }, {
+    text: 'Talk to Expert',
+    href: 'https://www.manageengine.com/products/desktop-central/?network=g&device=c&keyword=manageengine%20endpoint%20central&campaignid=19654588997&creative=647688791211&matchtype=p&adposition=&placement=&adgroup=145683667093&targetid=kwd-1683172609861&gad_source=1&gad_campaignid=19654588997&gbraid=0AAAAAChbZwW9bQQkbQyooq2JcTE3E84lk&gclid=CjwKCAjwwpDQBhAuEiwAa-4WozVmwpASl6_BlZ5WrrwPCu6ObZZs6KpisJFaqbI1iEwQBfkZxhE0XRoC_ZkQAvD_BwE'
+  }, {
+    text: 'Talk to Expert',
+    href: 'https://www.manageengine.com/products/desktop-central/?network=g&device=c&keyword=manageengine%20endpoint%20central&campaignid=19654588997&creative=647688791211&matchtype=p&adposition=&placement=&adgroup=145683667093&targetid=kwd-1683172609861&gad_source=1&gad_campaignid=19654588997&gbraid=0AAAAAChbZwW9bQQkbQyooq2JcTE3E84lk&gclid=CjwKCAjwwpDQBhAuEiwAa-4WozVmwpASl6_BlZ5WrrwPCu6ObZZs6KpisJFaqbI1iEwQBfkZxhE0XRoC_ZkQAvD_BwE'
+  }, {
+    text: 'Talk to Expert',
+    href: 'https://www.manageengine.com/products/desktop-central/?network=g&device=c&keyword=manageengine%20endpoint%20central&campaignid=19654588997&creative=647688791211&matchtype=p&adposition=&placement=&adgroup=145683667093&targetid=kwd-1683172609861&gad_source=1&gad_campaignid=19654588997&gbraid=0AAAAAChbZwW9bQQkbQyooq2JcTE3E84lk&gclid=CjwKCAjwwpDQBhAuEiwAa-4WozVmwpASl6_BlZ5WrrwPCu6ObZZs6KpisJFaqbI1iEwQBfkZxhE0XRoC_ZkQAvD_BwE'
+  }, {
+    text: 'Talk to Expert',
+    href: 'https://www.manageengine.com/products/desktop-central/?network=g&device=c&keyword=manageengine%20endpoint%20central&campaignid=19654588997&creative=647688791211&matchtype=p&adposition=&placement=&adgroup=145683667093&targetid=kwd-1683172609861&gad_source=1&gad_campaignid=19654588997&gbraid=0AAAAAChbZwW9bQQkbQyooq2JcTE3E84lk&gclid=CjwKCAjwwpDQBhAuEiwAa-4WozVmwpASl6_BlZ5WrrwPCu6ObZZs6KpisJFaqbI1iEwQBfkZxhE0XRoC_ZkQAvD_BwE'
+  }, {
+    text: 'Talk to Expert',
+    href: 'https://www.manageengine.com/products/desktop-central/?network=g&device=c&keyword=manageengine%20endpoint%20central&campaignid=19654588997&creative=647688791211&matchtype=p&adposition=&placement=&adgroup=145683667093&targetid=kwd-1683172609861&gad_source=1&gad_campaignid=19654588997&gbraid=0AAAAAChbZwW9bQQkbQyooq2JcTE3E84lk&gclid=CjwKCAjwwpDQBhAuEiwAa-4WozVmwpASl6_BlZ5WrrwPCu6ObZZs6KpisJFaqbI1iEwQBfkZxhE0XRoC_ZkQAvD_BwE'
+  }, {
+    text: 'Talk to Expert',
+    href: 'https://www.manageengine.com/products/desktop-central/?network=g&device=c&keyword=manageengine%20endpoint%20central&campaignid=19654588997&creative=647688791211&matchtype=p&adposition=&placement=&adgroup=145683667093&targetid=kwd-1683172609861&gad_source=1&gad_campaignid=19654588997&gbraid=0AAAAAChbZwW9bQQkbQyooq2JcTE3E84lk&gclid=CjwKCAjwwpDQBhAuEiwAa-4WozVmwpASl6_BlZ5WrrwPCu6ObZZs6KpisJFaqbI1iEwQBfkZxhE0XRoC_ZkQAvD_BwE'
+  }];
+  const trustLogos = ['/output/generated-assets/manage-engine-endpoint-central/03-d05036461a.png', '/output/generated-assets/manage-engine-endpoint-central/01-90b1779504.png', '/output/generated-assets/manage-engine-endpoint-central/08-ffc73ef96f.png', '/output/generated-assets/manage-engine-endpoint-central/06-7f902aea79.png', '/output/generated-assets/manage-engine-endpoint-central/17-06df7e2a1a.png'];
+  const testimonials = [{
+    quote: 'Endpoint Central helps us stay on top of patch management. The remote support features are fantastic and help us manage systems efficiently.',
+    author: 'Rahul Verma',
+    designation: 'ICT & Service Desk Administrator',
+    avatar: '/output/generated-assets/manage-engine-endpoint-central/10-aef5cadf88.png'
+  }, {
+    quote: 'Endpoint Central has helped our business enhance employee experience and support users in a timely and efficient manner.',
+    author: 'Shweta Singh',
+    designation: 'IT Infrastructure Manager',
+    avatar: '/output/generated-assets/manage-engine-endpoint-central/13-14aaaaf389.png'
+  }, {
+    quote: 'Endpoint Central has simplified patch management and software deployment for our IT team. Managing hundreds of devices from one console has significantly improved our operational efficiency.',
+    author: 'Sachin Gupta',
+    designation: 'IT Operations Manager',
+    avatar: '/output/generated-assets/manage-engine-endpoint-central/11-86c462eeba.png'
+  }, {
+    quote: 'We purchased Endpoint Central through Techjockey and the experience was seamless. Their team guided us through the evaluation, purchase process, and even helped us with the post-purchase demo and onboarding.',
+    author: 'Rounak Sharma',
+    designation: 'Head of IT Infrastructure',
+    avatar: '/output/generated-assets/manage-engine-endpoint-central/12-a2dfcded2b.png'
+  }, {
+    quote: 'Techjockey made our Endpoint Central purchase extremely smooth. From product consultation to after-purchase support and demo sessions, their team ensured we could deploy the solution quickly.',
+    author: 'Ayushi Jain',
+    designation: 'Senior System Administrator',
+    avatar: '/output/generated-assets/manage-engine-endpoint-central/14-7587c43919.png'
+  }];
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--primary', primary);
+    const observer = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    }), {
+      threshold: 0.15
+    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    const gsapScript = document.createElement('script');
+    gsapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+    gsapScript.async = true;
+    const stScript = document.createElement('script');
+    stScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js';
+    stScript.async = true;
+    document.body.appendChild(gsapScript);
+    document.body.appendChild(stScript);
+    const initGSAP = () => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const gsap = window.gsap;
+          gsap.registerPlugin(window.ScrollTrigger);
+          gsap.utils.toArray('.zoom-reveal').forEach(el => {
+            const img = el.querySelector('img,video');
+            if (img) {
+              gsap.to(img, {
+                scale: 1,
+                duration: 1.2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 85%',
+                  toggleActions: 'play none none reverse'
+                }
+              });
+            }
+          });
+          gsap.utils.toArray('[data-depth]').forEach(el => {
+            gsap.to(el, {
+              y: () => -(window.innerHeight * (parseFloat(el.dataset.depth) || 0.2) * 0.5),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el.closest('section') || el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+              }
+            });
+          });
+          gsap.utils.toArray('.stagger-parent').forEach(p => {
+            gsap.to(p.children, {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: p,
+                start: 'top 80%'
+              }
+            });
+          });
+          gsap.utils.toArray('.count-up').forEach(el => {
+            const target = parseFloat(el.dataset.count || '0');
+            const suffix = el.dataset.suffix || '';
+            const prefix = el.dataset.prefix || '';
+            const obj = {
+              val: 0
+            };
+            gsap.to(obj, {
+              val: target,
+              duration: 1.8,
+              snap: {
+                val: 0.1
+              },
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 90%'
+              },
+              onUpdate: () => {
+                el.textContent = `${prefix}${Math.round(obj.val)}${suffix}`;
+              }
+            });
+          });
+        });
+      });
+    };
+    const boot = () => setTimeout(initGSAP, 300);
+    gsapScript.onload = boot;
+    stScript.onload = boot;
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+  const css = `
+    :root{--accent:${accent};--primary:${primary};}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:${bodyBg};color:#f8fafc;font-family:Inter,sans-serif;scroll-behavior:smooth}
+    body{overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .page{background:${bodyBg}}
+    .container{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .section{padding:88px 0;position:relative;overflow:hidden}
+    .hero-bg{background:#0f1923}
+    .bg-1{background:#111827}
+    .bg-2{background:#0f1923}
+    .bg-3{background:#111827}
+    .nav-wrap{position:sticky;top:0;z-index:60;background:rgba(15,25,35,.88);backdrop-filter:blur(20px);border-bottom:1px solid #2a3642}
+    .nav{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:14px 0}
+    .brand-text{font-family:Barlow,sans-serif;font-weight:800;font-size:20px;color:var(--accent);letter-spacing:.2px}
+    .nav-right{display:flex;align-items:center;gap:16px}
+    .animated-cta,.ghost-btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:13px 22px;border-radius:10px;font-weight:700;font-size:15px;
+      transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease
+    }
+    .animated-cta{
+      background:var(--accent);color:#fff;border:1px solid var(--accent);
+      box-shadow:0 10px 30px rgba(218,62,62,.24)
+    }
+    .animated-cta:hover,.ghost-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+    .ghost-btn{border:1px solid #3b4b5a;background:transparent;color:#f8fafc}
+    .hero-grid,.split-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+    .banner-title{
+      font-family:Barlow,sans-serif;font-size:clamp(48px,6vw,68px);line-height:1.03;margin:0 0 18px;
+      word-break:normal;overflow-wrap:normal;hyphens:none;white-space:normal
+    }
+    .gradient-text{background:linear-gradient(135deg, ${accent} 0%, ${primary} 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:18px;line-height:1.7;color:#cbd5e1;max-width:640px;margin:0 0 22px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:26px 0 22px}
+    .chips{display:flex;flex-wrap:wrap;gap:12px}
+    .chip{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;border:1px solid rgba(218,62,62,.3);background:rgba(218,62,62,.08);color:#cbd5e1;font-size:13px}
+    .chip svg{width:15px;height:15px;color:var(--accent)}
+    .hero-visual{min-height:500px;display:flex;align-items:center;justify-content:center;position:relative}
+    .hero-panel{position:relative;width:100%;min-height:500px;border-radius:24px;border:1px solid rgba(255,255,255,.1);background:
+      radial-gradient(circle at 15% 20%, rgba(218,62,62,.18), transparent 28%),
+      radial-gradient(circle at 85% 15%, rgba(218,62,62,.12), transparent 24%),
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+    .hero-panel:before{
+      content:'';position:absolute;inset:0;
+      background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size:32px 32px;opacity:.3;pointer-events:none
+    }
+    .hero-image-card{position:absolute;right:22px;bottom:22px;width:min(82%,520px);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    .hero-image-card img{width:100%;display:block;transform:scale(1.08)}
+    .floating-stat,.floating-chip{position:absolute;border:1px solid rgba(255,255,255,.08);background:rgba(12,18,27,.88);backdrop-filter:blur(12px);border-radius:16px;color:#fff}
+    .floating-stat{padding:16px 18px;min-width:160px}
+    .floating-stat strong{display:block;font-family:Barlow,sans-serif;font-size:28px}
+    .floating-stat span{display:block;font-size:13px;color:#cbd5e1;margin-top:4px}
+    .floating-chip{padding:12px 14px;font-size:13px;color:#e5e7eb}
+    .stat-a{top:26px;left:26px}
+    .stat-b{top:122px;right:26px}
+    .chip-a{left:30px;bottom:120px}
+    .chip-b{right:80px;bottom:130px}
+    .trust-strip{padding:26px 0;border-top:1px solid #2a3642;border-bottom:1px solid #2a3642}
+    .trust-head{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+    .trust-head h3{margin:0;font-family:Barlow,sans-serif;font-size:28px}
+    .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .logo-card{height:72px;display:flex;align-items:center;justify-content:center;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.04)}
+    .logo-card img{max-height:32px;filter:grayscale(1);opacity:.86;transition:filter .25s ease,opacity .25s ease,transform .25s ease}
+    .logo-card:hover img{filter:grayscale(0);opacity:1;transform:scale(1.03)}
+    .section-tag{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(218,62,62,.12);border:1px solid rgba(218,62,62,.24);color:#ffd4d4;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px}
+    h2{font-family:Barlow,sans-serif;font-size:clamp(32px,4vw,44px);line-height:1.1;margin:0 0 16px}
+    .lead{font-size:17px;line-height:1.75;color:#cbd5e1;margin:0 0 22px}
+    .left-border{border-left:2px solid rgba(255,255,255,.14);padding-left:18px}
+    .browser-frame{display:flex;flex-direction:column;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:#0a0a0a;box-shadow:0 24px 60px rgba(0,0,0,.34)}
+    .browser-bar{display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);background:#11161d}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .d1{background:#ff5f57}.d2{background:#febc2e}.d3{background:#28c840}
+    .browser-frame img{flex:1;min-height:0;height:420px;width:100%;object-fit:cover;display:block}
+    .spotlight-card{padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.04);margin-bottom:18px}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .feature-card,.mini-card,.price-card,.testimonial-card{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px
+    }
+    .feature-card{padding:18px}
+    .feature-title{display:flex;align-items:flex-start;gap:12px;font-family:Barlow,sans-serif;font-size:20px;margin:0 0 10px}
+    .feature-card p{margin:0;color:#cbd5e1;line-height:1.65}
+    .icon-wrap{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(218,62,62,.14);color:var(--accent)}
+    .dashboard-mock{padding:24px;border-radius:20px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))}
+    .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+    .mini-card{padding:18px}
+    .mini-card strong{display:block;font-family:Barlow,sans-serif;font-size:28px;margin-bottom:6px}
+    .mini-card span{font-size:13px;color:#cbd5e1}
+    .list-stack{display:grid;gap:14px}
+    .list-item{padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04)}
+    .list-item h3{margin:0 0 8px;font-family:Barlow,sans-serif;font-size:20px}
+    .list-item p{margin:0;color:#cbd5e1;line-height:1.65}
+    .pricing-wrap{display:flex;justify-content:center}
+    .price-card{width:min(560px,100%);padding:30px;position:relative}
+    .price-badge{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(34,197,94,.14);color:#86efac;border:1px solid rgba(34,197,94,.26);font-weight:700;font-size:12px;margin-bottom:16px}
+    .price-title{font-family:Barlow,sans-serif;font-size:34px;margin:0 0 10px}
+    .price-empty{color:#cbd5e1;line-height:1.75;margin:0 0 20px}
+    .pricing-note{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#e5e7eb}
+    .testimonials-shell{position:relative;overflow:hidden}
+    .testimonial-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+    .testimonial-slide{min-width:100%;padding:6px}
+    .testimonial-card{padding:28px}
+    .quote-mark{font-size:46px;line-height:1;color:var(--accent);font-family:Barlow,sans-serif;margin-bottom:12px}
+    .stars{color:#f5c451;letter-spacing:2px;margin-bottom:12px}
+    .testimonial-quote{font-size:19px;line-height:1.8;color:#f8fafc;margin:0 0 18px}
+    .author{display:flex;align-items:center;gap:14px}
+    .author img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.12)}
+    .author strong{display:block}
+    .author span{display:block;color:#9fb0c0;font-size:14px}
+    .carousel-controls{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:20px}
+    .dots{display:flex;gap:8px}
+    .dot-btn,.arrow-btn{border:none;cursor:pointer}
+    .dot-btn{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.25);transition:all .25s ease}
+    .dot-btn.active{width:28px;background:var(--accent)}
+    .arrow-group{display:flex;gap:10px}
+    .arrow-btn{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.07);color:#fff}
+    .final-cta{padding:32px;border-radius:24px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(135deg, rgba(218,62,62,.12), rgba(255,255,255,.04))}
+    .footer{padding:36px 0;border-top:1px solid #2a3642;background:#0b1220}
+    .footer-grid{display:grid;grid-template-columns:1.2fr 1fr auto;gap:20px;align-items:center}
+    .footer-meta{color:#cbd5e1;font-size:14px;line-height:1.8}
+    .footer-links,.socials{display:flex;gap:14px;flex-wrap:wrap}
+    .footer-links a,.socials a{color:#cbd5e1;font-size:14px}
+    .socials a{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .zoom-reveal{overflow:hidden}
+    .zoom-reveal img,.zoom-reveal video{transform:scale(1.1);will-change:transform}
+    [data-depth]{will-change:transform}
+    .float-ambient{animation:floatY 6s ease-in-out infinite}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .stagger-parent>*{opacity:0;transform:translateY(24px)}
+    .glass-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);border-radius:16px}
+    .hover-lift{transition:transform .25s ease,box-shadow .25s ease}
+    .hover-lift:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.28)}
+    .section-orb{position:absolute;border-radius:50%;pointer-events:none}
+    .orb-a{top:-120px;right:-120px;width:340px;height:340px;background:radial-gradient(circle, rgba(218,62,62,.18), transparent 68%)}
+    .orb-b{bottom:-100px;left:-80px;width:280px;height:280px;background:radial-gradient(circle, rgba(218,62,62,.12), transparent 68%)}
+    @media (max-width: 980px){
+      .hero-grid,.split-grid,.footer-grid{grid-template-columns:1fr}
+      .nav{grid-template-columns:1fr auto;gap:12px}
+      .nav .nav-cta{grid-column:1/-1}
+      .logo-grid{grid-template-columns:repeat(2,1fr)}
+      .feature-grid,.metric-row{grid-template-columns:1fr}
+      .hero-visual,.hero-panel{min-height:420px}
+    }
+    @media (max-width: 640px){
+      .section{padding:68px 0}
+      .container{width:min(100% - 20px,1180px)}
+      .hero-actions{flex-direction:column;align-items:flex-start}
+      .animated-cta,.ghost-btn{width:100%}
+      .browser-frame img{height:280px}
+      .logo-grid{grid-template-columns:1fr}
+      .floating-stat{min-width:132px;padding:12px}
+      .floating-stat strong{font-size:22px}
+    }
+  `;
+  const Icon = ({
+    children
+  }) => /*#__PURE__*/React.createElement("div", {
+    className: "icon-wrap pop-in"
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  }, children));
+  return /*#__PURE__*/React.createElement("div", {
+    className: "page",
+    ref: pageRef
+  }, /*#__PURE__*/React.createElement("link", {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+  }), /*#__PURE__*/React.createElement("style", {
+    dangerouslySetInnerHTML: {
+      __html: css
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "nav-wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container nav"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "brand-text"
+  }, "ManageEngine"), /*#__PURE__*/React.createElement("div", {
+    className: "nav-right"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://cdn.techjockey.com/web/assets/V5/img/logo.svg",
+    height: "28px",
+    alt: "Techjockey"
+  })), /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta btn-magnetic nav-cta",
+    href: ctas[0].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[0].text))), /*#__PURE__*/React.createElement("section", {
+    className: "section hero-bg",
+    style: {
+      paddingTop: '76px'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-orb orb-a"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "section-orb orb-b"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "container hero-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    "data-depth": "0.15"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-tag reveal"
+  }, "Unified Endpoint Management & Security"), /*#__PURE__*/React.createElement("h1", {
+    className: "banner-title reveal split-text"
+  }, "Unified Endpoint Management & Security with", ' ', /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Manage Engine Endpoint Central")), /*#__PURE__*/React.createElement("p", {
+    className: "hero-sub reveal reveal-delay-1"
+  }, "Manage, secure, and automate your entire endpoint ecosystem from a single console."), /*#__PURE__*/React.createElement("div", {
+    className: "chips reveal reveal-delay-2"
+  }, ['Patch & Update Management', 'Browser Security', 'Data Security', 'Vulnerability Remediation'].map((chip, i) => /*#__PURE__*/React.createElement("div", {
+    className: "chip",
+    key: i
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M20 6L9 17l-5-5"
+  })), /*#__PURE__*/React.createElement("span", null, chip)))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta btn-magnetic reveal",
+    href: ctas[1].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[1].text), /*#__PURE__*/React.createElement("a", {
+    className: "ghost-btn reveal",
+    href: "#testimonials"
+  }, "See Customer Feedback"))), /*#__PURE__*/React.createElement("div", {
+    className: "hero-visual slide-right zoom-reveal",
+    "data-depth": "0.4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hero-panel hero-cinematic-bg"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "floating-stat stat-a float-ambient glass-card"
+  }, /*#__PURE__*/React.createElement("strong", {
+    className: "count-up",
+    "data-count": "1",
+    "data-suffix": "",
+    "data-prefix": ""
+  }, "1"), /*#__PURE__*/React.createElement("span", null, "single console")), /*#__PURE__*/React.createElement("div", {
+    className: "floating-stat stat-b float-ambient glass-card"
+  }, /*#__PURE__*/React.createElement("strong", {
+    className: "count-up",
+    "data-count": "4",
+    "data-suffix": "",
+    "data-prefix": ""
+  }, "4"), /*#__PURE__*/React.createElement("span", null, "core management areas")), /*#__PURE__*/React.createElement("div", {
+    className: "floating-chip chip-a float-ambient"
+  }, "Centralized Endpoint Management for Modern IT Teams"), /*#__PURE__*/React.createElement("div", {
+    className: "floating-chip chip-b float-ambient"
+  }, "Monitor Continuously. Respond Instantly"), /*#__PURE__*/React.createElement("div", {
+    className: "hero-image-card"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/manage-engine-endpoint-central/18-bb6e7984f5.png",
+    alt: "Manage Engine Endpoint Central"
+  })))))), /*#__PURE__*/React.createElement("section", {
+    className: "bg-1 trust-strip"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trust-head reveal"
+  }, /*#__PURE__*/React.createElement("h3", null, "Proof Strategy: logos first"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      margin: 0,
+      color: '#cbd5e1'
+    }
+  }, "Compact trust bar for faster credibility with IT teams.")), /*#__PURE__*/React.createElement("div", {
+    className: "logo-grid stagger-parent"
+  }, trustLogos.map((logo, i) => /*#__PURE__*/React.createElement("div", {
+    className: "logo-card hover-lift",
+    key: i
+  }, /*#__PURE__*/React.createElement("img", {
+    src: logo,
+    alt: `Trust logo ${i + 1}`
+  })))))), /*#__PURE__*/React.createElement("section", {
+    className: "section bg-2 clip-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-orb orb-a"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "container split-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "slide-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-frame zoom-reveal reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-bar"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot d1"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot d2"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot d3"
+  })), /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/manage-engine-endpoint-central/45-8783e1a4d7.jpeg",
+    alt: "Centralized Endpoint Management for Modern IT Teams"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "slide-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-tag reveal"
+  }, "Banner2"), /*#__PURE__*/React.createElement("h2", {
+    className: "reveal"
+  }, "Centralized Endpoint Management for ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Modern IT Teams")), /*#__PURE__*/React.createElement("div", {
+    className: "left-border reveal"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Automate endpoint management while improving security and operational efficiency with Manage Engine Endpoint Central. It\u2019s a unified endpoint management and security solution that helps IT teams manage desktops, laptops, servers, and mobile devices from a single console.")), /*#__PURE__*/React.createElement("div", {
+    className: "spotlight-card reveal hover-lift"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "feature-title"
+  }, /*#__PURE__*/React.createElement(Icon, null, /*#__PURE__*/React.createElement("path", {
+    d: "M12 3v18M3 12h18"
+  })), /*#__PURE__*/React.createElement("span", null, "Patch & Update Management")), /*#__PURE__*/React.createElement("p", null, "Secure and stabilize your operating systems, applications, and mobile apps with automated patches and updates.")), /*#__PURE__*/React.createElement("div", {
+    className: "feature-grid stagger-parent"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "feature-card hover-lift"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "feature-title"
+  }, /*#__PURE__*/React.createElement(Icon, null, /*#__PURE__*/React.createElement("path", {
+    d: "M4 7h16M7 4v16"
+  })), /*#__PURE__*/React.createElement("span", null, "Browser Security")), /*#__PURE__*/React.createElement("p", null, "Protect and manage multiple browsers, track usage patterns, and maintain compliance with standards like STIG.")), /*#__PURE__*/React.createElement("div", {
+    className: "feature-card hover-lift"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "feature-title"
+  }, /*#__PURE__*/React.createElement(Icon, null, /*#__PURE__*/React.createElement("path", {
+    d: "M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"
+  })), /*#__PURE__*/React.createElement("span", null, "Data Security")), /*#__PURE__*/React.createElement("p", null, "Identify and encrypt sensitive data, enforce policies for authorized usage, and ensure secure transmission.")), /*#__PURE__*/React.createElement("div", {
+    className: "feature-card hover-lift",
+    style: {
+      gridColumn: '1 / -1'
+    }
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "feature-title"
+  }, /*#__PURE__*/React.createElement(Icon, null, /*#__PURE__*/React.createElement("path", {
+    d: "M21 12a9 9 0 1 1-3-6.7"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M21 3v9h-9"
+  })), /*#__PURE__*/React.createElement("span", null, "Vulnerability Remediation")), /*#__PURE__*/React.createElement("p", null, "Leverage continuous threat intelligence, thorough assessments, and swift remediation to mitigate risks."))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: '24px'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta btn-magnetic reveal",
+    href: ctas[2].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[2].text))))), /*#__PURE__*/React.createElement("section", {
+    className: "section bg-3 clip-reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-orb orb-b"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "container split-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "slide-left"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-tag reveal"
+  }, "Standard Features"), /*#__PURE__*/React.createElement("h2", {
+    className: "reveal"
+  }, "Monitor Continuously. ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Respond Instantly")), /*#__PURE__*/React.createElement("div", {
+    className: "dashboard-mock reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "metric-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mini-card hover-lift"
+  }, /*#__PURE__*/React.createElement("strong", {
+    className: "count-up",
+    "data-count": "5",
+    "data-suffix": "",
+    "data-prefix": ""
+  }, "5"), /*#__PURE__*/React.createElement("span", null, "core standard features")), /*#__PURE__*/React.createElement("div", {
+    className: "mini-card hover-lift"
+  }, /*#__PURE__*/React.createElement("strong", {
+    className: "count-up",
+    "data-count": "1",
+    "data-suffix": "",
+    "data-prefix": ""
+  }, "1"), /*#__PURE__*/React.createElement("span", null, "compliance reporting layer")), /*#__PURE__*/React.createElement("div", {
+    className: "mini-card hover-lift"
+  }, /*#__PURE__*/React.createElement("strong", {
+    className: "count-up",
+    "data-count": "1",
+    "data-suffix": "",
+    "data-prefix": ""
+  }, "1"), /*#__PURE__*/React.createElement("span", null, "remote troubleshooting workflow"))), /*#__PURE__*/React.createElement("div", {
+    className: "list-stack stagger-parent"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "list-item hover-lift"
+  }, /*#__PURE__*/React.createElement("h3", null, "Strengthen Endpoint Security"), /*#__PURE__*/React.createElement("p", null, "Built-in security controls for malware protection, such as next-gen antivirus and anti-ransomware.")), /*#__PURE__*/React.createElement("div", {
+    className: "list-item hover-lift"
+  }, /*#__PURE__*/React.createElement("h3", null, "Manage IT Assets Effectively"), /*#__PURE__*/React.createElement("p", null, "Live notifications and ready-made reports to discover, track, and manage your hardware, software, and digital assets.")), /*#__PURE__*/React.createElement("div", {
+    className: "list-item hover-lift"
+  }, /*#__PURE__*/React.createElement("h3", null, "Enhance Application Control & Privileges"), /*#__PURE__*/React.createElement("p", null, "Define install permissions, track privileges, and enforce zero-trust security with role-based and time-bound access.")), /*#__PURE__*/React.createElement("div", {
+    className: "list-item hover-lift"
+  }, /*#__PURE__*/React.createElement("h3", null, "Facilitate Remote Access & Troubleshooting"), /*#__PURE__*/React.createElement("p", null, "Remotely perform system operations with multi-user collaboration to efficiently troubleshoot devices.")), /*#__PURE__*/React.createElement("div", {
+    className: "list-item hover-lift"
+  }, /*#__PURE__*/React.createElement("h3", null, "Ensure Compliance"), /*#__PURE__*/React.createElement("p", null, "Adhere to regulatory compliance and generate comprehensive audit-ready reports.")))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: '24px'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta btn-magnetic reveal",
+    href: ctas[3].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[3].text))), /*#__PURE__*/React.createElement("div", {
+    className: "slide-right"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-frame zoom-reveal reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "browser-bar"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot d1"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot d2"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "dot d3"
+  })), /*#__PURE__*/React.createElement("img", {
+    src: "/output/generated-assets/manage-engine-endpoint-central/43-44e5d75c08.png",
+    alt: "Monitor Continuously. Respond Instantly"
+  }))))), /*#__PURE__*/React.createElement("section", {
+    className: "section bg-2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-tag reveal"
+  }, "Pricing"), /*#__PURE__*/React.createElement("h2", {
+    className: "reveal"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Pricing")), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "price-card reveal hover-lift"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "price-badge pop-in"
+  }, "Talk to Expert"), /*#__PURE__*/React.createElement("h3", {
+    className: "price-title"
+  }, "Pricing"), /*#__PURE__*/React.createElement("p", {
+    className: "price-empty"
+  }, "Pricing details are not provided in the content. Talk to an expert for plan and purchase guidance."), /*#__PURE__*/React.createElement("div", {
+    className: "pricing-note"
+  }, "Manage Engine Endpoint Central"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: '22px'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta btn-magnetic",
+    href: ctas[4].href,
+    target: "_blank",
+    rel: "noreferrer",
+    style: {
+      width: '100%'
+    }
+  }, ctas[4].text)))))), /*#__PURE__*/React.createElement("section", {
+    className: "section bg-3",
+    id: "testimonials"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-tag reveal"
+  }, "Testimonials"), /*#__PURE__*/React.createElement("h2", {
+    className: "reveal"
+  }, "What IT teams say about ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Endpoint Central")), /*#__PURE__*/React.createElement("div", {
+    className: "testimonials-shell reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-track",
+    style: {
+      transform: `translateX(-${activeTestimonial * 100}%)`
+    }
+  }, testimonials.map((t, i) => /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-slide",
+    key: i
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "testimonial-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "quote-mark"
+  }, "\u275D"), /*#__PURE__*/React.createElement("div", {
+    className: "stars"
+  }, "\u2605\u2605\u2605\u2605\u2605"), /*#__PURE__*/React.createElement("p", {
+    className: "testimonial-quote"
+  }, t.quote), /*#__PURE__*/React.createElement("div", {
+    className: "author"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: t.avatar,
+    alt: t.author
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, t.author), /*#__PURE__*/React.createElement("span", null, t.designation))))))), /*#__PURE__*/React.createElement("div", {
+    className: "carousel-controls"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dots"
+  }, testimonials.map((_, i) => /*#__PURE__*/React.createElement("button", {
+    key: i,
+    className: `dot-btn ${i === activeTestimonial ? 'active' : ''}`,
+    onClick: () => setActiveTestimonial(i),
+    "aria-label": `Go to testimonial ${i + 1}`
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "arrow-group"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "arrow-btn",
+    onClick: () => setActiveTestimonial(prev => (prev - 1 + testimonials.length) % testimonials.length),
+    "aria-label": "Previous testimonial"
+  }, "\u2190"), /*#__PURE__*/React.createElement("button", {
+    className: "arrow-btn",
+    onClick: () => setActiveTestimonial(prev => (prev + 1) % testimonials.length),
+    "aria-label": "Next testimonial"
+  }, "\u2192")))))), /*#__PURE__*/React.createElement("section", {
+    className: "section bg-1"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "final-cta reveal"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "section-tag"
+  }, "Manage Engine Endpoint Central"), /*#__PURE__*/React.createElement("h2", null, "Unified Endpoint Management & Security with ", /*#__PURE__*/React.createElement("span", {
+    className: "gradient-text"
+  }, "Manage Engine Endpoint Central")), /*#__PURE__*/React.createElement("p", {
+    className: "lead"
+  }, "Manage, secure, and automate your entire endpoint ecosystem from a single console."), /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta btn-magnetic",
+    href: ctas[5].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[5].text)))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: 'fixed',
+      right: '18px',
+      bottom: '18px',
+      zIndex: 55
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "animated-cta btn-magnetic",
+    href: ctas[6].href,
+    target: "_blank",
+    rel: "noreferrer"
+  }, ctas[6].text)), /*#__PURE__*/React.createElement("footer", {
+    className: "footer"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container footer-grid"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
+    src: "https://cdn.techjockey.com/web/assets/V5/img/logo.svg",
+    height: "28px",
+    alt: "Techjockey"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "footer-meta",
+    style: {
+      marginTop: '12px'
+    }
+  }, /*#__PURE__*/React.createElement("div", null, "support@techjockey.com"), /*#__PURE__*/React.createElement("div", null, "\xA9 2024 Techjockey Infotech Pvt. Ltd."))), /*#__PURE__*/React.createElement("div", {
+    className: "footer-links"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "/privacy-policy",
+    target: "_blank",
+    rel: "noreferrer"
+  }, "Privacy Policy"), /*#__PURE__*/React.createElement("a", {
+    href: "/terms",
+    target: "_blank",
+    rel: "noreferrer"
+  }, "Terms")), /*#__PURE__*/React.createElement("div", {
+    className: "socials"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://www.facebook.com/techjockey/",
+    target: "_blank",
+    rel: "noreferrer",
+    "aria-label": "Facebook"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M13 22v-8h3l1-4h-4V8c0-1.2.3-2 2-2h2V2.3c-.3 0-1.4-.3-2.8-.3-2.8 0-4.7 1.7-4.7 4.9V10H7v4h3v8h3z"
+  }))), /*#__PURE__*/React.createElement("a", {
+    href: "https://www.instagram.com/techjockey/",
+    target: "_blank",
+    rel: "noreferrer",
+    "aria-label": "Instagram"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm6.25-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"
+  }))), /*#__PURE__*/React.createElement("a", {
+    href: "https://twitter.com/Techjockey",
+    target: "_blank",
+    rel: "noreferrer",
+    "aria-label": "Twitter"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.3L6.5 22H3.4l7.3-8.4L1 2h6.3l4.3 5.7L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z"
+  }))), /*#__PURE__*/React.createElement("a", {
+    href: "https://www.linkedin.com/company/techjockey-infotech-pvt-ltd/",
+    target: "_blank",
+    rel: "noreferrer",
+    "aria-label": "LinkedIn"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 12.47c0-3.17-1.69-4.64-3.95-4.64a3.42 3.42 0 0 0-3.08 1.69V8.5H10V20h3.38v-6.17c0-1.63.31-3.2 2.33-3.2 1.99 0 2.02 1.86 2.02 3.3V20h3.38l-.01-7.53z"
+  })))))));
+};
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(LandingPage));
+  </script>
+</body>
+</html>

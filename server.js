@@ -1714,6 +1714,16 @@ DO NOT:
 - Do not output duplicate style props.
 - Do not output <React.useEffect ...>.
 - Do not output partial JSX.
+
+- The hero headline is ONLY for the hero section H1. 
+  Never repeat it as H2 in features, pricing, testimonials, 
+  or CTA sections. Each section must have its own distinct 
+  heading derived from that section's content and purpose.
+  Feature sections use feature names as headings.
+  Pricing sections use pricing-related headings.
+  Testimonial sections use social proof headings.
+  CTA sections use action-oriented headings.
+
 - NEVER reference an undeclared variable in JSX. Variables like 
   testimonials, features, plans, sections, items, data do NOT exist 
   in scope. You are generating a static JSX fragment, not a component 
@@ -2118,7 +2128,7 @@ const LandingPage = () => {
 
   return (
     <div>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+      @import url('${googleFonts}');
       <style dangerouslySetInnerHTML={{ __html: css }} />
      <nav style={{position:'sticky',top:0,zIndex:50,background:'rgba(15,23,42,0.92)',backdropFilter:'blur(16px)',borderBottom:'1px solid rgba(255,255,255,0.1)',padding:'12px 0'}}>
         <div className="container" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:16}}>
@@ -4820,7 +4830,8 @@ TESTIMONIAL AVATARS: ${(blueprint.sectionImageMap?.testimonials?.avatars || []).
     else {
       try {
         const accentVal = blueprint?.styles?.accentColor || blueprint?.colours?.accent || '#ff6b00';
-        const primaryVal = blueprint?.styles?.primaryColor || blueprint?.colours?.primary || '#1a1a2e';
+const primaryVal = blueprint?.styles?.primaryColor || blueprint?.colours?.primary || '#1a1a2e';
+const googleFonts = `https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap`;
 
         html = await generateSectionLibraryPage(
           contentMap, blueprint, mediaPlan, requestIntent, accentVal, primaryVal

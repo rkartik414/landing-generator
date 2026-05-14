@@ -96,8 +96,8 @@ ${templateSummaries}
 }
 
 async function callGPT(system, user, maxTokens) {
-  const tokenLimit = maxTokens || 2500;
-  const model = tokenLimit >= 10000 ? 'gpt-5.4' : 'gpt-5.4-mini';
+  const tokenLimit = maxTokens || 2500
+const model = tokenLimit >= 10000 ? 'gpt-5.4' : 'gpt-5.4-mini';
 
   const res = await client.chat.completions.create({
     model,
@@ -744,6 +744,58 @@ The blueprint must reflect:
 Do not create a generic SaaS page structure.
 Section order, emphasis, and rhythm must change based on strategy.
 Adjacent sections should not all use the same visual pattern.
+
+UNIVERSAL PREMIUM DESIGN RULES:
+
+The page must look like one coherent designed product page, not stitched screenshots.
+
+Use one consistent visual system across the whole page:
+- one typography scale
+- one accent color system
+- one radius system
+- one card style
+- one shadow style
+- one section rhythm
+- one CTA style
+
+Competitor/reference page is for layout inspiration only.
+Do not use competitor screenshots as final media unless they clearly belong to the current product.
+Reject any media that visibly contains a different product name, logo, hashtag, campaign text, or unrelated UI brand.
+
+Every visual must be composed inside a designed frame:
+- browser frame
+- dashboard card
+- bento card
+- floating UI layer
+- integration tile
+- testimonial card
+- product workflow canvas
+
+Never place raw screenshots as full-width sections without composition.
+
+Section rhythm must be intentional:
+Hero → Trust → Problem/Outcome → Product Capabilities → Workflow/Demo → Integrations/Use Cases → Proof → Final CTA.
+
+Avoid:
+- repeated hero screenshots
+- unrelated brand screenshots
+- large empty whitespace
+- same layout repeated across sections
+- center-aligned headline repeated in every section
+- random stock photos
+- visual jumps between unrelated themes
+- competitor UI pasted into product page
+
+For SaaS/software pages, prioritize:
+- UI mockups
+- dashboard cards
+- workflow diagrams
+- app/integration grids
+- product capability bento grids
+- role-based use cases
+- proof cards
+
+
 
 ${conversionArchBlock}
 
